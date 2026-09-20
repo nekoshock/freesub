@@ -4,17 +4,15 @@
   },
   "outbounds": [
     {
-      "type": "vless",
-      "tag": "🇹🇭 泰国 (Thailand) 01 - xiaohe",
-      "server": "103.86.49.57",
-      "server_port": 80,
-      "uuid": "3c52e091-6714-4915-949f-2149fe69951b",
-      "transport": {
-        "type": "ws",
-        "path": "/ws",
-        "headers": {
-          "Host": "aIs.SpEeDtEsT.nEt"
-        }
+      "type": "hysteria2",
+      "tag": "🇰🇷 韩国 (South Korea) 01 - NEKO",
+      "server": "152-69-231-175.liao.kdns.fr",
+      "server_port": 50160,
+      "password": "1beb216e3f60aea9555dae60d219a5ca",
+      "tls": {
+        "enabled": true,
+        "server_name": "152-69-231-175.liao.kdns.fr",
+        "insecure": false
       }
     },
     {
@@ -22,14 +20,14 @@
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇹🇭 泰国 (Thailand) 01 - xiaohe"
+        "🇰🇷 韩国 (South Korea) 01 - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇹🇭 泰国 (Thailand) 01 - xiaohe"
+        "🇰🇷 韩国 (South Korea) 01 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

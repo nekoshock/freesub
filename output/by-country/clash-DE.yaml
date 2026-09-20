@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇩🇪 德国 (Germany) 01 - xiaohe
+- name: 🇩🇪 德国 (Germany) 01 - NEKO
   server: 144.31.168.95
   port: 443
   udp: true
@@ -17,20 +17,7 @@ proxies:
     short-id: 00bca5982f82d083
   servername: eu-central.cendora.ru
   client-fingerprint: chrome
-- name: 🇩🇪 德国 (Germany) 02 - xiaohe
-  server: 88.99.161.169
-  port: 11342
-  udp: true
-  type: vless
-  uuid: 0a419fe1-068e-422f-911a-4977fa944e08
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: W2swPTQYWu_rfjh2fnyzQ5zg6lK5wKv2Z-mBpVI6_Bg
-    short-id: 6f7b38bd9420c4b8
-  servername: amp-api-edge.apps.apple.com
-  client-fingerprint: chrome
-- name: 🇩🇪 德国 (Germany) 03 - xiaohe
+- name: 🇩🇪 德国 (Germany) 02 - NEKO
   server: 195.201.9.235
   port: 11342
   udp: true
@@ -43,16 +30,20 @@ proxies:
     short-id: 6f7b38bd9420c4b8
   servername: amp-api-edge.apps.apple.com
   client-fingerprint: chrome
-- name: 🇩🇪 德国 (Germany) 04 - xiaohe
-  server: 163.8.195.241
-  port: 2087
+- name: 🇩🇪 德国 (Germany) 03 - NEKO
+  server: 88.99.161.169
+  port: 11342
   udp: true
   type: vless
-  uuid: 56ba5d34-ef22-4ba6-8090-4188b807df54
-  network: ws
-  ws-opts:
-    path: /29c8fed7ca22
-- name: 🇩🇪 德国 (Germany) 05 - xiaohe
+  uuid: 0a419fe1-068e-422f-911a-4977fa944e08
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: W2swPTQYWu_rfjh2fnyzQ5zg6lK5wKv2Z-mBpVI6_Bg
+    short-id: 6f7b38bd9420c4b8
+  servername: amp-api-edge.apps.apple.com
+  client-fingerprint: chrome
+- name: 🇩🇪 德国 (Germany) 04 - NEKO
   server: 108.165.32.16
   port: 443
   udp: true
@@ -65,7 +56,16 @@ proxies:
     short-id: ca3d
   servername: www.logitech.com
   client-fingerprint: chrome
-- name: 🇩🇪 德国 (Germany) 06 - xiaohe
+- name: 🇩🇪 德国 (Germany) 05 - NEKO
+  server: 82.24.203.20
+  port: 2087
+  udp: true
+  type: vless
+  uuid: 5fcdc9b7-e70f-4a5c-85c3-e018ad818326
+  network: ws
+  ws-opts:
+    path: /fd5ba98a3970
+- name: 🇩🇪 德国 (Germany) 06 - NEKO
   server: 2.26.51.75
   port: 443
   udp: true
@@ -78,20 +78,7 @@ proxies:
     short-id: d4f6a8c1b2e3f9aa
   servername: 4pda.to
   client-fingerprint: chrome
-- name: 🇩🇪 德国 (Germany) 07 - xiaohe
-  server: 82.39.171.12
-  port: 443
-  udp: true
-  type: vless
-  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
-    short-id: c39cc7310a
-  servername: yahoo.com
-  client-fingerprint: chrome
-- name: 🇩🇪 德国 (Germany) 08 - xiaohe
+- name: 🇩🇪 德国 (Germany) 07 - NEKO
   server: 82.39.171.142
   port: 443
   udp: true
@@ -104,42 +91,86 @@ proxies:
     short-id: c39cc7310a
   servername: yahoo.com
   client-fingerprint: chrome
-- name: 🇩🇪 德国 (Germany) 09 - xiaohe
-  server: 82.24.203.20
+- name: 🇩🇪 德国 (Germany) 08 - NEKO
+  server: star.starnick2030.ir
+  port: 9022
+  udp: true
+  type: vmess
+  uuid: 11c9da87-198b-40d5-a83e-546e8c73a50e
+  alterId: 0
+  cipher: auto
+- name: 🇩🇪 德国 (Germany) 09 - NEKO
+  server: 163.8.195.241
   port: 2087
   udp: true
   type: vless
-  uuid: 5fcdc9b7-e70f-4a5c-85c3-e018ad818326
+  uuid: 56ba5d34-ef22-4ba6-8090-4188b807df54
   network: ws
   ws-opts:
-    path: /fd5ba98a3970
+    path: /29c8fed7ca22
+- name: 🇩🇪 德国 (Germany) 10 - NEKO
+  server: 130.61.151.93
+  port: 59924
+  udp: true
+  type: ss
+  cipher: 2022-blake3-chacha20-poly1305
+  password: jcGrOPLXBqRT+ZnVbhom8HavJ2p5MkyjZdyxfkOzgLY=
+- name: 🇩🇪 德国 (Germany) 11 - NEKO
+  server: 2.27.59.206
+  port: 443
+  udp: true
+  type: hysteria2
+  password: cd74c0a406664a5bc0bac098220a2468
+  sni: de1.sferavpn.pro
+  skip-cert-verify: false
+  obfs: salamander
+  obfs-password: 44f1c1e2f8b99e792ceed574627a1eb0
+- name: 🇩🇪 德国 (Germany) 12 - NEKO
+  server: 82.39.171.12
+  port: 443
+  udp: true
+  type: vless
+  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
+    short-id: c39cc7310a
+  servername: yahoo.com
+  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇩🇪 德国 (Germany) 01 - xiaohe
-  - 🇩🇪 德国 (Germany) 02 - xiaohe
-  - 🇩🇪 德国 (Germany) 03 - xiaohe
-  - 🇩🇪 德国 (Germany) 04 - xiaohe
-  - 🇩🇪 德国 (Germany) 05 - xiaohe
-  - 🇩🇪 德国 (Germany) 06 - xiaohe
-  - 🇩🇪 德国 (Germany) 07 - xiaohe
-  - 🇩🇪 德国 (Germany) 08 - xiaohe
-  - 🇩🇪 德国 (Germany) 09 - xiaohe
+  - 🇩🇪 德国 (Germany) 01 - NEKO
+  - 🇩🇪 德国 (Germany) 02 - NEKO
+  - 🇩🇪 德国 (Germany) 03 - NEKO
+  - 🇩🇪 德国 (Germany) 04 - NEKO
+  - 🇩🇪 德国 (Germany) 05 - NEKO
+  - 🇩🇪 德国 (Germany) 06 - NEKO
+  - 🇩🇪 德国 (Germany) 07 - NEKO
+  - 🇩🇪 德国 (Germany) 08 - NEKO
+  - 🇩🇪 德国 (Germany) 09 - NEKO
+  - 🇩🇪 德国 (Germany) 10 - NEKO
+  - 🇩🇪 德国 (Germany) 11 - NEKO
+  - 🇩🇪 德国 (Germany) 12 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇩🇪 德国 (Germany) 01 - xiaohe
-  - 🇩🇪 德国 (Germany) 02 - xiaohe
-  - 🇩🇪 德国 (Germany) 03 - xiaohe
-  - 🇩🇪 德国 (Germany) 04 - xiaohe
-  - 🇩🇪 德国 (Germany) 05 - xiaohe
-  - 🇩🇪 德国 (Germany) 06 - xiaohe
-  - 🇩🇪 德国 (Germany) 07 - xiaohe
-  - 🇩🇪 德国 (Germany) 08 - xiaohe
-  - 🇩🇪 德国 (Germany) 09 - xiaohe
+  - 🇩🇪 德国 (Germany) 01 - NEKO
+  - 🇩🇪 德国 (Germany) 02 - NEKO
+  - 🇩🇪 德国 (Germany) 03 - NEKO
+  - 🇩🇪 德国 (Germany) 04 - NEKO
+  - 🇩🇪 德国 (Germany) 05 - NEKO
+  - 🇩🇪 德国 (Germany) 06 - NEKO
+  - 🇩🇪 德国 (Germany) 07 - NEKO
+  - 🇩🇪 德国 (Germany) 08 - NEKO
+  - 🇩🇪 德国 (Germany) 09 - NEKO
+  - 🇩🇪 德国 (Germany) 10 - NEKO
+  - 🇩🇪 德国 (Germany) 11 - NEKO
+  - 🇩🇪 德国 (Germany) 12 - NEKO
 rules:
 - MATCH,PROXIES

@@ -5,23 +5,23 @@
   "outbounds": [
     {
       "type": "vmess",
-      "tag": "🇯🇵 日本 (Japan) 01 - xiaohe",
-      "server": "45.32.57.118",
-      "server_port": 4433,
-      "uuid": "35b89832-0a7c-48dd-8d1c-a2891b522195",
-      "security": "auto"
-    },
-    {
-      "type": "vmess",
-      "tag": "🇯🇵 日本 (Japan) 02 - xiaohe",
+      "tag": "🇯🇵 日本 (Japan) 01 - NEKO",
       "server": "168.110.60.104",
       "server_port": 18112,
       "uuid": "ad45f8f6-0f0a-4cc4-b907-c4582407dc94",
       "security": "auto"
     },
     {
+      "type": "vmess",
+      "tag": "🇯🇵 日本 (Japan) 02 - NEKO",
+      "server": "45.32.57.118",
+      "server_port": 4433,
+      "uuid": "35b89832-0a7c-48dd-8d1c-a2891b522195",
+      "security": "auto"
+    },
+    {
       "type": "vless",
-      "tag": "🇯🇵 日本 (Japan) 03 - xiaohe",
+      "tag": "🇯🇵 日本 (Japan) 03 - NEKO",
       "server": "154.31.114.248",
       "server_port": 50159,
       "uuid": "d56624b2-35bb-468c-9b2a-e0b0df7230c1",
@@ -42,7 +42,14 @@
     },
     {
       "type": "vless",
-      "tag": "🇯🇵 日本 (Japan) 04 - xiaohe",
+      "tag": "🇯🇵 日本 (Japan) 04 - NEKO",
+      "server": "137.220.221.179",
+      "server_port": 443,
+      "uuid": "a16a3336-c9ab-489f-9b85-c973f5e2cfa4"
+    },
+    {
+      "type": "vless",
+      "tag": "🇯🇵 日本 (Japan) 05 - NEKO",
       "server": "172.67.156.147",
       "server_port": 443,
       "uuid": "4e4f1f70-5e56-4a76-bb9d-db087f4690c4",
@@ -64,33 +71,40 @@
       }
     },
     {
-      "type": "vless",
-      "tag": "🇯🇵 日本 (Japan) 05 - xiaohe",
-      "server": "137.220.221.179",
-      "server_port": 443,
-      "uuid": "a16a3336-c9ab-489f-9b85-c973f5e2cfa4"
+      "type": "hysteria2",
+      "tag": "🇯🇵 日本 (Japan) 06 - NEKO",
+      "server": "msjp1.mangshe.xyz",
+      "server_port": 20561,
+      "password": "5d0a6445-a30d-4522-bb1f-94f1d3ad63be",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "insecure": true
+      }
     },
     {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇯🇵 日本 (Japan) 01 - xiaohe",
-        "🇯🇵 日本 (Japan) 02 - xiaohe",
-        "🇯🇵 日本 (Japan) 03 - xiaohe",
-        "🇯🇵 日本 (Japan) 04 - xiaohe",
-        "🇯🇵 日本 (Japan) 05 - xiaohe"
+        "🇯🇵 日本 (Japan) 01 - NEKO",
+        "🇯🇵 日本 (Japan) 02 - NEKO",
+        "🇯🇵 日本 (Japan) 03 - NEKO",
+        "🇯🇵 日本 (Japan) 04 - NEKO",
+        "🇯🇵 日本 (Japan) 05 - NEKO",
+        "🇯🇵 日本 (Japan) 06 - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇯🇵 日本 (Japan) 01 - xiaohe",
-        "🇯🇵 日本 (Japan) 02 - xiaohe",
-        "🇯🇵 日本 (Japan) 03 - xiaohe",
-        "🇯🇵 日本 (Japan) 04 - xiaohe",
-        "🇯🇵 日本 (Japan) 05 - xiaohe"
+        "🇯🇵 日本 (Japan) 01 - NEKO",
+        "🇯🇵 日本 (Japan) 02 - NEKO",
+        "🇯🇵 日本 (Japan) 03 - NEKO",
+        "🇯🇵 日本 (Japan) 04 - NEKO",
+        "🇯🇵 日本 (Japan) 05 - NEKO",
+        "🇯🇵 日本 (Japan) 06 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

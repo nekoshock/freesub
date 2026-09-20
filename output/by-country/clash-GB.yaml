@@ -4,20 +4,14 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇬🇧 英国 (United Kingdom) 01 - xiaohe
-  server: 95.154.196.61
-  port: 443
+- name: 🇬🇧 英国 (United Kingdom) 01 - NEKO
+  server: 129.151.77.36
+  port: 61312
   udp: true
-  type: vless
-  uuid: e5d917f5-fc78-455e-bbb5-81d08715f3d6
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: 2ATxqiR22wlo3yXOHc43LFHM5NzWCdSGZLdBay_vJgM
-    short-id: e4a1b53b03eff60d
-  servername: strapi.io
-  client-fingerprint: firefox
-- name: 🇬🇧 英国 (United Kingdom) 02 - xiaohe
+  type: ss
+  cipher: 2022-blake3-chacha20-poly1305
+  password: JAIIG6N6KLuM33ZbMh0jk1fVcDM3qTVfUoXhQr6tiYM=
+- name: 🇬🇧 英国 (United Kingdom) 02 - NEKO
   server: 5.152.223.97
   port: 443
   udp: true
@@ -30,14 +24,20 @@ proxies:
     short-id: 1aa9f3c9021280c0
   servername: strapi.io
   client-fingerprint: chrome
-- name: 🇬🇧 英国 (United Kingdom) 03 - xiaohe
-  server: 144.24.226.127
-  port: 61312
+- name: 🇬🇧 英国 (United Kingdom) 03 - NEKO
+  server: 95.154.196.61
+  port: 443
   udp: true
-  type: ss
-  cipher: 2022-blake3-chacha20-poly1305
-  password: J7cXNcIXneBAD5a5hk6nXD68z5BcJtIMepdH646KjtI=
-- name: 🇬🇧 英国 (United Kingdom) 04 - xiaohe
+  type: vless
+  uuid: e5d917f5-fc78-455e-bbb5-81d08715f3d6
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: 2ATxqiR22wlo3yXOHc43LFHM5NzWCdSGZLdBay_vJgM
+    short-id: e4a1b53b03eff60d
+  servername: strapi.io
+  client-fingerprint: firefox
+- name: 🇬🇧 英国 (United Kingdom) 04 - NEKO
   server: 2.27.205.218
   port: 443
   udp: true
@@ -52,32 +52,38 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: grpc
-- name: 🇬🇧 英国 (United Kingdom) 05 - xiaohe
-  server: 129.151.72.10
-  port: 61312
+- name: 🇬🇧 英国 (United Kingdom) 05 - NEKO
+  server: 193.163.203.170
+  port: 443
   udp: true
-  type: ss
-  cipher: 2022-blake3-chacha20-poly1305
-  password: 1W4F0fI81d/vwGCxDLCle+KbE+/Bb6uE7BP8Xjq1wH4=
+  type: vless
+  uuid: 11aabba0-5fd1-4f15-8068-74c1a466cefc
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: GCCZ1ZZjB_nj7yxqFi22bIIWWr_G6rnWUzDcssN_40o
+    short-id: b28db60d77c50b4f
+  servername: yandex.ru
+  client-fingerprint: firefox
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇬🇧 英国 (United Kingdom) 01 - xiaohe
-  - 🇬🇧 英国 (United Kingdom) 02 - xiaohe
-  - 🇬🇧 英国 (United Kingdom) 03 - xiaohe
-  - 🇬🇧 英国 (United Kingdom) 04 - xiaohe
-  - 🇬🇧 英国 (United Kingdom) 05 - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 01 - NEKO
+  - 🇬🇧 英国 (United Kingdom) 02 - NEKO
+  - 🇬🇧 英国 (United Kingdom) 03 - NEKO
+  - 🇬🇧 英国 (United Kingdom) 04 - NEKO
+  - 🇬🇧 英国 (United Kingdom) 05 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇬🇧 英国 (United Kingdom) 01 - xiaohe
-  - 🇬🇧 英国 (United Kingdom) 02 - xiaohe
-  - 🇬🇧 英国 (United Kingdom) 03 - xiaohe
-  - 🇬🇧 英国 (United Kingdom) 04 - xiaohe
-  - 🇬🇧 英国 (United Kingdom) 05 - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 01 - NEKO
+  - 🇬🇧 英国 (United Kingdom) 02 - NEKO
+  - 🇬🇧 英国 (United Kingdom) 03 - NEKO
+  - 🇬🇧 英国 (United Kingdom) 04 - NEKO
+  - 🇬🇧 英国 (United Kingdom) 05 - NEKO
 rules:
 - MATCH,PROXIES

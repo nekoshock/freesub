@@ -4,25 +4,25 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇮🇱 以色列 (Israel) 01 - xiaohe
-  server: 129.159.156.109
-  port: 50160
+- name: 🇦🇺 澳大利亚 (Australia) 01 - NEKO
+  server: vpn-au-002.fastervpn.world
+  port: 443
   udp: true
   type: hysteria2
-  password: f25f19f29ce3fb53a35bf1b35b452a43
-  sni: www.bing.com
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: whatsapp.com
   skip-cert-verify: true
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇮🇱 以色列 (Israel) 01 - xiaohe
+  - 🇦🇺 澳大利亚 (Australia) 01 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇮🇱 以色列 (Israel) 01 - xiaohe
+  - 🇦🇺 澳大利亚 (Australia) 01 - NEKO
 rules:
 - MATCH,PROXIES

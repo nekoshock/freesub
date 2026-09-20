@@ -4,14 +4,14 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇮🇹 意大利 (Italy) 01 - xiaohe
+- name: 🇮🇹 意大利 (Italy) 01 - NEKO
   server: 57.131.48.45
   port: 8388
   udp: true
   type: ss
   cipher: aes-256-gcm
   password: itzvpn@321
-- name: 🇮🇹 意大利 (Italy) 02 - xiaohe
+- name: 🇮🇹 意大利 (Italy) 02 - NEKO
   server: 57.131.38.163
   port: 2053
   udp: true
@@ -28,14 +28,14 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇮🇹 意大利 (Italy) 01 - xiaohe
-  - 🇮🇹 意大利 (Italy) 02 - xiaohe
+  - 🇮🇹 意大利 (Italy) 01 - NEKO
+  - 🇮🇹 意大利 (Italy) 02 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇮🇹 意大利 (Italy) 01 - xiaohe
-  - 🇮🇹 意大利 (Italy) 02 - xiaohe
+  - 🇮🇹 意大利 (Italy) 01 - NEKO
+  - 🇮🇹 意大利 (Italy) 02 - NEKO
 rules:
 - MATCH,PROXIES

@@ -54,7 +54,11 @@ except ImportError as e:
 
 SOURCE_URLS = [
     "https://raw.githubusercontent.com/free-nodes/v2rayfree/main/sub",
-    "https://raw.githubusercontent.com/Pawdroid/Free-servers/main/sub"
+    "https://raw.githubusercontent.com/Pawdroid/Free-servers/main/sub"，
+    "https://gist.githubusercontent.com/guidongone/e233408648e62abdad3c754fc1fbfbcb/raw/16c0e9e49d3435d5093ff5e1129c495776282702/Clash260920.yaml",
+    "https://raw.githubusercontent.com/snakem982/proxypool/main/source/clash-meta-2.yaml",
+    "https://raw.githubusercontent.com/awesome-vpn/awesome-vpn/master/clash.yaml",
+    "https://raw.githubusercontent.com/chengaopan/AutoMergePublicNodes/master/list.txt"
 ]
 
 OUTPUT_DIR = "output"
@@ -2165,7 +2169,7 @@ def make_node_name(item, idx, force_residential=False):
     # Scamalytics 风控分: 高风险节点名内标注 (R分数), 低危不标 (保持简洁)
     fraud = item.get("fraud_score", -1)
     risk_tag = f" R{fraud}" if 0 <= fraud < 75 and fraud >= 40 else (" ⚠R" if fraud >= 75 else "")
-    return f"{flag} {cname} {idx:02d}{tag}{risk_tag} - xiaohe"
+    return f"{flag} {cname} {idx:02d}{tag}{risk_tag} - NEKO"
 
 
 def export_all(unique_nodes, residential, non_residential):

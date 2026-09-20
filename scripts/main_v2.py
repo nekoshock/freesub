@@ -58,7 +58,7 @@ SOURCE_URLS = [
     "https://gist.githubusercontent.com/guidongone/e233408648e62abdad3c754fc1fbfbcb/raw/16c0e9e49d3435d5093ff5e1129c495776282702/Clash260920.yaml",
     "https://raw.githubusercontent.com/snakem982/proxypool/main/source/clash-meta-2.yaml",
     "https://raw.githubusercontent.com/awesome-vpn/awesome-vpn/master/clash.yaml",
-    "https://raw.githubusercontent.com/chengaopan/AutoMergePublicNodes/master/list.txt"
+    "https://raw.githubusercontent.com/chengaopan/AutoMergePublicNodes/master/list.txt",
 ]
 
 OUTPUT_DIR = "output"

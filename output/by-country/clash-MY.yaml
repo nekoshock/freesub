@@ -12,17 +12,27 @@ proxies:
   password: 5931134d1cde66bf83a54acdfebe7ab2
   sni: moltbot.doctoroyy.net
   skip-cert-verify: true
+- name: 🇲🇾 马来西亚 (Malaysia) 02 - NEKO
+  server: 103.117.141.124
+  port: 2060
+  udp: true
+  type: hysteria2
+  password: 5d0a6445-a30d-4522-bb1f-94f1d3ad63be
+  sni: mlxy1.mangshe.xyz
+  skip-cert-verify: true
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
   - 🇲🇾 马来西亚 (Malaysia) 01 - NEKO
+  - 🇲🇾 马来西亚 (Malaysia) 02 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
   - 🇲🇾 马来西亚 (Malaysia) 01 - NEKO
+  - 🇲🇾 马来西亚 (Malaysia) 02 - NEKO
 rules:
 - MATCH,PROXIES

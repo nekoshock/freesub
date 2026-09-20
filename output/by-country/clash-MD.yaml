@@ -26,15 +26,6 @@ proxies:
     short-id: 694ee64512cfcbef
   servername: moldova.cdn-europe.org
   client-fingerprint: random
-- name: 🇲🇩 摩尔多瓦 (Moldova) 03 - NEKO
-  server: 143.246.216.64
-  port: 8081
-  udp: true
-  type: vless
-  uuid: 54ee5e59-55a3-4599-83ff-0c67b3f411b2
-  network: ws
-  ws-opts:
-    path: /vless-test
 proxy-groups:
 - name: PROXIES
   type: select
@@ -42,7 +33,6 @@ proxy-groups:
   - AUTO
   - 🇲🇩 摩尔多瓦 (Moldova) 01 - NEKO
   - 🇲🇩 摩尔多瓦 (Moldova) 02 - NEKO
-  - 🇲🇩 摩尔多瓦 (Moldova) 03 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -50,6 +40,5 @@ proxy-groups:
   proxies:
   - 🇲🇩 摩尔多瓦 (Moldova) 01 - NEKO
   - 🇲🇩 摩尔多瓦 (Moldova) 02 - NEKO
-  - 🇲🇩 摩尔多瓦 (Moldova) 03 - NEKO
 rules:
 - MATCH,PROXIES

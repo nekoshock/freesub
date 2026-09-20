@@ -53,7 +53,7 @@ except ImportError as e:
 # ══════════════════════════════════════════════════════════════════
 
 SOURCE_URLS = [
-    "https://raw.githubusercontent.com/free-nodes/v2rayfree/main/sub"
+    "https://raw.githubusercontent.com/free-nodes/v2rayfree/main/sub",
     "https://raw.githubusercontent.com/Pawdroid/Free-servers/main/sub"
 ]
 

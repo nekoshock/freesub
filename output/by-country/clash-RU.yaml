@@ -6,92 +6,76 @@ log-level: info
 proxies:
 - name: 🇷🇺 俄罗斯 (Russia) 01 - NEKO
   server: 94.249.187.46
+  port: 1080
+  udp: true
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: IXa3ylzS_jBOAsQy071tIQ
+- name: 🇷🇺 俄罗斯 (Russia) 02 - NEKO
+  server: 91.196.32.216
+  port: 9543
+  udp: true
+  type: vless
+  uuid: ff6d2dda-7b90-404e-9951-34b3124bfdfa
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: M6Ck7wUfOLhQl4582CBnaXwscPEP6SCpdEkUDzoj4Fc
+    short-id: 123abcdf
+  servername: storage.yandexcloud.net
+  client-fingerprint: chrome
+- name: 🇷🇺 俄罗斯 (Russia) 03 - NEKO
+  server: 91.240.86.70
+  port: 22443
+  udp: true
+  type: hysteria2
+  password: 3f63c86c-ac4a-4900-85cf-4fedf93c2ca5
+  sni: hy.quattro-tech.ru
+  skip-cert-verify: true
+- name: 🇷🇺 俄罗斯 (Russia) 04 - NEKO
+  server: 46.8.200.91
+  port: 443
+  udp: true
+  type: vless
+  uuid: b8201bab-fa6c-4f6e-b289-b5da660c6f69
+  tls: true
+  servername: cf3.rumedia-cdn.com
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /cdn/v3/live
+    headers:
+      Host: cf3.rumedia-cdn.com
+- name: 🇷🇺 俄罗斯 (Russia) 05 - NEKO
+  server: 64.118.159.219
+  port: 443
+  udp: true
+  type: vless
+  uuid: d342d11e-d424-4583-b36e-524ab1f0afa4
+  tls: true
+  servername: cdn8848.776676.xyz
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /tech/videos/web?ed=2560fp=chrome
+    headers:
+      Host: cdn8848.776676.xyz
+- name: 🇷🇺 俄罗斯 (Russia) 06 - NEKO
+  server: 94.249.187.46
   port: 2086
   udp: true
   type: vmess
   uuid: f6361af8-bb8f-4609-bf5d-3fc0f688f47b
   alterId: 0
   cipher: auto
-- name: 🇷🇺 俄罗斯 (Russia) 02 - NEKO
-  server: 194.87.196.13
-  port: 10081
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: 4938e975724d0ed1
-- name: 🇷🇺 俄罗斯 (Russia) 03 - NEKO
-  server: 185.22.155.203
-  port: 10900
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: 895b4b796a357570
-- name: 🇷🇺 俄罗斯 (Russia) 04 - NEKO
-  server: 195.58.48.137
-  port: 10081
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: 8ad9d72a5571df86
-- name: 🇷🇺 俄罗斯 (Russia) 05 - NEKO
-  server: 130.49.189.158
-  port: 43558
-  udp: true
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: 5dLyPJpSV+QyXFRj+S0dt6xFKHxtcXEkRO/TzJGzryU=
-- name: 🇷🇺 俄罗斯 (Russia) 06 - NEKO
-  server: msk.frkn.org
-  port: 443
-  udp: true
-  type: hysteria2
-  password: f317b5d6-d399-4d3d-a051-89d674ae953c
-  sni: msk.frkn.org
-  skip-cert-verify: true
 - name: 🇷🇺 俄罗斯 (Russia) 07 - NEKO
-  server: 46.8.200.91
+  server: 31.76.71.252
   port: 443
   udp: true
-  type: vless
-  uuid: 0a2dde28-70da-4863-a06f-35d007d94d35
-  tls: true
-  servername: cf3.rumedia-cdn.com
-  skip-cert-verify: false
-  client-fingerprint: firefox
-  network: ws
-  ws-opts:
-    path: /casc
-    headers:
-      Host: cf3.rumedia-cdn.com
-- name: 🇷🇺 俄罗斯 (Russia) 08 - NEKO
-  server: 91.240.86.70
-  port: 22443
-  udp: true
   type: hysteria2
-  password: 3f63c86c-ac4a-4900-85cf-4fedf93c2ca5
-  sni: itsallproxy.quattro-tech.ru
+  password: mkL3AfdSZIpTWRB9TcWPn9vywPGN89MRHg3ToRDj
+  sni: gta.internet-card.sbs
   skip-cert-verify: false
-- name: 🇷🇺 俄罗斯 (Russia) 09 - NEKO
-  server: 45.12.75.242
-  port: 26424
-  udp: true
-  type: vless
-  uuid: 633f424e-2b11-48da-a6b3-a849dd71456f
-  tls: true
-  reality-opts:
-    public-key: l8AubqcxQO-HRFJy4pZL1vbLOo-eXit69s-XulSELE0
-    short-id: 23103e1e
-  servername: ya.ru
-  client-fingerprint: random
-- name: 🇷🇺 俄罗斯 (Russia) 10 - NEKO
-  server: 186.246.48.59
-  port: 2200
-  udp: true
-  type: vless
-  uuid: 72c8ea26-8b77-4e31-a23f-79c19b3a2ef1
-  network: ws
-  ws-opts:
-    path: /v1
 proxy-groups:
 - name: PROXIES
   type: select
@@ -104,9 +88,6 @@ proxy-groups:
   - 🇷🇺 俄罗斯 (Russia) 05 - NEKO
   - 🇷🇺 俄罗斯 (Russia) 06 - NEKO
   - 🇷🇺 俄罗斯 (Russia) 07 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 08 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 09 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 10 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -119,8 +100,5 @@ proxy-groups:
   - 🇷🇺 俄罗斯 (Russia) 05 - NEKO
   - 🇷🇺 俄罗斯 (Russia) 06 - NEKO
   - 🇷🇺 俄罗斯 (Russia) 07 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 08 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 09 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 10 - NEKO
 rules:
 - MATCH,PROXIES

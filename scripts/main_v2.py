@@ -53,20 +53,8 @@ except ImportError as e:
 # ══════════════════════════════════════════════════════════════════
 
 SOURCE_URLS = [
-    "https://wild-cloud-9893.heleimail.workers.dev",
-    "https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-TW.txt",
-    "https://raw.githubusercontent.com/ShatakVPN/ConfigForge-V2Ray/main/configs/all.txt",
-    "https://raw.githubusercontent.com/10ium/HiN-VPN/main/subscription/base64/mix",
-    "https://raw.githubusercontent.com/10ium/telegram-configs-collector/main/protocols/hysteria",
-    "https://raw.githubusercontent.com/10ium/telegram-configs-collector/main/security/tls",
-    "https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/v2ray-base64.txt",
-    "https://raw.githubusercontent.com/freefq/free/master/v2",
-    "https://open.heleimail.workers.dev/",
-    "https://www.ermao.net/sub/v2ray/ermao.net",
-    "https://raw.githubusercontent.com/ishalumi/proxy-node-collector/main/output/nodes_base64.txt",
-    "https://gist.githubusercontent.com/shuaidaoya/9e5cf2749c0ce79932dd9229d9b4162b/raw/base64.txt",
-    "https://raw.githubusercontent.com/PuddinCat/BestClash/main/proxies.yaml",
-    "https://raw.githubusercontent.com/twj0/subseek/refs/heads/master/data/sub_github.txt",
+    "https://raw.githubusercontent.com/free-nodes/v2rayfree/main/sub"
+    "https://raw.githubusercontent.com/Pawdroid/Free-servers/main/sub"
 ]
 
 OUTPUT_DIR = "output"

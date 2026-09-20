@@ -54,7 +54,7 @@ except ImportError as e:
 
 SOURCE_URLS = [
     "https://raw.githubusercontent.com/free-nodes/v2rayfree/main/sub",
-    "https://raw.githubusercontent.com/Pawdroid/Free-servers/main/sub"，
+    "https://raw.githubusercontent.com/Pawdroid/Free-servers/main/sub",
     "https://gist.githubusercontent.com/guidongone/e233408648e62abdad3c754fc1fbfbcb/raw/16c0e9e49d3435d5093ff5e1129c495776282702/Clash260920.yaml",
     "https://raw.githubusercontent.com/snakem982/proxypool/main/source/clash-meta-2.yaml",
     "https://raw.githubusercontent.com/awesome-vpn/awesome-vpn/master/clash.yaml",

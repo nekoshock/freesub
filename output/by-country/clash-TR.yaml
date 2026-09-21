@@ -5,41 +5,28 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇹🇷 土耳其 (Turkey) 01 - NEKO
-  server: 93.190.9.9
-  port: 3090
+  server: 172.67.192.84
+  port: 2095
   udp: true
   type: vless
-  uuid: c4a36c29-39db-4782-b7cb-6e391461a999
-  network: grpc
-  grpc-opts:
-    grpc-service-name: vless
+  uuid: a22bff60-a40a-4250-bde2-4c660e363b47
+  network: ws
+  ws-opts:
+    path: /juvsrnmgdu8i0179k5
+    headers:
+      Host: index.harmonica02.workers.dev
 - name: 🇹🇷 土耳其 (Turkey) 02 - NEKO
-  server: 31.210.52.149
-  port: 443
+  server: 188.114.98.16
+  port: 2082
   udp: true
   type: vless
-  uuid: 206a4c50-2eb6-4b7f-b7a5-15c6ab7b3f4c
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: HabIMykoF6jIw0rAgi_t3xm_hdWTLFKIpODwNJFjznE
-    short-id: 625a948aab4f
-  servername: tr-ist-5.blook.network
-  client-fingerprint: chrome
+  uuid: a22bff60-a40a-4250-bde2-4c660e363b47
+  network: ws
+  ws-opts:
+    path: /rry8le3tt8f3g5j7kr
+    headers:
+      Host: index.harmonica02.workers.dev
 - name: 🇹🇷 土耳其 (Turkey) 03 - NEKO
-  server: 31.214.152.140
-  port: 443
-  udp: true
-  type: vless
-  uuid: ad297a2b-ae17-4d2d-8fce-e2eafb89b145
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: bjqOUjqNQMF6NZ2kRis0NTNTcpdLBrr7CvZjFATrhg8
-    short-id: 08
-  servername: dw.b-cdn.net
-  client-fingerprint: firefox
-- name: 🇹🇷 土耳其 (Turkey) 04 - NEKO
   server: 206.1.97.61
   port: 443
   udp: true
@@ -50,6 +37,19 @@ proxies:
     public-key: GFREEsH4rFLnXKDLKXk0iTZNP5_d1zfKTj8DUE0L6RE
     short-id: d7397feef49deef9
   servername: Miro.com
+  client-fingerprint: chrome
+- name: 🇹🇷 土耳其 (Turkey) 04 - NEKO
+  server: 78.135.73.47
+  port: 443
+  udp: true
+  type: vless
+  uuid: 25e16692-d097-4e69-9e2d-8415609c1968
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: sZAJkAu23wp1WKY-qeaeiwR38izP5OyfhumoE9xhbB8
+    short-id: f46cd3ea3d1eb72d
+  servername: www.datadoghq.com
   client-fingerprint: chrome
 - name: 🇹🇷 土耳其 (Turkey) 05 - NEKO
   server: 151.241.226.201
@@ -64,18 +64,14 @@ proxies:
   servername: www.apple.com
   client-fingerprint: chrome
 - name: 🇹🇷 土耳其 (Turkey) 06 - NEKO
-  server: 78.135.73.47
-  port: 443
+  server: 93.190.9.40
+  port: 3090
   udp: true
   type: vless
-  uuid: 25e16692-d097-4e69-9e2d-8415609c1968
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: sZAJkAu23wp1WKY-qeaeiwR38izP5OyfhumoE9xhbB8
-    short-id: f46cd3ea3d1eb72d
-  servername: www.datadoghq.com
-  client-fingerprint: firefox
+  uuid: b1ca4f7c-d50a-41b2-b779-07c3e6ed09b2
+  network: grpc
+  grpc-opts:
+    grpc-service-name: vless
 proxy-groups:
 - name: PROXIES
   type: select

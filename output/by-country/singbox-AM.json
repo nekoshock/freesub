@@ -4,68 +4,19 @@
   },
   "outbounds": [
     {
-      "type": "vless",
+      "type": "trojan",
       "tag": "🇦🇲 亚美尼亚 (Armenia) 01 - NEKO",
-      "server": "64.227.67.161",
-      "server_port": 2083,
-      "uuid": "d342d11e-d424-4583-b36e-524ab1f0afa4",
+      "server": "de2.x8lab.org",
+      "server_port": 9433,
+      "password": "TAJhE0BC0_S1JDm9EmQxyLS64uC8ekbr",
       "tls": {
         "enabled": true,
-        "server_name": "cdn8848.776676.xyz",
-        "insecure": false,
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/members/detail/gif?ed=2560fp=chrome",
-        "headers": {
-          "Host": "cdn8848.776676.xyz"
-        }
-      }
-    },
-    {
-      "type": "vless",
-      "tag": "🇦🇲 亚美尼亚 (Armenia) 02 - NEKO",
-      "server": "129.151.64.169",
-      "server_port": 31867,
-      "uuid": "d342d11e-d424-4583-b36e-524ab1f0afa4",
-      "tls": {
-        "enabled": true,
-        "server_name": "cdn8848.776676.xyz",
+        "server_name": "de2.x8lab.org",
         "insecure": false
       },
       "transport": {
         "type": "ws",
-        "path": "/files",
-        "headers": {
-          "Host": "cdn8848.776676.xyz"
-        }
-      }
-    },
-    {
-      "type": "vless",
-      "tag": "🇦🇲 亚美尼亚 (Armenia) 03 - NEKO",
-      "server": "152.42.138.167",
-      "server_port": 443,
-      "uuid": "d342d11e-d424-4583-b36e-524ab1f0afa4",
-      "tls": {
-        "enabled": true,
-        "server_name": "cdn8848.776676.xyz",
-        "insecure": false,
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/event/post/discount?ed=2560",
-        "headers": {
-          "Host": "cdn8848.776676.xyz"
-        }
+        "path": "/chatbot"
       }
     },
     {
@@ -73,18 +24,14 @@
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇦🇲 亚美尼亚 (Armenia) 01 - NEKO",
-        "🇦🇲 亚美尼亚 (Armenia) 02 - NEKO",
-        "🇦🇲 亚美尼亚 (Armenia) 03 - NEKO"
+        "🇦🇲 亚美尼亚 (Armenia) 01 - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇦🇲 亚美尼亚 (Armenia) 01 - NEKO",
-        "🇦🇲 亚美尼亚 (Armenia) 02 - NEKO",
-        "🇦🇲 亚美尼亚 (Armenia) 03 - NEKO"
+        "🇦🇲 亚美尼亚 (Armenia) 01 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

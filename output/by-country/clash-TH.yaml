@@ -14,7 +14,7 @@ proxies:
   ws-opts:
     path: /ws
     headers:
-      Host: ais.speedtest.net
+      Host: v2ray.simspeedup.com
 - name: 🇹🇭 泰国 (Thailand) 02 - NEKO
   server: 34.15.162.1
   port: 443
@@ -28,18 +28,7 @@ proxies:
   servername: www.cloudflare.com
   client-fingerprint: random
 - name: 🇹🇭 泰国 (Thailand) 03 - NEKO
-  server: 118.193.57.167
-  port: 49667
-  udp: true
-  type: vmess
-  uuid: d46bf492-45f4-4c33-82d1-ea2a1cb54eb6
-  alterId: 0
-  cipher: auto
-  network: ws
-  ws-opts:
-    path: /d46bf492
-- name: 🇹🇭 泰国 (Thailand) 04 - NEKO
-  server: 104.16.10.185
+  server: 104.16.10.2
   port: 443
   udp: true
   type: vless
@@ -60,7 +49,6 @@ proxy-groups:
   - 🇹🇭 泰国 (Thailand) 01 - NEKO
   - 🇹🇭 泰国 (Thailand) 02 - NEKO
   - 🇹🇭 泰国 (Thailand) 03 - NEKO
-  - 🇹🇭 泰国 (Thailand) 04 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -69,6 +57,5 @@ proxy-groups:
   - 🇹🇭 泰国 (Thailand) 01 - NEKO
   - 🇹🇭 泰国 (Thailand) 02 - NEKO
   - 🇹🇭 泰国 (Thailand) 03 - NEKO
-  - 🇹🇭 泰国 (Thailand) 04 - NEKO
 rules:
 - MATCH,PROXIES

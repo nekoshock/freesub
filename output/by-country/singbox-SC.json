@@ -15,7 +15,7 @@
         "server_name": "www.apple.com",
         "utls": {
           "enabled": true,
-          "fingerprint": "chrome"
+          "fingerprint": "firefox"
         },
         "reality": {
           "enabled": true,
@@ -25,18 +25,39 @@
       }
     },
     {
+      "type": "vless",
+      "tag": "🇸🇨 塞舌尔 (Seychelles) 02 - NEKO",
+      "server": "46.8.178.234",
+      "server_port": 443,
+      "uuid": "d342d11e-d424-4583-b36e-524ab1f0afa4",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn8848.776676.xyz",
+        "insecure": true
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/about/ads/articles?ed=2560fp=chrome",
+        "headers": {
+          "Host": "cdn8848.776676.xyz"
+        }
+      }
+    },
+    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇸🇨 塞舌尔 (Seychelles) 01 - NEKO"
+        "🇸🇨 塞舌尔 (Seychelles) 01 - NEKO",
+        "🇸🇨 塞舌尔 (Seychelles) 02 - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇸🇨 塞舌尔 (Seychelles) 01 - NEKO"
+        "🇸🇨 塞舌尔 (Seychelles) 01 - NEKO",
+        "🇸🇨 塞舌尔 (Seychelles) 02 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

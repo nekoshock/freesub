@@ -5,6 +5,41 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇨🇿 捷克 (Czech) 01 - NEKO
+  server: 188.114.97.6
+  port: 8080
+  udp: true
+  type: vless
+  uuid: daf485ba-60fc-4166-a72c-8d2a5407cbc5
+  network: ws
+  ws-opts:
+    path: /vl/zM8ELyqEIYeZ3ijacV9kuK?ed
+    headers:
+      Host: kievh9yxcgg14-gy4wxqcav0pegkd.d-0ezpk5xp5wk8ltdgb6evlpgc-jin.workers.dev
+- name: 🇨🇿 捷克 (Czech) 02 - NEKO
+  server: 188.114.98.134
+  port: 443
+  udp: true
+  type: vless
+  uuid: ba49d874-fe02-465d-82d3-ed981dc7694f
+  tls: true
+  servername: o94yv7LiF0-AnxIsd9EFehVvs7mXn6bh.z-UlE-ikA-d-e-nE-k-E.WorkeRs.dEv
+  skip-cert-verify: false
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: o94yv7lif0-anxisd9efehvvs7mxn6bh.z-ule-ika-d-e-ne-k-e.workers.dev
+- name: 🇨🇿 捷克 (Czech) 03 - NEKO
+  server: 153.76.185.186
+  port: 3090
+  udp: true
+  type: vless
+  uuid: 9912a5ca-3ee1-45ac-b182-46fec2610ee0
+  network: grpc
+  grpc-opts:
+    grpc-service-name: vless
+- name: 🇨🇿 捷克 (Czech) 04 - NEKO
   server: 153.76.185.189
   port: 3090
   udp: true
@@ -13,7 +48,16 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: vless
-- name: 🇨🇿 捷克 (Czech) 02 - NEKO
+- name: 🇨🇿 捷克 (Czech) 05 - NEKO
+  server: 153.76.185.188
+  port: 3090
+  udp: true
+  type: vless
+  uuid: 9912a5ca-3ee1-45ac-b182-46fec2610ee0
+  network: grpc
+  grpc-opts:
+    grpc-service-name: vless
+- name: 🇨🇿 捷克 (Czech) 06 - NEKO
   server: 95.85.230.35
   port: 443
   udp: true
@@ -32,6 +76,10 @@ proxy-groups:
   - AUTO
   - 🇨🇿 捷克 (Czech) 01 - NEKO
   - 🇨🇿 捷克 (Czech) 02 - NEKO
+  - 🇨🇿 捷克 (Czech) 03 - NEKO
+  - 🇨🇿 捷克 (Czech) 04 - NEKO
+  - 🇨🇿 捷克 (Czech) 05 - NEKO
+  - 🇨🇿 捷克 (Czech) 06 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -39,5 +87,9 @@ proxy-groups:
   proxies:
   - 🇨🇿 捷克 (Czech) 01 - NEKO
   - 🇨🇿 捷克 (Czech) 02 - NEKO
+  - 🇨🇿 捷克 (Czech) 03 - NEKO
+  - 🇨🇿 捷克 (Czech) 04 - NEKO
+  - 🇨🇿 捷克 (Czech) 05 - NEKO
+  - 🇨🇿 捷克 (Czech) 06 - NEKO
 rules:
 - MATCH,PROXIES

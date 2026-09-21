@@ -5,79 +5,76 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇷🇺 俄罗斯 (Russia) 01 - NEKO
-  server: 94.249.187.46
-  port: 2086
-  udp: true
-  type: vmess
-  uuid: f6361af8-bb8f-4609-bf5d-3fc0f688f47b
-  alterId: 0
-  cipher: auto
-- name: 🇷🇺 俄罗斯 (Russia) 02 - NEKO
-  server: 194.154.29.139
-  port: 8443
+  server: 164.92.147.213
+  port: 2087
   udp: true
   type: vless
   uuid: d342d11e-d424-4583-b36e-524ab1f0afa4
   tls: true
   servername: cdn8848.776676.xyz
   skip-cert-verify: false
-  client-fingerprint: chrome
   network: ws
   ws-opts:
-    path: /retrieve/txt?ed=2560
+    path: /city/my
+    headers:
+      Host: cdn8848.776676.xyz
+- name: 🇷🇺 俄罗斯 (Russia) 02 - NEKO
+  server: 161.35.18.70
+  port: 443
+  udp: true
+  type: vless
+  uuid: d342d11e-d424-4583-b36e-524ab1f0afa4
+  tls: true
+  servername: cdn8848.776676.xyz
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /about?ed=2560fp=chrome
     headers:
       Host: cdn8848.776676.xyz
 - name: 🇷🇺 俄罗斯 (Russia) 03 - NEKO
-  server: 138.124.25.25
-  port: 443
+  server: 5.129.251.213
+  port: 46446
   udp: true
   type: vless
-  uuid: d342d11e-d424-4583-b36e-524ab1f0afa4
+  uuid: e42ba0b1-39a0-48fd-a80f-f3fca3bb4c6d
   tls: true
-  servername: cdn8848.776676.xyz
-  skip-cert-verify: false
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /group/outbound/topics?ed=2560
-    headers:
-      Host: cdn8848.776676.xyz
+  reality-opts:
+    public-key: 4CTDvoTom2CNJqszbKlQApLSQJ8ZLNoQrQ5yH7j242I
+    short-id: 039204f18c9c90a0
+  servername: www.cloudflare.com
+  client-fingerprint: safari
+  network: grpc
+  grpc-opts:
+    grpc-service-name: fromabroad-grpc-v1
 - name: 🇷🇺 俄罗斯 (Russia) 04 - NEKO
-  server: 46.8.200.91
-  port: 443
-  udp: true
-  type: vless
-  uuid: b8201bab-fa6c-4f6e-b289-b5da660c6f69
-  tls: true
-  servername: cf3.rumedia-cdn.com
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /cdn/v3/live
-    headers:
-      Host: cf3.rumedia-cdn.com
-- name: 🇷🇺 俄罗斯 (Russia) 05 - NEKO
   server: 91.240.86.70
   port: 22443
   udp: true
   type: hysteria2
   password: 3f63c86c-ac4a-4900-85cf-4fedf93c2ca5
-  sni: hy.quattro-tech.ru
-  skip-cert-verify: true
-- name: 🇷🇺 俄罗斯 (Russia) 06 - NEKO
-  server: 45.38.139.23
-  port: 8443
+  sni: itsallproxy.quattro-tech.ru
+  skip-cert-verify: false
+- name: 🇷🇺 俄罗斯 (Russia) 05 - NEKO
+  server: 45.12.75.242
+  port: 26424
   udp: true
   type: vless
-  uuid: d342d11e-d424-4583-b36e-524ab1f0afa4
+  uuid: 633f424e-2b11-48da-a6b3-a849dd71456f
   tls: true
-  servername: cdn8848.776676.xyz
+  reality-opts:
+    public-key: l8AubqcxQO-HRFJy4pZL1vbLOo-eXit69s-XulSELE0
+    short-id: 23103e1e
+  servername: ya.ru
+  client-fingerprint: chrome
+- name: 🇷🇺 俄罗斯 (Russia) 06 - NEKO
+  server: msk.frkn.org
+  port: 443
+  udp: true
+  type: hysteria2
+  password: f317b5d6-d399-4d3d-a051-89d674ae953c
+  sni: msk.frkn.org
   skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /jumping/class/bt?ed=2560fp=chrome
-    headers:
-      Host: cdn8848.776676.xyz
 proxy-groups:
 - name: PROXIES
   type: select

@@ -1,0 +1,55 @@
+{
+  "log": {
+    "level": "warn"
+  },
+  "outbounds": [
+    {
+      "type": "vless",
+      "tag": "🇺🇦 乌克兰 (Ukraine) 01 - NEKO",
+      "server": "91.196.161.218",
+      "server_port": 2054,
+      "uuid": "040e129c-f6bc-4f7c-8351-bcbab5078cd1",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.ibm.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "safari"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "LZEcqc7M6ypBzgtrnT-LjZKCbEQ8m-IgGhz24iezfDc",
+          "short_id": "54b24594713b5f13"
+        }
+      },
+      "transport": {
+        "type": "grpc",
+        "service_name": "grpc"
+      }
+    },
+    {
+      "type": "selector",
+      "tag": "select",
+      "outbounds": [
+        "auto",
+        "🇺🇦 乌克兰 (Ukraine) 01 - NEKO"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "auto",
+      "outbounds": [
+        "🇺🇦 乌克兰 (Ukraine) 01 - NEKO"
+      ],
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+    {
+      "type": "block",
+      "tag": "block"
+    }
+  ]
+}

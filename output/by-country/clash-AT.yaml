@@ -23,15 +23,7 @@ proxies:
     public-key: 10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc
     short-id: 43dcff53849b81e6
   servername: at.quattro-tech.ru
-  client-fingerprint: qq
-- name: 🇦🇹 奥地利 (Austria) 03 - NEKO
-  server: 46.229.243.154
-  port: 4443
-  udp: true
-  type: trojan
-  password: s0_sdK93x9wer_D02Lz9cvK3_Sa014Oakl_C2z
-  sni: 46.229.243.154
-  skip-cert-verify: true
+  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
@@ -39,7 +31,6 @@ proxy-groups:
   - AUTO
   - 🇦🇹 奥地利 (Austria) 01 - NEKO
   - 🇦🇹 奥地利 (Austria) 02 - NEKO
-  - 🇦🇹 奥地利 (Austria) 03 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -47,6 +38,5 @@ proxy-groups:
   proxies:
   - 🇦🇹 奥地利 (Austria) 01 - NEKO
   - 🇦🇹 奥地利 (Austria) 02 - NEKO
-  - 🇦🇹 奥地利 (Austria) 03 - NEKO
 rules:
 - MATCH,PROXIES

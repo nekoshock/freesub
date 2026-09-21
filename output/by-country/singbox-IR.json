@@ -6,7 +6,7 @@
     {
       "type": "vless",
       "tag": "🇮🇷 IR 01 - NEKO",
-      "server": "164.92.193.243",
+      "server": "209.38.196.126",
       "server_port": 443,
       "uuid": "d342d11e-d424-4583-b36e-524ab1f0afa4",
       "tls": {
@@ -20,7 +20,7 @@
       },
       "transport": {
         "type": "ws",
-        "path": "/topics?ed=2560",
+        "path": "/torrent/ads/source",
         "headers": {
           "Host": "cdn8848.776676.xyz"
         }
@@ -29,8 +29,8 @@
     {
       "type": "vless",
       "tag": "🇮🇷 IR 02 - NEKO",
-      "server": "185.125.103.62",
-      "server_port": 8082,
+      "server": "138.68.142.165",
+      "server_port": 2053,
       "uuid": "d342d11e-d424-4583-b36e-524ab1f0afa4",
       "tls": {
         "enabled": true,
@@ -43,6 +43,30 @@
       },
       "transport": {
         "type": "ws",
+        "path": "/resource/channel?ed=2560",
+        "headers": {
+          "Host": "cdn8848.776676.xyz"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇮🇷 IR 03 - NEKO",
+      "server": "5.101.115.117",
+      "server_port": 8443,
+      "uuid": "d342d11e-d424-4583-b36e-524ab1f0afa4",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn8848.776676.xyz",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/magnet/thread?ed=2560",
         "headers": {
           "Host": "cdn8848.776676.xyz"
         }
@@ -54,7 +78,8 @@
       "outbounds": [
         "auto",
         "🇮🇷 IR 01 - NEKO",
-        "🇮🇷 IR 02 - NEKO"
+        "🇮🇷 IR 02 - NEKO",
+        "🇮🇷 IR 03 - NEKO"
       ]
     },
     {
@@ -62,7 +87,8 @@
       "tag": "auto",
       "outbounds": [
         "🇮🇷 IR 01 - NEKO",
-        "🇮🇷 IR 02 - NEKO"
+        "🇮🇷 IR 02 - NEKO",
+        "🇮🇷 IR 03 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

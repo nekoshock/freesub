@@ -5,6 +5,50 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇫🇮 芬兰 (Finland) 01 - NEKO
+  server: 65.108.3.59
+  port: 443
+  udp: true
+  type: vless
+  uuid: 8df2e661-6f46-471b-9133-7fc13a0daa35
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: jDoORbrtDrvAlFSo19CJbc99C4ev8SAo1MwczSUt9no
+    short-id: 90ec9bba2019
+  servername: web.eitaa.com
+  client-fingerprint: firefox
+- name: 🇫🇮 芬兰 (Finland) 02 - NEKO
+  server: 87.58.148.70
+  port: 443
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: rg0g3xp9rk9nk9o0
+- name: 🇫🇮 芬兰 (Finland) 03 - NEKO
+  server: 83.219.97.26
+  port: 443
+  udp: true
+  type: vless
+  uuid: d0f0a880-0df1-48c9-bdf1-5669fb9483ce
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: SB1uC0OEveYjSiS_Nuw9Ld-uVVXWqi794OGnldthY3I
+  servername: est1313.ggisopi.su
+  client-fingerprint: chrome
+- name: 🇫🇮 芬兰 (Finland) 04 - NEKO
+  server: 95.216.27.15
+  port: 2053
+  udp: true
+  type: vless
+  uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
+  tls: true
+  reality-opts:
+    public-key: 4nfogj5mHqNowtSn_2sXS3xTX8vcH75rFEU2BWvyekM
+    short-id: d368b94e275ab080
+  servername: www.google.com
+  client-fingerprint: chrome
+- name: 🇫🇮 芬兰 (Finland) 05 - NEKO
   server: 152.233.54.104
   port: 443
   udp: true
@@ -19,7 +63,19 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: grpc
-- name: 🇫🇮 芬兰 (Finland) 02 - NEKO
+- name: 🇫🇮 芬兰 (Finland) 06 - NEKO
+  server: 185.79.138.71
+  port: 448
+  udp: true
+  type: vless
+  uuid: 0b0915d7-6800-4580-a44b-77d84f105e6a
+  tls: true
+  reality-opts:
+    public-key: CsDgNRcCwCkPIslfZpKTIK71KFpIFNsotbdzKcZVoH8
+    short-id: cd21e552537c7c0b
+  servername: www.samsung.com
+  client-fingerprint: firefox
+- name: 🇫🇮 芬兰 (Finland) 07 - NEKO
   server: 62.238.103.54
   port: 2083
   udp: true
@@ -32,76 +88,19 @@ proxies:
     short-id: d059fb98048c5318
   servername: www.yahoo.com
   client-fingerprint: chrome
-- name: 🇫🇮 芬兰 (Finland) 03 - NEKO
-  server: 95.216.27.15
-  port: 2053
-  udp: true
-  type: vless
-  uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
-  tls: true
-  reality-opts:
-    public-key: 4nfogj5mHqNowtSn_2sXS3xTX8vcH75rFEU2BWvyekM
-    short-id: d368b94e275ab080
-  servername: www.google.com
-  client-fingerprint: firefox
-- name: 🇫🇮 芬兰 (Finland) 04 - NEKO
-  server: 185.79.138.71
-  port: 448
-  udp: true
-  type: vless
-  uuid: 0b0915d7-6800-4580-a44b-77d84f105e6a
-  tls: true
-  reality-opts:
-    public-key: CsDgNRcCwCkPIslfZpKTIK71KFpIFNsotbdzKcZVoH8
-    short-id: cd21e552537c7c0b
-  servername: www.samsung.com
-  client-fingerprint: chrome
-- name: 🇫🇮 芬兰 (Finland) 05 - NEKO
-  server: 31.77.199.182
-  port: 443
-  udp: true
-  type: vless
-  uuid: c09cfd91-b234-4998-9bed-a0211b7f5c3c
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: -qLezG1nUEtvOJi-Ra7WRYv-aHkv3PSefEuXpWV2G04
-    short-id: abcd1234
-  servername: fi2.yservice.help
-  client-fingerprint: chrome
-- name: 🇫🇮 芬兰 (Finland) 06 - NEKO
-  server: 83.219.97.26
-  port: 443
-  udp: true
-  type: vless
-  uuid: d0f0a880-0df1-48c9-bdf1-5669fb9483ce
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: SB1uC0OEveYjSiS_Nuw9Ld-uVVXWqi794OGnldthY3I
-  servername: est1313.ggisopi.su
-  client-fingerprint: chrome
-- name: 🇫🇮 芬兰 (Finland) 07 - NEKO
-  server: finkafsb.finiki.lol
-  port: 443
-  udp: true
-  type: vless
-  uuid: 4bdeee92-97e8-414d-bef6-ec1d5e2ab73b
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: YBKHp6R7xp2Ss2kxbvDNMFPpRrf3oh1wQ2dVMukPHmA
-    short-id: d110331f200987ae
-  servername: finkafsb.finiki.lol
-  client-fingerprint: chrome
 - name: 🇫🇮 芬兰 (Finland) 08 - NEKO
-  server: fr.vpn.legendaah.xyz
-  port: 36723
+  server: 2.27.48.140
+  port: 443
   udp: true
-  type: hysteria2
-  password: Krab9Hyst2_Rk7pQ2xL
-  sni: www.cloudflare.com
-  skip-cert-verify: true
+  type: vless
+  uuid: 7cbc0c1f-9aa1-4a4c-a052-45ccc855df10
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: Ax1xKjjBS7afZ94zHY-9iI7hohBmzA-EpS-eRILX2CA
+    short-id: c66279532e2e
+  servername: intel.com
+  client-fingerprint: safari
 - name: 🇫🇮 芬兰 (Finland) 09 - NEKO
   server: 31.77.199.147
   port: 4443
@@ -116,6 +115,14 @@ proxies:
   servername: images.unsplash.com
   client-fingerprint: chrome
 - name: 🇫🇮 芬兰 (Finland) 10 - NEKO
+  server: fr.vpn.legendaah.xyz
+  port: 36723
+  udp: true
+  type: hysteria2
+  password: Krab9Hyst2_Rk7pQ2xL
+  sni: www.cloudflare.com
+  skip-cert-verify: true
+- name: 🇫🇮 芬兰 (Finland) 11 - NEKO
   server: 37.143.129.244
   port: 443
   udp: true
@@ -127,39 +134,58 @@ proxies:
     public-key: 5HArul2NDXfFUxijHj1xiPCfH-77zuuRxylT1vWIvUY
     short-id: 48fd192dc4e46bc0
   servername: gateway.icloud.com
-  client-fingerprint: random
-- name: 🇫🇮 芬兰 (Finland) 11 - NEKO
-  server: 2.27.48.140
-  port: 443
-  udp: true
-  type: vless
-  uuid: 7cbc0c1f-9aa1-4a4c-a052-45ccc855df10
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: Ax1xKjjBS7afZ94zHY-9iI7hohBmzA-EpS-eRILX2CA
-    short-id: c66279532e2e
-  servername: intel.com
-  client-fingerprint: safari
+  client-fingerprint: chrome
 - name: 🇫🇮 芬兰 (Finland) 12 - NEKO
-  server: 87.58.148.70
-  port: 443
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: rg0g3xp9rk9nk9o0
-- name: 🇫🇮 芬兰 (Finland) 13 - NEKO
-  server: 65.108.3.59
+  server: finkafsb.finiki.lol
   port: 443
   udp: true
   type: vless
-  uuid: 8df2e661-6f46-471b-9133-7fc13a0daa35
+  uuid: 4bdeee92-97e8-414d-bef6-ec1d5e2ab73b
   flow: xtls-rprx-vision
   tls: true
   reality-opts:
-    public-key: jDoORbrtDrvAlFSo19CJbc99C4ev8SAo1MwczSUt9no
-    short-id: 90ec9bba2019
-  servername: web.eitaa.com
+    public-key: YBKHp6R7xp2Ss2kxbvDNMFPpRrf3oh1wQ2dVMukPHmA
+    short-id: d110331f200987ae
+  servername: finkafsb.finiki.lol
+  client-fingerprint: random
+- name: 🇫🇮 芬兰 (Finland) 13 - NEKO
+  server: 144.31.50.236
+  port: 443
+  udp: true
+  type: vless
+  uuid: 1c332eae-7e02-4acd-996d-4eb3e652401c
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: uitO4Z8t9TplwwYaqwLqh5rfxDh_X8bOBiNuPbzvaEM
+    short-id: bbe46bd8f6b96839
+  servername: yandex.ru
+  client-fingerprint: chrome
+- name: 🇫🇮 芬兰 (Finland) 14 - NEKO
+  server: 2.27.175.71
+  port: 443
+  udp: true
+  type: vless
+  uuid: c797b9ad-6f9e-4eee-befd-eef119ec3637
+  tls: true
+  servername: assets-fi.pleiades.codes
+  skip-cert-verify: false
+  client-fingerprint: firefox
+  network: grpc
+  grpc-opts:
+    grpc-service-name: cdn.v1.AssetService
+- name: 🇫🇮 芬兰 (Finland) 15 - NEKO
+  server: 31.77.199.182
+  port: 443
+  udp: true
+  type: vless
+  uuid: c09cfd91-b234-4998-9bed-a0211b7f5c3c
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: -qLezG1nUEtvOJi-Ra7WRYv-aHkv3PSefEuXpWV2G04
+    short-id: abcd1234
+  servername: fi2.yservice.help
   client-fingerprint: firefox
 proxy-groups:
 - name: PROXIES
@@ -179,6 +205,8 @@ proxy-groups:
   - 🇫🇮 芬兰 (Finland) 11 - NEKO
   - 🇫🇮 芬兰 (Finland) 12 - NEKO
   - 🇫🇮 芬兰 (Finland) 13 - NEKO
+  - 🇫🇮 芬兰 (Finland) 14 - NEKO
+  - 🇫🇮 芬兰 (Finland) 15 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -197,5 +225,7 @@ proxy-groups:
   - 🇫🇮 芬兰 (Finland) 11 - NEKO
   - 🇫🇮 芬兰 (Finland) 12 - NEKO
   - 🇫🇮 芬兰 (Finland) 13 - NEKO
+  - 🇫🇮 芬兰 (Finland) 14 - NEKO
+  - 🇫🇮 芬兰 (Finland) 15 - NEKO
 rules:
 - MATCH,PROXIES

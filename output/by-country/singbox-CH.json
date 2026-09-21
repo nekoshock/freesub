@@ -25,29 +25,48 @@
       }
     },
     {
-      "type": "vless",
+      "type": "shadowsocks",
       "tag": "🇨🇭 瑞士 (Switzerland) 02 - NEKO",
-      "server": "179.43.162.252",
+      "server": "132.243.175.144",
+      "server_port": 8388,
+      "method": "chacha20-ietf-poly1305",
+      "password": "e8KgS8fD0yDqYFpgN4G5piCOt9aFyqA3"
+    },
+    {
+      "type": "vless",
+      "tag": "🇨🇭 瑞士 (Switzerland) 03 - NEKO",
+      "server": "45.90.59.15",
       "server_port": 443,
-      "uuid": "ddf09ad0-02dc-485b-9048-1038de5bebf0",
+      "uuid": "3950b45e-740d-4dca-ac95-505ec8534592",
       "flow": "xtls-rprx-vision",
       "tls": {
         "enabled": true,
-        "server_name": "ch.cache-4d8a.com",
+        "server_name": "www.cloudflare.com",
         "utls": {
           "enabled": true,
           "fingerprint": "firefox"
         },
         "reality": {
           "enabled": true,
-          "public_key": "lYVz8iVZI2XjTCw_XS9wi08P1DLXO0c7jQo-_xyw2xY",
-          "short_id": "9d84de9d9f7b85e9"
+          "public_key": "P7S4UPFlQbmiBr4txyy8NZIMTrmO3UdxyH16WBU-YzY",
+          "short_id": "19253fae84102271"
         }
       }
     },
     {
+      "type": "vless",
+      "tag": "🇨🇭 瑞士 (Switzerland) 04 - NEKO",
+      "server": "131.123.34.145",
+      "server_port": 8081,
+      "uuid": "54ee5e59-55a3-4599-83ff-0c67b3f411b2",
+      "transport": {
+        "type": "ws",
+        "path": "/vless-test"
+      }
+    },
+    {
       "type": "hysteria2",
-      "tag": "🇨🇭 瑞士 (Switzerland) 03 - NEKO",
+      "tag": "🇨🇭 瑞士 (Switzerland) 05 - NEKO",
       "server": "82.38.64.229",
       "server_port": 8443,
       "password": "we9_I1893UFj3149xbr1_k8qvJ8734ic_Mx82gH",
@@ -59,7 +78,7 @@
     },
     {
       "type": "hysteria2",
-      "tag": "🇨🇭 瑞士 (Switzerland) 04 - NEKO",
+      "tag": "🇨🇭 瑞士 (Switzerland) 06 - NEKO",
       "server": "152.67.75.161",
       "server_port": 443,
       "password": "3a702d4d1de4949005d8431220e040fb",
@@ -75,43 +94,44 @@
     },
     {
       "type": "vless",
-      "tag": "🇨🇭 瑞士 (Switzerland) 05 - NEKO",
-      "server": "45.90.59.15",
+      "tag": "🇨🇭 瑞士 (Switzerland) 07 - NEKO",
+      "server": "ch.cache-4d8a.com",
       "server_port": 443,
-      "uuid": "3950b45e-740d-4dca-ac95-505ec8534592",
+      "uuid": "ddf09ad0-02dc-485b-9048-1038de5bebf0",
       "flow": "xtls-rprx-vision",
       "tls": {
         "enabled": true,
-        "server_name": "www.cloudflare.com",
+        "server_name": "ch.cache-4d8a.com",
         "utls": {
           "enabled": true,
-          "fingerprint": "qq"
+          "fingerprint": "chrome"
         },
         "reality": {
           "enabled": true,
-          "public_key": "P7S4UPFlQbmiBr4txyy8NZIMTrmO3UdxyH16WBU-YzY",
-          "short_id": "19253fae84102271"
+          "public_key": "lYVz8iVZI2XjTCw_XS9wi08P1DLXO0c7jQo-_xyw2xY",
+          "short_id": "9d84de9d9f7b85e9"
         }
       }
     },
     {
       "type": "vless",
-      "tag": "🇨🇭 瑞士 (Switzerland) 06 - NEKO",
-      "server": "131.123.34.145",
-      "server_port": 8081,
-      "uuid": "54ee5e59-55a3-4599-83ff-0c67b3f411b2",
+      "tag": "🇨🇭 瑞士 (Switzerland) 08 - NEKO",
+      "server": "151.242.2.81",
+      "server_port": 443,
+      "uuid": "0a2dde28-70da-4863-a06f-35d007d94d35",
+      "tls": {
+        "enabled": true,
+        "server_name": "cf9.rumedia-cdn.com",
+        "insecure": false,
+        "alpn": [
+          "h2",
+          "http/1.1"
+        ]
+      },
       "transport": {
         "type": "ws",
-        "path": "/vless-test"
+        "path": "/cdn/v3/live"
       }
-    },
-    {
-      "type": "shadowsocks",
-      "tag": "🇨🇭 瑞士 (Switzerland) 07 - NEKO",
-      "server": "132.243.175.144",
-      "server_port": 8388,
-      "method": "chacha20-ietf-poly1305",
-      "password": "e8KgS8fD0yDqYFpgN4G5piCOt9aFyqA3"
     },
     {
       "type": "selector",
@@ -124,7 +144,8 @@
         "🇨🇭 瑞士 (Switzerland) 04 - NEKO",
         "🇨🇭 瑞士 (Switzerland) 05 - NEKO",
         "🇨🇭 瑞士 (Switzerland) 06 - NEKO",
-        "🇨🇭 瑞士 (Switzerland) 07 - NEKO"
+        "🇨🇭 瑞士 (Switzerland) 07 - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 08 - NEKO"
       ]
     },
     {
@@ -137,7 +158,8 @@
         "🇨🇭 瑞士 (Switzerland) 04 - NEKO",
         "🇨🇭 瑞士 (Switzerland) 05 - NEKO",
         "🇨🇭 瑞士 (Switzerland) 06 - NEKO",
-        "🇨🇭 瑞士 (Switzerland) 07 - NEKO"
+        "🇨🇭 瑞士 (Switzerland) 07 - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 08 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

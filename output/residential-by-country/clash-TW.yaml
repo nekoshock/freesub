@@ -21,7 +21,7 @@ proxies:
   reality-opts:
     public-key: mdWKUPMVTtTbDqK10BPb89OcqBC2-Lx-4NOYtqc1GWE
   servername: addons.mozilla.org
-  client-fingerprint: ios
+  client-fingerprint: chrome
 - name: 🇹🇼 中国台湾 (Taiwan) 03 (家宽) - NEKO
   server: dee2309db4se3grs6e8hg4w61sd53g1.oylfmxz.cn
   port: 443
@@ -50,6 +50,8 @@ proxies:
   network: ws
   ws-opts:
     path: /
+    headers:
+      Host: dee2309db4se3g5sds35g4s3dg.oylfmxz.cn
 - name: 🇹🇼 中国台湾 (Taiwan) 05 (家宽) - NEKO
   server: dee2309db4944c248b6d4372c6641e25.oylfmxz.cn
   port: 443
@@ -64,8 +66,6 @@ proxies:
   network: ws
   ws-opts:
     path: /
-    headers:
-      Host: dee2309db4944c248b6d4372c6641e25.oylfmxz.cn
 proxy-groups:
 - name: PROXIES
   type: select

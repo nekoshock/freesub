@@ -4,16 +4,32 @@
   },
   "outbounds": [
     {
-      "type": "shadowsocks",
+      "type": "vmess",
       "tag": "🇷🇺 俄罗斯 (Russia) 01 - NEKO",
+      "server": "94.249.187.46",
+      "server_port": 2086,
+      "uuid": "f6361af8-bb8f-4609-bf5d-3fc0f688f47b",
+      "security": "auto"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇷🇺 俄罗斯 (Russia) 02 - NEKO",
       "server": "94.249.187.46",
       "server_port": 1080,
       "method": "chacha20-ietf-poly1305",
-      "password": "IXa3ylzS_jBOAsQy071tIQ"
+      "password": "rSeYcig_XBy8q3k33NpK3A"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇷🇺 俄罗斯 (Russia) 03 - NEKO",
+      "server": "62.113.41.228",
+      "server_port": 2055,
+      "method": "chacha20-ietf-poly1305",
+      "password": "7nzDcoQQxUYU35N5ngbSAg"
     },
     {
       "type": "vless",
-      "tag": "🇷🇺 俄罗斯 (Russia) 02 - NEKO",
+      "tag": "🇷🇺 俄罗斯 (Russia) 04 - NEKO",
       "server": "91.196.32.216",
       "server_port": 9543,
       "uuid": "ff6d2dda-7b90-404e-9951-34b3124bfdfa",
@@ -34,7 +50,7 @@
     },
     {
       "type": "hysteria2",
-      "tag": "🇷🇺 俄罗斯 (Russia) 03 - NEKO",
+      "tag": "🇷🇺 俄罗斯 (Russia) 05 - NEKO",
       "server": "91.240.86.70",
       "server_port": 22443,
       "password": "3f63c86c-ac4a-4900-85cf-4fedf93c2ca5",
@@ -45,8 +61,63 @@
       }
     },
     {
+      "type": "hysteria2",
+      "tag": "🇷🇺 俄罗斯 (Russia) 06 - NEKO",
+      "server": "msk.frkn.org",
+      "server_port": 443,
+      "password": "f317b5d6-d399-4d3d-a051-89d674ae953c",
+      "tls": {
+        "enabled": true,
+        "server_name": "msk.frkn.org",
+        "insecure": false
+      }
+    },
+    {
       "type": "vless",
-      "tag": "🇷🇺 俄罗斯 (Russia) 04 - NEKO",
+      "tag": "🇷🇺 俄罗斯 (Russia) 07 - NEKO",
+      "server": "165.232.40.20",
+      "server_port": 443,
+      "uuid": "d342d11e-d424-4583-b36e-524ab1f0afa4",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn8848.776676.xyz",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/pay/ja/contact?ed=2560",
+        "headers": {
+          "Host": "cdn8848.776676.xyz"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇷🇺 俄罗斯 (Russia) 08 - NEKO",
+      "server": "45.12.75.242",
+      "server_port": 26424,
+      "uuid": "633f424e-2b11-48da-a6b3-a849dd71456f",
+      "tls": {
+        "enabled": true,
+        "server_name": "ya.ru",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "l8AubqcxQO-HRFJy4pZL1vbLOo-eXit69s-XulSELE0",
+          "short_id": "23103e1e"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇷🇺 俄罗斯 (Russia) 09 - NEKO",
       "server": "46.8.200.91",
       "server_port": 443,
       "uuid": "b8201bab-fa6c-4f6e-b289-b5da660c6f69",
@@ -65,41 +136,23 @@
     },
     {
       "type": "vless",
-      "tag": "🇷🇺 俄罗斯 (Russia) 05 - NEKO",
-      "server": "64.118.159.219",
+      "tag": "🇷🇺 俄罗斯 (Russia) 10 - NEKO",
+      "server": "5.42.116.118",
       "server_port": 443,
-      "uuid": "d342d11e-d424-4583-b36e-524ab1f0afa4",
+      "uuid": "f07d9192-9d39-49fc-ba70-610fcb7fb176",
+      "flow": "xtls-rprx-vision",
       "tls": {
         "enabled": true,
-        "server_name": "cdn8848.776676.xyz",
-        "insecure": false
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/tech/videos/web?ed=2560fp=chrome",
-        "headers": {
-          "Host": "cdn8848.776676.xyz"
+        "server_name": "stablequenchcone.heatherneedle.info",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "edge"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "X3U2Y1fzAORyXdy_awWirvlCjOV_Qsj6SEOPd4hFHgE",
+          "short_id": "091faecd7e0808ed"
         }
-      }
-    },
-    {
-      "type": "vmess",
-      "tag": "🇷🇺 俄罗斯 (Russia) 06 - NEKO",
-      "server": "94.249.187.46",
-      "server_port": 2086,
-      "uuid": "f6361af8-bb8f-4609-bf5d-3fc0f688f47b",
-      "security": "auto"
-    },
-    {
-      "type": "hysteria2",
-      "tag": "🇷🇺 俄罗斯 (Russia) 07 - NEKO",
-      "server": "31.76.71.252",
-      "server_port": 443,
-      "password": "mkL3AfdSZIpTWRB9TcWPn9vywPGN89MRHg3ToRDj",
-      "tls": {
-        "enabled": true,
-        "server_name": "gta.internet-card.sbs",
-        "insecure": false
       }
     },
     {
@@ -113,7 +166,10 @@
         "🇷🇺 俄罗斯 (Russia) 04 - NEKO",
         "🇷🇺 俄罗斯 (Russia) 05 - NEKO",
         "🇷🇺 俄罗斯 (Russia) 06 - NEKO",
-        "🇷🇺 俄罗斯 (Russia) 07 - NEKO"
+        "🇷🇺 俄罗斯 (Russia) 07 - NEKO",
+        "🇷🇺 俄罗斯 (Russia) 08 - NEKO",
+        "🇷🇺 俄罗斯 (Russia) 09 - NEKO",
+        "🇷🇺 俄罗斯 (Russia) 10 - NEKO"
       ]
     },
     {
@@ -126,7 +182,10 @@
         "🇷🇺 俄罗斯 (Russia) 04 - NEKO",
         "🇷🇺 俄罗斯 (Russia) 05 - NEKO",
         "🇷🇺 俄罗斯 (Russia) 06 - NEKO",
-        "🇷🇺 俄罗斯 (Russia) 07 - NEKO"
+        "🇷🇺 俄罗斯 (Russia) 07 - NEKO",
+        "🇷🇺 俄罗斯 (Russia) 08 - NEKO",
+        "🇷🇺 俄罗斯 (Russia) 09 - NEKO",
+        "🇷🇺 俄罗斯 (Russia) 10 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

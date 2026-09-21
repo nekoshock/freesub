@@ -16,27 +16,6 @@ proxies:
     public-key: 8eXftARun6KH38UZhuqIfPR1VF2DLS9RMBZEnF5k6To
     short-id: a3a578ab
   servername: www.apple.com
-  client-fingerprint: random
-- name: 🇮🇱 以色列 (Israel) 02 - NEKO
-  server: 176.65.151.237
-  port: 34528
-  udp: true
-  type: vless
-  uuid: 61906623-1a22-41d4-839c-f9117cc72846
-  network: grpc
-  grpc-opts:
-    grpc-service-name: ''
-- name: 🇮🇱 以色列 (Israel) 03 - NEKO
-  server: 45.140.205.2
-  port: 443
-  udp: true
-  type: vless
-  uuid: c795bdd5-0460-42bd-927b-fbff154d2ab5
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: he6F0xhRgRSY0qekzzUoFHroztc6V06CpJ5UfSSlxmg
-  servername: promo.ch.iki-servers.com
   client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
@@ -44,15 +23,11 @@ proxy-groups:
   proxies:
   - AUTO
   - 🇮🇱 以色列 (Israel) 01 - NEKO
-  - 🇮🇱 以色列 (Israel) 02 - NEKO
-  - 🇮🇱 以色列 (Israel) 03 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
   - 🇮🇱 以色列 (Israel) 01 - NEKO
-  - 🇮🇱 以色列 (Israel) 02 - NEKO
-  - 🇮🇱 以色列 (Israel) 03 - NEKO
 rules:
 - MATCH,PROXIES

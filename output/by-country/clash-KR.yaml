@@ -5,40 +5,6 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇰🇷 韩国 (South Korea) 01 - NEKO
-  server: 146.56.112.110
-  port: 8888
-  udp: true
-  type: vmess
-  uuid: e7c302f3-90d6-42dd-9d7d-94a3683a3707
-  alterId: 0
-  cipher: auto
-- name: 🇰🇷 韩国 (South Korea) 02 - NEKO
-  server: 34.64.149.137
-  port: 443
-  udp: true
-  type: vless
-  uuid: 700a7a0e-3f27-406c-81d1-aa1abe411af8
-  tls: true
-  reality-opts:
-    public-key: kqIDhDhYFrXD-1GeurwjzFwbB0zWipgWmcbADXwmyy8
-    short-id: 3fd0a8ddef3ae5c6
-  servername: www.cloudflare.com
-  client-fingerprint: chrome
-- name: 🇰🇷 韩国 (South Korea) 03 - NEKO
-  server: 218.237.185.230
-  port: 4652
-  udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: qwerREWQ@@
-- name: 🇰🇷 韩国 (South Korea) 04 - NEKO
-  server: 218.237.185.230
-  port: 4652
-  udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: qwerREWQ@@
-- name: 🇰🇷 韩国 (South Korea) 05 - NEKO
   server: 152.70.237.123
   port: 2053
   udp: true
@@ -46,7 +12,7 @@ proxies:
   password: maintell
   sni: bing.com
   skip-cert-verify: true
-- name: 🇰🇷 韩国 (South Korea) 06 - NEKO
+- name: 🇰🇷 韩国 (South Korea) 02 - NEKO
   server: 132.226.226.189
   port: 50160
   udp: true
@@ -54,7 +20,7 @@ proxies:
   password: 1671a252e2a97dc2bda4e515475931da
   sni: www.bing.com
   skip-cert-verify: true
-- name: 🇰🇷 韩国 (South Korea) 07 - NEKO
+- name: 🇰🇷 韩国 (South Korea) 03 - NEKO
   server: 3.39.4.109
   port: 13672
   udp: true
@@ -67,23 +33,27 @@ proxies:
     short-id: 48050fab
   servername: www.apple.com
   client-fingerprint: chrome
-- name: 🇰🇷 韩国 (South Korea) 08 - NEKO
+- name: 🇰🇷 韩国 (South Korea) 04 - NEKO
   server: 3.36.93.74
   port: 443
   udp: true
   type: hysteria2
   password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: speedtest.tinkoff.ru
+  sni: google.com
   skip-cert-verify: true
-- name: 🇰🇷 韩国 (South Korea) 09 - NEKO
-  server: 131.186.19.174
-  port: 50160
+- name: 🇰🇷 韩国 (South Korea) 05 - NEKO
+  server: 34.64.149.137
+  port: 443
   udp: true
-  type: hysteria2
-  password: 7302ad33229de166d393cd56143a1e4c
-  sni: t.me
-  skip-cert-verify: true
-- name: 🇰🇷 韩国 (South Korea) 10 - NEKO
+  type: vless
+  uuid: 700a7a0e-3f27-406c-81d1-aa1abe411af8
+  tls: true
+  reality-opts:
+    public-key: kqIDhDhYFrXD-1GeurwjzFwbB0zWipgWmcbADXwmyy8
+    short-id: 3fd0a8ddef3ae5c6
+  servername: www.cloudflare.com
+  client-fingerprint: chrome
+- name: 🇰🇷 韩国 (South Korea) 06 - NEKO
   server: 3.39.4.109
   port: 18967
   udp: true
@@ -96,6 +66,43 @@ proxies:
     short-id: 48050fab
   servername: www.apple.com
   client-fingerprint: random
+- name: 🇰🇷 韩国 (South Korea) 07 - NEKO
+  server: 131.186.19.174
+  port: 50160
+  udp: true
+  type: hysteria2
+  password: 7302ad33229de166d393cd56143a1e4c
+  sni: t.me
+  skip-cert-verify: true
+- name: 🇰🇷 韩国 (South Korea) 08 - NEKO
+  server: 146.56.112.110
+  port: 8888
+  udp: true
+  type: vmess
+  uuid: e7c302f3-90d6-42dd-9d7d-94a3683a3707
+  alterId: 0
+  cipher: auto
+- name: 🇰🇷 韩国 (South Korea) 09 - NEKO
+  server: vpn-kr-002.fastervpn.world
+  port: 443
+  udp: true
+  type: hysteria2
+  password: H7mP2xY9kJ4nQ9wR5tF6vB3z
+  sni: vpn-kr-002.fastervpn.world
+  skip-cert-verify: true
+- name: 🇰🇷 韩国 (South Korea) 10 - NEKO
+  server: 47.80.62.188
+  port: 443
+  udp: true
+  type: vless
+  uuid: e85ca8bc-21a5-418d-a639-00236f0c3d81
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: an8lRnGRbCvX-GW3zuc5woB6hrTxEhfyrGCv-7_QyVo
+    short-id: b229991df62826cc
+  servername: www.nvidia.com
+  client-fingerprint: chrome
 - name: 🇰🇷 韩国 (South Korea) 11 - NEKO
   server: 47.80.62.71
   port: 443
@@ -110,14 +117,6 @@ proxies:
   servername: www.nvidia.com
   client-fingerprint: chrome
 - name: 🇰🇷 韩国 (South Korea) 12 - NEKO
-  server: vpn-kr-002.fastervpn.world
-  port: 443
-  udp: true
-  type: hysteria2
-  password: H7mP2xY9kJ4nQ9wR5tF6vB3z
-  sni: vpn-kr-002.fastervpn.world
-  skip-cert-verify: true
-- name: 🇰🇷 韩国 (South Korea) 13 - NEKO
   server: 47.80.14.8
   port: 443
   udp: true
@@ -130,6 +129,14 @@ proxies:
     short-id: 71110d3f7ef57760
   servername: www.samsung.com
   client-fingerprint: chrome
+- name: 🇰🇷 韩国 (South Korea) 13 - NEKO
+  server: 152.67.200.82
+  port: 50160
+  udp: true
+  type: hysteria2
+  password: 3d7634af8cb2c6cb4bac1c0efad8b43d
+  sni: 152.67.200.82
+  skip-cert-verify: true
 - name: 🇰🇷 韩国 (South Korea) 14 - NEKO
   server: 152-69-231-175.liao.kdns.fr
   port: 50160
@@ -139,6 +146,22 @@ proxies:
   sni: 152-69-231-175.liao.kdns.fr
   skip-cert-verify: false
 - name: 🇰🇷 韩国 (South Korea) 15 - NEKO
+  server: 154.90.62.70
+  port: 56127
+  udp: true
+  type: trojan
+  password: p5jTPcffLgi4gaNOJd2KUTb9YEPBBD5B
+  sni: 154.90.62.70
+  skip-cert-verify: true
+- name: 🇰🇷 韩国 (South Korea) 16 - NEKO
+  server: 150-230-252-217.liao.kdns.fr
+  port: 50160
+  udp: true
+  type: hysteria2
+  password: 9cfc9458e48c028ec03ff86ebc71c744
+  sni: 127.0.0.1
+  skip-cert-verify: true
+- name: 🇰🇷 韩国 (South Korea) 17 - NEKO
   server: 151.245.106.49
   port: 2053
   udp: true
@@ -149,46 +172,7 @@ proxies:
     public-key: F6C33iIbfmt1mUsuLTarIC8ygdHKMqsaGvrSQltyxUo
     short-id: 429499c03d4cc8a0
   servername: www.cloudflare.com
-  client-fingerprint: firefox
-- name: 🇰🇷 韩国 (South Korea) 16 - NEKO
-  server: 150-230-252-217.liao.kdns.fr
-  port: 50160
-  udp: true
-  type: hysteria2
-  password: 9cfc9458e48c028ec03ff86ebc71c744
-  sni: 150-230-252-217.liao.kdns.fr
-  skip-cert-verify: false
-- name: 🇰🇷 韩国 (South Korea) 17 - NEKO
-  server: 154.90.62.70
-  port: 56127
-  udp: true
-  type: trojan
-  password: p5jTPcffLgi4gaNOJd2KUTb9YEPBBD5B
-  sni: 154.90.62.70
-  skip-cert-verify: true
-- name: 🇰🇷 韩国 (South Korea) 18 - NEKO
-  server: 152.67.200.82
-  port: 50160
-  udp: true
-  type: hysteria2
-  password: 3d7634af8cb2c6cb4bac1c0efad8b43d
-  sni: www.bing.com
-  skip-cert-verify: true
-- name: 🇰🇷 韩国 (South Korea) 19 - NEKO
-  server: 141.164.45.187
-  port: 8000
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: KixLvKzwjekG00rm
-- name: 🇰🇷 韩国 (South Korea) 20 - NEKO
-  server: 140.238.2.250
-  port: 443
-  udp: true
-  type: vmess
-  uuid: 41a7089a-040b-4538-8b8d-010902405bde
-  alterId: 0
-  cipher: auto
+  client-fingerprint: random
 proxy-groups:
 - name: PROXIES
   type: select
@@ -211,9 +195,6 @@ proxy-groups:
   - 🇰🇷 韩国 (South Korea) 15 - NEKO
   - 🇰🇷 韩国 (South Korea) 16 - NEKO
   - 🇰🇷 韩国 (South Korea) 17 - NEKO
-  - 🇰🇷 韩国 (South Korea) 18 - NEKO
-  - 🇰🇷 韩国 (South Korea) 19 - NEKO
-  - 🇰🇷 韩国 (South Korea) 20 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -236,8 +217,5 @@ proxy-groups:
   - 🇰🇷 韩国 (South Korea) 15 - NEKO
   - 🇰🇷 韩国 (South Korea) 16 - NEKO
   - 🇰🇷 韩国 (South Korea) 17 - NEKO
-  - 🇰🇷 韩国 (South Korea) 18 - NEKO
-  - 🇰🇷 韩国 (South Korea) 19 - NEKO
-  - 🇰🇷 韩国 (South Korea) 20 - NEKO
 rules:
 - MATCH,PROXIES

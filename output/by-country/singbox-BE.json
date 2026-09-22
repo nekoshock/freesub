@@ -5,22 +5,24 @@
   "outbounds": [
     {
       "type": "vless",
-      "tag": "🇦🇱 AL 01 - NEKO",
-      "server": "194.93.61.86",
+      "tag": "🇧🇪 比利时 (Belgium) 01 - NEKO",
+      "server": "141.98.233.6",
       "server_port": 443,
-      "uuid": "41e71ba7-d389-47aa-94f7-ed1f55fdbcdf",
-      "flow": "xtls-rprx-vision",
+      "uuid": "b2593749-691c-428c-9481-14979cba3446",
       "tls": {
         "enabled": true,
-        "server_name": "cdnjs.com",
+        "server_name": "xi.tbv.ccwu.cc",
+        "insecure": false,
         "utls": {
           "enabled": true,
-          "fingerprint": "qq"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "E1te_g9q6EWQVOCgjwI4PF-cml9qqW7OEAf33tYkUxQ",
-          "short_id": "17d334ad29b2ff40"
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/proxyip=us.xiabibi.cf",
+        "headers": {
+          "Host": "xi.tbv.ccwu.cc"
         }
       }
     },
@@ -29,14 +31,14 @@
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇦🇱 AL 01 - NEKO"
+        "🇧🇪 比利时 (Belgium) 01 - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇦🇱 AL 01 - NEKO"
+        "🇧🇪 比利时 (Belgium) 01 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

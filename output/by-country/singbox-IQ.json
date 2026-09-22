@@ -4,29 +4,44 @@
   },
   "outbounds": [
     {
-      "type": "trojan",
+      "type": "vless",
       "tag": "🇮🇶 IQ 01 - NEKO",
-      "server": "172.67.143.94",
-      "server_port": 443,
-      "password": "Telegram_healer_config",
+      "server": "193.56.135.212",
+      "server_port": 9543,
+      "uuid": "ff6d2dda-7b90-404e-9951-34b3124bfdfa",
+      "flow": "xtls-rprx-vision",
       "tls": {
         "enabled": true,
-        "server_name": "Z6Y-Daox0HyHdTDy.R720KPBYx2L3I406.WorKERS.DEV",
-        "insecure": false,
-        "alpn": [
-          "http/1.1"
-        ],
+        "server_name": "storage.yandexcloud.net",
         "utls": {
           "enabled": true,
           "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "M6Ck7wUfOLhQl4582CBnaXwscPEP6SCpdEkUDzoj4Fc",
+          "short_id": "123abcde"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇮🇶 IQ 02 - NEKO",
+      "server": "138.124.183.18",
+      "server_port": 9443,
+      "uuid": "d9d0f208-d582-41d5-bb7b-742671402810",
+      "tls": {
+        "enabled": true,
+        "server_name": "hub-de-03.hanvpn.cc",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
         }
       },
       "transport": {
-        "type": "ws",
-        "path": "/tr/ZizffFwMuYF9RUfnS3Ad2bGqcOrQk?ed=2560",
-        "headers": {
-          "Host": "z6y-daox0hyhdtdy.r720kpbyx2l3i406.workers.dev"
-        }
+        "type": "grpc",
+        "service_name": "de03-grpc-8e47a"
       }
     },
     {
@@ -34,14 +49,16 @@
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇮🇶 IQ 01 - NEKO"
+        "🇮🇶 IQ 01 - NEKO",
+        "🇮🇶 IQ 02 - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇮🇶 IQ 01 - NEKO"
+        "🇮🇶 IQ 01 - NEKO",
+        "🇮🇶 IQ 02 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

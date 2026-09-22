@@ -5,27 +5,44 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇮🇶 IQ 01 - NEKO
-  server: 172.67.143.94
-  port: 443
+  server: 193.56.135.212
+  port: 9543
   udp: true
-  type: trojan
-  password: Telegram_healer_config
-  sni: Z6Y-Daox0HyHdTDy.R720KPBYx2L3I406.WorKERS.DEV
+  type: vless
+  uuid: ff6d2dda-7b90-404e-9951-34b3124bfdfa
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: M6Ck7wUfOLhQl4582CBnaXwscPEP6SCpdEkUDzoj4Fc
+    short-id: 123abcde
+  servername: storage.yandexcloud.net
+  client-fingerprint: chrome
+- name: 🇮🇶 IQ 02 - NEKO
+  server: 138.124.183.18
+  port: 9443
+  udp: true
+  type: vless
+  uuid: d9d0f208-d582-41d5-bb7b-742671402810
+  tls: true
+  servername: hub-de-03.hanvpn.cc
   skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /tr/ZizffFwMuYF9RUfnS3Ad2bGqcOrQk?ed=2560
+  client-fingerprint: firefox
+  network: grpc
+  grpc-opts:
+    grpc-service-name: de03-grpc-8e47a
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
   - 🇮🇶 IQ 01 - NEKO
+  - 🇮🇶 IQ 02 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
   - 🇮🇶 IQ 01 - NEKO
+  - 🇮🇶 IQ 02 - NEKO
 rules:
 - MATCH,PROXIES

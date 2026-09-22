@@ -4,32 +4,32 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇧🇪 比利时 (Belgium) 01 - NEKO
-  server: 141.98.233.6
-  port: 443
+- name: 🇨🇿 捷克 (Czech) 01 - NEKO
+  server: 188.114.97.1
+  port: 2053
   udp: true
   type: vless
-  uuid: b2593749-691c-428c-9481-14979cba3446
+  uuid: 0b3e7958-e5c4-498f-ab21-b49686f95d2d
   tls: true
-  servername: xi.tbv.ccwu.cc
+  servername: bold-term-4edd.mbigspot.workers.dev
   skip-cert-verify: false
   client-fingerprint: chrome
   network: ws
   ws-opts:
-    path: /proxyip=us.xiabibi.cf
+    path: /
     headers:
-      Host: xi.tbv.ccwu.cc
+      Host: bold-term-4edd.mbigspot.workers.dev
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇧🇪 比利时 (Belgium) 01 - NEKO
+  - 🇨🇿 捷克 (Czech) 01 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇧🇪 比利时 (Belgium) 01 - NEKO
+  - 🇨🇿 捷克 (Czech) 01 - NEKO
 rules:
 - MATCH,PROXIES

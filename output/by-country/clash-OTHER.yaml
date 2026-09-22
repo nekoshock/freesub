@@ -4,31 +4,30 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇯🇵 日本 (Japan) 01 (家宽) - NEKO
-  server: 13.193.215.10
+- name: 🌐 其他地区 (Other) 01 - NEKO
+  server: ccs2g.pai50288.uk
   port: 443
   udp: true
   type: vless
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  uuid: 8be461cb-a0df-47cf-bc0d-4d9e6a22fa74
   tls: true
-  servername: e34bq.oa9r.zl3.hh.vavava.kdns.fr
+  servername: ccs2g.pai50288.uk
   skip-cert-verify: false
+  client-fingerprint: chrome
   network: ws
   ws-opts:
-    path: /?ed=2560
-    headers:
-      Host: e34bq.oa9r.zl3.hh.vavava.kdns.fr
+    path: /pai50288
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇯🇵 日本 (Japan) 01 (家宽) - NEKO
+  - 🌐 其他地区 (Other) 01 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇯🇵 日本 (Japan) 01 (家宽) - NEKO
+  - 🌐 其他地区 (Other) 01 - NEKO
 rules:
 - MATCH,PROXIES

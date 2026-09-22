@@ -5,33 +5,33 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇯🇵 日本 (Japan) 01 - NEKO
-  server: 18.179.111.96
+  server: 13.230.153.249
   port: 443
   udp: true
   type: ss
   cipher: aes-256-cfb
   password: amazonskr05
 - name: 🇯🇵 日本 (Japan) 02 - NEKO
-  server: 149.22.87.241
-  port: 443
-  udp: true
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-- name: 🇯🇵 日本 (Japan) 03 - NEKO
   server: 149.22.87.204
   port: 443
   udp: true
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
-- name: 🇯🇵 日本 (Japan) 04 - NEKO
-  server: 149.22.87.240
+- name: 🇯🇵 日本 (Japan) 03 - NEKO
+  server: 18.181.165.254
   port: 443
   udp: true
   type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
+  cipher: aes-256-cfb
+  password: amazonskr05
+- name: 🇯🇵 日本 (Japan) 04 - NEKO
+  server: 18.181.145.202
+  port: 443
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: amazonskr05
 - name: 🇯🇵 日本 (Japan) 05 - NEKO
   server: 168.110.60.104
   port: 18112
@@ -41,6 +41,35 @@ proxies:
   alterId: 0
   cipher: auto
 - name: 🇯🇵 日本 (Japan) 06 - NEKO
+  server: 45.32.57.118
+  port: 4433
+  udp: true
+  type: vmess
+  uuid: 35b89832-0a7c-48dd-8d1c-a2891b522195
+  alterId: 0
+  cipher: auto
+- name: 🇯🇵 日本 (Japan) 07 - NEKO
+  server: 149.22.87.241
+  port: 443
+  udp: true
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇯🇵 日本 (Japan) 08 - NEKO
+  server: 149.22.87.240
+  port: 443
+  udp: true
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇯🇵 日本 (Japan) 09 - NEKO
+  server: 3.112.209.209
+  port: 443
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: amazonskr05
+- name: 🇯🇵 日本 (Japan) 10 - NEKO
   server: 154.31.114.248
   port: 50159
   udp: true
@@ -53,7 +82,53 @@ proxies:
     short-id: 091e1c5db8451757
   servername: www.cloudflare.com
   client-fingerprint: chrome
-- name: 🇯🇵 日本 (Japan) 07 - NEKO
+- name: 🇯🇵 日本 (Japan) 11 - NEKO
+  server: 168.138.43.75
+  port: 80
+  udp: true
+  type: vmess
+  uuid: 11c3627f-31e8-4695-dfbd-34076e2f1f5d
+  alterId: 0
+  cipher: auto
+  network: ws
+  ws-opts:
+    path: /cctv13.m3u8
+    headers:
+      Host: 168.138.43.75
+- name: 🇯🇵 日本 (Japan) 12 - NEKO
+  server: 38.207.130.15
+  port: 443
+  udp: true
+  type: vless
+  uuid: e4cd263b-c5c7-4410-bf61-8893179ec429
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: sDKrtAJk2VP_w1w7cFi2O86RdlvQ2E2An5xsRdJlgGE
+    short-id: 6d962e8d8a0dce
+  servername: amazon.com
+  client-fingerprint: chrome
+- name: 🇯🇵 日本 (Japan) 13 - NEKO
+  server: 103.75.118.228
+  port: 12683
+  udp: true
+  type: vless
+  uuid: 814bd064-544d-4255-a070-5705c03f6da9
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
+    short-id: 48050fab
+  servername: www.apple.com
+  client-fingerprint: chrome
+- name: 🇯🇵 日本 (Japan) 14 - NEKO
+  server: 84.247.155.196
+  port: 80
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: 3eOFeNssde7PYYMv
+- name: 🇯🇵 日本 (Japan) 15 - NEKO
   server: 18.183.215.124
   port: 28573
   udp: true
@@ -65,82 +140,28 @@ proxies:
     public-key: 1DJr9toke7FRuSXjibBVuNvRnLnJnN5kXwUBG6Romzg
     short-id: 03653bc03be10c97
   servername: www.sony.com
-  client-fingerprint: edge
-- name: 🇯🇵 日本 (Japan) 08 - NEKO
-  server: 45.32.57.118
-  port: 4433
-  udp: true
-  type: vmess
-  uuid: 35b89832-0a7c-48dd-8d1c-a2891b522195
-  alterId: 0
-  cipher: auto
-- name: 🇯🇵 日本 (Japan) 09 - NEKO
-  server: 151.242.165.75
-  port: 19012
-  udp: true
-  type: vless
-  uuid: 05453546-201f-4e8d-97ae-fd70da0e951f
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: xSSSjzSFrsCyp3t5I39sgWFd6a2zKdsLt6vEwCWPKFk
-    short-id: d09eb5a304f8a989
-  servername: www.sony.bg
-  client-fingerprint: chrome
-- name: 🇯🇵 日本 (Japan) 10 - NEKO
-  server: 151.242.165.75
-  port: 19001
-  udp: true
-  type: vless
-  uuid: 61646a3c-e3e6-494b-8ae0-a98370ccff69
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: g1f1wLjim5gOVGnI5LGUV0dL4iFXPoiepOPZfSxJe14
-  servername: www.speedtest.org
-  client-fingerprint: firefox
-- name: 🇯🇵 日本 (Japan) 11 - NEKO
-  server: 151.242.165.75
-  port: 19011
-  udp: true
-  type: vless
-  uuid: 05453546-201f-4e8d-97ae-fd70da0e951f
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: AgTktefiMM58y7f-KFgEtmVti_YJbd0GPSkxNeJ0RH4
-    short-id: 0e7472e0ef2dc0a2
-  servername: www.sony.co.nz
-  client-fingerprint: chrome
-- name: 🇯🇵 日本 (Japan) 12 - NEKO
-  server: 138.3.208.26
-  port: 50160
-  udp: true
-  type: hysteria2
-  password: 184cdec28da5a09450803c8debcd2cc9
-  sni: www.bing.com
-  skip-cert-verify: true
-- name: 🇯🇵 日本 (Japan) 13 - NEKO
-  server: 47.74.3.200
-  port: 443
-  udp: true
-  type: vless
-  uuid: 7fb42fab-ea8a-4f0f-af9e-55df8ae6cb1d
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: kb1uhDsBcfsCD6acCuFcVERW29dscNGIjKPd67NArVk
-    short-id: ab3b914f0c9d9de5
-  servername: www.logitech.com
-  client-fingerprint: chrome
-- name: 🇯🇵 日本 (Japan) 14 - NEKO
-  server: 84.247.155.196
+  client-fingerprint: qq
+- name: 🇯🇵 日本 (Japan) 16 - NEKO
+  server: 18.179.39.119
   port: 443
   udp: true
   type: ss
-  cipher: aes-256-gcm
-  password: 3eOFeNssde7PYYMv
-- name: 🇯🇵 日本 (Japan) 15 - NEKO
+  cipher: aes-256-cfb
+  password: amazonskr05
+- name: 🇯🇵 日本 (Japan) 17 - NEKO
+  server: 103.75.118.228
+  port: 11452
+  udp: true
+  type: vless
+  uuid: 814bd064-544d-4255-a070-5705c03f6da9
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
+    short-id: 48050fab
+  servername: www.apple.com
+  client-fingerprint: chrome
+- name: 🇯🇵 日本 (Japan) 18 - NEKO
   server: 3.114.220.22
   port: 10583
   udp: true
@@ -152,63 +173,62 @@ proxies:
     public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
     short-id: 48050fab
   servername: www.apple.com
-  client-fingerprint: chrome
-- name: 🇯🇵 日本 (Japan) 16 - NEKO
-  server: 3.114.220.22
-  port: 19645
+  client-fingerprint: firefox
+- name: 🇯🇵 日本 (Japan) 19 - NEKO
+  server: 8.209.217.129
+  port: 443
   udp: true
   type: vless
-  uuid: 814bd064-544d-4255-a070-5705c03f6da9
+  uuid: 4a1bd3a7-22e6-4ed0-add4-7ee824d8f54a
   flow: xtls-rprx-vision
   tls: true
   reality-opts:
-    public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
-    short-id: 48050fab
-  servername: www.apple.com
-  client-fingerprint: random
-- name: 🇯🇵 日本 (Japan) 17 - NEKO
-  server: 18.180.86.39
-  port: 443
-  udp: true
-  type: vless
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  tls: true
-  servername: e34bq.oa9r.zl3.hh.vavava.kdns.fr
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /?ed=2560
-    headers:
-      Host: e34bq.oa9r.zl3.hh.vavava.kdns.fr
-- name: 🇯🇵 日本 (Japan) 18 - NEKO
-  server: 175.41.232.194
-  port: 443
-  udp: true
-  type: vless
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  tls: true
-  servername: e34bq.oa9r.zl3.hh.vavava.kdns.fr
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /?ed=2560
-    headers:
-      Host: e34bq.oa9r.zl3.hh.vavava.kdns.fr
-- name: 🇯🇵 日本 (Japan) 19 - NEKO
-  server: 18.181.170.52
-  port: 443
-  udp: true
-  type: vless
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  tls: true
-  servername: e34bq.oa9r.zl3.hh.vavava.kdns.fr
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /?ed=2560
-    headers:
-      Host: e34bq.oa9r.zl3.hh.vavava.kdns.fr
+    public-key: Ci03uVNJ34iSg-BSeOgrhTAeWcJExB5gQNuQVRY3a2Q
+    short-id: 01b4986b50245272
+  servername: www.logitech.com
+  client-fingerprint: chrome
 - name: 🇯🇵 日本 (Japan) 20 - NEKO
+  server: 84.247.155.196
+  port: 443
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: 3eOFeNssde7PYYMv
+- name: 🇯🇵 日本 (Japan) 21 - NEKO
+  server: 137.220.221.179
+  port: 443
+  udp: true
+  type: vless
+  uuid: a16a3336-c9ab-489f-9b85-c973f5e2cfa4
+- name: 🇯🇵 日本 (Japan) 22 - NEKO
+  server: jpzzqqnzdbgwhbhzsrgh.cfooov.xyz
+  port: 21844
+  udp: true
+  type: vless
+  uuid: 55848813-689e-4a39-82cf-00748cbc7289
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: 5y1oP72Hsd1syjBQD3qETBEaIwH6JqOKAyeYGkEUrXc
+    short-id: 9b1bc2a5f2414a
+  servername: addons.mozilla.org
+  client-fingerprint: chrome
+- name: 🇯🇵 日本 (Japan) 23 - NEKO
+  server: 104.21.8.201
+  port: 2096
+  udp: true
+  type: vless
+  uuid: 36788cf4-fcb4-49c5-a563-5f888849b1cc
+  tls: true
+  servername: cdn-jp.skyvora.app
+  skip-cert-verify: false
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /vqyps6kf3
+    headers:
+      Host: cdn-jp.skyvora.app
+- name: 🇯🇵 日本 (Japan) 24 - NEKO
   server: 3.114.220.22
   port: 18007
   udp: true
@@ -220,29 +240,34 @@ proxies:
     public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
     short-id: 48050fab
   servername: www.apple.com
-  client-fingerprint: qq
-- name: 🇯🇵 日本 (Japan) 21 - NEKO
-  server: 13.158.39.80
-  port: 443
+  client-fingerprint: chrome
+- name: 🇯🇵 日本 (Japan) 25 - NEKO
+  server: 3.114.220.22
+  port: 19645
   udp: true
   type: vless
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  uuid: 814bd064-544d-4255-a070-5705c03f6da9
+  flow: xtls-rprx-vision
   tls: true
-  servername: e34bq.oa9r.zl3.hh.vavava.kdns.fr
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /?ed=2560
-    headers:
-      Host: e34bq.oa9r.zl3.hh.vavava.kdns.fr
-- name: 🇯🇵 日本 (Japan) 22 - NEKO
-  server: 84.247.155.196
-  port: 80
+  reality-opts:
+    public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
+    short-id: 48050fab
+  servername: www.apple.com
+  client-fingerprint: chrome
+- name: 🇯🇵 日本 (Japan) 26 - NEKO
+  server: clhkzzzdbgwxxndnlm.cfooov.xyz
+  port: 50500
   udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: 3eOFeNssde7PYYMv
-- name: 🇯🇵 日本 (Japan) 23 - NEKO
+  type: vless
+  uuid: 55848813-689e-4a39-82cf-00748cbc7289
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: 5y1oP72Hsd1syjBQD3qETBEaIwH6JqOKAyeYGkEUrXc
+    short-id: 9b1bc2a5f2414a
+  servername: addons.mozilla.org
+  client-fingerprint: chrome
+- name: 🇯🇵 日本 (Japan) 27 - NEKO
   server: 104.16.10.185
   port: 443
   udp: true
@@ -251,104 +276,11 @@ proxies:
   tls: true
   servername: jp3.yohototo.top
   skip-cert-verify: false
-  client-fingerprint: chrome
   network: ws
   ws-opts:
     path: /tyxyws
     headers:
       Host: jp3.yohototo.top
-- name: 🇯🇵 日本 (Japan) 24 - NEKO
-  server: 43.213.230.249
-  port: 443
-  udp: true
-  type: vless
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  tls: true
-  servername: e34bq.oa9r.zl3.hh.vavava.kdns.fr
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /?ed=2560
-    headers:
-      Host: e34bq.oa9r.zl3.hh.vavava.kdns.fr
-- name: 🇯🇵 日本 (Japan) 25 - NEKO
-  server: 137.220.221.179
-  port: 443
-  udp: true
-  type: vless
-  uuid: a16a3336-c9ab-489f-9b85-c973f5e2cfa4
-- name: 🇯🇵 日本 (Japan) 26 - NEKO
-  server: 13.230.153.249
-  port: 443
-  udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: amazonskr05
-- name: 🇯🇵 日本 (Japan) 27 - NEKO
-  server: 172.67.130.159
-  port: 2096
-  udp: true
-  type: vless
-  uuid: 36788cf4-fcb4-49c5-a563-5f888849b1cc
-  tls: true
-  servername: cdn-jp.skyvora.app
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /vqyps6kf3
-    headers:
-      Host: cdn-jp.skyvora.app
-- name: 🇯🇵 日本 (Japan) 28 - NEKO
-  server: 161.34.39.108
-  port: 443
-  udp: true
-  type: trojan
-  password: tsuchiya
-  sni: aa.ccmusic.jp
-  skip-cert-verify: true
-- name: 🇯🇵 日本 (Japan) 29 - NEKO
-  server: msjp1.mangshe.xyz
-  port: 20561
-  udp: true
-  type: hysteria2
-  password: 5d0a6445-a30d-4522-bb1f-94f1d3ad63be
-  sni: www.microsoft.com
-  skip-cert-verify: true
-- name: 🇯🇵 日本 (Japan) 30 - NEKO
-  server: 172.111.146.64
-  port: 80
-  udp: true
-  type: vless
-  uuid: 904f8ffa-4652-4076-8f2f-e586807840ec
-  network: ws
-  ws-opts:
-    path: /vless/
-- name: 🇯🇵 日本 (Japan) 31 - NEKO
-  server: 172.111.146.64
-  port: 80
-  udp: true
-  type: vless
-  uuid: 904f8ffa-4652-4076-8f2f-e586807840ec
-  network: ws
-  ws-opts:
-    path: /vless/
-- name: 🇯🇵 日本 (Japan) 32 - NEKO
-  server: 172.111.146.64
-  port: 80
-  udp: true
-  type: vless
-  uuid: 904f8ffa-4652-4076-8f2f-e586807840ec
-  network: ws
-  ws-opts:
-    path: /vless/
-    headers:
-      Host: join---i10vpn---join---i10vpn---join---i10vpn---join---i10vpn
-- name: 🇯🇵 日本 (Japan) 33 - NEKO
-  server: 152.69.195.67
-  port: 47878
-  udp: true
-  type: vless
-  uuid: eb8613e3-8393-4cff-a3ad-6501fd4adc63
 proxy-groups:
 - name: PROXIES
   type: select
@@ -381,12 +313,6 @@ proxy-groups:
   - 🇯🇵 日本 (Japan) 25 - NEKO
   - 🇯🇵 日本 (Japan) 26 - NEKO
   - 🇯🇵 日本 (Japan) 27 - NEKO
-  - 🇯🇵 日本 (Japan) 28 - NEKO
-  - 🇯🇵 日本 (Japan) 29 - NEKO
-  - 🇯🇵 日本 (Japan) 30 - NEKO
-  - 🇯🇵 日本 (Japan) 31 - NEKO
-  - 🇯🇵 日本 (Japan) 32 - NEKO
-  - 🇯🇵 日本 (Japan) 33 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -419,11 +345,5 @@ proxy-groups:
   - 🇯🇵 日本 (Japan) 25 - NEKO
   - 🇯🇵 日本 (Japan) 26 - NEKO
   - 🇯🇵 日本 (Japan) 27 - NEKO
-  - 🇯🇵 日本 (Japan) 28 - NEKO
-  - 🇯🇵 日本 (Japan) 29 - NEKO
-  - 🇯🇵 日本 (Japan) 30 - NEKO
-  - 🇯🇵 日本 (Japan) 31 - NEKO
-  - 🇯🇵 日本 (Japan) 32 - NEKO
-  - 🇯🇵 日本 (Japan) 33 - NEKO
 rules:
 - MATCH,PROXIES

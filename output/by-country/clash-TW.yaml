@@ -5,22 +5,14 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇹🇼 中国台湾 (Taiwan) 01 - NEKO
-  server: 160.187.100.109
-  port: 443
-  udp: true
-  type: hysteria2
-  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: 160.187.100.109
-  skip-cert-verify: true
-- name: 🇹🇼 中国台湾 (Taiwan) 02 - NEKO
   server: 103.115.109.49
   port: 443
   udp: true
   type: hysteria2
   password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: https%3a%2f%2ft.me%2fwangcai2
+  sni: https%3a%2f%2ft.me%2fwangcai2%f0%9f%87%a8%f0%9f%87%b3
   skip-cert-verify: true
-- name: 🇹🇼 中国台湾 (Taiwan) 03 - NEKO
+- name: 🇹🇼 中国台湾 (Taiwan) 02 - NEKO
   server: 35.201.163.218
   port: 30837
   udp: true
@@ -33,19 +25,15 @@ proxies:
     short-id: 97101ba788915e5a
   servername: www.sony.com
   client-fingerprint: chrome
-- name: 🇹🇼 中国台湾 (Taiwan) 04 - NEKO
-  server: 34.81.223.1
+- name: 🇹🇼 中国台湾 (Taiwan) 03 - NEKO
+  server: vpn-tw-002.fastervpn.world
   port: 443
   udp: true
-  type: vless
-  uuid: 31a40f42-4ad6-4a32-a760-71102b459584
-  tls: true
-  reality-opts:
-    public-key: qvekI7tKB1NDnZA6JcS_24aV4n8mlCbI3SFvkRr22wg
-    short-id: d74a6321deec9f31
-  servername: www.cloudflare.com
-  client-fingerprint: chrome
-- name: 🇹🇼 中国台湾 (Taiwan) 05 - NEKO
+  type: hysteria2
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: vk.com
+  skip-cert-verify: true
+- name: 🇹🇼 中国台湾 (Taiwan) 04 - NEKO
   server: 35.194.157.16
   port: 43450
   udp: true
@@ -58,6 +46,18 @@ proxies:
     short-id: e65d010354bdad73
   servername: www.amd.com
   client-fingerprint: firefox
+- name: 🇹🇼 中国台湾 (Taiwan) 05 - NEKO
+  server: 34.81.223.1
+  port: 443
+  udp: true
+  type: vless
+  uuid: 31a40f42-4ad6-4a32-a760-71102b459584
+  tls: true
+  reality-opts:
+    public-key: qvekI7tKB1NDnZA6JcS_24aV4n8mlCbI3SFvkRr22wg
+    short-id: d74a6321deec9f31
+  servername: www.cloudflare.com
+  client-fingerprint: edge
 - name: 🇹🇼 中国台湾 (Taiwan) 06 - NEKO
   server: 60.248.219.78
   port: 443

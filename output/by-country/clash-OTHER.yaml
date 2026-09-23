@@ -1,0 +1,122 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: info
+proxies:
+- name: 🌐 其他地区 (Other) 01 - NEKO
+  server: www.speedtest.net
+  port: 443
+  udp: true
+  type: trojan
+  password: humanity
+  sni: www.calmlunch.com
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🌐 其他地区 (Other) 02 - NEKO
+  server: www.speedtest.net
+  port: 443
+  udp: true
+  type: trojan
+  password: humanity
+  sni: www.calmlunch.com
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /
+- name: 🌐 其他地区 (Other) 03 - NEKO
+  server: www.speedtest.net
+  port: 443
+  udp: true
+  type: trojan
+  password: humanity
+  sni: www.calmlunch.com
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🌐 其他地区 (Other) 04 - NEKO
+  server: www.speedtest.net
+  port: 443
+  udp: true
+  type: trojan
+  password: humanity
+  sni: www.calmlunch.com
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+- name: 🌐 其他地区 (Other) 05 - NEKO
+  server: www.speedtest.net
+  port: 443
+  udp: true
+  type: trojan
+  password: humanity
+  sni: www.ignitelimit.com
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /assignment
+- name: 🌐 其他地区 (Other) 06 - NEKO
+  server: www.speedtest.net
+  port: 443
+  udp: true
+  type: trojan
+  password: c0c17d1da2c2c9299d5094c8
+  sni: ez-3e9698.ezaccess1ec1f0c.workers.dev
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /
+- name: 🌐 其他地区 (Other) 07 - NEKO
+  server: www.speedtest.net
+  port: 443
+  udp: true
+  type: trojan
+  password: Telegram_healer_config
+  sni: jfw5fii30i7-sc560avfnfnh613.i6jsq7mr66e-e14trd.workers.dev
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /
+- name: 🌐 其他地区 (Other) 08 - NEKO
+  server: www.speedtest.net
+  port: 443
+  udp: true
+  type: trojan
+  password: -pFE1IXWm6Eezsgv
+  sni: q2-phbest7v2a8iuowpr.g0xigfh41wwnv39y-b3rzmht.workers.dev
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /
+proxy-groups:
+- name: PROXIES
+  type: select
+  proxies:
+  - AUTO
+  - 🌐 其他地区 (Other) 01 - NEKO
+  - 🌐 其他地区 (Other) 02 - NEKO
+  - 🌐 其他地区 (Other) 03 - NEKO
+  - 🌐 其他地区 (Other) 04 - NEKO
+  - 🌐 其他地区 (Other) 05 - NEKO
+  - 🌐 其他地区 (Other) 06 - NEKO
+  - 🌐 其他地区 (Other) 07 - NEKO
+  - 🌐 其他地区 (Other) 08 - NEKO
+- name: AUTO
+  type: url-test
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  proxies:
+  - 🌐 其他地区 (Other) 01 - NEKO
+  - 🌐 其他地区 (Other) 02 - NEKO
+  - 🌐 其他地区 (Other) 03 - NEKO
+  - 🌐 其他地区 (Other) 04 - NEKO
+  - 🌐 其他地区 (Other) 05 - NEKO
+  - 🌐 其他地区 (Other) 06 - NEKO
+  - 🌐 其他地区 (Other) 07 - NEKO
+  - 🌐 其他地区 (Other) 08 - NEKO
+rules:
+- MATCH,PROXIES

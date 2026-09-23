@@ -5,18 +5,6 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇨🇾 塞浦路斯 (Cyprus) 01 - NEKO
-  server: 2.56.122.52
-  port: 8443
-  udp: true
-  type: vless
-  uuid: 5b754a1a-11aa-4df9-a8ba-44af9a579fe1
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: upiiUpzV7q4L6pUmbgzB5r3zL957r17FuFDng3ip7R8
-  servername: usa.b2ai.top
-  client-fingerprint: chrome
-- name: 🇨🇾 塞浦路斯 (Cyprus) 02 - NEKO
   server: 194.76.154.31
   port: 40443
   udp: true
@@ -28,34 +16,8 @@ proxies:
     short-id: a8ae
   servername: deepl.com
   client-fingerprint: qq
-- name: 🇨🇾 塞浦路斯 (Cyprus) 03 - NEKO
-  server: 132.243.242.97
-  port: 9543
-  udp: true
-  type: vless
-  uuid: ff6d2dda-7b90-404e-9951-34b3124bfdfa
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: M6Ck7wUfOLhQl4582CBnaXwscPEP6SCpdEkUDzoj4Fc
-    short-id: 123abcdf
-  servername: storage.yandexcloud.net
-  client-fingerprint: chrome
-- name: 🇨🇾 塞浦路斯 (Cyprus) 04 - NEKO
-  server: 5.253.30.99
-  port: 40443
-  udp: true
-  type: vless
-  uuid: 511c1563-2cb6-4064-abc6-a59ee49818a8
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: cwmcqsfS7klQlkcoUNuATEk0NiPY-NnRb9z8rCJDQw0
-    short-id: 88b6
-  servername: deepl.com
-  client-fingerprint: qq
-- name: 🇨🇾 塞浦路斯 (Cyprus) 05 - NEKO
-  server: 5.253.28.218
+- name: 🇨🇾 塞浦路斯 (Cyprus) 02 - NEKO
+  server: 5.253.28.240
   port: 2443
   udp: true
   type: vless
@@ -69,7 +31,20 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: rex-eb0bf76b710ce763
-- name: 🇨🇾 塞浦路斯 (Cyprus) 06 - NEKO
+- name: 🇨🇾 塞浦路斯 (Cyprus) 03 - NEKO
+  server: 5.253.28.240
+  port: 40443
+  udp: true
+  type: vless
+  uuid: 405b964e-a2d2-454f-aaaa-711cc218897c
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: cwmcqsfS7klQlkcoUNuATEk0NiPY-NnRb9z8rCJDQw0
+    short-id: 88b6
+  servername: deepl.com
+  client-fingerprint: firefox
+- name: 🇨🇾 塞浦路斯 (Cyprus) 04 - NEKO
   server: 5.253.28.242
   port: 40443
   udp: true
@@ -82,6 +57,19 @@ proxies:
     short-id: 68a8
   servername: deepl.com
   client-fingerprint: qq
+- name: 🇨🇾 塞浦路斯 (Cyprus) 05 - NEKO
+  server: 132.243.242.97
+  port: 9543
+  udp: true
+  type: vless
+  uuid: ff6d2dda-7b90-404e-9951-34b3124bfdfa
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: M6Ck7wUfOLhQl4582CBnaXwscPEP6SCpdEkUDzoj4Fc
+    short-id: 123abcdf
+  servername: storage.yandexcloud.net
+  client-fingerprint: random
 proxy-groups:
 - name: PROXIES
   type: select
@@ -92,7 +80,6 @@ proxy-groups:
   - 🇨🇾 塞浦路斯 (Cyprus) 03 - NEKO
   - 🇨🇾 塞浦路斯 (Cyprus) 04 - NEKO
   - 🇨🇾 塞浦路斯 (Cyprus) 05 - NEKO
-  - 🇨🇾 塞浦路斯 (Cyprus) 06 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -103,6 +90,5 @@ proxy-groups:
   - 🇨🇾 塞浦路斯 (Cyprus) 03 - NEKO
   - 🇨🇾 塞浦路斯 (Cyprus) 04 - NEKO
   - 🇨🇾 塞浦路斯 (Cyprus) 05 - NEKO
-  - 🇨🇾 塞浦路斯 (Cyprus) 06 - NEKO
 rules:
 - MATCH,PROXIES

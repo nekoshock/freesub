@@ -6,11 +6,11 @@ log-level: info
 proxies:
 - name: 🇱🇹 立陶宛 (Lithuania) 01 - NEKO
   server: 195.238.126.20
-  port: 9011
+  port: 9008
   udp: true
   type: ss
   cipher: aes-256-cfb
-  password: M3t2ZEQcMGRWBjRa
+  password: y9VURyNzJWNRYEGQ
 - name: 🇱🇹 立陶宛 (Lithuania) 02 - NEKO
   server: 195.238.126.20
   port: 9078
@@ -20,26 +20,40 @@ proxies:
   password: JCJpbRbQZNw9XFZG
 - name: 🇱🇹 立陶宛 (Lithuania) 03 - NEKO
   server: 195.238.126.20
+  port: 9045
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: Lp27rqyJq72bZsqX
+- name: 🇱🇹 立陶宛 (Lithuania) 04 - NEKO
+  server: 195.238.126.20
   port: 9012
   udp: true
   type: ss
   cipher: aes-256-cfb
   password: xaupMUvhptwxdDUg
-- name: 🇱🇹 立陶宛 (Lithuania) 04 - NEKO
+- name: 🇱🇹 立陶宛 (Lithuania) 05 - NEKO
+  server: 195.238.126.20
+  port: 9011
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: M3t2ZEQcMGRWBjRa
+- name: 🇱🇹 立陶宛 (Lithuania) 06 - NEKO
   server: 195.238.126.20
   port: 9086
   udp: true
   type: ss
   cipher: aes-256-cfb
   password: 37Z4TFCYhfxcpc9Q
-- name: 🇱🇹 立陶宛 (Lithuania) 05 - NEKO
+- name: 🇱🇹 立陶宛 (Lithuania) 07 - NEKO
   server: 195.238.126.20
-  port: 9045
+  port: 9002
   udp: true
   type: ss
   cipher: aes-256-cfb
-  password: Lp27rqyJq72bZsqX
-- name: 🇱🇹 立陶宛 (Lithuania) 06 - NEKO
+  password: b8KkNDjEd5QqFyRm
+- name: 🇱🇹 立陶宛 (Lithuania) 08 - NEKO
   server: lt.aether-runet.top
   port: 443
   udp: true
@@ -51,7 +65,7 @@ proxies:
     public-key: vrcsm8L_tY7sNbnCEdLCEjOthh_w9bdWS3wFPgsIomk
     short-id: 4fa44664f6a566d3
   servername: lt.aether-runet.top
-  client-fingerprint: edge
+  client-fingerprint: firefox
 proxy-groups:
 - name: PROXIES
   type: select
@@ -63,6 +77,8 @@ proxy-groups:
   - 🇱🇹 立陶宛 (Lithuania) 04 - NEKO
   - 🇱🇹 立陶宛 (Lithuania) 05 - NEKO
   - 🇱🇹 立陶宛 (Lithuania) 06 - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 07 - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 08 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -74,5 +90,7 @@ proxy-groups:
   - 🇱🇹 立陶宛 (Lithuania) 04 - NEKO
   - 🇱🇹 立陶宛 (Lithuania) 05 - NEKO
   - 🇱🇹 立陶宛 (Lithuania) 06 - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 07 - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 08 - NEKO
 rules:
 - MATCH,PROXIES

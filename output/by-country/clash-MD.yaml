@@ -5,7 +5,7 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇲🇩 摩尔多瓦 (Moldova) 01 - NEKO
-  server: 185.103.167.76
+  server: 185.103.167.223
   port: 4443
   udp: true
   type: vless
@@ -27,7 +27,7 @@ proxies:
   ws-opts:
     path: /vless-test
 - name: 🇲🇩 摩尔多瓦 (Moldova) 03 - NEKO
-  server: 185.103.167.223
+  server: 185.103.167.76
   port: 4443
   udp: true
   type: vless
@@ -40,15 +40,6 @@ proxies:
   servername: moldova.cdn-europe.org
   client-fingerprint: random
 - name: 🇲🇩 摩尔多瓦 (Moldova) 04 - NEKO
-  server: 143.246.219.51
-  port: 8081
-  udp: true
-  type: vless
-  uuid: 54ee5e59-55a3-4599-83ff-0c67b3f411b2
-  network: ws
-  ws-opts:
-    path: /vless-test
-- name: 🇲🇩 摩尔多瓦 (Moldova) 05 - NEKO
   server: moldova.cdn-europe.org
   port: 4443
   udp: true
@@ -60,7 +51,16 @@ proxies:
     public-key: cYwrRCz_hKgT_JE8WywuLE3XOkAEqCTuBiUvXAaEjn8
     short-id: 694ee64512cfcbef
   servername: moldova.cdn-europe.org
-  client-fingerprint: random
+  client-fingerprint: chrome
+- name: 🇲🇩 摩尔多瓦 (Moldova) 05 - NEKO
+  server: 143.246.219.51
+  port: 8081
+  udp: true
+  type: vless
+  uuid: 54ee5e59-55a3-4599-83ff-0c67b3f411b2
+  network: ws
+  ws-opts:
+    path: /vless-test
 proxy-groups:
 - name: PROXIES
   type: select

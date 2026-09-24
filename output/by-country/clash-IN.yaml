@@ -5,22 +5,6 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇮🇳 印度 (India) 01 - NEKO
-  server: 34.131.228.210
-  port: 443
-  udp: true
-  type: trojan
-  password: M7v%w11Se*
-  sni: hyfuuf6.wsone.icu
-  skip-cert-verify: true
-- name: 🇮🇳 印度 (India) 02 - NEKO
-  server: 35.244.28.130
-  port: 443
-  udp: true
-  type: trojan
-  password: M7v%w11Se*
-  sni: tttyder.wsone.icu
-  skip-cert-verify: false
-- name: 🇮🇳 印度 (India) 03 - NEKO
   server: 194.61.31.126
   port: 2053
   udp: true
@@ -32,15 +16,7 @@ proxies:
     short-id: 9980e0609b0d3891
   servername: www.apple.com
   client-fingerprint: chrome
-- name: 🇮🇳 印度 (India) 04 - NEKO
-  server: 35.154.58.87
-  port: 443
-  udp: true
-  type: hysteria2
-  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: vpn-in-001.fastervpn.world
-  skip-cert-verify: true
-- name: 🇮🇳 印度 (India) 05 - NEKO
+- name: 🇮🇳 印度 (India) 02 - NEKO
   server: 148.113.5.44
   port: 443
   udp: true
@@ -53,15 +29,31 @@ proxies:
     short-id: 221873918e0bb74d
   servername: www.cloudflare.com
   client-fingerprint: random
-- name: 🇮🇳 印度 (India) 06 - NEKO
-  server: vpn-in-001.fastervpn.world
+- name: 🇮🇳 印度 (India) 03 - NEKO
+  server: 35.244.28.130
+  port: 443
+  udp: true
+  type: trojan
+  password: M7v%w11Se*
+  sni: tttyder.wsone.icu
+  skip-cert-verify: false
+- name: 🇮🇳 印度 (India) 04 - NEKO
+  server: 35.154.58.87
   port: 443
   udp: true
   type: hysteria2
   password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: google.com
+  sni: vpn-in-001.fastervpn.world
   skip-cert-verify: true
-- name: 🇮🇳 印度 (India) 07 - NEKO
+- name: 🇮🇳 印度 (India) 05 - NEKO
+  server: 34.131.228.210
+  port: 443
+  udp: true
+  type: trojan
+  password: M7v%w11Se*
+  sni: hyfuuf6.wsone.icu
+  skip-cert-verify: true
+- name: 🇮🇳 印度 (India) 06 - NEKO
   server: 152.67.8.205
   port: 80
   udp: true
@@ -72,13 +64,6 @@ proxies:
   network: ws
   ws-opts:
     path: /
-- name: 🇮🇳 印度 (India) 08 - NEKO
-  server: 172.105.39.124
-  port: 7002
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: RexnBgU7EV5ADxG
 proxy-groups:
 - name: PROXIES
   type: select
@@ -90,8 +75,6 @@ proxy-groups:
   - 🇮🇳 印度 (India) 04 - NEKO
   - 🇮🇳 印度 (India) 05 - NEKO
   - 🇮🇳 印度 (India) 06 - NEKO
-  - 🇮🇳 印度 (India) 07 - NEKO
-  - 🇮🇳 印度 (India) 08 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -103,7 +86,5 @@ proxy-groups:
   - 🇮🇳 印度 (India) 04 - NEKO
   - 🇮🇳 印度 (India) 05 - NEKO
   - 🇮🇳 印度 (India) 06 - NEKO
-  - 🇮🇳 印度 (India) 07 - NEKO
-  - 🇮🇳 印度 (India) 08 - NEKO
 rules:
 - MATCH,PROXIES

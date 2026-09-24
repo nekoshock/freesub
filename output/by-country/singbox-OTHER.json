@@ -4,37 +4,51 @@
   },
   "outbounds": [
     {
-      "type": "trojan",
+      "type": "vless",
       "tag": "🌐 其他地区 (Other) 01 - NEKO",
-      "server": "104.16.71.213",
+      "server": "104.21.3.219",
       "server_port": 443,
-      "password": "humanity",
+      "uuid": "8be461cb-a0df-47cf-bc0d-4d9e6a22fa74",
       "tls": {
         "enabled": true,
-        "server_name": "www.calmlunch.com",
-        "insecure": false
+        "server_name": "ccs2g.pai50288.uk",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
       },
       "transport": {
         "type": "ws",
-        "path": "/assignment",
+        "path": "/pai50288",
         "headers": {
-          "Host": "www.calmlunch.com"
+          "Host": "ccs2g.pai50288.uk"
         }
       }
     },
     {
-      "type": "trojan",
+      "type": "vless",
       "tag": "🌐 其他地区 (Other) 02 - NEKO",
-      "server": "104.16.71.213",
+      "server": "104.21.3.219",
       "server_port": 443,
-      "password": "humanity",
+      "uuid": "8be461cb-a0df-47cf-bc0d-4d9e6a22fa74",
       "tls": {
         "enabled": true,
-        "server_name": "www.calmlunch.com",
-        "insecure": false
+        "server_name": "ccs2g.pai50288.uk",
+        "insecure": false,
+        "alpn": [
+          "h2",
+          "http/1.1",
+          "h3"
+        ],
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
       },
       "transport": {
-        "type": "ws"
+        "type": "ws",
+        "path": "/pai50288"
       }
     },
     {

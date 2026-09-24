@@ -5,33 +5,51 @@ mode: rule
 log-level: info
 proxies:
 - name: 🌐 其他地区 (Other) 01 - NEKO
-  server: 104.21.3.219
+  server: 188.114.97.6
   port: 443
   udp: true
   type: vless
-  uuid: 8be461cb-a0df-47cf-bc0d-4d9e6a22fa74
+  uuid: 3c6d1933-b22a-484b-ac8a-63e24f5fba75
   tls: true
-  servername: ccs2g.pai50288.uk
+  servername: server9.9966338.xyz
   skip-cert-verify: false
-  client-fingerprint: chrome
   network: ws
   ws-opts:
-    path: /pai50288
+    path: /imnotarealherox
     headers:
-      Host: ccs2g.pai50288.uk
+      Host: server9.9966338.xyz
 - name: 🌐 其他地区 (Other) 02 - NEKO
-  server: 104.21.3.219
-  port: 443
+  server: 104.21.57.84
+  port: 8443
   udp: true
-  type: vless
-  uuid: 8be461cb-a0df-47cf-bc0d-4d9e6a22fa74
+  type: vmess
+  uuid: 60441548-b68e-43b2-8191-e3b884be4b3c
+  alterId: 0
+  cipher: auto
   tls: true
-  servername: ccs2g.pai50288.uk
+  servername: v2ray1.dozapp.xyz
   skip-cert-verify: false
-  client-fingerprint: chrome
   network: ws
   ws-opts:
-    path: /pai50288
+    path: /lMnsZUN4/
+    headers:
+      Host: v2ray1.dozapp.xyz
+- name: 🌐 其他地区 (Other) 03 - NEKO
+  server: 104.21.57.84
+  port: 8443
+  udp: true
+  type: vmess
+  uuid: 60441548-b68e-43b2-8191-e3b884be4b3c
+  alterId: 0
+  cipher: auto
+  tls: true
+  servername: v2ray1.dozapp.xyz
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /lMnsZUN4/
+    headers:
+      Host: v2ray1.dozapp.xyz
 proxy-groups:
 - name: PROXIES
   type: select
@@ -39,6 +57,7 @@ proxy-groups:
   - AUTO
   - 🌐 其他地区 (Other) 01 - NEKO
   - 🌐 其他地区 (Other) 02 - NEKO
+  - 🌐 其他地区 (Other) 03 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -46,5 +65,6 @@ proxy-groups:
   proxies:
   - 🌐 其他地区 (Other) 01 - NEKO
   - 🌐 其他地区 (Other) 02 - NEKO
+  - 🌐 其他地区 (Other) 03 - NEKO
 rules:
 - MATCH,PROXIES

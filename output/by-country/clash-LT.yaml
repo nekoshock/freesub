@@ -6,11 +6,11 @@ log-level: info
 proxies:
 - name: 🇱🇹 立陶宛 (Lithuania) 01 - NEKO
   server: 195.238.126.20
-  port: 9086
+  port: 9078
   udp: true
   type: ss
   cipher: aes-256-cfb
-  password: 37Z4TFCYhfxcpc9Q
+  password: JCJpbRbQZNw9XFZG
 - name: 🇱🇹 立陶宛 (Lithuania) 02 - NEKO
   server: 195.238.126.20
   port: 9012
@@ -27,18 +27,38 @@ proxies:
   password: b8KkNDjEd5QqFyRm
 - name: 🇱🇹 立陶宛 (Lithuania) 04 - NEKO
   server: 195.238.126.20
-  port: 9078
+  port: 9086
   udp: true
   type: ss
   cipher: aes-256-cfb
-  password: JCJpbRbQZNw9XFZG
+  password: 37Z4TFCYhfxcpc9Q
 - name: 🇱🇹 立陶宛 (Lithuania) 05 - NEKO
+  server: 195.238.126.20
+  port: 9008
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: y9VURyNzJWNRYEGQ
+- name: 🇱🇹 立陶宛 (Lithuania) 06 - NEKO
   server: 195.238.126.20
   port: 9068
   udp: true
   type: ss
   cipher: aes-256-cfb
   password: mwgRg9hRq3b4Qnwb
+- name: 🇱🇹 立陶宛 (Lithuania) 07 - NEKO
+  server: 84.32.215.94
+  port: 443
+  udp: true
+  type: vless
+  uuid: c5694dc5-39fd-4a92-8430-3837baa522a3
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: vrcsm8L_tY7sNbnCEdLCEjOthh_w9bdWS3wFPgsIomk
+    short-id: 4fa44664f6a566d3
+  servername: lt.aether-runet.top
+  client-fingerprint: firefox
 proxy-groups:
 - name: PROXIES
   type: select
@@ -49,6 +69,8 @@ proxy-groups:
   - 🇱🇹 立陶宛 (Lithuania) 03 - NEKO
   - 🇱🇹 立陶宛 (Lithuania) 04 - NEKO
   - 🇱🇹 立陶宛 (Lithuania) 05 - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 06 - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 07 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -59,5 +81,7 @@ proxy-groups:
   - 🇱🇹 立陶宛 (Lithuania) 03 - NEKO
   - 🇱🇹 立陶宛 (Lithuania) 04 - NEKO
   - 🇱🇹 立陶宛 (Lithuania) 05 - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 06 - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 07 - NEKO
 rules:
 - MATCH,PROXIES

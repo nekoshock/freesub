@@ -4,12 +4,15 @@
   },
   "outbounds": [
     {
-      "type": "shadowsocks",
+      "type": "vless",
       "tag": "🇨🇱 智利 (Chile) 01 - NEKO",
-      "server": "64.176.2.21",
-      "server_port": 8388,
-      "method": "aes-256-gcm",
-      "password": "xBStBEVqvGwHPocc"
+      "server": "platform109.golnamakcert.top",
+      "server_port": 80,
+      "uuid": "e13cf851-b4fd-413b-8d49-146e6eb8e5d4",
+      "transport": {
+        "type": "ws",
+        "path": "/platform109"
+      }
     },
     {
       "type": "vless",
@@ -26,27 +29,12 @@
       }
     },
     {
-      "type": "vless",
-      "tag": "🇨🇱 智利 (Chile) 03 - NEKO",
-      "server": "platform109.golnamakcert.top",
-      "server_port": 80,
-      "uuid": "e13cf851-b4fd-413b-8d49-146e6eb8e5d4",
-      "transport": {
-        "type": "ws",
-        "path": "/platform109",
-        "headers": {
-          "Host": "platform109.halalkhor.info"
-        }
-      }
-    },
-    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
         "🇨🇱 智利 (Chile) 01 - NEKO",
-        "🇨🇱 智利 (Chile) 02 - NEKO",
-        "🇨🇱 智利 (Chile) 03 - NEKO"
+        "🇨🇱 智利 (Chile) 02 - NEKO"
       ]
     },
     {
@@ -54,8 +42,7 @@
       "tag": "auto",
       "outbounds": [
         "🇨🇱 智利 (Chile) 01 - NEKO",
-        "🇨🇱 智利 (Chile) 02 - NEKO",
-        "🇨🇱 智利 (Chile) 03 - NEKO"
+        "🇨🇱 智利 (Chile) 02 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

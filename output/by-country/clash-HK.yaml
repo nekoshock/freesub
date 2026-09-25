@@ -5,47 +5,6 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇭🇰 中国香港 (Hong Kong) 01 - NEKO
-  server: 162.159.48.32
-  port: 2086
-  udp: true
-  type: vless
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🇭🇰 中国香港 (Hong Kong) 02 - NEKO
-  server: 172.64.155.209
-  port: 8443
-  udp: true
-  type: vless
-  uuid: 4ff70740-8c80-48ae-985f-2afe4924e908
-  tls: true
-  servername: pubb.clnahanpnln.workers.dev
-  skip-cert-verify: false
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /sync
-    headers:
-      Host: pubb.clnahanpnln.workers.dev
-- name: 🇭🇰 中国香港 (Hong Kong) 03 - NEKO
-  server: 172.67.219.50
-  port: 443
-  udp: true
-  type: vless
-  uuid: a5b1d1ec-327c-f1c5-5856-b34600000000
-  tls: true
-  servername: ez-541f9d.ezaccess1d3db24.workers.dev
-  skip-cert-verify: false
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /sync
-    headers:
-      Host: ez-541f9d.ezaccess1d3db24.workers.dev
-- name: 🇭🇰 中国香港 (Hong Kong) 04 - NEKO
   server: 89.223.95.77
   port: 22324
   udp: true
@@ -53,7 +12,22 @@ proxies:
   uuid: 04621bae-ab36-11ec-b909-0242ac120002
   alterId: 0
   cipher: auto
-- name: 🇭🇰 中国香港 (Hong Kong) 05 - NEKO
+- name: 🇭🇰 中国香港 (Hong Kong) 02 - NEKO
+  server: 185.22.154.239
+  port: 10301
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: bdb313adf74c2ede
+- name: 🇭🇰 中国香港 (Hong Kong) 03 - NEKO
+  server: 47.240.80.220
+  port: 2052
+  udp: true
+  type: trojan
+  password: tFjD2X1F6i9FfWp2GDU5Vbi1conuaChDKIYbw9zMFrqvMoSz
+  sni: vpn.12169.top
+  skip-cert-verify: true
+- name: 🇭🇰 中国香港 (Hong Kong) 04 - NEKO
   server: 34.92.145.185
   port: 443
   udp: true
@@ -65,64 +39,7 @@ proxies:
     short-id: 64b3f192fc0669e1
   servername: www.cloudflare.com
   client-fingerprint: chrome
-- name: 🇭🇰 中国香港 (Hong Kong) 06 - NEKO
-  server: 47.240.80.220
-  port: 2052
-  udp: true
-  type: trojan
-  password: tFjD2X1F6i9FfWp2GDU5Vbi1conuaChDKIYbw9zMFrqvMoSz
-  sni: vpn.12169.top
-  skip-cert-verify: true
-- name: 🇭🇰 中国香港 (Hong Kong) 07 - NEKO
-  server: 119.246.1.143
-  port: 443
-  udp: true
-  type: trojan
-  password: BxceQaOe
-  sni: t.me
-  skip-cert-verify: true
-- name: 🇭🇰 中国香港 (Hong Kong) 08 - NEKO
-  server: 185.22.154.239
-  port: 10301
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: bdb313adf74c2ede
-- name: 🇭🇰 中国香港 (Hong Kong) 09 - NEKO
-  server: nas.aizhzo.com
-  port: 5010
-  udp: true
-  type: hysteria2
-  password: eBTe6Ax2pUts8oMEWoYVDfnSlHfkLffQ
-  sni: 127.0.0.1
-  skip-cert-verify: true
-  obfs: salamander
-  obfs-password: 7M4RXPFcQyQEGbkxBPfXo4bilMhCW2U9
-- name: 🇭🇰 中国香港 (Hong Kong) 10 - NEKO
-  server: 202.146.222.89
-  port: 443
-  udp: true
-  type: hysteria2
-  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: https%253a%252f%252ft.me%252fclashv8%25f0%259f%2587%25a8%25f0%259f%2587%25b3
-  skip-cert-verify: true
-- name: 🇭🇰 中国香港 (Hong Kong) 11 - NEKO
-  server: 202.146.222.174
-  port: 443
-  udp: true
-  type: hysteria2
-  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: 202.146.222.174
-  skip-cert-verify: true
-- name: 🇭🇰 中国香港 (Hong Kong) 12 - NEKO
-  server: 202.146.222.29
-  port: 443
-  udp: true
-  type: hysteria2
-  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: https://t.me/wangcai2рҹүрҹү
-  skip-cert-verify: true
-- name: 🇭🇰 中国香港 (Hong Kong) 13 - NEKO
+- name: 🇭🇰 中国香港 (Hong Kong) 05 - NEKO
   server: 47.239.6.251
   port: 13779
   udp: true
@@ -134,35 +51,75 @@ proxies:
     public-key: llTyp52oRXnJmQ3I9UUrmlwbMA79B-wLCRHCu-8dLGg
     short-id: af1bdd293097b664
   servername: tesla.com
-  client-fingerprint: random
-- name: 🇭🇰 中国香港 (Hong Kong) 14 - NEKO
-  server: hk2.xiaoliyu.cyou
-  port: 4433
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 06 - NEKO
+  server: 202.146.222.29
+  port: 443
   udp: true
   type: hysteria2
-  password: 19f72087-4591-4d72-930b-2697078ec2be
-  sni: hk2.xiaoliyu.cyou
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: https%3a%2f%2ft.me%2fwangcai2%d1%80%d2%b9%d2%af%d1%80%d2%b9%d2%af
   skip-cert-verify: true
-- name: 🇭🇰 中国香港 (Hong Kong) 15 - NEKO
+- name: 🇭🇰 中国香港 (Hong Kong) 07 - NEKO
+  server: 119.246.1.143
+  port: 443
+  udp: true
+  type: trojan
+  password: BxceQaOe
+  sni: 119.246.1.143
+  skip-cert-verify: true
+- name: 🇭🇰 中国香港 (Hong Kong) 08 - NEKO
+  server: 202.146.222.89
+  port: 443
+  udp: true
+  type: hysteria2
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: https://t.me/clashv8
+  skip-cert-verify: true
+- name: 🇭🇰 中国香港 (Hong Kong) 09 - NEKO
   server: champion.xn--kivt58h.lol
   port: 80
   udp: true
   type: vless
-  uuid: b5af4a3d-f525-43aa-9cc3-de1ba437e4ed
+  uuid: ed2864f9-37b3-4222-8c54-014aedc400a2
   network: ws
   ws-opts:
     path: /
     headers:
       Host: ak.mcdonaldshamburgergoodgoodgood.xyz
-- name: 🇭🇰 中国香港 (Hong Kong) 16 - NEKO
+- name: 🇭🇰 中国香港 (Hong Kong) 10 - NEKO
+  server: 202.146.222.174
+  port: 443
+  udp: true
+  type: hysteria2
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: 202.146.222.174
+  skip-cert-verify: true
+- name: 🇭🇰 中国香港 (Hong Kong) 11 - NEKO
+  server: e6b91583-tm96o0-tnhquc-1j0a4.hk3.hyhuawei.com
+  port: 443
+  udp: true
+  type: hysteria2
+  password: 4eedcde6-d16a-11ef-973a-f23c913c8d2b
+  sni: e6b91583-tm96o0-tnhquc-1j0a4.hk3.hyhuawei.com
+  skip-cert-verify: true
+- name: 🇭🇰 中国香港 (Hong Kong) 12 - NEKO
   server: mz.hkychina.com
   port: 8443
   udp: true
   type: hysteria2
   password: HysTeria2026!Proxy
   sni: mz.hkychina.com
+  skip-cert-verify: true
+- name: 🇭🇰 中国香港 (Hong Kong) 13 - NEKO
+  server: ac7548f3ebe045b39a90288ff1e97528.pnuqcnp.cn
+  port: 443
+  udp: true
+  type: anytls
+  password: 9sK2mP8xQ7vL3nZ6
+  sni: ac7548f3ebe045b39a90288ff1e97528.lwdnxf.cn
   skip-cert-verify: false
-- name: 🇭🇰 中国香港 (Hong Kong) 17 - NEKO
+- name: 🇭🇰 中国香港 (Hong Kong) 14 - NEKO
   server: hk3.mfm-oss.top
   port: 60013
   udp: true
@@ -175,30 +132,22 @@ proxies:
     short-id: 7a91fe90e1d176fc
   servername: www.xiaohongshu.com
   client-fingerprint: safari
-- name: 🇭🇰 中国香港 (Hong Kong) 18 - NEKO
+- name: 🇭🇰 中国香港 (Hong Kong) 15 - NEKO
+  server: hk2.xiaoliyu.cyou
+  port: 4433
+  udp: true
+  type: hysteria2
+  password: 19f72087-4591-4d72-930b-2697078ec2be
+  sni: hk2.xiaoliyu.cyou
+  skip-cert-verify: true
+- name: 🇭🇰 中国香港 (Hong Kong) 16 - NEKO
   server: 2.27.109.179
   port: 45464
   udp: true
   type: trojan
   password: XuMweB2PWs
   sni: 2.27.109.179.sslip.io
-  skip-cert-verify: true
-- name: 🇭🇰 中国香港 (Hong Kong) 19 - NEKO
-  server: nycqg19zkwacpm1b.v.3dns.vip
-  port: 443
-  udp: true
-  type: vmess
-  uuid: f23bb427-c1f9-4373-876c-2f43e9f790f3
-  alterId: 0
-  cipher: auto
-  tls: true
-  servername: nycqg19zkwacpm1b.v.3dns.vip
   skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /ws-vmess
-    headers:
-      Host: nycqg19zkwacpm1b.v.3dns.vip
 proxy-groups:
 - name: PROXIES
   type: select
@@ -220,9 +169,6 @@ proxy-groups:
   - 🇭🇰 中国香港 (Hong Kong) 14 - NEKO
   - 🇭🇰 中国香港 (Hong Kong) 15 - NEKO
   - 🇭🇰 中国香港 (Hong Kong) 16 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 17 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 18 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 19 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -244,8 +190,5 @@ proxy-groups:
   - 🇭🇰 中国香港 (Hong Kong) 14 - NEKO
   - 🇭🇰 中国香港 (Hong Kong) 15 - NEKO
   - 🇭🇰 中国香港 (Hong Kong) 16 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 17 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 18 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 19 - NEKO
 rules:
 - MATCH,PROXIES

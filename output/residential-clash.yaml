@@ -4,21 +4,89 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇹🇼 中国台湾 (Taiwan) 01 (家宽) - NEKO
+- name: 🇯🇵 日本 (Japan) 01 (家宽) - NEKO
+  server: 128.241.25.3
+  port: 30021
+  udp: true
+  type: vless
+  uuid: 1de9611b-1861-4ebb-b281-cb2a383cdf19
+  tls: true
+  servername: kqjifhg9rw.tradsc8p9xp7wxyqmc1wy0ah.workers.dev
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /@Marisa_kristi
+    headers:
+      Host: kqjifhg9rw.tradsc8p9xp7wxyqmc1wy0ah.workers.dev
+- name: 🇹🇼 中国台湾 (Taiwan) 02 (家宽) - NEKO
   server: 36.224.141.124
   port: 50099
   udp: true
   type: ss
   cipher: chacha20-ietf-poly1305
   password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
-- name: 🇹🇷 土耳其 (Turkey) 02 (移动家宽) - NEKO
-  server: test.keoplentuio.xyz
-  port: 2053
+- name: 🇭🇰 中国香港 (Hong Kong) 03 (家宽) - NEKO
+  server: b503b615-tm96o0-tne5x4-1rfon.hk3.hyhuawei.com
+  port: 443
+  udp: true
+  type: hysteria2
+  password: aed1cc24-351d-11ef-ba52-f23c9164ca5d
+  sni: b503b615-tm96o0-tne5x4-1rfon.hk3.hyhuawei.com
+  skip-cert-verify: true
+- name: 🇭🇰 中国香港 (Hong Kong) 04 (家宽) - NEKO
+  server: 3d0bb862-tm96o0-tnhquc-1j0a4.nw4.hyhuawei.com
+  port: 443
+  udp: true
+  type: hysteria2
+  password: 4eedcde6-d16a-11ef-973a-f23c913c8d2b
+  sni: 3d0bb862-tm96o0-tnhquc-1j0a4.nw4.hyhuawei.com
+  skip-cert-verify: true
+- name: 🇭🇰 中国香港 (Hong Kong) 05 (移动家宽) - NEKO
+  server: zfd-hkv2.kunlun01dns.com
+  port: 16115
+  udp: true
+  type: vmess
+  uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
+  alterId: 0
+  cipher: auto
+- name: 🇯🇵 日本 (Japan) 06 (家宽) - NEKO
+  server: 185.125.103.62
+  port: 8082
   udp: true
   type: vless
-  uuid: 9ef61079-6f7d-4911-9608-943da85d8e6f
-- name: 🇹🇼 中国台湾 (Taiwan) 03 (家宽) - NEKO
-  server: hinet1.2yly.com
+  uuid: 81f042b3-13d9-4686-9d92-5350f19d909c
+  tls: true
+  servername: 3t1yvbyla-rj740g.28m7r63dttya6gazmhoo.workers.dev
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /@Marisa_kristi
+    headers:
+      Host: 3t1yvbyla-rj740g.28m7r63dttya6gazmhoo.workers.dev
+- name: 🇭🇰 中国香港 (Hong Kong) 07 (家宽) - NEKO
+  server: hk01.kfc-520.com
+  port: 60001
+  udp: true
+  type: hysteria2
+  password: 8cb0c4fb-03ee-35b8-a47b-cd1d7e76dfd3
+  sni: hk01.kfc-520.com
+  skip-cert-verify: true
+- name: 🇹🇼 中国台湾 (Taiwan) 08 (家宽) - NEKO
+  server: 24864168545164.oylfmxz.cn
+  port: 443
+  udp: true
+  type: vmess
+  uuid: d90e4077-bc7e-414d-a650-70bf1baae4d6
+  alterId: 0
+  cipher: auto
+  tls: true
+  servername: 24864168545164.oylfmxz.cn
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /
+- name: 🇹🇼 中国台湾 (Taiwan) 09 (家宽) - NEKO
+  server: 118.167.230.191
   port: 24215
   udp: true
   type: vless
@@ -27,42 +95,34 @@ proxies:
   reality-opts:
     public-key: mdWKUPMVTtTbDqK10BPb89OcqBC2-Lx-4NOYtqc1GWE
   servername: addons.mozilla.org
-  client-fingerprint: qq
-- name: 🇭🇰 中国香港 (Hong Kong) 04 (家宽) - NEKO
-  server: 311648fa-tm3mo0-0-1rfon.hk3.hyhuawei.com
-  port: 443
-  udp: true
-  type: hysteria2
-  password: aed1cc24-351d-11ef-ba52-f23c9164ca5d
-  sni: 311648fa-tm3mo0-0-1rfon.hk3.hyhuawei.com
-  skip-cert-verify: true
-- name: 🇭🇰 中国香港 (Hong Kong) 05 (家宽) - NEKO
-  server: hk01.kfc-520.com
-  port: 60001
-  udp: true
-  type: hysteria2
-  password: 8cb0c4fb-03ee-35b8-a47b-cd1d7e76dfd3
-  sni: hk01.kfc-520.com
-  skip-cert-verify: true
+  client-fingerprint: firefox
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇹🇼 中国台湾 (Taiwan) 01 (家宽) - NEKO
-  - 🇹🇷 土耳其 (Turkey) 02 (移动家宽) - NEKO
-  - 🇹🇼 中国台湾 (Taiwan) 03 (家宽) - NEKO
+  - 🇯🇵 日本 (Japan) 01 (家宽) - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 02 (家宽) - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 03 (家宽) - NEKO
   - 🇭🇰 中国香港 (Hong Kong) 04 (家宽) - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 05 (家宽) - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 05 (移动家宽) - NEKO
+  - 🇯🇵 日本 (Japan) 06 (家宽) - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 07 (家宽) - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 08 (家宽) - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 09 (家宽) - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇹🇼 中国台湾 (Taiwan) 01 (家宽) - NEKO
-  - 🇹🇷 土耳其 (Turkey) 02 (移动家宽) - NEKO
-  - 🇹🇼 中国台湾 (Taiwan) 03 (家宽) - NEKO
+  - 🇯🇵 日本 (Japan) 01 (家宽) - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 02 (家宽) - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 03 (家宽) - NEKO
   - 🇭🇰 中国香港 (Hong Kong) 04 (家宽) - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 05 (家宽) - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 05 (移动家宽) - NEKO
+  - 🇯🇵 日本 (Japan) 06 (家宽) - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 07 (家宽) - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 08 (家宽) - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 09 (家宽) - NEKO
 rules:
 - MATCH,PROXIES

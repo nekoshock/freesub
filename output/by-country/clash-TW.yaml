@@ -5,43 +5,23 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇹🇼 中国台湾 (Taiwan) 01 - NEKO
-  server: namrcg001640lrm.cybervena.com
+  server: 36.224.141.124
   port: 50099
   udp: true
   type: ss
   cipher: chacha20-ietf-poly1305
-  password: a9a0d092-6f0e-4701-81ee-454643d6d506
-- name: 🇹🇼 中国台湾 (Taiwan) 02 - NEKO
-  server: 103.115.109.49
-  port: 443
-  udp: true
-  type: hysteria2
-  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: https://t.me/oneclickvpnkeys
-  skip-cert-verify: true
-- name: 🇹🇼 中国台湾 (Taiwan) 03 - NEKO
-  server: 160.187.100.109
-  port: 443
-  udp: true
-  type: hysteria2
-  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: 127.0.0.1
-  skip-cert-verify: true
+  password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
   - 🇹🇼 中国台湾 (Taiwan) 01 - NEKO
-  - 🇹🇼 中国台湾 (Taiwan) 02 - NEKO
-  - 🇹🇼 中国台湾 (Taiwan) 03 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
   - 🇹🇼 中国台湾 (Taiwan) 01 - NEKO
-  - 🇹🇼 中国台湾 (Taiwan) 02 - NEKO
-  - 🇹🇼 中国台湾 (Taiwan) 03 - NEKO
 rules:
 - MATCH,PROXIES

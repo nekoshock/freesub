@@ -12,11 +12,19 @@ proxies:
   cipher: aes-256-gcm
   password: itzvpn@321
 - name: 🇮🇹 意大利 (Italy) 02 - NEKO
-  server: 204.216.216.23
-  port: 10086
+  server: 31.77.154.14
+  port: 8443
   udp: true
   type: vless
-  uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
+  uuid: 75079a7f-75b5-418b-8a65-f7b2f438cd4a
+  tls: true
+  reality-opts:
+    public-key: 3O__mdy-whzI07V-QEyR6GQnag1FNwtHijDxt2_jkDQ
+  servername: swscan.apple.com
+  client-fingerprint: chrome
+  network: grpc
+  grpc-opts:
+    grpc-service-name: grpc-tunnel
 proxy-groups:
 - name: PROXIES
   type: select

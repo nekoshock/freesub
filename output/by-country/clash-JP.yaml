@@ -5,15 +5,14 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇯🇵 日本 (Japan) 01 - NEKO
-  server: 45.32.57.118
-  port: 4433
-  udp: true
-  type: vmess
-  uuid: 35b89832-0a7c-48dd-8d1c-a2891b522195
-  alterId: 0
-  cipher: auto
-- name: 🇯🇵 日本 (Japan) 02 - NEKO
   server: 149.22.87.241
+  port: 443
+  udp: true
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇯🇵 日本 (Japan) 02 - NEKO
+  server: 149.22.87.204
   port: 443
   udp: true
   type: ss
@@ -27,12 +26,12 @@ proxies:
   cipher: aes-256-cfb
   password: amazonskr05
 - name: 🇯🇵 日本 (Japan) 04 - NEKO
-  server: 149.22.87.204
-  port: 443
+  server: 84.247.155.196
+  port: 80
   udp: true
   type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
+  cipher: aes-256-gcm
+  password: 3eOFeNssde7PYYMv
 - name: 🇯🇵 日本 (Japan) 05 - NEKO
   server: 154.31.114.248
   port: 50159
@@ -47,32 +46,32 @@ proxies:
   servername: www.cloudflare.com
   client-fingerprint: chrome
 - name: 🇯🇵 日本 (Japan) 06 - NEKO
-  server: 108.160.128.46
+  server: 84.247.155.196
   port: 443
   udp: true
-  type: vless
-  uuid: de241e4e-226e-46d5-aa79-602e11ef94d8
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: cZ9MxrT-CYtdhBdbGeqzcQEvWvAuKw7fEfRbR8QrOlM
-    short-id: 37bb73b5
-  servername: www.bing.com
-  client-fingerprint: chrome
+  type: ss
+  cipher: aes-256-gcm
+  password: 3eOFeNssde7PYYMv
 - name: 🇯🇵 日本 (Japan) 07 - NEKO
-  server: jp-1.gsafevpnapi.com
-  port: 20270
+  server: 64.176.51.214
+  port: 23462
   udp: true
-  type: vless
-  uuid: 537f8b38-8015-4431-84bb-63ada2d0bf89
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: gaFVpIOW9RJGuFFisfXVvITfYY5ikKn-4gB89ZQCFHI
-    short-id: 89fecfdaf45cd76d
-  servername: www.yahoo.com
-  client-fingerprint: chrome
+  type: vmess
+  uuid: 95c5abc1-018d-4628-89a7-25ab9c62ab74
+  alterId: 0
+  cipher: auto
+  network: ws
+  ws-opts:
+    path: /a15206
 - name: 🇯🇵 日本 (Japan) 08 - NEKO
+  server: 45.32.57.118
+  port: 4433
+  udp: true
+  type: vmess
+  uuid: 35b89832-0a7c-48dd-8d1c-a2891b522195
+  alterId: 0
+  cipher: auto
+- name: 🇯🇵 日本 (Japan) 09 - NEKO
   server: high-speed-test-01.linkpc.net
   port: 443
   udp: true
@@ -85,24 +84,14 @@ proxies:
     short-id: 21270a66
   servername: aws.amazon.com
   client-fingerprint: chrome
-- name: 🇯🇵 日本 (Japan) 09 - NEKO
-  server: 64.176.51.214
-  port: 23462
+- name: 🇯🇵 日本 (Japan) 10 - NEKO
+  server: zfd-jpv2.kunlun01dns.com
+  port: 16120
   udp: true
   type: vmess
-  uuid: 95c5abc1-018d-4628-89a7-25ab9c62ab74
+  uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
   alterId: 0
   cipher: auto
-  network: ws
-  ws-opts:
-    path: /a15206
-- name: 🇯🇵 日本 (Japan) 10 - NEKO
-  server: 84.247.155.196
-  port: 443
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: 3eOFeNssde7PYYMv
 - name: 🇯🇵 日本 (Japan) 11 - NEKO
   server: or.521166.xyz
   port: 2083
@@ -118,6 +107,14 @@ proxies:
   ws-opts:
     path: /or3
 - name: 🇯🇵 日本 (Japan) 12 - NEKO
+  server: zfd-jpv2.kunlun01dns.com
+  port: 16122
+  udp: true
+  type: vmess
+  uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
+  alterId: 0
+  cipher: auto
+- name: 🇯🇵 日本 (Japan) 13 - NEKO
   server: open.2ml.bid
   port: 443
   udp: true
@@ -125,14 +122,6 @@ proxies:
   password: my_super_password_123
   sni: open.2ml.bid
   skip-cert-verify: true
-- name: 🇯🇵 日本 (Japan) 13 - NEKO
-  server: oc.imfun.fun
-  port: 18112
-  udp: true
-  type: vmess
-  uuid: ad45f8f6-0f0a-4cc4-b907-c4582407dc94
-  alterId: 0
-  cipher: auto
 proxy-groups:
 - name: PROXIES
   type: select

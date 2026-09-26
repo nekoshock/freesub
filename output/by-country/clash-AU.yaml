@@ -5,22 +5,28 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇦🇺 澳大利亚 (Australia) 01 - NEKO
-  server: 82.198.246.37
+  server: 104.18.155.229
+  port: 443
+  udp: true
+  type: vless
+  uuid: 42026ed0-7d74-4585-8e46-0fe6aa4d665a
+  tls: true
+  servername: www.genflix.co.id.r3xxe.eu.cc
+  skip-cert-verify: false
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /au-do
+    headers:
+      Host: www.genflix.co.id.r3xxe.eu.cc
+- name: 🇦🇺 澳大利亚 (Australia) 02 - NEKO
+  server: 82.198.246.250
   port: 180
   udp: true
   type: vmess
   uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
   alterId: 0
   cipher: auto
-- name: 🇦🇺 澳大利亚 (Australia) 02 - NEKO
-  server: 172.105.169.70
-  port: 443
-  udp: true
-  type: vless
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  tls: true
-  servername: 172.105.169.70
-  skip-cert-verify: true
 - name: 🇦🇺 澳大利亚 (Australia) 03 - NEKO
   server: 51.161.204.244
   port: 443
@@ -33,7 +39,16 @@ proxies:
     public-key: gCAazs5uxNuMZIxfDdw8wPE0nwKY4QfBfBkQveKAkEk
     short-id: 0ad08b47f498efd2
   servername: www.cloudflare.com
-  client-fingerprint: firefox
+  client-fingerprint: chrome
+- name: 🇦🇺 澳大利亚 (Australia) 04 - NEKO
+  server: 172.105.169.70
+  port: 443
+  udp: true
+  type: vless
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  tls: true
+  servername: 172.105.169.70
+  skip-cert-verify: true
 proxy-groups:
 - name: PROXIES
   type: select
@@ -42,6 +57,7 @@ proxy-groups:
   - 🇦🇺 澳大利亚 (Australia) 01 - NEKO
   - 🇦🇺 澳大利亚 (Australia) 02 - NEKO
   - 🇦🇺 澳大利亚 (Australia) 03 - NEKO
+  - 🇦🇺 澳大利亚 (Australia) 04 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -50,5 +66,6 @@ proxy-groups:
   - 🇦🇺 澳大利亚 (Australia) 01 - NEKO
   - 🇦🇺 澳大利亚 (Australia) 02 - NEKO
   - 🇦🇺 澳大利亚 (Australia) 03 - NEKO
+  - 🇦🇺 澳大利亚 (Australia) 04 - NEKO
 rules:
 - MATCH,PROXIES

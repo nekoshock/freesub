@@ -5,11 +5,14 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇹🇷 土耳其 (Turkey) 01 - NEKO
-  server: 82.47.63.156
-  port: 2053
+  server: 93.114.98.221
+  port: 443
   udp: true
   type: vless
-  uuid: 9ef61079-6f7d-4911-9608-943da85d8e6f
+  uuid: 552ca1e2-d1d4-4d9d-b0ea-9fabd287ad14
+  tls: true
+  servername: 00iwuafi1019.dopgangster.com
+  skip-cert-verify: false
 - name: 🇹🇷 土耳其 (Turkey) 02 - NEKO
   server: 78.135.73.47
   port: 443
@@ -35,14 +38,6 @@ proxies:
     short-id: 9e419c0759b54d6f
   servername: www.apple.com
   client-fingerprint: chrome
-- name: 🇹🇷 土耳其 (Turkey) 04 - NEKO
-  server: 103.215.218.158
-  port: 22324
-  udp: true
-  type: vmess
-  uuid: 04621bae-ab36-11ec-b909-0242ac120002
-  alterId: 0
-  cipher: auto
 proxy-groups:
 - name: PROXIES
   type: select
@@ -51,7 +46,6 @@ proxy-groups:
   - 🇹🇷 土耳其 (Turkey) 01 - NEKO
   - 🇹🇷 土耳其 (Turkey) 02 - NEKO
   - 🇹🇷 土耳其 (Turkey) 03 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 04 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -60,6 +54,5 @@ proxy-groups:
   - 🇹🇷 土耳其 (Turkey) 01 - NEKO
   - 🇹🇷 土耳其 (Turkey) 02 - NEKO
   - 🇹🇷 土耳其 (Turkey) 03 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 04 - NEKO
 rules:
 - MATCH,PROXIES

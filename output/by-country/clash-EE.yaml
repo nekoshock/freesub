@@ -10,18 +10,9 @@ proxies:
   udp: true
   type: trojan
   password: oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1
-  sni: 109.206.241.10
+  sni: russiapower.accesscam.org
   skip-cert-verify: true
 - name: 🇪🇪 爱沙尼亚 (Estonia) 02 - NEKO
-  server: 94.183.170.135
-  port: 443
-  udp: true
-  type: vless
-  uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
-  network: ws
-  ws-opts:
-    path: /
-- name: 🇪🇪 爱沙尼亚 (Estonia) 03 - NEKO
   server: 94.183.170.147
   port: 8443
   udp: true
@@ -36,6 +27,18 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: 9d30d49278
+- name: 🇪🇪 爱沙尼亚 (Estonia) 03 - NEKO
+  server: 144.31.170.72
+  port: 443
+  udp: true
+  type: vless
+  uuid: deea5046-3543-4b1b-a17f-3d08a65db91d
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: fkZTYNydTBVO-1LSiTvDcyBMx-zBP5Am780jECmUgg0
+  servername: est.bopen.bond
+  client-fingerprint: safari
 - name: 🇪🇪 爱沙尼亚 (Estonia) 04 - NEKO
   server: 94.183.170.135
   port: 8443
@@ -47,14 +50,25 @@ proxies:
   skip-cert-verify: false
   client-fingerprint: chrome
 - name: 🇪🇪 爱沙尼亚 (Estonia) 05 - NEKO
-  server: cabinet.wwwinternetvideo.click
+  server: 94.183.170.135
+  port: 443
+  udp: true
+  type: vless
+  uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: estproxy4.lockdwn.com
+- name: 🇪🇪 爱沙尼亚 (Estonia) 06 - NEKO
+  server: 31.76.71.63
   port: 443
   udp: true
   type: hysteria2
   password: sOiWCQ2AdIV0OWNuqQVyWp4JZnRxdyLROSjX
   sni: cabinet.wwwinternetvideo.click
   skip-cert-verify: true
-- name: 🇪🇪 爱沙尼亚 (Estonia) 06 - NEKO
+- name: 🇪🇪 爱沙尼亚 (Estonia) 07 - NEKO
   server: 5.181.201.43
   port: 443
   udp: true
@@ -66,31 +80,7 @@ proxies:
     public-key: 98MNvJC4t0ZjK_xHlQjOx2WfLfAPluNDb71MzS9sPT8
     short-id: 38018dde3e27335e
   servername: est1.loozerp.wiki
-  client-fingerprint: random
-- name: 🇪🇪 爱沙尼亚 (Estonia) 07 - NEKO
-  server: netlivpn5002.whwbbb.workers.dev
-  port: 443
-  udp: true
-  type: vless
-  uuid: a88e61a0-2b38-f6df-c5c7-d20600000000
-  tls: true
-  servername: netlivpn5002.whwbbb.workers.dev
-  skip-cert-verify: false
-  client-fingerprint: qq
-  network: ws
-  ws-opts:
-    path: /
-- name: 🇪🇪 爱沙尼亚 (Estonia) 08 - NEKO
-  server: 188.114.97.6
-  port: 8080
-  udp: true
-  type: vless
-  uuid: a88e61a0-2b38-f6df-c5c7-d20600000000
-  network: ws
-  ws-opts:
-    path: /NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN
-    headers:
-      Host: netlivpn5002.whwbbb.workers.dev
+  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
@@ -103,7 +93,6 @@ proxy-groups:
   - 🇪🇪 爱沙尼亚 (Estonia) 05 - NEKO
   - 🇪🇪 爱沙尼亚 (Estonia) 06 - NEKO
   - 🇪🇪 爱沙尼亚 (Estonia) 07 - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 08 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -116,6 +105,5 @@ proxy-groups:
   - 🇪🇪 爱沙尼亚 (Estonia) 05 - NEKO
   - 🇪🇪 爱沙尼亚 (Estonia) 06 - NEKO
   - 🇪🇪 爱沙尼亚 (Estonia) 07 - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 08 - NEKO
 rules:
 - MATCH,PROXIES

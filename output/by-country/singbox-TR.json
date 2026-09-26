@@ -6,39 +6,6 @@
     {
       "type": "vless",
       "tag": "🇹🇷 土耳其 (Turkey) 01 - NEKO",
-      "server": "93.114.98.221",
-      "server_port": 443,
-      "uuid": "552ca1e2-d1d4-4d9d-b0ea-9fabd287ad14",
-      "tls": {
-        "enabled": true,
-        "server_name": "00iwuafi1019.dopgangster.com",
-        "insecure": false
-      }
-    },
-    {
-      "type": "vless",
-      "tag": "🇹🇷 土耳其 (Turkey) 02 - NEKO",
-      "server": "78.135.73.47",
-      "server_port": 443,
-      "uuid": "25e16692-d097-4e69-9e2d-8415609c1968",
-      "flow": "xtls-rprx-vision",
-      "tls": {
-        "enabled": true,
-        "server_name": "www.datadoghq.com",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "firefox"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "sZAJkAu23wp1WKY-qeaeiwR38izP5OyfhumoE9xhbB8",
-          "short_id": "f46cd3ea3d1eb72d"
-        }
-      }
-    },
-    {
-      "type": "vless",
-      "tag": "🇹🇷 土耳其 (Turkey) 03 - NEKO",
       "server": "151.241.226.201",
       "server_port": 2053,
       "uuid": "0eed6293-8cf1-4e77-ac10-9c3d50d0b2f8",
@@ -57,13 +24,33 @@
       }
     },
     {
+      "type": "vless",
+      "tag": "🇹🇷 土耳其 (Turkey) 02 - NEKO",
+      "server": "78.135.73.47",
+      "server_port": 443,
+      "uuid": "25e16692-d097-4e69-9e2d-8415609c1968",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.datadoghq.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "sZAJkAu23wp1WKY-qeaeiwR38izP5OyfhumoE9xhbB8",
+          "short_id": "f46cd3ea3d1eb72d"
+        }
+      }
+    },
+    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
         "🇹🇷 土耳其 (Turkey) 01 - NEKO",
-        "🇹🇷 土耳其 (Turkey) 02 - NEKO",
-        "🇹🇷 土耳其 (Turkey) 03 - NEKO"
+        "🇹🇷 土耳其 (Turkey) 02 - NEKO"
       ]
     },
     {
@@ -71,8 +58,7 @@
       "tag": "auto",
       "outbounds": [
         "🇹🇷 土耳其 (Turkey) 01 - NEKO",
-        "🇹🇷 土耳其 (Turkey) 02 - NEKO",
-        "🇹🇷 土耳其 (Turkey) 03 - NEKO"
+        "🇹🇷 土耳其 (Turkey) 02 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

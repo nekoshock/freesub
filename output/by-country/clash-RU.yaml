@@ -5,61 +5,13 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇷🇺 俄罗斯 (Russia) 01 - NEKO
-  server: 188.114.97.6
-  port: 8080
-  udp: true
-  type: vless
-  uuid: 0991a0c4-0ee5-4213-af89-7ad589f853f3
-  network: ws
-  ws-opts:
-    path: /ELiV2-RAY
-    headers:
-      Host: elenaaaaaaaaaa.cloudns.pro
-- name: 🇷🇺 俄罗斯 (Russia) 02 - NEKO
-  server: 104.21.16.109
-  port: 443
-  udp: true
-  type: vless
-  uuid: cc08d2d0-8a7a-4469-81d2-c43704451271
-  tls: true
-  servername: 9tg-d0htbrb5e3tp0c-o7ix23cx0f.ftfgblgft6-1h2iv2oo4h0.workers.dev
-  skip-cert-verify: false
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /vl/6871nrbnl9WsdAiOUInt
-    headers:
-      Host: 9tg-d0htbrb5e3tp0c-o7ix23cx0f.ftfgblgft6-1h2iv2oo4h0.workers.dev
-- name: 🇷🇺 俄罗斯 (Russia) 03 - NEKO
-  server: 194.87.196.13
-  port: 30210
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: 4938e975724d0ed1
-- name: 🇷🇺 俄罗斯 (Russia) 04 - NEKO
-  server: 195.133.23.200
-  port: 30210
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: 81a20429165df87e
-- name: 🇷🇺 俄罗斯 (Russia) 05 - NEKO
   server: 176.32.35.2
   port: 10090
   udp: true
   type: ss
   cipher: aes-256-gcm
   password: 895b4b796a357570
-- name: 🇷🇺 俄罗斯 (Russia) 06 - NEKO
-  server: 91.240.86.70
-  port: 22443
-  udp: true
-  type: hysteria2
-  password: 3f63c86c-ac4a-4900-85cf-4fedf93c2ca5
-  sni: itsallproxy.quattro-tech.ru
-  skip-cert-verify: false
-- name: 🇷🇺 俄罗斯 (Russia) 07 - NEKO
+- name: 🇷🇺 俄罗斯 (Russia) 02 - NEKO
   server: 91.196.32.216
   port: 9543
   udp: true
@@ -72,22 +24,15 @@ proxies:
     short-id: 123abcdf
   servername: storage.yandexcloud.net
   client-fingerprint: chrome
-- name: 🇷🇺 俄罗斯 (Russia) 08 - NEKO
-  server: 46.8.200.91
-  port: 443
+- name: 🇷🇺 俄罗斯 (Russia) 03 - NEKO
+  server: 91.240.86.70
+  port: 22443
   udp: true
-  type: vless
-  uuid: b8201bab-fa6c-4f6e-b289-b5da660c6f69
-  tls: true
-  servername: cf3.rumedia-cdn.com
-  skip-cert-verify: false
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /cdn/v3/live
-    headers:
-      Host: cf3.rumedia-cdn.com
-- name: 🇷🇺 俄罗斯 (Russia) 09 - NEKO
+  type: hysteria2
+  password: 3f63c86c-ac4a-4900-85cf-4fedf93c2ca5
+  sni: 91.240.86.70
+  skip-cert-verify: true
+- name: 🇷🇺 俄罗斯 (Russia) 04 - NEKO
   server: 45.12.75.242
   port: 26424
   udp: true
@@ -98,20 +43,7 @@ proxies:
     public-key: l8AubqcxQO-HRFJy4pZL1vbLOo-eXit69s-XulSELE0
     short-id: 23103e1e
   servername: ya.ru
-  client-fingerprint: qq
-- name: 🇷🇺 俄罗斯 (Russia) 10 - NEKO
-  server: du-rov.secureservice.top
-  port: 8443
-  udp: true
-  type: vless
-  uuid: c53ea5e9-ed8b-4990-805d-7f1d6451426c
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: fSVfR9NB-6J6smrZlavi0GWd8JfDh0aXuEkKbtuFzUI
-    short-id: 3cbc3d737fb9c4af
-  servername: du-rov.secureservice.top
-  client-fingerprint: random
+  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
@@ -121,12 +53,6 @@ proxy-groups:
   - 🇷🇺 俄罗斯 (Russia) 02 - NEKO
   - 🇷🇺 俄罗斯 (Russia) 03 - NEKO
   - 🇷🇺 俄罗斯 (Russia) 04 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 05 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 06 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 07 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 08 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 09 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 10 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -136,11 +62,5 @@ proxy-groups:
   - 🇷🇺 俄罗斯 (Russia) 02 - NEKO
   - 🇷🇺 俄罗斯 (Russia) 03 - NEKO
   - 🇷🇺 俄罗斯 (Russia) 04 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 05 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 06 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 07 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 08 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 09 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 10 - NEKO
 rules:
 - MATCH,PROXIES

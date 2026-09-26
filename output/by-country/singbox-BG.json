@@ -4,26 +4,29 @@
   },
   "outbounds": [
     {
-      "type": "vmess",
-      "tag": "🇦🇺 澳大利亚 (Australia) 01 - NEKO",
-      "server": "82.198.246.250",
-      "server_port": 180,
-      "uuid": "d13fc2f5-3e05-4795-81eb-44143a09e552",
-      "security": "auto"
+      "type": "vless",
+      "tag": "🇧🇬 保加利亚 (Bulgaria) 01 - NEKO",
+      "server": "131.123.37.199",
+      "server_port": 8081,
+      "uuid": "54ee5e59-55a3-4599-83ff-0c67b3f411b2",
+      "transport": {
+        "type": "ws",
+        "path": "/vless-test"
+      }
     },
     {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇦🇺 澳大利亚 (Australia) 01 - NEKO"
+        "🇧🇬 保加利亚 (Bulgaria) 01 - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇦🇺 澳大利亚 (Australia) 01 - NEKO"
+        "🇧🇬 保加利亚 (Bulgaria) 01 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

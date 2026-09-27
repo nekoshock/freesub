@@ -5,14 +5,6 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇪🇪 爱沙尼亚 (Estonia) 01 - NEKO
-  server: 77.239.126.219
-  port: 9443
-  udp: true
-  type: hysteria2
-  password: e3c3b722-1264-4cdc-a97c-b0a1bb73cd67
-  sni: onecloudstream.com
-  skip-cert-verify: false
-- name: 🇪🇪 爱沙尼亚 (Estonia) 02 - NEKO
   server: 5.181.201.44
   port: 443
   udp: true
@@ -24,20 +16,18 @@ proxies:
     public-key: 98MNvJC4t0ZjK_xHlQjOx2WfLfAPluNDb71MzS9sPT8
     short-id: 38018dde3e27335e
   servername: bababoy.karp1pdd.life
-  client-fingerprint: chrome
+  client-fingerprint: random
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
   - 🇪🇪 爱沙尼亚 (Estonia) 01 - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 02 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
   - 🇪🇪 爱沙尼亚 (Estonia) 01 - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 02 - NEKO
 rules:
 - MATCH,PROXIES

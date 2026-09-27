@@ -5,31 +5,23 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇺🇸 美国 (United States) 01 - NEKO
-  server: 47.253.226.114
+  server: 47.85.188.30
+  port: 12004
+  udp: true
+  type: vmess
+  uuid: 8b5552bd-4cc7-4cac-af08-81c21686fd4f
+  alterId: 0
+  cipher: auto
+- name: 🇺🇸 美国 (United States) 02 - NEKO
+  server: 3.85.21.125
   port: 443
   udp: true
-  type: vless
-  uuid: 055a1ce8-2a16-4a0d-a2c2-22826c9b2413
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: Svl81isn16RPAFnjtmYw7A6TPnsEPLHuYYaJht65Rzc
-  servername: www.cloudflare.com
-  client-fingerprint: chrome
-- name: 🇺🇸 美国 (United States) 02 - NEKO
-  server: 108.162.198.178
-  port: 2086
-  udp: true
-  type: vless
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+  type: ss
+  cipher: aes-256-cfb
+  password: amazonskr05
 - name: 🇺🇸 美国 (United States) 03 - NEKO
-  server: 162.159.38.127
-  port: 2082
+  server: 172.64.229.170
+  port: 2095
   udp: true
   type: vless
   uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
@@ -39,475 +31,13 @@ proxies:
     headers:
       Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
 - name: 🇺🇸 美国 (United States) 04 - NEKO
-  server: 108.162.198.178
-  port: 80
-  udp: true
-  type: vless
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🇺🇸 美国 (United States) 05 - NEKO
-  server: 37.19.198.244
-  port: 443
-  udp: true
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-- name: 🇺🇸 美国 (United States) 06 - NEKO
   server: 37.19.198.160
   port: 443
   udp: true
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
-- name: 🇺🇸 美国 (United States) 07 - NEKO
-  server: 108.162.198.178
-  port: 8880
-  udp: true
-  type: vless
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🇺🇸 美国 (United States) 08 - NEKO
-  server: 108.162.198.178
-  port: 8080
-  udp: true
-  type: vless
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🇺🇸 美国 (United States) 09 - NEKO
-  server: 3.85.21.125
-  port: 443
-  udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: amazonskr05
-- name: 🇺🇸 美国 (United States) 10 - NEKO
-  server: 188.114.97.6
-  port: 8080
-  udp: true
-  type: vless
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  network: ws
-  ws-opts:
-    path: /?ed=2560
-    headers:
-      Host: zb1zi.s3nx.dyz.hh.vavava.kdns.fr
-- name: 🇺🇸 美国 (United States) 11 - NEKO
-  server: 108.162.198.178
-  port: 2095
-  udp: true
-  type: vless
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🇺🇸 美国 (United States) 12 - NEKO
-  server: 195.123.235.177
-  port: 443
-  udp: true
-  type: vless
-  uuid: 729dd5f2-f5ff-4070-8c10-863eceded0b1
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: 5B83otQ5ZQwtBFhR7xzsGJRXflkFKRJpQguYbE5JWGI
-    short-id: c85d029f5e8eb393
-  servername: gateway.icloud.com
-  client-fingerprint: chrome
-- name: 🇺🇸 美国 (United States) 13 - NEKO
-  server: 169.40.42.15
-  port: 443
-  udp: true
-  type: vless
-  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
-    short-id: c39cc7310a
-  servername: yahoo.com
-  client-fingerprint: chrome
-- name: 🇺🇸 美国 (United States) 14 - NEKO
-  server: 172.111.38.100
-  port: 22324
-  udp: true
-  type: vmess
-  uuid: 04621bae-ab36-11ec-b909-0242ac120002
-  alterId: 0
-  cipher: auto
-- name: 🇺🇸 美国 (United States) 15 - NEKO
-  server: 169.40.42.229
-  port: 443
-  udp: true
-  type: vless
-  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
-    short-id: c39cc7310a
-  servername: yahoo.com
-  client-fingerprint: ios
-- name: 🇺🇸 美国 (United States) 16 - NEKO
-  server: 137.184.218.169
-  port: 36925
-  udp: true
-  type: vless
-  uuid: c9fd0fb1-8251-4106-b09a-f4b426736f67
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: lJ9INPpO4rdnm2Tek_yg0PGFyUrBB6MoKyvqt_Mfqm0
-  servername: www.cloudflare.com
-  client-fingerprint: chrome
-- name: 🇺🇸 美国 (United States) 17 - NEKO
-  server: 37.19.198.236
-  port: 443
-  udp: true
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-- name: 🇺🇸 美国 (United States) 18 - NEKO
-  server: 156.146.38.170
-  port: 443
-  udp: true
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-- name: 🇺🇸 美国 (United States) 19 - NEKO
-  server: 156.146.38.167
-  port: 443
-  udp: true
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-- name: 🇺🇸 美国 (United States) 20 - NEKO
-  server: 38.110.1.246
-  port: 18000
-  udp: true
-  type: vmess
-  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-  alterId: 0
-  cipher: auto
-- name: 🇺🇸 美国 (United States) 21 - NEKO
-  server: 199.232.78.160
-  port: 443
-  udp: true
-  type: trojan
-  password: MiTiVPN
-  sni: ssl.fastly.com
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /
-- name: 🇺🇸 美国 (United States) 22 - NEKO
-  server: 167.88.62.124
-  port: 22324
-  udp: true
-  type: vmess
-  uuid: 04621bae-ab36-11ec-b909-0242ac120002
-  alterId: 0
-  cipher: auto
-- name: 🇺🇸 美国 (United States) 23 - NEKO
-  server: 66.163.115.23
-  port: 443
-  udp: true
-  type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  alterId: 0
-  cipher: auto
-  tls: true
-  servername: aidrivercat.org
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /linkvws
-    headers:
-      Host: aidrivercat.org
-- name: 🇺🇸 美国 (United States) 24 - NEKO
-  server: 3h-unitedstates1.09vpn.com
-  port: 80
-  udp: true
-  type: vless
-  uuid: 18cf8db1-9f86-43f7-baa0-382efb7f2dfa
-  network: ws
-  ws-opts:
-    path: /vless/
-- name: 🇺🇸 美国 (United States) 25 - NEKO
-  server: 198.251.78.29
-  port: 2053
-  udp: true
-  type: vless
-  uuid: c423cc1b-f88e-421c-9a16-c480d84da20f
-  tls: true
-  reality-opts:
-    public-key: Uk5b-Wh_uxeCc7R8NS9iWE40xc0h9wWC04rSB9yhgAw
-    short-id: b5d625695ec82c7e
-  servername: www.cloudflare.com
-  client-fingerprint: firefox
-- name: 🇺🇸 美国 (United States) 26 - NEKO
-  server: 167.82.76.7
-  port: 443
-  udp: true
-  type: trojan
-  password: MiTiVPN
-  sni: ssl.fastly.com
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /
-- name: 🇺🇸 美国 (United States) 27 - NEKO
-  server: 192.3.247.109
-  port: 43579
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: 8c009bb6-08b3-4526-a86b-5af7ddfc567a-4c757b72-6eec-4faf-8c2e-09fd1c7fa936
-- name: 🇺🇸 美国 (United States) 28 - NEKO
-  server: 108.181.0.177
-  port: 8388
-  udp: true
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: G5p6ww4o67HB
-- name: 🇺🇸 美国 (United States) 29 - NEKO
-  server: 169.197.143.116
-  port: 22324
-  udp: true
-  type: vmess
-  uuid: 04621bae-ab36-11ec-b909-0242ac120002
-  alterId: 0
-  cipher: auto
-- name: 🇺🇸 美国 (United States) 30 - NEKO
-  server: 216.152.152.187
-  port: 22324
-  udp: true
-  type: vmess
-  uuid: 04621bae-ab36-11ec-b909-0242ac120002
-  alterId: 0
-  cipher: auto
-- name: 🇺🇸 美国 (United States) 31 - NEKO
-  server: 162.35.104.143
-  port: 443
-  udp: true
-  type: vless
-  uuid: 54ee5e59-55a3-4599-83ff-0c67b3f411b2
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: pX9uknHGLC9I26TT5kq4bIAljtX2AGWLK23EMgn6xFo
-    short-id: 84be686ea1d16478
-  servername: sheetpeek.com
-  client-fingerprint: firefox
-- name: 🇺🇸 美国 (United States) 32 - NEKO
-  server: 167.17.68.89
-  port: 22324
-  udp: true
-  type: vmess
-  uuid: 04621bae-ab36-11ec-b909-0242ac120002
-  alterId: 0
-  cipher: auto
-- name: 🇺🇸 美国 (United States) 33 - NEKO
-  server: 37.19.198.243
-  port: 443
-  udp: true
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-- name: 🇺🇸 美国 (United States) 34 - NEKO
-  server: 45.91.138.179
-  port: 443
-  udp: true
-  type: vless
-  uuid: 11f21602-47aa-42e2-9149-69120f2e6df6
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: 36sTeaLdaAjQQxxzh492XihoPi2YxmttQyncmLuxYHE
-    short-id: 169fc2df88419465
-  servername: us05.shifor01.life
-  client-fingerprint: chrome
-- name: 🇺🇸 美国 (United States) 35 - NEKO
-  server: 172.235.43.210
-  port: 53957
-  udp: true
-  type: vless
-  uuid: 7ab29f89-6eef-4171-b232-fc4f580ad31b
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: XUHlbk5VH5z4E2wxZBhlpLZ33qevyQgqU7dheRDgoGQ
-    short-id: 44e82fd7b97b14
-  servername: www.nvidia.com
-  client-fingerprint: chrome
-- name: 🇺🇸 美国 (United States) 36 - NEKO
-  server: 34.94.125.227
-  port: 443
-  udp: true
-  type: trojan
-  password: M7v%w11Se*
-  sni: mxlo.wsone.icu
-  skip-cert-verify: false
-- name: 🇺🇸 美国 (United States) 37 - NEKO
-  server: ccs2g.pai50288.uk
-  port: 443
-  udp: true
-  type: vless
-  uuid: 8be461cb-a0df-47cf-bc0d-4d9e6a22fa74
-  tls: true
-  servername: ccs2g.pai50288.uk
-  skip-cert-verify: false
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /pai50288
-- name: 🇺🇸 美国 (United States) 38 - NEKO
-  server: 15.204.97.197
-  port: 23576
-  udp: true
-  type: vless
-  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
-    short-id: '01'
-  servername: fuck.rkn
-  client-fingerprint: chrome
-- name: 🇺🇸 美国 (United States) 39 - NEKO
-  server: 163.192.14.135
-  port: 50160
-  udp: true
-  type: hysteria2
-  password: 099830134df5ac3a04a4b21d39b8c395
-  sni: www.bing.com
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 40 - NEKO
-  server: 15.204.97.195
-  port: 23576
-  udp: true
-  type: vless
-  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
-    short-id: '01'
-  servername: fuck.rkn
-  client-fingerprint: chrome
-- name: 🇺🇸 美国 (United States) 41 - NEKO
-  server: 15.204.97.198
-  port: 23576
-  udp: true
-  type: vless
-  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
-    short-id: '01'
-  servername: fuck.rkn
-  client-fingerprint: chrome
-- name: 🇺🇸 美国 (United States) 42 - NEKO
-  server: 15.204.97.219
-  port: 23576
-  udp: true
-  type: vless
-  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
-    short-id: '01'
-  servername: fuck.rkn
-  client-fingerprint: chrome
-- name: 🇺🇸 美国 (United States) 43 - NEKO
-  server: 15.204.97.209
-  port: 23576
-  udp: true
-  type: vless
-  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
-    short-id: '01'
-  servername: fuck.rkn
-  client-fingerprint: chrome
-- name: 🇺🇸 美国 (United States) 44 - NEKO
-  server: 155.248.209.237
-  port: 33333
-  udp: true
-  type: hysteria2
-  password: bce6c821-200d-421f-bf3d-7159e5246ea0
-  sni: 155.248.209.237
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 45 - NEKO
-  server: 15.204.97.216
-  port: 23576
-  udp: true
-  type: vless
-  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
-    short-id: '01'
-  servername: fuck.rkn
-  client-fingerprint: chrome
-- name: 🇺🇸 美国 (United States) 46 - NEKO
-  server: 15.204.97.214
-  port: 23576
-  udp: true
-  type: vless
-  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
-    short-id: '01'
-  servername: fuck.rkn
-  client-fingerprint: chrome
-- name: 🇺🇸 美国 (United States) 47 - NEKO
-  server: 5.78.159.214
-  port: 80
-  udp: true
-  type: vless
-  uuid: 52ecd83b-b6c1-41ee-bc36-049755bd33d2
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: NTXb7QGg9EyPkpG-7lmBNNaqf4473p_l8ITmTH-xmHg
-    short-id: 0db5c018ed7bb596
-  servername: 5.78.159.214
-  client-fingerprint: chrome
-- name: 🇺🇸 美国 (United States) 48 - NEKO
-  server: 15.204.97.206
-  port: 23576
-  udp: true
-  type: vless
-  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
-    short-id: '01'
-  servername: fuck.rkn
-  client-fingerprint: chrome
-- name: 🇺🇸 美国 (United States) 49 - NEKO
+- name: 🇺🇸 美国 (United States) 05 - NEKO
   server: 47.253.144.114
   port: 443
   udp: true
@@ -520,30 +50,36 @@ proxies:
     short-id: 4679f07417e9feb4
   servername: www.apple.com
   client-fingerprint: chrome
-- name: 🇺🇸 美国 (United States) 50 - NEKO
-  server: 15.204.233.41
-  port: 8882
+- name: 🇺🇸 美国 (United States) 06 - NEKO
+  server: 47.90.153.88
+  port: 443
+  udp: true
+  type: vless
+  uuid: 1e255ca5-93b1-4952-a838-0783dfc034d8
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: QtYyp41YbDij6nygTaPPpqXqEGzDD3wYFI3YlfTjfBo
+    short-id: 6b85179e
+  servername: www.apple.com
+  client-fingerprint: chrome
+- name: 🇺🇸 美国 (United States) 07 - NEKO
+  server: 37.19.198.236
+  port: 443
   udp: true
   type: ss
-  cipher: aes-256-gcm
-  password: kDWvXYZoTBcGkC4
-- name: 🇺🇸 美国 (United States) 51 - NEKO
-  server: 23.150.248.20
-  port: 8388
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇺🇸 美国 (United States) 08 - NEKO
+  server: 37.19.198.243
+  port: 443
   udp: true
   type: ss
-  cipher: chacha20-ietf-poly1305
-  password: qB2Cv9VIlujj
-- name: 🇺🇸 美国 (United States) 52 - NEKO
-  server: 15.204.246.107
-  port: 8888
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: Y6R9pAtvxxzmGC
-- name: 🇺🇸 美国 (United States) 53 - NEKO
-  server: 172.64.229.170
-  port: 2095
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇺🇸 美国 (United States) 09 - NEKO
+  server: 162.159.45.19
+  port: 80
   udp: true
   type: vless
   uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
@@ -552,22 +88,235 @@ proxies:
     path: /?ed=2560security=tls
     headers:
       Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🇺🇸 美国 (United States) 54 - NEKO
+- name: 🇺🇸 美国 (United States) 10 - NEKO
+  server: 37.19.198.244
+  port: 443
+  udp: true
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇺🇸 美国 (United States) 11 - NEKO
+  server: 108.162.198.178
+  port: 2095
+  udp: true
+  type: vless
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🇺🇸 美国 (United States) 12 - NEKO
+  server: 172.111.38.100
+  port: 22324
+  udp: true
+  type: vmess
+  uuid: 04621bae-ab36-11ec-b909-0242ac120002
+  alterId: 0
+  cipher: auto
+- name: 🇺🇸 美国 (United States) 13 - NEKO
+  server: 108.162.198.178
+  port: 8080
+  udp: true
+  type: vless
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🇺🇸 美国 (United States) 14 - NEKO
+  server: 162.35.104.144
+  port: 8081
+  udp: true
+  type: vless
+  uuid: 54ee5e59-55a3-4599-83ff-0c67b3f411b2
+  network: ws
+  ws-opts:
+    path: /vless-test
+- name: 🇺🇸 美国 (United States) 15 - NEKO
+  server: 108.162.198.178
+  port: 2086
+  udp: true
+  type: vless
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🇺🇸 美国 (United States) 16 - NEKO
+  server: 47.253.226.114
+  port: 443
+  udp: true
+  type: vless
+  uuid: 055a1ce8-2a16-4a0d-a2c2-22826c9b2413
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: Svl81isn16RPAFnjtmYw7A6TPnsEPLHuYYaJht65Rzc
+  servername: www.cloudflare.com
+  client-fingerprint: chrome
+- name: 🇺🇸 美国 (United States) 17 - NEKO
   server: 198.98.53.130
   port: 443
   udp: true
   type: ss
   cipher: chacha20-ietf-poly1305
   password: eDfN7SODQceIOmIAbtJJtK
-- name: 🇺🇸 美国 (United States) 55 - NEKO
-  server: 192.255.128.123
+- name: 🇺🇸 美国 (United States) 18 - NEKO
+  server: 188.114.97.6
+  port: 8080
+  udp: true
+  type: vless
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: zb1zi.s3nx.dyz.hh.vavava.kdns.fr
+- name: 🇺🇸 美国 (United States) 19 - NEKO
+  server: 78.153.155.121
   port: 443
   udp: true
-  type: hysteria2
-  password: RN_3f80eeb4bbd0f13f
-  sni: www.bing.com
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 56 - NEKO
+  type: vless
+  uuid: 61da8f4b-6ab1-4ca7-bae0-1cec4f9be2f8
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: hYoIx98zfa-cDdgG6mzuh96wQ3BxSA9CVy7NpNGkJRk
+    short-id: 035dc6023ca8ae88
+  servername: unpkg.com
+  client-fingerprint: safari
+- name: 🇺🇸 美国 (United States) 20 - NEKO
+  server: 162.159.38.127
+  port: 2086
+  udp: true
+  type: vless
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🇺🇸 美国 (United States) 21 - NEKO
+  server: 137.184.218.169
+  port: 36925
+  udp: true
+  type: vless
+  uuid: c9fd0fb1-8251-4106-b09a-f4b426736f67
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: lJ9INPpO4rdnm2Tek_yg0PGFyUrBB6MoKyvqt_Mfqm0
+  servername: www.cloudflare.com
+  client-fingerprint: chrome
+- name: 🇺🇸 美国 (United States) 22 - NEKO
+  server: 167.88.62.124
+  port: 22324
+  udp: true
+  type: vmess
+  uuid: 04621bae-ab36-11ec-b909-0242ac120002
+  alterId: 0
+  cipher: auto
+- name: 🇺🇸 美国 (United States) 23 - NEKO
+  server: 167.82.76.7
+  port: 443
+  udp: true
+  type: trojan
+  password: MiTiVPN
+  sni: ssl.fastly.com
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/NLSs---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN
+- name: 🇺🇸 美国 (United States) 24 - NEKO
+  server: 156.146.38.167
+  port: 443
+  udp: true
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇺🇸 美国 (United States) 25 - NEKO
+  server: 23.150.248.20
+  port: 8388
+  udp: true
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: qB2Cv9VIlujj
+- name: 🇺🇸 美国 (United States) 26 - NEKO
+  server: 169.40.42.229
+  port: 443
+  udp: true
+  type: vless
+  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
+    short-id: c39cc7310a
+  servername: yahoo.com
+  client-fingerprint: ios
+- name: 🇺🇸 美国 (United States) 27 - NEKO
+  server: 156.146.38.170
+  port: 443
+  udp: true
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇺🇸 美国 (United States) 28 - NEKO
+  server: 199.232.78.160
+  port: 443
+  udp: true
+  type: trojan
+  password: MiTiVPN
+  sni: ssl.fastly.com
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /
+- name: 🇺🇸 美国 (United States) 29 - NEKO
+  server: 108.181.0.177
+  port: 8388
+  udp: true
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: G5p6ww4o67HB
+- name: 🇺🇸 美国 (United States) 30 - NEKO
+  server: 198.251.78.29
+  port: 2053
+  udp: true
+  type: vless
+  uuid: c423cc1b-f88e-421c-9a16-c480d84da20f
+  tls: true
+  reality-opts:
+    public-key: Uk5b-Wh_uxeCc7R8NS9iWE40xc0h9wWC04rSB9yhgAw
+    short-id: b5d625695ec82c7e
+  servername: www.cloudflare.com
+  client-fingerprint: firefox
+- name: 🇺🇸 美国 (United States) 31 - NEKO
+  server: 173.234.25.93
+  port: 15243
+  udp: true
+  type: ss
+  cipher: aes-128-gcm
+  password: 62dd75ba944947d4ca983cf1679b3797
+- name: 🇺🇸 美国 (United States) 32 - NEKO
+  server: 169.197.143.116
+  port: 22324
+  udp: true
+  type: vmess
+  uuid: 04621bae-ab36-11ec-b909-0242ac120002
+  alterId: 0
+  cipher: auto
+- name: 🇺🇸 美国 (United States) 33 - NEKO
+  server: 192.3.247.109
+  port: 43579
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: 8c009bb6-08b3-4526-a86b-5af7ddfc567a-4c757b72-6eec-4faf-8c2e-09fd1c7fa936
+- name: 🇺🇸 美国 (United States) 34 - NEKO
   server: 216.106.185.141
   port: 22324
   udp: true
@@ -575,35 +324,224 @@ proxies:
   uuid: 04621bae-ab36-11ec-b909-0242ac120002
   alterId: 0
   cipher: auto
-- name: 🇺🇸 美国 (United States) 57 - NEKO
-  server: 150.241.101.17
-  port: 8443
-  udp: true
-  type: vless
-  uuid: 47d9b534-8a0a-4bd2-90f1-1d6ade14427e
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
-    short-id: 6ba85179e30d4fc2
-  servername: yandex.net
-  client-fingerprint: safari
-- name: 🇺🇸 美国 (United States) 58 - NEKO
-  server: us4.998998.best
+- name: 🇺🇸 美国 (United States) 35 - NEKO
+  server: 162.35.104.143
   port: 443
   udp: true
   type: vless
-  uuid: 3c6d1933-b22a-484b-ac8a-63e24f5fba75
+  uuid: 54ee5e59-55a3-4599-83ff-0c67b3f411b2
+  flow: xtls-rprx-vision
   tls: true
-  servername: server14.9966338.xyz
-  skip-cert-verify: false
+  reality-opts:
+    public-key: pX9uknHGLC9I26TT5kq4bIAljtX2AGWLK23EMgn6xFo
+    short-id: 84be686ea1d16478
+  servername: sheetpeek.com
+  client-fingerprint: firefox
+- name: 🇺🇸 美国 (United States) 36 - NEKO
+  server: 172.235.43.210
+  port: 53957
+  udp: true
+  type: vless
+  uuid: 7ab29f89-6eef-4171-b232-fc4f580ad31b
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: XUHlbk5VH5z4E2wxZBhlpLZ33qevyQgqU7dheRDgoGQ
+    short-id: 44e82fd7b97b14
+  servername: www.nvidia.com
   client-fingerprint: chrome
+- name: 🇺🇸 美国 (United States) 37 - NEKO
+  server: 15.204.97.195
+  port: 23576
+  udp: true
+  type: vless
+  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
+    short-id: '01'
+  servername: fuck.rkn
+  client-fingerprint: chrome
+- name: 🇺🇸 美国 (United States) 38 - NEKO
+  server: 15.204.97.214
+  port: 23576
+  udp: true
+  type: vless
+  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
+    short-id: '01'
+  servername: fuck.rkn
+  client-fingerprint: chrome
+- name: 🇺🇸 美国 (United States) 39 - NEKO
+  server: 15.204.97.197
+  port: 23576
+  udp: true
+  type: vless
+  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
+    short-id: '01'
+  servername: fuck.rkn
+  client-fingerprint: chrome
+- name: 🇺🇸 美国 (United States) 40 - NEKO
+  server: 5.78.159.214
+  port: 80
+  udp: true
+  type: vless
+  uuid: 52ecd83b-b6c1-41ee-bc36-049755bd33d2
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: NTXb7QGg9EyPkpG-7lmBNNaqf4473p_l8ITmTH-xmHg
+    short-id: 0db5c018ed7bb596
+  servername: 5.78.159.214
+  client-fingerprint: chrome
+- name: 🇺🇸 美国 (United States) 41 - NEKO
+  server: 15.204.97.216
+  port: 23576
+  udp: true
+  type: vless
+  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
+    short-id: '01'
+  servername: fuck.rkn
+  client-fingerprint: chrome
+- name: 🇺🇸 美国 (United States) 42 - NEKO
+  server: 15.204.97.198
+  port: 23576
+  udp: true
+  type: vless
+  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
+    short-id: '01'
+  servername: fuck.rkn
+  client-fingerprint: chrome
+- name: 🇺🇸 美国 (United States) 43 - NEKO
+  server: 163.192.14.135
+  port: 50160
+  udp: true
+  type: hysteria2
+  password: 099830134df5ac3a04a4b21d39b8c395
+  sni: www.bing.com
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 44 - NEKO
+  server: 15.204.97.209
+  port: 23576
+  udp: true
+  type: vless
+  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
+    short-id: '01'
+  servername: fuck.rkn
+  client-fingerprint: chrome
+- name: 🇺🇸 美国 (United States) 45 - NEKO
+  server: 15.204.97.219
+  port: 23576
+  udp: true
+  type: vless
+  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
+    short-id: '01'
+  servername: fuck.rkn
+  client-fingerprint: chrome
+- name: 🇺🇸 美国 (United States) 46 - NEKO
+  server: 142.249.37.90
+  port: 44356
+  udp: true
+  type: hysteria2
+  password: dongtaiwang.com
+  sni: hy2.561891.xyz
+  skip-cert-verify: false
+- name: 🇺🇸 美国 (United States) 47 - NEKO
+  server: 15.204.97.206
+  port: 23576
+  udp: true
+  type: vless
+  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
+    short-id: '01'
+  servername: fuck.rkn
+  client-fingerprint: chrome
+- name: 🇺🇸 美国 (United States) 48 - NEKO
+  server: 172.64.154.8
+  port: 8880
+  udp: true
+  type: vless
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
   network: ws
   ws-opts:
-    path: /ujhgfytsrtw563675eud
+    path: /?ed=2560security=tls
     headers:
-      Host: server14.9966338.xyz
-- name: 🇺🇸 美国 (United States) 59 - NEKO
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🇺🇸 美国 (United States) 49 - NEKO
+  server: 38.110.1.246
+  port: 18000
+  udp: true
+  type: vmess
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+- name: 🇺🇸 美国 (United States) 50 - NEKO
+  server: 64.188.98.171
+  port: 443
+  udp: true
+  type: hysteria2
+  password: mkL3AfdSZIpTWRB9TcWPn9vywPGN89MRHg3ToRDj
+  sni: germany3.h2corp.local
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 51 - NEKO
+  server: 167.17.68.89
+  port: 22324
+  udp: true
+  type: vmess
+  uuid: 04621bae-ab36-11ec-b909-0242ac120002
+  alterId: 0
+  cipher: auto
+- name: 🇺🇸 美国 (United States) 52 - NEKO
+  server: 15.204.233.41
+  port: 8882
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: kDWvXYZoTBcGkC4
+- name: 🇺🇸 美国 (United States) 53 - NEKO
+  server: 34.94.125.227
+  port: 443
+  udp: true
+  type: trojan
+  password: M7v%w11Se*
+  sni: mxlo.wsone.icu
+  skip-cert-verify: false
+- name: 🇺🇸 美国 (United States) 54 - NEKO
+  server: 222.167.212.159
+  port: 8443
+  udp: true
+  type: hysteria2
+  password: kewr0929_M9ic23iqe_m9E2R93Js8034c_Rt10
+  sni: new-finland-september.bumbleshrimp.com
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 55 - NEKO
   server: guanwang.awsno.com
   port: 443
   udp: true
@@ -619,20 +557,16 @@ proxies:
     path: /hls/cctv5phd.m3u8
     headers:
       Host: guanwang.awsno.com
-- name: 🇺🇸 美国 (United States) 60 - NEKO
-  server: conge.ggisopi.su
+- name: 🇺🇸 美国 (United States) 56 - NEKO
+  server: 192.255.128.123
   port: 443
   udp: true
-  type: vless
-  uuid: d0f0a880-0df1-48c9-bdf1-5669fb9483ce
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: SB1uC0OEveYjSiS_Nuw9Ld-uVVXWqi794OGnldthY3I
-  servername: conge.ggisopi.su
-  client-fingerprint: qq
-- name: 🇺🇸 美国 (United States) 61 - NEKO
-  server: 150.241.101.80
+  type: hysteria2
+  password: RN_3f80eeb4bbd0f13f
+  sni: www.bing.com
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 57 - NEKO
+  server: 150.241.101.17
   port: 8443
   udp: true
   type: vless
@@ -643,28 +577,37 @@ proxies:
     public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
     short-id: 6ba85179e30d4fc2
   servername: yandex.net
-  client-fingerprint: chrome
-- name: 🇺🇸 美国 (United States) 62 - NEKO
-  server: 15.204.247.206
-  port: 4444
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: pKEW8JPByTVTLtM
-- name: 🇺🇸 美国 (United States) 63 - NEKO
-  server: sql.popmintxo.cc
-  port: 443
+  client-fingerprint: safari
+- name: 🇺🇸 美国 (United States) 58 - NEKO
+  server: 176.108.246.110
+  port: 9830
   udp: true
   type: vless
-  uuid: d806a58b-33aa-42e0-b170-395e49c16b37
-  flow: xtls-rprx-vision
+  uuid: 5d16ac22-6eea-426f-b778-6f4c2961faef
   tls: true
   reality-opts:
-    public-key: Y0noOXC8qHmbM0GmDpj-9BBwKSOtHs-uMbNfKU050GQ
-    short-id: b558b9305a0b
-  servername: www.microsoft.com
+    public-key: bnRIb3Er1i-K6NGGByCO9UbGfOvu43ZoiK7ulPd1SzU
+  servername: dl.google.com
   client-fingerprint: chrome
-- name: 🇺🇸 美国 (United States) 64 - NEKO
+  network: grpc
+  grpc-opts:
+    grpc-service-name: grpc-tunnel
+- name: 🇺🇸 美国 (United States) 59 - NEKO
+  server: 176.108.246.73
+  port: 9873
+  udp: true
+  type: vless
+  uuid: 5d16ac22-6eea-426f-b778-6f4c2961faef
+  tls: true
+  reality-opts:
+    public-key: bnRIb3Er1i-K6NGGByCO9UbGfOvu43ZoiK7ulPd1SzU
+    short-id: aabbccdd
+  servername: dl.google.com
+  client-fingerprint: chrome
+  network: grpc
+  grpc-opts:
+    grpc-service-name: grpc-tunnel
+- name: 🇺🇸 美国 (United States) 60 - NEKO
   server: 77.91.68.70
   port: 55983
   udp: true
@@ -676,13 +619,58 @@ proxies:
     short-id: 0e
   servername: yahoo.com
   client-fingerprint: chrome
-- name: 🇺🇸 美国 (United States) 65 - NEKO
-  server: 15.204.247.124
-  port: 2375
+- name: 🇺🇸 美国 (United States) 61 - NEKO
+  server: conge.ggisopi.su
+  port: 443
+  udp: true
+  type: vless
+  uuid: d0f0a880-0df1-48c9-bdf1-5669fb9483ce
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: SB1uC0OEveYjSiS_Nuw9Ld-uVVXWqi794OGnldthY3I
+  servername: conge.ggisopi.su
+  client-fingerprint: qq
+- name: 🇺🇸 美国 (United States) 62 - NEKO
+  server: 15.204.247.206
+  port: 4444
   udp: true
   type: ss
   cipher: aes-256-gcm
-  password: faBAoD54k87UJG7
+  password: pKEW8JPByTVTLtM
+- name: 🇺🇸 美国 (United States) 63 - NEKO
+  server: 216.152.152.187
+  port: 22324
+  udp: true
+  type: vmess
+  uuid: 04621bae-ab36-11ec-b909-0242ac120002
+  alterId: 0
+  cipher: auto
+- name: 🇺🇸 美国 (United States) 64 - NEKO
+  server: 169.40.42.15
+  port: 443
+  udp: true
+  type: vless
+  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
+    short-id: c39cc7310a
+  servername: yahoo.com
+  client-fingerprint: chrome
+- name: 🇺🇸 美国 (United States) 65 - NEKO
+  server: 78.111.89.171
+  port: 443
+  udp: true
+  type: vless
+  uuid: 0370b162-baff-4757-86cc-cce4bf07f6f1
+  tls: true
+  reality-opts:
+    public-key: lYcMPEgf6ePmF_d8RXR5fsVorycW37v_ECl-fz_H6w4
+    short-id: cfe08c23a85f24
+  servername: www.cloudflare.com
+  client-fingerprint: chrome
 - name: 🇺🇸 美国 (United States) 66 - NEKO
   server: 172.67.161.144
   port: 8443
@@ -700,6 +688,13 @@ proxies:
     headers:
       Host: v2ray1.dozapp.xyz
 - name: 🇺🇸 美国 (United States) 67 - NEKO
+  server: 15.204.247.124
+  port: 2375
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: faBAoD54k87UJG7
+- name: 🇺🇸 美国 (United States) 68 - NEKO
   server: 67.215.235.109
   port: 443
   udp: true
@@ -778,6 +773,7 @@ proxy-groups:
   - 🇺🇸 美国 (United States) 65 - NEKO
   - 🇺🇸 美国 (United States) 66 - NEKO
   - 🇺🇸 美国 (United States) 67 - NEKO
+  - 🇺🇸 美国 (United States) 68 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -850,5 +846,6 @@ proxy-groups:
   - 🇺🇸 美国 (United States) 65 - NEKO
   - 🇺🇸 美国 (United States) 66 - NEKO
   - 🇺🇸 美国 (United States) 67 - NEKO
+  - 🇺🇸 美国 (United States) 68 - NEKO
 rules:
 - MATCH,PROXIES

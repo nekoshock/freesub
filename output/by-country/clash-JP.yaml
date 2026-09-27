@@ -13,45 +13,12 @@ proxies:
   alterId: 0
   cipher: auto
 - name: 🇯🇵 日本 (Japan) 02 - NEKO
-  server: 18.181.165.254
-  port: 443
-  udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: amazonskr05
-- name: 🇯🇵 日本 (Japan) 03 - NEKO
   server: 137.220.221.179
   port: 443
   udp: true
   type: vless
   uuid: a16a3336-c9ab-489f-9b85-c973f5e2cfa4
-- name: 🇯🇵 日本 (Japan) 04 - NEKO
-  server: 154.31.114.248
-  port: 50159
-  udp: true
-  type: vless
-  uuid: d56624b2-35bb-468c-9b2a-e0b0df7230c1
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: j4QXngGuJkUGwRj4XIrfHRohYYuEfnJlX4cvCE-WklA
-    short-id: 091e1c5db8451757
-  servername: www.cloudflare.com
-  client-fingerprint: chrome
-- name: 🇯🇵 日本 (Japan) 05 - NEKO
-  server: 108.160.128.46
-  port: 443
-  udp: true
-  type: vless
-  uuid: de241e4e-226e-46d5-aa79-602e11ef94d8
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: cZ9MxrT-CYtdhBdbGeqzcQEvWvAuKw7fEfRbR8QrOlM
-    short-id: 37bb73b5
-  servername: www.bing.com
-  client-fingerprint: chrome
-- name: 🇯🇵 日本 (Japan) 06 - NEKO
+- name: 🇯🇵 日本 (Japan) 03 - NEKO
   server: 64.176.51.214
   port: 23462
   udp: true
@@ -62,34 +29,36 @@ proxies:
   network: ws
   ws-opts:
     path: /a15206
-- name: 🇯🇵 日本 (Japan) 07 - NEKO
-  server: 103.137.215.122
-  port: 443
-  udp: true
-  type: vless
-  uuid: ea1c1e20-7263-4b08-a01b-690b29af66b3
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: T587xqua0Nrs0YreQRWJAP9Wto94NcbbhKPK4DkSi0c
-    short-id: 2223411c2ad9c55f
-  servername: www.apple.com
-  client-fingerprint: chrome
-- name: 🇯🇵 日本 (Japan) 08 - NEKO
+- name: 🇯🇵 日本 (Japan) 04 - NEKO
   server: 84.247.155.196
   port: 80
   udp: true
   type: ss
   cipher: aes-256-gcm
   password: 3eOFeNssde7PYYMv
-- name: 🇯🇵 日本 (Japan) 09 - NEKO
-  server: 84.247.155.196
+- name: 🇯🇵 日本 (Japan) 05 - NEKO
+  server: open.2ml.bid
   port: 443
   udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: 3eOFeNssde7PYYMv
-- name: 🇯🇵 日本 (Japan) 10 - NEKO
+  type: hysteria2
+  password: my_super_password_123
+  sni: open.2ml.bid
+  skip-cert-verify: true
+- name: 🇯🇵 日本 (Japan) 06 - NEKO
+  server: 45.202.255.24
+  port: 8890
+  udp: true
+  type: vless
+  uuid: 45d87ca1-d006-44ac-b62a-cb03d04c7130
+  tls: true
+  reality-opts:
+    public-key: DcHXqq0OOR8N-bd92fSrMjy2yrcAsG1Es7PesCOc7gc
+  servername: addons.mozilla.org
+  client-fingerprint: chrome
+  network: grpc
+  grpc-opts:
+    grpc-service-name: grpc
+- name: 🇯🇵 日本 (Japan) 07 - NEKO
   server: or.521166.xyz
   port: 2083
   udp: true
@@ -103,14 +72,6 @@ proxies:
   network: ws
   ws-opts:
     path: /or3
-- name: 🇯🇵 日本 (Japan) 11 - NEKO
-  server: open.2ml.bid
-  port: 443
-  udp: true
-  type: hysteria2
-  password: my_super_password_123
-  sni: open.2ml.bid
-  skip-cert-verify: true
 proxy-groups:
 - name: PROXIES
   type: select
@@ -123,10 +84,6 @@ proxy-groups:
   - 🇯🇵 日本 (Japan) 05 - NEKO
   - 🇯🇵 日本 (Japan) 06 - NEKO
   - 🇯🇵 日本 (Japan) 07 - NEKO
-  - 🇯🇵 日本 (Japan) 08 - NEKO
-  - 🇯🇵 日本 (Japan) 09 - NEKO
-  - 🇯🇵 日本 (Japan) 10 - NEKO
-  - 🇯🇵 日本 (Japan) 11 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -139,9 +96,5 @@ proxy-groups:
   - 🇯🇵 日本 (Japan) 05 - NEKO
   - 🇯🇵 日本 (Japan) 06 - NEKO
   - 🇯🇵 日本 (Japan) 07 - NEKO
-  - 🇯🇵 日本 (Japan) 08 - NEKO
-  - 🇯🇵 日本 (Japan) 09 - NEKO
-  - 🇯🇵 日本 (Japan) 10 - NEKO
-  - 🇯🇵 日本 (Japan) 11 - NEKO
 rules:
 - MATCH,PROXIES

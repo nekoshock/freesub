@@ -13,6 +13,16 @@ proxies:
   sni: hopp-swizland-new.mysynology.net
   skip-cert-verify: false
 - name: 🇨🇭 瑞士 (Switzerland) 02 - NEKO
+  server: 152.67.75.161
+  port: 443
+  udp: true
+  type: hysteria2
+  password: 3a702d4d1de4949005d8431220e040fb
+  sni: www.bing.com
+  skip-cert-verify: true
+  obfs: salamander
+  obfs-password: c13f29db6a638ad2b211b9ce2669ef27
+- name: 🇨🇭 瑞士 (Switzerland) 03 - NEKO
   server: 151.242.2.81
   port: 443
   udp: true
@@ -33,6 +43,7 @@ proxy-groups:
   - AUTO
   - 🇨🇭 瑞士 (Switzerland) 01 - NEKO
   - 🇨🇭 瑞士 (Switzerland) 02 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 03 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -40,5 +51,6 @@ proxy-groups:
   proxies:
   - 🇨🇭 瑞士 (Switzerland) 01 - NEKO
   - 🇨🇭 瑞士 (Switzerland) 02 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 03 - NEKO
 rules:
 - MATCH,PROXIES

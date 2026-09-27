@@ -19,7 +19,21 @@ proxies:
   cipher: aes-256-gcm
   password: AxIYWtskJWIIaefW
 - name: 🇸🇪 瑞典 (Sweden) 03 - NEKO
-  server: surstreming.vvzzkontaktezzvv.garden
+  server: 79.141.174.147
+  port: 33743
+  udp: true
+  type: vless
+  uuid: b3a11068-1a7e-4643-85de-7c82cce46943
+  tls: true
+  reality-opts:
+    public-key: wGMBs7bvzyzA0-OUiwSkOOTDEMdxEOsSdRzxiP8GGQY
+  servername: www.google.com
+  client-fingerprint: chrome
+  network: grpc
+  grpc-opts:
+    grpc-service-name: TunService
+- name: 🇸🇪 瑞典 (Sweden) 04 - NEKO
+  server: 5.157.10.148
   port: 443
   udp: true
   type: vless
@@ -30,7 +44,19 @@ proxies:
     public-key: x6p656szvu_3CKLsJ4NtkooRvdTVGx7IoPca_p58_jA
     short-id: fb442438e2223836
   servername: surstreming.vvzzkontaktezzvv.garden
-  client-fingerprint: firefox
+  client-fingerprint: chrome
+- name: 🇸🇪 瑞典 (Sweden) 05 - NEKO
+  server: condrve.ggisopi.su
+  port: 443
+  udp: true
+  type: vless
+  uuid: d0f0a880-0df1-48c9-bdf1-5669fb9483ce
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: SB1uC0OEveYjSiS_Nuw9Ld-uVVXWqi794OGnldthY3I
+  servername: condrve.ggisopi.su
+  client-fingerprint: qq
 proxy-groups:
 - name: PROXIES
   type: select
@@ -39,6 +65,8 @@ proxy-groups:
   - 🇸🇪 瑞典 (Sweden) 01 - NEKO
   - 🇸🇪 瑞典 (Sweden) 02 - NEKO
   - 🇸🇪 瑞典 (Sweden) 03 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 04 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 05 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -47,5 +75,7 @@ proxy-groups:
   - 🇸🇪 瑞典 (Sweden) 01 - NEKO
   - 🇸🇪 瑞典 (Sweden) 02 - NEKO
   - 🇸🇪 瑞典 (Sweden) 03 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 04 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 05 - NEKO
 rules:
 - MATCH,PROXIES

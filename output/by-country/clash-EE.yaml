@@ -11,18 +11,33 @@ proxies:
   type: hysteria2
   password: sOiWCQ2AdIV0OWNuqQVyWp4JZnRxdyLROSjX
   sni: cabinet.wwwinternetvideo.click
-  skip-cert-verify: true
+  skip-cert-verify: false
+- name: 🇪🇪 爱沙尼亚 (Estonia) 02 - NEKO
+  server: 5.181.201.44
+  port: 443
+  udp: true
+  type: vless
+  uuid: 47b63e55-a4e4-43ce-97dc-946e6a26971d
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: 98MNvJC4t0ZjK_xHlQjOx2WfLfAPluNDb71MzS9sPT8
+    short-id: 38018dde3e27335e
+  servername: bababoy.karp1pdd.life
+  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
   - 🇪🇪 爱沙尼亚 (Estonia) 01 - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 02 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
   - 🇪🇪 爱沙尼亚 (Estonia) 01 - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 02 - NEKO
 rules:
 - MATCH,PROXIES

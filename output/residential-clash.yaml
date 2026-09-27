@@ -5,6 +5,21 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇹🇼 中国台湾 (Taiwan) 01 (家宽) - NEKO
+  server: r3mrcg001286ek2.cybervena.com
+  port: 50099
+  udp: true
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
+- name: 🇭🇰 中国香港 (Hong Kong) 02 (移动家宽) - NEKO
+  server: zfd-hkv2.kunlun01dns.com
+  port: 16115
+  udp: true
+  type: vmess
+  uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
+  alterId: 0
+  cipher: auto
+- name: 🇹🇼 中国台湾 (Taiwan) 03 (家宽) - NEKO
   server: hinet1.2yly.com
   port: 24215
   udp: true
@@ -21,11 +36,15 @@ proxy-groups:
   proxies:
   - AUTO
   - 🇹🇼 中国台湾 (Taiwan) 01 (家宽) - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 (移动家宽) - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 03 (家宽) - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
   - 🇹🇼 中国台湾 (Taiwan) 01 (家宽) - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 (移动家宽) - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 03 (家宽) - NEKO
 rules:
 - MATCH,PROXIES

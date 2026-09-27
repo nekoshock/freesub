@@ -5,28 +5,28 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇸🇪 瑞典 (Sweden) 01 - NEKO
+  server: 70.34.212.124
+  port: 8388
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: AxIYWtskJWIIaefW
+- name: 🇸🇪 瑞典 (Sweden) 02 - NEKO
   server: 51.20.72.15
   port: 443
   udp: true
   type: ss
   cipher: aes-256-cfb
   password: amazonskr05
-- name: 🇸🇪 瑞典 (Sweden) 02 - NEKO
-  server: 172.238.244.13
-  port: 17000
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: pX0uhU3ZjUcLWYs0Vez55BO3JoQrRlL
 - name: 🇸🇪 瑞典 (Sweden) 03 - NEKO
-  server: 188.225.78.31
-  port: 2053
+  server: 51.20.122.188
+  port: 443
   udp: true
   type: ss
-  cipher: 2022-blake3-aes-256-gcm
-  password: g4h/AcJh1+jg9+yonlMK4Wq7fhbFY3NkcOzUVlZ9GjU=
+  cipher: aes-256-cfb
+  password: amazonskr05
 - name: 🇸🇪 瑞典 (Sweden) 04 - NEKO
-  server: surstreming.vvzzkontaktezzvv.garden
+  server: 5.157.10.148
   port: 443
   udp: true
   type: vless
@@ -39,17 +39,12 @@ proxies:
   servername: surstreming.vvzzkontaktezzvv.garden
   client-fingerprint: firefox
 - name: 🇸🇪 瑞典 (Sweden) 05 - NEKO
-  server: 94.103.2.224
-  port: 50445
+  server: 172.238.244.13
+  port: 17000
   udp: true
-  type: vless
-  uuid: d2761575-3f08-41ae-9dd1-33ccf86dddd1
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: hp9ht_jsxocTnQEbChb1G3JoDF50x-xDT8UYr66D1TQ
-  servername: www.icloud.com
-  client-fingerprint: chrome
+  type: ss
+  cipher: aes-256-gcm
+  password: pX0uhU3ZjUcLWYs0Vez55BO3JoQrRlL
 proxy-groups:
 - name: PROXIES
   type: select

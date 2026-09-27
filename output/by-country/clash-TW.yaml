@@ -4,14 +4,14 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇹🇼 中国台湾 (Taiwan) 01 (家宽) - NEKO
-  server: r3mrcg001286ek2.cybervena.com
+- name: 🇹🇼 中国台湾 (Taiwan) 01 - NEKO
+  server: 36.224.141.124
   port: 50099
   udp: true
   type: ss
   cipher: chacha20-ietf-poly1305
   password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
-- name: 🇹🇼 中国台湾 (Taiwan) 02 (家宽) - NEKO
+- name: 🇹🇼 中国台湾 (Taiwan) 02 - NEKO
   server: hinet1.2yly.com
   port: 24215
   udp: true
@@ -27,14 +27,14 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇹🇼 中国台湾 (Taiwan) 01 (家宽) - NEKO
-  - 🇹🇼 中国台湾 (Taiwan) 02 (家宽) - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 01 - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 02 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇹🇼 中国台湾 (Taiwan) 01 (家宽) - NEKO
-  - 🇹🇼 中国台湾 (Taiwan) 02 (家宽) - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 01 - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 02 - NEKO
 rules:
 - MATCH,PROXIES

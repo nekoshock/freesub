@@ -5,6 +5,20 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇹🇷 土耳其 (Turkey) 01 - NEKO
+  server: 122.8.45.2
+  port: 8443
+  udp: true
+  type: vless
+  uuid: 3ae00194-1bc0-0bf4-9564-3c55b1c6d485
+  tls: true
+  reality-opts:
+    public-key: D2SXHZRRYM0WcFChGWd57XB-U73aIsGfMpe2-Gq5XSs
+  servername: download.nvidia.com
+  client-fingerprint: firefox
+  network: grpc
+  grpc-opts:
+    grpc-service-name: TunService
+- name: 🇹🇷 土耳其 (Turkey) 02 - NEKO
   server: 151.241.226.201
   port: 2053
   udp: true
@@ -22,11 +36,13 @@ proxy-groups:
   proxies:
   - AUTO
   - 🇹🇷 土耳其 (Turkey) 01 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 02 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
   - 🇹🇷 土耳其 (Turkey) 01 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 02 - NEKO
 rules:
 - MATCH,PROXIES

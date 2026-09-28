@@ -4,11 +4,12 @@
   },
   "outbounds": [
     {
-      "type": "vless",
+      "type": "vmess",
       "tag": "🇯🇵 日本 (Japan) 01 - NEKO",
-      "server": "137.220.221.179",
-      "server_port": 443,
-      "uuid": "a16a3336-c9ab-489f-9b85-c973f5e2cfa4"
+      "server": "45.32.57.118",
+      "server_port": 4433,
+      "uuid": "35b89832-0a7c-48dd-8d1c-a2891b522195",
+      "security": "auto"
     },
     {
       "type": "vmess",
@@ -23,32 +24,32 @@
       }
     },
     {
-      "type": "shadowsocks",
+      "type": "vless",
       "tag": "🇯🇵 日本 (Japan) 03 - NEKO",
-      "server": "84.247.155.196",
-      "server_port": 443,
-      "method": "aes-256-gcm",
-      "password": "3eOFeNssde7PYYMv"
-    },
-    {
-      "type": "shadowsocks",
-      "tag": "🇯🇵 日本 (Japan) 04 - NEKO",
-      "server": "84.247.155.196",
-      "server_port": 80,
-      "method": "aes-256-gcm",
-      "password": "3eOFeNssde7PYYMv"
-    },
-    {
-      "type": "vmess",
-      "tag": "🇯🇵 日本 (Japan) 05 - NEKO",
-      "server": "zfd-jpv2.kunlun01dns.com",
-      "server_port": 16120,
-      "uuid": "0802ac03-7973-39ef-a019-ba02de6c01e1",
-      "security": "auto"
+      "server": "45.202.255.24",
+      "server_port": 8890,
+      "uuid": "45d87ca1-d006-44ac-b62a-cb03d04c7130",
+      "tls": {
+        "enabled": true,
+        "server_name": "addons.mozilla.org",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "DcHXqq0OOR8N-bd92fSrMjy2yrcAsG1Es7PesCOc7gc",
+          "short_id": ""
+        }
+      },
+      "transport": {
+        "type": "grpc",
+        "service_name": "grpc"
+      }
     },
     {
       "type": "hysteria2",
-      "tag": "🇯🇵 日本 (Japan) 06 - NEKO",
+      "tag": "🇯🇵 日本 (Japan) 04 - NEKO",
       "server": "open.2ml.bid",
       "server_port": 443,
       "password": "my_super_password_123",
@@ -59,9 +60,21 @@
       }
     },
     {
+      "type": "hysteria2",
+      "tag": "🇯🇵 日本 (Japan) 05 - NEKO",
+      "server": "open.2ml.cc.cd",
+      "server_port": 5443,
+      "password": "my_super_password_123",
+      "tls": {
+        "enabled": true,
+        "server_name": "open.2ml.cc.cd",
+        "insecure": false
+      }
+    },
+    {
       "type": "vmess",
-      "tag": "🇯🇵 日本 (Japan) 07 - NEKO",
-      "server": "172.64.229.138",
+      "tag": "🇯🇵 日本 (Japan) 06 - NEKO",
+      "server": "172.64.154.103",
       "server_port": 2083,
       "uuid": "ac251237-576f-40c8-a543-554960c958b1",
       "security": "auto",
@@ -79,26 +92,6 @@
       }
     },
     {
-      "type": "vmess",
-      "tag": "🇯🇵 日本 (Japan) 08 - NEKO",
-      "server": "45.32.57.118",
-      "server_port": 4433,
-      "uuid": "35b89832-0a7c-48dd-8d1c-a2891b522195",
-      "security": "auto"
-    },
-    {
-      "type": "hysteria2",
-      "tag": "🇯🇵 日本 (Japan) 09 - NEKO",
-      "server": "open.2ml.cc.cd",
-      "server_port": 5443,
-      "password": "my_super_password_123",
-      "tls": {
-        "enabled": true,
-        "server_name": "open.2ml.cc.cd",
-        "insecure": false
-      }
-    },
-    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
@@ -108,10 +101,7 @@
         "🇯🇵 日本 (Japan) 03 - NEKO",
         "🇯🇵 日本 (Japan) 04 - NEKO",
         "🇯🇵 日本 (Japan) 05 - NEKO",
-        "🇯🇵 日本 (Japan) 06 - NEKO",
-        "🇯🇵 日本 (Japan) 07 - NEKO",
-        "🇯🇵 日本 (Japan) 08 - NEKO",
-        "🇯🇵 日本 (Japan) 09 - NEKO"
+        "🇯🇵 日本 (Japan) 06 - NEKO"
       ]
     },
     {
@@ -123,10 +113,7 @@
         "🇯🇵 日本 (Japan) 03 - NEKO",
         "🇯🇵 日本 (Japan) 04 - NEKO",
         "🇯🇵 日本 (Japan) 05 - NEKO",
-        "🇯🇵 日本 (Japan) 06 - NEKO",
-        "🇯🇵 日本 (Japan) 07 - NEKO",
-        "🇯🇵 日本 (Japan) 08 - NEKO",
-        "🇯🇵 日本 (Japan) 09 - NEKO"
+        "🇯🇵 日本 (Japan) 06 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

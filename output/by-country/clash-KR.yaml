@@ -4,30 +4,30 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇮🇱 以色列 (Israel) 01 - NEKO
-  server: 185.95.231.233
+- name: 🇰🇷 韩国 (South Korea) 01 - NEKO
+  server: 61.111.247.22
   port: 443
   udp: true
   type: vless
-  uuid: 1ffa8e68-3378-4cf4-b8f6-44bf3d46d106
+  uuid: 82C94E17-B27E-4356-82C1-2F9C79B0CF6D
   flow: xtls-rprx-vision
   tls: true
   reality-opts:
-    public-key: r4Dp3mztZaizbDk28rEOkLikk7erR9dzzc-Jrsgraho
-    short-id: a1b2c3d4
-  servername: store.steampowered.com
-  client-fingerprint: chrome
+    public-key: F6Asg31ihdkFCmTdIuGjq_232PMYhLsCH9k3Npaa9VI
+    short-id: 0d9954fe36197887
+  servername: gateway.icloud.com
+  client-fingerprint: random
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇮🇱 以色列 (Israel) 01 - NEKO
+  - 🇰🇷 韩国 (South Korea) 01 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇮🇱 以色列 (Israel) 01 - NEKO
+  - 🇰🇷 韩国 (South Korea) 01 - NEKO
 rules:
 - MATCH,PROXIES

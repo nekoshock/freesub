@@ -5,18 +5,16 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇪🇪 爱沙尼亚 (Estonia) 01 - NEKO
-  server: 5.181.201.44
-  port: 443
+  server: 94.183.170.65
+  port: 8081
   udp: true
   type: vless
-  uuid: 47b63e55-a4e4-43ce-97dc-946e6a26971d
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: 98MNvJC4t0ZjK_xHlQjOx2WfLfAPluNDb71MzS9sPT8
-    short-id: 38018dde3e27335e
-  servername: bababoy.karp1pdd.life
-  client-fingerprint: random
+  uuid: e60bc99b-6630-4799-af84-f90ebdc643b6
+  network: ws
+  ws-opts:
+    path: /ws/generate
+    headers:
+      Host: hys2.arkonsoft.top
 proxy-groups:
 - name: PROXIES
   type: select

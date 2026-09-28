@@ -5,22 +5,14 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇪🇸 西班牙 (Spain) 01 - NEKO
-  server: 66.163.118.73
-  port: 22324
-  udp: true
-  type: vmess
-  uuid: 04621bae-ab36-11ec-b909-0242ac120002
-  alterId: 0
-  cipher: auto
-- name: 🇪🇸 西班牙 (Spain) 02 - NEKO
   server: 140.174.184.5
   port: 8388
   udp: true
   type: ss
   cipher: chacha20-ietf-poly1305
   password: qItG8SueYQcP
-- name: 🇪🇸 西班牙 (Spain) 03 - NEKO
-  server: 66.163.118.73
+- name: 🇪🇸 西班牙 (Spain) 02 - NEKO
+  server: mygptagent.org
   port: 443
   udp: true
   type: vmess
@@ -35,14 +27,14 @@ proxies:
     path: /linkvws
     headers:
       Host: mygptagent.org
-- name: 🇪🇸 西班牙 (Spain) 04 - NEKO
-  server: 185.174.137.172
-  port: 8446
+- name: 🇪🇸 西班牙 (Spain) 03 - NEKO
+  server: 66.163.118.73
+  port: 22324
   udp: true
-  type: hysteria2
-  password: e9dc02d400b67c727aca1620
-  sni: 185.174.137.172
-  skip-cert-verify: true
+  type: vmess
+  uuid: 04621bae-ab36-11ec-b909-0242ac120002
+  alterId: 0
+  cipher: auto
 proxy-groups:
 - name: PROXIES
   type: select
@@ -51,7 +43,6 @@ proxy-groups:
   - 🇪🇸 西班牙 (Spain) 01 - NEKO
   - 🇪🇸 西班牙 (Spain) 02 - NEKO
   - 🇪🇸 西班牙 (Spain) 03 - NEKO
-  - 🇪🇸 西班牙 (Spain) 04 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -60,6 +51,5 @@ proxy-groups:
   - 🇪🇸 西班牙 (Spain) 01 - NEKO
   - 🇪🇸 西班牙 (Spain) 02 - NEKO
   - 🇪🇸 西班牙 (Spain) 03 - NEKO
-  - 🇪🇸 西班牙 (Spain) 04 - NEKO
 rules:
 - MATCH,PROXIES

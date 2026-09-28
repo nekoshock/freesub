@@ -12,17 +12,51 @@ proxies:
   password: XuMweB2PWs
   sni: 2.27.109.179.sslip.io
   skip-cert-verify: false
+- name: 🇭🇰 中国香港 (Hong Kong) 02 - NEKO
+  server: aksai.org
+  port: 443
+  udp: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  alterId: 0
+  cipher: auto
+  tls: true
+  servername: aksai.org
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /linkvws
+    headers:
+      Host: aksai.org
+- name: 🇭🇰 中国香港 (Hong Kong) 03 - NEKO
+  server: lcv8v9l7oyamxxfz.v.3dns.vip
+  port: 443
+  udp: true
+  type: vmess
+  uuid: f23bb427c1f94373876c2f43e9f790f3
+  alterId: 0
+  cipher: auto
+  tls: true
+  servername: lcv8v9l7oyamxxfz.v.3dns.vip
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /ws-vmess
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
   - 🇭🇰 中国香港 (Hong Kong) 01 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 03 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
   - 🇭🇰 中国香港 (Hong Kong) 01 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 03 - NEKO
 rules:
 - MATCH,PROXIES

@@ -11,6 +11,14 @@ proxies:
   type: vless
   uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
 - name: 🇮🇹 意大利 (Italy) 02 - NEKO
+  server: 89.41.172.85
+  port: 22324
+  udp: true
+  type: vmess
+  uuid: 04621bae-ab36-11ec-b909-0242ac120002
+  alterId: 0
+  cipher: auto
+- name: 🇮🇹 意大利 (Italy) 03 - NEKO
   server: 57.131.48.45
   port: 8388
   udp: true
@@ -24,6 +32,7 @@ proxy-groups:
   - AUTO
   - 🇮🇹 意大利 (Italy) 01 - NEKO
   - 🇮🇹 意大利 (Italy) 02 - NEKO
+  - 🇮🇹 意大利 (Italy) 03 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -31,5 +40,6 @@ proxy-groups:
   proxies:
   - 🇮🇹 意大利 (Italy) 01 - NEKO
   - 🇮🇹 意大利 (Italy) 02 - NEKO
+  - 🇮🇹 意大利 (Italy) 03 - NEKO
 rules:
 - MATCH,PROXIES

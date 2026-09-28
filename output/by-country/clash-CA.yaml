@@ -28,40 +28,20 @@ proxies:
   cipher: chacha20-ietf-poly1305
   password: mrs2e9a
 - name: 🇨🇦 加拿大 (Canada) 04 - NEKO
-  server: 51.222.155.32
-  port: 5003
+  server: 185.156.47.97
+  port: 9443
   udp: true
   type: ss
   cipher: aes-256-gcm
-  password: g5MeD6Ft3CWlJId
+  password: eveaaTOb8ji8yntw2Z9yWUG0d6Ir8Ld8m3ymH8THdC5egiTH1mXCiBc0Skr7FibH
 - name: 🇨🇦 加拿大 (Canada) 05 - NEKO
-  server: 51.222.136.236
+  server: 51.79.49.116
   port: 8882
   udp: true
   type: ss
   cipher: aes-256-gcm
   password: kDWvXYZoTBcGkC4
 - name: 🇨🇦 加拿大 (Canada) 06 - NEKO
-  server: yyz-ca-01.blncvpn4u.cc
-  port: 9443
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: eveaaTOb8ji8yntw2Z9yWUG0d6Ir8Ld8m3ymH8THdC5egiTH1mXCiBc0Skr7FibH
-- name: 🇨🇦 加拿大 (Canada) 07 - NEKO
-  server: 172.105.20.134
-  port: 27204
-  udp: true
-  type: vless
-  uuid: 24f17960-8b89-48fa-828f-edd2c048ed26
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: tDCQIafB0NQjbKoef_8CU4rr_afYJUOKjY8KX4cIJj8
-    short-id: 4c1d
-  servername: www.cloudflare.com
-  client-fingerprint: chrome
-- name: 🇨🇦 加拿大 (Canada) 08 - NEKO
   server: 66.70.179.198
   port: 2053
   udp: true
@@ -73,34 +53,7 @@ proxies:
     short-id: 83f8317a948bb769
   servername: www.cloudflare.com
   client-fingerprint: chrome
-- name: 🇨🇦 加拿大 (Canada) 09 - NEKO
-  server: 104.21.70.21
-  port: 443
-  udp: true
-  type: vless
-  uuid: efe19c5a-0ea1-4666-8a4c-4a33f4670775
-  tls: true
-  servername: playlux.homes
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /raccoonwsvless
-    headers:
-      Host: playlux.homes
-- name: 🇨🇦 加拿大 (Canada) 10 - NEKO
-  server: 130.107.73.148
-  port: 41373
-  udp: true
-  type: vless
-  uuid: a71c8954-66a8-4321-bedb-2336230d81ce
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: m0GsZOAwvAJEaqh9aH6qfOmBKo0KW0jY_tJEC6KaDEU
-    short-id: 0e
-  servername: google.com
-  client-fingerprint: chrome
-- name: 🇨🇦 加拿大 (Canada) 11 - NEKO
+- name: 🇨🇦 加拿大 (Canada) 07 - NEKO
   server: 158.51.121.123
   port: 443
   udp: true
@@ -116,13 +69,19 @@ proxies:
     path: /linkvws
     headers:
       Host: mygptagent.org
-- name: 🇨🇦 加拿大 (Canada) 12 - NEKO
-  server: 51.222.12.127
-  port: 445
+- name: 🇨🇦 加拿大 (Canada) 08 - NEKO
+  server: 130.107.73.148
+  port: 41373
   udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: zDNVedRFPQexG9v
+  type: vless
+  uuid: a71c8954-66a8-4321-bedb-2336230d81ce
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: m0GsZOAwvAJEaqh9aH6qfOmBKo0KW0jY_tJEC6KaDEU
+    short-id: 0e
+  servername: google.com
+  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
@@ -136,10 +95,6 @@ proxy-groups:
   - 🇨🇦 加拿大 (Canada) 06 - NEKO
   - 🇨🇦 加拿大 (Canada) 07 - NEKO
   - 🇨🇦 加拿大 (Canada) 08 - NEKO
-  - 🇨🇦 加拿大 (Canada) 09 - NEKO
-  - 🇨🇦 加拿大 (Canada) 10 - NEKO
-  - 🇨🇦 加拿大 (Canada) 11 - NEKO
-  - 🇨🇦 加拿大 (Canada) 12 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -153,9 +108,5 @@ proxy-groups:
   - 🇨🇦 加拿大 (Canada) 06 - NEKO
   - 🇨🇦 加拿大 (Canada) 07 - NEKO
   - 🇨🇦 加拿大 (Canada) 08 - NEKO
-  - 🇨🇦 加拿大 (Canada) 09 - NEKO
-  - 🇨🇦 加拿大 (Canada) 10 - NEKO
-  - 🇨🇦 加拿大 (Canada) 11 - NEKO
-  - 🇨🇦 加拿大 (Canada) 12 - NEKO
 rules:
 - MATCH,PROXIES

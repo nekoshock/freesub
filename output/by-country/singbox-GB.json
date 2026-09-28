@@ -4,8 +4,34 @@
   },
   "outbounds": [
     {
-      "type": "shadowsocks",
+      "type": "trojan",
       "tag": "🇬🇧 英国 (United Kingdom) 01 - NEKO",
+      "server": "199.232.78.188",
+      "server_port": 443,
+      "password": "MiTiVPN",
+      "tls": {
+        "enabled": true,
+        "server_name": "ssl.fastly.com",
+        "insecure": false,
+        "alpn": [
+          "http/1.1"
+        ],
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/?DailyConfigs--DailyConfigs",
+        "headers": {
+          "Host": "mitivpn---gb--s---mitivpn-1.global.ssl.fastly.net"
+        }
+      }
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇬🇧 英国 (United Kingdom) 02 - NEKO",
       "server": "149.102.149.207",
       "server_port": 443,
       "method": "aes-256-gcm",
@@ -13,126 +39,61 @@
     },
     {
       "type": "shadowsocks",
-      "tag": "🇬🇧 英国 (United Kingdom) 02 - NEKO",
-      "server": "51.77.225.200",
-      "server_port": 8388,
-      "method": "chacha20-ietf-poly1305",
-      "password": "zRZNBszYyWo5"
-    },
-    {
-      "type": "shadowsocks",
       "tag": "🇬🇧 英国 (United Kingdom) 03 - NEKO",
-      "server": "143.110.161.156",
-      "server_port": 17000,
-      "method": "aes-256-gcm",
-      "password": "pX0uhU3ZjUcLWYs0Vez55BO3JoQrRlL"
-    },
-    {
-      "type": "shadowsocks",
-      "tag": "🇬🇧 英国 (United Kingdom) 04 - NEKO",
-      "server": "149.102.149.207",
-      "server_port": 80,
-      "method": "aes-256-gcm",
-      "password": "LXchLsIwtCeUAUgu"
-    },
-    {
-      "type": "shadowsocks",
-      "tag": "🇬🇧 英国 (United Kingdom) 05 - NEKO",
       "server": "141.98.101.181",
       "server_port": 443,
       "method": "aes-128-gcm",
       "password": "shadowsocks"
     },
     {
-      "type": "shadowsocks",
-      "tag": "🇬🇧 英国 (United Kingdom) 06 - NEKO",
-      "server": "94.156.250.148",
-      "server_port": 7001,
-      "method": "aes-256-gcm",
-      "password": "RexnBgU7EV5ADxG"
-    },
-    {
       "type": "vless",
-      "tag": "🇬🇧 英国 (United Kingdom) 07 - NEKO",
-      "server": "66.90.105.211",
-      "server_port": 2083,
-      "uuid": "cd3bb7d9-7df3-4644-ac05-c260990ac277",
-      "transport": {
-        "type": "grpc",
-        "service_name": "vless"
+      "tag": "🇬🇧 英国 (United Kingdom) 04 - NEKO",
+      "server": "23.81.34.204",
+      "server_port": 443,
+      "uuid": "99955907-9070-46f0-a200-9c7a0b9d74fe",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "speed.cloudflare.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "J_p_dxR8dIKaezk1_Ins5MZ7e4dqgrr2n9690vVuQ2s",
+          "short_id": "b19b017d6f453873"
+        }
       }
     },
     {
-      "type": "vless",
-      "tag": "🇬🇧 英国 (United Kingdom) 08 - NEKO",
-      "server": "66.90.104.42",
-      "server_port": 2083,
-      "uuid": "cd3bb7d9-7df3-4644-ac05-c260990ac277",
-      "transport": {
-        "type": "grpc",
-        "service_name": "vless"
-      }
-    },
-    {
-      "type": "vmess",
-      "tag": "🇬🇧 英国 (United Kingdom) 09 - NEKO",
-      "server": "57.129.132.223",
-      "server_port": 80,
-      "uuid": "a25cbf11-2908-4a1b-a3a8-9a571777dca3",
-      "security": "auto",
+      "type": "trojan",
+      "tag": "🇬🇧 英国 (United Kingdom) 05 - NEKO",
+      "server": "151.101.56.9",
+      "server_port": 443,
+      "password": "MiTiVPN",
+      "tls": {
+        "enabled": true,
+        "server_name": "ssl.fastly.com",
+        "insecure": false,
+        "alpn": [
+          "http/1.1"
+        ],
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
       "transport": {
         "type": "ws",
-        "path": "/vmess/",
         "headers": {
-          "Host": "google.com"
+          "Host": "mitivpn---gb--s---mitivpn-1.global.ssl.fastly.net"
         }
       }
     },
     {
       "type": "vless",
-      "tag": "🇬🇧 英国 (United Kingdom) 10 - NEKO",
-      "server": "178.79.131.26",
-      "server_port": 443,
-      "uuid": "d00d9d18-20cf-4191-be76-6f73d43a27ec",
-      "flow": "xtls-rprx-vision",
-      "tls": {
-        "enabled": true,
-        "server_name": "www.cloudflare.com",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "UvN2oqI7DGQUEB8VrOZ9c5eXs2EuEQAgAa5IyTuRcCU",
-          "short_id": "3436aa2833db50fa"
-        }
-      }
-    },
-    {
-      "type": "vless",
-      "tag": "🇬🇧 英国 (United Kingdom) 11 - NEKO",
-      "server": "178.79.149.80",
-      "server_port": 22117,
-      "uuid": "d00d9d18-20cf-4191-be76-6f73d43a27ec",
-      "flow": "xtls-rprx-vision",
-      "tls": {
-        "enabled": true,
-        "server_name": "www.cloudflare.com",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "Vqwhml0SG253PsBtx9xi3GJY-hhyA6sgGUJ_wVI7Q1g",
-          "short_id": "c7994be0"
-        }
-      }
-    },
-    {
-      "type": "vless",
-      "tag": "🇬🇧 英国 (United Kingdom) 12 - NEKO",
+      "tag": "🇬🇧 英国 (United Kingdom) 06 - NEKO",
       "server": "tomaz1337shellbuy.vvzzkontaktezzvv.garden",
       "server_port": 443,
       "uuid": "4bdeee92-97e8-414d-bef6-ec1d5e2ab73b",
@@ -152,71 +113,36 @@
       }
     },
     {
-      "type": "vmess",
-      "tag": "🇬🇧 英国 (United Kingdom) 13 - NEKO",
-      "server": "186.190.211.67",
-      "server_port": 443,
-      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
-      "security": "auto",
-      "tls": {
-        "enabled": true,
-        "server_name": "pahobac.org",
-        "insecure": false
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/linkvws",
-        "headers": {
-          "Host": "pahobac.org"
-        }
-      }
-    },
-    {
-      "type": "vless",
-      "tag": "🇬🇧 英国 (United Kingdom) 14 - NEKO",
-      "server": "176.123.162.100",
-      "server_port": 9880,
-      "uuid": "5d16ac22-6eea-426f-b778-6f4c2961faef",
-      "tls": {
-        "enabled": true,
-        "server_name": "dl.google.com",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "firefox"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "bnRIb3Er1i-K6NGGByCO9UbGfOvu43ZoiK7ulPd1SzU",
-          "short_id": ""
-        }
-      },
-      "transport": {
-        "type": "grpc",
-        "service_name": "grpc-tunnel"
-      }
-    },
-    {
       "type": "shadowsocks",
-      "tag": "🇬🇧 英国 (United Kingdom) 15 - NEKO",
+      "tag": "🇬🇧 英国 (United Kingdom) 07 - NEKO",
       "server": "158.173.221.214",
       "server_port": 11001,
       "method": "chacha20-ietf-poly1305",
       "password": "c58d16e593d44f42"
     },
     {
-      "type": "vmess",
-      "tag": "🇬🇧 英国 (United Kingdom) 16 - NEKO",
-      "server": "188.114.96.19",
+      "type": "shadowsocks",
+      "tag": "🇬🇧 英国 (United Kingdom) 08 - NEKO",
+      "server": "149.102.149.207",
       "server_port": 80,
-      "uuid": "af4be52a-aab3-4db1-a6bb-c23700dcb9c2",
-      "security": "auto",
-      "transport": {
-        "type": "ws",
-        "path": "/d3d3LmlyYW5ob3N0LmNvbQ==",
-        "headers": {
-          "Host": "https.http.www.net.com.ramseyv2.ir."
-        }
-      }
+      "method": "aes-256-gcm",
+      "password": "LXchLsIwtCeUAUgu"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇬🇧 英国 (United Kingdom) 09 - NEKO",
+      "server": "94.156.250.148",
+      "server_port": 7001,
+      "method": "aes-256-gcm",
+      "password": "RexnBgU7EV5ADxG"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇬🇧 英国 (United Kingdom) 10 - NEKO",
+      "server": "129.151.70.113",
+      "server_port": 61312,
+      "method": "2022-blake3-chacha20-poly1305",
+      "password": "n12fSnv7G5u+/HcjQHq61FsQgrGuTfkXt/vbUMzRi3E="
     },
     {
       "type": "selector",
@@ -232,13 +158,7 @@
         "🇬🇧 英国 (United Kingdom) 07 - NEKO",
         "🇬🇧 英国 (United Kingdom) 08 - NEKO",
         "🇬🇧 英国 (United Kingdom) 09 - NEKO",
-        "🇬🇧 英国 (United Kingdom) 10 - NEKO",
-        "🇬🇧 英国 (United Kingdom) 11 - NEKO",
-        "🇬🇧 英国 (United Kingdom) 12 - NEKO",
-        "🇬🇧 英国 (United Kingdom) 13 - NEKO",
-        "🇬🇧 英国 (United Kingdom) 14 - NEKO",
-        "🇬🇧 英国 (United Kingdom) 15 - NEKO",
-        "🇬🇧 英国 (United Kingdom) 16 - NEKO"
+        "🇬🇧 英国 (United Kingdom) 10 - NEKO"
       ]
     },
     {
@@ -254,13 +174,7 @@
         "🇬🇧 英国 (United Kingdom) 07 - NEKO",
         "🇬🇧 英国 (United Kingdom) 08 - NEKO",
         "🇬🇧 英国 (United Kingdom) 09 - NEKO",
-        "🇬🇧 英国 (United Kingdom) 10 - NEKO",
-        "🇬🇧 英国 (United Kingdom) 11 - NEKO",
-        "🇬🇧 英国 (United Kingdom) 12 - NEKO",
-        "🇬🇧 英国 (United Kingdom) 13 - NEKO",
-        "🇬🇧 英国 (United Kingdom) 14 - NEKO",
-        "🇬🇧 英国 (United Kingdom) 15 - NEKO",
-        "🇬🇧 英国 (United Kingdom) 16 - NEKO"
+        "🇬🇧 英国 (United Kingdom) 10 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

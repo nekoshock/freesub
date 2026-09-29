@@ -5,6 +5,17 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇩🇪 德国 (Germany) 01 - NEKO
+  server: 199.232.78.101
+  port: 443
+  udp: true
+  type: trojan
+  password: mitivpn
+  sni: ssl.fastly.com
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /---@GHOFLSHCAN---@GHOFLSHCAN/---@GHOFLSHCAN---@GHOFLSHCAN/---@GHOFLSHCAN---@GHOFLSHCAN/NLSus---@GHOFLSHCAN---@GHOFLSHCAN/---@GHOFLSHCAN---@GHOFLSHCAN/---@GHOFLSHCAN---@GHOFLSHCAN
+- name: 🇩🇪 德国 (Germany) 02 - NEKO
   server: 199.232.78.170
   port: 443
   udp: true
@@ -15,7 +26,14 @@ proxies:
   network: ws
   ws-opts:
     path: '@mehrosabiran'
-- name: 🇩🇪 德国 (Germany) 02 - NEKO
+- name: 🇩🇪 德国 (Germany) 03 - NEKO
+  server: 130.61.231.252
+  port: 59924
+  udp: true
+  type: ss
+  cipher: 2022-blake3-chacha20-poly1305
+  password: w2UgXaZ3iOrLmANBQsipIyFHbIlhynnJ6s6TIquX/Ys=
+- name: 🇩🇪 德国 (Germany) 04 - NEKO
   server: 216.106.187.60
   port: 22324
   udp: true
@@ -23,34 +41,28 @@ proxies:
   uuid: 04621bae-ab36-11ec-b909-0242ac120002
   alterId: 0
   cipher: auto
-- name: 🇩🇪 德国 (Germany) 03 - NEKO
-  server: 130.61.230.35
+- name: 🇩🇪 德国 (Germany) 05 - NEKO
+  server: 130.61.239.221
   port: 59924
   udp: true
   type: ss
   cipher: 2022-blake3-chacha20-poly1305
-  password: mwLTjp3dO0CH4TCkx6f+fEJ/zVbYaytGLfmnDRJBXmg=
-- name: 🇩🇪 德国 (Germany) 04 - NEKO
+  password: SHqxWT07Pxp6FnJE3d2aP7NuKJoiq7o9OPkXZi9ccZY=
+- name: 🇩🇪 德国 (Germany) 06 - NEKO
+  server: 51.195.126.38
+  port: 8388
+  udp: true
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: 2YdE4lFOid5a
+- name: 🇩🇪 德国 (Germany) 07 - NEKO
   server: 185.226.172.8
   port: 8008
   udp: true
   type: ss
   cipher: aes-256-gcm
   password: XKFKl2rULjIp74
-- name: 🇩🇪 德国 (Germany) 05 - NEKO
-  server: 91.132.160.209
-  port: 443
-  udp: true
-  type: vless
-  uuid: 2412bd96-925b-43f2-81d1-0ed4f0793699
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: 9XSdNkmBhBszLYoODqMrm7r_JRur2PRbzF9T1Uf2AV0
-    short-id: f1004027e382c2fa
-  servername: dlcdn.apache.org
-  client-fingerprint: chrome
-- name: 🇩🇪 德国 (Germany) 06 - NEKO
+- name: 🇩🇪 德国 (Germany) 08 - NEKO
   server: 31.77.161.15
   port: 443
   udp: true
@@ -63,7 +75,14 @@ proxies:
     short-id: db04ce8bdb8900f1
   servername: nvidia.com
   client-fingerprint: chrome
-- name: 🇩🇪 德国 (Germany) 07 - NEKO
+- name: 🇩🇪 德国 (Germany) 09 - NEKO
+  server: 2.58.81.221
+  port: 443
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: kKEd0rBrd56Furjz
+- name: 🇩🇪 德国 (Germany) 10 - NEKO
   server: 193.108.117.54
   port: 443
   udp: true
@@ -79,40 +98,6 @@ proxies:
     path: /linkvws
     headers:
       Host: aidrivercat.org
-- name: 🇩🇪 德国 (Germany) 08 - NEKO
-  server: 51.195.126.38
-  port: 8388
-  udp: true
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: 2YdE4lFOid5a
-- name: 🇩🇪 德国 (Germany) 09 - NEKO
-  server: 2.26.125.147
-  port: 2096
-  udp: true
-  type: vless
-  uuid: 11d826ce-d6e5-4154-8658-6829bb17dca2
-  tls: true
-  servername: stf94fd.rumedia-cdn.com
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /cdn/v3/live
-    headers:
-      Host: stf94fd.rumedia-cdn.com
-- name: 🇩🇪 德国 (Germany) 10 - NEKO
-  server: 82.39.171.142
-  port: 443
-  udp: true
-  type: vless
-  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
-    short-id: c39cc7310a
-  servername: yahoo.com
-  client-fingerprint: chrome
 - name: 🇩🇪 德国 (Germany) 11 - NEKO
   server: 82.39.171.12
   port: 443
@@ -127,19 +112,63 @@ proxies:
   servername: yahoo.com
   client-fingerprint: chrome
 - name: 🇩🇪 德国 (Germany) 12 - NEKO
-  server: 213.202.208.199
-  port: 7001
+  server: 2.58.81.221
+  port: 80
   udp: true
   type: ss
   cipher: aes-256-gcm
-  password: RexnBgU7EV5ADxG
+  password: kKEd0rBrd56Furjz
 - name: 🇩🇪 德国 (Germany) 13 - NEKO
-  server: 130.61.231.252
-  port: 59924
+  server: arcturus.yokkastars.com
+  port: 40443
   udp: true
-  type: ss
-  cipher: 2022-blake3-chacha20-poly1305
-  password: w2UgXaZ3iOrLmANBQsipIyFHbIlhynnJ6s6TIquX/Ys=
+  type: vless
+  uuid: bb0f1ed0-0298-40a1-adb1-1f5d6ab33d54
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: w4AYHvQnQS6olDqoG9ptLOtgehaWOsv9HQhDax5bLA4
+    short-id: db46e2946fc466fd
+  servername: deepl.com
+  client-fingerprint: chrome
+- name: 🇩🇪 德国 (Germany) 14 - NEKO
+  server: 2.26.125.147
+  port: 2096
+  udp: true
+  type: vless
+  uuid: 11d826ce-d6e5-4154-8658-6829bb17dca2
+  tls: true
+  servername: stf94fd.rumedia-cdn.com
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /cdn/v3/live
+    headers:
+      Host: stf94fd.rumedia-cdn.com
+- name: 🇩🇪 德国 (Germany) 15 - NEKO
+  server: 82.39.171.142
+  port: 443
+  udp: true
+  type: vless
+  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
+    short-id: c39cc7310a
+  servername: yahoo.com
+  client-fingerprint: chrome
+- name: 🇩🇪 德国 (Germany) 16 - NEKO
+  server: 57.129.41.216
+  port: 80
+  udp: true
+  type: vless
+  uuid: 7d74eae4-8a06-4306-a923-ad686f30bf26
+  network: ws
+  ws-opts:
+    path: /vless/
+    headers:
+      Host: OV-Germany1.09vpn.com
 proxy-groups:
 - name: PROXIES
   type: select
@@ -158,6 +187,9 @@ proxy-groups:
   - 🇩🇪 德国 (Germany) 11 - NEKO
   - 🇩🇪 德国 (Germany) 12 - NEKO
   - 🇩🇪 德国 (Germany) 13 - NEKO
+  - 🇩🇪 德国 (Germany) 14 - NEKO
+  - 🇩🇪 德国 (Germany) 15 - NEKO
+  - 🇩🇪 德国 (Germany) 16 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -176,5 +208,8 @@ proxy-groups:
   - 🇩🇪 德国 (Germany) 11 - NEKO
   - 🇩🇪 德国 (Germany) 12 - NEKO
   - 🇩🇪 德国 (Germany) 13 - NEKO
+  - 🇩🇪 德国 (Germany) 14 - NEKO
+  - 🇩🇪 德国 (Germany) 15 - NEKO
+  - 🇩🇪 德国 (Germany) 16 - NEKO
 rules:
 - MATCH,PROXIES

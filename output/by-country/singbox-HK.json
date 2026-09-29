@@ -4,37 +4,23 @@
   },
   "outbounds": [
     {
-      "type": "hysteria2",
-      "tag": "🇭🇰 中国香港 (Hong Kong) 01 - NEKO",
-      "server": "xg1.mangshe.xyz",
-      "server_port": 2060,
-      "password": "5d0a6445-a30d-4522-bb1f-94f1d3ad63be",
-      "tls": {
-        "enabled": true,
-        "server_name": "xg1.mangshe.xyz",
-        "insecure": true
-      }
-    },
-    {
       "type": "vless",
-      "tag": "🇭🇰 中国香港 (Hong Kong) 02 - NEKO",
-      "server": "45.82.244.40",
-      "server_port": 443,
-      "uuid": "0250424c-ae75-4b6b-890f-3fe26fae36c3",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 01 - NEKO",
+      "server": "47.239.6.251",
+      "server_port": 13779,
+      "uuid": "928e6cce-8ced-4243-9a48-a6642edd09b0",
+      "flow": "xtls-rprx-vision",
       "tls": {
         "enabled": true,
-        "server_name": "hk.152568.xyz",
-        "insecure": false,
+        "server_name": "tesla.com",
         "utls": {
           "enabled": true,
-          "fingerprint": "edge"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/cdn/packages/runtime-core.tar.gz",
-        "headers": {
-          "Host": "hk.152568.xyz"
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "llTyp52oRXnJmQ3I9UUrmlwbMA79B-wLCRHCu-8dLGg",
+          "short_id": "af1bdd293097b664"
         }
       }
     },
@@ -43,16 +29,14 @@
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇭🇰 中国香港 (Hong Kong) 01 - NEKO",
-        "🇭🇰 中国香港 (Hong Kong) 02 - NEKO"
+        "🇭🇰 中国香港 (Hong Kong) 01 - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇭🇰 中国香港 (Hong Kong) 01 - NEKO",
-        "🇭🇰 中国香港 (Hong Kong) 02 - NEKO"
+        "🇭🇰 中国香港 (Hong Kong) 01 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

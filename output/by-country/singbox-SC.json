@@ -4,8 +4,16 @@
   },
   "outbounds": [
     {
-      "type": "vless",
+      "type": "shadowsocks",
       "tag": "🇸🇨 塞舌尔 (Seychelles) 01 - NEKO",
+      "server": "45.207.207.25",
+      "server_port": 443,
+      "method": "aes-256-gcm",
+      "password": "gj1+XKulKV0nmw6IThckOkkJh5DSM7+C"
+    },
+    {
+      "type": "vless",
+      "tag": "🇸🇨 塞舌尔 (Seychelles) 02 - NEKO",
       "server": "prep.wwwinternetvideo.click",
       "server_port": 443,
       "uuid": "1c332eae-7e02-4acd-996d-4eb3e652401c",
@@ -29,14 +37,16 @@
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇸🇨 塞舌尔 (Seychelles) 01 - NEKO"
+        "🇸🇨 塞舌尔 (Seychelles) 01 - NEKO",
+        "🇸🇨 塞舌尔 (Seychelles) 02 - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇸🇨 塞舌尔 (Seychelles) 01 - NEKO"
+        "🇸🇨 塞舌尔 (Seychelles) 01 - NEKO",
+        "🇸🇨 塞舌尔 (Seychelles) 02 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

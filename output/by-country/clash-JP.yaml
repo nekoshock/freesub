@@ -13,38 +13,39 @@ proxies:
   alterId: 0
   cipher: auto
 - name: 🇯🇵 日本 (Japan) 02 - NEKO
-  server: 64.176.51.214
-  port: 23462
+  server: 154.31.114.248
+  port: 50159
   udp: true
-  type: vmess
-  uuid: 95c5abc1-018d-4628-89a7-25ab9c62ab74
-  alterId: 0
-  cipher: auto
-  network: ws
-  ws-opts:
-    path: /a15206
-- name: 🇯🇵 日本 (Japan) 03 - NEKO
-  server: or.521166.xyz
-  port: 2083
-  udp: true
-  type: vmess
-  uuid: ac251237-576f-40c8-a543-554960c958b1
-  alterId: 0
-  cipher: auto
+  type: vless
+  uuid: d56624b2-35bb-468c-9b2a-e0b0df7230c1
+  flow: xtls-rprx-vision
   tls: true
-  servername: or.521166.xyz
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /or3
-- name: 🇯🇵 日本 (Japan) 04 - NEKO
-  server: 43.167.208.94
+  reality-opts:
+    public-key: j4QXngGuJkUGwRj4XIrfHRohYYuEfnJlX4cvCE-WklA
+    short-id: 091e1c5db8451757
+  servername: www.cloudflare.com
+  client-fingerprint: chrome
+- name: 🇯🇵 日本 (Japan) 03 - NEKO
+  server: vp3.yysyy.online
   port: 443
   udp: true
   type: hysteria2
-  password: RQBXe4kpsRant_2u1PzdneBOPuCSwUSI
-  sni: 43.167.208.94
-  skip-cert-verify: true
+  password: 96ab5cd282733fd4c312a61f972f330a
+  sni: vp3.yysyy.online
+  skip-cert-verify: false
+- name: 🇯🇵 日本 (Japan) 04 - NEKO
+  server: 13.230.30.102
+  port: 38830
+  udp: true
+  type: vless
+  uuid: d00d9d18-20cf-4191-be76-6f73d43a27ec
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: 5E5p5boHrgCyBlt5qZPX1XozU9I90JoBgS4zmXngllI
+    short-id: ac12ed79
+  servername: www.cloudflare.com
+  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select

@@ -4,30 +4,30 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇭🇰 中国香港 (Hong Kong) 01 - NEKO
-  server: 47.239.6.251
-  port: 13779
+- name: 🇱🇻 拉脱维亚 (Latvia) 01 - NEKO
+  server: 31.57.28.147
+  port: 443
   udp: true
   type: vless
-  uuid: 928e6cce-8ced-4243-9a48-a6642edd09b0
+  uuid: 2412bd96-925b-43f2-81d1-0ed4f0793699
   flow: xtls-rprx-vision
   tls: true
   reality-opts:
-    public-key: llTyp52oRXnJmQ3I9UUrmlwbMA79B-wLCRHCu-8dLGg
-    short-id: af1bdd293097b664
-  servername: tesla.com
+    public-key: d7yg69dK4DkaV1EPpQcgd4GBncMN9u1o1Nk9u-i7wGc
+    short-id: 7a18a196e730e1d5
+  servername: download-cdn.jetbrains.com
   client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇭🇰 中国香港 (Hong Kong) 01 - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 01 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇭🇰 中国香港 (Hong Kong) 01 - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 01 - NEKO
 rules:
 - MATCH,PROXIES

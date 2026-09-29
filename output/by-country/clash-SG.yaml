@@ -5,16 +5,12 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇸🇬 新加坡 (Singapore) 01 - NEKO
-  server: 188.114.97.6
-  port: 8080
+  server: 168.107.78.228
+  port: 56927
   udp: true
-  type: vless
-  uuid: 2388e166-3890-33ae-f77e-efac00000002
-  network: ws
-  ws-opts:
-    path: /NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN
-    headers:
-      Host: netlivpn4813.ddhshhshs.workers.dev
+  type: ss
+  cipher: 2022-blake3-chacha20-poly1305
+  password: bkirkeLNxhjqSpiH40KS1FGcpKSwnAEWm8+DN3QLPoU=
 - name: 🇸🇬 新加坡 (Singapore) 02 - NEKO
   server: 149.88.23.207
   port: 18000
@@ -24,6 +20,35 @@ proxies:
   alterId: 0
   cipher: auto
 - name: 🇸🇬 新加坡 (Singapore) 03 - NEKO
+  server: onhit.shalana.xyz
+  port: 443
+  udp: true
+  type: vless
+  uuid: 408fbae6-a40b-4f0b-9723-0b4ce8e3d035
+  tls: true
+  servername: onhit.shalana.xyz
+  skip-cert-verify: false
+- name: 🇸🇬 新加坡 (Singapore) 04 - NEKO
+  server: 138.2.73.238
+  port: 50160
+  udp: true
+  type: hysteria2
+  password: f87376e17da040ed04c9665ce8972930
+  sni: www.bing.com
+  skip-cert-verify: true
+- name: 🇸🇬 新加坡 (Singapore) 05 - NEKO
+  server: 217.217.254.126
+  port: 2053
+  udp: true
+  type: vless
+  uuid: cb15cce9-73ed-4928-b38c-462f0732cbe9
+  tls: true
+  reality-opts:
+    public-key: VzRjuHwcY-nLqkEIJS4S1CpButKc90Bh0gDbphyZ0Tw
+    short-id: 87829de0e2bb82cb
+  servername: www.cloudflare.com
+  client-fingerprint: chrome
+- name: 🇸🇬 新加坡 (Singapore) 06 - NEKO
   server: 146.235.16.130
   port: 19825
   udp: true
@@ -35,26 +60,9 @@ proxies:
     public-key: GvvkY8xYb9QjvwvzYq_uNC4tOGd0DCxRnz6770-xgkI
     short-id: 6ba85179e30d4fc2
   servername: sg2-8sb.6121999.dpdns.org
-  client-fingerprint: ''
-- name: 🇸🇬 新加坡 (Singapore) 04 - NEKO
-  server: onhit.shalana.xyz
-  port: 443
-  udp: true
-  type: vless
-  uuid: 408fbae6-a40b-4f0b-9723-0b4ce8e3d035
-  tls: true
-  servername: onhit.shalana.xyz
-  skip-cert-verify: false
-- name: 🇸🇬 新加坡 (Singapore) 05 - NEKO
-  server: xjp2.mangshe.xyz
-  port: 2060
-  udp: true
-  type: hysteria2
-  password: 5d0a6445-a30d-4522-bb1f-94f1d3ad63be
-  sni: xjp2.mangshe.xyz
-  skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 06 - NEKO
-  server: free-server.techsonic.dev
+  client-fingerprint: chrome
+- name: 🇸🇬 新加坡 (Singapore) 07 - NEKO
+  server: 91.193.58.255
   port: 2096
   udp: true
   type: vless
@@ -62,32 +70,12 @@ proxies:
   tls: true
   servername: free-server.techsonic.dev
   skip-cert-verify: false
-  client-fingerprint: firefox
+  client-fingerprint: chrome
   network: ws
   ws-opts:
     path: /free-server.techsonic.dev
     headers:
       Host: free-server.techsonic.dev
-- name: 🇸🇬 新加坡 (Singapore) 07 - NEKO
-  server: 217.217.254.126
-  port: 2053
-  udp: true
-  type: vless
-  uuid: cb15cce9-73ed-4928-b38c-462f0732cbe9
-  tls: true
-  reality-opts:
-    public-key: VzRjuHwcY-nLqkEIJS4S1CpButKc90Bh0gDbphyZ0Tw
-    short-id: 87829de0e2bb82cb
-  servername: www.cloudflare.com
-  client-fingerprint: firefox
-- name: 🇸🇬 新加坡 (Singapore) 08 - NEKO
-  server: 138.2.73.238
-  port: 50160
-  udp: true
-  type: hysteria2
-  password: f87376e17da040ed04c9665ce8972930
-  sni: www.bing.com
-  skip-cert-verify: true
 proxy-groups:
 - name: PROXIES
   type: select
@@ -100,7 +88,6 @@ proxy-groups:
   - 🇸🇬 新加坡 (Singapore) 05 - NEKO
   - 🇸🇬 新加坡 (Singapore) 06 - NEKO
   - 🇸🇬 新加坡 (Singapore) 07 - NEKO
-  - 🇸🇬 新加坡 (Singapore) 08 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -113,6 +100,5 @@ proxy-groups:
   - 🇸🇬 新加坡 (Singapore) 05 - NEKO
   - 🇸🇬 新加坡 (Singapore) 06 - NEKO
   - 🇸🇬 新加坡 (Singapore) 07 - NEKO
-  - 🇸🇬 新加坡 (Singapore) 08 - NEKO
 rules:
 - MATCH,PROXIES

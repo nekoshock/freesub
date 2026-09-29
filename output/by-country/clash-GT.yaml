@@ -4,30 +4,30 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇱🇻 拉脱维亚 (Latvia) 01 - NEKO
-  server: 31.57.28.147
+- name: 🇬🇹 GT 01 - NEKO
+  server: 185.47.254.251
   port: 443
   udp: true
   type: vless
-  uuid: 2412bd96-925b-43f2-81d1-0ed4f0793699
+  uuid: 878fb7f7-fc65-465e-a352-17c7216c6f3d
   flow: xtls-rprx-vision
   tls: true
   reality-opts:
-    public-key: d7yg69dK4DkaV1EPpQcgd4GBncMN9u1o1Nk9u-i7wGc
-    short-id: 7a18a196e730e1d5
-  servername: download-cdn.jetbrains.com
+    public-key: 6-_ZidygR8PRt4gtHlGCAW-PPmjEIm7Wn7MZqJU1z1Q
+    short-id: 6c059ecfddf9b179
+  servername: gateway.icloud.com
   client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇱🇻 拉脱维亚 (Latvia) 01 - NEKO
+  - 🇬🇹 GT 01 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇱🇻 拉脱维亚 (Latvia) 01 - NEKO
+  - 🇬🇹 GT 01 - NEKO
 rules:
 - MATCH,PROXIES

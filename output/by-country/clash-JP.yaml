@@ -26,26 +26,54 @@ proxies:
   servername: www.cloudflare.com
   client-fingerprint: chrome
 - name: 🇯🇵 日本 (Japan) 03 - NEKO
+  server: jp-1.gsafevpnapi.com
+  port: 20270
+  udp: true
+  type: vless
+  uuid: 976bf067-9865-4184-938a-204463938c09
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: gaFVpIOW9RJGuFFisfXVvITfYY5ikKn-4gB89ZQCFHI
+    short-id: 89fecfdaf45cd76d
+  servername: www.yahoo.com
+  client-fingerprint: chrome
+- name: 🇯🇵 日本 (Japan) 04 - NEKO
   server: vp3.yysyy.online
   port: 443
   udp: true
   type: hysteria2
   password: 96ab5cd282733fd4c312a61f972f330a
   sni: vp3.yysyy.online
+  skip-cert-verify: true
+- name: 🇯🇵 日本 (Japan) 05 - NEKO
+  server: or.521166.xyz
+  port: 2083
+  udp: true
+  type: vmess
+  uuid: ac251237-576f-40c8-a543-554960c958b1
+  alterId: 0
+  cipher: auto
+  tls: true
+  servername: or.521166.xyz
   skip-cert-verify: false
-- name: 🇯🇵 日本 (Japan) 04 - NEKO
-  server: 13.230.30.102
-  port: 38830
+  network: ws
+  ws-opts:
+    path: /or3
+- name: 🇯🇵 日本 (Japan) 06 - NEKO
+  server: 45.202.255.24
+  port: 8890
   udp: true
   type: vless
-  uuid: d00d9d18-20cf-4191-be76-6f73d43a27ec
-  flow: xtls-rprx-vision
+  uuid: 45d87ca1-d006-44ac-b62a-cb03d04c7130
   tls: true
   reality-opts:
-    public-key: 5E5p5boHrgCyBlt5qZPX1XozU9I90JoBgS4zmXngllI
-    short-id: ac12ed79
-  servername: www.cloudflare.com
+    public-key: DcHXqq0OOR8N-bd92fSrMjy2yrcAsG1Es7PesCOc7gc
+  servername: addons.mozilla.org
   client-fingerprint: chrome
+  network: grpc
+  grpc-opts:
+    grpc-service-name: grpc
 proxy-groups:
 - name: PROXIES
   type: select
@@ -55,6 +83,8 @@ proxy-groups:
   - 🇯🇵 日本 (Japan) 02 - NEKO
   - 🇯🇵 日本 (Japan) 03 - NEKO
   - 🇯🇵 日本 (Japan) 04 - NEKO
+  - 🇯🇵 日本 (Japan) 05 - NEKO
+  - 🇯🇵 日本 (Japan) 06 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -64,5 +94,7 @@ proxy-groups:
   - 🇯🇵 日本 (Japan) 02 - NEKO
   - 🇯🇵 日本 (Japan) 03 - NEKO
   - 🇯🇵 日本 (Japan) 04 - NEKO
+  - 🇯🇵 日本 (Japan) 05 - NEKO
+  - 🇯🇵 日本 (Japan) 06 - NEKO
 rules:
 - MATCH,PROXIES

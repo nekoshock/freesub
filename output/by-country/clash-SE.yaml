@@ -5,27 +5,6 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇸🇪 瑞典 (Sweden) 01 - NEKO
-  server: 51.20.86.152
-  port: 443
-  udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: amazonskr05
-- name: 🇸🇪 瑞典 (Sweden) 02 - NEKO
-  server: 172.238.244.13
-  port: 17000
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: pX0uhU3ZjUcLWYs0Vez55BO3JoQrRlL
-- name: 🇸🇪 瑞典 (Sweden) 03 - NEKO
-  server: 70.34.212.124
-  port: 8388
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: AxIYWtskJWIIaefW
-- name: 🇸🇪 瑞典 (Sweden) 04 - NEKO
   server: 79.141.174.147
   port: 33743
   udp: true
@@ -39,7 +18,7 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: TunService
-- name: 🇸🇪 瑞典 (Sweden) 05 - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 02 - NEKO
   server: surstreming.vvzzkontaktezzvv.garden
   port: 443
   udp: true
@@ -52,6 +31,20 @@ proxies:
     short-id: fb442438e2223836
   servername: surstreming.vvzzkontaktezzvv.garden
   client-fingerprint: chrome
+- name: 🇸🇪 瑞典 (Sweden) 03 - NEKO
+  server: 51.20.86.152
+  port: 443
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: amazonskr05
+- name: 🇸🇪 瑞典 (Sweden) 04 - NEKO
+  server: 70.34.212.124
+  port: 8388
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: AxIYWtskJWIIaefW
 proxy-groups:
 - name: PROXIES
   type: select
@@ -61,7 +54,6 @@ proxy-groups:
   - 🇸🇪 瑞典 (Sweden) 02 - NEKO
   - 🇸🇪 瑞典 (Sweden) 03 - NEKO
   - 🇸🇪 瑞典 (Sweden) 04 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 05 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -71,6 +63,5 @@ proxy-groups:
   - 🇸🇪 瑞典 (Sweden) 02 - NEKO
   - 🇸🇪 瑞典 (Sweden) 03 - NEKO
   - 🇸🇪 瑞典 (Sweden) 04 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 05 - NEKO
 rules:
 - MATCH,PROXIES

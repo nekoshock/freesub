@@ -5,43 +5,28 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇭🇰 中国香港 (Hong Kong) 01 - NEKO
-  server: 2.27.109.179
-  port: 45464
+  server: xg1.mangshe.xyz
+  port: 2060
   udp: true
-  type: trojan
-  password: XuMweB2PWs
-  sni: 2.27.109.179.sslip.io
-  skip-cert-verify: false
+  type: hysteria2
+  password: 5d0a6445-a30d-4522-bb1f-94f1d3ad63be
+  sni: xg1.mangshe.xyz
+  skip-cert-verify: true
 - name: 🇭🇰 中国香港 (Hong Kong) 02 - NEKO
-  server: aksai.org
+  server: 45.82.244.40
   port: 443
   udp: true
-  type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  alterId: 0
-  cipher: auto
+  type: vless
+  uuid: 0250424c-ae75-4b6b-890f-3fe26fae36c3
   tls: true
-  servername: aksai.org
+  servername: hk.152568.xyz
   skip-cert-verify: false
+  client-fingerprint: edge
   network: ws
   ws-opts:
-    path: /linkvws
+    path: /cdn/packages/runtime-core.tar.gz
     headers:
-      Host: aksai.org
-- name: 🇭🇰 中国香港 (Hong Kong) 03 - NEKO
-  server: lcv8v9l7oyamxxfz.v.3dns.vip
-  port: 443
-  udp: true
-  type: vmess
-  uuid: f23bb427c1f94373876c2f43e9f790f3
-  alterId: 0
-  cipher: auto
-  tls: true
-  servername: lcv8v9l7oyamxxfz.v.3dns.vip
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /ws-vmess
+      Host: hk.152568.xyz
 proxy-groups:
 - name: PROXIES
   type: select
@@ -49,7 +34,6 @@ proxy-groups:
   - AUTO
   - 🇭🇰 中国香港 (Hong Kong) 01 - NEKO
   - 🇭🇰 中国香港 (Hong Kong) 02 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 03 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -57,6 +41,5 @@ proxy-groups:
   proxies:
   - 🇭🇰 中国香港 (Hong Kong) 01 - NEKO
   - 🇭🇰 中国香港 (Hong Kong) 02 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 03 - NEKO
 rules:
 - MATCH,PROXIES

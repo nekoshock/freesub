@@ -4,19 +4,19 @@
   },
   "outbounds": [
     {
-      "type": "vless",
-      "tag": "🇮🇹 意大利 (Italy) 01 - NEKO",
-      "server": "204.216.216.23",
-      "server_port": 10086,
-      "uuid": "9f0285ee-20ca-4953-bcdb-86a920652923"
-    },
-    {
       "type": "vmess",
-      "tag": "🇮🇹 意大利 (Italy) 02 - NEKO",
+      "tag": "🇮🇹 意大利 (Italy) 01 - NEKO",
       "server": "89.41.172.85",
       "server_port": 22324,
       "uuid": "04621bae-ab36-11ec-b909-0242ac120002",
       "security": "auto"
+    },
+    {
+      "type": "vless",
+      "tag": "🇮🇹 意大利 (Italy) 02 - NEKO",
+      "server": "204.216.216.23",
+      "server_port": 10086,
+      "uuid": "9f0285ee-20ca-4953-bcdb-86a920652923"
     },
     {
       "type": "shadowsocks",
@@ -27,13 +27,26 @@
       "password": "itzvpn@321"
     },
     {
+      "type": "hysteria2",
+      "tag": "🇮🇹 意大利 (Italy) 04 - NEKO",
+      "server": "us4.xiaoliyu.cyou",
+      "server_port": 18333,
+      "password": "19f72087-4591-4d72-930b-2697078ec2be",
+      "tls": {
+        "enabled": true,
+        "server_name": "us4.xiaoliyu.cyou",
+        "insecure": true
+      }
+    },
+    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
         "🇮🇹 意大利 (Italy) 01 - NEKO",
         "🇮🇹 意大利 (Italy) 02 - NEKO",
-        "🇮🇹 意大利 (Italy) 03 - NEKO"
+        "🇮🇹 意大利 (Italy) 03 - NEKO",
+        "🇮🇹 意大利 (Italy) 04 - NEKO"
       ]
     },
     {
@@ -42,7 +55,8 @@
       "outbounds": [
         "🇮🇹 意大利 (Italy) 01 - NEKO",
         "🇮🇹 意大利 (Italy) 02 - NEKO",
-        "🇮🇹 意大利 (Italy) 03 - NEKO"
+        "🇮🇹 意大利 (Italy) 03 - NEKO",
+        "🇮🇹 意大利 (Italy) 04 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

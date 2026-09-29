@@ -4,28 +4,28 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇪🇪 爱沙尼亚 (Estonia) 01 - NEKO
-  server: 94.183.170.65
-  port: 8081
+- name: 🇹🇭 泰国 (Thailand) 01 - NEKO
+  server: 103.86.49.57
+  port: 80
   udp: true
   type: vless
-  uuid: e60bc99b-6630-4799-af84-f90ebdc643b6
+  uuid: 3c52e091-6714-4915-949f-2149fe69951b
   network: ws
   ws-opts:
-    path: /ws/generate
+    path: /ws
     headers:
-      Host: hys2.arkonsoft.top
+      Host: aIs.SpEeDtEsT.nEt
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇪🇪 爱沙尼亚 (Estonia) 01 - NEKO
+  - 🇹🇭 泰国 (Thailand) 01 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇪🇪 爱沙尼亚 (Estonia) 01 - NEKO
+  - 🇹🇭 泰国 (Thailand) 01 - NEKO
 rules:
 - MATCH,PROXIES

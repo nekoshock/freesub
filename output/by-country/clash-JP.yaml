@@ -13,19 +13,6 @@ proxies:
   alterId: 0
   cipher: auto
 - name: 🇯🇵 日本 (Japan) 02 - NEKO
-  server: bgroup.jp1.ilovegairport.com
-  port: 443
-  udp: true
-  type: vless
-  uuid: 8079ccd4-4b4b-44e2-92f0-8f0367ad9c24
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: BJihKW3qLbtwFO_WAZ3htkU5VpWcMoFYX9tqlLmKiUY
-    short-id: f3f3bbfe1c
-  servername: ap-northeast-1.console.aws.amazon.com
-  client-fingerprint: firefox
-- name: 🇯🇵 日本 (Japan) 03 - NEKO
   server: 45.202.255.24
   port: 8890
   udp: true
@@ -46,7 +33,6 @@ proxy-groups:
   - AUTO
   - 🇯🇵 日本 (Japan) 01 - NEKO
   - 🇯🇵 日本 (Japan) 02 - NEKO
-  - 🇯🇵 日本 (Japan) 03 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -54,6 +40,5 @@ proxy-groups:
   proxies:
   - 🇯🇵 日本 (Japan) 01 - NEKO
   - 🇯🇵 日本 (Japan) 02 - NEKO
-  - 🇯🇵 日本 (Japan) 03 - NEKO
 rules:
 - MATCH,PROXIES

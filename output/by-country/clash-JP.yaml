@@ -13,6 +13,18 @@ proxies:
   alterId: 0
   cipher: auto
 - name: 🇯🇵 日本 (Japan) 02 - NEKO
+  server: 45.76.215.91
+  port: 52226
+  udp: true
+  type: vless
+  uuid: 88dde62f-b4aa-4e59-84c3-1024f838e1c9
+  tls: true
+  reality-opts:
+    public-key: Y0aqDtPHb_inkRBkx1hs5yxMZX9_dZr4t_sGGIU8mmM
+    short-id: d6
+  servername: www.intel.com
+  client-fingerprint: random
+- name: 🇯🇵 日本 (Japan) 03 - NEKO
   server: 45.202.255.24
   port: 8890
   udp: true
@@ -26,41 +38,8 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: grpc
-- name: 🇯🇵 日本 (Japan) 03 - NEKO
-  server: 154.31.114.248
-  port: 50159
-  udp: true
-  type: vless
-  uuid: d56624b2-35bb-468c-9b2a-e0b0df7230c1
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: j4QXngGuJkUGwRj4XIrfHRohYYuEfnJlX4cvCE-WklA
-    short-id: 091e1c5db8451757
-  servername: www.cloudflare.com
-  client-fingerprint: chrome
 - name: 🇯🇵 日本 (Japan) 04 - NEKO
-  server: 139.162.109.56
-  port: 443
-  udp: true
-  type: vless
-  uuid: d90087c3-54f5-4283-a13f-615260c8b0c7
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: hTweFDvbSucrGERtiiwDfoqD3vo_Z9cuaqboff3FTXQ
-  servername: googleapis.com
-  client-fingerprint: chrome
-- name: 🇯🇵 日本 (Japan) 05 - NEKO
-  server: vp3.yysyy.online
-  port: 443
-  udp: true
-  type: hysteria2
-  password: 96ab5cd282733fd4c312a61f972f330a
-  sni: vp3.yysyy.online
-  skip-cert-verify: true
-- name: 🇯🇵 日本 (Japan) 06 - NEKO
-  server: or.521166.xyz
+  server: cdn.sfacg.uk
   port: 2083
   udp: true
   type: vmess
@@ -68,11 +47,13 @@ proxies:
   alterId: 0
   cipher: auto
   tls: true
-  servername: or.521166.xyz
+  servername: or3.sfacg.uk
   skip-cert-verify: false
   network: ws
   ws-opts:
     path: /or3
+    headers:
+      Host: or3.sfacg.uk
 proxy-groups:
 - name: PROXIES
   type: select
@@ -82,8 +63,6 @@ proxy-groups:
   - 🇯🇵 日本 (Japan) 02 - NEKO
   - 🇯🇵 日本 (Japan) 03 - NEKO
   - 🇯🇵 日本 (Japan) 04 - NEKO
-  - 🇯🇵 日本 (Japan) 05 - NEKO
-  - 🇯🇵 日本 (Japan) 06 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -93,7 +72,5 @@ proxy-groups:
   - 🇯🇵 日本 (Japan) 02 - NEKO
   - 🇯🇵 日本 (Japan) 03 - NEKO
   - 🇯🇵 日本 (Japan) 04 - NEKO
-  - 🇯🇵 日本 (Japan) 05 - NEKO
-  - 🇯🇵 日本 (Japan) 06 - NEKO
 rules:
 - MATCH,PROXIES

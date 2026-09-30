@@ -14,20 +14,21 @@
     {
       "type": "vless",
       "tag": "🇯🇵 日本 (Japan) 02 - NEKO",
-      "server": "45.76.215.91",
-      "server_port": 52226,
-      "uuid": "88dde62f-b4aa-4e59-84c3-1024f838e1c9",
+      "server": "bgroup.jp1.ilovegairport.com",
+      "server_port": 443,
+      "uuid": "8079ccd4-4b4b-44e2-92f0-8f0367ad9c24",
+      "flow": "xtls-rprx-vision",
       "tls": {
         "enabled": true,
-        "server_name": "www.intel.com",
+        "server_name": "ap-northeast-1.console.aws.amazon.com",
         "utls": {
           "enabled": true,
-          "fingerprint": "random"
+          "fingerprint": "firefox"
         },
         "reality": {
           "enabled": true,
-          "public_key": "Y0aqDtPHb_inkRBkx1hs5yxMZX9_dZr4t_sGGIU8mmM",
-          "short_id": "d6"
+          "public_key": "BJihKW3qLbtwFO_WAZ3htkU5VpWcMoFYX9tqlLmKiUY",
+          "short_id": "f3f3bbfe1c"
         }
       }
     },
@@ -56,34 +57,13 @@
       }
     },
     {
-      "type": "vmess",
-      "tag": "🇯🇵 日本 (Japan) 04 - NEKO",
-      "server": "cdn.sfacg.uk",
-      "server_port": 2083,
-      "uuid": "ac251237-576f-40c8-a543-554960c958b1",
-      "security": "auto",
-      "tls": {
-        "enabled": true,
-        "server_name": "or3.sfacg.uk",
-        "insecure": false
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/or3",
-        "headers": {
-          "Host": "or3.sfacg.uk"
-        }
-      }
-    },
-    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
         "🇯🇵 日本 (Japan) 01 - NEKO",
         "🇯🇵 日本 (Japan) 02 - NEKO",
-        "🇯🇵 日本 (Japan) 03 - NEKO",
-        "🇯🇵 日本 (Japan) 04 - NEKO"
+        "🇯🇵 日本 (Japan) 03 - NEKO"
       ]
     },
     {
@@ -92,8 +72,7 @@
       "outbounds": [
         "🇯🇵 日本 (Japan) 01 - NEKO",
         "🇯🇵 日本 (Japan) 02 - NEKO",
-        "🇯🇵 日本 (Japan) 03 - NEKO",
-        "🇯🇵 日本 (Japan) 04 - NEKO"
+        "🇯🇵 日本 (Japan) 03 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

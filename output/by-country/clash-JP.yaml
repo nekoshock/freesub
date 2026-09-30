@@ -13,17 +13,18 @@ proxies:
   alterId: 0
   cipher: auto
 - name: 🇯🇵 日本 (Japan) 02 - NEKO
-  server: 45.76.215.91
-  port: 52226
+  server: bgroup.jp1.ilovegairport.com
+  port: 443
   udp: true
   type: vless
-  uuid: 88dde62f-b4aa-4e59-84c3-1024f838e1c9
+  uuid: 8079ccd4-4b4b-44e2-92f0-8f0367ad9c24
+  flow: xtls-rprx-vision
   tls: true
   reality-opts:
-    public-key: Y0aqDtPHb_inkRBkx1hs5yxMZX9_dZr4t_sGGIU8mmM
-    short-id: d6
-  servername: www.intel.com
-  client-fingerprint: random
+    public-key: BJihKW3qLbtwFO_WAZ3htkU5VpWcMoFYX9tqlLmKiUY
+    short-id: f3f3bbfe1c
+  servername: ap-northeast-1.console.aws.amazon.com
+  client-fingerprint: firefox
 - name: 🇯🇵 日本 (Japan) 03 - NEKO
   server: 45.202.255.24
   port: 8890
@@ -38,22 +39,6 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: grpc
-- name: 🇯🇵 日本 (Japan) 04 - NEKO
-  server: cdn.sfacg.uk
-  port: 2083
-  udp: true
-  type: vmess
-  uuid: ac251237-576f-40c8-a543-554960c958b1
-  alterId: 0
-  cipher: auto
-  tls: true
-  servername: or3.sfacg.uk
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /or3
-    headers:
-      Host: or3.sfacg.uk
 proxy-groups:
 - name: PROXIES
   type: select
@@ -62,7 +47,6 @@ proxy-groups:
   - 🇯🇵 日本 (Japan) 01 - NEKO
   - 🇯🇵 日本 (Japan) 02 - NEKO
   - 🇯🇵 日本 (Japan) 03 - NEKO
-  - 🇯🇵 日本 (Japan) 04 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -71,6 +55,5 @@ proxy-groups:
   - 🇯🇵 日本 (Japan) 01 - NEKO
   - 🇯🇵 日本 (Japan) 02 - NEKO
   - 🇯🇵 日本 (Japan) 03 - NEKO
-  - 🇯🇵 日本 (Japan) 04 - NEKO
 rules:
 - MATCH,PROXIES

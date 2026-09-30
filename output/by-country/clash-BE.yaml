@@ -4,30 +4,29 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇮🇱 以色列 (Israel) 01 - NEKO
-  server: 185.95.231.233
+- name: 🇧🇪 比利时 (Belgium) 01 - NEKO
+  server: 35.240.62.249
   port: 443
   udp: true
   type: vless
-  uuid: 1ffa8e68-3378-4cf4-b8f6-44bf3d46d106
-  flow: xtls-rprx-vision
+  uuid: 6d341f6e-7b9d-4ae3-999b-00333de7bdfb
   tls: true
   reality-opts:
-    public-key: r4Dp3mztZaizbDk28rEOkLikk7erR9dzzc-Jrsgraho
-    short-id: a1b2c3d4
-  servername: store.steampowered.com
+    public-key: v6QpErcVOVKIYLm53R3bAP8zIKCFr4HAJWW0VwBKtws
+    short-id: 31f187650d9530bb
+  servername: www.cloudflare.com
   client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇮🇱 以色列 (Israel) 01 - NEKO
+  - 🇧🇪 比利时 (Belgium) 01 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇮🇱 以色列 (Israel) 01 - NEKO
+  - 🇧🇪 比利时 (Belgium) 01 - NEKO
 rules:
 - MATCH,PROXIES

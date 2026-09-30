@@ -5,6 +5,16 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇭🇰 中国香港 (Hong Kong) 01 - NEKO
+  server: 195.58.144.56
+  port: 11907
+  udp: true
+  type: vless
+  uuid: 07cb07b9-0c4d-46c1-a15a-b147511b6b07
+  tls: true
+  servername: 195.58.144.56
+  skip-cert-verify: false
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 02 - NEKO
   server: 2.27.109.179
   port: 45464
   udp: true
@@ -12,9 +22,24 @@ proxies:
   password: XuMweB2PWs
   sni: 2.27.109.179.sslip.io
   skip-cert-verify: false
-- name: 🇭🇰 中国香港 (Hong Kong) 02 - NEKO
-  server: 45.82.244.40
+- name: 🇭🇰 中国香港 (Hong Kong) 03 - NEKO
+  server: 139.162.41.109
   port: 443
+  udp: true
+  type: vless
+  uuid: 0250424c-ae75-4b6b-890f-3fe26fae36c3
+  tls: true
+  servername: hk.152568.xyz
+  skip-cert-verify: false
+  client-fingerprint: edge
+  network: ws
+  ws-opts:
+    path: /cdn/packages/runtime-core.tar.gz
+    headers:
+      Host: hk.152568.xyz
+- name: 🇭🇰 中国香港 (Hong Kong) 04 - NEKO
+  server: 85.149.211.28
+  port: 8443
   udp: true
   type: vless
   uuid: 0250424c-ae75-4b6b-890f-3fe26fae36c3
@@ -34,6 +59,8 @@ proxy-groups:
   - AUTO
   - 🇭🇰 中国香港 (Hong Kong) 01 - NEKO
   - 🇭🇰 中国香港 (Hong Kong) 02 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 03 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 04 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -41,5 +68,7 @@ proxy-groups:
   proxies:
   - 🇭🇰 中国香港 (Hong Kong) 01 - NEKO
   - 🇭🇰 中国香港 (Hong Kong) 02 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 03 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 04 - NEKO
 rules:
 - MATCH,PROXIES

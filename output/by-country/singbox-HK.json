@@ -4,8 +4,28 @@
   },
   "outbounds": [
     {
-      "type": "trojan",
+      "type": "vless",
       "tag": "🇭🇰 中国香港 (Hong Kong) 01 - NEKO",
+      "server": "195.58.144.56",
+      "server_port": 11907,
+      "uuid": "07cb07b9-0c4d-46c1-a15a-b147511b6b07",
+      "tls": {
+        "enabled": true,
+        "server_name": "195.58.144.56",
+        "insecure": false,
+        "alpn": [
+          "h2",
+          "http/1.1"
+        ],
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 02 - NEKO",
       "server": "2.27.109.179",
       "server_port": 45464,
       "password": "XuMweB2PWs",
@@ -21,9 +41,32 @@
     },
     {
       "type": "vless",
-      "tag": "🇭🇰 中国香港 (Hong Kong) 02 - NEKO",
-      "server": "45.82.244.40",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 03 - NEKO",
+      "server": "139.162.41.109",
       "server_port": 443,
+      "uuid": "0250424c-ae75-4b6b-890f-3fe26fae36c3",
+      "tls": {
+        "enabled": true,
+        "server_name": "hk.152568.xyz",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "edge"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/cdn/packages/runtime-core.tar.gz",
+        "headers": {
+          "Host": "hk.152568.xyz"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 04 - NEKO",
+      "server": "85.149.211.28",
+      "server_port": 8443,
       "uuid": "0250424c-ae75-4b6b-890f-3fe26fae36c3",
       "tls": {
         "enabled": true,
@@ -48,7 +91,9 @@
       "outbounds": [
         "auto",
         "🇭🇰 中国香港 (Hong Kong) 01 - NEKO",
-        "🇭🇰 中国香港 (Hong Kong) 02 - NEKO"
+        "🇭🇰 中国香港 (Hong Kong) 02 - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 03 - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 04 - NEKO"
       ]
     },
     {
@@ -56,7 +101,9 @@
       "tag": "auto",
       "outbounds": [
         "🇭🇰 中国香港 (Hong Kong) 01 - NEKO",
-        "🇭🇰 中国香港 (Hong Kong) 02 - NEKO"
+        "🇭🇰 中国香港 (Hong Kong) 02 - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 03 - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 04 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

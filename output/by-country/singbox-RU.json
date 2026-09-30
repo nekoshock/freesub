@@ -4,22 +4,8 @@
   },
   "outbounds": [
     {
-      "type": "vless",
-      "tag": "🇷🇺 俄罗斯 (Russia) 01 - NEKO",
-      "server": "108.162.198.178",
-      "server_port": 2086,
-      "uuid": "47fcef29-ab4e-4aa6-932b-d95a18f28a4e",
-      "transport": {
-        "type": "ws",
-        "path": "/",
-        "headers": {
-          "Host": "8nj2r.2k8t.f88.hh.vavava.kdns.fr"
-        }
-      }
-    },
-    {
       "type": "shadowsocks",
-      "tag": "🇷🇺 俄罗斯 (Russia) 02 - NEKO",
+      "tag": "🇷🇺 俄罗斯 (Russia) 01 - NEKO",
       "server": "94.249.187.46",
       "server_port": 1080,
       "method": "chacha20-ietf-poly1305",
@@ -27,19 +13,19 @@
     },
     {
       "type": "hysteria2",
-      "tag": "🇷🇺 俄罗斯 (Russia) 03 - NEKO",
-      "server": "91.240.86.70",
-      "server_port": 22443,
-      "password": "3f63c86c-ac4a-4900-85cf-4fedf93c2ca5",
+      "tag": "🇷🇺 俄罗斯 (Russia) 02 - NEKO",
+      "server": "srv-17e124.21freedom.net",
+      "server_port": 11592,
+      "password": "41edb44c8e",
       "tls": {
         "enabled": true,
-        "server_name": "91.240.86.70",
+        "server_name": "srv-17e124.21freedom.net",
         "insecure": true
       }
     },
     {
       "type": "vless",
-      "tag": "🇷🇺 俄罗斯 (Russia) 04 - NEKO",
+      "tag": "🇷🇺 俄罗斯 (Russia) 03 - NEKO",
       "server": "china.letsconnectpoint.com",
       "server_port": 443,
       "uuid": "a368752a-32fc-42f3-980a-6b049218b23f",
@@ -59,6 +45,56 @@
       }
     },
     {
+      "type": "hysteria2",
+      "tag": "🇷🇺 俄罗斯 (Russia) 04 - NEKO",
+      "server": "91.240.86.70",
+      "server_port": 22443,
+      "password": "3f63c86c-ac4a-4900-85cf-4fedf93c2ca5",
+      "tls": {
+        "enabled": true,
+        "server_name": "91.240.86.70",
+        "insecure": true
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇷🇺 俄罗斯 (Russia) 05 - NEKO",
+      "server": "fbsv6.guardora.pro",
+      "server_port": 443,
+      "uuid": "bc5ec86c-3e65-4272-994c-59a924c72a68",
+      "tls": {
+        "enabled": true,
+        "server_name": "fbsv6.guardora.pro",
+        "insecure": false,
+        "alpn": [
+          "http/1.1"
+        ],
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/ws",
+        "headers": {
+          "Host": "fbsv6.guardora.pro"
+        }
+      }
+    },
+    {
+      "type": "hysteria2",
+      "tag": "🇷🇺 俄罗斯 (Russia) 06 - NEKO",
+      "server": "91.196.32.163",
+      "server_port": 443,
+      "password": "mkL3AfdSZIpTWRB9TcWPn9vywPGN89MRHg3ToRDj",
+      "tls": {
+        "enabled": true,
+        "server_name": "germany3.h2corp.local",
+        "insecure": true
+      }
+    },
+    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
@@ -66,7 +102,9 @@
         "🇷🇺 俄罗斯 (Russia) 01 - NEKO",
         "🇷🇺 俄罗斯 (Russia) 02 - NEKO",
         "🇷🇺 俄罗斯 (Russia) 03 - NEKO",
-        "🇷🇺 俄罗斯 (Russia) 04 - NEKO"
+        "🇷🇺 俄罗斯 (Russia) 04 - NEKO",
+        "🇷🇺 俄罗斯 (Russia) 05 - NEKO",
+        "🇷🇺 俄罗斯 (Russia) 06 - NEKO"
       ]
     },
     {
@@ -76,7 +114,9 @@
         "🇷🇺 俄罗斯 (Russia) 01 - NEKO",
         "🇷🇺 俄罗斯 (Russia) 02 - NEKO",
         "🇷🇺 俄罗斯 (Russia) 03 - NEKO",
-        "🇷🇺 俄罗斯 (Russia) 04 - NEKO"
+        "🇷🇺 俄罗斯 (Russia) 04 - NEKO",
+        "🇷🇺 俄罗斯 (Russia) 05 - NEKO",
+        "🇷🇺 俄罗斯 (Russia) 06 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

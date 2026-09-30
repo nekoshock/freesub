@@ -5,30 +5,38 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇬🇧 英国 (United Kingdom) 01 - NEKO
-  server: 172.67.130.187
-  port: 2083
+  server: 199.232.78.188
+  port: 443
   udp: true
-  type: vless
-  uuid: 2b8738de-1af5-4267-b101-c05707769ed4
-  tls: true
-  servername: fans.liverpool.qzz.io
+  type: trojan
+  password: mitivpn
+  sni: ssl.fastly.com
   skip-cert-verify: false
-  client-fingerprint: chrome
   network: ws
   ws-opts:
-    path: /eyJqdW5rIjoiY0Y0cENQUmxsNyIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=
-    headers:
-      Host: fans.liverpool.qzz.io
+    path: /?Telegram---V2ray_confiig
 - name: 🇬🇧 英国 (United Kingdom) 02 - NEKO
-  server: 66.90.104.43
-  port: 2083
+  server: 149.102.132.184
+  port: 80
   udp: true
-  type: vless
-  uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
-  network: grpc
-  grpc-opts:
-    grpc-service-name: vless
+  type: ss
+  cipher: aes-256-gcm
+  password: g5h5jleTRSyO3Rk4
 - name: 🇬🇧 英国 (United Kingdom) 03 - NEKO
+  server: 149.102.132.184
+  port: 443
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: g5h5jleTRSyO3Rk4
+- name: 🇬🇧 英国 (United Kingdom) 04 - NEKO
+  server: 51.77.225.200
+  port: 8388
+  udp: true
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: zRZNBszYyWo5
+- name: 🇬🇧 英国 (United Kingdom) 05 - NEKO
   server: 66.90.105.211
   port: 2083
   udp: true
@@ -37,20 +45,6 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: vless
-- name: 🇬🇧 英国 (United Kingdom) 04 - NEKO
-  server: 134.65.62.95
-  port: 61312
-  udp: true
-  type: ss
-  cipher: 2022-blake3-chacha20-poly1305
-  password: +n/Yn6rWy+11rk4MxKsXdkGqV5y7bSFi1ktUN4jt11w=
-- name: 🇬🇧 英国 (United Kingdom) 05 - NEKO
-  server: 51.77.225.200
-  port: 8388
-  udp: true
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: zRZNBszYyWo5
 - name: 🇬🇧 英国 (United Kingdom) 06 - NEKO
   server: 23.81.34.204
   port: 443
@@ -78,21 +72,18 @@ proxies:
   servername: tomaz1337shellbuy.vvzzkontaktezzvv.garden
   client-fingerprint: chrome
 - name: 🇬🇧 英国 (United Kingdom) 08 - NEKO
-  server: aksai.org
+  server: 87.239.249.137
   port: 443
   udp: true
-  type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  alterId: 0
-  cipher: auto
+  type: vless
+  uuid: 67eb6b17-7797-4ded-bf52-423c4c5f6cbd
+  flow: xtls-rprx-vision
   tls: true
-  servername: aksai.org
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /linkvws
-    headers:
-      Host: aksai.org
+  reality-opts:
+    public-key: G7bpUPFSW28-oE6ff8qZac1_apU6PiJ-GHmi7tAPDSY
+    short-id: 91af08b1ce1f
+  servername: www.foxsports.com
+  client-fingerprint: chrome
 - name: 🇬🇧 英国 (United Kingdom) 09 - NEKO
   server: 186.190.211.67
   port: 443
@@ -110,31 +101,14 @@ proxies:
     headers:
       Host: pahobac.org
 - name: 🇬🇧 英国 (United Kingdom) 10 - NEKO
-  server: 87.239.249.137
-  port: 443
+  server: 66.90.104.43
+  port: 2083
   udp: true
   type: vless
-  uuid: 67eb6b17-7797-4ded-bf52-423c4c5f6cbd
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: G7bpUPFSW28-oE6ff8qZac1_apU6PiJ-GHmi7tAPDSY
-    short-id: 91af08b1ce1f
-  servername: www.foxsports.com
-  client-fingerprint: chrome
-- name: 🇬🇧 英国 (United Kingdom) 11 - NEKO
-  server: 57.129.132.223
-  port: 80
-  udp: true
-  type: vmess
-  uuid: a25cbf11-2908-4a1b-a3a8-9a571777dca3
-  alterId: 0
-  cipher: auto
-  network: ws
-  ws-opts:
-    path: /vmess/
-    headers:
-      Host: google.com
+  uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+  network: grpc
+  grpc-opts:
+    grpc-service-name: vless
 proxy-groups:
 - name: PROXIES
   type: select
@@ -150,7 +124,6 @@ proxy-groups:
   - 🇬🇧 英国 (United Kingdom) 08 - NEKO
   - 🇬🇧 英国 (United Kingdom) 09 - NEKO
   - 🇬🇧 英国 (United Kingdom) 10 - NEKO
-  - 🇬🇧 英国 (United Kingdom) 11 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -166,6 +139,5 @@ proxy-groups:
   - 🇬🇧 英国 (United Kingdom) 08 - NEKO
   - 🇬🇧 英国 (United Kingdom) 09 - NEKO
   - 🇬🇧 英国 (United Kingdom) 10 - NEKO
-  - 🇬🇧 英国 (United Kingdom) 11 - NEKO
 rules:
 - MATCH,PROXIES

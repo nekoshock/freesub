@@ -4,28 +4,28 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇦🇪 阿联酋 (UAE) 01 - NEKO
-  server: uae.unixzone.us
-  port: 22573
+- name: 🇺🇦 乌克兰 (Ukraine) 01 - NEKO
+  server: 199.232.78.170
+  port: 443
   udp: true
-  type: vless
-  uuid: 39947382-3212-41c9-bc3a-589574ac8b23
+  type: trojan
+  password: mitivpn
+  sni: ssl.fastly.com
+  skip-cert-verify: false
   network: ws
   ws-opts:
-    path: /
-    headers:
-      Host: uae.unixzone.us
+    path: '@mehrosabiran'
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇦🇪 阿联酋 (UAE) 01 - NEKO
+  - 🇺🇦 乌克兰 (Ukraine) 01 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇦🇪 阿联酋 (UAE) 01 - NEKO
+  - 🇺🇦 乌克兰 (Ukraine) 01 - NEKO
 rules:
 - MATCH,PROXIES

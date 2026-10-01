@@ -4,64 +4,36 @@
   },
   "outbounds": [
     {
-      "type": "hysteria2",
+      "type": "vmess",
       "tag": "🇭🇰 中国香港 (Hong Kong) 01 - NEKO",
-      "server": "els.mangshe.xyz",
-      "server_port": 2060,
-      "password": "5d0a6445-a30d-4522-bb1f-94f1d3ad63be",
-      "tls": {
-        "enabled": true,
-        "server_name": "els.mangshe.xyz",
-        "insecure": true
-      }
+      "server": "dog-hk.kunlun01dns.com",
+      "server_port": 21021,
+      "uuid": "9464ca40-dd75-3742-a628-d931a9f413b2",
+      "security": "auto"
     },
     {
-      "type": "hysteria2",
+      "type": "vmess",
       "tag": "🇭🇰 中国香港 (Hong Kong) 02 - NEKO",
-      "server": "202.146.222.29",
+      "server": "ex1ogt73nzpqkac2.v.3dns.vip",
       "server_port": 443,
-      "password": "H7mP2xY9kJ4nQ8wR5tF6vB3z",
+      "uuid": "f23bb427-c1f9-4373-876c-2f43e9f790f3",
+      "security": "auto",
       "tls": {
         "enabled": true,
-        "server_name": "202.146.222.29",
-        "insecure": true
-      }
-    },
-    {
-      "type": "vless",
-      "tag": "🇭🇰 中国香港 (Hong Kong) 03 - NEKO",
-      "server": "195.58.144.56",
-      "server_port": 11907,
-      "uuid": "07cb07b9-0c4d-46c1-a15a-b147511b6b07",
-      "tls": {
-        "enabled": true,
-        "server_name": "195.58.144.56",
-        "insecure": false,
-        "alpn": [
-          "h2",
-          "http/1.1"
-        ],
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
+        "server_name": "EX1oGt73NzPQKAc2.v.3dns.vip",
+        "insecure": false
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/ws-vmess",
+        "headers": {
+          "Host": "EX1oGt73NzPQKAc2.v.3dns.vip"
         }
       }
     },
     {
-      "type": "hysteria2",
-      "tag": "🇭🇰 中国香港 (Hong Kong) 04 - NEKO",
-      "server": "f675b7ac-tmeqo0-0-1imi4.hk3.hyhuawei.com",
-      "server_port": 443,
-      "password": "40fb1315-191a-11ed-b0ca-f23c91cfbbc9",
-      "tls": {
-        "enabled": true,
-        "server_name": "f675b7ac-tmeqo0-0-1imi4.hk3.hyhuawei.com",
-        "insecure": true
-      }
-    },
-    {
       "type": "vmess",
-      "tag": "🇭🇰 中国香港 (Hong Kong) 05 - NEKO",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 03 - NEKO",
       "server": "194.99.79.26",
       "server_port": 443,
       "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
@@ -81,7 +53,7 @@
     },
     {
       "type": "trojan",
-      "tag": "🇭🇰 中国香港 (Hong Kong) 06 - NEKO",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 04 - NEKO",
       "server": "2.27.109.179",
       "server_port": 45464,
       "password": "XuMweB2PWs",
@@ -96,6 +68,69 @@
       }
     },
     {
+      "type": "vless",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 05 - NEKO",
+      "server": "195.58.144.56",
+      "server_port": 11907,
+      "uuid": "07cb07b9-0c4d-46c1-a15a-b147511b6b07",
+      "tls": {
+        "enabled": true,
+        "server_name": "195.58.144.56",
+        "insecure": false,
+        "alpn": [
+          "h2",
+          "http/1.1"
+        ],
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 06 - NEKO",
+      "server": "i2psm3knof5qjjix.v.3dns.vip",
+      "server_port": 443,
+      "uuid": "f23bb427c1f94373876c2f43e9f790f3",
+      "security": "auto",
+      "tls": {
+        "enabled": true,
+        "server_name": "i2psm3knof5qjjix.v.3dns.vip",
+        "insecure": false
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/ws-vmess",
+        "headers": {
+          "Host": "I2PSm3Knof5qjjix.v.3dns.vip"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 07 - NEKO",
+      "server": "85.149.211.28",
+      "server_port": 8443,
+      "uuid": "0250424c-ae75-4b6b-890f-3fe26fae36c3",
+      "tls": {
+        "enabled": true,
+        "server_name": "hk.152568.xyz",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "edge"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/cdn/packages/runtime-core.tar.gz",
+        "headers": {
+          "Host": "hk.152568.xyz"
+        }
+      }
+    },
+    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
@@ -105,7 +140,8 @@
         "🇭🇰 中国香港 (Hong Kong) 03 - NEKO",
         "🇭🇰 中国香港 (Hong Kong) 04 - NEKO",
         "🇭🇰 中国香港 (Hong Kong) 05 - NEKO",
-        "🇭🇰 中国香港 (Hong Kong) 06 - NEKO"
+        "🇭🇰 中国香港 (Hong Kong) 06 - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 07 - NEKO"
       ]
     },
     {
@@ -117,7 +153,8 @@
         "🇭🇰 中国香港 (Hong Kong) 03 - NEKO",
         "🇭🇰 中国香港 (Hong Kong) 04 - NEKO",
         "🇭🇰 中国香港 (Hong Kong) 05 - NEKO",
-        "🇭🇰 中国香港 (Hong Kong) 06 - NEKO"
+        "🇭🇰 中国香港 (Hong Kong) 06 - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 07 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

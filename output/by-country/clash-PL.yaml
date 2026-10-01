@@ -5,28 +5,19 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇵🇱 波兰 (Poland) 01 - NEKO
-  server: 83.168.107.220
+  server: 95.85.253.202
   port: 443
   udp: true
   type: vless
-  uuid: b1813cbd-831f-4cb3-baf8-5bc0cc8298bc
+  uuid: 4314a583-3a39-45e1-883e-70bf570d252a
   flow: xtls-rprx-vision
   tls: true
   reality-opts:
-    public-key: s0lbZ5BO3ctZjE8DzsXkNL0NvLl6FgLG6532NQzXigo
-    short-id: c56d4f1c
-  servername: google.com
-  client-fingerprint: safari
+    public-key: z-TKWOWgZLfzQ-wNdwXQqVwaUgCmbchM2Xtrk1NGynU
+  servername: pl0001.kubservice.icu
+  client-fingerprint: qq
 - name: 🇵🇱 波兰 (Poland) 02 - NEKO
-  server: 144.31.49.47
-  port: 443
-  udp: true
-  type: hysteria2
-  password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
-  sni: admin.wwwinternetvideo.click
-  skip-cert-verify: true
-- name: 🇵🇱 波兰 (Poland) 03 - NEKO
-  server: pl-waw.dontblockmepls.com
+  server: 31.77.13.19
   port: 2063
   udp: true
   type: vless
@@ -36,7 +27,28 @@ proxies:
   reality-opts:
     public-key: MMpt_jWc4J3oySBdf5sPDVRkiWlZmOObth6A1scM9BM
   servername: rusbid.de
-  client-fingerprint: firefox
+  client-fingerprint: chrome
+- name: 🇵🇱 波兰 (Poland) 03 - NEKO
+  server: media.embrofree.org
+  port: 443
+  udp: true
+  type: hysteria2
+  password: ce09043a-5d3b-45df-aea0-5599215146bb
+  sni: media.embrofree.org
+  skip-cert-verify: false
+- name: 🇵🇱 波兰 (Poland) 04 - NEKO
+  server: 82.118.22.161
+  port: 443
+  udp: true
+  type: vless
+  uuid: 05488656-d4bf-4634-8b2e-e4ff5a56c7e2
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: xY1KpNxaIGmi6jfeudYQ_aaLGQqWK_uHStnwUFd2_2E
+    short-id: fa3ea655619a3e78
+  servername: www.cloudflare.com
+  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
@@ -45,6 +57,7 @@ proxy-groups:
   - 🇵🇱 波兰 (Poland) 01 - NEKO
   - 🇵🇱 波兰 (Poland) 02 - NEKO
   - 🇵🇱 波兰 (Poland) 03 - NEKO
+  - 🇵🇱 波兰 (Poland) 04 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -53,5 +66,6 @@ proxy-groups:
   - 🇵🇱 波兰 (Poland) 01 - NEKO
   - 🇵🇱 波兰 (Poland) 02 - NEKO
   - 🇵🇱 波兰 (Poland) 03 - NEKO
+  - 🇵🇱 波兰 (Poland) 04 - NEKO
 rules:
 - MATCH,PROXIES

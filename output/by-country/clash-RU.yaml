@@ -5,6 +5,14 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇷🇺 俄罗斯 (Russia) 01 - NEKO
+  server: 91.240.86.70
+  port: 22443
+  udp: true
+  type: hysteria2
+  password: 3f63c86c-ac4a-4900-85cf-4fedf93c2ca5
+  sni: 91.240.86.70
+  skip-cert-verify: true
+- name: 🇷🇺 俄罗斯 (Russia) 02 - NEKO
   server: china.letsconnectpoint.com
   port: 443
   udp: true
@@ -17,17 +25,36 @@ proxies:
     short-id: 3b74d85e
   servername: china.letsconnectpoint.com
   client-fingerprint: chrome
+- name: 🇷🇺 俄罗斯 (Russia) 03 - NEKO
+  server: 217.19.122.200
+  port: 443
+  udp: true
+  type: vless
+  uuid: bc5ec86c-3e65-4272-994c-59a924c72a68
+  tls: true
+  servername: fbsv6.guardora.pro
+  skip-cert-verify: false
+  client-fingerprint: random
+  network: ws
+  ws-opts:
+    path: /ws
+    headers:
+      Host: fbsv6.guardora.pro
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
   - 🇷🇺 俄罗斯 (Russia) 01 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 02 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 03 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
   - 🇷🇺 俄罗斯 (Russia) 01 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 02 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 03 - NEKO
 rules:
 - MATCH,PROXIES

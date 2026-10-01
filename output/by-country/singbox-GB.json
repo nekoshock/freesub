@@ -4,45 +4,16 @@
   },
   "outbounds": [
     {
-      "type": "trojan",
+      "type": "shadowsocks",
       "tag": "🇬🇧 英国 (United Kingdom) 01 - NEKO",
-      "server": "199.232.78.188",
-      "server_port": 443,
-      "password": "mitivpn",
-      "tls": {
-        "enabled": true,
-        "server_name": "ssl.fastly.com",
-        "insecure": false,
-        "alpn": [
-          "http/1.1"
-        ],
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/?Telegram---PLANB_NET---PLANB_NET---PLANB_NET---PLANB_NET",
-        "headers": {
-          "Host": "mitivpn---gb--s---mitivpn-1.global.ssl.fastly.net"
-        }
-      }
+      "server": "51.77.225.200",
+      "server_port": 8388,
+      "method": "chacha20-ietf-poly1305",
+      "password": "zRZNBszYyWo5"
     },
     {
       "type": "vless",
       "tag": "🇬🇧 英国 (United Kingdom) 02 - NEKO",
-      "server": "66.90.104.43",
-      "server_port": 2083,
-      "uuid": "cd3bb7d9-7df3-4644-ac05-c260990ac277",
-      "transport": {
-        "type": "grpc",
-        "service_name": "vless"
-      }
-    },
-    {
-      "type": "vless",
-      "tag": "🇬🇧 英国 (United Kingdom) 03 - NEKO",
       "server": "66.90.105.211",
       "server_port": 2083,
       "uuid": "cd3bb7d9-7df3-4644-ac05-c260990ac277",
@@ -53,43 +24,32 @@
     },
     {
       "type": "vless",
-      "tag": "🇬🇧 英国 (United Kingdom) 04 - NEKO",
-      "server": "23.81.34.204",
-      "server_port": 443,
-      "uuid": "99955907-9070-46f0-a200-9c7a0b9d74fe",
-      "flow": "xtls-rprx-vision",
-      "tls": {
-        "enabled": true,
-        "server_name": "speed.cloudflare.com",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "J_p_dxR8dIKaezk1_Ins5MZ7e4dqgrr2n9690vVuQ2s",
-          "short_id": "b19b017d6f453873"
-        }
+      "tag": "🇬🇧 英国 (United Kingdom) 03 - NEKO",
+      "server": "66.90.104.43",
+      "server_port": 2083,
+      "uuid": "cd3bb7d9-7df3-4644-ac05-c260990ac277",
+      "transport": {
+        "type": "grpc",
+        "service_name": "vless"
       }
     },
     {
-      "type": "vless",
-      "tag": "🇬🇧 英国 (United Kingdom) 05 - NEKO",
-      "server": "tomaz1337shellbuy.vvzzkontaktezzvv.garden",
+      "type": "vmess",
+      "tag": "🇬🇧 英国 (United Kingdom) 04 - NEKO",
+      "server": "186.190.211.67",
       "server_port": 443,
-      "uuid": "4bdeee92-97e8-414d-bef6-ec1d5e2ab73b",
-      "flow": "xtls-rprx-vision",
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
       "tls": {
         "enabled": true,
-        "server_name": "tomaz1337shellbuy.vvzzkontaktezzvv.garden",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "s0ypPx0AL3k2KOk74tbm-aE-i7eIR_MYVzfLHZeLaUk",
-          "short_id": "2e124af254a65e7c"
+        "server_name": "pahobac.org",
+        "insecure": false
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/linkvws",
+        "headers": {
+          "Host": "pahobac.org"
         }
       }
     },
@@ -101,8 +61,7 @@
         "🇬🇧 英国 (United Kingdom) 01 - NEKO",
         "🇬🇧 英国 (United Kingdom) 02 - NEKO",
         "🇬🇧 英国 (United Kingdom) 03 - NEKO",
-        "🇬🇧 英国 (United Kingdom) 04 - NEKO",
-        "🇬🇧 英国 (United Kingdom) 05 - NEKO"
+        "🇬🇧 英国 (United Kingdom) 04 - NEKO"
       ]
     },
     {
@@ -112,8 +71,7 @@
         "🇬🇧 英国 (United Kingdom) 01 - NEKO",
         "🇬🇧 英国 (United Kingdom) 02 - NEKO",
         "🇬🇧 英国 (United Kingdom) 03 - NEKO",
-        "🇬🇧 英国 (United Kingdom) 04 - NEKO",
-        "🇬🇧 英国 (United Kingdom) 05 - NEKO"
+        "🇬🇧 英国 (United Kingdom) 04 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

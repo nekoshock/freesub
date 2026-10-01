@@ -4,25 +4,25 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇱🇻 拉脱维亚 (Latvia) 01 - NEKO
-  server: 104.165.205.250
-  port: 9443
+- name: 🇦🇺 澳大利亚 (Australia) 01 - NEKO
+  server: vpn-au-001.fastervpn.world
+  port: 443
   udp: true
   type: hysteria2
-  password: e3c3b722-1264-4cdc-a97c-b0a1bb73cd67
-  sni: onecloudstream.com
-  skip-cert-verify: false
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: vpn-au-001.fastervpn.world
+  skip-cert-verify: true
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇱🇻 拉脱维亚 (Latvia) 01 - NEKO
+  - 🇦🇺 澳大利亚 (Australia) 01 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇱🇻 拉脱维亚 (Latvia) 01 - NEKO
+  - 🇦🇺 澳大利亚 (Australia) 01 - NEKO
 rules:
 - MATCH,PROXIES

@@ -4,25 +4,12 @@
   },
   "outbounds": [
     {
-      "type": "vless",
+      "type": "shadowsocks",
       "tag": "🇯🇵 日本 (Japan) 01 - NEKO",
-      "server": "154.31.114.248",
-      "server_port": 50159,
-      "uuid": "d56624b2-35bb-468c-9b2a-e0b0df7230c1",
-      "flow": "xtls-rprx-vision",
-      "tls": {
-        "enabled": true,
-        "server_name": "www.cloudflare.com",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "j4QXngGuJkUGwRj4XIrfHRohYYuEfnJlX4cvCE-WklA",
-          "short_id": "091e1c5db8451757"
-        }
-      }
+      "server": "149.22.87.204",
+      "server_port": 443,
+      "method": "aes-128-gcm",
+      "password": "shadowsocks"
     },
     {
       "type": "vmess",
@@ -33,47 +20,12 @@
       "security": "auto"
     },
     {
-      "type": "vless",
+      "type": "shadowsocks",
       "tag": "🇯🇵 日本 (Japan) 03 - NEKO",
-      "server": "qp.lichao0223.cn",
-      "server_port": 49152,
-      "uuid": "71b460a1-8f78-45c5-fb3c-ab26a2a1f7b9",
-      "tls": {
-        "enabled": true,
-        "server_name": "qp.lichao0223.cn",
-        "insecure": false,
-        "utls": {
-          "enabled": true,
-          "fingerprint": "safari"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/",
-        "headers": {
-          "Host": "qp.lichao0223.cn"
-        }
-      }
-    },
-    {
-      "type": "vmess",
-      "tag": "🇯🇵 日本 (Japan) 04 - NEKO",
-      "server": "cdn.sfacg.uk",
-      "server_port": 2083,
-      "uuid": "ac251237-576f-40c8-a543-554960c958b1",
-      "security": "auto",
-      "tls": {
-        "enabled": true,
-        "server_name": "or3.sfacg.uk",
-        "insecure": false
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/or3",
-        "headers": {
-          "Host": "or3.sfacg.uk"
-        }
-      }
+      "server": "84.247.155.196",
+      "server_port": 80,
+      "method": "aes-256-gcm",
+      "password": "3eOFeNssde7PYYMv"
     },
     {
       "type": "selector",
@@ -82,8 +34,7 @@
         "auto",
         "🇯🇵 日本 (Japan) 01 - NEKO",
         "🇯🇵 日本 (Japan) 02 - NEKO",
-        "🇯🇵 日本 (Japan) 03 - NEKO",
-        "🇯🇵 日本 (Japan) 04 - NEKO"
+        "🇯🇵 日本 (Japan) 03 - NEKO"
       ]
     },
     {
@@ -92,8 +43,7 @@
       "outbounds": [
         "🇯🇵 日本 (Japan) 01 - NEKO",
         "🇯🇵 日本 (Japan) 02 - NEKO",
-        "🇯🇵 日本 (Japan) 03 - NEKO",
-        "🇯🇵 日本 (Japan) 04 - NEKO"
+        "🇯🇵 日本 (Japan) 03 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

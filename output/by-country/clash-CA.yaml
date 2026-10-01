@@ -5,22 +5,6 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇨🇦 加拿大 (Canada) 01 - NEKO
-  server: 158.51.123.42
-  port: 22324
-  udp: true
-  type: vmess
-  uuid: 04621bae-ab36-11ec-b909-0242ac120002
-  alterId: 0
-  cipher: auto
-- name: 🇨🇦 加拿大 (Canada) 02 - NEKO
-  server: 66.163.113.176
-  port: 22324
-  udp: true
-  type: vmess
-  uuid: 04621bae-ab36-11ec-b909-0242ac120002
-  alterId: 0
-  cipher: auto
-- name: 🇨🇦 加拿大 (Canada) 03 - NEKO
   server: 198.57.27.190
   port: 22324
   udp: true
@@ -28,7 +12,54 @@ proxies:
   uuid: 04621bae-ab36-11ec-b909-0242ac120002
   alterId: 0
   cipher: auto
+- name: 🇨🇦 加拿大 (Canada) 02 - NEKO
+  server: 185.156.47.97
+  port: 9443
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: eveaaTOb8ji8yntw2Z9yWUG0d6Ir8Ld8m3ymH8THdC5egiTH1mXCiBc0Skr7FibH
+- name: 🇨🇦 加拿大 (Canada) 03 - NEKO
+  server: 51.79.49.116
+  port: 8882
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: kDWvXYZoTBcGkC4
 - name: 🇨🇦 加拿大 (Canada) 04 - NEKO
+  server: 15.235.75.71
+  port: 8388
+  udp: true
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: FD3rCuOsxOay
+- name: 🇨🇦 加拿大 (Canada) 05 - NEKO
+  server: 158.51.123.42
+  port: 22324
+  udp: true
+  type: vmess
+  uuid: 04621bae-ab36-11ec-b909-0242ac120002
+  alterId: 0
+  cipher: auto
+- name: 🇨🇦 加拿大 (Canada) 06 - NEKO
+  server: 188.114.97.6
+  port: 2082
+  udp: true
+  type: vless
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: zb1zi.s3nx.dyz.hh.vavava.kdns.fr
+- name: 🇨🇦 加拿大 (Canada) 07 - NEKO
+  server: yyz-ca-01.blncvpn4u.cc
+  port: 9443
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: eveaaTOb8ji8yntw2Z9yWUG0d6Ir8Ld8m3ymH8THdC5egiTH1mXCiBc0Skr7FibH
+- name: 🇨🇦 加拿大 (Canada) 08 - NEKO
   server: 158.51.121.123
   port: 443
   udp: true
@@ -44,20 +75,42 @@ proxies:
     path: /linkvws
     headers:
       Host: mygptagent.org
-- name: 🇨🇦 加拿大 (Canada) 05 - NEKO
+- name: 🇨🇦 加拿大 (Canada) 09 - NEKO
+  server: 51.222.12.127
+  port: 445
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: zDNVedRFPQexG9v
+- name: 🇨🇦 加拿大 (Canada) 10 - NEKO
+  server: 51.222.200.165
+  port: 5000
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: Y6R9pAtvxxzmGC
+- name: 🇨🇦 加拿大 (Canada) 11 - NEKO
   server: 51.79.85.185
   port: 8118
   udp: true
   type: ss
   cipher: aes-256-gcm
   password: cdBIDV42DCwnfIN
-- name: 🇨🇦 加拿大 (Canada) 06 - NEKO
-  server: 185.156.47.97
-  port: 9443
+- name: 🇨🇦 加拿大 (Canada) 12 - NEKO
+  server: 66.163.113.176
+  port: 22324
+  udp: true
+  type: vmess
+  uuid: 04621bae-ab36-11ec-b909-0242ac120002
+  alterId: 0
+  cipher: auto
+- name: 🇨🇦 加拿大 (Canada) 13 - NEKO
+  server: 51.222.141.125
+  port: 445
   udp: true
   type: ss
   cipher: aes-256-gcm
-  password: eveaaTOb8ji8yntw2Z9yWUG0d6Ir8Ld8m3ymH8THdC5egiTH1mXCiBc0Skr7FibH
+  password: zDNVedRFPQexG9v
 proxy-groups:
 - name: PROXIES
   type: select
@@ -69,6 +122,13 @@ proxy-groups:
   - 🇨🇦 加拿大 (Canada) 04 - NEKO
   - 🇨🇦 加拿大 (Canada) 05 - NEKO
   - 🇨🇦 加拿大 (Canada) 06 - NEKO
+  - 🇨🇦 加拿大 (Canada) 07 - NEKO
+  - 🇨🇦 加拿大 (Canada) 08 - NEKO
+  - 🇨🇦 加拿大 (Canada) 09 - NEKO
+  - 🇨🇦 加拿大 (Canada) 10 - NEKO
+  - 🇨🇦 加拿大 (Canada) 11 - NEKO
+  - 🇨🇦 加拿大 (Canada) 12 - NEKO
+  - 🇨🇦 加拿大 (Canada) 13 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -80,5 +140,12 @@ proxy-groups:
   - 🇨🇦 加拿大 (Canada) 04 - NEKO
   - 🇨🇦 加拿大 (Canada) 05 - NEKO
   - 🇨🇦 加拿大 (Canada) 06 - NEKO
+  - 🇨🇦 加拿大 (Canada) 07 - NEKO
+  - 🇨🇦 加拿大 (Canada) 08 - NEKO
+  - 🇨🇦 加拿大 (Canada) 09 - NEKO
+  - 🇨🇦 加拿大 (Canada) 10 - NEKO
+  - 🇨🇦 加拿大 (Canada) 11 - NEKO
+  - 🇨🇦 加拿大 (Canada) 12 - NEKO
+  - 🇨🇦 加拿大 (Canada) 13 - NEKO
 rules:
 - MATCH,PROXIES

@@ -5,30 +5,16 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇭🇰 中国香港 (Hong Kong) 01 - NEKO
-  server: dog-hk.kunlun01dns.com
-  port: 21021
+  server: 195.58.144.56
+  port: 11907
   udp: true
-  type: vmess
-  uuid: 9464ca40-dd75-3742-a628-d931a9f413b2
-  alterId: 0
-  cipher: auto
-- name: 🇭🇰 中国香港 (Hong Kong) 02 - NEKO
-  server: ex1ogt73nzpqkac2.v.3dns.vip
-  port: 443
-  udp: true
-  type: vmess
-  uuid: f23bb427-c1f9-4373-876c-2f43e9f790f3
-  alterId: 0
-  cipher: auto
+  type: vless
+  uuid: 07cb07b9-0c4d-46c1-a15a-b147511b6b07
   tls: true
-  servername: EX1oGt73NzPQKAc2.v.3dns.vip
+  servername: 195.58.144.56
   skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /ws-vmess
-    headers:
-      Host: EX1oGt73NzPQKAc2.v.3dns.vip
-- name: 🇭🇰 中国香港 (Hong Kong) 03 - NEKO
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 02 - NEKO
   server: 194.99.79.26
   port: 443
   udp: true
@@ -44,43 +30,48 @@ proxies:
     path: /linkvws
     headers:
       Host: aksai.org
-- name: 🇭🇰 中国香港 (Hong Kong) 04 - NEKO
-  server: 2.27.109.179
-  port: 45464
+- name: 🇭🇰 中国香港 (Hong Kong) 03 - NEKO
+  server: ru1.xiaoliyu.cyou
+  port: 18333
   udp: true
-  type: trojan
-  password: XuMweB2PWs
-  sni: 2.27.109.179.sslip.io
-  skip-cert-verify: false
-- name: 🇭🇰 中国香港 (Hong Kong) 05 - NEKO
-  server: 195.58.144.56
-  port: 11907
+  type: hysteria2
+  password: 19f72087-4591-4d72-930b-2697078ec2be
+  sni: ru1.xiaoliyu.cyou
+  skip-cert-verify: true
+- name: 🇭🇰 中国香港 (Hong Kong) 04 - NEKO
+  server: hk.152568.xyz
+  port: 8443
   udp: true
   type: vless
-  uuid: 07cb07b9-0c4d-46c1-a15a-b147511b6b07
+  uuid: 0250424c-ae75-4b6b-890f-3fe26fae36c3
   tls: true
-  servername: 195.58.144.56
+  servername: hk.152568.xyz
   skip-cert-verify: false
-  client-fingerprint: chrome
-- name: 🇭🇰 中国香港 (Hong Kong) 06 - NEKO
-  server: i2psm3knof5qjjix.v.3dns.vip
+  client-fingerprint: edge
+  network: ws
+  ws-opts:
+    path: /cdn/packages/runtime-core.tar.gz
+    headers:
+      Host: hk.152568.xyz
+- name: 🇭🇰 中国香港 (Hong Kong) 05 - NEKO
+  server: yg1.ygkkk.dpdns.org
   port: 443
   udp: true
   type: vmess
-  uuid: f23bb427c1f94373876c2f43e9f790f3
+  uuid: b2ba4a73-3123-479e-aa96-5973a9ecd0c0
   alterId: 0
   cipher: auto
   tls: true
-  servername: i2psm3knof5qjjix.v.3dns.vip
+  servername: jmp1.907737.xyz
   skip-cert-verify: false
   network: ws
   ws-opts:
-    path: /ws-vmess
+    path: /b2ba4a73-3123-479e-aa96-5973a9ecd0c0-vm
     headers:
-      Host: I2PSm3Knof5qjjix.v.3dns.vip
-- name: 🇭🇰 中国香港 (Hong Kong) 07 - NEKO
-  server: 85.149.211.28
-  port: 8443
+      Host: jmp1.907737.xyz
+- name: 🇭🇰 中国香港 (Hong Kong) 06 - NEKO
+  server: hk.152568.xyz
+  port: 443
   udp: true
   type: vless
   uuid: 0250424c-ae75-4b6b-890f-3fe26fae36c3
@@ -104,7 +95,6 @@ proxy-groups:
   - 🇭🇰 中国香港 (Hong Kong) 04 - NEKO
   - 🇭🇰 中国香港 (Hong Kong) 05 - NEKO
   - 🇭🇰 中国香港 (Hong Kong) 06 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 07 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -116,6 +106,5 @@ proxy-groups:
   - 🇭🇰 中国香港 (Hong Kong) 04 - NEKO
   - 🇭🇰 中国香港 (Hong Kong) 05 - NEKO
   - 🇭🇰 中国香港 (Hong Kong) 06 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 07 - NEKO
 rules:
 - MATCH,PROXIES

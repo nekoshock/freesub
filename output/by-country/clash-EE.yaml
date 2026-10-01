@@ -5,7 +5,17 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇪🇪 爱沙尼亚 (Estonia) 01 - NEKO
-  server: 194.26.141.148
+  server: 94.183.170.135
+  port: 8443
+  udp: true
+  type: vless
+  uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
+  tls: true
+  servername: estproxy4.lockdwn.com
+  skip-cert-verify: false
+  client-fingerprint: chrome
+- name: 🇪🇪 爱沙尼亚 (Estonia) 02 - NEKO
+  server: ee10.zazazuza.ru
   port: 8443
   udp: true
   type: vless
@@ -13,7 +23,7 @@ proxies:
   tls: true
   servername: fdghyt.com
   skip-cert-verify: false
-  client-fingerprint: firefox
+  client-fingerprint: chrome
   network: ws
   ws-opts:
     path: /vpn-wss/fluxor/59011/
@@ -25,11 +35,13 @@ proxy-groups:
   proxies:
   - AUTO
   - 🇪🇪 爱沙尼亚 (Estonia) 01 - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 02 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
   - 🇪🇪 爱沙尼亚 (Estonia) 01 - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 02 - NEKO
 rules:
 - MATCH,PROXIES

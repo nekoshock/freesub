@@ -4,27 +4,28 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇦🇹 奥地利 (Austria) 01 - NEKO
-  server: 31.77.227.6
-  port: 52006
+- name: 🇮🇩 印尼 (Indonesia) 01 - NEKO
+  server: 104.21.70.21
+  port: 443
   udp: true
-  type: vless
-  uuid: bc659d88-a1e0-076c-a49a-7b51b26a7a7f
-  flow: xtls-rprx-vision
-  tls: true
-  servername: bigdick.gamegrow.ru
+  type: trojan
+  password: 018b8e7b-7813-4dcb-84a5-3c98f1521e00
+  sni: id1.nathaya.web.id
   skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /trojan
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇦🇹 奥地利 (Austria) 01 - NEKO
+  - 🇮🇩 印尼 (Indonesia) 01 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇦🇹 奥地利 (Austria) 01 - NEKO
+  - 🇮🇩 印尼 (Indonesia) 01 - NEKO
 rules:
 - MATCH,PROXIES

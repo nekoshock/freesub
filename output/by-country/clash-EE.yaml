@@ -4,29 +4,27 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇮🇳 印度 (India) 01 - NEKO
-  server: 139.84.177.239
-  port: 443
+- name: 🇪🇪 爱沙尼亚 (Estonia) 01 - NEKO
+  server: 94.183.170.135
+  port: 8443
   udp: true
   type: vless
-  uuid: d90087c3-54f5-4283-a13f-615260c8b0c7
-  flow: xtls-rprx-vision
+  uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
   tls: true
-  reality-opts:
-    public-key: hTweFDvbSucrGERtiiwDfoqD3vo_Z9cuaqboff3FTXQ
-  servername: googleapis.com
+  servername: estproxy4.lockdwn.com
+  skip-cert-verify: false
   client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇮🇳 印度 (India) 01 - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 01 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇮🇳 印度 (India) 01 - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 01 - NEKO
 rules:
 - MATCH,PROXIES

@@ -12,7 +12,7 @@ proxies:
   cipher: chacha20-ietf-poly1305
   password: e8KgS8fD0yDqYFpgN4G5piCOt9aFyqA3
 - name: 🇨🇭 瑞士 (Switzerland) 02 - NEKO
-  server: 82.38.64.237
+  server: 82.38.64.239
   port: 8443
   udp: true
   type: hysteria2
@@ -20,6 +20,18 @@ proxies:
   sni: hopp-swizland-new.mysynology.net
   skip-cert-verify: false
 - name: 🇨🇭 瑞士 (Switzerland) 03 - NEKO
+  server: 208.69.78.217
+  port: 2053
+  udp: true
+  type: vless
+  uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
+  tls: true
+  reality-opts:
+    public-key: A49ue7zXSusJZdErPAewg3jqGdUFIO1a9xOunEKJfC0
+    short-id: ad86e2d52ff40ebd
+  servername: www.apple.com
+  client-fingerprint: chrome
+- name: 🇨🇭 瑞士 (Switzerland) 04 - NEKO
   server: 104.165.205.41
   port: 8443
   udp: true
@@ -27,7 +39,7 @@ proxies:
   password: 3a92b39a-5f02-415e-a908-783ec320e83f
   sni: speedtestmark.com
   skip-cert-verify: true
-- name: 🇨🇭 瑞士 (Switzerland) 04 - NEKO
+- name: 🇨🇭 瑞士 (Switzerland) 05 - NEKO
   server: 176.65.144.84
   port: 443
   udp: true
@@ -49,6 +61,7 @@ proxy-groups:
   - 🇨🇭 瑞士 (Switzerland) 02 - NEKO
   - 🇨🇭 瑞士 (Switzerland) 03 - NEKO
   - 🇨🇭 瑞士 (Switzerland) 04 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 05 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -58,5 +71,6 @@ proxy-groups:
   - 🇨🇭 瑞士 (Switzerland) 02 - NEKO
   - 🇨🇭 瑞士 (Switzerland) 03 - NEKO
   - 🇨🇭 瑞士 (Switzerland) 04 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 05 - NEKO
 rules:
 - MATCH,PROXIES

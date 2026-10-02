@@ -13,15 +13,27 @@ proxies:
   alterId: 0
   cipher: auto
 - name: 🇸🇬 新加坡 (Singapore) 02 - NEKO
-  server: 5.223.19.211
+  server: 217.217.254.126
+  port: 2053
+  udp: true
+  type: vless
+  uuid: cb15cce9-73ed-4928-b38c-462f0732cbe9
+  tls: true
+  reality-opts:
+    public-key: VzRjuHwcY-nLqkEIJS4S1CpButKc90Bh0gDbphyZ0Tw
+    short-id: 87829de0e2bb82cb
+  servername: www.cloudflare.com
+  client-fingerprint: chrome
+- name: 🇸🇬 新加坡 (Singapore) 03 - NEKO
+  server: 5.223.41.93
   port: 80
   udp: true
   type: vless
-  uuid: 4b8a0930-1c36-4efe-b4fe-21f9ad97905c
+  uuid: f2eada1b-fdec-48c6-8638-18ade32993d4
   network: ws
   ws-opts:
     path: /
-- name: 🇸🇬 新加坡 (Singapore) 03 - NEKO
+- name: 🇸🇬 新加坡 (Singapore) 04 - NEKO
   server: 146.235.16.130
   port: 19825
   udp: true
@@ -33,39 +45,17 @@ proxies:
     public-key: GvvkY8xYb9QjvwvzYq_uNC4tOGd0DCxRnz6770-xgkI
     short-id: 6ba85179e30d4fc2
   servername: sg2-8sb.6121999.dpdns.org
-  client-fingerprint: ''
-- name: 🇸🇬 新加坡 (Singapore) 04 - NEKO
-  server: 172.105.116.246
-  port: 443
-  udp: true
-  type: vless
-  uuid: d90087c3-54f5-4283-a13f-615260c8b0c7
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: hTweFDvbSucrGERtiiwDfoqD3vo_Z9cuaqboff3FTXQ
-  servername: googleapis.com
   client-fingerprint: chrome
 - name: 🇸🇬 新加坡 (Singapore) 05 - NEKO
-  server: 5.223.41.93
+  server: 5.223.19.211
   port: 80
   udp: true
   type: vless
-  uuid: f2eada1b-fdec-48c6-8638-18ade32993d4
+  uuid: 4b8a0930-1c36-4efe-b4fe-21f9ad97905c
   network: ws
   ws-opts:
     path: /
 - name: 🇸🇬 新加坡 (Singapore) 06 - NEKO
-  server: sg4.dexlos.com
-  port: 20654
-  udp: true
-  type: hysteria2
-  password: 8A9905B7-801B-41AF-BFC9-2034212770F6
-  sni: sg4.dexlos.com
-  skip-cert-verify: false
-  obfs: salamander
-  obfs-password: xK9mN2pLq5vR8wB3
-- name: 🇸🇬 新加坡 (Singapore) 07 - NEKO
   server: free-server.techsonic.dev
   port: 2096
   udp: true
@@ -91,7 +81,6 @@ proxy-groups:
   - 🇸🇬 新加坡 (Singapore) 04 - NEKO
   - 🇸🇬 新加坡 (Singapore) 05 - NEKO
   - 🇸🇬 新加坡 (Singapore) 06 - NEKO
-  - 🇸🇬 新加坡 (Singapore) 07 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -103,6 +92,5 @@ proxy-groups:
   - 🇸🇬 新加坡 (Singapore) 04 - NEKO
   - 🇸🇬 新加坡 (Singapore) 05 - NEKO
   - 🇸🇬 新加坡 (Singapore) 06 - NEKO
-  - 🇸🇬 新加坡 (Singapore) 07 - NEKO
 rules:
 - MATCH,PROXIES

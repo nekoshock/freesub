@@ -5,14 +5,26 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇫🇮 芬兰 (Finland) 01 - NEKO
+  server: 170.168.4.52
+  port: 443
+  udp: true
+  type: vless
+  uuid: 4643976f-85fa-40cf-9e58-ea28b50f253b
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: SB1uC0OEveYjSiS_Nuw9Ld-uVVXWqi794OGnldthY3I
+  servername: finl11.ali-bard.online
+  client-fingerprint: qq
+- name: 🇫🇮 芬兰 (Finland) 02 - NEKO
   server: 144.31.232.216
   port: 443
   udp: true
   type: hysteria2
   password: 06e88dd6-e264-4981-8c26-d7ab17348ab2
   sni: fi01.clgate.network
-  skip-cert-verify: true
-- name: 🇫🇮 芬兰 (Finland) 02 - NEKO
+  skip-cert-verify: false
+- name: 🇫🇮 芬兰 (Finland) 03 - NEKO
   server: 144.31.212.253
   port: 443
   udp: true
@@ -27,6 +39,7 @@ proxy-groups:
   - AUTO
   - 🇫🇮 芬兰 (Finland) 01 - NEKO
   - 🇫🇮 芬兰 (Finland) 02 - NEKO
+  - 🇫🇮 芬兰 (Finland) 03 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -34,5 +47,6 @@ proxy-groups:
   proxies:
   - 🇫🇮 芬兰 (Finland) 01 - NEKO
   - 🇫🇮 芬兰 (Finland) 02 - NEKO
+  - 🇫🇮 芬兰 (Finland) 03 - NEKO
 rules:
 - MATCH,PROXIES

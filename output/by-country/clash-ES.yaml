@@ -13,13 +13,28 @@ proxies:
   alterId: 0
   cipher: auto
 - name: 🇪🇸 西班牙 (Spain) 02 - NEKO
+  server: 108.181.121.226
+  port: 8388
+  udp: true
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: WSyL4XTwNsdv
+- name: 🇪🇸 西班牙 (Spain) 03 - NEKO
+  server: xby.mangshe.xyz
+  port: 2060
+  udp: true
+  type: hysteria2
+  password: 5d0a6445-a30d-4522-bb1f-94f1d3ad63be
+  sni: xby.mangshe.xyz
+  skip-cert-verify: true
+- name: 🇪🇸 西班牙 (Spain) 04 - NEKO
   server: 140.174.184.5
   port: 8388
   udp: true
   type: ss
   cipher: chacha20-ietf-poly1305
   password: qItG8SueYQcP
-- name: 🇪🇸 西班牙 (Spain) 03 - NEKO
+- name: 🇪🇸 西班牙 (Spain) 05 - NEKO
   server: 193.238.154.5
   port: 443
   udp: true
@@ -32,14 +47,7 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: cdn.v1.AssetService
-- name: 🇪🇸 西班牙 (Spain) 04 - NEKO
-  server: 108.181.121.226
-  port: 8388
-  udp: true
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: WSyL4XTwNsdv
-- name: 🇪🇸 西班牙 (Spain) 05 - NEKO
+- name: 🇪🇸 西班牙 (Spain) 06 - NEKO
   server: 66.163.118.73
   port: 443
   udp: true
@@ -65,6 +73,7 @@ proxy-groups:
   - 🇪🇸 西班牙 (Spain) 03 - NEKO
   - 🇪🇸 西班牙 (Spain) 04 - NEKO
   - 🇪🇸 西班牙 (Spain) 05 - NEKO
+  - 🇪🇸 西班牙 (Spain) 06 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -75,5 +84,6 @@ proxy-groups:
   - 🇪🇸 西班牙 (Spain) 03 - NEKO
   - 🇪🇸 西班牙 (Spain) 04 - NEKO
   - 🇪🇸 西班牙 (Spain) 05 - NEKO
+  - 🇪🇸 西班牙 (Spain) 06 - NEKO
 rules:
 - MATCH,PROXIES

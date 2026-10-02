@@ -4,24 +4,25 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇵🇹 葡萄牙 (Portugal) 01 - NEKO
-  server: 185.231.233.91
-  port: 17167
+- name: 🇨🇿 捷克 (Czech) 01 - NEKO
+  server: 153.76.190.41
+  port: 8443
   udp: true
-  type: ss
-  cipher: aes-128-gcm
-  password: ca438054771821250089399a2f33275e
+  type: hysteria2
+  password: 3a92b39a-5f02-415e-a908-783ec320e83f
+  sni: speedtestmark.com
+  skip-cert-verify: true
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇵🇹 葡萄牙 (Portugal) 01 - NEKO
+  - 🇨🇿 捷克 (Czech) 01 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇵🇹 葡萄牙 (Portugal) 01 - NEKO
+  - 🇨🇿 捷克 (Czech) 01 - NEKO
 rules:
 - MATCH,PROXIES

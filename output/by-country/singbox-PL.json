@@ -4,8 +4,29 @@
   },
   "outbounds": [
     {
-      "type": "trojan",
+      "type": "vless",
       "tag": "🇵🇱 波兰 (Poland) 01 - NEKO",
+      "server": "149.86.227.200",
+      "server_port": 443,
+      "uuid": "0f4081e7-612b-425f-8def-eebf144aedba",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "waypoint.connectserverix.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "safari"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "ITd6cmCxudmTvGcwnAzpd0VRe8jS9KJAQ1tmtVN3mCM",
+          "short_id": "9e15546f267baa64"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇵🇱 波兰 (Poland) 02 - NEKO",
       "server": "202.78.163.237",
       "server_port": 443,
       "password": "UX82473651",
@@ -17,29 +38,31 @@
     },
     {
       "type": "vless",
-      "tag": "🇵🇱 波兰 (Poland) 02 - NEKO",
-      "server": "83.168.107.220",
-      "server_port": 443,
-      "uuid": "b1813cbd-831f-4cb3-baf8-5bc0cc8298bc",
-      "flow": "xtls-rprx-vision",
+      "tag": "🇵🇱 波兰 (Poland) 03 - NEKO",
+      "server": "pl.srv.vbuste-bot.com",
+      "server_port": 444,
+      "uuid": "318c935d-c195-41d3-99ad-9bbcfdab3386",
       "tls": {
         "enabled": true,
-        "server_name": "google.com",
+        "server_name": "pl.srv.vbuste-bot.com",
         "utls": {
           "enabled": true,
-          "fingerprint": "safari"
+          "fingerprint": "firefox"
         },
         "reality": {
           "enabled": true,
-          "public_key": "s0lbZ5BO3ctZjE8DzsXkNL0NvLl6FgLG6532NQzXigo",
-          "short_id": "c56d4f1c"
+          "public_key": "0-or5ogGhYbBgsVSrSC2Fhxyp2BN97Y9pqIdg61Qd08",
+          "short_id": "4be4110078ebed4a"
         }
+      },
+      "transport": {
+        "type": "grpc"
       }
     },
     {
       "type": "vless",
-      "tag": "🇵🇱 波兰 (Poland) 03 - NEKO",
-      "server": "31.77.13.19",
+      "tag": "🇵🇱 波兰 (Poland) 04 - NEKO",
+      "server": "pl-waw.dontblockmepls.com",
       "server_port": 2063,
       "uuid": "b18d5990-96eb-4587-a386-7f8ef7591e6a",
       "flow": "xtls-rprx-vision",
@@ -48,33 +71,13 @@
         "server_name": "rusbid.de",
         "utls": {
           "enabled": true,
-          "fingerprint": "chrome"
+          "fingerprint": "firefox"
         },
         "reality": {
           "enabled": true,
           "public_key": "MMpt_jWc4J3oySBdf5sPDVRkiWlZmOObth6A1scM9BM",
           "short_id": ""
         }
-      }
-    },
-    {
-      "type": "vless",
-      "tag": "🇵🇱 波兰 (Poland) 04 - NEKO",
-      "server": "176.108.253.133",
-      "server_port": 443,
-      "uuid": "e0b9fb0f-1bbd-478b-9580-c2294778338b",
-      "tls": {
-        "enabled": true,
-        "server_name": "pl.avroraservice.online",
-        "insecure": false,
-        "utls": {
-          "enabled": true,
-          "fingerprint": "firefox"
-        }
-      },
-      "transport": {
-        "type": "grpc",
-        "service_name": "cdn.v1.PlService"
       }
     },
     {

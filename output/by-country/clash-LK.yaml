@@ -4,32 +4,32 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇦🇺 澳大利亚 (Australia) 01 - NEKO
-  server: 208.103.161.5
+- name: 🇱🇰 斯里兰卡 (Sri Lanka) 01 - NEKO
+  server: trackydev.site
   port: 443
   udp: true
   type: vless
-  uuid: d042a74a-c305-4eec-a89f-39a348022c92
+  uuid: 92d67828-4c56-4795-af5a-f387651380dc
   tls: true
-  servername: dry-butterfly-8eb9.tmpgnacio83.workers.dev
+  servername: trackydev.site
   skip-cert-verify: false
   client-fingerprint: chrome
   network: ws
   ws-opts:
     path: /
     headers:
-      Host: dry-butterfly-8eb9.tmpgnacio83.workers.dev
+      Host: trackydev.site
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇦🇺 澳大利亚 (Australia) 01 - NEKO
+  - 🇱🇰 斯里兰卡 (Sri Lanka) 01 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇦🇺 澳大利亚 (Australia) 01 - NEKO
+  - 🇱🇰 斯里兰卡 (Sri Lanka) 01 - NEKO
 rules:
 - MATCH,PROXIES

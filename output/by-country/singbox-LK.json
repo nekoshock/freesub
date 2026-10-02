@@ -5,22 +5,23 @@
   "outbounds": [
     {
       "type": "vless",
-      "tag": "🇱🇹 立陶宛 (Lithuania) 01 - NEKO",
-      "server": "litva.ali-bard.online",
+      "tag": "🇱🇰 斯里兰卡 (Sri Lanka) 01 - NEKO",
+      "server": "trackydev.site",
       "server_port": 443,
-      "uuid": "5786d86f-7731-4174-b1a3-84297e54b015",
-      "flow": "xtls-rprx-vision",
+      "uuid": "92d67828-4c56-4795-af5a-f387651380dc",
       "tls": {
         "enabled": true,
-        "server_name": "litva.ali-bard.online",
+        "server_name": "trackydev.site",
+        "insecure": false,
         "utls": {
           "enabled": true,
           "fingerprint": "chrome"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "SB1uC0OEveYjSiS_Nuw9Ld-uVVXWqi794OGnldthY3I",
-          "short_id": ""
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "trackydev.site"
         }
       }
     },
@@ -29,14 +30,14 @@
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇱🇹 立陶宛 (Lithuania) 01 - NEKO"
+        "🇱🇰 斯里兰卡 (Sri Lanka) 01 - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇱🇹 立陶宛 (Lithuania) 01 - NEKO"
+        "🇱🇰 斯里兰卡 (Sri Lanka) 01 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

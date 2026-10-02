@@ -4,26 +4,30 @@
   },
   "outbounds": [
     {
-      "type": "shadowsocks",
-      "tag": "🇵🇹 葡萄牙 (Portugal) 01 - NEKO",
-      "server": "185.231.233.91",
-      "server_port": 17167,
-      "method": "aes-128-gcm",
-      "password": "ca438054771821250089399a2f33275e"
+      "type": "hysteria2",
+      "tag": "🇨🇿 捷克 (Czech) 01 - NEKO",
+      "server": "153.76.190.41",
+      "server_port": 8443,
+      "password": "3a92b39a-5f02-415e-a908-783ec320e83f",
+      "tls": {
+        "enabled": true,
+        "server_name": "speedtestmark.com",
+        "insecure": true
+      }
     },
     {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇵🇹 葡萄牙 (Portugal) 01 - NEKO"
+        "🇨🇿 捷克 (Czech) 01 - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇵🇹 葡萄牙 (Portugal) 01 - NEKO"
+        "🇨🇿 捷克 (Czech) 01 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

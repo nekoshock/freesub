@@ -5,6 +5,19 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇵🇱 波兰 (Poland) 01 - NEKO
+  server: 149.86.227.200
+  port: 443
+  udp: true
+  type: vless
+  uuid: 0f4081e7-612b-425f-8def-eebf144aedba
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: ITd6cmCxudmTvGcwnAzpd0VRe8jS9KJAQ1tmtVN3mCM
+    short-id: 9e15546f267baa64
+  servername: waypoint.connectserverix.com
+  client-fingerprint: safari
+- name: 🇵🇱 波兰 (Poland) 02 - NEKO
   server: 202.78.163.237
   port: 443
   udp: true
@@ -12,21 +25,23 @@ proxies:
   password: UX82473651
   sni: cheerful-swan.rooster465.autos
   skip-cert-verify: false
-- name: 🇵🇱 波兰 (Poland) 02 - NEKO
-  server: 83.168.107.220
-  port: 443
+- name: 🇵🇱 波兰 (Poland) 03 - NEKO
+  server: pl.srv.vbuste-bot.com
+  port: 444
   udp: true
   type: vless
-  uuid: b1813cbd-831f-4cb3-baf8-5bc0cc8298bc
-  flow: xtls-rprx-vision
+  uuid: 318c935d-c195-41d3-99ad-9bbcfdab3386
   tls: true
   reality-opts:
-    public-key: s0lbZ5BO3ctZjE8DzsXkNL0NvLl6FgLG6532NQzXigo
-    short-id: c56d4f1c
-  servername: google.com
-  client-fingerprint: safari
-- name: 🇵🇱 波兰 (Poland) 03 - NEKO
-  server: 31.77.13.19
+    public-key: 0-or5ogGhYbBgsVSrSC2Fhxyp2BN97Y9pqIdg61Qd08
+    short-id: 4be4110078ebed4a
+  servername: pl.srv.vbuste-bot.com
+  client-fingerprint: firefox
+  network: grpc
+  grpc-opts:
+    grpc-service-name: ''
+- name: 🇵🇱 波兰 (Poland) 04 - NEKO
+  server: pl-waw.dontblockmepls.com
   port: 2063
   udp: true
   type: vless
@@ -36,20 +51,7 @@ proxies:
   reality-opts:
     public-key: MMpt_jWc4J3oySBdf5sPDVRkiWlZmOObth6A1scM9BM
   servername: rusbid.de
-  client-fingerprint: chrome
-- name: 🇵🇱 波兰 (Poland) 04 - NEKO
-  server: 176.108.253.133
-  port: 443
-  udp: true
-  type: vless
-  uuid: e0b9fb0f-1bbd-478b-9580-c2294778338b
-  tls: true
-  servername: pl.avroraservice.online
-  skip-cert-verify: false
   client-fingerprint: firefox
-  network: grpc
-  grpc-opts:
-    grpc-service-name: cdn.v1.PlService
 - name: 🇵🇱 波兰 (Poland) 05 - NEKO
   server: 188.225.79.44
   port: 443

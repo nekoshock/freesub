@@ -4,25 +4,22 @@
   },
   "outbounds": [
     {
-      "type": "vless",
-      "tag": "🇦🇺 澳大利亚 (Australia) 01 - NEKO",
-      "server": "208.103.161.5",
+      "type": "vmess",
+      "tag": "🇧🇷 巴西 (Brazil) 01 - NEKO",
+      "server": "89.39.161.157",
       "server_port": 443,
-      "uuid": "d042a74a-c305-4eec-a89f-39a348022c92",
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
       "tls": {
         "enabled": true,
-        "server_name": "dry-butterfly-8eb9.tmpgnacio83.workers.dev",
-        "insecure": false,
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
+        "server_name": "aksai.org",
+        "insecure": false
       },
       "transport": {
         "type": "ws",
-        "path": "/",
+        "path": "/linkvws",
         "headers": {
-          "Host": "dry-butterfly-8eb9.tmpgnacio83.workers.dev"
+          "Host": "aksai.org"
         }
       }
     },
@@ -31,14 +28,14 @@
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇦🇺 澳大利亚 (Australia) 01 - NEKO"
+        "🇧🇷 巴西 (Brazil) 01 - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇦🇺 澳大利亚 (Australia) 01 - NEKO"
+        "🇧🇷 巴西 (Brazil) 01 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇪🇸 西班牙 (Spain) 01 11254K - NEKO
+- name: 🇪🇸 西班牙 (Spain) 01 5869K - NEKO
   server: 185.174.137.172
   port: 8446
   udp: true
@@ -12,8 +12,8 @@ proxies:
   password: e9dc02d400b67c727aca1620
   sni: 185.174.137.172
   skip-cert-verify: true
-- name: 🇪🇸 西班牙 (Spain) 02 1047K - NEKO
-  server: assets-es.pleiades.codes
+- name: 🇪🇸 西班牙 (Spain) 02 1278K - NEKO
+  server: 193.238.154.5
   port: 443
   udp: true
   type: vless
@@ -21,33 +21,25 @@ proxies:
   tls: true
   servername: assets-es.pleiades.codes
   skip-cert-verify: false
-  client-fingerprint: chrome
+  client-fingerprint: firefox
   network: grpc
   grpc-opts:
     grpc-service-name: cdn.v1.AssetService
-- name: 🇪🇸 西班牙 (Spain) 03 ⚠S2680K - NEKO
-  server: xby.mangshe.xyz
-  port: 2060
-  udp: true
-  type: hysteria2
-  password: 5d0a6445-a30d-4522-bb1f-94f1d3ad63be
-  sni: 127.0.0.1
-  skip-cert-verify: true
-- name: 🇪🇸 西班牙 (Spain) 04 4579K - NEKO
-  server: 140.174.184.5
-  port: 8388
-  udp: true
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: qItG8SueYQcP
-- name: 🇪🇸 西班牙 (Spain) 05 5026K - NEKO
+- name: 🇪🇸 西班牙 (Spain) 03 3511K - NEKO
   server: 108.181.121.226
   port: 8388
   udp: true
   type: ss
   cipher: chacha20-ietf-poly1305
   password: WSyL4XTwNsdv
-- name: 🇪🇸 西班牙 (Spain) 06 7226K - NEKO
+- name: 🇪🇸 西班牙 (Spain) 04 3175K - NEKO
+  server: 140.174.184.5
+  port: 8388
+  udp: true
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: qItG8SueYQcP
+- name: 🇪🇸 西班牙 (Spain) 05 3342K - NEKO
   server: 212.227.235.66
   port: 2053
   udp: true
@@ -58,8 +50,8 @@ proxies:
     public-key: 7Y6Xb5Ql_03K25x8yKUSOKI2JTOMyv2nyCcFza90uxk
     short-id: 29e8dcd2b37aaa7f
   servername: www.apple.com
-  client-fingerprint: firefox
-- name: 🇪🇸 西班牙 (Spain) 07 7461K - NEKO
+  client-fingerprint: chrome
+- name: 🇪🇸 西班牙 (Spain) 06 3342K - NEKO
   server: es2.h1cloud.net
   port: 25535
   udp: true
@@ -71,7 +63,7 @@ proxies:
     short-id: 7642ce57308852e7
   servername: www.microsoft.com
   client-fingerprint: firefox
-- name: 🇪🇸 西班牙 (Spain) 08 1520K - NEKO
+- name: 🇪🇸 西班牙 (Spain) 07 3517K - NEKO
   server: 46.28.71.247
   port: 443
   udp: true
@@ -89,26 +81,24 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇪🇸 西班牙 (Spain) 01 11254K - NEKO
-  - 🇪🇸 西班牙 (Spain) 02 1047K - NEKO
-  - 🇪🇸 西班牙 (Spain) 03 ⚠S2680K - NEKO
-  - 🇪🇸 西班牙 (Spain) 04 4579K - NEKO
-  - 🇪🇸 西班牙 (Spain) 05 5026K - NEKO
-  - 🇪🇸 西班牙 (Spain) 06 7226K - NEKO
-  - 🇪🇸 西班牙 (Spain) 07 7461K - NEKO
-  - 🇪🇸 西班牙 (Spain) 08 1520K - NEKO
+  - 🇪🇸 西班牙 (Spain) 01 5869K - NEKO
+  - 🇪🇸 西班牙 (Spain) 02 1278K - NEKO
+  - 🇪🇸 西班牙 (Spain) 03 3511K - NEKO
+  - 🇪🇸 西班牙 (Spain) 04 3175K - NEKO
+  - 🇪🇸 西班牙 (Spain) 05 3342K - NEKO
+  - 🇪🇸 西班牙 (Spain) 06 3342K - NEKO
+  - 🇪🇸 西班牙 (Spain) 07 3517K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇪🇸 西班牙 (Spain) 01 11254K - NEKO
-  - 🇪🇸 西班牙 (Spain) 02 1047K - NEKO
-  - 🇪🇸 西班牙 (Spain) 03 ⚠S2680K - NEKO
-  - 🇪🇸 西班牙 (Spain) 04 4579K - NEKO
-  - 🇪🇸 西班牙 (Spain) 05 5026K - NEKO
-  - 🇪🇸 西班牙 (Spain) 06 7226K - NEKO
-  - 🇪🇸 西班牙 (Spain) 07 7461K - NEKO
-  - 🇪🇸 西班牙 (Spain) 08 1520K - NEKO
+  - 🇪🇸 西班牙 (Spain) 01 5869K - NEKO
+  - 🇪🇸 西班牙 (Spain) 02 1278K - NEKO
+  - 🇪🇸 西班牙 (Spain) 03 3511K - NEKO
+  - 🇪🇸 西班牙 (Spain) 04 3175K - NEKO
+  - 🇪🇸 西班牙 (Spain) 05 3342K - NEKO
+  - 🇪🇸 西班牙 (Spain) 06 3342K - NEKO
+  - 🇪🇸 西班牙 (Spain) 07 3517K - NEKO
 rules:
 - MATCH,PROXIES

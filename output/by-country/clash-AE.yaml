@@ -4,8 +4,8 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇦🇪 阿联酋 (UAE) 01 22495K - NEKO
-  server: 130.49.161.70
+- name: 🇦🇪 阿联酋 (UAE) 01 7543K - NEKO
+  server: hy2.aspidnet.xyz
   port: 443
   udp: true
   type: hysteria2
@@ -14,29 +14,16 @@ proxies:
   skip-cert-verify: false
   obfs: salamander
   obfs-password: rG07s3COMIEvdnQipRyWzx_H_2xygNC3
-- name: 🇦🇪 阿联酋 (UAE) 02 5531K - NEKO
-  server: go.wwwinternetvideo.click
+- name: 🇦🇪 阿联酋 (UAE) 02 3167K - NEKO
+  server: 144.31.49.47
   port: 443
   udp: true
   type: hysteria2
   password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
   sni: admin.wwwinternetvideo.click
   skip-cert-verify: true
-- name: 🇦🇪 阿联酋 (UAE) 03 8138K - NEKO
-  server: 78.40.195.140
-  port: 443
-  udp: true
-  type: vless
-  uuid: eec2f6a7-c10f-43b0-b133-61f9bf9bbc27
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: Rp0WaupRP9LtJ-dd4vjKwuvSzqo_ZqIZPZWDEbSoIAo
-    short-id: 98096455d963bdbb
-  servername: www.booking.com
-  client-fingerprint: firefox
-- name: 🇦🇪 阿联酋 (UAE) 04 7354K - NEKO
-  server: 31.59.150.11
+- name: 🇦🇪 阿联酋 (UAE) 03 4143K - NEKO
+  server: node-nl.shtormvpn.shop
   port: 443
   udp: true
   type: vless
@@ -46,37 +33,22 @@ proxies:
   reality-opts:
     public-key: yI6maXxTQ8zRHg39X8YMQtKW-IVfNIn0_OCUIQKmcXw
   servername: google.com
-  client-fingerprint: random
-- name: 🇦🇪 阿联酋 (UAE) 05 3726K - NEKO
-  server: uae.unixzone.us
-  port: 22573
-  udp: true
-  type: vless
-  uuid: 39947382-3212-41c9-bc3a-589574ac8b23
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: uae.unixzone.us
+  client-fingerprint: edge
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇦🇪 阿联酋 (UAE) 01 22495K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 02 5531K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 03 8138K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 04 7354K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 05 3726K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 01 7543K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 02 3167K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 03 4143K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇦🇪 阿联酋 (UAE) 01 22495K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 02 5531K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 03 8138K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 04 7354K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 05 3726K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 01 7543K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 02 3167K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 03 4143K - NEKO
 rules:
 - MATCH,PROXIES

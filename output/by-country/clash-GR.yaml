@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇬🇷 希腊 (Greece) 01 5675K - NEKO
+- name: 🇬🇷 希腊 (Greece) 01 3830K - NEKO
   server: 185.126.238.87
   port: 2083
   udp: true
@@ -13,7 +13,7 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: security.debian.org
-- name: 🇬🇷 希腊 (Greece) 02 5724K - NEKO
+- name: 🇬🇷 希腊 (Greece) 02 1110K - NEKO
   server: 85.90.197.220
   port: 443
   udp: true
@@ -25,20 +25,20 @@ proxies:
     public-key: biNcdU5mywtNw-KyPpLHindBxdEyAolT1WJ26N0b7y4
     short-id: 94acb54627612d43
   servername: www.cloudflare.com
-  client-fingerprint: ''
+  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇬🇷 希腊 (Greece) 01 5675K - NEKO
-  - 🇬🇷 希腊 (Greece) 02 5724K - NEKO
+  - 🇬🇷 希腊 (Greece) 01 3830K - NEKO
+  - 🇬🇷 希腊 (Greece) 02 1110K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇬🇷 希腊 (Greece) 01 5675K - NEKO
-  - 🇬🇷 希腊 (Greece) 02 5724K - NEKO
+  - 🇬🇷 希腊 (Greece) 01 3830K - NEKO
+  - 🇬🇷 希腊 (Greece) 02 1110K - NEKO
 rules:
 - MATCH,PROXIES

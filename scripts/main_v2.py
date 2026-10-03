@@ -46,6 +46,7 @@ import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from collections import Counter
 
 try:
     import requests
@@ -129,16 +130,28 @@ CROSS_BYTES              = 2_000_000 # 交叉测速每端点样本 2MB (够算�
 #   ★ 现有判定只看延迟, 完全没测丢包 —— 而跨太平洋链路的核心问题恰恰是丢包。
 #   一个 80ms 但丢包 15% 的节点, 体感远差于 300ms 但丢包 0.2% 的节点。
 #   复用已有的 204 探针 (零额外带宽), 连发 N 次统计失败比例。
+#   ★ 2026-10 收紧: 实测 #65 丢包标记只占 0.5% (= 几乎没筛掉人), 阈值过松。
+#     实测 0% ~ 20% 是正常抖动, ≥20% 明显影响体感, ≥25% 直接不可用。
 LOSS_PROBE_COUNT      = 5            # 采样次数 (5 次够抓出 >20% 的丢包, 又不至于太慢)
 LOSS_PROBE_TIMEOUT    = 3.0          # 单次丢包探测超时 (秒) — 窄超时, 快速识别失败
-MAX_LOSS_RATE         = 0.34         # 丢包率 > 1/3 直接淘汰 (5 次采样下即 2/5 丢)
-LOSS_UNSTABLE_PENALTY = 0.20         # 丢包率 20%~34% 视为不稳 → 吞吐门槛上浮 (叠加不稳惩罚)
+MAX_LOSS_RATE         = 0.25         # 丢包率 ≥25% 直接淘汰 ★收紧 (原 34%: 5次下 2/5=40% 才杀, 太宽)
+LOSS_UNSTABLE_PENALTY = 0.10         # 丢包率 ≥10% 即视为不稳 ★收紧 (原 20%: 实测几乎不触发)
+
+# --- 落地国黑名单 (无条件剔除) ---
+#   ★ 按需求: 落地 IP 在日本的节点一律删除, 不论其速度/延迟/是否家宽。
+#   判定用**出口 IP 的归属国**(不是入口 server 的国)—— 落地国才是用户实际
+#   出口位置, 中转机在国内、落地在日本的节点同样要删。
+#   空字符串 = 不屏蔽任何国家 (默认关闭, 保持开源仓库通用性);
+#   想启用日本屏蔽时填 "JP" 或 "JP,KR" 等。
+#   生效位置: classify_and_export 的 safe_nodes 过滤 (最早期, 省掉后续情报查询)
+BLOCK_COUNTRIES = "JP"             # 例: "JP" = 剔除落地日本; "JP,KR" = 日本+韩国
 # --- 首包时间 TTFB (Time To First Byte) ---
 #   现有 latency 测的是 TCP+TLS 握手往返; TTFB 测"服务器开始回数据"的时刻。
 #   两者背离是常态: 很多节点 RTT 很低但首包要 1~2 秒 (服务端缓冲/链路拥塞),
 #   用户体感就是"点了没反应"。测速函数本来就经过握手, 顺带记录不额外花时间。
-MAX_TTFB_MS          = 2500          # 首包 > 2.5s 直接淘汰 (典型 RTT 500ms 的正常值远低于此)
-TTFB_UNSTABLE_PENALTY = 1.5          # 首包 > 1500ms 视为响应迟钝 → 吞吐门槛上浮
+#   ★ 2026-10 收紧: 实测 #65 TTFB 标记只占 2.9%, 阈值过松。
+MAX_TTFB_MS          = 1800          # 首包 >1.8s 直接淘汰 ★收紧 (原 2500ms)
+TTFB_SLOW_MS          = 1200         # 首包 >1.2s 视为响应迟钝, 门槛上浮 ★收紧 (原硬编码 1500ms)
 # 门槛惩罚上限: 四项惩罚累乘 1.5^4=5.06 会把 200KB/s 门槛推到 1012KB/s (比优选线还高),
 # 过严反失真。这里封顶 2.25× (→ 450KB/s), 即最多因"多重不稳"损失一半带宽余量。
 MAX_SPEED_PENALTY     = 2.25
@@ -162,10 +175,23 @@ LIVENESS_PROBES = [
 ]
 MIN_LIVENESS_HITS = 2            # 至少 2 个不同源通过才判活 (三源取二)
 MAX_LATENCY_MS    = 1500         # 延迟上限门槛: 超时即淘汰 (此前延迟只用于排序, 不淘汰)
-SPEED_TEST_URLS = [               # 测速端点多路 (实测部分节点商屏蔽 speed.cloudflare.com)
+SPEED_TEST_URLS = [               # 测速端点多路
     "https://speed.cloudflare.com/__down?bytes=" + str(SPEED_TEST_BYTES),
     "https://cachefly.cachefly.net/10mb.test",
 ]
+# 互补测速端点 (方案2) — 与 Cloudflare 物理隔离, 用于识别"只对 CDN 特供"的节点。
+#   ★ 为什么必须换: Cloudflare 是 Anycast, Azure runner 与 Cloudflare 边缘节点
+#     常常同机房/近缘, 实测 #65 在 Azure 上测出中位 7MB/s (物理上不可能是真实
+#     跨境带宽) —— 这是 CDN 边缘节点造成的测速环境短路, 不是节点本身快。
+#   Hetzner 是纯物理机房 (ash=美国弗吉尼亚 / nbg=德国), 无 Anycast,
+#   从 Azure 走真实国际链路, 数字可信。
+#   实测: 支持 Range 请求 (HTTP 206), 可只取前若干 MB, 不会拉满 100MB。
+#   注意: 若 Actions 换成欧洲/亚洲 region, 应换对应 region 的端点。
+SPEED_CROSS_URLS = [
+    "https://ash-speed.hetzner.com/100MB.bin",   # 美国弗吉尼亚 (与 Azure US 同区, 链路真实)
+    "https://nbg1-speed.hetzner.com/100MB.bin",  # 德国纽伦堡 (跨大西洋, 更严格)
+]
+SPEED_CROSS_RANGE_BYTES = 5_000_000  # Range 请求前 5MB (避免拉满 100MB)
 SPEED_RETEST_URLS = [             # 复测端点 (1MB 小样本)
     "https://speed.cloudflare.com/__down?bytes=" + str(SPEED_RETEST_BYTES),
     "https://cachefly.cachefly.net/10mb.test",
@@ -179,6 +205,23 @@ if WARP_POLICY not in ("drop", "demote", "off"):
     print(f"[!] WARP_POLICY={WARP_POLICY!r} 非法, 回退 'drop' (可选: drop/demote/off)")
     WARP_POLICY = "drop"
 MAX_WORKERS_TEST    = 24            # 同时 sing-box 实测节点数 (★48→24: 测速阶段 48 并发会互抢单台机器带宽, 阈值抬高后自污染成假阴性; sing-box 单实例 < 30MB)
+
+# ══════════════════════════════════════════════════════════════════
+# 方案1: 测速健全性护栏 (防"测出内网级假速度")
+#   ★ 实测 #65: Azure runner 上 speed.cloudflare.com 测出中位 7MB/s、最快 29MB/s,
+#     76% 节点被标"⚡优选" —— 这不是节点有多快, 而是 Azure→Cloudflare 走的是
+#     同机房/近缘链路, 测的是内网带宽。后果: 吞吐门槛(200KB/s)完全形同虚设,
+#     优选标记失去筛选意义, 且**用被污染的速度给节点排名毫无价值**。
+#   护栏逻辑: 跑完测速后先看全体中位数 —
+#     · 中位数 > SANITY_MEDIAN_MAX (说明测速环境被短路, 数字整体不可信)
+#       → 不再信任任何"优选/速度档", is_premium 一律不标 (宁可漏标不误标),
+#         并把该信息打进日志, 提示应更换测速端点 (见 SPEED_TEST_URLS 的 Hetzner)。
+#     · 中位数正常 → 按真实数值正常分档。
+#   这是"承认测不准"而不是"用假数字排序" ——
+#   假数字最坏的地方不是标错, 是让你以为筛过了。
+# ══════════════════════════════════════════════════════════════════
+SANITY_CHECK_MIN_SAMPLES = 30        # 样本少于这个数不做中位数判断 (统计无意义)
+SANITY_MEDIAN_MAX       = 3_000_000  # 全体测速中位数 > 3MB/s 判定为"测速环境被短路"
 # 阶段B 单节点最坏耗时估算 (秒) — 仅用于日志里预估"预检硬淘汰省了多少时间",
 # 不参与任何判定。上界 = 等SOCKS端口 6 + 跨源探测 (12+4+4) + 出口IP 6
 #                    + MITM复检 4 + WARP 4 + 测速首轮 8 + 复测 4 + check 0.5
@@ -1324,7 +1367,7 @@ def print_once(key: str, msg: str):
 def measure_download_speed(proxies: dict, urls: list, budget: float,
                            warmup: float, chunk_size: int = SPEED_CHUNK_SIZE,
                            idle_timeout: float = SPEED_IDLE_TIMEOUT,
-                           with_ttfb: bool = False):
+                           with_ttfb: bool = False, range_bytes: int = 0):
     """限时下载测速 → 返回稳态吞吐 (B/s, 0 = 失败/断流)
 
     ★ 关键修正: 分母只取"首数据块 → 结束"的稳态区间。
@@ -1347,10 +1390,14 @@ def measure_download_speed(proxies: dict, urls: list, budget: float,
         # 热身期取固定值与预算的 12% 取小: 预算越大热身占比越小, 避免长预算下
         # 固定 0.6s 把有效样本削掉一截
         warm = min(warmup, budget * 0.12)
+        # range_bytes > 0 时用 Range 请求只取前若干字节 (Hetzner 的 100MB.bin
+        # 支持 HTTP 206, 不加 Range 会真的去拉 100MB)
+        headers = {"Range": f"bytes=0-{range_bytes - 1}"} if range_bytes else None
         try:
-            with PROBE_SESSION.get(speed_url, proxies=proxies,
+            with PROBE_SESSION.get(speed_url, proxies=proxies, headers=headers,
                                    timeout=(5, budget), stream=True) as r:
-                if r.status_code != 200:
+                # 206 = 部分内容 (Range 生效), 200 = 完整响应, 两者都算有效
+                if r.status_code not in (200, 206):
                     continue
                 for chunk in r.iter_content(chunk_size=chunk_size):
                     now = time.time()
@@ -1582,39 +1629,39 @@ def test_single_node(item, keep_alive_check=True):
                         speed_unstable = True
                     speed_bps = min(speed_bps, speed_retest)
 
-        # --- 4c) 跨端点交叉测速 (防单端点欺骗) ---
-        #   动机: 上面所有测速都只看 speed.cloudflare.com 一个数据源。免费池里
-        #   "对 Cloudflare 特供、对其他源极慢"的节点不少 (机场按源分流常见)。
-        #   改为额外测多个端点, **取最小值** — 代表用户实际能拿到的最差体验。
-        #   只在首轮已有结果时做 (首轮就断流的节点没必要再花时间)。
+        # --- 4c) 跨端点交叉测速 (防单端点欺骗 + 防 Cloudflare 内网短路) ---
+        #   ★ 核心改动 (方案2): 原先用 SPEED_TEST_URLS 的第二端点做交叉, 但那仍是
+        #     CDN (cachefly), 与 Cloudflare 同属 Anycast 体系, 一样会被 Azure 边缘
+        #     短路。改为测**纯物理机房**的 Hetzner (无 Anycast), 从 Azure 走真实
+        #     国际链路 —— 这样取到的最小值才代表用户实际能拿到的跨境带宽。
+        #   取最小值: 代表用户实际能拿到的最差体验 (对 CF 快但对 Hetzner 慢的
+        #   "特供节点" 会被拉回真实水平)。
         speed_cross = 0
-        if speed_bps > 0:
-            # 每端点用小预算, 只做横向比较, 不与首轮同口径
-            cross_urls = [u.split("?bytes=")[0] + "?bytes=" + str(CROSS_BYTES)
-                          if "?bytes=" in u else u
-                          for u in SPEED_TEST_URLS[:SPEED_CROSS_MAX_ENDPOINTS]]
+        if speed_bps > 0 and SPEED_CROSS_URLS:
             cross_results = []
-            for cu in cross_urls:
+            for cu in SPEED_CROSS_URLS[:SPEED_CROSS_MAX_ENDPOINTS]:
                 b = measure_download_speed(proxies, [cu], SPEED_CROSS_BUDGET,
-                                           SPEED_CROSS_WARMUP)
+                                           SPEED_CROSS_WARMUP,
+                                           range_bytes=SPEED_CROSS_RANGE_BYTES)
                 if b > 0:
                     cross_results.append(b)
-            if len(cross_results) >= SPEED_CROSS_MIN_ENDPOINTS:
-                # 多端点都测到了 → 用最小值 (最差体验)
+            if cross_results:
+                # 至少 1 个物理机房端点测到就采信 (Hetzner 端点可能因区域不可达而失败,
+                # 不像 CDN 端点那样总能通; 0 个成功则保持首轮结果不做惩罚)
                 speed_cross = min(cross_results)
                 if speed_cross < speed_bps:
-                    # 交叉测出的最差端点比首轮还慢 → 判定不稳 (说明对某些源不通畅)
+                    # 物理机房测出的速度远低于 CDN 测速 → 证实 CDN 数字虚高
                     if speed_cross < speed_bps * SPEED_STABLE_RATIO:
                         speed_unstable = True
                     speed_bps = speed_cross
-            # 端点不足 → 保留首轮结果, 不做惩罚 (信息不足不判死)
+            # 全部物理端点不可达 → 保留首轮结果, 不做惩罚 (信息不足不判死)
 
         # --- 5) 丢包率探测 (抓抖动/丢包严重的节点) ---
         #   复用 204 探针连发 LOSS_PROBE_COUNT 次, 零额外带宽成本。
         #   延迟测"能不能通", 丢包测"通得稳不稳" — 跨太平洋链路的核心问题是丢包,
         #   现有判定对此完全失明。
         loss_rate = measure_packet_loss(proxies, LOSS_PROBE_COUNT) if speed_bps > 0 else 1.0
-        # 丢包 > MAX_LOSS_RATE → 不可用; 20%~34% → 视为不稳, 叠加门槛惩罚
+        # 丢包 ≥ MAX_LOSS_RATE → 不可用; LOSS_UNSTABLE_PENALTY~MAX 之间 → 不稳
         loss_unstable = LOSS_UNSTABLE_PENALTY <= loss_rate < MAX_LOSS_RATE
         if loss_rate >= MAX_LOSS_RATE:
             speed_bps = 0            # 判死: 走下面 is_stalled 统一出口
@@ -1623,7 +1670,7 @@ def test_single_node(item, keep_alive_check=True):
         #   latency 是握手 RTT, TTFB 是"服务器开始回数据" —— 两者背离时
         #   (RTT 低但 TTFB 高) 用户体感是"点了没反应"。超上限直接淘汰;
         #   偏慢但未超限视为响应迟钝, 叠加门槛惩罚。
-        ttfb_slow = ttfb_ms > 1500
+        ttfb_slow = ttfb_ms > TTFB_SLOW_MS
         if ttfb_ms > MAX_TTFB_MS:
             speed_bps = 0
 
@@ -1686,6 +1733,47 @@ def test_single_node(item, keep_alive_check=True):
             pass
 
 
+def _apply_speed_sanity_guard(results: list) -> bool:
+    """测速健全性护栏: 中位数过高则判定测速环境被短路, 撤销所有优选标记
+
+    返回 True = 环境可信, False = 环境被短路(已撤销优选标记)。
+
+    ★ 为什么必须做 (实测 #65 的教训):
+      Azure runner 与 Cloudflare 边缘节点常常同机房/近缘, speed.cloudflare.com
+      测出的是"内网带宽"。实测中位 7MB/s、最快 29MB/s, 76% 节点被标⚡优选。
+      这类假速度最坏的地方不是标错等级, 而是让人误以为"已经筛过了"——
+      实际上 200KB/s 门槛对 7MB/s 的中位数来说形同虚设。
+
+    ★ 只撤销"优选"分档, 不动淘汰判定:
+      即使测速偏高, 200KB/s 的**相对**比较仍有意义(快的确实比慢的快),
+      而丢包率/TTFB 完全不受测速失真影响(它们不走 CDN 测速路径)。
+      所以只撤销 is_premium 这个最容易被误读的标记。
+    """
+    speeds = sorted(r["speed_bps"] for r in results if r.get("speed_bps", 0) > 0)
+    if len(speeds) < SANITY_CHECK_MIN_SAMPLES:
+        print(f"[+] 测速样本仅 {len(speeds)} 个 (<{SANITY_CHECK_MIN_SAMPLES}), "
+              f"跳过健全性检查")
+        return True
+    median = speeds[len(speeds) // 2]
+    if median <= SANITY_MEDIAN_MAX:
+        print(f"[+] 测速健全性: 中位 {median//1024}KB/s (阈值 "
+              f"{SANITY_MEDIAN_MAX//1024}KB/s) — 环境可信, 优选分档有效")
+        return True
+    # 环境被短路 → 撤销全部优选标记
+    revoked = 0
+    for r in results:
+        if r.get("is_premium"):
+            r["is_premium"] = False
+            r["speed_sanity_suspect"] = True
+            revoked += 1
+    print(f"[!] 测速健全性告警: 中位 {median//1024}KB/s 超过阈值 "
+          f"{SANITY_MEDIAN_MAX//1024}KB/s")
+    print(f"    → 判定测速环境被短路 (CDN 边缘节点/Actions 同区导致虚高), "
+          f"撤销 {revoked} 个⚡优选标记")
+    print(f"    → 淘汰判定仍有效 (相对比较有意义); 丢包率/TTFB 不受影响")
+    return False
+
+
 def run_liveness_test(candidates: list) -> list:
     print(f"[*] sing-box 全协议真实测活: {len(candidates)} 节点 (并发 {MAX_WORKERS_TEST}) ...")
     results = []
@@ -1745,6 +1833,17 @@ def run_liveness_test(candidates: list) -> list:
                         r.get("speed_cross_bps", 0) < r.get("speed_bps", 0))
     print(f"[+] 交叉测速 (≥{SPEED_CROSS_MIN_ENDPOINTS}端点取最小值): "
           f"采信 {len(cross_used)} 个 | 其中被最小值拉低 {cross_lowered}")
+    # ── 方案1: 测速健全性护栏 (必须在全部节点测完后判断) ──
+    #   实测 #65: Azure runner 上 Cloudflare 测出中位 7MB/s —— 那是 CDN 边缘节点
+    #   造成的测速环境短路, 不是节点真实速度。若不处理, 76% 节点被标"⚡优选",
+    #   优选标记完全失去筛选意义, 而用户会以为"已经筛过了"。
+    #   做法: 看全体测速中位数, 过高即判定环境被短路 → 撤销所有优选标记。
+    #   宁可漏标 (不标⚡) 也不误标 (标了假优选), 因为假优选会误导用户选择。
+    sane = _apply_speed_sanity_guard(results)
+    if not sane:
+        # 环境被短路时, 预筛阶段把明显慢的节点筛掉仍然有效, 只撤销"优选"分档
+        pass
+
     return results  # 保留全部信息, 分类阶段再决定去留
 
 
@@ -2171,7 +2270,13 @@ def outbound_to_v2ray_link(node: dict, name: str) -> str:
                 data["path"] = transport["path"]
             if transport.get("host"):
                 data["host"] = transport["host"]
-        return "vmess://" + base64.b64encode(json.dumps(data, ensure_ascii=False).encode()).decode()
+        # ★ 用 urlsafe_b64encode: 标准 base64 的 "+" "/" 在 URI 传输中会被中间层
+        #   当成 query 的空格/分隔符 → 客户端解码直接失败 (实测 #65 有 27 个 vmess
+        #   节点整条 URI 退化成 base64 串, 名称/配置全丢)。
+        #   节点名含空格和 emoji 时 base64 极容易产生 "+", 必须 URL-safe。
+        #   v2rayN / v2rayNG / Clash Verge 均同时支持两种变体, 无兼容风险。
+        return "vmess://" + base64.urlsafe_b64encode(
+            json.dumps(data, ensure_ascii=False).encode()).decode()
     if t == "vless":
         q = {}
         ttype = transport.get("type")
@@ -2448,6 +2553,27 @@ def classify_and_export(test_results: list):
     elif warp_total:
         print(f"[*] WARP 套壳节点: {warp_total} 个 (WARP_POLICY={WARP_POLICY}, 不淘汰仅标记)")
 
+    # ── 落地国黑名单 (无条件剔除, 不论速度/延迟/是否家宽) ──
+    #   判定用**出口 IP 归属国**(country 字段), 即用户实际落地位置, 而非入口
+    #   server 的国家 —— 中转机在国内、落地在日本的节点同样要剔除。
+    if BLOCK_COUNTRIES:
+        blocked = {c.strip().upper() for c in BLOCK_COUNTRIES.split(",") if c.strip()}
+        by_cc = Counter()
+        kept, dropped = [], 0
+        for n in safe_nodes:
+            cc = (n.get("country") or "").upper()
+            if cc in blocked:
+                dropped += 1
+                by_cc[cc] += 1
+                continue
+            kept.append(n)
+        if dropped:
+            detail = " ".join(f"{k}:{v}" for k, v in by_cc.items())
+            print(f"[*] 落地国黑名单 {sorted(blocked)} 已剔除: {dropped} ({detail})")
+        else:
+            print(f"[*] 落地国黑名单 {sorted(blocked)}: 无命中")
+        safe_nodes = kept
+
     # ── Scamalytics 风控评分 (免费 HTML, 逐个; 只查家宽候选 + 抽样普通节点) ──
     # 家宽候选: 全查 (宁缺毋滥); 普通节点: 每 IP 查一次 (通常 <= 出口 IP 数)
     scam_candidates = set()
@@ -2606,13 +2732,18 @@ def make_node_name(item, idx, force_residential=False):
     fraud = item.get("fraud_score", -1)
     risk_tag = f" R{fraud}" if 0 <= fraud < 75 and fraud >= 40 else (" ⚠R" if fraud >= 75 else "")
     # 吞吐标注: 优选级 (≥1MB/s) 标 ⚡; 不稳定 (复测掉速/交叉落差) 标 ⚠S; 其余标速率
+    #   ★ 显示用 KB 整数 (B/s // 1024), 不再二次取整。旧写法对已经是 KB 的值
+    #     做过 round(…, -1) 再拼 K, 导致 203776 B/s (合法过 200KB/s 门槛)
+    #     显示成 "195K" 或 "199K", 看着像不达标 —— 实测 #65 的 "俄罗斯 199K"
+    #     就是这么来的, 白排查一轮。速度值直接照实显示, 不做美化。
     spd = item.get("speed_bps", 0) or 0
+    spd_kb = spd // 1024
     if item.get("is_premium"):
-        speed_tag = f" ⚡{spd // 1024}K"
+        speed_tag = f" ⚡{spd_kb}K"
     elif item.get("speed_unstable"):
-        speed_tag = f" ⚠S{spd // 1024}K"
+        speed_tag = f" ⚠S{spd_kb}K"
     elif spd > 0:
-        speed_tag = f" {spd // 1024}K"
+        speed_tag = f" {spd_kb}K"
     else:
         speed_tag = ""
     # 链路质量标注: 丢包 ⚠L<百分比> (≥20% 才标, 低于此属正常抖动不打扰)
@@ -2620,7 +2751,7 @@ def make_node_name(item, idx, force_residential=False):
     loss_tag = f" ⚠L{loss:.0%}" if loss >= 0.20 else ""
     # 首包迟钝标注: TTFB > 1500ms (RTT 低但首包慢 = 用户体感"点了没反应")
     ttfb = item.get("ttfb_ms", 0) or 0
-    ttfb_tag = f" ⏱{ttfb}ms" if (ttfb and ttfb > 1500) else ""
+    ttfb_tag = f" ⏱{ttfb}ms" if (ttfb and ttfb > TTFB_SLOW_MS) else ""
     # WARP 套壳节点标注 (出口 IP 属 Cloudflare, 非真实落地)
     warp_tag = " ⚠WARP" if item.get("is_warp") else ""
     return (f"{flag} {cname} {idx:02d}{tag}{speed_tag}{loss_tag}{ttfb_tag}"

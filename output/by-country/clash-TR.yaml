@@ -4,17 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇹🇷 土耳其 (Turkey) 01 207K - NEKO
-  server: me17.msjia8844.site
-  port: 7443
-  udp: true
-  type: hysteria2
-  password: M8LP9DztTr3znqCkmf-r08CQLBLLFK1r
-  sni: me17.msjia8844.site
-  skip-cert-verify: false
-  obfs: salamander
-  obfs-password: u3Soh9_Ui0UmcuY6vk0ug8Lq
-- name: 🇹🇷 土耳其 (Turkey) 02 ⚡5853K - NEKO
+- name: 🇹🇷 土耳其 (Turkey) 01 4805K - NEKO
   server: 78.135.73.47
   port: 443
   udp: true
@@ -27,33 +17,17 @@ proxies:
     short-id: f46cd3ea3d1eb72d
   servername: www.datadoghq.com
   client-fingerprint: firefox
-- name: 🇹🇷 土耳其 (Turkey) 03 795K - NEKO
-  server: shop.neexbyte.ir
-  port: 8443
-  udp: true
-  type: vless
-  uuid: 8bb52771-052e-40b5-ab53-c6e151ad2290
-  tls: true
-  servername: shop.neexbyte.ir
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇹🇷 土耳其 (Turkey) 01 207K - NEKO
-  - 🇹🇷 土耳其 (Turkey) 02 ⚡5853K - NEKO
-  - 🇹🇷 土耳其 (Turkey) 03 795K - NEKO
+  - 🇹🇷 土耳其 (Turkey) 01 4805K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇹🇷 土耳其 (Turkey) 01 207K - NEKO
-  - 🇹🇷 土耳其 (Turkey) 02 ⚡5853K - NEKO
-  - 🇹🇷 土耳其 (Turkey) 03 795K - NEKO
+  - 🇹🇷 土耳其 (Turkey) 01 4805K - NEKO
 rules:
 - MATCH,PROXIES

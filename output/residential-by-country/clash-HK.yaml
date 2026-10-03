@@ -4,35 +4,25 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇭🇰 中国香港 (Hong Kong) 01 (家宽) ⚡11483K - NEKO
-  server: bd452e87-tmm5c0-tv7dx2-py5w.hk3.hyhuawei.com
+- name: 🇭🇰 中国香港 (Hong Kong) 01 (家宽) 4302K - NEKO
+  server: ac91889e-tmm5c0-u3xqxa-1q91p.hk3.hyhuawei.com
   port: 443
   udp: true
   type: hysteria2
-  password: ae5338ae-9a70-58c9-3d47-7d54a5675715
-  sni: bd452e87-tmm5c0-tv7dx2-py5w.hk3.hyhuawei.com
-  skip-cert-verify: true
-- name: 🇭🇰 中国香港 (Hong Kong) 02 (家宽) ⚡1680K - NEKO
-  server: c58136f7-tmm5c0-trnd2c-jjv2.nw4.hyhuawei.com
-  port: 443
-  udp: true
-  type: hysteria2
-  password: 31676725-b0fd-fed2-c857-2da8ce5a6e4f
-  sni: c58136f7-tmm5c0-trnd2c-jjv2.nw4.hyhuawei.com
+  password: c11ff50c-f582-11ee-94df-f23c9164ca5d
+  sni: ac91889e-tmm5c0-u3xqxa-1q91p.hk3.hyhuawei.com
   skip-cert-verify: true
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇭🇰 中国香港 (Hong Kong) 01 (家宽) ⚡11483K - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 (家宽) ⚡1680K - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 (家宽) 4302K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇭🇰 中国香港 (Hong Kong) 01 (家宽) ⚡11483K - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 (家宽) ⚡1680K - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 (家宽) 4302K - NEKO
 rules:
 - MATCH,PROXIES

@@ -4,32 +4,79 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇬🇧 英国 (United Kingdom) 01 ⚡5249K - NEKO
-  server: 66.90.105.211
-  port: 2083
+- name: 🇬🇧 英国 (United Kingdom) 01 ⚡11179K - NEKO
+  server: labs.frkn.org
+  port: 443
   udp: true
-  type: vless
-  uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
-  network: grpc
-  grpc-opts:
-    grpc-service-name: vless
-- name: 🇬🇧 英国 (United Kingdom) 02 ⚡5209K - NEKO
-  server: 66.90.104.42
-  port: 2083
+  type: hysteria2
+  password: 3b8c82ed-fe66-472d-915e-034ccb57103f
+  sni: labs.frkn.org
+  skip-cert-verify: true
+- name: 🇬🇧 英国 (United Kingdom) 02 ⚡12232K - NEKO
+  server: 78.129.252.54
+  port: 17092
   udp: true
-  type: vless
-  uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
-  network: grpc
-  grpc-opts:
-    grpc-service-name: vless
-- name: 🇬🇧 英国 (United Kingdom) 03 ⚡5490K - NEKO
+  type: ss
+  cipher: aes-128-gcm
+  password: 7c55c080c3949e03f1a6a559a9851c68
+- name: 🇬🇧 英国 (United Kingdom) 03 ⚡9806K - NEKO
   server: 51.77.225.200
   port: 8388
   udp: true
   type: ss
   cipher: chacha20-ietf-poly1305
   password: zRZNBszYyWo5
-- name: 🇬🇧 英国 (United Kingdom) 04 ⚡5960K - NEKO
+- name: 🇬🇧 英国 (United Kingdom) 04 ⚡8295K - NEKO
+  server: 94.156.250.148
+  port: 7001
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: RexnBgU7EV5ADxG
+- name: 🇬🇧 英国 (United Kingdom) 05 ⚡13987K - NEKO
+  server: 146.70.61.18
+  port: 8080
+  udp: true
+  type: ss
+  cipher: rc4-md5
+  password: 14fFPrbezE3HDZzsMOr6
+- name: 🇬🇧 英国 (United Kingdom) 06 ⚡11729K - NEKO
+  server: 158.173.24.73
+  port: 443
+  udp: true
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇬🇧 英国 (United Kingdom) 07 ⚡13466K - NEKO
+  server: 146.70.61.37
+  port: 8080
+  udp: true
+  type: ss
+  cipher: rc4-md5
+  password: 14fFPrbezE3HDZzsMOr6
+- name: 🇬🇧 英国 (United Kingdom) 08 ⚡11476K - NEKO
+  server: 141.98.101.181
+  port: 443
+  udp: true
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇬🇧 英国 (United Kingdom) 09 ⚡11870K - NEKO
+  server: 149.102.132.184
+  port: 443
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: g5h5jleTRSyO3Rk4
+- name: 🇬🇧 英国 (United Kingdom) 10 ⚡3259K - NEKO
+  server: yg.mangshe.xyz
+  port: 2060
+  udp: true
+  type: hysteria2
+  password: 5d0a6445-a30d-4522-bb1f-94f1d3ad63be
+  sni: yg.mangshe.xyz
+  skip-cert-verify: true
+- name: 🇬🇧 英国 (United Kingdom) 11 ⚡11814K - NEKO
   server: 186.190.211.188
   port: 443
   udp: true
@@ -39,23 +86,146 @@ proxies:
   servername: 186.190.211.188
   skip-cert-verify: true
   client-fingerprint: chrome
+- name: 🇬🇧 英国 (United Kingdom) 12 ⚡9586K - NEKO
+  server: 146.70.23.32
+  port: 8080
+  udp: true
+  type: ss
+  cipher: rc4-md5
+  password: 14fFPrbezE3HDZzsMOr6
+- name: 🇬🇧 英国 (United Kingdom) 13 ⚡7784K - NEKO
+  server: 51.89.194.151
+  port: 2053
+  udp: true
+  type: vless
+  uuid: 8e790f25-1d71-4601-9fb0-d503931dcfca
+  tls: true
+  reality-opts:
+    public-key: xPEBx4wUmwAAv4ikUALNBf5wH6TRhyeQ0Q2pcNELsV0
+    short-id: d051f678212f9d54
+  servername: www.apple.com
+  client-fingerprint: firefox
+- name: 🇬🇧 英国 (United Kingdom) 14 ⚡7621K - NEKO
+  server: 149.102.149.207
+  port: 443
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: LXchLsIwtCeUAUgu
+- name: 🇬🇧 英国 (United Kingdom) 15 ⚡11895K - NEKO
+  server: 186.190.211.147
+  port: 22324
+  udp: true
+  type: vmess
+  uuid: 04621bae-ab36-11ec-b909-0242ac120002
+  alterId: 0
+  cipher: auto
+- name: 🇬🇧 英国 (United Kingdom) 16 ⚠S573K - NEKO
+  server: 149.102.149.207
+  port: 80
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: LXchLsIwtCeUAUgu
+- name: 🇬🇧 英国 (United Kingdom) 17 ⚡5390K - NEKO
+  server: 149.102.132.184
+  port: 80
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: g5h5jleTRSyO3Rk4
+- name: 🇬🇧 英国 (United Kingdom) 18 ⚡11388K - NEKO
+  server: 164.37.111.117
+  port: 2020
+  udp: true
+  type: vless
+  uuid: 0dbacd35-9159-4648-89ac-c38b741567a8
+- name: 🇬🇧 英国 (United Kingdom) 19 ⚡7129K - NEKO
+  server: 87.192.47.10
+  port: 52006
+  udp: true
+  type: vless
+  uuid: bc659d88-a1e0-4c65-a49a-7b51b26a7a7f
+  flow: xtls-rprx-vision
+  tls: true
+  servername: grok.setlisting.ru
+  skip-cert-verify: false
+- name: 🇬🇧 英国 (United Kingdom) 20 ⚡1421K - NEKO
+  server: 46.250.240.80
+  port: 2053
+  udp: true
+  type: vless
+  uuid: 948df76f-505d-4608-9c76-a933ee3ccc76
+  tls: true
+  reality-opts:
+    public-key: CYFeysLf--_IVhxQOCd3ZxLrAVWFFOkJzvIGHOVXN3E
+    short-id: 4cc9dc65f7770115
+  servername: www.cloudflare.com
+  client-fingerprint: firefox
+- name: 🇬🇧 英国 (United Kingdom) 21 727K ⏱1806ms - NEKO
+  server: 87.239.249.137
+  port: 443
+  udp: true
+  type: vless
+  uuid: 67eb6b17-7797-4ded-bf52-423c4c5f6cbd
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: G7bpUPFSW28-oE6ff8qZac1_apU6PiJ-GHmi7tAPDSY
+    short-id: 91af08b1ce1f
+  servername: www.foxsports.com
+  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇬🇧 英国 (United Kingdom) 01 ⚡5249K - NEKO
-  - 🇬🇧 英国 (United Kingdom) 02 ⚡5209K - NEKO
-  - 🇬🇧 英国 (United Kingdom) 03 ⚡5490K - NEKO
-  - 🇬🇧 英国 (United Kingdom) 04 ⚡5960K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 01 ⚡11179K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 02 ⚡12232K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 03 ⚡9806K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 04 ⚡8295K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 05 ⚡13987K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 06 ⚡11729K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 07 ⚡13466K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 08 ⚡11476K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 09 ⚡11870K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 10 ⚡3259K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 11 ⚡11814K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 12 ⚡9586K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 13 ⚡7784K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 14 ⚡7621K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 15 ⚡11895K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 16 ⚠S573K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 17 ⚡5390K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 18 ⚡11388K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 19 ⚡7129K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 20 ⚡1421K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 21 727K ⏱1806ms - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇬🇧 英国 (United Kingdom) 01 ⚡5249K - NEKO
-  - 🇬🇧 英国 (United Kingdom) 02 ⚡5209K - NEKO
-  - 🇬🇧 英国 (United Kingdom) 03 ⚡5490K - NEKO
-  - 🇬🇧 英国 (United Kingdom) 04 ⚡5960K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 01 ⚡11179K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 02 ⚡12232K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 03 ⚡9806K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 04 ⚡8295K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 05 ⚡13987K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 06 ⚡11729K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 07 ⚡13466K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 08 ⚡11476K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 09 ⚡11870K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 10 ⚡3259K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 11 ⚡11814K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 12 ⚡9586K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 13 ⚡7784K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 14 ⚡7621K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 15 ⚡11895K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 16 ⚠S573K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 17 ⚡5390K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 18 ⚡11388K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 19 ⚡7129K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 20 ⚡1421K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 21 727K ⏱1806ms - NEKO
 rules:
 - MATCH,PROXIES

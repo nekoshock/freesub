@@ -4,32 +4,113 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇯🇵 日本 (Japan) 01 230K - NEKO
-  server: 137.220.221.179
+- name: 🇯🇵 日本 (Japan) 01 944K - NEKO
+  server: open.2ml.bid
+  port: 443
+  udp: true
+  type: hysteria2
+  password: my_super_password_123
+  sni: open.2ml.bid
+  skip-cert-verify: true
+- name: 🇯🇵 日本 (Japan) 02 ⚡2313K - NEKO
+  server: 138.3.208.26
+  port: 50160
+  udp: true
+  type: hysteria2
+  password: 184cdec28da5a09450803c8debcd2cc9
+  sni: www.bing.com
+  skip-cert-verify: true
+- name: 🇯🇵 日本 (Japan) 03 405K - NEKO
+  server: 38.207.130.15
   port: 443
   udp: true
   type: vless
-  uuid: a16a3336-c9ab-489f-9b85-c973f5e2cfa4
-- name: 🇯🇵 日本 (Japan) 02 ⚡3037K - NEKO
+  uuid: e4cd263b-c5c7-4410-bf61-8893179ec429
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: sDKrtAJk2VP_w1w7cFi2O86RdlvQ2E2An5xsRdJlgGE
+    short-id: 6d962e8d8a0dce
+  servername: amazon.com
+  client-fingerprint: chrome
+- name: 🇯🇵 日本 (Japan) 04 ⚡2041K - NEKO
+  server: 84.247.155.196
+  port: 443
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: 3eOFeNssde7PYYMv
+- name: 🇯🇵 日本 (Japan) 05 428K - NEKO
+  server: 168.138.43.75
+  port: 80
+  udp: true
+  type: vmess
+  uuid: 11c3627f-31e8-4695-dfbd-34076e2f1f5d
+  alterId: 0
+  cipher: auto
+  network: ws
+  ws-opts:
+    path: /cctv13.m3u8
+    headers:
+      Host: none
+- name: 🇯🇵 日本 (Japan) 06 ⚡1438K - NEKO
   server: 84.247.155.196
   port: 80
   udp: true
   type: ss
   cipher: aes-256-gcm
   password: 3eOFeNssde7PYYMv
+- name: 🇯🇵 日本 (Japan) 07 292K - NEKO
+  server: 3.114.220.22
+  port: 19645
+  udp: true
+  type: vless
+  uuid: 814bd064-544d-4255-a070-5705c03f6da9
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
+    short-id: 48050fab
+  servername: www.apple.com
+  client-fingerprint: chrome
+- name: 🇯🇵 日本 (Japan) 08 303K - NEKO
+  server: t14.qifei.app
+  port: 443
+  udp: true
+  type: vless
+  uuid: b98d4c6e-6770-4a31-8256-a4750cdea0e7
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: 0i_xAxYgSNx5NMpK2lOaWGS-CvAiD_LneYPO0MF0owo
+    short-id: 1a
+  servername: www.amazon.com
+  client-fingerprint: random
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇯🇵 日本 (Japan) 01 230K - NEKO
-  - 🇯🇵 日本 (Japan) 02 ⚡3037K - NEKO
+  - 🇯🇵 日本 (Japan) 01 944K - NEKO
+  - 🇯🇵 日本 (Japan) 02 ⚡2313K - NEKO
+  - 🇯🇵 日本 (Japan) 03 405K - NEKO
+  - 🇯🇵 日本 (Japan) 04 ⚡2041K - NEKO
+  - 🇯🇵 日本 (Japan) 05 428K - NEKO
+  - 🇯🇵 日本 (Japan) 06 ⚡1438K - NEKO
+  - 🇯🇵 日本 (Japan) 07 292K - NEKO
+  - 🇯🇵 日本 (Japan) 08 303K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇯🇵 日本 (Japan) 01 230K - NEKO
-  - 🇯🇵 日本 (Japan) 02 ⚡3037K - NEKO
+  - 🇯🇵 日本 (Japan) 01 944K - NEKO
+  - 🇯🇵 日本 (Japan) 02 ⚡2313K - NEKO
+  - 🇯🇵 日本 (Japan) 03 405K - NEKO
+  - 🇯🇵 日本 (Japan) 04 ⚡2041K - NEKO
+  - 🇯🇵 日本 (Japan) 05 428K - NEKO
+  - 🇯🇵 日本 (Japan) 06 ⚡1438K - NEKO
+  - 🇯🇵 日本 (Japan) 07 292K - NEKO
+  - 🇯🇵 日本 (Japan) 08 303K - NEKO
 rules:
 - MATCH,PROXIES

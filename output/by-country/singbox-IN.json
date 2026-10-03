@@ -1,0 +1,69 @@
+{
+  "log": {
+    "level": "warn"
+  },
+  "outbounds": [
+    {
+      "type": "trojan",
+      "tag": "🇮🇳 印度 (India) 01 ⚡1021K - NEKO",
+      "server": "tttyder.wsone.icu",
+      "server_port": 443,
+      "password": "M7v%w11Se*",
+      "tls": {
+        "enabled": true,
+        "server_name": "tttyder.wsone.icu",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇮🇳 印度 (India) 02 ⚡2658K - NEKO",
+      "server": "194.61.31.126",
+      "server_port": 2053,
+      "uuid": "1d4e18bd-1f26-4915-b35a-7ace4826e76a",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.apple.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "PuAGLfJy6cu1TNoHuKIKSxPetCbZI41fc8hQDjWPIAU",
+          "short_id": "9980e0609b0d3891"
+        }
+      }
+    },
+    {
+      "type": "selector",
+      "tag": "select",
+      "outbounds": [
+        "auto",
+        "🇮🇳 印度 (India) 01 ⚡1021K - NEKO",
+        "🇮🇳 印度 (India) 02 ⚡2658K - NEKO"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "auto",
+      "outbounds": [
+        "🇮🇳 印度 (India) 01 ⚡1021K - NEKO",
+        "🇮🇳 印度 (India) 02 ⚡2658K - NEKO"
+      ],
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+    {
+      "type": "block",
+      "tag": "block"
+    }
+  ]
+}

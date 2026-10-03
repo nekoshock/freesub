@@ -4,18 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇸🇪 瑞典 (Sweden) 01 243K - NEKO
-  server: 199.68.198.13
-  port: 443
-  udp: true
-  type: vless
-  uuid: 454431fc-71e2-42b1-b375-5b55dd06666a
-  tls: true
-  reality-opts:
-    public-key: aUdvs6o4PHN6jmdkIKBA2rHsN_7l8W2SaDfNgzn-BwU
-  servername: example.org
-  client-fingerprint: firefox
-- name: 🇸🇪 瑞典 (Sweden) 02 ⚡2758K - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 01 352K - NEKO
   server: 5.157.10.148
   port: 443
   udp: true
@@ -33,14 +22,12 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇸🇪 瑞典 (Sweden) 01 243K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 ⚡2758K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 352K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇸🇪 瑞典 (Sweden) 01 243K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 ⚡2758K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 352K - NEKO
 rules:
 - MATCH,PROXIES

@@ -4,15 +4,20 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇷🇺 俄罗斯 (Russia) 01 ⚡5063K - NEKO
-  server: 91.240.86.70
-  port: 22443
+- name: 🇷🇺 俄罗斯 (Russia) 01 ⚡5580K - NEKO
+  server: 194.113.235.66
+  port: 443
   udp: true
-  type: hysteria2
-  password: 3f63c86c-ac4a-4900-85cf-4fedf93c2ca5
-  sni: 91.240.86.70
-  skip-cert-verify: true
-- name: 🇷🇺 俄罗斯 (Russia) 02 464K - NEKO
+  type: vless
+  uuid: 1c5ed2e1-56da-41ab-9a78-159d9892ec17
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: lHCkAu_DOVFtE-iL2JGrPt44QeTCFijXuRfuGaSni3Q
+    short-id: 9e4eced6e98ed4d4
+  servername: github.com
+  client-fingerprint: chrome
+- name: 🇷🇺 俄罗斯 (Russia) 02 ⚡4251K - NEKO
   server: 31.76.34.216
   port: 443
   udp: true
@@ -24,33 +29,19 @@ proxies:
     public-key: XrgbY2hKJQG8QOZO2J1pGmZsbvjSsSWoM9iULIMGK00
   servername: ru-c-1.minzt.su
   client-fingerprint: chrome
-- name: 🇷🇺 俄罗斯 (Russia) 03 409K - NEKO
-  server: 45.12.75.242
-  port: 26424
-  udp: true
-  type: vless
-  uuid: 633f424e-2b11-48da-a6b3-a849dd71456f
-  tls: true
-  reality-opts:
-    public-key: l8AubqcxQO-HRFJy4pZL1vbLOo-eXit69s-XulSELE0
-    short-id: 23103e1e
-  servername: ya.ru
-  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇷🇺 俄罗斯 (Russia) 01 ⚡5063K - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 02 464K - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 03 409K - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 01 ⚡5580K - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 02 ⚡4251K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇷🇺 俄罗斯 (Russia) 01 ⚡5063K - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 02 464K - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 03 409K - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 01 ⚡5580K - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 02 ⚡4251K - NEKO
 rules:
 - MATCH,PROXIES

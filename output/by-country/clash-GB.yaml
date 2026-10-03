@@ -4,14 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇬🇧 英国 (United Kingdom) 01 ⚡6724K - NEKO
-  server: 51.77.225.200
-  port: 8388
-  udp: true
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: zRZNBszYyWo5
-- name: 🇬🇧 英国 (United Kingdom) 02 ⚡7332K - NEKO
+- name: 🇬🇧 英国 (United Kingdom) 01 ⚡5249K - NEKO
   server: 66.90.105.211
   port: 2083
   udp: true
@@ -20,7 +13,7 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: vless
-- name: 🇬🇧 英国 (United Kingdom) 03 ⚡11512K - NEKO
+- name: 🇬🇧 英国 (United Kingdom) 02 ⚡5209K - NEKO
   server: 66.90.104.42
   port: 2083
   udp: true
@@ -29,7 +22,14 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: vless
-- name: 🇬🇧 英国 (United Kingdom) 04 ⚡7946K - NEKO
+- name: 🇬🇧 英国 (United Kingdom) 03 ⚡5490K - NEKO
+  server: 51.77.225.200
+  port: 8388
+  udp: true
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: zRZNBszYyWo5
+- name: 🇬🇧 英国 (United Kingdom) 04 ⚡5960K - NEKO
   server: 186.190.211.188
   port: 443
   udp: true
@@ -39,41 +39,23 @@ proxies:
   servername: 186.190.211.188
   skip-cert-verify: true
   client-fingerprint: chrome
-- name: 🇬🇧 英国 (United Kingdom) 05 ⚡8335K - NEKO
-  server: aksai.org
-  port: 443
-  udp: true
-  type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  alterId: 0
-  cipher: auto
-  tls: true
-  servername: aksai.org
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /linkvws
-    headers:
-      Host: aksai.org
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇬🇧 英国 (United Kingdom) 01 ⚡6724K - NEKO
-  - 🇬🇧 英国 (United Kingdom) 02 ⚡7332K - NEKO
-  - 🇬🇧 英国 (United Kingdom) 03 ⚡11512K - NEKO
-  - 🇬🇧 英国 (United Kingdom) 04 ⚡7946K - NEKO
-  - 🇬🇧 英国 (United Kingdom) 05 ⚡8335K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 01 ⚡5249K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 02 ⚡5209K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 03 ⚡5490K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 04 ⚡5960K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇬🇧 英国 (United Kingdom) 01 ⚡6724K - NEKO
-  - 🇬🇧 英国 (United Kingdom) 02 ⚡7332K - NEKO
-  - 🇬🇧 英国 (United Kingdom) 03 ⚡11512K - NEKO
-  - 🇬🇧 英国 (United Kingdom) 04 ⚡7946K - NEKO
-  - 🇬🇧 英国 (United Kingdom) 05 ⚡8335K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 01 ⚡5249K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 02 ⚡5209K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 03 ⚡5490K - NEKO
+  - 🇬🇧 英国 (United Kingdom) 04 ⚡5960K - NEKO
 rules:
 - MATCH,PROXIES

@@ -5,15 +5,7 @@
   "outbounds": [
     {
       "type": "shadowsocks",
-      "tag": "🇿🇦 南非 (South Africa) 01 ⚡2220K - NEKO",
-      "server": "139.84.247.164",
-      "server_port": 8388,
-      "method": "chacha20-ietf-poly1305",
-      "password": "tfAcRikawhNoZAhu"
-    },
-    {
-      "type": "shadowsocks",
-      "tag": "🇿🇦 南非 (South Africa) 02 ⚡2626K - NEKO",
+      "tag": "🇿🇦 南非 (South Africa) 01 ⚡2282K - NEKO",
       "server": "102.133.165.160",
       "server_port": 16233,
       "method": "chacha20-ietf-poly1305",
@@ -21,29 +13,49 @@
     },
     {
       "type": "shadowsocks",
-      "tag": "🇿🇦 南非 (South Africa) 03 ⚠S925K - NEKO",
+      "tag": "🇿🇦 南非 (South Africa) 02 ⚡2330K - NEKO",
       "server": "102.37.156.224",
       "server_port": 443,
       "method": "chacha20-ietf-poly1305",
       "password": "aduB9HGxQHjA2SBMRjkHX6"
     },
     {
+      "type": "vless",
+      "tag": "🇿🇦 南非 (South Africa) 03 273K - NEKO",
+      "server": "34.35.174.143",
+      "server_port": 443,
+      "uuid": "4758aee6-6d1a-4306-b460-2398b5af4e35",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.cloudflare.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "dcox8XXfkOCmKn3kgrloj6wY5o1_0brJOi2mczYmAT4",
+          "short_id": "5ced03e42cc31aab"
+        }
+      }
+    },
+    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇿🇦 南非 (South Africa) 01 ⚡2220K - NEKO",
-        "🇿🇦 南非 (South Africa) 02 ⚡2626K - NEKO",
-        "🇿🇦 南非 (South Africa) 03 ⚠S925K - NEKO"
+        "🇿🇦 南非 (South Africa) 01 ⚡2282K - NEKO",
+        "🇿🇦 南非 (South Africa) 02 ⚡2330K - NEKO",
+        "🇿🇦 南非 (South Africa) 03 273K - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇿🇦 南非 (South Africa) 01 ⚡2220K - NEKO",
-        "🇿🇦 南非 (South Africa) 02 ⚡2626K - NEKO",
-        "🇿🇦 南非 (South Africa) 03 ⚠S925K - NEKO"
+        "🇿🇦 南非 (South Africa) 01 ⚡2282K - NEKO",
+        "🇿🇦 南非 (South Africa) 02 ⚡2330K - NEKO",
+        "🇿🇦 南非 (South Africa) 03 273K - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

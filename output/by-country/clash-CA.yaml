@@ -4,40 +4,15 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇦 加拿大 (Canada) 01 ⚡2672K - NEKO
-  server: 51.222.200.165
-  port: 5000
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: Y6R9pAtvxxzmGC
-- name: 🇨🇦 加拿大 (Canada) 02 ⚡3616K - NEKO
-  server: 66.163.113.176
+- name: 🇨🇦 加拿大 (Canada) 01 ⚡8321K - NEKO
+  server: 198.57.27.190
   port: 22324
   udp: true
   type: vmess
   uuid: 04621bae-ab36-11ec-b909-0242ac120002
   alterId: 0
   cipher: auto
-- name: 🇨🇦 加拿大 (Canada) 03 962K - NEKO
-  server: ca.monkora.org
-  port: 443
-  udp: true
-  type: vless
-  uuid: 454431fc-71e2-42b1-b375-5b55dd06666a
-  tls: true
-  reality-opts:
-    public-key: aUdvs6o4PHN6jmdkIKBA2rHsN_7l8W2SaDfNgzn-BwU
-  servername: ca.monkora.org
-  client-fingerprint: firefox
-- name: 🇨🇦 加拿大 (Canada) 04 ⚠S597K - NEKO
-  server: 51.79.64.198
-  port: 8119
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: cdBIDV42DCwnfIN
-- name: 🇨🇦 加拿大 (Canada) 05 ⚡2475K - NEKO
+- name: 🇨🇦 加拿大 (Canada) 02 ⚡8533K - NEKO
   server: 158.51.123.42
   port: 22324
   udp: true
@@ -45,61 +20,74 @@ proxies:
   uuid: 04621bae-ab36-11ec-b909-0242ac120002
   alterId: 0
   cipher: auto
-- name: 🇨🇦 加拿大 (Canada) 06 ⚡5138K - NEKO
-  server: 51.222.136.236
-  port: 8882
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: kDWvXYZoTBcGkC4
-- name: 🇨🇦 加拿大 (Canada) 07 ⚠S962K - NEKO
-  server: 51.222.12.127
-  port: 445
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: zDNVedRFPQexG9v
-- name: 🇨🇦 加拿大 (Canada) 08 ⚡2587K - NEKO
-  server: 51.222.155.113
-  port: 5601
+- name: 🇨🇦 加拿大 (Canada) 03 ⚡7286K - NEKO
+  server: 51.222.200.165
+  port: 5000
   udp: true
   type: ss
   cipher: aes-256-gcm
   password: Y6R9pAtvxxzmGC
-- name: 🇨🇦 加拿大 (Canada) 09 ⚡1947K - NEKO
-  server: 51.222.141.125
-  port: 445
+- name: 🇨🇦 加拿大 (Canada) 04 ⚠S406K - NEKO
+  server: yyz-ca-01.blncvpn4u.cc
+  port: 9443
   udp: true
   type: ss
   cipher: aes-256-gcm
-  password: zDNVedRFPQexG9v
+  password: eveaaTOb8ji8yntw2Z9yWUG0d6Ir8Ld8m3ymH8THdC5egiTH1mXCiBc0Skr7FibH
+- name: 🇨🇦 加拿大 (Canada) 05 ⚡5255K - NEKO
+  server: 66.163.113.176
+  port: 22324
+  udp: true
+  type: vmess
+  uuid: 04621bae-ab36-11ec-b909-0242ac120002
+  alterId: 0
+  cipher: auto
+- name: 🇨🇦 加拿大 (Canada) 06 ⚡12597K - NEKO
+  server: mygptagent.org
+  port: 443
+  udp: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  alterId: 0
+  cipher: auto
+  tls: true
+  servername: mygptagent.org
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /linkvws
+    headers:
+      Host: mygptagent.org
+- name: 🇨🇦 加拿大 (Canada) 07 ⚡7088K - NEKO
+  server: 51.79.64.198
+  port: 8119
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: cdBIDV42DCwnfIN
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇨🇦 加拿大 (Canada) 01 ⚡2672K - NEKO
-  - 🇨🇦 加拿大 (Canada) 02 ⚡3616K - NEKO
-  - 🇨🇦 加拿大 (Canada) 03 962K - NEKO
-  - 🇨🇦 加拿大 (Canada) 04 ⚠S597K - NEKO
-  - 🇨🇦 加拿大 (Canada) 05 ⚡2475K - NEKO
-  - 🇨🇦 加拿大 (Canada) 06 ⚡5138K - NEKO
-  - 🇨🇦 加拿大 (Canada) 07 ⚠S962K - NEKO
-  - 🇨🇦 加拿大 (Canada) 08 ⚡2587K - NEKO
-  - 🇨🇦 加拿大 (Canada) 09 ⚡1947K - NEKO
+  - 🇨🇦 加拿大 (Canada) 01 ⚡8321K - NEKO
+  - 🇨🇦 加拿大 (Canada) 02 ⚡8533K - NEKO
+  - 🇨🇦 加拿大 (Canada) 03 ⚡7286K - NEKO
+  - 🇨🇦 加拿大 (Canada) 04 ⚠S406K - NEKO
+  - 🇨🇦 加拿大 (Canada) 05 ⚡5255K - NEKO
+  - 🇨🇦 加拿大 (Canada) 06 ⚡12597K - NEKO
+  - 🇨🇦 加拿大 (Canada) 07 ⚡7088K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇦 加拿大 (Canada) 01 ⚡2672K - NEKO
-  - 🇨🇦 加拿大 (Canada) 02 ⚡3616K - NEKO
-  - 🇨🇦 加拿大 (Canada) 03 962K - NEKO
-  - 🇨🇦 加拿大 (Canada) 04 ⚠S597K - NEKO
-  - 🇨🇦 加拿大 (Canada) 05 ⚡2475K - NEKO
-  - 🇨🇦 加拿大 (Canada) 06 ⚡5138K - NEKO
-  - 🇨🇦 加拿大 (Canada) 07 ⚠S962K - NEKO
-  - 🇨🇦 加拿大 (Canada) 08 ⚡2587K - NEKO
-  - 🇨🇦 加拿大 (Canada) 09 ⚡1947K - NEKO
+  - 🇨🇦 加拿大 (Canada) 01 ⚡8321K - NEKO
+  - 🇨🇦 加拿大 (Canada) 02 ⚡8533K - NEKO
+  - 🇨🇦 加拿大 (Canada) 03 ⚡7286K - NEKO
+  - 🇨🇦 加拿大 (Canada) 04 ⚠S406K - NEKO
+  - 🇨🇦 加拿大 (Canada) 05 ⚡5255K - NEKO
+  - 🇨🇦 加拿大 (Canada) 06 ⚡12597K - NEKO
+  - 🇨🇦 加拿大 (Canada) 07 ⚡7088K - NEKO
 rules:
 - MATCH,PROXIES

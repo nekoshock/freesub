@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇪🇪 爱沙尼亚 (Estonia) 01 ⚡5682K - NEKO
+- name: 🇪🇪 爱沙尼亚 (Estonia) 01 ⚡4121K - NEKO
   server: 94.183.170.135
   port: 8443
   udp: true
@@ -14,8 +14,8 @@ proxies:
   servername: estproxy4.lockdwn.com
   skip-cert-verify: false
   client-fingerprint: chrome
-- name: 🇪🇪 爱沙尼亚 (Estonia) 02 ⚡5406K - NEKO
-  server: 77.72.85.246
+- name: 🇪🇪 爱沙尼亚 (Estonia) 02 ⚡4272K - NEKO
+  server: 77.72.85.247
   port: 8443
   udp: true
   type: vless
@@ -33,14 +33,14 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇪🇪 爱沙尼亚 (Estonia) 01 ⚡5682K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 02 ⚡5406K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 01 ⚡4121K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 02 ⚡4272K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇪🇪 爱沙尼亚 (Estonia) 01 ⚡5682K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 02 ⚡5406K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 01 ⚡4121K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 02 ⚡4272K - NEKO
 rules:
 - MATCH,PROXIES

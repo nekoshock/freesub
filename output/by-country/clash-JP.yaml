@@ -4,7 +4,13 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇯🇵 日本 (Japan) 01 ⚡3089K - NEKO
+- name: 🇯🇵 日本 (Japan) 01 230K - NEKO
+  server: 137.220.221.179
+  port: 443
+  udp: true
+  type: vless
+  uuid: a16a3336-c9ab-489f-9b85-c973f5e2cfa4
+- name: 🇯🇵 日本 (Japan) 02 ⚡3037K - NEKO
   server: 84.247.155.196
   port: 80
   udp: true
@@ -16,12 +22,14 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇯🇵 日本 (Japan) 01 ⚡3089K - NEKO
+  - 🇯🇵 日本 (Japan) 01 230K - NEKO
+  - 🇯🇵 日本 (Japan) 02 ⚡3037K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇯🇵 日本 (Japan) 01 ⚡3089K - NEKO
+  - 🇯🇵 日本 (Japan) 01 230K - NEKO
+  - 🇯🇵 日本 (Japan) 02 ⚡3037K - NEKO
 rules:
 - MATCH,PROXIES

@@ -1412,10 +1412,16 @@ def measure_download_speed(proxies: dict, urls: list, budget: float,
       那样单纯抬高 SPEED_MIN_BYTES_PER_S 等于按快慢反向淘汰。
       现改为: 首块到达才开始计时, 前 warmup 秒的数据丢弃 (握手 + TCP 慢启动)。
 
-    with_ttfb=True 时返回 (吞吐, 首包毫秒); 否则只返回吞吐 (保持旧调用兼容)。
+    with_ttfb=True 时返回 (吞吐, 首包毫秒, 失败原因); 否则返回 (吞吐, 失败原因)。
     ★ TTFB = 从发出 GET 到收到**第一个数据块**的耗时, 含握手 + 服务端首字节时间,
       与 latency (纯握手 RTT) 互补: RTT 低但 TTFB 高 = 服务端缓冲/链路拥塞。
+
+    ★ 2026-10-04: 新增 fail_reason 归集 (可观测性)。
+      旧版所有失败路径都是静默 continue, 403/超时/样本不足/断流 全都只返回 0,
+      日志里只能看到"最快 0KB/s" —— #67 事故时无法定位到底是哪一环坏的。
+      现在把每个端点的失败原因收集起来, 由调用方汇总进日志。
     """
+    fail_reason = ""
     for speed_url in urls:
         downloaded = 0        # 全部收到的字节 (含热身期, 用于判断是否真拿到数据)
         steady_bytes = 0      # 稳态区间内的字节 (用于算速率)
@@ -1434,6 +1440,7 @@ def measure_download_speed(proxies: dict, urls: list, budget: float,
                                    timeout=(5, budget), stream=True) as r:
                 # 206 = 部分内容 (Range 生效), 200 = 完整响应, 两者都算有效
                 if r.status_code not in (200, 206):
+                    fail_reason = f"HTTP{r.status_code}"   # 403/404/5xx 一望可知
                     continue
                 for chunk in r.iter_content(chunk_size=chunk_size):
                     now = time.time()
@@ -1455,16 +1462,24 @@ def measure_download_speed(proxies: dict, urls: list, budget: float,
                         break
             # 样本不足 → 该端点作废, 换下一个 (防用几十KB 算出虚高瞬时值)
             if downloaded < SPEED_MIN_DATA_BYTES or t_steady is None:
+                fail_reason = f"样本不足({downloaded}B/{budget:.0f}s)"
                 continue
+            elif not fail_reason:
+                fail_reason = ""      # 成功: 清掉前一个端点留下的原因
             elapsed = max(time.time() - t_steady, 0.001)
             steady_bytes = max(steady_bytes, 1)
             bps = int(steady_bytes / elapsed)
             if with_ttfb:
-                return bps, int((t_first - t_start) * 1000)
-            return bps
-        except Exception:
+                return bps, int((t_first - t_start) * 1000), fail_reason
+            return bps, fail_reason
+        except Exception as e:
+            # 异常也要归因 (超时/连接重置/DNS 失败…) — 静默 continue 是 #67 无法定位的元凶
+            fail_reason = type(e).__name__
             continue
-    return (0, 0) if with_ttfb else 0  # 全部端点失败 → 无法测速
+    # 全部端点失败 → 返回 0 + 最后一次失败原因
+    if with_ttfb:
+        return 0, 0, (fail_reason or "未知")
+    return 0, (fail_reason or "未知")
 
 
 def measure_packet_loss(proxies: dict, probe_count: int = LOSS_PROBE_COUNT) -> float:
@@ -1644,20 +1659,27 @@ def test_single_node(item, keep_alive_check=True):
 
         # --- 4) 断流检测: 限时下载测速 (稳态吞吐, 剔除握手期; 端点多路兜底) ---
         #     with_ttfb=True 同时取首包时间 (与握手 RTT 互补, 见下方 TTFB 判定)
-        speed_bps, ttfb_ms = measure_download_speed(
+        speed_bps, ttfb_ms, speed_fail = measure_download_speed(
             proxies, SPEED_TEST_URLS, SPEED_TEST_BUDGET, SPEED_WARMUP, with_ttfb=True)
 
         # --- 4b) 二次复测 (稳定性闸): 1MB 小样本, 与首测取最小值 ---
         #   动机: 单轮测速会被 CDN 缓存层 / TCP 突发流量骗过 (瞬时冲高后断流)。
-        #   复测明显掉速 → 首测虚高, 取小值入库; 复测完全失败 → 直接判不可用。
+        #   复测明显掉速 → 首测虚高, 取小值入库。
+        #   ★ 2026-10-04 修正 (#67 事故): 旧版"复测完全失败 → speed_bps=0 直接判死"。
+        #     复测只有 1MB 样本 / 4 秒预算, 本身失败率高 (端点抖动、超时、样本不足),
+        #     把"复测没测出来"等同于"节点已断流"会产生大量误杀。
+        #     现在改为: 复测失败只标记 retest_failed, 保留首测结果继续判定。
+        #     真正断流的节点在首测(5MB/8秒)就已被 SPEED_MIN_BYTES_PER_S 卡掉。
         speed_retest = 0
+        retest_failed = False
+        retest_fail_reason = ""
         speed_unstable = False
         if speed_bps > 0:
-            speed_retest = measure_download_speed(proxies, SPEED_RETEST_URLS,
-                                                  SPEED_RETEST_BUDGET, SPEED_RETEST_WARMUP)
+            speed_retest, retest_fail_reason = measure_download_speed(
+                proxies, SPEED_RETEST_URLS, SPEED_RETEST_BUDGET, SPEED_RETEST_WARMUP)
             if speed_retest <= 0:
-                # 复测一条数据都拿不到 → 首测结果是假象, 视为断流
-                speed_bps = 0
+                # 复测没测出来 ≠ 节点不可用。保留首测值, 仅标记供排查
+                retest_failed = True
             else:
                 if speed_retest < speed_bps:
                     # 掉速超过 (1 - STABLE_RATIO) → 标记不稳定, 门槛上浮惩罚
@@ -1673,21 +1695,23 @@ def test_single_node(item, keep_alive_check=True):
         #   失败的端点按名字记入 cross_fail_names, 便于回查是端点故障还是节点问题。
         speed_cross = 0
         cross_fail_names = []
+        cross_fail_reasons = []
         cross_all_failed = False
         if speed_bps > 0 and SPEED_CROSS_URLS:
             # 前 SAME_REGION_ENDPOINTS 个是同区端点(预算足), 其后是跨区(预算略短)
             for idx_ep, (ep_name, ep_url) in enumerate(SPEED_CROSS_URLS[:SPEED_CROSS_MAX_ENDPOINTS]):
                 budget = (SPEED_CROSS_BUDGET if idx_ep < SPEED_CROSS_SAME_REGION
                           else SPEED_CROSS_BUDGET_FAR)
-                b = measure_download_speed(proxies, [ep_url], budget,
-                                           SPEED_CROSS_WARMUP,
-                                           range_bytes=SPEED_CROSS_RANGE_BYTES)
+                b, ep_fail = measure_download_speed(proxies, [ep_url], budget,
+                                                   SPEED_CROSS_WARMUP,
+                                                   range_bytes=SPEED_CROSS_RANGE_BYTES)
                 if b > 0:
                     cross_results.append((ep_name, b))
                     # ★ 只取第一个成功端点即可判定 —— 目的是"用物理机房校准 CDN 虚高",
                     #   不是多端点横向比较。多测一个端点多花几秒, 收益极小。
                     break
                 cross_fail_names.append(ep_name)
+                cross_fail_reasons.append(f"{ep_name}:{ep_fail}")
             if cross_results:
                 speed_cross = min(b for _, b in cross_results)
                 if speed_cross < speed_bps:
@@ -1704,10 +1728,17 @@ def test_single_node(item, keep_alive_check=True):
         #   复用 204 探针连发 LOSS_PROBE_COUNT 次, 零额外带宽成本。
         #   延迟测"能不能通", 丢包测"通得稳不稳" — 跨太平洋链路的核心问题是丢包,
         #   现有判定对此完全失明。
-        loss_rate = measure_packet_loss(proxies, LOSS_PROBE_COUNT) if speed_bps > 0 else 1.0
+        #   ★ 2026-10-04 修正 (#67 事故): 旧版写 `else 1.0`, 把"没测到丢包"直接
+        #     等同于"100% 丢包", 于是 speed_bps=0 的节点全被判死, 造成
+        #     **真活 0** (实测 #67: 480 个节点全被填 100% 丢包后判死,
+        #      而 TTFB 中位 634ms 明明证明隧道是通的)。
+        #     现在用 None 表示"未测", 判定时跳过丢包维度, 交由吞吐门槛裁决。
+        loss_rate = measure_packet_loss(proxies, LOSS_PROBE_COUNT) if speed_bps > 0 else None
         # 丢包 ≥ MAX_LOSS_RATE → 不可用; LOSS_UNSTABLE_PENALTY~MAX 之间 → 不稳
-        loss_unstable = LOSS_UNSTABLE_PENALTY <= loss_rate < MAX_LOSS_RATE
-        if loss_rate >= MAX_LOSS_RATE:
+        # ★ None (未测) 不参与任何丢包判定, 绝不能当成丢包
+        loss_unstable = (loss_rate is not None
+                         and LOSS_UNSTABLE_PENALTY <= loss_rate < MAX_LOSS_RATE)
+        if loss_rate is not None and loss_rate >= MAX_LOSS_RATE:
             speed_bps = 0            # 判死: 走下面 is_stalled 统一出口
 
         # --- 6) 首包时间 (TTFB) 判定 ---
@@ -1719,11 +1750,15 @@ def test_single_node(item, keep_alive_check=True):
             speed_bps = 0
 
         # 断流判定: 稳态吞吐达不到门槛 → 断流/极慢, 真实不可用
-        # 不稳定节点门槛上浮: 复测掉速 / 交叉测速落差 / 丢包 20%+ / TTFB 迟钝, 四者累乘。
-        # ★ 必须设上限: 四项全中会累乘到 1.5^4 = 5.06×, 门槛 200KB/s → 1012KB/s,
-        #   比 premium 线还高, 把"只是有点抖但本来很快"的节点全砍掉, 过严反失真。
+        # 不稳定节点门槛上浮: 复测掉速 / 复测失败 / 交叉落差 / 丢包 / TTFB 迟钝, 累乘。
+        # ★ 必须设上限: 多项全中会累乘到 1.5^5, 门槛 200KB/s 被推得过高,
+        #   把"只是有点抖但本来很快"的节点全砍掉, 过严反失真。
+        # ★ retest_failed 也计入惩罚: 复测没通过说明链路有一定不确定性,
+        #   但**不再直接判死** (P3 的核心修复)。
         penalty = 1.0
         if speed_unstable:
+            penalty *= SPEED_UNSTABLE_PENALTY
+        if retest_failed:
             penalty *= SPEED_UNSTABLE_PENALTY
         if loss_unstable:
             penalty *= SPEED_UNSTABLE_PENALTY
@@ -1751,8 +1786,12 @@ def test_single_node(item, keep_alive_check=True):
             "is_warp": is_warp,
             "speed_bps": speed_bps,
             "speed_retest_bps": speed_retest,
+            "retest_failed": retest_failed,          # 复测没测出来 (≠ 节点断流)
+            "retest_fail_reason": retest_fail_reason,
+            "speed_fail_reason": speed_fail,          # 主测速失败原因 (HTTP403/超时/样本不足)
             "speed_cross_bps": speed_cross,
             "cross_fail_names": cross_fail_names,        # 失败端点名, 便于回查
+            "cross_fail_reasons": cross_fail_reasons,    # 失败端点+原因
             "cross_all_failed": cross_all_failed,        # 全部非CF端点不通 → 问题在节点
             "speed_unstable": speed_unstable,
             "ttfb_ms": ttfb_ms,
@@ -1845,6 +1884,22 @@ def run_liveness_test(candidates: list) -> list:
     premium = sum(1 for r in results if r.get("is_premium"))
     speeds = sorted((r["speed_bps"] for r in results if r["speed_bps"] > 0), reverse=True)
     print(f"[+] 测活完成: 真活 {len(alive)} | 断流淘汰 {stalled} | MITM 风险 {mitm}")
+
+    # ★ 2026-10-04 新增: 测速失败原因归集 (#67 事故时只能看到"最快 0KB/s",
+    #   无法判断是端点 403 / 超时 / 样本不足 / 断流)。现在一眼能看出瓶颈在哪一环。
+    sp_fail = Counter()
+    for r in results:
+        if r.get("speed_bps", 0) <= 0 and r.get("speed_fail_reason"):
+            sp_fail[r["speed_fail_reason"]] += 1
+    if sp_fail:
+        top = " | ".join(f"{k}:{v}" for k, v in sp_fail.most_common(6))
+        print(f"    测速失败原因 (共 {sum(sp_fail.values())} 个): {top}")
+    rt_fail = sum(1 for r in results if r.get("retest_failed"))
+    if rt_fail:
+        rt_why = Counter(r.get("retest_fail_reason", "?")
+                         for r in results if r.get("retest_failed"))
+        why = " | ".join(f"{k}:{v}" for k, v in rt_why.most_common(4))
+        print(f"    复测未通过 {rt_fail} 个 (已保留首测值, 计入门槛惩罚×1.5): {why}")
     print(f"[+] 吞吐分布 (门槛 {SPEED_MIN_BYTES_PER_S//1000}KB/s): "
           f"优选≥{SPEED_TIER_GOOD//1000}KB/s {premium} | 复测不稳 {unstable} | "
           f"最快 {speeds[0]//1000 if speeds else 0}KB/s | "
@@ -1865,12 +1920,19 @@ def run_liveness_test(candidates: list) -> list:
     if ttfb:
         print(f"[+] 首包 TTFB (上限 {MAX_TTFB_MS}ms): "
               f"最快 {ttfb[0]}ms | 中位 {ttfb[len(ttfb)//2]}ms | 最慢 {ttfb[-1]}ms")
-    losses = sorted(r.get("loss_rate", 0) for r in results)
+    # ★ 只统计真正测过丢包的节点 (loss_rate is not None);
+    #   "未测" 数量单独报出, 避免再次出现 #67 那种"全是100%丢包"的误判假象
+    losses = sorted(r["loss_rate"] for r in results
+                    if r.get("loss_rate") is not None)
+    untested = sum(1 for r in results if r.get("loss_rate") is None)
     if losses:
         zero_loss = sum(1 for v in losses if v == 0)
-        print(f"[+] 丢包率 (淘汰线 {MAX_LOSS_RATE:.0%}): "
-              f"零丢包 {zero_loss}/{len(losses)} | "
-              f"中位 {losses[len(losses)//2]:.0%} | 最差 {losses[-1]:.0%}")
+        tail = f" | 未测 {untested}" if untested else ""
+        print(f"[+] 丢包率 (淘汰线 {MAX_LOSS_RATE:.0%}, 已测 {len(losses)} 个): "
+              f"零丢包 {zero_loss} | "
+              f"中位 {losses[len(losses)//2]:.0%} | 最差 {losses[-1]:.0%}{tail}")
+    elif untested:
+        print(f"[+] 丢包率: 全部未测 ({untested} 个) — 无节点通过吞吐门槛, 该维度跳过")
     # 交叉测速生效判定: 采信了交叉结果 (speed_cross>0) 的节点中,
     # 有多少被取最小值后掉到了首轮之下 (= 说明对某些源不通畅)
     cross_used = [r for r in results if r.get("speed_cross_bps", 0) > 0]
@@ -1888,6 +1950,14 @@ def run_liveness_test(candidates: list) -> list:
         ep_order = [nm for nm, _ in SPEED_CROSS_URLS]
         detail = " | ".join(f"{nm}:{ep_fail.get(nm, 0)}" for nm in ep_order)
         print(f"    端点失败次数 (按尝试序): {detail}")
+        # 失败原因 Top 归集 — 区分"端点挂了(HTTP403/超时)"与"节点到不了(样本不足)"
+        ep_why = Counter()
+        for r in results:
+            for item in r.get("cross_fail_reasons") or []:
+                ep_why[item] += 1
+        if ep_why:
+            print(f"    端点失败原因 Top5: "
+                  + " | ".join(f"{k}:{v}" for k, v in ep_why.most_common(5)))
     all_fail = [r for r in results if r.get("cross_all_failed")]
     if all_fail:
         print(f"    [!] {len(all_fail)} 个节点对**全部** {len(SPEED_CROSS_URLS)} 个非CF端点"
@@ -2581,8 +2651,10 @@ def classify_and_export(test_results: list):
             "speed_unstable": r.get("speed_unstable", False),
             "ttfb_ms": r.get("ttfb_ms", 0),
             "ttfb_slow": r.get("ttfb_slow", False),
-            "loss_rate": r.get("loss_rate", 1.0),
+            "loss_rate": r.get("loss_rate"),          # None = 未测 (非 0)
             "loss_unstable": r.get("loss_unstable", False),
+            "retest_failed": r.get("retest_failed", False),
+            "speed_fail_reason": r.get("speed_fail_reason", ""),
             "is_premium": r.get("is_premium", False),
             "mitm_risk": r["mitm_risk"],
             "is_warp": r.get("is_warp", False),
@@ -2756,7 +2828,9 @@ def classify_and_export(test_results: list):
     #     排序会排在 300ms/零丢包 前面, 实际体验更差。
     #   综合分 = 延迟 + 丢包惩罚(每次丢失按 1500ms 计) + TTFB 的一半。
     def _quality_key(n):
-        loss = n.get("loss_rate", 1.0) or 0.0
+        # ★ loss_rate 为 None 表示"未测丢包"(非 0 也非 100%), 按 0 参与排序,
+        #   不能因为缺数据就把节点排到最末 (#67 事故衍生问题)
+        loss = n.get("loss_rate") or 0.0
         ttfb = n.get("ttfb_ms", 0) or 0
         return (n["latency_ms"] + loss * 1500.0 + ttfb * 0.5)
 
@@ -2805,8 +2879,8 @@ def make_node_name(item, idx, force_residential=False):
         speed_tag = f" {spd_kb}K"
     else:
         speed_tag = ""
-    # 链路质量标注: 丢包 ⚠L<百分比> (≥20% 才标, 低于此属正常抖动不打扰)
-    loss = item.get("loss_rate", 0) or 0
+    # 链路质量标注: 丢包 ⚠L<百分比> (≥20% 才标; 未测不标)
+    loss = item.get("loss_rate") or 0
     loss_tag = f" ⚠L{loss:.0%}" if loss >= 0.20 else ""
     # 首包迟钝标注: TTFB > 1500ms (RTT 低但首包慢 = 用户体感"点了没反应")
     ttfb = item.get("ttfb_ms", 0) or 0

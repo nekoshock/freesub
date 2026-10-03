@@ -61,6 +61,7 @@ SOURCE_URLS = [
     "https://www.ermao.net/sub/v2ray/ermao.net",
     "https://gist.githubusercontent.com/shuaidaoya/9e5cf2749c0ce79932dd9229d9b4162b/raw/base64.txt",
     "https://raw.githubusercontent.com/awesome-vpn/awesome-vpn/master/all",
+    "https://raw.githubusercontent.com/ZYFXS/ZYFXS001/refs/heads/main/3v-youtube%40ZYFXS",
 ]
 
 OUTPUT_DIR = "output"

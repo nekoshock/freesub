@@ -4,33 +4,33 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇰🇷 韩国 (South Korea) 01 - NEKO
-  server: 141.164.45.187
-  port: 9090
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: Y6R9pAtvxxzmGC
-- name: 🇰🇷 韩国 (South Korea) 02 - NEKO
+- name: 🇰🇷 韩国 (South Korea) 01 278K - NEKO
   server: 141.164.45.187
   port: 8119
   udp: true
   type: ss
   cipher: aes-256-gcm
   password: cdBIDV42DCwnfIN
+- name: 🇰🇷 韩国 (South Korea) 02 614K - NEKO
+  server: 141.164.45.187
+  port: 5498
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: lGqs95QkFHo2NV
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇰🇷 韩国 (South Korea) 01 - NEKO
-  - 🇰🇷 韩国 (South Korea) 02 - NEKO
+  - 🇰🇷 韩国 (South Korea) 01 278K - NEKO
+  - 🇰🇷 韩国 (South Korea) 02 614K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇰🇷 韩国 (South Korea) 01 - NEKO
-  - 🇰🇷 韩国 (South Korea) 02 - NEKO
+  - 🇰🇷 韩国 (South Korea) 01 278K - NEKO
+  - 🇰🇷 韩国 (South Korea) 02 614K - NEKO
 rules:
 - MATCH,PROXIES

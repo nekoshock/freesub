@@ -4,15 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇷🇴 罗马尼亚 (Romania) 01 - NEKO
-  server: 77.74.123.102
-  port: 8443
-  udp: true
-  type: hysteria2
-  password: s0_sdK93x9wer_D02Lz9cvK3_Sa014Oakl_C2z
-  sni: grape-test-italy.dynuddns.net
-  skip-cert-verify: false
-- name: 🇷🇴 罗马尼亚 (Romania) 02 - NEKO
+- name: 🇷🇴 罗马尼亚 (Romania) 01 ⚡1812K - NEKO
   server: 162.249.127.143
   port: 8443
   udp: true
@@ -20,7 +12,7 @@ proxies:
   password: 9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z
   sni: hop-germany-september.dynuddns.com
   skip-cert-verify: true
-- name: 🇷🇴 罗马尼亚 (Romania) 03 - NEKO
+- name: 🇷🇴 罗马尼亚 (Romania) 02 ⚡8796K - NEKO
   server: 162.249.125.133
   port: 443
   udp: true
@@ -30,7 +22,7 @@ proxies:
   skip-cert-verify: false
   obfs: salamander
   obfs-password: c1b4086fea89914496c7e10967a419216566
-- name: 🇷🇴 罗马尼亚 (Romania) 04 - NEKO
+- name: 🇷🇴 罗马尼亚 (Romania) 03 210K - NEKO
   server: bogging-eyeteeth-fly.freesocks.work
   port: 443
   udp: true
@@ -42,18 +34,16 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇷🇴 罗马尼亚 (Romania) 01 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 02 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 03 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 04 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 01 ⚡1812K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 02 ⚡8796K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 03 210K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇷🇴 罗马尼亚 (Romania) 01 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 02 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 03 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 04 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 01 ⚡1812K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 02 ⚡8796K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 03 210K - NEKO
 rules:
 - MATCH,PROXIES

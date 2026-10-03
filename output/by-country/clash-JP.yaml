@@ -4,59 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇯🇵 日本 (Japan) 01 - NEKO
-  server: 45.32.57.118
-  port: 4433
-  udp: true
-  type: vmess
-  uuid: 35b89832-0a7c-48dd-8d1c-a2891b522195
-  alterId: 0
-  cipher: auto
-- name: 🇯🇵 日本 (Japan) 02 - NEKO
-  server: 149.22.87.204
-  port: 443
-  udp: true
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-- name: 🇯🇵 日本 (Japan) 03 - NEKO
-  server: 154.31.114.248
-  port: 50159
-  udp: true
-  type: vless
-  uuid: d56624b2-35bb-468c-9b2a-e0b0df7230c1
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: j4QXngGuJkUGwRj4XIrfHRohYYuEfnJlX4cvCE-WklA
-    short-id: 091e1c5db8451757
-  servername: www.cloudflare.com
-  client-fingerprint: chrome
-- name: 🇯🇵 日本 (Japan) 04 - NEKO
-  server: rb.mangshe.xyz
-  port: 2060
-  udp: true
-  type: hysteria2
-  password: 5d0a6445-a30d-4522-bb1f-94f1d3ad63be
-  sni: 127.0.0.1
-  skip-cert-verify: true
-- name: 🇯🇵 日本 (Japan) 05 - NEKO
-  server: cdn.sfacg.uk
-  port: 2083
-  udp: true
-  type: vmess
-  uuid: ac251237-576f-40c8-a543-554960c958b1
-  alterId: 0
-  cipher: auto
-  tls: true
-  servername: or3.sfacg.uk
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /or3
-    headers:
-      Host: or3.sfacg.uk
-- name: 🇯🇵 日本 (Japan) 06 - NEKO
+- name: 🇯🇵 日本 (Japan) 01 ⚡3089K - NEKO
   server: 84.247.155.196
   port: 80
   udp: true
@@ -68,22 +16,12 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇯🇵 日本 (Japan) 01 - NEKO
-  - 🇯🇵 日本 (Japan) 02 - NEKO
-  - 🇯🇵 日本 (Japan) 03 - NEKO
-  - 🇯🇵 日本 (Japan) 04 - NEKO
-  - 🇯🇵 日本 (Japan) 05 - NEKO
-  - 🇯🇵 日本 (Japan) 06 - NEKO
+  - 🇯🇵 日本 (Japan) 01 ⚡3089K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇯🇵 日本 (Japan) 01 - NEKO
-  - 🇯🇵 日本 (Japan) 02 - NEKO
-  - 🇯🇵 日本 (Japan) 03 - NEKO
-  - 🇯🇵 日本 (Japan) 04 - NEKO
-  - 🇯🇵 日本 (Japan) 05 - NEKO
-  - 🇯🇵 日本 (Japan) 06 - NEKO
+  - 🇯🇵 日本 (Japan) 01 ⚡3089K - NEKO
 rules:
 - MATCH,PROXIES

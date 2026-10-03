@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇪🇸 西班牙 (Spain) 01 - NEKO
+- name: 🇪🇸 西班牙 (Spain) 01 ⚡6140K - NEKO
   server: 66.163.118.73
   port: 22324
   udp: true
@@ -12,21 +12,21 @@ proxies:
   uuid: 04621bae-ab36-11ec-b909-0242ac120002
   alterId: 0
   cipher: auto
-- name: 🇪🇸 西班牙 (Spain) 02 - NEKO
+- name: 🇪🇸 西班牙 (Spain) 02 ⚡3840K - NEKO
   server: 108.181.121.226
   port: 8388
   udp: true
   type: ss
   cipher: chacha20-ietf-poly1305
   password: WSyL4XTwNsdv
-- name: 🇪🇸 西班牙 (Spain) 03 - NEKO
+- name: 🇪🇸 西班牙 (Spain) 03 ⚡5753K - NEKO
   server: 140.174.184.5
   port: 8388
   udp: true
   type: ss
   cipher: chacha20-ietf-poly1305
   password: qItG8SueYQcP
-- name: 🇪🇸 西班牙 (Spain) 04 - NEKO
+- name: 🇪🇸 西班牙 (Spain) 04 695K - NEKO
   server: 193.238.154.5
   port: 443
   udp: true
@@ -39,7 +39,15 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: cdn.v1.AssetService
-- name: 🇪🇸 西班牙 (Spain) 05 - NEKO
+- name: 🇪🇸 西班牙 (Spain) 05 ⚡2526K - NEKO
+  server: xby.mangshe.xyz
+  port: 2060
+  udp: true
+  type: hysteria2
+  password: 5d0a6445-a30d-4522-bb1f-94f1d3ad63be
+  sni: xby.mangshe.xyz
+  skip-cert-verify: true
+- name: 🇪🇸 西班牙 (Spain) 06 ⚡5169K - NEKO
   server: 66.163.118.73
   port: 443
   udp: true
@@ -55,7 +63,7 @@ proxies:
     path: /linkvws
     headers:
       Host: mygptagent.org
-- name: 🇪🇸 西班牙 (Spain) 06 - NEKO
+- name: 🇪🇸 西班牙 (Spain) 07 ⚡6471K - NEKO
   server: 45.154.206.88
   port: 443
   udp: true
@@ -68,37 +76,29 @@ proxies:
     short-id: ecca56e9a9963ed7
   servername: es.monkeyisland.xyz
   client-fingerprint: firefox
-- name: 🇪🇸 西班牙 (Spain) 07 - NEKO
-  server: xby.mangshe.xyz
-  port: 2060
-  udp: true
-  type: hysteria2
-  password: 5d0a6445-a30d-4522-bb1f-94f1d3ad63be
-  sni: xby.mangshe.xyz
-  skip-cert-verify: true
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇪🇸 西班牙 (Spain) 01 - NEKO
-  - 🇪🇸 西班牙 (Spain) 02 - NEKO
-  - 🇪🇸 西班牙 (Spain) 03 - NEKO
-  - 🇪🇸 西班牙 (Spain) 04 - NEKO
-  - 🇪🇸 西班牙 (Spain) 05 - NEKO
-  - 🇪🇸 西班牙 (Spain) 06 - NEKO
-  - 🇪🇸 西班牙 (Spain) 07 - NEKO
+  - 🇪🇸 西班牙 (Spain) 01 ⚡6140K - NEKO
+  - 🇪🇸 西班牙 (Spain) 02 ⚡3840K - NEKO
+  - 🇪🇸 西班牙 (Spain) 03 ⚡5753K - NEKO
+  - 🇪🇸 西班牙 (Spain) 04 695K - NEKO
+  - 🇪🇸 西班牙 (Spain) 05 ⚡2526K - NEKO
+  - 🇪🇸 西班牙 (Spain) 06 ⚡5169K - NEKO
+  - 🇪🇸 西班牙 (Spain) 07 ⚡6471K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇪🇸 西班牙 (Spain) 01 - NEKO
-  - 🇪🇸 西班牙 (Spain) 02 - NEKO
-  - 🇪🇸 西班牙 (Spain) 03 - NEKO
-  - 🇪🇸 西班牙 (Spain) 04 - NEKO
-  - 🇪🇸 西班牙 (Spain) 05 - NEKO
-  - 🇪🇸 西班牙 (Spain) 06 - NEKO
-  - 🇪🇸 西班牙 (Spain) 07 - NEKO
+  - 🇪🇸 西班牙 (Spain) 01 ⚡6140K - NEKO
+  - 🇪🇸 西班牙 (Spain) 02 ⚡3840K - NEKO
+  - 🇪🇸 西班牙 (Spain) 03 ⚡5753K - NEKO
+  - 🇪🇸 西班牙 (Spain) 04 695K - NEKO
+  - 🇪🇸 西班牙 (Spain) 05 ⚡2526K - NEKO
+  - 🇪🇸 西班牙 (Spain) 06 ⚡5169K - NEKO
+  - 🇪🇸 西班牙 (Spain) 07 ⚡6471K - NEKO
 rules:
 - MATCH,PROXIES

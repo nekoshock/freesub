@@ -4,23 +4,24 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇹🇷 土耳其 (Turkey) 01 (移动家宽) - NEKO
-  server: 178.83.46.216
-  port: 2053
+- name: 🇮🇳 印度 (India) 01 ⚡1566K - NEKO
+  server: 139.84.166.47
+  port: 8388
   udp: true
-  type: vless
-  uuid: 9ef61079-6f7d-4911-9608-943da85d8e6f
+  type: ss
+  cipher: aes-256-gcm
+  password: GEdoeeqLZtkJRgSa
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇹🇷 土耳其 (Turkey) 01 (移动家宽) - NEKO
+  - 🇮🇳 印度 (India) 01 ⚡1566K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇹🇷 土耳其 (Turkey) 01 (移动家宽) - NEKO
+  - 🇮🇳 印度 (India) 01 ⚡1566K - NEKO
 rules:
 - MATCH,PROXIES

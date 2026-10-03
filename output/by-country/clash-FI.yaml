@@ -4,15 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇫🇮 芬兰 (Finland) 01 - NEKO
-  server: 144.31.232.216
-  port: 443
-  udp: true
-  type: hysteria2
-  password: 06e88dd6-e264-4981-8c26-d7ab17348ab2
-  sni: fi01.clgate.network
-  skip-cert-verify: false
-- name: 🇫🇮 芬兰 (Finland) 02 - NEKO
+- name: 🇫🇮 芬兰 (Finland) 01 ⚡5316K - NEKO
   server: 65.108.3.59
   port: 443
   udp: true
@@ -25,7 +17,7 @@ proxies:
     short-id: 90ec9bba2019
   servername: web.eitaa.com
   client-fingerprint: chrome
-- name: 🇫🇮 芬兰 (Finland) 03 - NEKO
+- name: 🇫🇮 芬兰 (Finland) 02 ⚡4772K - NEKO
   server: 77.42.28.120
   port: 1280
   udp: true
@@ -34,7 +26,9 @@ proxies:
   network: ws
   ws-opts:
     path: /
-- name: 🇫🇮 芬兰 (Finland) 04 - NEKO
+    headers:
+      Host: is1-ssl.mzstatic.com
+- name: 🇫🇮 芬兰 (Finland) 03 289K - NEKO
   server: 144.31.212.253
   port: 443
   udp: true
@@ -47,18 +41,16 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇫🇮 芬兰 (Finland) 01 - NEKO
-  - 🇫🇮 芬兰 (Finland) 02 - NEKO
-  - 🇫🇮 芬兰 (Finland) 03 - NEKO
-  - 🇫🇮 芬兰 (Finland) 04 - NEKO
+  - 🇫🇮 芬兰 (Finland) 01 ⚡5316K - NEKO
+  - 🇫🇮 芬兰 (Finland) 02 ⚡4772K - NEKO
+  - 🇫🇮 芬兰 (Finland) 03 289K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇫🇮 芬兰 (Finland) 01 - NEKO
-  - 🇫🇮 芬兰 (Finland) 02 - NEKO
-  - 🇫🇮 芬兰 (Finland) 03 - NEKO
-  - 🇫🇮 芬兰 (Finland) 04 - NEKO
+  - 🇫🇮 芬兰 (Finland) 01 ⚡5316K - NEKO
+  - 🇫🇮 芬兰 (Finland) 02 ⚡4772K - NEKO
+  - 🇫🇮 芬兰 (Finland) 03 289K - NEKO
 rules:
 - MATCH,PROXIES

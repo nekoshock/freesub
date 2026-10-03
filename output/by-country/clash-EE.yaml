@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇪🇪 爱沙尼亚 (Estonia) 01 3728K - NEKO
+- name: 🇪🇪 爱沙尼亚 (Estonia) 01 4063K - NEKO
   server: 89.125.13.202
   port: 443
   udp: true
@@ -16,8 +16,8 @@ proxies:
     public-key: g36Z7YIqJMJP-uv3DBr72X5jvfjyW1qIAxa8TkWmpmQ
     short-id: ad6e08b22389abd2
   servername: d3-ee1.cloud-cdn.xyz
-  client-fingerprint: ios
-- name: 🇪🇪 爱沙尼亚 (Estonia) 02 3788K - NEKO
+  client-fingerprint: edge
+- name: 🇪🇪 爱沙尼亚 (Estonia) 02 4192K - NEKO
   server: 109.206.241.10
   port: 449
   udp: true
@@ -25,17 +25,7 @@ proxies:
   password: oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1
   sni: 109.206.241.10
   skip-cert-verify: true
-- name: 🇪🇪 爱沙尼亚 (Estonia) 03 3415K - NEKO
-  server: 94.183.170.135
-  port: 8443
-  udp: true
-  type: vless
-  uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
-  tls: true
-  servername: estproxy4.lockdwn.com
-  skip-cert-verify: false
-  client-fingerprint: firefox
-- name: 🇪🇪 爱沙尼亚 (Estonia) 04 3005K - NEKO
+- name: 🇪🇪 爱沙尼亚 (Estonia) 03 3342K - NEKO
   server: 94.183.170.135
   port: 443
   udp: true
@@ -44,7 +34,9 @@ proxies:
   network: ws
   ws-opts:
     path: /
-- name: 🇪🇪 爱沙尼亚 (Estonia) 05 2364K - NEKO
+    headers:
+      Host: estproxy4.lockdwn.com
+- name: 🇪🇪 爱沙尼亚 (Estonia) 04 3480K - NEKO
   server: 163.245.52.91
   port: 443
   udp: true
@@ -57,8 +49,18 @@ proxies:
     short-id: ad6e08b22389abd2
   servername: d3-ee1.cloud-cdn.xyz
   client-fingerprint: edge
-- name: 🇪🇪 爱沙尼亚 (Estonia) 06 2500K - NEKO
-  server: ee10.zazazuza.ru
+- name: 🇪🇪 爱沙尼亚 (Estonia) 05 3717K - NEKO
+  server: 94.183.170.135
+  port: 8443
+  udp: true
+  type: vless
+  uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
+  tls: true
+  servername: estproxy4.lockdwn.com
+  skip-cert-verify: false
+  client-fingerprint: chrome
+- name: 🇪🇪 爱沙尼亚 (Estonia) 06 3891K - NEKO
+  server: 77.72.85.246
   port: 8443
   udp: true
   type: vless
@@ -66,33 +68,47 @@ proxies:
   tls: true
   servername: fdghyt.com
   skip-cert-verify: false
-  client-fingerprint: chrome
   network: ws
   ws-opts:
     path: /vpn-wss/fluxor/59011/
     headers:
       Host: fdghyt.com
+- name: 🇪🇪 爱沙尼亚 (Estonia) 07 ⚠S3132K - NEKO
+  server: 93.89.220.37
+  port: 443
+  udp: true
+  type: vless
+  uuid: 185e2bb3-2934-48d0-bbd5-dd20d16e83ee
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: lwKaUQ81wJUJRsqAPsfTPj5V_f9N50UYEwzRI_nuq2g
+    short-id: e88cb983f3c97528
+  servername: ibm.com
+  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇪🇪 爱沙尼亚 (Estonia) 01 3728K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 02 3788K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 03 3415K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 04 3005K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 05 2364K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 06 2500K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 01 4063K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 02 4192K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 03 3342K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 04 3480K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 05 3717K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 06 3891K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 07 ⚠S3132K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇪🇪 爱沙尼亚 (Estonia) 01 3728K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 02 3788K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 03 3415K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 04 3005K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 05 2364K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 06 2500K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 01 4063K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 02 4192K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 03 3342K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 04 3480K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 05 3717K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 06 3891K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 07 ⚠S3132K - NEKO
 rules:
 - MATCH,PROXIES

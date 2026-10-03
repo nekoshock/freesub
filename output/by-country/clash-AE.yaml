@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇦🇪 阿联酋 (UAE) 01 7543K - NEKO
+- name: 🇦🇪 阿联酋 (UAE) 01 ⚠S7941K - NEKO
   server: hy2.aspidnet.xyz
   port: 443
   udp: true
@@ -14,7 +14,15 @@ proxies:
   skip-cert-verify: false
   obfs: salamander
   obfs-password: rG07s3COMIEvdnQipRyWzx_H_2xygNC3
-- name: 🇦🇪 阿联酋 (UAE) 02 3167K - NEKO
+- name: 🇦🇪 阿联酋 (UAE) 02 7384K - NEKO
+  server: 217.60.33.215
+  port: 443
+  udp: true
+  type: hysteria2
+  password: 865e271f7c97b549b024255c9d02cebe9cc0c2c070a82b1e11bb11b9cd88dd01
+  sni: streambox.wwwinternetvideo.click
+  skip-cert-verify: true
+- name: 🇦🇪 阿联酋 (UAE) 03 4132K - NEKO
   server: 144.31.49.47
   port: 443
   udp: true
@@ -22,7 +30,7 @@ proxies:
   password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
   sni: admin.wwwinternetvideo.click
   skip-cert-verify: true
-- name: 🇦🇪 阿联酋 (UAE) 03 4143K - NEKO
+- name: 🇦🇪 阿联酋 (UAE) 04 4765K - NEKO
   server: node-nl.shtormvpn.shop
   port: 443
   udp: true
@@ -33,22 +41,24 @@ proxies:
   reality-opts:
     public-key: yI6maXxTQ8zRHg39X8YMQtKW-IVfNIn0_OCUIQKmcXw
   servername: google.com
-  client-fingerprint: edge
+  client-fingerprint: firefox
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇦🇪 阿联酋 (UAE) 01 7543K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 02 3167K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 03 4143K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 01 ⚠S7941K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 02 7384K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 03 4132K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 04 4765K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇦🇪 阿联酋 (UAE) 01 7543K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 02 3167K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 03 4143K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 01 ⚠S7941K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 02 7384K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 03 4132K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 04 4765K - NEKO
 rules:
 - MATCH,PROXIES

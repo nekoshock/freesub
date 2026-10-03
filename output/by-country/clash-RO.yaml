@@ -4,23 +4,31 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇷🇴 罗马尼亚 (Romania) 01 9606K - NEKO
-  server: 77.74.123.98
+- name: 🇷🇴 罗马尼亚 (Romania) 01 7341K - NEKO
+  server: 77.74.123.103
   port: 8443
   udp: true
   type: hysteria2
   password: s0_sdK93x9wer_D02Lz9cvK3_Sa014Oakl_C2z
   sni: grape-test-italy.dynuddns.net
   skip-cert-verify: false
-- name: 🇷🇴 罗马尼亚 (Romania) 02 1862K - NEKO
-  server: 162.249.127.135
+- name: 🇷🇴 罗马尼亚 (Romania) 02 ⚠S780K - NEKO
+  server: 162.249.127.137
   port: 8443
   udp: true
   type: hysteria2
   password: 9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z
   sni: hop-germany-september.dynuddns.com
   skip-cert-verify: false
-- name: 🇷🇴 罗马尼亚 (Romania) 03 5348K - NEKO
+- name: 🇷🇴 罗马尼亚 (Romania) 03 6388K - NEKO
+  server: 185.156.44.99
+  port: 443
+  udp: true
+  type: hysteria2
+  password: gf1:gfhysteria2024
+  sni: whatsapp.com
+  skip-cert-verify: true
+- name: 🇷🇴 罗马尼亚 (Romania) 04 6673K - NEKO
   server: 162.249.125.133
   port: 443
   udp: true
@@ -30,15 +38,17 @@ proxies:
   skip-cert-verify: false
   obfs: salamander
   obfs-password: c1b4086fea89914496c7e10967a419216566
-- name: 🇷🇴 罗马尼亚 (Romania) 04 6299K - NEKO
-  server: 185.156.44.99
+- name: 🇷🇴 罗马尼亚 (Romania) 05 5835K - NEKO
+  server: hy2-new.aspidnet.xyz
   port: 443
   udp: true
   type: hysteria2
-  password: gf1:gfhysteria2024
-  sni: www.amazon.com
+  password: QCgqi_I4EkV8UR-OgQ_tG4EnVTEVvIyR2GgRBzrIn2s
+  sni: hy2-new.aspidnet.xyz
   skip-cert-verify: true
-- name: 🇷🇴 罗马尼亚 (Romania) 05 3022K - NEKO
+  obfs: salamander
+  obfs-password: c1b4086fea89914496c7e10967a419216566
+- name: 🇷🇴 罗马尼亚 (Romania) 06 3214K - NEKO
   server: 46.28.67.55
   port: 443
   udp: true
@@ -51,7 +61,20 @@ proxies:
     short-id: d06d78e974491b6e
   servername: www.cloudflare.com
   client-fingerprint: chrome
-- name: 🇷🇴 罗马尼亚 (Romania) 06 3762K - NEKO
+- name: 🇷🇴 罗马尼亚 (Romania) 07 3660K - NEKO
+  server: 109.104.106.15
+  port: 443
+  udp: true
+  type: vless
+  uuid: 87fd990d-ca93-440a-bbd4-e8281c4a0910
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: a_v5l6R-rpVGlENLeONW4sz-GdRwIoDqISOWXGov8nw
+    short-id: 87709fed663228e5
+  servername: d3-ro.cloud-cdn.xyz
+  client-fingerprint: firefox
+- name: 🇷🇴 罗马尼亚 (Romania) 08 3533K - NEKO
   server: 146.70.124.85
   port: 443
   udp: true
@@ -69,22 +92,26 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇷🇴 罗马尼亚 (Romania) 01 9606K - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 02 1862K - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 03 5348K - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 04 6299K - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 05 3022K - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 06 3762K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 01 7341K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 02 ⚠S780K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 03 6388K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 04 6673K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 05 5835K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 06 3214K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 07 3660K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 08 3533K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇷🇴 罗马尼亚 (Romania) 01 9606K - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 02 1862K - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 03 5348K - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 04 6299K - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 05 3022K - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 06 3762K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 01 7341K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 02 ⚠S780K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 03 6388K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 04 6673K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 05 5835K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 06 3214K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 07 3660K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 08 3533K - NEKO
 rules:
 - MATCH,PROXIES

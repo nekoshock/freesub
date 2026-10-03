@@ -15,7 +15,9 @@
        + Cloudflare 限时下载测速 → 断流节点识别 (稳态吞吐 < 200KB/s)
          · 分母只取首数据块后的稳态区间 (剔除握手/TLS/RTT, 否则快节点被系统性低估)
          · 1MB 二次复测取最小值 (防 CDN 缓存/TCP 突发骗过单轮结果)
-         · 跨端点交叉测速 (≥2 端点取最小值, 防"对 Cloudflare 特供"的节点)
+         · 跨端点交叉测速 (物理机房 Hetzner/Linode, 逐个回退取首个有效;
+           全部非CF端点不通 → 判定问题在节点自身而非端点)
+         · 测速健全性护栏 (全体中位数过高 = CDN 短路, 撤销⚡优选标记)
        + 丢包率探测 (复用 204 探针连发 5 次, 抓抖动严重的节点)
        + 首包时间 TTFB (与握手 RTT 互补, 抓"延迟低但首包慢"的体感杀手)
        + cloudflare trace tls=VERIFIED → MITM/劫持节点识别
@@ -120,9 +122,16 @@ SPEED_UNSTABLE_PENALTY = 1.5         # 不稳定节点的实际门槛上浮倍�
 #   节点只要对 CF 快就定级, 哪怕对其他 CDN/大厂极慢。免费池里"专供 Cloudflare"
 #   的节点不少 (常见于机场给订阅做了按源分流)。改为所有端点都测, **取最小值**。
 #   与二次复测同思路: 最小值代表"用户实际能拿到的最差体验"。
+# 回退探测预算: 前 3 个端点(同区优先)每端点给足 8 秒, 跨区端点给 5 秒。
+#   ★ 为什么分档: 跨大西洋握手本身就接近 1 秒, 若与同区端点一样只给 3 秒,
+#     扣掉热身期后拿不到 SPEED_MIN_DATA_BYTES 的最小样本量 → 端点被误判为不通。
+#     实测 #66 交叉测速几乎全败, 根因就是预算过短而非端点不可用。
+#   逐个回退, 拿到第一个有效结果即停 —— 所以正常情况下只花第一个端点的预算。
 SPEED_CROSS_MIN_ENDPOINTS = 2        # 至少要有几个端点成功才采信交叉结果 (不足则退化用已有)
-SPEED_CROSS_MAX_ENDPOINTS = 3        # 最多测几个端点 (再多是时间浪费, 不是信息增量)
-SPEED_CROSS_BUDGET       = 3.0       # 每个交叉端点的预算 (秒) — 比首轮短, 仅用于横向比较
+SPEED_CROSS_MAX_ENDPOINTS = 5        # 最多试几个端点 (与 SPEED_CROSS_URLS 等长, 保证回退能走到最后一个)
+SPEED_CROSS_BUDGET       = 8.0       # 首选端点预算 (秒) — 同区端点, 需覆盖握手+热身+稳态采样
+SPEED_CROSS_BUDGET_FAR   = 5.0       # 跨区端点预算 (秒) — 握手更慢, 但链路更长稳态采样需求略低
+SPEED_CROSS_SAME_REGION  = 3        # 前 N 个端点视为"同区"(走 SPEED_CROSS_BUDGET), 其后为跨区
 SPEED_CROSS_WARMUP       = 0.3       # 交叉测速热身 (端点间横向比较, 口径一致即可)
 CROSS_BYTES              = 2_000_000 # 交叉测速每端点样本 2MB (够算稳态速率, 不至于太大)
 
@@ -144,7 +153,7 @@ LOSS_UNSTABLE_PENALTY = 0.10         # 丢包率 ≥10% 即视为不稳 ★收�
 #   空字符串 = 不屏蔽任何国家 (默认关闭, 保持开源仓库通用性);
 #   想启用日本屏蔽时填 "JP" 或 "JP,KR" 等。
 #   生效位置: classify_and_export 的 safe_nodes 过滤 (最早期, 省掉后续情报查询)
-BLOCK_COUNTRIES = "JP"             # 例: "JP" = 剔除落地日本; "JP,KR" = 日本+韩国
+BLOCK_COUNTRIES = "JP,RU"             # 例: "JP" = 剔除落地日本; "JP,KR" = 日本+韩国
 # --- 首包时间 TTFB (Time To First Byte) ---
 #   现有 latency 测的是 TCP+TLS 握手往返; TTFB 测"服务器开始回数据"的时刻。
 #   两者背离是常态: 很多节点 RTT 很低但首包要 1~2 秒 (服务端缓冲/链路拥塞),
@@ -175,22 +184,49 @@ LIVENESS_PROBES = [
 ]
 MIN_LIVENESS_HITS = 2            # 至少 2 个不同源通过才判活 (三源取二)
 MAX_LATENCY_MS    = 1500         # 延迟上限门槛: 超时即淘汰 (此前延迟只用于排序, 不淘汰)
-SPEED_TEST_URLS = [               # 测速端点多路
+# ══════════════════════════════════════════════════════════════════
+# 测速端点配置
+#   ★ 核心原则: 端点必须与被测节点**同区域**测, 且优先选**物理机房**而非 Anycast CDN。
+#     Cloudflare/Fastly 这类 Anycast CDN 的边缘节点常与运行机同机房 (Actions US
+#     runner 与 Cloudflare 边缘仅数百毫秒), 测出的是"内网带宽"而非跨境带宽。
+#     实测 #65: Cloudflare 端点测出中位 7.0MB/s / 最快 29MB/s, 76% 节点被标"优选",
+#     而 200KB/s 的门槛对 7MB/s 的中位数形同虚设 —— 用户以为筛过了, 其实没有。
+#     改用物理机房端点后, 数字才代表用户实际能拿到的带宽。
+#   下列每个端点都做过 HTTP 206 (Range) + 实际吞吐实测, 按同区优先排序。
+# ══════════════════════════════════════════════════════════════════
+SPEED_TEST_URLS = [               # 主测速端点 (Anycast CDN, 快但可能虚高 — 仅作上界参考)
     "https://speed.cloudflare.com/__down?bytes=" + str(SPEED_TEST_BYTES),
     "https://cachefly.cachefly.net/10mb.test",
 ]
-# 互补测速端点 (方案2) — 与 Cloudflare 物理隔离, 用于识别"只对 CDN 特供"的节点。
-#   ★ 为什么必须换: Cloudflare 是 Anycast, Azure runner 与 Cloudflare 边缘节点
-#     常常同机房/近缘, 实测 #65 在 Azure 上测出中位 7MB/s (物理上不可能是真实
-#     跨境带宽) —— 这是 CDN 边缘节点造成的测速环境短路, 不是节点本身快。
-#   Hetzner 是纯物理机房 (ash=美国弗吉尼亚 / nbg=德国), 无 Anycast,
-#   从 Azure 走真实国际链路, 数字可信。
-#   实测: 支持 Range 请求 (HTTP 206), 可只取前若干 MB, 不会拉满 100MB。
-#   注意: 若 Actions 换成欧洲/亚洲 region, 应换对应 region 的端点。
+# 物理机房测速端点 (跨端点交叉测速主力 — 与 CDN 物理隔离, 数字可信)
+#   选址标准: ① 纯物理机房无 Anycast ② 稳定在线、长期提供公开测速服务
+#            ③ 覆盖不同运营商/不同网络类型, 避免单一厂商网络成为单点
+#            ④ 支持 Range 请求 (HTTP 206), 可只取前若干 MB 而非拉满整包
+#   各项 = (名称, URL); 名称仅用于日志与失败归因。
+#   ★ 顺序即优先级: 同区 (美国) 在前, 跨区 (欧洲) 在后作为兜底。
+#     运行机在哪个区, 就应该排该区的端点 —— Actions US runner 用 ash/fremont/dallas,
+#     欧洲 runner 则应把 nbg/fsn 提到前面。
 SPEED_CROSS_URLS = [
-    "https://ash-speed.hetzner.com/100MB.bin",   # 美国弗吉尼亚 (与 Azure US 同区, 链路真实)
-    "https://nbg1-speed.hetzner.com/100MB.bin",  # 德国纽伦堡 (跨大西洋, 更严格)
+    # ── 美国区 (与 Actions US runner 同区, 链路最短最稳, 优先使用) ──
+    ("hetzner-ash",     "https://ash-speed.hetzner.com/100MB.bin"),
+    #   Hetzner (德国公司) 的美国弗吉尼亚节点。Hetzner 全系纯物理机房、无 Anycast,
+    #   官方长期提供公开测速端点, 实测 HTTP 206 + 稳定吞吐。作为首选。
+    ("linode-fremont",  "https://speedtest.fremont.linode.com/100MB-fremont.bin"),
+    #   Linode (Akamai 旗下) 加州弗里蒙特。与 Hetzner 属**不同运营商**,
+    #   用于排除"单一厂商网络故障/限速"被误判成节点问题。
+    ("linode-dallas",   "https://speedtest.dallas.linode.com/100MB-dallas.bin"),
+    #   Linode 德州达拉斯, 第三重冗余 (同运营商不同城市, 对抗单机房故障)。
+    # ── 欧洲区 (跨大西洋, 更严格; 适合欧洲 runner 或需要更保守评估时) ──
+    ("hetzner-nbg",     "https://nbg1-speed.hetzner.com/100MB.bin"),
+    #   Hetzner 德国纽伦堡。跨大西洋链路, 测出的速度更接近真实国际带宽。
+    ("hetzner-fsn",     "https://fsn1-speed.hetzner.com/100MB.bin"),
+    #   Hetzner 德国费尔司芬, 第四重冗余 (欧洲侧不同城市)。
 ]
+# 端点级失败归因: 全部非 CF 端点都失败 → 判定问题在节点本身, 不再重试端点
+#   理由: 5 个物理机房端点分属 2 家运营商/5 个城市, 全部不通的可能性远低于
+#   "单个端点故障"。此时继续重试端点是浪费 —— 真正的原因是节点到不了这些
+#   物理机房(选择性转发/链路封锁), 或者节点本身已断流。
+SPEED_CROSS_FAIL_ALL_THRESHOLD = 1   # 至少要有几个端点成功才采信交叉结果
 SPEED_CROSS_RANGE_BYTES = 5_000_000  # Range 请求前 5MB (避免拉满 100MB)
 SPEED_RETEST_URLS = [             # 复测端点 (1MB 小样本)
     "https://speed.cloudflare.com/__down?bytes=" + str(SPEED_RETEST_BYTES),
@@ -1630,30 +1666,38 @@ def test_single_node(item, keep_alive_check=True):
                     speed_bps = min(speed_bps, speed_retest)
 
         # --- 4c) 跨端点交叉测速 (防单端点欺骗 + 防 Cloudflare 内网短路) ---
-        #   ★ 核心改动 (方案2): 原先用 SPEED_TEST_URLS 的第二端点做交叉, 但那仍是
-        #     CDN (cachefly), 与 Cloudflare 同属 Anycast 体系, 一样会被 Azure 边缘
-        #     短路。改为测**纯物理机房**的 Hetzner (无 Anycast), 从 Azure 走真实
-        #     国际链路 —— 这样取到的最小值才代表用户实际能拿到的跨境带宽。
-        #   取最小值: 代表用户实际能拿到的最差体验 (对 CF 快但对 Hetzner 慢的
-        #   "特供节点" 会被拉回真实水平)。
+        #   ★ 端点为纯物理机房 (Hetzner / Linode), 无 Anycast, 走真实国际链路。
+        #     取最小值 = 用户实际能拿到的最差体验 (对 CF 快但对物理机房慢的
+        #     "特供节点"会被拉回真实水平)。
+        #   逐个回退: 某端点不通就顺次试下一个, 直到拿到有效结果;
+        #   失败的端点按名字记入 cross_fail_names, 便于回查是端点故障还是节点问题。
         speed_cross = 0
+        cross_fail_names = []
+        cross_all_failed = False
         if speed_bps > 0 and SPEED_CROSS_URLS:
-            cross_results = []
-            for cu in SPEED_CROSS_URLS[:SPEED_CROSS_MAX_ENDPOINTS]:
-                b = measure_download_speed(proxies, [cu], SPEED_CROSS_BUDGET,
+            # 前 SAME_REGION_ENDPOINTS 个是同区端点(预算足), 其后是跨区(预算略短)
+            for idx_ep, (ep_name, ep_url) in enumerate(SPEED_CROSS_URLS[:SPEED_CROSS_MAX_ENDPOINTS]):
+                budget = (SPEED_CROSS_BUDGET if idx_ep < SPEED_CROSS_SAME_REGION
+                          else SPEED_CROSS_BUDGET_FAR)
+                b = measure_download_speed(proxies, [ep_url], budget,
                                            SPEED_CROSS_WARMUP,
                                            range_bytes=SPEED_CROSS_RANGE_BYTES)
                 if b > 0:
-                    cross_results.append(b)
+                    cross_results.append((ep_name, b))
+                    # ★ 只取第一个成功端点即可判定 —— 目的是"用物理机房校准 CDN 虚高",
+                    #   不是多端点横向比较。多测一个端点多花几秒, 收益极小。
+                    break
+                cross_fail_names.append(ep_name)
             if cross_results:
-                # 至少 1 个物理机房端点测到就采信 (Hetzner 端点可能因区域不可达而失败,
-                # 不像 CDN 端点那样总能通; 0 个成功则保持首轮结果不做惩罚)
-                speed_cross = min(cross_results)
+                speed_cross = min(b for _, b in cross_results)
                 if speed_cross < speed_bps:
                     # 物理机房测出的速度远低于 CDN 测速 → 证实 CDN 数字虚高
                     if speed_cross < speed_bps * SPEED_STABLE_RATIO:
                         speed_unstable = True
                     speed_bps = speed_cross
+            else:
+                # 全部物理机房端点都不通 → 归因判定, 不再重试端点
+                cross_all_failed = True
             # 全部物理端点不可达 → 保留首轮结果, 不做惩罚 (信息不足不判死)
 
         # --- 5) 丢包率探测 (抓抖动/丢包严重的节点) ---
@@ -1708,6 +1752,8 @@ def test_single_node(item, keep_alive_check=True):
             "speed_bps": speed_bps,
             "speed_retest_bps": speed_retest,
             "speed_cross_bps": speed_cross,
+            "cross_fail_names": cross_fail_names,        # 失败端点名, 便于回查
+            "cross_all_failed": cross_all_failed,        # 全部非CF端点不通 → 问题在节点
             "speed_unstable": speed_unstable,
             "ttfb_ms": ttfb_ms,
             "ttfb_slow": ttfb_slow,
@@ -1831,8 +1877,21 @@ def run_liveness_test(candidates: list) -> list:
     cross_lowered = sum(1 for r in cross_used
                         if r.get("speed_cross_bps", 0) < r.get("speed_retest_bps", 0) or
                         r.get("speed_cross_bps", 0) < r.get("speed_bps", 0))
-    print(f"[+] 交叉测速 (≥{SPEED_CROSS_MIN_ENDPOINTS}端点取最小值): "
-          f"采信 {len(cross_used)} 个 | 其中被最小值拉低 {cross_lowered}")
+    print(f"[+] 交叉测速 (物理机房端点, 逐个回退取首个有效): "
+          f"采信 {len(cross_used)}/{len(results)} | 其中被最小值拉低 {cross_lowered}")
+    # 端点级失败归因: 哪个端点老失败 = 该端点/线路有问题; 全失败 = 节点自身问题
+    ep_fail = Counter()
+    for r in results:
+        for nm in r.get("cross_fail_names") or []:
+            ep_fail[nm] += 1
+    if ep_fail:
+        ep_order = [nm for nm, _ in SPEED_CROSS_URLS]
+        detail = " | ".join(f"{nm}:{ep_fail.get(nm, 0)}" for nm in ep_order)
+        print(f"    端点失败次数 (按尝试序): {detail}")
+    all_fail = [r for r in results if r.get("cross_all_failed")]
+    if all_fail:
+        print(f"    [!] {len(all_fail)} 个节点对**全部** {len(SPEED_CROSS_URLS)} 个非CF端点"
+              f"均不通 → 判定问题在节点/线路本身 (选择性转发或链路封锁), 已跳过剩余端点重试")
     # ── 方案1: 测速健全性护栏 (必须在全部节点测完后判断) ──
     #   实测 #65: Azure runner 上 Cloudflare 测出中位 7MB/s —— 那是 CDN 边缘节点
     #   造成的测速环境短路, 不是节点真实速度。若不处理, 76% 节点被标"⚡优选",
@@ -3014,7 +3073,7 @@ export default {{
 
 ## 🛠️ 项目使用说明
 1. **自动更新机制**：GitHub Actions 每 6 小时全自动运行并刷新上述全部订阅与数据。
-2. **测活标准**：节点必须通过 ① 端口预检 ② sing-box 实际隧道 3 个 generate_204 探测 ③ 真实出口 IP 穿透获取 ④ Cloudflare 5MB 限时下载 (吞吐 ≥ 70KB/s) ⑤ TLS 证书校验非 MITM, 方可入库。
+2. **测活标准**：节点必须通过 ① 静态预筛(剔除关闭证书校验) ② 端口预检 ③ sing-box 实际隧道跨源活性探测 (Google/Cloudflare/Microsoft 至少 2 源) ④ 真实出口 IP 穿透获取 (延迟 ≤ 1500ms) ⑤ 限时下载测速 (稳态吞吐 ≥ 200KB/s, 5MB 首测 + 1MB 复测取最小值 + Hetzner 物理机房交叉测速) ⑥ 丢包率 ≤ 25% ⑦ 首包 TTFB ≤ 1800ms ⑧ TLS 证书校验非 MITM, 方可入库。
 3. **多客户端兼容**：Clash / v2rayN / sing-box 全格式订阅。
 """
     with open(os.path.join(BASEDIR, "README.md"), "w", encoding="utf-8") as f:
@@ -3049,7 +3108,7 @@ def main():
             continue
         candidates.append((uri, outbound, server, port, proto))
 
-    # 2.5 ★ 测前强去重 (凭据指纹去重: 同 凭据+目标+协议 只测一次, 结果回填全部重复节点)
+    # 2.5 ★ 测前去重 (凭据指纹): 同 凭据+目标+协议 只测一次, 重复项不回填
     #     key = (server, port, proto, 凭据指纹): 凭据不同 → 服务端校验结果可能不同, 不可合并
     #     凭据指纹: uuid/password 各协议的核心身份字段 (vless uuid / vmess id+alterId /
     #               trojan password / ss 2022密钥 / hy2 auth / tuic uuid+passwd / anytls password)
@@ -3075,19 +3134,26 @@ def main():
         except Exception:
             return ""  # 指纹失败 → 不合并 (宁慢不错)
 
-    seen_keys, deduped, dup_count = {}, [], 0
+    # ★ 测前去重 (凭据指纹): 同 凭据+目标+协议 只测一次。
+    #   key = (server, port, proto, 凭据指纹): 凭据不同 → 服务端校验结果可能不同, 不可合并。
+    #   完全相同 = 同一节点被多源重复收录 (免费池常态, 30+ 份不同名字) → 只测一次。
+    #   ★ 这是**测前**去重, 是整条流水线省时间的关键一步: 4838 → 2340,
+    #     少起 2498 次 sing-box 进程、少跑 2498 轮探测。
+    #   被剔除的重复 URI **不再回填** (2026-10 起): 测活后的回填既不省时间
+    #     (测试量已由这里定死), 也因出口IP相同必然在分类去重处被折叠, 还会让
+    #     未经预筛的原始 URI 绕过静态预筛/端口预检。详见下方步骤 4.5 的说明。
+    seen_keys, deduped, dup_count = set(), [], 0
     for item in candidates:
         uri, outbound, server, port, proto = item
         key = (server.lower() if server else "", port, proto, cred_fingerprint(outbound, proto))
         if key in seen_keys:
-            seen_keys[key].append(uri)  # 记录重复 URI, 测活后回填
             dup_count += 1
         else:
-            seen_keys[key] = [uri]
+            seen_keys.add(key)
             deduped.append(item)
     if dup_count:
-        print(f"[*] 测前去重(凭据指纹): {len(candidates)} → {len(deduped)} (剔除重复 {dup_count} — 结果将回填)")
-    DEDUP_MAP = seen_keys  # 供测活后回填 (全局)
+        print(f"[*] 测前去重(凭据指纹): {len(candidates)} → {len(deduped)} "
+              f"(剔除重复 {dup_count} — 仅测代表节点, 重复项不回填)")
     candidates = deduped
 
     # 2.6 ★ 静态预筛 (零网络零进程): 砍掉主动关闭证书校验的节点
@@ -3109,31 +3175,19 @@ def main():
     # 4. 真实测活 (只测去重后的代表节点)
     test_results = run_liveness_test(candidates)
 
-    # 4.5 ★ 重复节点结果回填: 同 凭据+目标 的重复 URI 继承测活结果 (凭据相同 → 服务端表现一致)
-    if DEDUP_MAP:
-        result_by_key = {}
-        for r in test_results:
-            key = ((r["server"] or "").lower(), r["port"], r["proto"])
-            result_by_key[key] = r
-        expanded = list(test_results)
-        backfilled = 0
-        # 反向索引: server:port:proto → 原始 fingerprint (从 DEDUP_MAP 的 key 直接继承)
-        for key, uris in DEDUP_MAP.items():
-            if len(uris) <= 1:
-                continue
-            # 用 key 的前三段 (server, port, proto) 找测活结果
-            lookup = (key[0], key[1], key[2])
-            r = result_by_key.get(lookup)
-            if not r or not r.get("alive"):
-                continue
-            for extra_uri in uris[1:]:
-                clone = dict(r)
-                clone["raw"] = extra_uri
-                expanded.append(clone)
-                backfilled += 1
-        if backfilled:
-            print(f"[+] 重复节点回填: +{backfilled} (继承代表测活结果)")
-        test_results = expanded
+    # ── 已移除: 重复节点结果回填 (2026-10) ──
+    #   原设计: 让同 凭据+目标 的重复 URI 继承代表节点的测活结果。**现已删除**, 原因:
+    #   1) 不省时间 —— 去重发生在**测前**(2.5 步), 测试量由 candidates 决定;
+    #      回填在测活**之后**, 加多少克隆都不会改变测试量 (2340 个就是 2340 个)。
+    #   2) 不增节点 —— 克隆体与代表节点同 server/port/proto → 出口 IP 必然相同 →
+    #      在 classify_and_export 的 `出口IP:端口` 去重处必然被折叠回 1 条。
+    #      兜底 key (server:port|raw[:64]) 同样折叠: 重复 URI 只在末尾名字段不同,
+    #      前 64 字符完全一致。
+    #   3) 有隐患 —— 克隆体是未经静态预筛/端口预检的原始 URI, 直接继承测活结果
+    #      等于**绕过这两道闸**。例如填了 BLOCK_COUNTRIES="JP" 后,
+    #      代表节点因落地日本被屏蔽, 其重复 URI 却会复活入库。
+    #   结论: 纯负担无收益。保留 2.5 步的凭据去重 (那才是省时间的关键),
+    #         被筛掉的节点本就不该回来。
 
     # 5. ★ 家宽链式复测: 用最快存活节点做前置双跳复测家宽候选
     #    (模拟用户 v2rayN 链式场景, 双跳失败的家宽降级普通区 — 提高链式可用率)

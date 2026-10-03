@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇪🇸 西班牙 (Spain) 01 ⚠S5870K - NEKO
+- name: 🇪🇸 西班牙 (Spain) 01 ⚠S5328K - NEKO
   server: 185.174.137.172
   port: 8446
   udp: true
@@ -12,8 +12,8 @@ proxies:
   password: e9dc02d400b67c727aca1620
   sni: 185.174.137.172
   skip-cert-verify: true
-- name: 🇪🇸 西班牙 (Spain) 02 1519K - NEKO
-  server: 193.238.154.5
+- name: 🇪🇸 西班牙 (Spain) 02 ⚠S575K - NEKO
+  server: assets-es.pleiades.codes
   port: 443
   udp: true
   type: vless
@@ -21,25 +21,46 @@ proxies:
   tls: true
   servername: assets-es.pleiades.codes
   skip-cert-verify: false
-  client-fingerprint: chrome
+  client-fingerprint: random
   network: grpc
   grpc-opts:
     grpc-service-name: cdn.v1.AssetService
-- name: 🇪🇸 西班牙 (Spain) 03 3365K - NEKO
+- name: 🇪🇸 西班牙 (Spain) 03 3737K - NEKO
+  server: 85.90.217.42
+  port: 22324
+  udp: true
+  type: vmess
+  uuid: 04621bae-ab36-11ec-b909-0242ac120002
+  alterId: 0
+  cipher: auto
+- name: 🇪🇸 西班牙 (Spain) 04 3719K - NEKO
   server: 108.181.121.226
   port: 8388
   udp: true
   type: ss
   cipher: chacha20-ietf-poly1305
   password: WSyL4XTwNsdv
-- name: 🇪🇸 西班牙 (Spain) 04 3453K - NEKO
+- name: 🇪🇸 西班牙 (Spain) 05 4061K - NEKO
   server: 140.174.184.5
   port: 8388
   udp: true
   type: ss
   cipher: chacha20-ietf-poly1305
   password: qItG8SueYQcP
-- name: 🇪🇸 西班牙 (Spain) 05 3946K - NEKO
+- name: 🇪🇸 西班牙 (Spain) 06 4380K - NEKO
+  server: 46.28.71.247
+  port: 443
+  udp: true
+  type: vless
+  uuid: 12c53e32-e589-47d6-b857-e4132294f767
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: v4MuZIvFrTPT5GHMSaPryUAbIZlLstmsUTzmC1E-JTE
+    short-id: 0dfc23fe80778c00
+  servername: www.cloudflare.com
+  client-fingerprint: chrome
+- name: 🇪🇸 西班牙 (Spain) 07 ⚠S2884K - NEKO
   server: 196.245.52.146
   port: 25535
   udp: true
@@ -56,20 +77,24 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇪🇸 西班牙 (Spain) 01 ⚠S5870K - NEKO
-  - 🇪🇸 西班牙 (Spain) 02 1519K - NEKO
-  - 🇪🇸 西班牙 (Spain) 03 3365K - NEKO
-  - 🇪🇸 西班牙 (Spain) 04 3453K - NEKO
-  - 🇪🇸 西班牙 (Spain) 05 3946K - NEKO
+  - 🇪🇸 西班牙 (Spain) 01 ⚠S5328K - NEKO
+  - 🇪🇸 西班牙 (Spain) 02 ⚠S575K - NEKO
+  - 🇪🇸 西班牙 (Spain) 03 3737K - NEKO
+  - 🇪🇸 西班牙 (Spain) 04 3719K - NEKO
+  - 🇪🇸 西班牙 (Spain) 05 4061K - NEKO
+  - 🇪🇸 西班牙 (Spain) 06 4380K - NEKO
+  - 🇪🇸 西班牙 (Spain) 07 ⚠S2884K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇪🇸 西班牙 (Spain) 01 ⚠S5870K - NEKO
-  - 🇪🇸 西班牙 (Spain) 02 1519K - NEKO
-  - 🇪🇸 西班牙 (Spain) 03 3365K - NEKO
-  - 🇪🇸 西班牙 (Spain) 04 3453K - NEKO
-  - 🇪🇸 西班牙 (Spain) 05 3946K - NEKO
+  - 🇪🇸 西班牙 (Spain) 01 ⚠S5328K - NEKO
+  - 🇪🇸 西班牙 (Spain) 02 ⚠S575K - NEKO
+  - 🇪🇸 西班牙 (Spain) 03 3737K - NEKO
+  - 🇪🇸 西班牙 (Spain) 04 3719K - NEKO
+  - 🇪🇸 西班牙 (Spain) 05 4061K - NEKO
+  - 🇪🇸 西班牙 (Spain) 06 4380K - NEKO
+  - 🇪🇸 西班牙 (Spain) 07 ⚠S2884K - NEKO
 rules:
 - MATCH,PROXIES

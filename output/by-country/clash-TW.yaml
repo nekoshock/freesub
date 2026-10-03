@@ -4,27 +4,62 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇹🇼 中国台湾 (Taiwan) 01 4732K - NEKO
-  server: 160.187.100.109
+- name: 🇹🇼 中国台湾 (Taiwan) 01 4246K - NEKO
+  server: 103.115.109.49
   port: 443
   udp: true
   type: hysteria2
   password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: 160.187.100.109
+  sni: https://t.me/wangcai2🇨🇳
   skip-cert-verify: true
-- name: 🇹🇼 中国台湾 (Taiwan) 02 3777K - NEKO
-  server: 34.80.248.240
+- name: 🇹🇼 中国台湾 (Taiwan) 02 4102K - NEKO
+  server: vpn-tw-002.fastervpn.world
   port: 443
   udp: true
-  type: vless
-  uuid: 31a40f42-4ad6-4a32-a760-71102b459584
-  tls: true
-  reality-opts:
-    public-key: qvekI7tKB1NDnZA6JcS_24aV4n8mlCbI3SFvkRr22wg
-    short-id: d74a6321deec9f31
-  servername: www.cloudflare.com
-  client-fingerprint: chrome
-- name: 🇹🇼 中国台湾 (Taiwan) 03 ⚠S339K - NEKO
+  type: hysteria2
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: css.rbxcdn.com
+  skip-cert-verify: true
+- name: 🇹🇼 中国台湾 (Taiwan) 03 5314K - NEKO
+  server: tw1.dexlos.com
+  port: 8080
+  udp: true
+  type: tuic
+  uuid: D7286728-678E-443B-B76B-B699654C66DD
+  password: D7286728-678E-443B-B76B-B699654C66DD
+  sni: tw1.dexlos.com
+  skip-cert-verify: false
+  congestion-controller: bbr
+  udp-relay-mode: native
+  alpn:
+  - h3
+- name: 🇹🇼 中国台湾 (Taiwan) 04 7034K - NEKO
+  server: tw6.dexlos.com
+  port: 8080
+  udp: true
+  type: tuic
+  uuid: D7286728-678E-443B-B76B-B699654C66DD
+  password: D7286728-678E-443B-B76B-B699654C66DD
+  sni: tw6.dexlos.com
+  skip-cert-verify: false
+  congestion-controller: bbr
+  udp-relay-mode: native
+  alpn:
+  - h3
+- name: 🇹🇼 中国台湾 (Taiwan) 05 1422K - NEKO
+  server: tw3.dexlos.com
+  port: 8080
+  udp: true
+  type: tuic
+  uuid: 8A9905B7-801B-41AF-BFC9-2034212770F6
+  password: 8A9905B7-801B-41AF-BFC9-2034212770F6
+  sni: tw3.dexlos.com
+  skip-cert-verify: false
+  congestion-controller: bbr
+  udp-relay-mode: native
+  alpn:
+  - h3
+- name: 🇹🇼 中国台湾 (Taiwan) 06 1125K - NEKO
   server: 60.248.219.78
   port: 443
   udp: true
@@ -43,16 +78,22 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇹🇼 中国台湾 (Taiwan) 01 4732K - NEKO
-  - 🇹🇼 中国台湾 (Taiwan) 02 3777K - NEKO
-  - 🇹🇼 中国台湾 (Taiwan) 03 ⚠S339K - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 01 4246K - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 02 4102K - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 03 5314K - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 04 7034K - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 05 1422K - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 06 1125K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇹🇼 中国台湾 (Taiwan) 01 4732K - NEKO
-  - 🇹🇼 中国台湾 (Taiwan) 02 3777K - NEKO
-  - 🇹🇼 中国台湾 (Taiwan) 03 ⚠S339K - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 01 4246K - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 02 4102K - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 03 5314K - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 04 7034K - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 05 1422K - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 06 1125K - NEKO
 rules:
 - MATCH,PROXIES

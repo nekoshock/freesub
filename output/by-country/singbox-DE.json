@@ -5,7 +5,7 @@
   "outbounds": [
     {
       "type": "trojan",
-      "tag": "🇩🇪 德国 (Germany) 01 6048K - NEKO",
+      "tag": "🇩🇪 德国 (Germany) 01 7296K - NEKO",
       "server": "31.77.168.21",
       "server_port": 443,
       "password": "MDYVt6HgSqB7d537GPQXjk6Rk0E4RxWo",
@@ -28,14 +28,21 @@
     },
     {
       "type": "trojan",
-      "tag": "🇩🇪 德国 (Germany) 02 6176K - NEKO",
+      "tag": "🇩🇪 德国 (Germany) 02 6961K - NEKO",
       "server": "31.77.168.33",
       "server_port": 443,
       "password": "MDYVt6HgSqB7d537GPQXjk6Rk0E4RxWo",
       "tls": {
         "enabled": true,
         "server_name": "d3-de2.cloud-cdn.xyz",
-        "insecure": false
+        "insecure": false,
+        "alpn": [
+          "h2"
+        ],
+        "utls": {
+          "enabled": true,
+          "fingerprint": "edge"
+        }
       },
       "transport": {
         "type": "grpc",
@@ -44,7 +51,7 @@
     },
     {
       "type": "trojan",
-      "tag": "🇩🇪 德国 (Germany) 03 4704K - NEKO",
+      "tag": "🇩🇪 德国 (Germany) 03 5694K - NEKO",
       "server": "31.77.168.35",
       "server_port": 443,
       "password": "MDYVt6HgSqB7d537GPQXjk6Rk0E4RxWo",
@@ -66,8 +73,32 @@
       }
     },
     {
+      "type": "hysteria2",
+      "tag": "🇩🇪 德国 (Germany) 04 ⚠S3195K - NEKO",
+      "server": "vpn-de-002.fastervpn.world",
+      "server_port": 443,
+      "password": "H7mP2xY9kJ4nQ8wR5tF6vB3z",
+      "tls": {
+        "enabled": true,
+        "server_name": "vpn-de-002.fastervpn.world",
+        "insecure": true
+      }
+    },
+    {
+      "type": "hysteria2",
+      "tag": "🇩🇪 德国 (Germany) 05 ⚠S4363K - NEKO",
+      "server": "64.188.119.177",
+      "server_port": 28015,
+      "password": "e19b5aa3-16c9-435a-8bc9-76f2f6ddff43",
+      "tls": {
+        "enabled": true,
+        "server_name": "api-test-udp-trf.kaneki.cfd",
+        "insecure": false
+      }
+    },
+    {
       "type": "vless",
-      "tag": "🇩🇪 德国 (Germany) 04 5839K - NEKO",
+      "tag": "🇩🇪 德国 (Germany) 06 4213K - NEKO",
       "server": "104.245.240.2",
       "server_port": 8443,
       "uuid": "c0acd42e-bf36-4747-90a0-a4a3a8774fdc",
@@ -90,44 +121,92 @@
       }
     },
     {
-      "type": "shadowsocks",
-      "tag": "🇩🇪 德国 (Germany) 05 4080K - NEKO",
-      "server": "51.195.126.38",
-      "server_port": 8388,
-      "method": "chacha20-ietf-poly1305",
-      "password": "2YdE4lFOid5a"
+      "type": "hysteria2",
+      "tag": "🇩🇪 德国 (Germany) 07 3951K - NEKO",
+      "server": "de1.xiaoliyu.cyou",
+      "server_port": 4433,
+      "password": "19f72087-4591-4d72-930b-2697078ec2be",
+      "tls": {
+        "enabled": true,
+        "server_name": "de1.xiaoliyu.cyou",
+        "insecure": true
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇩🇪 德国 (Germany) 08 ⚠S2647K - NEKO",
+      "server": "216.106.187.60",
+      "server_port": 22324,
+      "uuid": "04621bae-ab36-11ec-b909-0242ac120002",
+      "security": "auto"
+    },
+    {
+      "type": "trojan",
+      "tag": "🇩🇪 德国 (Germany) 09 17188K - NEKO",
+      "server": "167.82.76.27",
+      "server_port": 443,
+      "password": "mitivpn",
+      "tls": {
+        "enabled": true,
+        "server_name": "ssl.fastly.com",
+        "insecure": false,
+        "alpn": [
+          "http/1.1"
+        ],
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/---@MetiVIP---@MetiVIP/---@MetiVIP---@MetiVIP/---@MetiVIP---@MetiVIP/des---@MetiVIP---@MetiVIP/---@MetiVIP---@MetiVIP/---@MetiVIP---@MetiVIP",
+        "headers": {
+          "Host": "mitivpn---deb--s---mitivpn-3.global.ssl.fastly.net"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇩🇪 德国 (Germany) 10 5522K - NEKO",
+      "server": "31.76.11.83",
+      "server_port": 26150,
+      "uuid": "e676c6c8-44a8-4a1d-82cc-821a1f70f0c0"
     },
     {
       "type": "shadowsocks",
-      "tag": "🇩🇪 德国 (Germany) 06 477K - NEKO",
-      "server": "8.209.74.72",
-      "server_port": 20001,
-      "method": "chacha20-ietf-poly1305",
-      "password": "PWpjPo3tqhPN4yRZ"
-    },
-    {
-      "type": "shadowsocks",
-      "tag": "🇩🇪 德国 (Germany) 07 4405K - NEKO",
+      "tag": "🇩🇪 德国 (Germany) 11 4774K - NEKO",
       "server": "185.226.172.8",
       "server_port": 8008,
       "method": "aes-256-gcm",
       "password": "XKFKl2rULjIp74"
     },
     {
-      "type": "hysteria2",
-      "tag": "🇩🇪 德国 (Germany) 08 3445K - NEKO",
-      "server": "vpn-de-002.fastervpn.world",
-      "server_port": 443,
-      "password": "H7mP2xY9kJ4nQ8wR5tF6vB3z",
-      "tls": {
-        "enabled": true,
-        "server_name": "vpn-de-002.fastervpn.world",
-        "insecure": true
-      }
+      "type": "shadowsocks",
+      "tag": "🇩🇪 德国 (Germany) 12 5264K - NEKO",
+      "server": "141.95.29.163",
+      "server_port": 2083,
+      "method": "2022-blake3-aes-256-gcm",
+      "password": "cOiC+3JhAXMwdGV5exnrMSorJU0Rl5qlLCbCAuDlWY4=:JTou+JSmZOAyrMLdvNBcXFm0Y9luZ/8u17ie48jQfVc="
+    },
+    {
+      "type": "vmess",
+      "tag": "🇩🇪 德国 (Germany) 13 4965K - NEKO",
+      "server": "91.107.191.165",
+      "server_port": 1,
+      "uuid": "9f15b600-ce52-447f-b388-ef70de75308e",
+      "security": "auto"
+    },
+    {
+      "type": "vless",
+      "tag": "🇩🇪 德国 (Germany) 14 4762K - NEKO",
+      "server": "91.107.191.165",
+      "server_port": 2,
+      "uuid": "9f15b600-ce52-447f-b388-ef70de75308e"
     },
     {
       "type": "shadowsocks",
-      "tag": "🇩🇪 德国 (Germany) 09 4795K - NEKO",
+      "tag": "🇩🇪 德国 (Germany) 15 5064K - NEKO",
       "server": "169.150.210.233",
       "server_port": 8080,
       "method": "rc4-md5",
@@ -135,15 +214,57 @@
     },
     {
       "type": "shadowsocks",
-      "tag": "🇩🇪 德国 (Germany) 10 2574K - NEKO",
-      "server": "209.46.102.22",
-      "server_port": 8388,
+      "tag": "🇩🇪 德国 (Germany) 16 5072K - NEKO",
+      "server": "8.209.74.72",
+      "server_port": 20001,
       "method": "chacha20-ietf-poly1305",
-      "password": "1hhrqrokj3ag"
+      "password": "PWpjPo3tqhPN4yRZ"
     },
     {
       "type": "vmess",
-      "tag": "🇩🇪 德国 (Germany) 11 ⚠S1177K - NEKO",
+      "tag": "🇩🇪 德国 (Germany) 17 5730K - NEKO",
+      "server": "185.177.229.128",
+      "server_port": 22324,
+      "uuid": "04621bae-ab36-11ec-b909-0242ac120002",
+      "security": "auto"
+    },
+    {
+      "type": "trojan",
+      "tag": "🇩🇪 德国 (Germany) 18 10806K - NEKO",
+      "server": "199.232.78.160",
+      "server_port": 443,
+      "password": "mitivpn",
+      "tls": {
+        "enabled": true,
+        "server_name": "ssl.fastly.com",
+        "insecure": false,
+        "alpn": [
+          "http/1.1"
+        ],
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/---@MetiVIP---@MetiVIP/---@MetiVIP---@MetiVIP/---@MetiVIP---@MetiVIP/des---@MetiVIP---@MetiVIP/---@MetiVIP---@MetiVIP/---@MetiVIP---@MetiVIP",
+        "headers": {
+          "Host": "mitivpn---deb--s---mitivpn-2.global.ssl.fastly.net"
+        }
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇩🇪 德国 (Germany) 19 5190K - NEKO",
+      "server": "31.76.11.83",
+      "server_port": 23325,
+      "uuid": "3dff544a-379e-41f9-95d9-4b95a8e4026e",
+      "security": "auto"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇩🇪 德国 (Germany) 20 ⚠S3349K - NEKO",
       "server": "185.177.229.129",
       "server_port": 22324,
       "uuid": "04621bae-ab36-11ec-b909-0242ac120002",
@@ -151,15 +272,31 @@
     },
     {
       "type": "shadowsocks",
-      "tag": "🇩🇪 德国 (Germany) 12 4687K - NEKO",
-      "server": "141.95.29.163",
-      "server_port": 2083,
-      "method": "2022-blake3-aes-256-gcm",
-      "password": "cOiC+3JhAXMwdGV5exnrMSorJU0Rl5qlLCbCAuDlWY4=:JTou+JSmZOAyrMLdvNBcXFm0Y9luZ/8u17ie48jQfVc="
+      "tag": "🇩🇪 德国 (Germany) 21 5032K - NEKO",
+      "server": "209.46.102.22",
+      "server_port": 8388,
+      "method": "chacha20-ietf-poly1305",
+      "password": "1hhrqrokj3ag"
+    },
+    {
+      "type": "trojan",
+      "tag": "🇩🇪 德国 (Germany) 22 ⚠S2623K - NEKO",
+      "server": "actual-squid.rooster465.autos",
+      "server_port": 443,
+      "password": "UX82473651",
+      "tls": {
+        "enabled": true,
+        "server_name": "actual-squid.rooster465.autos",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
     },
     {
       "type": "vless",
-      "tag": "🇩🇪 德国 (Germany) 13 4483K - NEKO",
+      "tag": "🇩🇪 德国 (Germany) 23 5249K - NEKO",
       "server": "139.162.149.105",
       "server_port": 80,
       "uuid": "5aae7d2d-c152-42cc-afb6-fe805fb94531",
@@ -170,52 +307,40 @@
     },
     {
       "type": "trojan",
-      "tag": "🇩🇪 德国 (Germany) 14 4407K - NEKO",
-      "server": "63.178.198.94",
+      "tag": "🇩🇪 德国 (Germany) 24 5433K - NEKO",
+      "server": "dggg.wsone.icu",
       "server_port": 443,
-      "password": "UX82473651",
+      "password": "M7v%w11Se*",
       "tls": {
         "enabled": true,
-        "server_name": "pleased-albacore.rooster465.autos",
-        "insecure": false,
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
+        "server_name": "dggg.wsone.icu",
+        "insecure": true
       }
     },
     {
       "type": "vless",
-      "tag": "🇩🇪 德国 (Germany) 15 4481K - NEKO",
-      "server": "31.77.109.35",
+      "tag": "🇩🇪 德国 (Germany) 25 5717K - NEKO",
+      "server": "177.1.186.44",
       "server_port": 443,
-      "uuid": "87fd990d-ca93-440a-bbd4-e8281c4a0910",
+      "uuid": "55ccbeb5-0bf4-4e4d-afcb-23c038e73e00",
       "flow": "xtls-rprx-vision",
       "tls": {
         "enabled": true,
-        "server_name": "d3-de1.cloud-cdn.xyz",
+        "server_name": "mcde.67resserv67.info",
         "utls": {
           "enabled": true,
-          "fingerprint": "firefox"
+          "fingerprint": "chrome"
         },
         "reality": {
           "enabled": true,
-          "public_key": "SPyieysl8w1lo950icthB72kn_ElyJXkpCdKqmnjGEY",
-          "short_id": "494afdc75f8c2fa8"
+          "public_key": "4hvjCaGIMlFeWxMYoAWTNHQOaZkGvGQREOjB3Unn7iE",
+          "short_id": "29455a3a790acbd0"
         }
       }
     },
     {
-      "type": "vmess",
-      "tag": "🇩🇪 德国 (Germany) 16 3941K - NEKO",
-      "server": "185.177.229.128",
-      "server_port": 22324,
-      "uuid": "04621bae-ab36-11ec-b909-0242ac120002",
-      "security": "auto"
-    },
-    {
       "type": "vless",
-      "tag": "🇩🇪 德国 (Germany) 17 4238K - NEKO",
+      "tag": "🇩🇪 德国 (Germany) 26 4757K - NEKO",
       "server": "31.70.111.146",
       "server_port": 443,
       "uuid": "84ed0e09-6803-4ef9-a977-74b657d971e5",
@@ -236,60 +361,7 @@
     },
     {
       "type": "vless",
-      "tag": "🇩🇪 德国 (Germany) 18 4110K - NEKO",
-      "server": "162.55.242.208",
-      "server_port": 2053,
-      "uuid": "659ffdfa-47d2-47d7-af40-5afe0907eead",
-      "tls": {
-        "enabled": true,
-        "server_name": "www.cloudflare.com",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "firefox"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "jeS6Zu-p1Gf6GtraIAbpgQoSeT26Xq3GqgqVxccbVhY",
-          "short_id": "4d14da19b19cfc8c"
-        }
-      }
-    },
-    {
-      "type": "vless",
-      "tag": "🇩🇪 德国 (Germany) 19 4393K - NEKO",
-      "server": "130.17.25.67",
-      "server_port": 443,
-      "uuid": "1c5ed2e1-56da-41ab-9a78-159d9892ec17",
-      "flow": "xtls-rprx-vision",
-      "tls": {
-        "enabled": true,
-        "server_name": "github.com",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "firefox"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "lHCkAu_DOVFtE-iL2JGrPt44QeTCFijXuRfuGaSni3Q",
-          "short_id": "9e4eced6e98ed4d4"
-        }
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "🇩🇪 德国 (Germany) 20 ⚠S2230K - NEKO",
-      "server": "dggg.wsone.icu",
-      "server_port": 443,
-      "password": "M7v%w11Se*",
-      "tls": {
-        "enabled": true,
-        "server_name": "dggg.wsone.icu",
-        "insecure": true
-      }
-    },
-    {
-      "type": "vless",
-      "tag": "🇩🇪 德国 (Germany) 21 4541K - NEKO",
+      "tag": "🇩🇪 德国 (Germany) 27 4371K - NEKO",
       "server": "31.77.168.192",
       "server_port": 443,
       "uuid": "87fd990d-ca93-440a-bbd4-e8281c4a0910",
@@ -310,36 +382,7 @@
     },
     {
       "type": "vless",
-      "tag": "🇩🇪 德国 (Germany) 22 5126K - NEKO",
-      "server": "82.118.19.153",
-      "server_port": 443,
-      "uuid": "adcaa148-7c66-4282-a81a-99ec8afa029d",
-      "flow": "xtls-rprx-vision",
-      "tls": {
-        "enabled": true,
-        "server_name": "www.cloudflare.com",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "firefox"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "Tiuy8om5Lk0pWL95-8LaFFTwH0vbURVMoOkaW9xGaiE",
-          "short_id": "670ed9f350bd8ee0"
-        }
-      }
-    },
-    {
-      "type": "shadowsocks",
-      "tag": "🇩🇪 德国 (Germany) 23 495K - NEKO",
-      "server": "2.58.81.221",
-      "server_port": 80,
-      "method": "aes-256-gcm",
-      "password": "kKEd0rBrd56Furjz"
-    },
-    {
-      "type": "vless",
-      "tag": "🇩🇪 德国 (Germany) 24 1986K - NEKO",
+      "tag": "🇩🇪 德国 (Germany) 28 4376K - NEKO",
       "server": "155.117.183.123",
       "server_port": 443,
       "uuid": "ff35ca20-2304-4b3a-80e5-2c82953cf2ce",
@@ -360,7 +403,141 @@
     },
     {
       "type": "vless",
-      "tag": "🇩🇪 德国 (Germany) 25 4011K - NEKO",
+      "tag": "🇩🇪 德国 (Germany) 29 4686K - NEKO",
+      "server": "82.118.19.153",
+      "server_port": 443,
+      "uuid": "adcaa148-7c66-4282-a81a-99ec8afa029d",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.cloudflare.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "Tiuy8om5Lk0pWL95-8LaFFTwH0vbURVMoOkaW9xGaiE",
+          "short_id": "670ed9f350bd8ee0"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇩🇪 德国 (Germany) 30 5196K - NEKO",
+      "server": "31.77.109.35",
+      "server_port": 443,
+      "uuid": "87fd990d-ca93-440a-bbd4-e8281c4a0910",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "d3-de1.cloud-cdn.xyz",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "SPyieysl8w1lo950icthB72kn_ElyJXkpCdKqmnjGEY",
+          "short_id": "494afdc75f8c2fa8"
+        }
+      }
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇩🇪 德国 (Germany) 31 2104K - NEKO",
+      "server": "2.58.81.221",
+      "server_port": 80,
+      "method": "aes-256-gcm",
+      "password": "kKEd0rBrd56Furjz"
+    },
+    {
+      "type": "vless",
+      "tag": "🇩🇪 德国 (Germany) 32 5192K - NEKO",
+      "server": "89.39.121.186",
+      "server_port": 2087,
+      "uuid": "90e12a40-ea12-4951-a0ef-142a1fb164ec",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.bing.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "safari"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "MbSfYN0EDX7TaqYNUlx4eMfd_ablcmFVHKxW8Oy10iQ",
+          "short_id": "a7b8c9d0e1f20d14"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇩🇪 德国 (Germany) 33 5284K - NEKO",
+      "server": "31.77.161.15",
+      "server_port": 443,
+      "uuid": "adc11f30-e4cb-4985-bf5e-f9ded69c019f",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "nvidia.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "safari"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "fNfokzklCF4l_c8k8PciOCjm5ecNoF_sNLjEtaO-xzI",
+          "short_id": "db04ce8bdb8900f1"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇩🇪 德国 (Germany) 34 5431K - NEKO",
+      "server": "109.176.202.7",
+      "server_port": 443,
+      "uuid": "f0a52dd3-4377-4402-a450-210bc81bcf25",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "id-nl-01.mintrocket.org",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "XU7da9vkBex4TUPo1d-ctFY_N6zouBiCRnbnUK82i3Q",
+          "short_id": "fee1f986a72444db"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇩🇪 德国 (Germany) 35 4529K - NEKO",
+      "server": "130.17.25.67",
+      "server_port": 443,
+      "uuid": "1c5ed2e1-56da-41ab-9a78-159d9892ec17",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "github.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "lHCkAu_DOVFtE-iL2JGrPt44QeTCFijXuRfuGaSni3Q",
+          "short_id": "9e4eced6e98ed4d4"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇩🇪 德国 (Germany) 36 4729K - NEKO",
       "server": "95.81.75.9",
       "server_port": 57160,
       "uuid": "68ad9a6d-2463-4c31-92a7-31547b9d4783",
@@ -381,28 +558,80 @@
     },
     {
       "type": "vless",
-      "tag": "🇩🇪 德国 (Germany) 26 3844K - NEKO",
-      "server": "111.88.74.239",
-      "server_port": 443,
-      "uuid": "88a4915f-d68d-44aa-b4a4-36b99a2ab1ed",
-      "flow": "xtls-rprx-vision",
+      "tag": "🇩🇪 德国 (Germany) 37 5310K - NEKO",
+      "server": "162.55.242.208",
+      "server_port": 2053,
+      "uuid": "659ffdfa-47d2-47d7-af40-5afe0907eead",
       "tls": {
         "enabled": true,
-        "server_name": "google.com",
+        "server_name": "www.cloudflare.com",
         "utls": {
           "enabled": true,
-          "fingerprint": "safari"
+          "fingerprint": "firefox"
         },
         "reality": {
           "enabled": true,
-          "public_key": "s0lbZ5BO3ctZjE8DzsXkNL0NvLl6FgLG6532NQzXigo",
-          "short_id": "c56d4f1c"
+          "public_key": "jeS6Zu-p1Gf6GtraIAbpgQoSeT26Xq3GqgqVxccbVhY",
+          "short_id": "4d14da19b19cfc8c"
         }
       }
     },
     {
+      "type": "shadowsocks",
+      "tag": "🇩🇪 德国 (Germany) 38 ⚠S1040K - NEKO",
+      "server": "213.202.208.199",
+      "server_port": 7001,
+      "method": "aes-256-gcm",
+      "password": "RexnBgU7EV5ADxG"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇩🇪 德国 (Germany) 39 ⚠S7087K - NEKO",
+      "server": "188.114.96.19",
+      "server_port": 80,
+      "uuid": "c5965d47-45d6-45af-b619-3b2a6bf896a2",
+      "security": "auto",
+      "transport": {
+        "type": "httpupgrade",
+        "path": "/",
+        "host": "google.whatsapp.snapp.torob.basalam.dns-look.space."
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇩🇪 德国 (Germany) 40 5300K - NEKO",
+      "server": "193.24.210.211",
+      "server_port": 25040,
+      "password": "Km/pIG4AGCjCOiGWj5FsWA==",
+      "tls": {
+        "enabled": true,
+        "server_name": "/gay-anal",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/"
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇩🇪 德国 (Germany) 41 4264K - NEKO",
+      "server": "pleased-albacore.rooster465.autos",
+      "server_port": 443,
+      "password": "UX82473651",
+      "tls": {
+        "enabled": true,
+        "server_name": "pleased-albacore.rooster465.autos",
+        "insecure": true
+      }
+    },
+    {
       "type": "vless",
-      "tag": "🇩🇪 德国 (Germany) 27 4339K - NEKO",
+      "tag": "🇩🇪 德国 (Germany) 42 5198K - NEKO",
       "server": "104.194.159.237",
       "server_port": 8443,
       "uuid": "8afeb33c-b686-43e9-a629-0d98f991ec28",
@@ -422,100 +651,71 @@
       }
     },
     {
+      "type": "vless",
+      "tag": "🇩🇪 德国 (Germany) 43 ⚠S4303K - NEKO",
+      "server": "arcturus.yokkastars.com",
+      "server_port": 40443,
+      "uuid": "bb0f1ed0-0298-40a1-adb1-1f5d6ab33d54",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "deepl.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "qq"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "w4AYHvQnQS6olDqoG9ptLOtgehaWOsv9HQhDax5bLA4",
+          "short_id": "db46e2946fc466fd"
+        }
+      }
+    },
+    {
       "type": "vmess",
-      "tag": "🇩🇪 德国 (Germany) 28 ⚠S7320K - NEKO",
-      "server": "188.114.96.19",
-      "server_port": 80,
-      "uuid": "c5965d47-45d6-45af-b619-3b2a6bf896a2",
+      "tag": "🇩🇪 德国 (Germany) 44 4501K - NEKO",
+      "server": "193.108.117.54",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
       "security": "auto",
-      "transport": {
-        "type": "httpupgrade",
-        "path": "/",
-        "host": "google.whatsapp.snapp.torob.basalam.dns-look.space."
-      }
-    },
-    {
-      "type": "vless",
-      "tag": "🇩🇪 德国 (Germany) 29 438K - NEKO",
-      "server": "89.169.53.176",
-      "server_port": 4443,
-      "uuid": "20dd9433-389e-4573-ba7b-689619cf13da",
-      "flow": "xtls-rprx-vision",
       "tls": {
         "enabled": true,
-        "server_name": "gateway.icloud.com",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "YIyohkkCU5kw6J5iZYZkhILyDwlfftFPDTkbITlrAUw",
-          "short_id": "df3aff719526dc5a"
-        }
-      }
-    },
-    {
-      "type": "vless",
-      "tag": "🇩🇪 德国 (Germany) 30 3705K - NEKO",
-      "server": "89.39.121.186",
-      "server_port": 2087,
-      "uuid": "90e12a40-ea12-4951-a0ef-142a1fb164ec",
-      "flow": "xtls-rprx-vision",
-      "tls": {
-        "enabled": true,
-        "server_name": "www.bing.com",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "safari"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "MbSfYN0EDX7TaqYNUlx4eMfd_ablcmFVHKxW8Oy10iQ",
-          "short_id": "a7b8c9d0e1f20d14"
-        }
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "🇩🇪 德国 (Germany) 31 4387K - NEKO",
-      "server": "node8.quaxly.com",
-      "server_port": 25040,
-      "password": "Km/pIG4AGCjCOiGWj5FsWA==",
-      "tls": {
-        "enabled": true,
-        "server_name": "/gay-anal",
-        "insecure": true,
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
+        "server_name": "aidrivercat.org",
+        "insecure": false
       },
       "transport": {
         "type": "ws",
-        "path": "/"
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "🇩🇪 德国 (Germany) 32 1519K - NEKO",
-      "server": "actual-squid.rooster465.autos",
-      "server_port": 443,
-      "password": "UX82473651",
-      "tls": {
-        "enabled": true,
-        "server_name": "actual-squid.rooster465.autos",
-        "insecure": true,
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
+        "path": "/linkvws",
+        "headers": {
+          "Host": "aidrivercat.org"
         }
       }
     },
     {
       "type": "vless",
-      "tag": "🇩🇪 德国 (Germany) 33 3805K - NEKO",
-      "server": "82.39.171.142",
+      "tag": "🇩🇪 德国 (Germany) 45 5108K - NEKO",
+      "server": "cdn-de.bulkavpn.top",
+      "server_port": 443,
+      "uuid": "91d734be-a3d0-4d50-83ab-74cf7b6966fa",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn-de.bulkavpn.top",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "LEoyslGYLVf2XWq9Bkq8Hod-EsB3ZoTlvR5AKK3rciQ",
+          "short_id": "c885e8f8"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇩🇪 德国 (Germany) 46 5216K - NEKO",
+      "server": "82.39.171.12",
       "server_port": 443,
       "uuid": "d65cc14c-f53f-4fe2-b262-97856601319c",
       "flow": "xtls-rprx-vision",
@@ -534,82 +734,147 @@
       }
     },
     {
+      "type": "vless",
+      "tag": "🇩🇪 德国 (Germany) 47 5114K - NEKO",
+      "server": "82.39.171.142",
+      "server_port": 443,
+      "uuid": "d65cc14c-f53f-4fe2-b262-97856601319c",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "yahoo.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg",
+          "short_id": "c39cc7310a"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇩🇪 德国 (Germany) 48 ⚠S3480K - NEKO",
+      "server": "104.27.88.172",
+      "server_port": 80,
+      "uuid": "50414e45-4c5f-5a45-5553-52108a2d5224",
+      "transport": {
+        "type": "ws",
+        "path": "/api/ws",
+        "headers": {
+          "Host": "web-app-nr6wpa.app-tp57xz.workers.dev"
+        }
+      }
+    },
+    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇩🇪 德国 (Germany) 01 6048K - NEKO",
-        "🇩🇪 德国 (Germany) 02 6176K - NEKO",
-        "🇩🇪 德国 (Germany) 03 4704K - NEKO",
-        "🇩🇪 德国 (Germany) 04 5839K - NEKO",
-        "🇩🇪 德国 (Germany) 05 4080K - NEKO",
-        "🇩🇪 德国 (Germany) 06 477K - NEKO",
-        "🇩🇪 德国 (Germany) 07 4405K - NEKO",
-        "🇩🇪 德国 (Germany) 08 3445K - NEKO",
-        "🇩🇪 德国 (Germany) 09 4795K - NEKO",
-        "🇩🇪 德国 (Germany) 10 2574K - NEKO",
-        "🇩🇪 德国 (Germany) 11 ⚠S1177K - NEKO",
-        "🇩🇪 德国 (Germany) 12 4687K - NEKO",
-        "🇩🇪 德国 (Germany) 13 4483K - NEKO",
-        "🇩🇪 德国 (Germany) 14 4407K - NEKO",
-        "🇩🇪 德国 (Germany) 15 4481K - NEKO",
-        "🇩🇪 德国 (Germany) 16 3941K - NEKO",
-        "🇩🇪 德国 (Germany) 17 4238K - NEKO",
-        "🇩🇪 德国 (Germany) 18 4110K - NEKO",
-        "🇩🇪 德国 (Germany) 19 4393K - NEKO",
-        "🇩🇪 德国 (Germany) 20 ⚠S2230K - NEKO",
-        "🇩🇪 德国 (Germany) 21 4541K - NEKO",
-        "🇩🇪 德国 (Germany) 22 5126K - NEKO",
-        "🇩🇪 德国 (Germany) 23 495K - NEKO",
-        "🇩🇪 德国 (Germany) 24 1986K - NEKO",
-        "🇩🇪 德国 (Germany) 25 4011K - NEKO",
-        "🇩🇪 德国 (Germany) 26 3844K - NEKO",
-        "🇩🇪 德国 (Germany) 27 4339K - NEKO",
-        "🇩🇪 德国 (Germany) 28 ⚠S7320K - NEKO",
-        "🇩🇪 德国 (Germany) 29 438K - NEKO",
-        "🇩🇪 德国 (Germany) 30 3705K - NEKO",
-        "🇩🇪 德国 (Germany) 31 4387K - NEKO",
-        "🇩🇪 德国 (Germany) 32 1519K - NEKO",
-        "🇩🇪 德国 (Germany) 33 3805K - NEKO"
+        "🇩🇪 德国 (Germany) 01 7296K - NEKO",
+        "🇩🇪 德国 (Germany) 02 6961K - NEKO",
+        "🇩🇪 德国 (Germany) 03 5694K - NEKO",
+        "🇩🇪 德国 (Germany) 04 ⚠S3195K - NEKO",
+        "🇩🇪 德国 (Germany) 05 ⚠S4363K - NEKO",
+        "🇩🇪 德国 (Germany) 06 4213K - NEKO",
+        "🇩🇪 德国 (Germany) 07 3951K - NEKO",
+        "🇩🇪 德国 (Germany) 08 ⚠S2647K - NEKO",
+        "🇩🇪 德国 (Germany) 09 17188K - NEKO",
+        "🇩🇪 德国 (Germany) 10 5522K - NEKO",
+        "🇩🇪 德国 (Germany) 11 4774K - NEKO",
+        "🇩🇪 德国 (Germany) 12 5264K - NEKO",
+        "🇩🇪 德国 (Germany) 13 4965K - NEKO",
+        "🇩🇪 德国 (Germany) 14 4762K - NEKO",
+        "🇩🇪 德国 (Germany) 15 5064K - NEKO",
+        "🇩🇪 德国 (Germany) 16 5072K - NEKO",
+        "🇩🇪 德国 (Germany) 17 5730K - NEKO",
+        "🇩🇪 德国 (Germany) 18 10806K - NEKO",
+        "🇩🇪 德国 (Germany) 19 5190K - NEKO",
+        "🇩🇪 德国 (Germany) 20 ⚠S3349K - NEKO",
+        "🇩🇪 德国 (Germany) 21 5032K - NEKO",
+        "🇩🇪 德国 (Germany) 22 ⚠S2623K - NEKO",
+        "🇩🇪 德国 (Germany) 23 5249K - NEKO",
+        "🇩🇪 德国 (Germany) 24 5433K - NEKO",
+        "🇩🇪 德国 (Germany) 25 5717K - NEKO",
+        "🇩🇪 德国 (Germany) 26 4757K - NEKO",
+        "🇩🇪 德国 (Germany) 27 4371K - NEKO",
+        "🇩🇪 德国 (Germany) 28 4376K - NEKO",
+        "🇩🇪 德国 (Germany) 29 4686K - NEKO",
+        "🇩🇪 德国 (Germany) 30 5196K - NEKO",
+        "🇩🇪 德国 (Germany) 31 2104K - NEKO",
+        "🇩🇪 德国 (Germany) 32 5192K - NEKO",
+        "🇩🇪 德国 (Germany) 33 5284K - NEKO",
+        "🇩🇪 德国 (Germany) 34 5431K - NEKO",
+        "🇩🇪 德国 (Germany) 35 4529K - NEKO",
+        "🇩🇪 德国 (Germany) 36 4729K - NEKO",
+        "🇩🇪 德国 (Germany) 37 5310K - NEKO",
+        "🇩🇪 德国 (Germany) 38 ⚠S1040K - NEKO",
+        "🇩🇪 德国 (Germany) 39 ⚠S7087K - NEKO",
+        "🇩🇪 德国 (Germany) 40 5300K - NEKO",
+        "🇩🇪 德国 (Germany) 41 4264K - NEKO",
+        "🇩🇪 德国 (Germany) 42 5198K - NEKO",
+        "🇩🇪 德国 (Germany) 43 ⚠S4303K - NEKO",
+        "🇩🇪 德国 (Germany) 44 4501K - NEKO",
+        "🇩🇪 德国 (Germany) 45 5108K - NEKO",
+        "🇩🇪 德国 (Germany) 46 5216K - NEKO",
+        "🇩🇪 德国 (Germany) 47 5114K - NEKO",
+        "🇩🇪 德国 (Germany) 48 ⚠S3480K - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇩🇪 德国 (Germany) 01 6048K - NEKO",
-        "🇩🇪 德国 (Germany) 02 6176K - NEKO",
-        "🇩🇪 德国 (Germany) 03 4704K - NEKO",
-        "🇩🇪 德国 (Germany) 04 5839K - NEKO",
-        "🇩🇪 德国 (Germany) 05 4080K - NEKO",
-        "🇩🇪 德国 (Germany) 06 477K - NEKO",
-        "🇩🇪 德国 (Germany) 07 4405K - NEKO",
-        "🇩🇪 德国 (Germany) 08 3445K - NEKO",
-        "🇩🇪 德国 (Germany) 09 4795K - NEKO",
-        "🇩🇪 德国 (Germany) 10 2574K - NEKO",
-        "🇩🇪 德国 (Germany) 11 ⚠S1177K - NEKO",
-        "🇩🇪 德国 (Germany) 12 4687K - NEKO",
-        "🇩🇪 德国 (Germany) 13 4483K - NEKO",
-        "🇩🇪 德国 (Germany) 14 4407K - NEKO",
-        "🇩🇪 德国 (Germany) 15 4481K - NEKO",
-        "🇩🇪 德国 (Germany) 16 3941K - NEKO",
-        "🇩🇪 德国 (Germany) 17 4238K - NEKO",
-        "🇩🇪 德国 (Germany) 18 4110K - NEKO",
-        "🇩🇪 德国 (Germany) 19 4393K - NEKO",
-        "🇩🇪 德国 (Germany) 20 ⚠S2230K - NEKO",
-        "🇩🇪 德国 (Germany) 21 4541K - NEKO",
-        "🇩🇪 德国 (Germany) 22 5126K - NEKO",
-        "🇩🇪 德国 (Germany) 23 495K - NEKO",
-        "🇩🇪 德国 (Germany) 24 1986K - NEKO",
-        "🇩🇪 德国 (Germany) 25 4011K - NEKO",
-        "🇩🇪 德国 (Germany) 26 3844K - NEKO",
-        "🇩🇪 德国 (Germany) 27 4339K - NEKO",
-        "🇩🇪 德国 (Germany) 28 ⚠S7320K - NEKO",
-        "🇩🇪 德国 (Germany) 29 438K - NEKO",
-        "🇩🇪 德国 (Germany) 30 3705K - NEKO",
-        "🇩🇪 德国 (Germany) 31 4387K - NEKO",
-        "🇩🇪 德国 (Germany) 32 1519K - NEKO",
-        "🇩🇪 德国 (Germany) 33 3805K - NEKO"
+        "🇩🇪 德国 (Germany) 01 7296K - NEKO",
+        "🇩🇪 德国 (Germany) 02 6961K - NEKO",
+        "🇩🇪 德国 (Germany) 03 5694K - NEKO",
+        "🇩🇪 德国 (Germany) 04 ⚠S3195K - NEKO",
+        "🇩🇪 德国 (Germany) 05 ⚠S4363K - NEKO",
+        "🇩🇪 德国 (Germany) 06 4213K - NEKO",
+        "🇩🇪 德国 (Germany) 07 3951K - NEKO",
+        "🇩🇪 德国 (Germany) 08 ⚠S2647K - NEKO",
+        "🇩🇪 德国 (Germany) 09 17188K - NEKO",
+        "🇩🇪 德国 (Germany) 10 5522K - NEKO",
+        "🇩🇪 德国 (Germany) 11 4774K - NEKO",
+        "🇩🇪 德国 (Germany) 12 5264K - NEKO",
+        "🇩🇪 德国 (Germany) 13 4965K - NEKO",
+        "🇩🇪 德国 (Germany) 14 4762K - NEKO",
+        "🇩🇪 德国 (Germany) 15 5064K - NEKO",
+        "🇩🇪 德国 (Germany) 16 5072K - NEKO",
+        "🇩🇪 德国 (Germany) 17 5730K - NEKO",
+        "🇩🇪 德国 (Germany) 18 10806K - NEKO",
+        "🇩🇪 德国 (Germany) 19 5190K - NEKO",
+        "🇩🇪 德国 (Germany) 20 ⚠S3349K - NEKO",
+        "🇩🇪 德国 (Germany) 21 5032K - NEKO",
+        "🇩🇪 德国 (Germany) 22 ⚠S2623K - NEKO",
+        "🇩🇪 德国 (Germany) 23 5249K - NEKO",
+        "🇩🇪 德国 (Germany) 24 5433K - NEKO",
+        "🇩🇪 德国 (Germany) 25 5717K - NEKO",
+        "🇩🇪 德国 (Germany) 26 4757K - NEKO",
+        "🇩🇪 德国 (Germany) 27 4371K - NEKO",
+        "🇩🇪 德国 (Germany) 28 4376K - NEKO",
+        "🇩🇪 德国 (Germany) 29 4686K - NEKO",
+        "🇩🇪 德国 (Germany) 30 5196K - NEKO",
+        "🇩🇪 德国 (Germany) 31 2104K - NEKO",
+        "🇩🇪 德国 (Germany) 32 5192K - NEKO",
+        "🇩🇪 德国 (Germany) 33 5284K - NEKO",
+        "🇩🇪 德国 (Germany) 34 5431K - NEKO",
+        "🇩🇪 德国 (Germany) 35 4529K - NEKO",
+        "🇩🇪 德国 (Germany) 36 4729K - NEKO",
+        "🇩🇪 德国 (Germany) 37 5310K - NEKO",
+        "🇩🇪 德国 (Germany) 38 ⚠S1040K - NEKO",
+        "🇩🇪 德国 (Germany) 39 ⚠S7087K - NEKO",
+        "🇩🇪 德国 (Germany) 40 5300K - NEKO",
+        "🇩🇪 德国 (Germany) 41 4264K - NEKO",
+        "🇩🇪 德国 (Germany) 42 5198K - NEKO",
+        "🇩🇪 德国 (Germany) 43 ⚠S4303K - NEKO",
+        "🇩🇪 德国 (Germany) 44 4501K - NEKO",
+        "🇩🇪 德国 (Germany) 45 5108K - NEKO",
+        "🇩🇪 德国 (Germany) 46 5216K - NEKO",
+        "🇩🇪 德国 (Germany) 47 5114K - NEKO",
+        "🇩🇪 德国 (Germany) 48 ⚠S3480K - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

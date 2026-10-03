@@ -4,8 +4,8 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇧🇾 白俄罗斯 (Belarus) 01 ⚠S966K - NEKO
-  server: 89.125.96.90
+- name: 🇧🇾 白俄罗斯 (Belarus) 01 4967K - NEKO
+  server: 89.125.96.89
   port: 2053
   udp: true
   type: vless
@@ -17,17 +17,19 @@ proxies:
   network: ws
   ws-opts:
     path: /vpn-wss/fluxor/59011/
+    headers:
+      Host: wss.zazazuza.ru
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇧🇾 白俄罗斯 (Belarus) 01 ⚠S966K - NEKO
+  - 🇧🇾 白俄罗斯 (Belarus) 01 4967K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇧🇾 白俄罗斯 (Belarus) 01 ⚠S966K - NEKO
+  - 🇧🇾 白俄罗斯 (Belarus) 01 4967K - NEKO
 rules:
 - MATCH,PROXIES

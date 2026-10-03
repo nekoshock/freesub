@@ -5,20 +5,20 @@
   "outbounds": [
     {
       "type": "hysteria2",
-      "tag": "🇷🇴 罗马尼亚 (Romania) 01 7341K - NEKO",
-      "server": "77.74.123.103",
+      "tag": "🇷🇴 罗马尼亚 (Romania) 01 ⚠S7580K - NEKO",
+      "server": "77.74.123.100",
       "server_port": 8443,
       "password": "s0_sdK93x9wer_D02Lz9cvK3_Sa014Oakl_C2z",
       "tls": {
         "enabled": true,
         "server_name": "grape-test-italy.dynuddns.net",
-        "insecure": false
+        "insecure": true
       }
     },
     {
       "type": "hysteria2",
-      "tag": "🇷🇴 罗马尼亚 (Romania) 02 ⚠S780K - NEKO",
-      "server": "162.249.127.137",
+      "tag": "🇷🇴 罗马尼亚 (Romania) 02 ⚠S4108K - NEKO",
+      "server": "162.249.127.135",
       "server_port": 8443,
       "password": "9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z",
       "tls": {
@@ -29,35 +29,19 @@
     },
     {
       "type": "hysteria2",
-      "tag": "🇷🇴 罗马尼亚 (Romania) 03 6388K - NEKO",
+      "tag": "🇷🇴 罗马尼亚 (Romania) 03 ⚠S6569K - NEKO",
       "server": "185.156.44.99",
       "server_port": 443,
       "password": "gf1:gfhysteria2024",
       "tls": {
         "enabled": true,
-        "server_name": "whatsapp.com",
+        "server_name": "css.rbxcdn.com",
         "insecure": true
       }
     },
     {
       "type": "hysteria2",
-      "tag": "🇷🇴 罗马尼亚 (Romania) 04 6673K - NEKO",
-      "server": "162.249.125.133",
-      "server_port": 443,
-      "password": "QCgqi_I4EkV8UR-OgQ_tG4EnVTEVvIyR2GgRBzrIn2s",
-      "tls": {
-        "enabled": true,
-        "server_name": "hy2-new.aspidnet.xyz",
-        "insecure": false
-      },
-      "obfs": {
-        "type": "salamander",
-        "password": "c1b4086fea89914496c7e10967a419216566"
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "🇷🇴 罗马尼亚 (Romania) 05 5835K - NEKO",
+      "tag": "🇷🇴 罗马尼亚 (Romania) 04 ⚠S5608K - NEKO",
       "server": "hy2-new.aspidnet.xyz",
       "server_port": 443,
       "password": "QCgqi_I4EkV8UR-OgQ_tG4EnVTEVvIyR2GgRBzrIn2s",
@@ -72,8 +56,16 @@
       }
     },
     {
+      "type": "shadowsocks",
+      "tag": "🇷🇴 罗马尼亚 (Romania) 05 301K - NEKO",
+      "server": "154.46.31.106",
+      "server_port": 443,
+      "method": "chacha20-ietf-poly1305",
+      "password": "QFWzCw2uX9B9i6qAYeFBIE"
+    },
+    {
       "type": "vless",
-      "tag": "🇷🇴 罗马尼亚 (Romania) 06 3214K - NEKO",
+      "tag": "🇷🇴 罗马尼亚 (Romania) 06 3593K - NEKO",
       "server": "46.28.67.55",
       "server_port": 443,
       "uuid": "d1a6a033-fdbd-46a6-a177-3370ba042b9f",
@@ -93,74 +85,28 @@
       }
     },
     {
-      "type": "vless",
-      "tag": "🇷🇴 罗马尼亚 (Romania) 07 3660K - NEKO",
-      "server": "109.104.106.15",
-      "server_port": 443,
-      "uuid": "87fd990d-ca93-440a-bbd4-e8281c4a0910",
-      "flow": "xtls-rprx-vision",
-      "tls": {
-        "enabled": true,
-        "server_name": "d3-ro.cloud-cdn.xyz",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "firefox"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "a_v5l6R-rpVGlENLeONW4sz-GdRwIoDqISOWXGov8nw",
-          "short_id": "87709fed663228e5"
-        }
-      }
-    },
-    {
-      "type": "vless",
-      "tag": "🇷🇴 罗马尼亚 (Romania) 08 3533K - NEKO",
-      "server": "146.70.124.85",
-      "server_port": 443,
-      "uuid": "40abbe13-f02e-4da2-9b19-966c2c3eb4ee",
-      "flow": "xtls-rprx-vision",
-      "tls": {
-        "enabled": true,
-        "server_name": "www.datadoghq.com",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "byzvlw97wjAAAfHs5AZRV0P0H6_JKBEZ4yfLS0HNewE",
-          "short_id": "fe24f8a0a560056e"
-        }
-      }
-    },
-    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇷🇴 罗马尼亚 (Romania) 01 7341K - NEKO",
-        "🇷🇴 罗马尼亚 (Romania) 02 ⚠S780K - NEKO",
-        "🇷🇴 罗马尼亚 (Romania) 03 6388K - NEKO",
-        "🇷🇴 罗马尼亚 (Romania) 04 6673K - NEKO",
-        "🇷🇴 罗马尼亚 (Romania) 05 5835K - NEKO",
-        "🇷🇴 罗马尼亚 (Romania) 06 3214K - NEKO",
-        "🇷🇴 罗马尼亚 (Romania) 07 3660K - NEKO",
-        "🇷🇴 罗马尼亚 (Romania) 08 3533K - NEKO"
+        "🇷🇴 罗马尼亚 (Romania) 01 ⚠S7580K - NEKO",
+        "🇷🇴 罗马尼亚 (Romania) 02 ⚠S4108K - NEKO",
+        "🇷🇴 罗马尼亚 (Romania) 03 ⚠S6569K - NEKO",
+        "🇷🇴 罗马尼亚 (Romania) 04 ⚠S5608K - NEKO",
+        "🇷🇴 罗马尼亚 (Romania) 05 301K - NEKO",
+        "🇷🇴 罗马尼亚 (Romania) 06 3593K - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇷🇴 罗马尼亚 (Romania) 01 7341K - NEKO",
-        "🇷🇴 罗马尼亚 (Romania) 02 ⚠S780K - NEKO",
-        "🇷🇴 罗马尼亚 (Romania) 03 6388K - NEKO",
-        "🇷🇴 罗马尼亚 (Romania) 04 6673K - NEKO",
-        "🇷🇴 罗马尼亚 (Romania) 05 5835K - NEKO",
-        "🇷🇴 罗马尼亚 (Romania) 06 3214K - NEKO",
-        "🇷🇴 罗马尼亚 (Romania) 07 3660K - NEKO",
-        "🇷🇴 罗马尼亚 (Romania) 08 3533K - NEKO"
+        "🇷🇴 罗马尼亚 (Romania) 01 ⚠S7580K - NEKO",
+        "🇷🇴 罗马尼亚 (Romania) 02 ⚠S4108K - NEKO",
+        "🇷🇴 罗马尼亚 (Romania) 03 ⚠S6569K - NEKO",
+        "🇷🇴 罗马尼亚 (Romania) 04 ⚠S5608K - NEKO",
+        "🇷🇴 罗马尼亚 (Romania) 05 301K - NEKO",
+        "🇷🇴 罗马尼亚 (Romania) 06 3593K - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

@@ -5,8 +5,8 @@
   "outbounds": [
     {
       "type": "vless",
-      "tag": "🇧🇾 白俄罗斯 (Belarus) 01 ⚠S966K - NEKO",
-      "server": "89.125.96.90",
+      "tag": "🇧🇾 白俄罗斯 (Belarus) 01 4967K - NEKO",
+      "server": "89.125.96.89",
       "server_port": 2053,
       "uuid": "6c713691-3ca2-0008-ad25-113d1bed6b03",
       "tls": {
@@ -23,7 +23,10 @@
       },
       "transport": {
         "type": "ws",
-        "path": "/vpn-wss/fluxor/59011/"
+        "path": "/vpn-wss/fluxor/59011/",
+        "headers": {
+          "Host": "wss.zazazuza.ru"
+        }
       }
     },
     {
@@ -31,14 +34,14 @@
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇧🇾 白俄罗斯 (Belarus) 01 ⚠S966K - NEKO"
+        "🇧🇾 白俄罗斯 (Belarus) 01 4967K - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇧🇾 白俄罗斯 (Belarus) 01 ⚠S966K - NEKO"
+        "🇧🇾 白俄罗斯 (Belarus) 01 4967K - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

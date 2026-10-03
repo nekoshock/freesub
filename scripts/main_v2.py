@@ -70,7 +70,6 @@ SOURCE_URLS = [
     "https://raw.githubusercontent.com/ebrasha/free-v2ray-public-list/refs/heads/main/V2Ray-Config-By-EbraSha-All-Type.txt",
     "https://raw.githubusercontent.com/zhuhaiuk/free-nodes/main/nodes.txt",
     "https://raw.githubusercontent.com/0xRadikal/Free-v2ray-Configs/main/verified/configs_base64.txt",
-    "https://raw.githubusercontent.com/0xRadikal/Free-v2ray-Configs/main/all/configs.txt",
 ]
 
 OUTPUT_DIR = "output"
@@ -146,6 +145,10 @@ if WARP_POLICY not in ("drop", "demote", "off"):
     print(f"[!] WARP_POLICY={WARP_POLICY!r} 非法, 回退 'drop' (可选: drop/demote/off)")
     WARP_POLICY = "drop"
 MAX_WORKERS_TEST    = 24            # 同时 sing-box 实测节点数 (★48→24: 测速阶段 48 并发会互抢单台机器带宽, 阈值抬高后自污染成假阴性; sing-box 单实例 < 30MB)
+# 阶段B 单节点最坏耗时估算 (秒) — 仅用于日志里预估"预检硬淘汰省了多少时间",
+# 不参与任何判定。上界 = 等SOCKS端口 6 + 跨源探测 (12+4+4) + 出口IP 6
+#                    + MITM复检 4 + WARP 4 + 测速首轮 8 + 复测 4 + check 0.5
+STAGE_B_WORST_SEC   = 52.5
 MAX_WORKERS_FETCH   = 8
 MAX_WORKERS_CLASSIFY = 32
 
@@ -969,6 +972,73 @@ PARSERS = {
 # 排除明显加密残缺/占位节点
 BLACKLIST_NAME_HINTS = re.compile(r"(剩余流量|流量重置|expire|expired|官网|套餐|telegram\.me|t\.me/|获取订阅)", re.I)
 
+# ══════════════════════════════════════════════════════════════════
+# 阶段 0: 静态预筛 (零网络零进程, 纯 URI/outbound 字段检查)
+#   动机: 池子从 10 源扩到 15 源后, 候选涨到 3000+ 量级, 阶段B 单节点最坏
+#   52.5s (跨源探测 20s + 测速 12s + IP/MITM/WARP 14s + 进程开销 6s)。
+#   24 并发下 3000 节点最坏 ~109 分钟。必须在进阶段B 之前把垃圾砍掉。
+#   ★ 关键: 这道闸筛的是 MITM 检测**抓不到**的节点 —— 主动声明跳过证书校验
+#     (insecure=1 / allowInsecure=1 / security=none) 的配置, 测活阶段拿它们
+#     没办法 (它们就是设计成不校验证书的), 只能在这里静态砍掉。
+# ══════════════════════════════════════════════════════════════════
+
+# 证书校验关闭的字段 (任一命中即视为高危: 无法抵御中间人, 且测活阶段检测不到)
+INSECURE_FIELDS = ("insecure", "allow_insecure", "allowinsecure", "skip_cert_verify")
+# tls.security 的危险取值 (明文/无 TLS)。
+# ★ 只认显式的 "none": 字段**缺失**不代表明文 (sing-box 里 tls.enabled=True 而
+#   不写 security 是常规写法, vless/trojan/hysteria2 默认走 TLS)。
+#   早先把 "" 和 None 也算进来, 导致所有未显式写 security 的正常节点被误杀。
+NONE_SECURITY_VALUES = ("none",)
+ENABLE_WORKERS_STATIC = 64         # 静态筛无网络, 纯内存判断, 并发高无所谓
+
+
+def is_insecure_node(outbound: dict) -> bool:
+    """判断节点是否关闭了证书校验 (主动降级安全性, 测活阶段无法检出)"""
+    if not isinstance(outbound, dict):
+        return False
+    # 1) 顶层 insecure / allow_insecure 布尔开关
+    for f in INSECURE_FIELDS:
+        v = outbound.get(f)
+        if v is True or (isinstance(v, str) and v.strip().lower() in ("1", "true", "yes")):
+            return True
+    # 2) tls.security = none (明文传输)
+    tls = outbound.get("tls")
+    if isinstance(tls, dict):
+        if str(tls.get("security", "")).strip().lower() in NONE_SECURITY_VALUES:
+            return True
+    # 3) 走 TLS/Reality 但 sni 指向本地回环 (常见于生成错误的配置, 证书必然不匹配)
+    #    注意: sni 缺失/为空本身不算危险 — 很多服务端靠 IP 或默认值协商,
+    #    只有显式写成 127.0.0.1/localhost 才是配置错误。
+    sni = outbound.get("sni") or outbound.get("servername")
+    if isinstance(sni, str) and sni.strip().lower() in ("127.0.0.1", "::1", "localhost"):
+        # 仅当该节点确实走 TLS/Reality 时才判定 (plain 协议无 sni 属正常)
+        if isinstance(tls, dict) or outbound.get("reality") or outbound.get("flow"):
+            return True
+    return False
+
+
+def static_prescreen(candidates: list) -> list:
+    """阶段 0 静态预筛: 砍掉关闭证书校验的节点 (零成本, 不发一个包)
+
+    这类节点占免费池相当比例 (实测某源 131 条 hysteria2 多半 insecure=1),
+    它们在阶段B 会被判"活"并入库, 但既不抗 MITM 也常伴随其他质量问题。
+    """
+    print(f"[*] 静态预筛 (证书校验开关检查): {len(candidates)} 候选 ...")
+    kept, dropped = [], 0
+    insecure_proto = {}
+    for item in candidates:
+        _, outbound, server, port, proto = item
+        if is_insecure_node(outbound):
+            dropped += 1
+            insecure_proto[proto] = insecure_proto.get(proto, 0) + 1
+            continue
+        kept.append(item)
+    detail = " ".join(f"{k}:{v}" for k, v in sorted(insecure_proto.items(), key=lambda x: -x[1]))
+    print(f"[+] 静态预筛通过: {len(kept)} | 剔除关闭证书校验: {dropped}"
+          + (f" ({detail})" if detail else ""))
+    return kept
+
+
 
 def parse_node_uri(uri: str):
     """解析节点 URI → (outbound, server, port, protocol) ; 失败返回 None"""
@@ -1085,8 +1155,14 @@ def resolve_host(host: str) -> str:
 
 def knock_port(server: str, port: int, protocol_type: str) -> bool:
     """TCP 直连预检 (DoH 解析防本地 DNS 污染); QUIC 类直接放行阶段B
-    注: 预检失败不淘汰 (本地大陆视角的假死 ≠ 节点死亡), 只影响排序;
-        生死由阶段B sing-box 全流程测活裁决 (Actions 海外视角)"""
+
+    ★ 淘汰策略按运行视角分流 (原版一律"不淘汰"是性能浪费):
+      - Actions 海外视角 (默认): 预检失败 = 节点真死, 硬淘汰。
+        依据: Actions 跑在 Azure US, 不经 GFW 直连海外, 连不上就是节点没了。
+        不淘汰的代价 = 每个白等最多 52.5s (阶段B 最坏耗时)。
+      - 本地大陆视角: 预检失败可能是 GFW 假死, 降级保留交给阶段B 裁决。
+        判定: FRONT_PROXY 有值 = 本地链式模式 = 本地视角; 否则视为 Actions 视角。
+    """
     if protocol_type in ("hysteria2", "tuic"):
         # QUIC 无法轻量预检 UDP 端口连通性, 且本地 UDP 常被 QoS → 放行交阶段B
         return True
@@ -1101,22 +1177,39 @@ def knock_port(server: str, port: int, protocol_type: str) -> bool:
 
 
 def prefilter_candidates(candidates: list) -> list:
-    """端口预检: 通过者优先, 未通过者降级保留 (防止本地网络/GFW 视角误杀;
-    真正生死由阶段B sing-box 全流程测活裁决 — Actions 海外视角)"""
-    print(f"[*] 端口预检 (TCP {PORT_KNOCK_TIMEOUT}s): {len(candidates)} 候选 ...")
-    passed, deferred = [], []
+    """端口预检: 按运行视角决定"淘汰"还是"降级保留"
+
+    Actions 视角 (默认)  预检失败即淘汰 — 池子大时这是最大的一刀
+    本地视角 (FRONT_PROXY) 预检失败降级保留, 防止 GFW 假死误杀
+    """
+    # 本地链式模式 = 本地视角 (GFW 在场) → 不能硬淘汰
+    local_view = bool(os.environ.get("FRONT_PROXY", "").strip())
+    policy = "降级保留 (本地视角, 防 GFW 假死误杀)" if local_view else "硬淘汰 (Actions 海外视角)"
+    print(f"[*] 端口预检 (TCP {PORT_KNOCK_TIMEOUT}s, {policy}): {len(candidates)} 候选 ...")
+    passed, failed = [], []
 
     def _knock(item):
         raw, outbound, server, port, proto = item
         return knock_port(server, port, proto)
 
     with ThreadPoolExecutor(max_workers=64) as ex:
-        # ex.map 保序返回; 通过者优先, 未通过降级保留 (不淘汰, 防本地视角误杀)
         for item, ok in zip(candidates, ex.map(_knock, candidates)):
-            (passed if ok else deferred).append(item)
-    print(f"[+] 预检通过: {len(passed)} | 预检未过(保留低优先级待全测): {len(deferred)}")
-    # 预检未过的仍进入全流程 (只是排在后面) — 交给 sing-box 真实裁决
-    return passed + deferred
+            (passed if ok else failed).append(item)
+
+    if local_view:
+        print(f"[+] 预检通过: {len(passed)} | 预检未过(保留低优先级待全测): {len(failed)}")
+        # 预检未过的仍进入全流程 (只是排在后面) — 交给 sing-box 真实裁决
+        return passed + failed
+
+    dropped = len(failed)
+    if dropped:
+        pct = dropped * 100.0 / max(len(candidates), 1)
+        print(f"[+] 预检通过: {len(passed)} | 预检未过直接淘汰: {dropped} ({pct:.1f}%)")
+        print(f"    预估省下 {dropped * STAGE_B_WORST_SEC / MAX_WORKERS_TEST / 60:.1f} 分钟"
+              f" (每节点省最多 {STAGE_B_WORST_SEC:.0f}s 阶段B 开销)")
+    else:
+        print(f"[+] 预检通过: {len(passed)} (全部可达)")
+    return passed
 
 
 # ═══════════════════════════════════════════N═══════════════════════
@@ -2675,6 +2768,10 @@ def main():
     DEDUP_MAP = seen_keys  # 供测活后回填 (全局)
     candidates = deduped
 
+    # 2.6 ★ 静态预筛 (零网络零进程): 砍掉主动关闭证书校验的节点
+    #     必须在凭据去重之后 — 先去重才不会对同一垃圾节点重复报计数
+    candidates = static_prescreen(candidates)
+
     proto_stat = {}
     for _, _, _, _, p in candidates:
         proto_stat[p] = proto_stat.get(p, 0) + 1
@@ -2735,7 +2832,7 @@ def main():
     # 统计报告
     elapsed = time.time() - t_start
     print("\n===== 运行报告 =====")
-    print(f"总耗时: {elapsed:.0f}s | 抓取 {len(raw_nodes)} → 解析成功 {len(candidates)} → 真活 {len(test_results)} → 去重后 {len(unique_nodes)} → 家宽 {len(residential)}")
+    print(f"总耗时: {elapsed:.0f}s ({elapsed/60:.1f} 分钟) | 抓取 {len(raw_nodes)} → 静态预筛+去重后 {len(candidates)} → 真活 {len(test_results)} → 去重后 {len(unique_nodes)} → 家宽 {len(residential)}")
     by_type = {}
     for n in unique_nodes:
         by_type[n["net_type"]] = by_type.get(n["net_type"], 0) + 1

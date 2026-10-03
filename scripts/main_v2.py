@@ -44,6 +44,7 @@ import zipfile
 import tarfile
 import platform
 import subprocess
+import threading
 import ipaddress
 import urllib.parse
 import urllib.request
@@ -116,7 +117,7 @@ SPEED_UNSTABLE_PENALTY = 1.5         # 不稳定节点的实际门槛上浮倍�
 #     实测 #66 交叉测速几乎全败, 根因就是预算过短而非端点不可用。
 #   逐个回退, 拿到第一个有效结果即停 —— 所以正常情况下只花第一个端点的预算。
 SPEED_CROSS_MIN_ENDPOINTS = 2        # 至少要有几个端点成功才采信交叉结果 (不足则退化用已有)
-SPEED_CROSS_MAX_ENDPOINTS = 5        # 最多试几个端点 (与 SPEED_CROSS_URLS 等长, 保证回退能走到最后一个)
+SPEED_CROSS_MAX_ENDPOINTS = 6        # 最多试几个端点 (与 SPEED_CROSS_URLS 等长, 保证回退能走到最后一个; 切片 [:N] 会静默截断)
 
 # --- 短路判定阈值 (决定是否启动交叉验证) ---
 #   ★ 交叉测速改为**按需触发**: Cloudflare 测速若正常就直接采用, 不跑物理机房端点。
@@ -208,31 +209,103 @@ SPEED_TEST_URLS = [               # 主测速端点 (Anycast CDN, 快但可能�
 #            ③ 覆盖不同运营商/不同网络类型, 避免单一厂商网络成为单点
 #            ④ 支持 Range 请求 (HTTP 206), 可只取前若干 MB 而非拉满整包
 #   各项 = (名称, URL); 名称仅用于日志与失败归因。
-#   ★ 顺序即优先级: 同区 (美国) 在前, 跨区 (欧洲) 在后作为兜底。
-#     运行机在哪个区, 就应该排该区的端点 —— Actions US runner 用 ash/fremont/dallas,
-#     欧洲 runner 则应把 nbg/fsn 提到前面。
+#   ★ 顺序即优先级: 实测可达性最高的排最前, 24 并发下先命中最省时间。
+#     Actions US runner 实测 (见 #70): linode-fremont 成功 534/543 (98.3%),
+#     hetzner-ash 成功 0/543 (0%) — 已从列表移除 (原因见下)。
+#   ★ 已删除 hetzner-ash (#70 教训):
+#     实测在 Actions runner 上 543 次尝试**零成功**, 失败类型全是
+#     ConnectionError/SSLError (连 TCP/TLS 都建不上, 不是"慢")。
+#     连带两个问题: ① 每次失败白耗一个 8 秒预算才回退, 543 次÷24并发 ≈ 3 分钟纯浪费
+#                   ② 5 端点冗余退化成单端点 —— 536/543 节点最终都落在 linode-fremont,
+#                      另外 4 个端点几乎没被用上, 冗余形同虚设。
+#     推测原因: Hetzner 的**美国机房是托管在第三方/AWS** 的 (nbg1/fsn1/hel1 才是自建),
+#     Azure → AWS 托管机房的 peering 很可能不通; 德国自建机房反而更稳。
+#     ★ 因此不要因为"同区优先"就盲目信任地理邻近 —— 端点在 Actions 视角的真实可达性
+#       才是唯一标准, 这也是下面熔断器存在的意义。
 SPEED_CROSS_URLS = [
-    # ── 美国区 (与 Actions US runner 同区, 链路最短最稳, 优先使用) ──
-    ("hetzner-ash",     "https://ash-speed.hetzner.com/100MB.bin"),
-    #   Hetzner (德国公司) 的美国弗吉尼亚节点。Hetzner 全系纯物理机房、无 Anycast,
-    #   官方长期提供公开测速端点, 实测 HTTP 206 + 稳定吞吐。作为首选。
+    # ── 首选: Linode/Akamai (实测可达性最高) ──
     ("linode-fremont",  "https://speedtest.fremont.linode.com/100MB-fremont.bin"),
-    #   Linode (Akamai 旗下) 加州弗里蒙特。与 Hetzner 属**不同运营商**,
-    #   用于排除"单一厂商网络故障/限速"被误判成节点问题。
+    #   Linode (Akamai 旗下) 加州弗里蒙特。**#70 实测 98.3% 成功率, 唯一被证明可用**。
     ("linode-dallas",   "https://speedtest.dallas.linode.com/100MB-dallas.bin"),
-    #   Linode 德州达拉斯, 第三重冗余 (同运营商不同城市, 对抗单机房故障)。
-    # ── 欧洲区 (跨大西洋, 更严格; 适合欧洲 runner 或需要更保守评估时) ──
+    #   Linode 德州达拉斯, 同运营商不同城市, 对抗单机房故障。
+    ("linode-newark",   "https://speedtest.newark.linode.com/100MB-newark.bin"),
+    #   Linode 新泽西纽瓦克, 第三重冗余。24 机房统一命名 100MB-<city>.bin, 全球可用。
+    # ── 欧洲区 (Hetzner 自建机房, 非托管) ──
     ("hetzner-nbg",     "https://nbg1-speed.hetzner.com/100MB.bin"),
-    #   Hetzner 德国纽伦堡。跨大西洋链路, 测出的速度更接近真实国际带宽。
+    #   Hetzner 德国纽伦堡 —— **自建**数据中心 (与已删的美国托管机不同性质)。
     ("hetzner-fsn",     "https://fsn1-speed.hetzner.com/100MB.bin"),
-    #   Hetzner 德国费尔司芬, 第四重冗余 (欧洲侧不同城市)。
+    #   Hetzner 德国费尔司芬, 自建机房第二点。
+    ("hetzner-hel",     "https://hel1-speed.hetzner.com/100MB.bin"),
+    #   Hetzner 芬兰赫尔辛基, 自建机房第三点, 欧洲侧多城冗余。
 ]
 # 端点级失败归因: 全部非 CF 端点都失败 → 判定问题在节点本身, 不再重试端点
-#   理由: 5 个物理机房端点分属 2 家运营商/5 个城市, 全部不通的可能性远低于
+#   理由: 物理机房端点分属 2 家运营商/6 个城市, 全部不通的可能性远低于
 #   "单个端点故障"。此时继续重试端点是浪费 —— 真正的原因是节点到不了这些
 #   物理机房(选择性转发/链路封锁), 或者节点本身已断流。
 SPEED_CROSS_FAIL_ALL_THRESHOLD = 1   # 至少要有几个端点成功才采信交叉结果
 SPEED_CROSS_RANGE_BYTES = 5_000_000  # Range 请求前 5MB (避免拉满 100MB)
+
+# --- 端点熔断器 (让运行时数据驱动端点选择, 不靠人工猜) ---
+#   ★ 为什么需要: 端点在 Actions 视角的可达性会随时间漂移 (peering 变化、网络政策、
+#     第三方封锁)。#70 里 hetzner-ash 零成功, 但靠人工看日志才发现 —— 而每轮白耗
+#     543×8s。熔断器让"某个端点在本轮明显不可用"这件事自动生效, 无需等下轮人工干预。
+#   判据: 连续失败 SPEED_CB_FAIL_THRESHOLD 次 → 本轮不再尝试该端点 (直接跳到下一个);
+#         任一次成功 → 立即清零计数, 恢复可用。
+#   阈值 20 次的由来: 24 并发下约 1~2 秒就能累积到 20 次, 既不会误伤"偶发一次超时",
+#     又能在几十秒内摘掉 100% 失败的端点, 省下后续几百次无效尝试。
+SPEED_CB_FAIL_THRESHOLD = 20        # 连续失败多少次后本轮熔断
+SPEED_CB_COOLDOWN_HITS = 3          # 成功后需再成功几次才认为"完全恢复"(保守, 防抖动)
+
+# 熔断器运行时状态 (进程内, 每轮 run_liveness_test 前 reset)
+#   测活阶段是 24 并发 ThreadPoolExecutor, 下面三个字典的读写必须加锁保护,
+#   否则"读-改-写"不是原子的, 并发下会漏计失败次数(熔断器形同失效)。
+_CB_LOCK = threading.Lock()
+_CB_STATE = {}    # 端点名 -> {"fail": 连续失败数, "tripped": 是否已熔断, "stat": [成功, 总尝试]}
+
+
+def _reset_endpoint_breaker():
+    """每轮测活开始前清空熔断状态 (端点可达性按轮次重新评估)"""
+    with _CB_LOCK:
+        _CB_STATE.clear()
+
+
+def _ep_available(ep_name: str) -> bool:
+    """端点当前是否可尝试 (已熔断则跳过)"""
+    with _CB_LOCK:
+        return not _CB_STATE.get(ep_name, {}).get("tripped", False)
+
+
+def _ep_record(ep_name: str, ok: bool):
+    """记录一次端点尝试结果, 达到阈值则熔断; 成功则清零"""
+    with _CB_LOCK:
+        st = _CB_STATE.setdefault(ep_name, {"fail": 0, "tripped": False,
+                                            "stat": [0, 0]})
+        st["stat"][1] += 1                     # stat = [成功次数, 总尝试次数]
+        if ok:
+            st["stat"][0] += 1
+            st["fail"] = 0
+            st["tripped"] = False              # 成功即解除熔断
+        else:
+            st["fail"] += 1
+            if st["fail"] >= SPEED_CB_FAIL_THRESHOLD:
+                st["tripped"] = True
+
+
+def _ep_success_rates() -> str:
+    """生成端点成功率报告 (供日志), 直接反映哪个端点在 Actions 视角真正可用"""
+    with _CB_LOCK:
+        order = [nm for nm, _ in SPEED_CROSS_URLS]
+        out = []
+        for nm in order:
+            st = _CB_STATE.get(nm)
+            if not st or st["stat"][1] == 0:
+                out.append(f"{nm}:未尝试")
+                continue
+            okc, total = st["stat"]
+            rate = okc / total * 100
+            mark = " ★已熔断" if st["tripped"] else ""
+            out.append(f"{nm} {okc}/{total} ({rate:.1f}%){mark}")
+        return " | ".join(out)
 SPEED_RETEST_URLS = [             # 复测端点 (1MB 小样本)
     "https://speed.cloudflare.com/__down?bytes=" + str(SPEED_RETEST_BYTES),
     "https://cachefly.cachefly.net/10mb.test",
@@ -1771,8 +1844,14 @@ def test_single_node(item, keep_alive_check=True):
         shortcircuit = _is_speed_shortcircuit(speed_bps, speed_retest,
                                              ttfb_ms, retest_failed)
         if speed_bps > 0 and SPEED_CROSS_URLS and shortcircuit:
-            # 前 SAME_REGION_ENDPOINTS 个是同区端点(预算足), 其后是跨区(预算略短)
+            # 逐个回退 + 熔断: 已熔断的端点直接跳过(不浪费预算), 成功的即采用
+            tried = 0
             for idx_ep, (ep_name, ep_url) in enumerate(SPEED_CROSS_URLS[:SPEED_CROSS_MAX_ENDPOINTS]):
+                # ★ 熔断检查: 连续失败达阈值的端点本轮不再尝试。
+                #   #70 教训: hetzner-ash 543 次尝试零成功, 每次都白耗 8 秒预算才回退,
+                #   543÷24并发 ≈ 3 分钟纯浪费。熔断后约 20 次失败即摘除, 秒级生效。
+                if not _ep_available(ep_name):
+                    continue
                 budget = (SPEED_CROSS_BUDGET if idx_ep < SPEED_CROSS_SAME_REGION
                           else SPEED_CROSS_BUDGET_FAR)
                 # ★ 用更宽松的样本下限 (SPEED_CROSS_MIN_BYTES=50KB, 主测速是200KB):
@@ -1782,6 +1861,8 @@ def test_single_node(item, keep_alive_check=True):
                                                    SPEED_CROSS_WARMUP,
                                                    range_bytes=SPEED_CROSS_RANGE_BYTES,
                                                    min_data_bytes=SPEED_CROSS_MIN_BYTES)
+                tried += 1
+                _ep_record(ep_name, b > 0)
                 if b > 0:
                     cross_results.append((ep_name, b))
                     # ★ 只取第一个成功端点即可判定 —— 目的是"用物理机房校准 CDN 虚高",
@@ -1797,10 +1878,11 @@ def test_single_node(item, keep_alive_check=True):
                         speed_unstable = True
                     speed_bps = speed_cross
             else:
-                # 全部物理机房端点都不通 → 归因判定, 不再重试端点
+                # 全部物理机房端点都不通 (或全部已熔断) → 归因判定, 不再重试端点
                 # ★ 边界处理: 保留 Cloudflare 首测结果, 不做任何惩罚。
-                #   理由: 端点全挂更可能是端点侧问题(物理机房从 Actions 不可达),
-                #   此时用首测值只是"可能偏高", 而判死则会造成真活 0 (#67/#68 教训)。
+                #   理由: 端点全挂更可能是端点侧问题(物理机房从 Actions 不可达,
+                #   或全部端点已被熔断), 此时用首测值只是"可能偏高",
+                #   而判死则会造成真活 0 (#67/#68 教训)。
                 cross_all_failed = True
         else:
             # 未触发短路 (或无结果) → 不做交叉, 直接采用 Cloudflare 测速值
@@ -1947,6 +2029,8 @@ def run_liveness_test(candidates: list) -> list:
     print(f"[*] sing-box 全协议真实测活: {len(candidates)} 节点 (并发 {MAX_WORKERS_TEST}) ...")
     results = []
     done_count = [0]
+    # 端点熔断状态按轮次重置 —— 端点可达性会随时间漂移, 不跨轮沿用
+    _reset_endpoint_breaker()
 
     def _work(item):
         return test_single_node(item)
@@ -2045,6 +2129,10 @@ def run_liveness_test(candidates: list) -> list:
         if ep_why:
             print(f"    端点失败原因 Top5: "
                   + " | ".join(f"{k}:{v}" for k, v in ep_why.most_common(5)))
+    # ★ 端点成功率: 直接反映哪个端点在 Actions 视角真正可用 (无失败时也要打印)。
+    #   #70 就是靠这行才发现 hetzner-ash 是 0/543 (而非"慢")。
+    #   下轮若某个端点被熔断, 这行会显示 "★已熔断", 无需人工翻日志找原因。
+    print(f"    端点成功率 (本轮): {_ep_success_rates()}")
     all_fail = [r for r in results if r.get("cross_all_failed")]
     if all_fail:
         print(f"    [!] {len(all_fail)} 个节点对**全部** {len(SPEED_CROSS_URLS)} 个非CF端点"
@@ -3045,8 +3133,74 @@ def export_all(unique_nodes, residential, non_residential):
         export_clash_yaml(p, os.path.join(RESIDENTIAL_COUNTRY_DIR, f"clash-{cc}.yaml"))
         export_singbox_json(s, os.path.join(RESIDENTIAL_COUNTRY_DIR, f"singbox-{cc}.json"))
 
-    print(f"[*] 导出完毕: 全量 {len(all_links)} | 家宽 {len(res_links)}")
+    # 5) ★ 家宽合并订阅 (跨地区汇总, 独立于地区分类)
+    #   目的: 家宽节点本就稀少 (#70 仅 6 个), 分散在各地区订阅里让用户要一个个试。
+    #         这里按"同一落地出口只留一条"的规则合并, 给一个单点入口。
+    #   合并规则 (界面/README 中同步说明, 便于用户理解为何数量会变少):
+    #     ① 跨地区去重: 同一 出口IP:端口 只保留一条 —— 家宽代理池里同一落地 IP
+    #        常被多源以不同地区名收录, 不去重会出现"换了地区其实是同一台机器"。
+    #     ② 保留信息量最高的一条: 按 (有出口IP > 延迟更低 > 吞吐更高) 择优,
+    #        避免同一落地节点保留了性能最差的那个副本。
+    #     ③ 全部按地区归入家宽区展示 (force_res=True), 与地区分类互不影响。
+    #   产出: residential-all.{txt,clash.yaml,singbox.json} 三份格式, 独立可订阅。
+    #   ★ 不影响既有产物: 步骤 1~4 全程只读 residential/non_residential, 此处不修改。
+    res_merged, merge_dropped, merge_kept_cc = _merge_residential(residential)
+    if res_merged:
+        ml, mp, ms = build_group(res_merged, force_res=True)
+    else:
+        ml, mp, ms = [], [], []
+    with open(os.path.join(OUTPUT_DIR, "residential-all.txt"), "w", encoding="utf-8") as f:
+        f.write(base64.b64encode("\n".join(ml).encode()).decode())
+    if mp:
+        export_clash_yaml(mp, os.path.join(OUTPUT_DIR, "residential-all-clash.yaml"))
+        export_singbox_json(ms, os.path.join(OUTPUT_DIR, "residential-all-singbox.json"))
+    else:
+        # 空状态: 清掉上一轮遗留文件, 避免链接指向过期的陈旧订阅
+        for fn in ("residential-all-clash.yaml", "residential-all-singbox.json"):
+            p = os.path.join(OUTPUT_DIR, fn)
+            if os.path.exists(p):
+                os.remove(p)
+        print("[!] 家宽合并订阅为空 — 已生成空 residential-all.txt, "
+              "并清理上一轮的 residential-all-* 文件 (避免链接指向过期数据)")
+    if merge_dropped:
+        print(f"[*] 家宽合并: 原始 {len(residential)} → 合并后 {len(res_merged)} "
+              f"(跨地区去重剔除 {merge_dropped} 个同落地IP副本) | 覆盖地区: {merge_kept_cc}")
+
+    print(f"[*] 导出完毕: 全量 {len(all_links)} | 家宽 {len(res_links)} | 家宽合并 {len(ml)}")
     return len(all_links), len(res_links)
+
+
+def _merge_residential(residential: list) -> tuple:
+    """家宽跨地区合并: 按 出口IP:端口 去重, 择优保留 → (合并后列表, 去重数, 地区串)
+
+    规则说明 (与 README 中的描述严格一致, 改这里就要同步改那里):
+      ① 无出口 IP 的节点**不参与去重**, 全部保留 —— 它们无法判定是否为同一落地,
+         贸然合并会丢节点。
+      ② 同 出口IP:端口 时择优: 有出口IP > 延迟低 > 吞吐高。
+      ③ 排序沿用 classify_and_export 已给出的质量分顺序, 这里的择优只做兜底。
+    """
+    best = {}          # dedup_key -> 最优节点
+    pass_through = []  # 无出口 IP, 原样保留
+    dropped = 0
+    for n in residential:
+        ip = n.get("exit_ip") or ""
+        if not ip:
+            pass_through.append(n)
+            continue
+        key = f"{ip}:{n['port']}"
+        cur = best.get(key)
+        if cur is None:
+            best[key] = n
+            continue
+        dropped += 1
+        # 择优: 延迟更低者胜; 延迟相同则吞吐更高者胜
+        cur_lat = cur.get("latency_ms") or 999999
+        new_lat = n.get("latency_ms") or 999999
+        if (new_lat, -(n.get("speed_bps") or 0)) < (cur_lat, -(cur.get("speed_bps") or 0)):
+            best[key] = n
+    merged = list(best.values()) + pass_through
+    ccs = sorted({n.get("country", "??") for n in merged})
+    return merged, dropped, ",".join(ccs)
 
 
 def export_clash_yaml(clash_proxies, filepath):
@@ -3134,6 +3288,17 @@ def update_readme(total_count, res_count):
     res_table = table_rows(res_counts, "residential-by-country")
     normal_table = table_rows(normal_counts, "by-country")
 
+    # 家宽合并订阅的实际节点数 (直接数文件, 不靠传入值, 避免与导出结果不一致)
+    _merged_txt = os.path.join(OUTPUT_DIR, "residential-all.txt")
+    res_merged_count = count_file(_merged_txt) if os.path.exists(_merged_txt) else 0
+    # 空状态提示: 合并结果为空时明确告知, 避免用户点进链接得到空白却一头雾水
+    res_merged_empty = (
+        f"\n> **当前合并家宽节点数: {res_merged_count}**\n" if res_merged_count else
+        "\n> ⚠️ **本轮未测得任何家宽节点**, 上述链接会返回空内容 (家宽 IP 极稀少, "
+        "属正常现象)。下方按地区分类同样为空。空订阅已清理上一轮残留文件, "
+        "不会指向过期数据; 家宽节点出现后会自动填充。\n"
+    )
+
     readme = f"""# 🚀 免费节点自动测活订阅池 (含真实家宽/住宅IP甄选)
 
 > 👤 **定制规范命名**: 所有订阅节点均重命名为 `国旗 地区 序号 (家宽) - xiaohe`
@@ -3155,6 +3320,34 @@ def update_readme(total_count, res_count):
 ## 🏠 按照家宽分类节点订阅 (住宅 IP 专区)
 
 > 家宽判定六重信号: ① ip-api.com `hosting` 字段 ② `mobile` 移动网络字段 ③ Cloudflare/主流 CDN Anycast 网段比对 ④ MaxMind GeoLite2 ASN 白/黑名单 (覆盖 60+ 国家主流民用运营商) ⑤ rDNS/ISP 名称特征 ⑥ Scamalytics 风控评分复核 (fraud ≥75 降级、≥90 剔除)。排除所有云主机/数据中心/CDN 任播, 保留真实民用宽带与移动网络。
+
+### 🌐 家宽节点合并订阅 (跨地区汇总 · 单点入口)
+
+> 家宽节点数量本就稀少, 分散在下方各地区订阅里需要逐个尝试。这里提供**全部家宽节点的合并订阅**,
+> 独立于地区分类单独更新, 适合直接导入客户端一次性使用。
+
+**合并规则与筛选条件** (便于理解合并后数量为何会变少):
+
+| 规则 | 说明 |
+| :--- | :--- |
+| ① **跨地区去重** | 同一 `出口IP:端口` 只保留一条。家宽代理池里同一台落地机器常被多源以不同地区名重复收录, 不去重会出现"换了地区其实是同一台" |
+| ② **择优保留** | 同出口IP 时按 **延迟更低 → 吞吐更高** 保留, 避免留下性能最差的副本 |
+| ③ **无出口IP 全保留** | 拿不到出口 IP 的节点不参与去重 (无法判定是否同一落地), 全部保留 |
+| ④ **家宽身份不变** | 合并只做去重与择优, 不改变家宽判定结果, 也不影响下方地区分类 |
+
+**订阅入口**:
+
+| 客户端 / 格式 | 免翻 CDN 订阅直链 (国内直连) | 官方原生 Raw 直链 (开启代理) |
+| :--- | :---: | :---: |
+| ⚡ **V2RayN (Base64)** | [免翻 CDN 直链](https://cdn.jsdelivr.net/gh/{repo_name}@main/output/residential-all.txt) | [官方 Raw 直链](https://raw.githubusercontent.com/{repo_name}/main/output/residential-all.txt) |
+| 📦 **Clash (YAML)** | [免翻 CDN 直链](https://cdn.jsdelivr.net/gh/{repo_name}@main/output/residential-all-clash.yaml) | [官方 Raw 直链](https://raw.githubusercontent.com/{repo_name}/main/output/residential-all-clash.yaml) |
+| 📦 **sing-box (JSON)** | [免翻 CDN 直链](https://cdn.jsdelivr.net/gh/{repo_name}@main/output/residential-all-singbox.json) | [官方 Raw 直链](https://raw.githubusercontent.com/{repo_name}/main/output/residential-all-singbox.json) |
+
+{res_merged_empty}
+
+### 🗺️ 按地区细分家宽订阅
+
+> 下方按地区拆分的家宽订阅保持独立更新, 与上方合并订阅互不影响, 按需选择即可。
 
 | 家宽地区 | 节点数 | V2RayN 专属订阅 | Clash 专属订阅 | sing-box 专属订阅 |
 | :--- | :---: | :---: | :---: | :---: |

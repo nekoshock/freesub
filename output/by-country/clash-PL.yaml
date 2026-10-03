@@ -5,6 +5,14 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇵🇱 波兰 (Poland) 01 - NEKO
+  server: 222.167.245.240
+  port: 28015
+  udp: true
+  type: hysteria2
+  password: e19b5aa3-16c9-435a-8bc9-76f2f6ddff43
+  sni: api-test-udp-traffic.kaneki.cfd
+  skip-cert-verify: true
+- name: 🇵🇱 波兰 (Poland) 02 - NEKO
   server: 95.85.227.241
   port: 443
   udp: true
@@ -17,18 +25,28 @@ proxies:
     short-id: 25934afbedc65791
   servername: proxy3d.h1guro.ovh
   client-fingerprint: chrome
-- name: 🇵🇱 波兰 (Poland) 02 - NEKO
-  server: pl.monkora.org
+- name: 🇵🇱 波兰 (Poland) 03 - NEKO
+  server: 149.86.227.200
   port: 443
   udp: true
   type: vless
-  uuid: 454431fc-71e2-42b1-b375-5b55dd06666a
+  uuid: 0f4081e7-612b-425f-8def-eebf144aedba
+  flow: xtls-rprx-vision
   tls: true
   reality-opts:
-    public-key: aUdvs6o4PHN6jmdkIKBA2rHsN_7l8W2SaDfNgzn-BwU
-  servername: example.org
-  client-fingerprint: firefox
-- name: 🇵🇱 波兰 (Poland) 03 - NEKO
+    public-key: ITd6cmCxudmTvGcwnAzpd0VRe8jS9KJAQ1tmtVN3mCM
+    short-id: 9e15546f267baa64
+  servername: waypoint.connectserverix.com
+  client-fingerprint: chrome
+- name: 🇵🇱 波兰 (Poland) 04 - NEKO
+  server: 202.78.163.237
+  port: 443
+  udp: true
+  type: trojan
+  password: UX82473651
+  sni: cheerful-swan.rooster465.autos
+  skip-cert-verify: false
+- name: 🇵🇱 波兰 (Poland) 05 - NEKO
   server: 83.168.107.220
   port: 443
   udp: true
@@ -41,22 +59,33 @@ proxies:
     short-id: c56d4f1c
   servername: google.com
   client-fingerprint: chrome
-- name: 🇵🇱 波兰 (Poland) 04 - NEKO
-  server: 202.78.163.237
-  port: 443
+- name: 🇵🇱 波兰 (Poland) 06 - NEKO
+  server: 31.77.13.19
+  port: 2063
   udp: true
-  type: trojan
-  password: UX82473651
-  sni: cheerful-swan.rooster465.autos
-  skip-cert-verify: false
-- name: 🇵🇱 波兰 (Poland) 05 - NEKO
-  server: 222.167.245.240
-  port: 28015
+  type: vless
+  uuid: b18d5990-96eb-4587-a386-7f8ef7591e6a
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: MMpt_jWc4J3oySBdf5sPDVRkiWlZmOObth6A1scM9BM
+  servername: rusbid.de
+  client-fingerprint: chrome
+- name: 🇵🇱 波兰 (Poland) 07 - NEKO
+  server: pl.srv.vbuste-bot.com
+  port: 444
   udp: true
-  type: hysteria2
-  password: e19b5aa3-16c9-435a-8bc9-76f2f6ddff43
-  sni: api-test-udp-traffic.kaneki.cfd
-  skip-cert-verify: true
+  type: vless
+  uuid: 318c935d-c195-41d3-99ad-9bbcfdab3386
+  tls: true
+  reality-opts:
+    public-key: 0-or5ogGhYbBgsVSrSC2Fhxyp2BN97Y9pqIdg61Qd08
+    short-id: 4be4110078ebed4a
+  servername: pl.srv.vbuste-bot.com
+  client-fingerprint: firefox
+  network: grpc
+  grpc-opts:
+    grpc-service-name: ''
 proxy-groups:
 - name: PROXIES
   type: select
@@ -67,6 +96,8 @@ proxy-groups:
   - 🇵🇱 波兰 (Poland) 03 - NEKO
   - 🇵🇱 波兰 (Poland) 04 - NEKO
   - 🇵🇱 波兰 (Poland) 05 - NEKO
+  - 🇵🇱 波兰 (Poland) 06 - NEKO
+  - 🇵🇱 波兰 (Poland) 07 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -77,5 +108,7 @@ proxy-groups:
   - 🇵🇱 波兰 (Poland) 03 - NEKO
   - 🇵🇱 波兰 (Poland) 04 - NEKO
   - 🇵🇱 波兰 (Poland) 05 - NEKO
+  - 🇵🇱 波兰 (Poland) 06 - NEKO
+  - 🇵🇱 波兰 (Poland) 07 - NEKO
 rules:
 - MATCH,PROXIES

@@ -15,8 +15,9 @@
        + Cloudflare 限时下载测速 → 断流节点识别 (稳态吞吐 < 200KB/s)
          · 分母只取首数据块后的稳态区间 (剔除握手/TLS/RTT, 否则快节点被系统性低估)
          · 1MB 二次复测取最小值 (防 CDN 缓存/TCP 突发骗过单轮结果)
-         · 跨端点交叉测速 (物理机房 Hetzner/Linode, 逐个回退取首个有效;
-           全部非CF端点不通 → 判定问题在节点自身而非端点)
+         · 跨端点交叉测速 (按需触发: 仅当首测疑似 CDN 短路时才跑物理机房
+           Hetzner/Linode 端点; 正常结果直接采用, 省掉每节点 5~8 秒)
+         · 重复节点回填 (多源收录的同一节点, 测活后继承真活代表节点的结果)
          · 测速健全性护栏 (全体中位数过高 = CDN 短路, 撤销⚡优选标记)
        + 丢包率探测 (复用 204 探针连发 5 次, 抓抖动严重的节点)
        + 首包时间 TTFB (与握手 RTT 互补, 抓"延迟低但首包慢"的体感杀手)
@@ -63,20 +64,7 @@ except ImportError as e:
 # ══════════════════════════════════════════════════════════════════
 
 SOURCE_URLS = [
-    "https://raw.githubusercontent.com/free-nodes/v2rayfree/main/sub",
-    "https://raw.githubusercontent.com/Pawdroid/Free-servers/main/sub",
-    "https://raw.githubusercontent.com/chengaopan/AutoMergePublicNodes/master/list.txt",
-    "https://raw.githubusercontent.com/ShatakVPN/ConfigForge-V2Ray/main/configs/all.txt",
-    "https://raw.githubusercontent.com/freefq/free/master/v2",
-    "https://www.ermao.net/sub/v2ray/ermao.net",
-    "https://gist.githubusercontent.com/shuaidaoya/9e5cf2749c0ce79932dd9229d9b4162b/raw/base64.txt",
-    "https://raw.githubusercontent.com/awesome-vpn/awesome-vpn/master/all",
-    "https://raw.githubusercontent.com/ZYFXS/ZYFXS001/refs/heads/main/3v-youtube%40ZYFXS",
-    "https://gist.githubusercontent.com/guidongone/72bdfb8a20164bac35debfb182ed646d/raw/864533db03b328588c8543bb78bd90fed2664259/V2ray261003.txt",
     "https://raw.githubusercontent.com/cbusifabcap/daily_free_vpn/refs/heads/main/Z.txt",
-    "https://raw.githubusercontent.com/ebrasha/free-v2ray-public-list/refs/heads/main/V2Ray-Config-By-EbraSha.txt",
-    "https://raw.githubusercontent.com/zhuhaiuk/free-nodes/main/nodes.txt",
-    "https://raw.githubusercontent.com/0xRadikal/Free-v2ray-Configs/main/verified/configs_base64.txt",
 ]
 
 OUTPUT_DIR = "output"
@@ -129,6 +117,23 @@ SPEED_UNSTABLE_PENALTY = 1.5         # 不稳定节点的实际门槛上浮倍�
 #   逐个回退, 拿到第一个有效结果即停 —— 所以正常情况下只花第一个端点的预算。
 SPEED_CROSS_MIN_ENDPOINTS = 2        # 至少要有几个端点成功才采信交叉结果 (不足则退化用已有)
 SPEED_CROSS_MAX_ENDPOINTS = 5        # 最多试几个端点 (与 SPEED_CROSS_URLS 等长, 保证回退能走到最后一个)
+
+# --- 短路判定阈值 (决定是否启动交叉验证) ---
+#   ★ 交叉测速改为**按需触发**: Cloudflare 测速若正常就直接采用, 不跑物理机房端点。
+#     判定"疑似短路"用下面几个信号, 命中任意一条才启动交叉 (宁可漏判也不误判):
+#       ① 首测速度高得不合常理 (超过 SHORTCUT_ABS_MAX) —— 物理上不现实的带宽
+#       ② 复测与首测落差极大 (复测/首测 < SHORTCUT_DROP_RATIO) —— CDN 缓存突发特征
+#       ③ 复测未通过 (retest_failed) —— 只有 CDN 端点能通, 换端点就抓瞎
+#   这些信号全部指向"测速数字可能来自 CDN 边缘短路而非节点真实带宽"。
+SHORTCUT_ABS_MAX      = 4_000_000   # 4MB/s: 超过此值视作疑似短路
+#   ★ 定 4MB/s 的依据: 实测 #65 在 Azure runner 上 Cloudflare 测速中位 7.1MB/s
+#     (物理上不可能是真实跨境带宽, 是 CDN 边缘短路)。若阈值定 8MB/s, #65 那种
+#     "普遍虚高但没到8M"的典型场景反而不会触发交叉, 护栏形同虚设 (初版就踩了这个坑)。
+#     4MB/s 已高于 Actions→用户侧的常见真实带宽, 超过即可疑。
+SHORTCUT_DROP_RATIO   = 0.25        # 复测/首测 < 0.25 → 落差过大, 疑似首测虚高
+SHORTCUT_RETX_PROBE   = 1           # 保留位: 未来若要加"多次重测一致性"判定时的采样数
+# 交叉验证专用的宽松门槛: 物理机房链路慢, 用比主测速低得多的样本下限, 避免误判端点不通
+SPEED_CROSS_MIN_BYTES = 50_000      # 交叉验证只要 50KB 样本即可 (主测速是 200KB)
 SPEED_CROSS_BUDGET       = 8.0       # 首选端点预算 (秒) — 同区端点, 需覆盖握手+热身+稳态采样
 SPEED_CROSS_BUDGET_FAR   = 5.0       # 跨区端点预算 (秒) — 握手更慢, 但链路更长稳态采样需求略低
 SPEED_CROSS_SAME_REGION  = 3        # 前 N 个端点视为"同区"(走 SPEED_CROSS_BUDGET), 其后为跨区
@@ -1403,7 +1408,8 @@ def print_once(key: str, msg: str):
 def measure_download_speed(proxies: dict, urls: list, budget: float,
                            warmup: float, chunk_size: int = SPEED_CHUNK_SIZE,
                            idle_timeout: float = SPEED_IDLE_TIMEOUT,
-                           with_ttfb: bool = False, range_bytes: int = 0):
+                           with_ttfb: bool = False, range_bytes: int = 0,
+                           min_data_bytes: int = 0):
     """限时下载测速 → 返回稳态吞吐 (B/s, 0 = 失败/断流)
 
     ★ 关键修正: 分母只取"首数据块 → 结束"的稳态区间。
@@ -1420,8 +1426,13 @@ def measure_download_speed(proxies: dict, urls: list, budget: float,
       旧版所有失败路径都是静默 continue, 403/超时/样本不足/断流 全都只返回 0,
       日志里只能看到"最快 0KB/s" —— #67 事故时无法定位到底是哪一环坏的。
       现在把每个端点的失败原因收集起来, 由调用方汇总进日志。
+
+    min_data_bytes: 有效样本下限, 0 表示用全局 SPEED_MIN_DATA_BYTES(200KB)。
+      交叉验证传 SPEED_CROSS_MIN_BYTES(50KB) —— 物理机房跨大西洋链路慢,
+      拿不到 200KB 就会被误判"端点不通", 导致本可采信的交叉结果丢失。
     """
     fail_reason = ""
+    min_bytes = min_data_bytes if min_data_bytes > 0 else SPEED_MIN_DATA_BYTES
     for speed_url in urls:
         downloaded = 0        # 全部收到的字节 (含热身期, 用于判断是否真拿到数据)
         steady_bytes = 0      # 稳态区间内的字节 (用于算速率)
@@ -1469,11 +1480,11 @@ def measure_download_speed(proxies: dict, urls: list, budget: float,
                     # 空闲超限无任何数据 → 断流签名, 立即中止
                     if now - last_chunk_time > idle_timeout:
                         break
-            # 样本量判定: 只要拿到过数据就够算速率 (SPEED_MIN_DATA_BYTES 兜底防虚高瞬时值)。
+            # 样本量判定: 只要拿到过数据就够算速率 (min_bytes 兜底防虚高瞬时值)。
             # ★ 若 t_steady 仍为 None (预算在热身期内耗尽), 降级用"总下载量/总耗时"计算 ——
             #   宁可给一个偏保守的估计, 也不要把已下过 MB 级数据的节点误判成"样本不足"。
             if t_steady is None:
-                if downloaded >= SPEED_MIN_DATA_BYTES:
+                if downloaded >= min_bytes:
                     elapsed_fallback = max(time.time() - t_first, 0.001) if t_first else 1.0
                     bps_fallback = int(downloaded / elapsed_fallback)
                     if with_ttfb:
@@ -1481,7 +1492,7 @@ def measure_download_speed(proxies: dict, urls: list, budget: float,
                     return bps_fallback, "热身期耗尽(降级估算)"
                 fail_reason = f"样本不足({downloaded}B/{budget:.0f}s)"
                 continue
-            if downloaded < SPEED_MIN_DATA_BYTES:
+            if downloaded < min_bytes:
                 fail_reason = f"样本不足({downloaded}B/{budget:.0f}s)"
                 continue
             elif not fail_reason:
@@ -1531,6 +1542,37 @@ def measure_packet_loss(proxies: dict, probe_count: int = LOSS_PROBE_COUNT) -> f
         except Exception:
             continue
     return (probe_count - ok) / float(probe_count)
+
+
+def _is_speed_shortcircuit(speed_bps: int, speed_retest: int,
+                          ttfb_ms: int, retest_failed: bool) -> bool:
+    """判定 Cloudflare 测速结果是否"疑似短路" (即数字可能来自 CDN 边缘而非节点真实带宽)
+
+    返回 True = 疑似短路, 需要启动物理机房端点做交叉验证;
+         False = 结果可信, 直接采用, 不进交叉 (省掉每节点 5~8 秒开销)。
+
+    ★ 为什么要有这个判断: Actions runner 与 Cloudflare 边缘节点常常同机房/近缘,
+      speed.cloudflare.com 测出的是"内网带宽" (实测 #65 中位 7.1MB/s / 最快 29MB/s,
+      物理上不可能是真实跨境带宽)。而无条件跑物理机房交叉测速代价极大:
+      每节点额外 5~8 秒, 且跨大西洋链路本身慢, 端点常因样本不足/超时失败 →
+      正常节点被误判不稳 (#68 交叉测速采信 0/297 即此因)。
+
+    三个短路信号 (命中任一即触发):
+      ① 首测速度 > SHORTCUT_ABS_MAX: 高得不合常理
+      ② 复测/首测 < SHORTCUT_DROP_RATIO: 复测掉得太多, 首测可能是 CDN 缓存突发
+      ③ 复测未通过: 只在 Cloudflare 端点测到, 换端点就抓瞎
+    刻意**不做**的判断: 不因为"速度慢"而触发 —— 慢节点恰恰是真实问题,
+    交叉测速对它们没有额外信息, 不该再花时间。
+    """
+    if speed_bps <= 0:
+        return False                       # 根本没测到速度 → 无从判断短路
+    if speed_bps > SHORTCUT_ABS_MAX:
+        return True                        # 信号①
+    if retest_failed:
+        return True                        # 信号③
+    if speed_retest > 0 and speed_retest < speed_bps * SHORTCUT_DROP_RATIO:
+        return True                        # 信号②
+    return False
 
 
 def test_single_node(item, keep_alive_check=True):
@@ -1707,24 +1749,39 @@ def test_single_node(item, keep_alive_check=True):
                         speed_unstable = True
                     speed_bps = min(speed_bps, speed_retest)
 
-        # --- 4c) 跨端点交叉测速 (防单端点欺骗 + 防 Cloudflare 内网短路) ---
-        #   ★ 端点为纯物理机房 (Hetzner / Linode), 无 Anycast, 走真实国际链路。
-        #     取最小值 = 用户实际能拿到的最差体验 (对 CF 快但对物理机房慢的
+        # --- 4c) 跨端点交叉测速 (按需触发: 仅当 Cloudflare 测速疑似短路时才启动) ---
+        #   ★ 2026-10-04 改造 (原无条件触发 → 按需触发):
+        #     旧逻辑对每个 speed_bps>0 的节点都跑一遍物理机房交叉测速, 带来两个问题:
+        #       ① 耗时: 每节点额外 5~8 秒, 2500 节点就是 3~5 小时;
+        #       ② 误判: 跨大西洋链路本身就慢, 物理机房端点常因"样本不足/超时"失败,
+        #          明明 CDN 测速正常的节点被拖成不稳 (#68 交叉测速采信 0/297 的根因)。
+        #     现改为: Cloudflare 测速结果若**正常**(未触发短路特征)就直接采用, 不进交叉;
+        #     只有出现"疑似短路"特征(见 _is_speed_shortcircuit)才启动物理机房端点复算。
+        #   取最小值 = 用户实际能拿到的最差体验 (对 CF 快但对物理机房慢的
         #     "特供节点"会被拉回真实水平)。
         #   逐个回退: 某端点不通就顺次试下一个, 直到拿到有效结果;
         #   失败的端点按名字记入 cross_fail_names, 便于回查是端点故障还是节点问题。
         speed_cross = 0
+        cross_results = []                # [(端点名, 速度)] 首个成功端点即停
         cross_fail_names = []
         cross_fail_reasons = []
         cross_all_failed = False
-        if speed_bps > 0 and SPEED_CROSS_URLS:
+        cross_skipped = False          # 未触发短路 → 正常放行, 未做交叉
+        # 先判定 Cloudflare 结果是否疑似短路 (只在有结果时才可能短路)
+        shortcircuit = _is_speed_shortcircuit(speed_bps, speed_retest,
+                                             ttfb_ms, retest_failed)
+        if speed_bps > 0 and SPEED_CROSS_URLS and shortcircuit:
             # 前 SAME_REGION_ENDPOINTS 个是同区端点(预算足), 其后是跨区(预算略短)
             for idx_ep, (ep_name, ep_url) in enumerate(SPEED_CROSS_URLS[:SPEED_CROSS_MAX_ENDPOINTS]):
                 budget = (SPEED_CROSS_BUDGET if idx_ep < SPEED_CROSS_SAME_REGION
                           else SPEED_CROSS_BUDGET_FAR)
+                # ★ 用更宽松的样本下限 (SPEED_CROSS_MIN_BYTES=50KB, 主测速是200KB):
+                #   物理机房跨大西洋链路慢, 拿不到 200KB 就会被误判"端点不通",
+                #   导致本可采信的交叉结果丢失 (#68 采信 0/297 的直接原因之一)
                 b, ep_fail = measure_download_speed(proxies, [ep_url], budget,
                                                    SPEED_CROSS_WARMUP,
-                                                   range_bytes=SPEED_CROSS_RANGE_BYTES)
+                                                   range_bytes=SPEED_CROSS_RANGE_BYTES,
+                                                   min_data_bytes=SPEED_CROSS_MIN_BYTES)
                 if b > 0:
                     cross_results.append((ep_name, b))
                     # ★ 只取第一个成功端点即可判定 —— 目的是"用物理机房校准 CDN 虚高",
@@ -1741,8 +1798,13 @@ def test_single_node(item, keep_alive_check=True):
                     speed_bps = speed_cross
             else:
                 # 全部物理机房端点都不通 → 归因判定, 不再重试端点
+                # ★ 边界处理: 保留 Cloudflare 首测结果, 不做任何惩罚。
+                #   理由: 端点全挂更可能是端点侧问题(物理机房从 Actions 不可达),
+                #   此时用首测值只是"可能偏高", 而判死则会造成真活 0 (#67/#68 教训)。
                 cross_all_failed = True
-            # 全部物理端点不可达 → 保留首轮结果, 不做惩罚 (信息不足不判死)
+        else:
+            # 未触发短路 (或无结果) → 不做交叉, 直接采用 Cloudflare 测速值
+            cross_skipped = True
 
         # --- 5) 丢包率探测 (抓抖动/丢包严重的节点) ---
         #   复用 204 探针连发 LOSS_PROBE_COUNT 次, 零额外带宽成本。
@@ -1813,6 +1875,8 @@ def test_single_node(item, keep_alive_check=True):
             "cross_fail_names": cross_fail_names,        # 失败端点名, 便于回查
             "cross_fail_reasons": cross_fail_reasons,    # 失败端点+原因
             "cross_all_failed": cross_all_failed,        # 全部非CF端点不通 → 问题在节点
+            "cross_skipped": cross_skipped,              # 未触发短路, 未做交叉
+            "speed_shortcircuit": shortcircuit,          # 是否判定为疑似短路
             "speed_unstable": speed_unstable,
             "ttfb_ms": ttfb_ms,
             "ttfb_slow": ttfb_slow,
@@ -1953,14 +2017,17 @@ def run_liveness_test(candidates: list) -> list:
               f"中位 {losses[len(losses)//2]:.0%} | 最差 {losses[-1]:.0%}{tail}")
     elif untested:
         print(f"[+] 丢包率: 全部未测 ({untested} 个) — 无节点通过吞吐门槛, 该维度跳过")
-    # 交叉测速生效判定: 采信了交叉结果 (speed_cross>0) 的节点中,
-    # 有多少被取最小值后掉到了首轮之下 (= 说明对某些源不通畅)
+    # 交叉测速生效判定 (按需触发: 仅疑似短路的节点才进交叉)
     cross_used = [r for r in results if r.get("speed_cross_bps", 0) > 0]
     cross_lowered = sum(1 for r in cross_used
                         if r.get("speed_cross_bps", 0) < r.get("speed_retest_bps", 0) or
                         r.get("speed_cross_bps", 0) < r.get("speed_bps", 0))
-    print(f"[+] 交叉测速 (物理机房端点, 逐个回退取首个有效): "
-          f"采信 {len(cross_used)}/{len(results)} | 其中被最小值拉低 {cross_lowered}")
+    sc_count = sum(1 for r in results if r.get("speed_shortcircuit"))
+    sc_used = sum(1 for r in results if r.get("speed_shortcircuit") and r.get("speed_cross_bps", 0) > 0)
+    print(f"[+] 交叉测速 (按需触发, 仅疑似短路才跑物理机房端点): "
+          f"疑似短路 {sc_count}/{len(results)} | 交叉成功 {sc_used} | 被最小值拉低 {cross_lowered}")
+    if sc_count == 0:
+        print(f"    → 无节点触发短路特征, 全部直接采用 Cloudflare 测速值 (省掉每节点 5~8s)")
     # 端点级失败归因: 哪个端点老失败 = 该端点/线路有问题; 全失败 = 节点自身问题
     ep_fail = Counter()
     for r in results:
@@ -3235,19 +3302,22 @@ def main():
     #     少起 2498 次 sing-box 进程、少跑 2498 轮探测。
     #   被剔除的重复 URI **不再回填** (2026-10 起): 测活后的回填既不省时间
     #     (测试量已由这里定死), 也因出口IP相同必然在分类去重处被折叠, 还会让
-    #     未经预筛的原始 URI 绕过静态预筛/端口预检。详见下方步骤 4.5 的说明。
-    seen_keys, deduped, dup_count = set(), [], 0
+    #     重复项在测活后会回填 (见步骤 4.5), 保证多源收录的同一节点不丢失。
+    # seen_keys 记录 key → [该 key 下的全部 URI] (首个是代表节点, 其余是重复项)
+    seen_keys, deduped, dup_count = {}, [], 0
     for item in candidates:
         uri, outbound, server, port, proto = item
         key = (server.lower() if server else "", port, proto, cred_fingerprint(outbound, proto))
         if key in seen_keys:
+            seen_keys[key].append(uri)   # 记录重复 URI, 测活后回填
             dup_count += 1
         else:
-            seen_keys.add(key)
+            seen_keys[key] = [uri]
             deduped.append(item)
     if dup_count:
         print(f"[*] 测前去重(凭据指纹): {len(candidates)} → {len(deduped)} "
-              f"(剔除重复 {dup_count} — 仅测代表节点, 重复项不回填)")
+              f"(剔除重复 {dup_count} — 仅测代表节点, 测活后回填有效项)")
+    DEDUP_MAP = seen_keys      # 供测活后回填 (main() 局部使用)
     candidates = deduped
 
     # 2.6 ★ 静态预筛 (零网络零进程): 砍掉主动关闭证书校验的节点
@@ -3269,19 +3339,41 @@ def main():
     # 4. 真实测活 (只测去重后的代表节点)
     test_results = run_liveness_test(candidates)
 
-    # ── 已移除: 重复节点结果回填 (2026-10) ──
-    #   原设计: 让同 凭据+目标 的重复 URI 继承代表节点的测活结果。**现已删除**, 原因:
-    #   1) 不省时间 —— 去重发生在**测前**(2.5 步), 测试量由 candidates 决定;
-    #      回填在测活**之后**, 加多少克隆都不会改变测试量 (2340 个就是 2340 个)。
-    #   2) 不增节点 —— 克隆体与代表节点同 server/port/proto → 出口 IP 必然相同 →
-    #      在 classify_and_export 的 `出口IP:端口` 去重处必然被折叠回 1 条。
-    #      兜底 key (server:port|raw[:64]) 同样折叠: 重复 URI 只在末尾名字段不同,
-    #      前 64 字符完全一致。
-    #   3) 有隐患 —— 克隆体是未经静态预筛/端口预检的原始 URI, 直接继承测活结果
-    #      等于**绕过这两道闸**。例如填了 BLOCK_COUNTRIES="JP" 后,
-    #      代表节点因落地日本被屏蔽, 其重复 URI 却会复活入库。
-    #   结论: 纯负担无收益。保留 2.5 步的凭据去重 (那才是省时间的关键),
-    #         被筛掉的节点本就不该回来。
+    # 4.5 ★ 重复节点结果回填: 同 凭据+目标+协议 的重复 URI 继承代表节点的测活结果。
+    #   前提: key = (server, port, proto, 凭据指纹) 完全相同 → 服务端认的是同一份凭据,
+    #   对同一目标的行为一致, 因此可以安全继承 (不会把"不同服务的节点"混为一谈)。
+    #   位置: 必须在 classify_and_export 的 `出口IP:端口` 去重**之前**,
+    #         这样多源收录的同一节点能以各自的 URI 进分类流程, 由最终去重决定谁留。
+    #   ⚠️ 入场条件比历史版本更严: 只回填**真活**(alive 且未断流)的代表节点结果,
+    #      断流/未测到的代表节点不回填, 避免把失败的结论扩散给同源的其它 URI。
+    if DEDUP_MAP:
+        result_by_key = {}
+        for r in test_results:
+            key = ((r["server"] or "").lower(), r["port"], r["proto"])
+            result_by_key[key] = r
+        expanded = list(test_results)
+        backfilled = 0
+        for key, uris in DEDUP_MAP.items():
+            if len(uris) <= 1:
+                continue
+            lookup = (key[0], key[1], key[2])
+            r = result_by_key.get(lookup)
+            # 只继承"确认为有效"的代表节点结果 (alive 且未断流)
+            if not r or not r.get("alive") or r.get("is_stalled"):
+                continue
+            for extra_uri in uris[1:]:
+                # dict(r) 浅拷贝: 保证 speed_bps/latency_ms/loss_rate/ttfb_ms/
+                # alive/is_stalled/is_premium 等所有状态字段与代表节点完全一致,
+                # 只替换 raw 为本条 URI (后续 classify 会据此解析出各自的 outbound)
+                clone = dict(r)
+                clone["raw"] = extra_uri
+                clone["backfilled"] = True        # 标记来源, 便于日志与排查
+                expanded.append(clone)
+                backfilled += 1
+        if backfilled:
+            print(f"[+] 重复节点回填: +{backfilled} (继承真活代表节点的测活结果)")
+        test_results = expanded
+
 
     # 5. ★ 家宽链式复测: 用最快存活节点做前置双跳复测家宽候选
     #    (模拟用户 v2rayN 链式场景, 双跳失败的家宽降级普通区 — 提高链式可用率)

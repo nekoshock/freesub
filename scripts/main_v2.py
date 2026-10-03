@@ -9,7 +9,8 @@
      (vless/vmess/trojan/ss/hysteria2/tuic/anytls + reality + 全部传输层)
   2. 真实测活（sing-box v1.14 内核，逐节点 SOCKS 入站 + 节点出站）:
      - 阶段A 端口预检: TCP/QUIC 直连握手, 快速丢弃死端口 (削减 90% 无效工作)
-     - 阶段B 真实探测: 多 URL 探测 (gstatic 204 / cloudflare trace)
+     - 阶段B 真实探测: 跨源活性探测 (Google/Cloudflare/Microsoft, 至少 2 源通过)
+       + 延迟上限门槛 (MAX_LATENCY_MS, 此前延迟只排序不淘汰)
        + 经代理取真实出口 IP (api.ip.sb/geoip → 一次拿 country+asn+isp)
        + Cloudflare 限时下载测速 → 断流节点识别 (稳态吞吐 < 200KB/s)
          · 分母只取首数据块后的稳态区间 (剔除握手/TLS/RTT, 否则快节点被系统性低估)
@@ -19,7 +20,7 @@
      - 国家: 出口 IP ip-api.com 批量(45req/min 免费) → MaxMind GeoLite2 兜底
      - 属性: hosting=true/CDN网段/IDC ASN → 机房 | mobile=true → 移动
             | 运营商白名单+rDNS → 家宽
-     - 去重: 出口IP+端口 唯一化, 家宽区严格防同IP刷屏
+     - 去重: 出口IP+端口 唯一化 (保留速度最优), 家宽区严格防同IP刷屏
 """
 
 import os
@@ -109,11 +110,20 @@ IP_ECHO_URLS = [                    # 经代理获取出口 IP (多路冗余)
     "https://ipinfo.io/json",                          # JSON: country/org
     "http://ip-api.com/json/?fields=status,query,countryCode,isp,org,as",  # HTTP free
 ]
-LIVENESS_URLS = [                    # 活性探测 URL (全部要求代理链路完整)
-    "https://www.gstatic.com/generate_204",       # 实测 204 OK
-    "https://www.google.com/generate_204",
-    "http://connectivitycheck.gstatic.com/generate_204",
+# 活性探测 (跨源冗余 — 关键设计)
+#   ★ 旧版三个 URL 全部是 Google 系 (gstatic/google/connectivitycheck.gstatic),
+#     那不是冗余而是"同一个探针测三遍": 只对 Google 通、对其他目标全拒的选择性
+#     转发节点照样判活, 入库后用户打开普通网站直接失败。
+#   现改为跨三源 (Google / Cloudflare / 中立站), 且要求至少 MIN_LIVENESS_HITS
+#   个**不同源**通过 —— "能连上"不等于"能正常用"。
+#   每项 = (名称, URL, 期望状态码); 名称仅用于日志。
+LIVENESS_PROBES = [
+    ("google",    "https://www.gstatic.com/generate_204",        (204, 200)),
+    ("cloudflare", "https://cp.cloudflare.com/generate_204",     (204, 200)),
+    ("microsoft", "http://www.msftconnecttest.com/connecttest.txt", (200,)),
 ]
+MIN_LIVENESS_HITS = 2            # 至少 2 个不同源通过才判活 (三源取二)
+MAX_LATENCY_MS    = 1500         # 延迟上限门槛: 超时即淘汰 (此前延迟只用于排序, 不淘汰)
 SPEED_TEST_URLS = [               # 测速端点多路 (实测部分节点商屏蔽 speed.cloudflare.com)
     "https://speed.cloudflare.com/__down?bytes=" + str(SPEED_TEST_BYTES),
     "https://cachefly.cachefly.net/10mb.test",
@@ -1291,23 +1301,31 @@ def test_single_node(item, keep_alive_check=True):
         proxies = {"http": f"socks5h://127.0.0.1:{socks_port}",
                    "https": f"socks5h://127.0.0.1:{socks_port}"}
 
-        # --- 1) 活性探测: 分层超时重试 (首击宽 12s 容慢节点保准确率; 重试窄 4s 快速放弃死节点) ---
+        # --- 1) 活性探测: 跨源多探针 (Google/Cloudflare/Microsoft), 至少 MIN_LIVENESS_HITS 源通过 ---
         #     延迟按"每次尝试各自计时"取最快一次, 不用跨尝试的累计时间:
         #     旧版 t0 在循环外, 若首击耗满 12s 才失败、第二个 URL 秒通,
         #     latency 会记成 ~12s 而非真实 RTT → 去重/排序全被污染 (慢节点反被优先)
+        #     ★ 不再 break: 三个源都要探完, 才能识别"只对单源通"的选择性转发节点
+        #     (提前 break 会漏判 — 第一个源通就直接判活, 等于退回旧版的宽松标准)
         alive_hits, latency_ms = 0, 99999
-        for i, url in enumerate(LIVENESS_URLS):
+        for i, (probe_name, url, expect) in enumerate(LIVENESS_PROBES):
             timeout = PROBE_TIMEOUT if i == 0 else PROBE_RETRY_TIMEOUT
             t_try = time.time()
             try:
                 r = PROBE_SESSION.get(url, proxies=proxies, timeout=timeout, allow_redirects=False)
-                if r.status_code in (204, 200):
+                if r.status_code in expect:
                     alive_hits += 1
                     latency_ms = min(latency_ms, (time.time() - t_try) * 1000)
-                    break  # 任一成功即可
+                else:
+                    # 该源明确拒绝 (403/407/302 等) = 选择性转发, 但不直接判死,
+                    # 交给 MIN_LIVENESS_HITS 裁决
+                    pass
             except Exception:
                 continue
-        if alive_hits == 0:
+        if alive_hits < MIN_LIVENESS_HITS:
+            return None
+        # 延迟上限门槛: 活性过了但延迟过高的节点体验极差, 此前延迟只排序不淘汰
+        if latency_ms > MAX_LATENCY_MS:
             return None
 
         # --- 2) 真实出口 IP (多路冗余) ---
@@ -1405,6 +1423,7 @@ def test_single_node(item, keep_alive_check=True):
             "port": port,
             "proto": proto,
             "alive": True,
+            "alive_hits": alive_hits,
             "latency_ms": int(latency_ms),
             "exit_ip": exit_ip,
             "exit_country_online": exit_country,
@@ -1465,6 +1484,17 @@ def run_liveness_test(candidates: list) -> list:
           f"优选≥{SPEED_TIER_GOOD//1000}KB/s {premium} | 复测不稳 {unstable} | "
           f"最快 {speeds[0]//1000 if speeds else 0}KB/s | "
           f"中位 {speeds[len(speeds)//2]//1000 if speeds else 0}KB/s")
+    lats = sorted(r["latency_ms"] for r in results if r["latency_ms"] < 99999)
+    if lats:
+        print(f"[+] 延迟分布 (上限 {MAX_LATENCY_MS}ms): "
+              f"最快 {lats[0]:.0f}ms | 中位 {lats[len(lats)//2]:.0f}ms | "
+              f"最慢 {lats[-1]:.0f}ms")
+    # 记录探针命中数分布, 便于评估跨源门槛 (2 = 三源取二通过)
+    hit_dist = {}
+    for r in results:
+        hit_dist[r.get("alive_hits", 0)] = hit_dist.get(r.get("alive_hits", 0), 0) + 1
+    print(f"[+] 跨源命中分布 (需≥{MIN_LIVENESS_HITS}): "
+          + " | ".join(f"{k}源:{v}" for k, v in sorted(hit_dist.items())))
     return results  # 保留全部信息, 分类阶段再决定去留
 
 
@@ -2212,16 +2242,26 @@ def classify_and_export(test_results: list):
     if downgraded:
         print(f"[*] 高 fraud 分 (≥75) 家宽候选降级: {downgraded} 个")
 
-    # ── 去重 (同出口IP+端口 只留最快) ──
+    # ── 去重 (同出口IP+端口 只留最优) ──
+    #   ★ 旧版按 latency 最小者保留, 会把同一出口 IP 下**速度最快**的那个节点丢掉,
+    #     只留下延迟最低但吞吐一般的 (排序键与用户实际体感脱节)。
+    #   现改为: 速度达标者优先 → 速度相同取延迟更低 → 再相同取吞吐更高。
+    #   延迟已在上游由 MAX_LATENCY_MS 兜底, 这里不需要再当主键。
+    def _dedup_rank(n):
+        spd = n.get("speed_bps", 0) or 0
+        return (0 if spd >= SPEED_MIN_BYTES_PER_S else 1,      # 速度达标优先
+                n["latency_ms"],                                 # 延迟次之
+                -spd)                                            # 同延迟取吞吐更高
+
     best_by_key = {}
     for n in safe_nodes:
         key = f"{n['exit_ip']}:{n['port']}" if n["exit_ip"] else f"{n['server']}:{n['port']}|{n['raw'][:64]}"
         cur = best_by_key.get(key)
-        if not cur or n["latency_ms"] < cur["latency_ms"]:
+        if not cur or _dedup_rank(n) < _dedup_rank(cur):
             best_by_key[key] = n
     unique_nodes = list(best_by_key.values())
     dup_dropped = len(safe_nodes) - len(unique_nodes)
-    print(f"[*] 去重: {len(safe_nodes)} → {len(unique_nodes)} (剔除重复 {dup_dropped})")
+    print(f"[*] 去重: {len(safe_nodes)} → {len(unique_nodes)} (剔除重复 {dup_dropped}, 保留速度最优)")
 
     # 去重: 出口IP+端口 唯一化, 家宽区严格防同IP刷屏
     # ★ 链式复测 (chain_retest) 双跳失败的家宽候选 → 不进家宽专区 (降级普通)

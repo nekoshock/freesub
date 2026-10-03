@@ -5,26 +5,43 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇵🇱 波兰 (Poland) 01 - NEKO
-  server: 2.26.148.145
+  server: 95.85.227.241
   port: 443
   udp: true
   type: vless
-  uuid: 4643976f-85fa-40cf-9e58-ea28b50f253b
+  uuid: f90b7d43-69e2-4b46-a672-8029bc6796a2
   flow: xtls-rprx-vision
   tls: true
   reality-opts:
-    public-key: SB1uC0OEveYjSiS_Nuw9Ld-uVVXWqi794OGnldthY3I
-  servername: polo.ali-bard.online
-  client-fingerprint: edge
+    public-key: dlX12huNd8CRSGgKGCwi1GiCLFtmRxY9b7ywKCIyWXo
+    short-id: 25934afbedc65791
+  servername: proxy3d.h1guro.ovh
+  client-fingerprint: chrome
 - name: 🇵🇱 波兰 (Poland) 02 - NEKO
-  server: 222.167.245.240
-  port: 28015
+  server: pl.monkora.org
+  port: 443
   udp: true
-  type: hysteria2
-  password: e19b5aa3-16c9-435a-8bc9-76f2f6ddff43
-  sni: api-test-udp-traffic.kaneki.cfd
-  skip-cert-verify: true
+  type: vless
+  uuid: 454431fc-71e2-42b1-b375-5b55dd06666a
+  tls: true
+  reality-opts:
+    public-key: aUdvs6o4PHN6jmdkIKBA2rHsN_7l8W2SaDfNgzn-BwU
+  servername: example.org
+  client-fingerprint: firefox
 - name: 🇵🇱 波兰 (Poland) 03 - NEKO
+  server: 83.168.107.220
+  port: 443
+  udp: true
+  type: vless
+  uuid: b1813cbd-831f-4cb3-baf8-5bc0cc8298bc
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: s0lbZ5BO3ctZjE8DzsXkNL0NvLl6FgLG6532NQzXigo
+    short-id: c56d4f1c
+  servername: google.com
+  client-fingerprint: chrome
+- name: 🇵🇱 波兰 (Poland) 04 - NEKO
   server: 202.78.163.237
   port: 443
   udp: true
@@ -32,31 +49,14 @@ proxies:
   password: UX82473651
   sni: cheerful-swan.rooster465.autos
   skip-cert-verify: false
-- name: 🇵🇱 波兰 (Poland) 04 - NEKO
-  server: pl-waw.dontblockmepls.com
-  port: 2063
-  udp: true
-  type: vless
-  uuid: b18d5990-96eb-4587-a386-7f8ef7591e6a
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: MMpt_jWc4J3oySBdf5sPDVRkiWlZmOObth6A1scM9BM
-  servername: rusbid.de
-  client-fingerprint: chrome
 - name: 🇵🇱 波兰 (Poland) 05 - NEKO
-  server: 149.86.227.200
-  port: 443
+  server: 222.167.245.240
+  port: 28015
   udp: true
-  type: vless
-  uuid: 0f4081e7-612b-425f-8def-eebf144aedba
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: ITd6cmCxudmTvGcwnAzpd0VRe8jS9KJAQ1tmtVN3mCM
-    short-id: 9e15546f267baa64
-  servername: waypoint.connectserverix.com
-  client-fingerprint: safari
+  type: hysteria2
+  password: e19b5aa3-16c9-435a-8bc9-76f2f6ddff43
+  sni: api-test-udp-traffic.kaneki.cfd
+  skip-cert-verify: true
 proxy-groups:
 - name: PROXIES
   type: select

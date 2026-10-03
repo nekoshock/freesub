@@ -5,23 +5,32 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇮🇹 意大利 (Italy) 01 - NEKO
-  server: 57.131.48.45
-  port: 8388
+  server: 89.41.172.85
+  port: 22324
   udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: itzvpn@321
+  type: vmess
+  uuid: 04621bae-ab36-11ec-b909-0242ac120002
+  alterId: 0
+  cipher: auto
+- name: 🇮🇹 意大利 (Italy) 02 - NEKO
+  server: 204.216.216.23
+  port: 10086
+  udp: true
+  type: vless
+  uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
   - 🇮🇹 意大利 (Italy) 01 - NEKO
+  - 🇮🇹 意大利 (Italy) 02 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
   - 🇮🇹 意大利 (Italy) 01 - NEKO
+  - 🇮🇹 意大利 (Italy) 02 - NEKO
 rules:
 - MATCH,PROXIES

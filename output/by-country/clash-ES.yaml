@@ -20,13 +20,18 @@ proxies:
   cipher: chacha20-ietf-poly1305
   password: WSyL4XTwNsdv
 - name: 🇪🇸 西班牙 (Spain) 03 - NEKO
-  server: xby.mangshe.xyz
-  port: 2060
+  server: 45.154.206.88
+  port: 443
   udp: true
-  type: hysteria2
-  password: 5d0a6445-a30d-4522-bb1f-94f1d3ad63be
-  sni: xby.mangshe.xyz
-  skip-cert-verify: true
+  type: vless
+  uuid: 454431fc-71e2-42b1-b375-5b55dd06666a
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: 2AKBmK0PMf2zUMhRo1Ad-WNf_XoRk3AN-SGo6ZdhxA4
+    short-id: ecca56e9a9963ed7
+  servername: es.monkeyisland.xyz
+  client-fingerprint: firefox
 - name: 🇪🇸 西班牙 (Spain) 04 - NEKO
   server: 140.174.184.5
   port: 8388
@@ -48,7 +53,15 @@ proxies:
   grpc-opts:
     grpc-service-name: cdn.v1.AssetService
 - name: 🇪🇸 西班牙 (Spain) 06 - NEKO
-  server: 66.163.118.73
+  server: xby.mangshe.xyz
+  port: 2060
+  udp: true
+  type: hysteria2
+  password: 5d0a6445-a30d-4522-bb1f-94f1d3ad63be
+  sni: xby.mangshe.xyz
+  skip-cert-verify: true
+- name: 🇪🇸 西班牙 (Spain) 07 - NEKO
+  server: mygptagent.org
   port: 443
   udp: true
   type: vmess
@@ -74,6 +87,7 @@ proxy-groups:
   - 🇪🇸 西班牙 (Spain) 04 - NEKO
   - 🇪🇸 西班牙 (Spain) 05 - NEKO
   - 🇪🇸 西班牙 (Spain) 06 - NEKO
+  - 🇪🇸 西班牙 (Spain) 07 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -85,5 +99,6 @@ proxy-groups:
   - 🇪🇸 西班牙 (Spain) 04 - NEKO
   - 🇪🇸 西班牙 (Spain) 05 - NEKO
   - 🇪🇸 西班牙 (Spain) 06 - NEKO
+  - 🇪🇸 西班牙 (Spain) 07 - NEKO
 rules:
 - MATCH,PROXIES

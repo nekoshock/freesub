@@ -4,21 +4,25 @@
   },
   "outbounds": [
     {
-      "type": "trojan",
-      "tag": "🇹🇼 中国台湾 (Taiwan) 01 (家宽) - NEKO",
-      "server": "ttww11.bpca2026.top",
+      "type": "vless",
+      "tag": "🇦🇺 澳大利亚 (Australia) 01 - NEKO",
+      "server": "208.103.161.5",
       "server_port": 443,
-      "password": "9efd3f19-c7cb-4fa9-8d66-0598043597dc",
+      "uuid": "d042a74a-c305-4eec-a89f-39a348022c92",
       "tls": {
         "enabled": true,
-        "server_name": "ttww11.bpca2026.top",
-        "insecure": true
+        "server_name": "dry-butterfly-8eb9.tmpgnacio83.workers.dev",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
       },
       "transport": {
         "type": "ws",
-        "path": "/images",
+        "path": "/",
         "headers": {
-          "Host": "ttww11.bpca2026.top"
+          "Host": "dry-butterfly-8eb9.tmpgnacio83.workers.dev"
         }
       }
     },
@@ -27,14 +31,14 @@
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇹🇼 中国台湾 (Taiwan) 01 (家宽) - NEKO"
+        "🇦🇺 澳大利亚 (Australia) 01 - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇹🇼 中国台湾 (Taiwan) 01 (家宽) - NEKO"
+        "🇦🇺 澳大利亚 (Australia) 01 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

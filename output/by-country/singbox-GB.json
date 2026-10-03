@@ -4,9 +4,17 @@
   },
   "outbounds": [
     {
-      "type": "vless",
+      "type": "shadowsocks",
       "tag": "🇬🇧 英国 (United Kingdom) 01 - NEKO",
-      "server": "66.90.104.43",
+      "server": "51.77.225.200",
+      "server_port": 8388,
+      "method": "chacha20-ietf-poly1305",
+      "password": "zRZNBszYyWo5"
+    },
+    {
+      "type": "vless",
+      "tag": "🇬🇧 英国 (United Kingdom) 02 - NEKO",
+      "server": "66.90.105.211",
       "server_port": 2083,
       "uuid": "cd3bb7d9-7df3-4644-ac05-c260990ac277",
       "transport": {
@@ -15,32 +23,14 @@
       }
     },
     {
-      "type": "shadowsocks",
-      "tag": "🇬🇧 英国 (United Kingdom) 02 - NEKO",
-      "server": "51.77.225.200",
-      "server_port": 8388,
-      "method": "chacha20-ietf-poly1305",
-      "password": "zRZNBszYyWo5"
-    },
-    {
       "type": "vless",
       "tag": "🇬🇧 英国 (United Kingdom) 03 - NEKO",
-      "server": "23.81.34.204",
-      "server_port": 443,
-      "uuid": "99955907-9070-46f0-a200-9c7a0b9d74fe",
-      "flow": "xtls-rprx-vision",
-      "tls": {
-        "enabled": true,
-        "server_name": "speed.cloudflare.com",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "J_p_dxR8dIKaezk1_Ins5MZ7e4dqgrr2n9690vVuQ2s",
-          "short_id": "b19b017d6f453873"
-        }
+      "server": "66.90.104.42",
+      "server_port": 2083,
+      "uuid": "cd3bb7d9-7df3-4644-ac05-c260990ac277",
+      "transport": {
+        "type": "grpc",
+        "service_name": "vless"
       }
     },
     {
@@ -65,71 +55,21 @@
     {
       "type": "vless",
       "tag": "🇬🇧 英国 (United Kingdom) 05 - NEKO",
-      "server": "87.192.47.10",
-      "server_port": 52006,
-      "uuid": "bc659d88-a1e0-4c65-a49a-7b51b26a7a7f",
+      "server": "23.81.34.204",
+      "server_port": 443,
+      "uuid": "99955907-9070-46f0-a200-9c7a0b9d74fe",
       "flow": "xtls-rprx-vision",
       "tls": {
         "enabled": true,
-        "server_name": "grok.setlisting.ru",
-        "insecure": false,
-        "alpn": [
-          "h2",
-          "http/1.1"
-        ],
+        "server_name": "speed.cloudflare.com",
         "utls": {
           "enabled": true,
           "fingerprint": "chrome"
-        }
-      }
-    },
-    {
-      "type": "vmess",
-      "tag": "🇬🇧 英国 (United Kingdom) 06 - NEKO",
-      "server": "186.190.211.67",
-      "server_port": 443,
-      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
-      "security": "auto",
-      "tls": {
-        "enabled": true,
-        "server_name": "pahobac.org",
-        "insecure": false
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/linkvws",
-        "headers": {
-          "Host": "pahobac.org"
-        }
-      }
-    },
-    {
-      "type": "vless",
-      "tag": "🇬🇧 英国 (United Kingdom) 07 - NEKO",
-      "server": "66.90.105.211",
-      "server_port": 2083,
-      "uuid": "cd3bb7d9-7df3-4644-ac05-c260990ac277",
-      "transport": {
-        "type": "grpc",
-        "service_name": "vless"
-      }
-    },
-    {
-      "type": "vless",
-      "tag": "🇬🇧 英国 (United Kingdom) 08 - NEKO",
-      "server": "199.232.78.159",
-      "server_port": 443,
-      "uuid": "36e8e5e8-8010-45a1-9fb7-9fa21f7e4c66",
-      "tls": {
-        "enabled": true,
-        "server_name": "ssl.fastly.com",
-        "insecure": false
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/",
-        "headers": {
-          "Host": "pannn1.global.ssl.fastly.net"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "J_p_dxR8dIKaezk1_Ins5MZ7e4dqgrr2n9690vVuQ2s",
+          "short_id": "b19b017d6f453873"
         }
       }
     },
@@ -142,10 +82,7 @@
         "🇬🇧 英国 (United Kingdom) 02 - NEKO",
         "🇬🇧 英国 (United Kingdom) 03 - NEKO",
         "🇬🇧 英国 (United Kingdom) 04 - NEKO",
-        "🇬🇧 英国 (United Kingdom) 05 - NEKO",
-        "🇬🇧 英国 (United Kingdom) 06 - NEKO",
-        "🇬🇧 英国 (United Kingdom) 07 - NEKO",
-        "🇬🇧 英国 (United Kingdom) 08 - NEKO"
+        "🇬🇧 英国 (United Kingdom) 05 - NEKO"
       ]
     },
     {
@@ -156,10 +93,7 @@
         "🇬🇧 英国 (United Kingdom) 02 - NEKO",
         "🇬🇧 英国 (United Kingdom) 03 - NEKO",
         "🇬🇧 英国 (United Kingdom) 04 - NEKO",
-        "🇬🇧 英国 (United Kingdom) 05 - NEKO",
-        "🇬🇧 英国 (United Kingdom) 06 - NEKO",
-        "🇬🇧 英国 (United Kingdom) 07 - NEKO",
-        "🇬🇧 英国 (United Kingdom) 08 - NEKO"
+        "🇬🇧 英国 (United Kingdom) 05 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

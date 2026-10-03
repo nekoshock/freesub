@@ -13,13 +13,6 @@ proxies:
   alterId: 0
   cipher: auto
 - name: 🇨🇦 加拿大 (Canada) 02 - NEKO
-  server: 51.222.12.127
-  port: 445
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: zDNVedRFPQexG9v
-- name: 🇨🇦 加拿大 (Canada) 03 - NEKO
   server: 198.57.27.190
   port: 22324
   udp: true
@@ -27,21 +20,14 @@ proxies:
   uuid: 04621bae-ab36-11ec-b909-0242ac120002
   alterId: 0
   cipher: auto
-- name: 🇨🇦 加拿大 (Canada) 04 - NEKO
-  server: 185.156.47.97
-  port: 9443
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: eveaaTOb8ji8yntw2Z9yWUG0d6Ir8Ld8m3ymH8THdC5egiTH1mXCiBc0Skr7FibH
-- name: 🇨🇦 加拿大 (Canada) 05 - NEKO
+- name: 🇨🇦 加拿大 (Canada) 03 - NEKO
   server: 51.222.200.165
   port: 5000
   udp: true
   type: ss
   cipher: aes-256-gcm
   password: Y6R9pAtvxxzmGC
-- name: 🇨🇦 加拿大 (Canada) 06 - NEKO
+- name: 🇨🇦 加拿大 (Canada) 04 - NEKO
   server: 158.51.123.42
   port: 22324
   udp: true
@@ -49,18 +35,7 @@ proxies:
   uuid: 04621bae-ab36-11ec-b909-0242ac120002
   alterId: 0
   cipher: auto
-- name: 🇨🇦 加拿大 (Canada) 07 - NEKO
-  server: ca.monkora.org
-  port: 443
-  udp: true
-  type: vless
-  uuid: 454431fc-71e2-42b1-b375-5b55dd06666a
-  tls: true
-  reality-opts:
-    public-key: aUdvs6o4PHN6jmdkIKBA2rHsN_7l8W2SaDfNgzn-BwU
-  servername: ca.monkora.org
-  client-fingerprint: firefox
-- name: 🇨🇦 加拿大 (Canada) 08 - NEKO
+- name: 🇨🇦 加拿大 (Canada) 05 - NEKO
   server: 158.51.121.123
   port: 443
   udp: true
@@ -76,20 +51,59 @@ proxies:
     path: /linkvws
     headers:
       Host: mygptagent.org
-- name: 🇨🇦 加拿大 (Canada) 09 - NEKO
-  server: 51.222.136.236
-  port: 8882
+- name: 🇨🇦 加拿大 (Canada) 06 - NEKO
+  server: 185.156.47.97
+  port: 9443
   udp: true
   type: ss
   cipher: aes-256-gcm
-  password: kDWvXYZoTBcGkC4
-- name: 🇨🇦 加拿大 (Canada) 10 - NEKO
+  password: eveaaTOb8ji8yntw2Z9yWUG0d6Ir8Ld8m3ymH8THdC5egiTH1mXCiBc0Skr7FibH
+- name: 🇨🇦 加拿大 (Canada) 07 - NEKO
+  server: yyz-ca-01.blncvpn4u.cc
+  port: 9443
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: eveaaTOb8ji8yntw2Z9yWUG0d6Ir8Ld8m3ymH8THdC5egiTH1mXCiBc0Skr7FibH
+- name: 🇨🇦 加拿大 (Canada) 08 - NEKO
+  server: ca.monkora.org
+  port: 443
+  udp: true
+  type: vless
+  uuid: 454431fc-71e2-42b1-b375-5b55dd06666a
+  tls: true
+  reality-opts:
+    public-key: aUdvs6o4PHN6jmdkIKBA2rHsN_7l8W2SaDfNgzn-BwU
+  servername: ca.monkora.org
+  client-fingerprint: firefox
+- name: 🇨🇦 加拿大 (Canada) 09 - NEKO
   server: 51.79.85.185
   port: 8118
   udp: true
   type: ss
   cipher: aes-256-gcm
   password: cdBIDV42DCwnfIN
+- name: 🇨🇦 加拿大 (Canada) 10 - NEKO
+  server: 51.222.12.127
+  port: 445
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: zDNVedRFPQexG9v
+- name: 🇨🇦 加拿大 (Canada) 11 - NEKO
+  server: 51.79.64.198
+  port: 8119
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: cdBIDV42DCwnfIN
+- name: 🇨🇦 加拿大 (Canada) 12 - NEKO
+  server: 51.222.155.113
+  port: 5601
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: Y6R9pAtvxxzmGC
 proxy-groups:
 - name: PROXIES
   type: select
@@ -105,6 +119,8 @@ proxy-groups:
   - 🇨🇦 加拿大 (Canada) 08 - NEKO
   - 🇨🇦 加拿大 (Canada) 09 - NEKO
   - 🇨🇦 加拿大 (Canada) 10 - NEKO
+  - 🇨🇦 加拿大 (Canada) 11 - NEKO
+  - 🇨🇦 加拿大 (Canada) 12 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -120,5 +136,7 @@ proxy-groups:
   - 🇨🇦 加拿大 (Canada) 08 - NEKO
   - 🇨🇦 加拿大 (Canada) 09 - NEKO
   - 🇨🇦 加拿大 (Canada) 10 - NEKO
+  - 🇨🇦 加拿大 (Canada) 11 - NEKO
+  - 🇨🇦 加拿大 (Canada) 12 - NEKO
 rules:
 - MATCH,PROXIES

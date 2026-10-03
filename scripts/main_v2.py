@@ -66,6 +66,14 @@ SOURCE_URLS = [
     "https://raw.githubusercontent.com/awesome-vpn/awesome-vpn/master/all",
     "https://raw.githubusercontent.com/ZYFXS/ZYFXS001/refs/heads/main/3v-youtube%40ZYFXS",
     "https://gist.githubusercontent.com/guidongone/72bdfb8a20164bac35debfb182ed646d/raw/864533db03b328588c8543bb78bd90fed2664259/V2ray261003.txt",
+    "https://raw.githubusercontent.com/cbusifabcap/daily_free_vpn/refs/heads/main/Z.txt",
+    "https://raw.githubusercontent.com/ebrasha/free-v2ray-public-list/refs/heads/main/V2Ray-Config-By-EbraSha-All-Type.txt",
+    "https://raw.githubusercontent.com/hello-world-1989/cn-news/main/end-gfw-free",
+    "https://raw.githubusercontent.com/hello-world-1989/cn-news/main/end-gfw-together",
+    "https://nodes.udptoos.com/subscriptions/base64.txt",
+    "https://raw.githubusercontent.com/zhuhaiuk/free-nodes/main/nodes.txt",
+    "https://raw.githubusercontent.com/0xRadikal/Free-v2ray-Configs/main/verified/configs_base64.txt",
+    "https://raw.githubusercontent.com/0xRadikal/Free-v2ray-Configs/main/all/configs.txt",
 ]
 
 OUTPUT_DIR = "output"

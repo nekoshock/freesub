@@ -65,7 +65,20 @@ except ImportError as e:
 # ══════════════════════════════════════════════════════════════════
 
 SOURCE_URLS = [
+    "https://raw.githubusercontent.com/free-nodes/v2rayfree/main/sub",
+    "https://raw.githubusercontent.com/Pawdroid/Free-servers/main/sub",
+    "https://raw.githubusercontent.com/chengaopan/AutoMergePublicNodes/master/list.txt",
+    "https://raw.githubusercontent.com/ShatakVPN/ConfigForge-V2Ray/main/configs/all.txt",
+    "https://raw.githubusercontent.com/freefq/free/master/v2",
+    "https://www.ermao.net/sub/v2ray/ermao.net",
+    "https://gist.githubusercontent.com/shuaidaoya/9e5cf2749c0ce79932dd9229d9b4162b/raw/base64.txt",
+    "https://raw.githubusercontent.com/awesome-vpn/awesome-vpn/master/all",
+    "https://raw.githubusercontent.com/ZYFXS/ZYFXS001/refs/heads/main/3v-youtube%40ZYFXS",
+    "https://gist.githubusercontent.com/guidongone/72bdfb8a20164bac35debfb182ed646d/raw/864533db03b328588c8543bb78bd90fed2664259/V2ray261003.txt",
     "https://raw.githubusercontent.com/cbusifabcap/daily_free_vpn/refs/heads/main/Z.txt",
+    "https://raw.githubusercontent.com/ebrasha/free-v2ray-public-list/refs/heads/main/V2Ray-Config-By-EbraSha.txt",
+    "https://raw.githubusercontent.com/zhuhaiuk/free-nodes/main/nodes.txt",
+    "https://raw.githubusercontent.com/0xRadikal/Free-v2ray-Configs/main/verified/configs_base64.txt",
 ]
 
 OUTPUT_DIR = "output"
@@ -1648,22 +1661,24 @@ def _is_speed_shortcircuit(speed_bps: int, speed_retest: int,
     return False
 
 
-def test_single_node(item, keep_alive_check=True):
-    """返回 dict 或 None; 含: 活性/延迟/出口IP/国家/ASN/ISP/速度/MITM"""
+def test_single_node(item, keep_alive_check=True, chain_relay: dict = None):
+    """返回 dict 或 None; 含: 活性/延迟/出口IP/国家/ASN/ISP/速度/MITM
+
+    chain_relay: 可选的 sing-box outbound dict, 作为前置跳板 (detour 双跳)。
+    ★ 2026-10-04 改造: 旧版从 os.environ["CHAIN_RELAY_OUT"] 读 relay, 改成显式入参。
+      环境变量是**进程全局**的, 带来三个问题:
+        ① 无法并发 —— chain_retest 只能串行跑 (#70: 62个候选耗 515s, 占总时长45%);
+        ② 易污染 —— 中途异常若 finally 清理也失败, relay 会泄漏到后续所有阶段;
+        ③ 隐式依赖 —— 单独调用 test_single_node 时行为受外部环境变量影响, 不可测。
+      build_test_config 本就收 chain_relay 参数, 这里只是把来源从全局改为调用方显式传入。
+    """
     raw, outbound, server, port, proto = item
     socks_port = _alloc_socks_port()
     task_id = uuid.uuid4().hex[:10]
     cfg_path = os.path.join(RUNTIME_DIR, f"sb_{task_id}.json")
 
-    # ★ 链式前置 (chain relay): 注入已验证存活节点作前置 (chain_retest 用, 模拟 v2rayN 链式)
-    chain_out = None
-    chain_json = os.environ.get("CHAIN_RELAY_OUT", "").strip()
-    if chain_json:
-        try:
-            chain_out = json.loads(chain_json)
-        except Exception:
-            chain_out = None
-    config = build_test_config(outbound, socks_port, chain_relay=chain_out)
+    # 链式前置 (chain relay): 由调用方显式传入 (chain_retest 用, 模拟 v2rayN 链式)
+    config = build_test_config(outbound, socks_port, chain_relay=chain_relay)
     with open(cfg_path, "w", encoding="utf-8") as f:
         json.dump(config, f)
 
@@ -2155,7 +2170,7 @@ def run_liveness_test(candidates: list) -> list:
 # 阶段 B2: 家宽链式复测 (chain relay retest)
 # ════════════════════════════════════════════════════════════════════
 
-def chain_retest(test_results: list) -> list:
+def chain_retest(test_results: list, ip_api_info: dict = None) -> list:
     """家宽链式复测: 模拟用户 v2rayN 链式 (前置 → 家宽节点 → 目标)
 
     实测背景: 用户反馈家宽节点在 v2rayN 链式代理下仅 ~50% 可用。
@@ -2163,17 +2178,30 @@ def chain_retest(test_results: list) -> list:
     或 UDP/QUIC 节点无法过 socks 链)。解决: CI 里用最快存活节点当前置,
     对家宽候选做双跳复测 — 双跳通过的才进家宽专区。
 
-    流程: 先跑一遍轻量分类拿到家宽候选 → 取最快存活节点做 relay →
-    家宽候选逐个双跳复测 → 双跳也活的保留, 双跳死的降级普通区。
-    返回: 更新 net_type 后的 test_results (原对象原地修改)。
+    流程: 复用已查好的 ip-api 结果拿家宽候选 → 取最快存活节点做 relay →
+    家宽候选**并发**双跳复测 → 双跳死的标记 _chain_failed (降级普通区)。
+    返回: 更新标记后的 test_results (原对象原地修改)。
+
+    ★ 2026-10-04 三项优化 (#70 实测 62 候选耗时 515s, 占总时长 45%):
+      ① 复用 ip_api_info: 旧版在这里又调一次 ip_api_batch_lookup, 而
+         classify_and_export 里还有一次 —— 同一个 IP 集合查两遍。
+         ip-api 免费额度限 15 req/min, 517 IP = 6 批 ≈ 25s, 白多花一半额度。
+         现在由调用方传入, 查不到时再回退到自行查询 (保持函数可独立调用)。
+      ② 并发化: 旧版是纯串行 for 循环, 62 个候选 × 8.3s = 515s。
+         改 ThreadPoolExecutor 复用 MAX_WORKERS_TEST, 预期降到 ~25s。
+      ③ relay 改显式传参 (test_single_node 的 chain_relay 入参), 不再用
+         os.environ —— 环境变量是进程全局的, 既阻塞并发, 也可能泄漏污染后续阶段。
     """
     # 1) 轻量分类拿家宽候选 (复用 classify_and_export 的候选判定, 但不导出)
-    #    家宽候选 = ip-api/mmdb 六信号判 residential/mobile 的节点
-    ip_api_info = {}
-    all_exit_ips = list({r["exit_ip"] for r in test_results if r.get("exit_ip")})
-    if all_exit_ips:
+    #    家宽候选 = ip-api/mmdb 六信号判 residential/mobile 且置信度 >= 60 的节点
+    if ip_api_info is None:
+        # 回退路径: 调用方没传就自己查 (独立调用时的兜底)
+        all_ips = list({r["exit_ip"] for r in test_results if r.get("exit_ip")})
+        if not all_ips:
+            print("[*] 链式复测: 无出口 IP, 跳过")
+            return test_results
         try:
-            ip_api_info = ip_api_batch_lookup(all_exit_ips)
+            ip_api_info = ip_api_batch_lookup(all_ips)
         except Exception as e:
             print(f"[!] 链式复测: ip-api 批量失败 ({e}), 跳过链式复测")
             return test_results
@@ -2192,7 +2220,7 @@ def chain_retest(test_results: list) -> list:
     if not res_candidates:
         print("[*] 链式复测: 无家宽候选, 跳过")
         return test_results
-    print(f"[*] 链式复测: {len(res_candidates)} 个家宽候选")
+    print(f"[*] 链式复测: {len(res_candidates)} 个家宽候选 (并发 {MAX_WORKERS_TEST})")
 
     # 2) 选 relay: 全体存活节点里延迟最低、非家宽候选自己 (避免自己套自己)
     alive_sorted = sorted(
@@ -2216,28 +2244,35 @@ def chain_retest(test_results: list) -> list:
         print("[!] 链式复测: relay outbound 构建失败, 跳过")
         return test_results
     # relay 必须剥离 detour (前置链复用时防循环)
-    relay_out = dict(relay_out)
+    # ★ 深拷贝: 并发时多个候选共享同一 relay dict, 浅拷贝下任一线程改动
+    #   都会污染其他线程的测试配置 (build_test_config 内部还会 pop 字段)
+    relay_out = json.loads(json.dumps(relay_out))
     relay_out.pop("detour", None)
     print(f"[*] 链式 relay: {relay_result['proto']} {relay_result['server']}:{relay_result['port']} "
           f"(延迟 {relay_result['latency_ms']}ms)")
 
-    # 3) 家宽候选逐个双跳复测 (注入 CHAIN_RELAY_OUT, test_single_node 自动加 detour)
-    os.environ["CHAIN_RELAY_OUT"] = json.dumps(relay_out)
-    chain_alive, chain_dead = [], []
-    try:
-        for key, r in res_candidates.items():
+    # 3) 家宽候选**并发**双跳复测 (relay 显式传参, 无全局状态)
+    #    ★ 为什么要并发: 旧版串行 #70 实测 515s (62候选×8.3s), 占总时长 45%。
+    #    ★ 单节点异常不中断整体: 每个 future 单独捕获, 记为双跳失败继续跑,
+    #       避免一个坏节点把整轮复测结果全丢 (旧版一个异常会中断整个 for 循环)。
+    def _chain_one(key_r):
+        _, r = key_r
+        try:
             item = (r["raw"], r.get("outbound") or (parse_node_uri(r["raw"]) or [None])[0],
                     r["server"], r["port"], r["proto"])
             if not item[1]:
-                chain_dead.append(r)
-                continue
-            recheck = test_single_node(item)
-            if recheck and recheck.get("alive") and not recheck.get("is_stalled"):
-                chain_alive.append(r)
-            else:
-                chain_dead.append(r)
-    finally:
-        os.environ.pop("CHAIN_RELAY_OUT", None)
+                return r, False
+            recheck = test_single_node(item, chain_relay=relay_out)
+            return r, bool(recheck and recheck.get("alive") and not recheck.get("is_stalled"))
+        except Exception:
+            return r, False      # 异常 = 双跳不可用, 不让单点失败拖垮整轮
+
+    chain_alive, chain_dead = [], []
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS_TEST) as ex:
+        futs = [ex.submit(_chain_one, kr) for kr in res_candidates.items()]
+        for fut in as_completed(futs):
+            r, ok = fut.result()
+            (chain_alive if ok else chain_dead).append(r)
 
     # 4) 双跳失败的 → 降级普通区 (不从订阅删除, 用户直连场景仍可能可用)
     for r in chain_dead:
@@ -2739,7 +2774,7 @@ def ipapi_is_verify(ip: str) -> dict:
         return {}
 
 
-def classify_and_export(test_results: list):
+def classify_and_export(test_results: list, ip_api_info: dict = None):
     print("[*] 出口 IP 情报与分类 ...")
     # 收集全部出口 IP
     all_exit_ips = []
@@ -2751,9 +2786,10 @@ def classify_and_export(test_results: list):
             all_exit_ips.append(r["exit_ip"])
     print(f"[*] 待查询出口 IP: {len(all_exit_ips)} 个 (ip-api.com 批量 {len(test_results)} 节点)")
 
-    ip_api_info = {}
+    ip_api_info = ip_api_info or {}      # ★ 2026-10-04: 由 main() 预查一次传入复用,
+                                        #   避免这里再查第二遍 (#70 实测白多花 25s + 一半免费额度)
     scam_scores = {}
-    if all_exit_ips:
+    if all_exit_ips and not ip_api_info:
         try:
             est_batches = (len(all_exit_ips) + IP_API_BATCH_SIZE - 1) // IP_API_BATCH_SIZE
             print(f"[*] ip-api 批量: {est_batches} 批 × ~4.2s ≈ {est_batches * 4.2:.0f}s (免费限 15 req/min, 请耐心) ...")
@@ -2761,6 +2797,8 @@ def classify_and_export(test_results: list):
             print(f"[+] ip-api.com 批量情报: {len(ip_api_info)}/{len(all_exit_ips)}")
         except Exception as e:
             print(f"[!] ip-api 批量失败, 将全量走离线: {e}")
+    elif ip_api_info:
+        print(f"[+] 复用主流程预查的 ip-api 情报: {len(ip_api_info)} 条 (跳过重复查询)")
 
     country_reader = asn_reader = None
     try:
@@ -3570,13 +3608,28 @@ def main():
 
     # 5. ★ 家宽链式复测: 用最快存活节点做前置双跳复测家宽候选
     #    (模拟用户 v2rayN 链式场景, 双跳失败的家宽降级普通区 — 提高链式可用率)
-    test_results = chain_retest(test_results)
+    # 5.0 ★ 2026-10-04 优化: ip-api 情报在此处**预查一次**, 供下面 5 与 6 两阶段共用。
+    #   旧版 chain_retest 和 classify_and_export 各查一遍同一个 IP 集合 ——
+    #   #70 实测白多花 25s + 消耗一半免费额度 (ip-api 限 15 req/min, 517IP=6批)。
+    ip_all = list({r["exit_ip"] for r in test_results if r.get("exit_ip")})
+    ip_api_shared = {}
+    if ip_all:
+        try:
+            _est = (len(ip_all) + IP_API_BATCH_SIZE - 1) // IP_API_BATCH_SIZE
+            print(f"[*] ip-api 批量情报 (预查, 供链式复测+分类共用): "
+                  f"{len(ip_all)} IP / {_est} 批 ≈ {_est * 4.2:.0f}s ...")
+            ip_api_shared = ip_api_batch_lookup(ip_all)
+            print(f"[+] ip-api.com 预查完成: {len(ip_api_shared)}/{len(ip_all)}")
+        except Exception as e:
+            print(f"[!] ip-api 批量失败 ({e}), 两阶段将回退到离线判定")
+    test_results = chain_retest(test_results, ip_api_info=ip_api_shared)
 
     # 6. 分类 + 导出 (无真活节点时保留上次 output, 不写空订阅覆盖线上数据)
     if not test_results:
         print("[!] 全部节点测活失败 — 保留上次 output, 不覆盖订阅文件")
         return
-    unique_nodes, residential, non_residential = classify_and_export(test_results)
+    unique_nodes, residential, non_residential = classify_and_export(
+        test_results, ip_api_info=ip_api_shared)
     if not unique_nodes:
         print("[!] 分类后无存活节点 — 保留上次 output")
         return

@@ -15,12 +15,16 @@
        + Cloudflare 限时下载测速 → 断流节点识别 (稳态吞吐 < 200KB/s)
          · 分母只取首数据块后的稳态区间 (剔除握手/TLS/RTT, 否则快节点被系统性低估)
          · 1MB 二次复测取最小值 (防 CDN 缓存/TCP 突发骗过单轮结果)
+         · 跨端点交叉测速 (≥2 端点取最小值, 防"对 Cloudflare 特供"的节点)
+       + 丢包率探测 (复用 204 探针连发 5 次, 抓抖动严重的节点)
+       + 首包时间 TTFB (与握手 RTT 互补, 抓"延迟低但首包慢"的体感杀手)
        + cloudflare trace tls=VERIFIED → MITM/劫持节点识别
   3. 分类与导出:
      - 国家: 出口 IP ip-api.com 批量(45req/min 免费) → MaxMind GeoLite2 兜底
      - 属性: hosting=true/CDN网段/IDC ASN → 机房 | mobile=true → 移动
             | 运营商白名单+rDNS → 家宽
      - 去重: 出口IP+端口 唯一化 (保留速度最优), 家宽区严格防同IP刷屏
+     - 排序: 家宽优先, 组内按综合质量分 (延迟 + 丢包惩罚 + 半个 TTFB)
 """
 
 import os
@@ -109,6 +113,36 @@ SPEED_RETEST_BUDGET    = 4.0         # 复测预算 (秒)
 SPEED_RETEST_WARMUP    = 0.3         # 复测热身更短 (1MB 样本, 握手占比更大)
 SPEED_STABLE_RATIO     = 0.6         # 复测/首测 < 0.6 → 判定首测虚高 (缓存突发)
 SPEED_UNSTABLE_PENALTY = 1.5         # 不稳定节点的实际门槛上浮倍数 (×200KB/s = 300KB/s)
+
+# --- 跨端点交叉测速 (防单端点欺骗) ---
+#   旧逻辑是"首个成功端点即 break", 等于只看 speed.cloudflare.com 一个数据源:
+#   节点只要对 CF 快就定级, 哪怕对其他 CDN/大厂极慢。免费池里"专供 Cloudflare"
+#   的节点不少 (常见于机场给订阅做了按源分流)。改为所有端点都测, **取最小值**。
+#   与二次复测同思路: 最小值代表"用户实际能拿到的最差体验"。
+SPEED_CROSS_MIN_ENDPOINTS = 2        # 至少要有几个端点成功才采信交叉结果 (不足则退化用已有)
+SPEED_CROSS_MAX_ENDPOINTS = 3        # 最多测几个端点 (再多是时间浪费, 不是信息增量)
+SPEED_CROSS_BUDGET       = 3.0       # 每个交叉端点的预算 (秒) — 比首轮短, 仅用于横向比较
+SPEED_CROSS_WARMUP       = 0.3       # 交叉测速热身 (端点间横向比较, 口径一致即可)
+CROSS_BYTES              = 2_000_000 # 交叉测速每端点样本 2MB (够算稳态速率, 不至于太大)
+
+# --- 丢包率 (抓抖动/丢包严重的节点) ---
+#   ★ 现有判定只看延迟, 完全没测丢包 —— 而跨太平洋链路的核心问题恰恰是丢包。
+#   一个 80ms 但丢包 15% 的节点, 体感远差于 300ms 但丢包 0.2% 的节点。
+#   复用已有的 204 探针 (零额外带宽), 连发 N 次统计失败比例。
+LOSS_PROBE_COUNT      = 5            # 采样次数 (5 次够抓出 >20% 的丢包, 又不至于太慢)
+LOSS_PROBE_TIMEOUT    = 3.0          # 单次丢包探测超时 (秒) — 窄超时, 快速识别失败
+MAX_LOSS_RATE         = 0.34         # 丢包率 > 1/3 直接淘汰 (5 次采样下即 2/5 丢)
+LOSS_UNSTABLE_PENALTY = 0.20         # 丢包率 20%~34% 视为不稳 → 吞吐门槛上浮 (叠加不稳惩罚)
+# --- 首包时间 TTFB (Time To First Byte) ---
+#   现有 latency 测的是 TCP+TLS 握手往返; TTFB 测"服务器开始回数据"的时刻。
+#   两者背离是常态: 很多节点 RTT 很低但首包要 1~2 秒 (服务端缓冲/链路拥塞),
+#   用户体感就是"点了没反应"。测速函数本来就经过握手, 顺带记录不额外花时间。
+MAX_TTFB_MS          = 2500          # 首包 > 2.5s 直接淘汰 (典型 RTT 500ms 的正常值远低于此)
+TTFB_UNSTABLE_PENALTY = 1.5          # 首包 > 1500ms 视为响应迟钝 → 吞吐门槛上浮
+# 门槛惩罚上限: 四项惩罚累乘 1.5^4=5.06 会把 200KB/s 门槛推到 1012KB/s (比优选线还高),
+# 过严反失真。这里封顶 2.25× (→ 450KB/s), 即最多因"多重不稳"损失一半带宽余量。
+MAX_SPEED_PENALTY     = 2.25
+
 IP_ECHO_URLS = [                    # 经代理获取出口 IP (多路冗余)
     "https://api.ip.sb/geoip",                         # JSON: country_code/asn/isp
     "https://ipinfo.io/json",                          # JSON: country/org
@@ -1289,7 +1323,8 @@ def print_once(key: str, msg: str):
 
 def measure_download_speed(proxies: dict, urls: list, budget: float,
                            warmup: float, chunk_size: int = SPEED_CHUNK_SIZE,
-                           idle_timeout: float = SPEED_IDLE_TIMEOUT) -> int:
+                           idle_timeout: float = SPEED_IDLE_TIMEOUT,
+                           with_ttfb: bool = False):
     """限时下载测速 → 返回稳态吞吐 (B/s, 0 = 失败/断流)
 
     ★ 关键修正: 分母只取"首数据块 → 结束"的稳态区间。
@@ -1297,6 +1332,10 @@ def measure_download_speed(proxies: dict, urls: list, budget: float,
       导致真实越快的节点被低估得越狠 (实测 1MB/s 节点只算出 ~500KB/s),
       那样单纯抬高 SPEED_MIN_BYTES_PER_S 等于按快慢反向淘汰。
       现改为: 首块到达才开始计时, 前 warmup 秒的数据丢弃 (握手 + TCP 慢启动)。
+
+    with_ttfb=True 时返回 (吞吐, 首包毫秒); 否则只返回吞吐 (保持旧调用兼容)。
+    ★ TTFB = 从发出 GET 到收到**第一个数据块**的耗时, 含握手 + 服务端首字节时间,
+      与 latency (纯握手 RTT) 互补: RTT 低但 TTFB 高 = 服务端缓冲/链路拥塞。
     """
     for speed_url in urls:
         downloaded = 0        # 全部收到的字节 (含热身期, 用于判断是否真拿到数据)
@@ -1336,10 +1375,44 @@ def measure_download_speed(proxies: dict, urls: list, budget: float,
                 continue
             elapsed = max(time.time() - t_steady, 0.001)
             steady_bytes = max(steady_bytes, 1)
-            return int(steady_bytes / elapsed)
+            bps = int(steady_bytes / elapsed)
+            if with_ttfb:
+                return bps, int((t_first - t_start) * 1000)
+            return bps
         except Exception:
             continue
-    return 0  # 全部端点都失败 (数据量不足或 0 字节) → 无法测速
+    return (0, 0) if with_ttfb else 0  # 全部端点失败 → 无法测速
+
+
+def measure_packet_loss(proxies: dict, probe_count: int = LOSS_PROBE_COUNT) -> float:
+    """丢包率探测 → 返回 0.0~1.0 的失败比例 (0 = 全通)
+
+    ★ 为什么必须测: 现有判定只看延迟, 完全没测丢包。但跨太平洋链路的核心问题
+      恰恰是丢包 —— 一个 80ms 但丢包 15% 的节点, 体感远差于 300ms 但丢包 0.2% 的节点。
+      延迟测的是"能不能通", 丢包测的是"通得稳不稳", 两者不可互相替代。
+
+    实现: 复用已有的 204 探针 (零额外带宽成本, 每次只请求 1 个 204 空响应),
+    连发 probe_count 次统计失败比例。任一源成功即算通 (换源轮询, 避免单源
+    故障被误判成节点丢包)。
+
+    ★ 耗时说明: 窄超时 LOSS_PROBE_TIMEOUT 是最坏值, 失败时才占满;
+      正常通的节点每次仅 RTT 级别 (百毫秒), 5 次合计通常 < 1s。
+      这是丢包探测必须在测速**之后**做 (speed_bps>0 才跑) 的另一个理由:
+      已经断流的节点没必要再花时间验证它稳不稳。
+    """
+    if probe_count <= 0:
+        return 0.0
+    ok = 0
+    for i in range(probe_count):
+        name, url, expect = LIVENESS_PROBES[i % len(LIVENESS_PROBES)]
+        try:
+            r = PROBE_SESSION.get(url, proxies=proxies, timeout=LOSS_PROBE_TIMEOUT,
+                                  allow_redirects=False)
+            if r.status_code in expect:
+                ok += 1
+        except Exception:
+            continue
+    return (probe_count - ok) / float(probe_count)
 
 
 def test_single_node(item, keep_alive_check=True):
@@ -1487,8 +1560,9 @@ def test_single_node(item, keep_alive_check=True):
             pass
 
         # --- 4) 断流检测: 限时下载测速 (稳态吞吐, 剔除握手期; 端点多路兜底) ---
-        speed_bps = measure_download_speed(proxies, SPEED_TEST_URLS,
-                                           SPEED_TEST_BUDGET, SPEED_WARMUP)
+        #     with_ttfb=True 同时取首包时间 (与握手 RTT 互补, 见下方 TTFB 判定)
+        speed_bps, ttfb_ms = measure_download_speed(
+            proxies, SPEED_TEST_URLS, SPEED_TEST_BUDGET, SPEED_WARMUP, with_ttfb=True)
 
         # --- 4b) 二次复测 (稳定性闸): 1MB 小样本, 与首测取最小值 ---
         #   动机: 单轮测速会被 CDN 缓存层 / TCP 突发流量骗过 (瞬时冲高后断流)。
@@ -1508,10 +1582,64 @@ def test_single_node(item, keep_alive_check=True):
                         speed_unstable = True
                     speed_bps = min(speed_bps, speed_retest)
 
+        # --- 4c) 跨端点交叉测速 (防单端点欺骗) ---
+        #   动机: 上面所有测速都只看 speed.cloudflare.com 一个数据源。免费池里
+        #   "对 Cloudflare 特供、对其他源极慢"的节点不少 (机场按源分流常见)。
+        #   改为额外测多个端点, **取最小值** — 代表用户实际能拿到的最差体验。
+        #   只在首轮已有结果时做 (首轮就断流的节点没必要再花时间)。
+        speed_cross = 0
+        if speed_bps > 0:
+            # 每端点用小预算, 只做横向比较, 不与首轮同口径
+            cross_urls = [u.split("?bytes=")[0] + "?bytes=" + str(CROSS_BYTES)
+                          if "?bytes=" in u else u
+                          for u in SPEED_TEST_URLS[:SPEED_CROSS_MAX_ENDPOINTS]]
+            cross_results = []
+            for cu in cross_urls:
+                b = measure_download_speed(proxies, [cu], SPEED_CROSS_BUDGET,
+                                           SPEED_CROSS_WARMUP)
+                if b > 0:
+                    cross_results.append(b)
+            if len(cross_results) >= SPEED_CROSS_MIN_ENDPOINTS:
+                # 多端点都测到了 → 用最小值 (最差体验)
+                speed_cross = min(cross_results)
+                if speed_cross < speed_bps:
+                    # 交叉测出的最差端点比首轮还慢 → 判定不稳 (说明对某些源不通畅)
+                    if speed_cross < speed_bps * SPEED_STABLE_RATIO:
+                        speed_unstable = True
+                    speed_bps = speed_cross
+            # 端点不足 → 保留首轮结果, 不做惩罚 (信息不足不判死)
+
+        # --- 5) 丢包率探测 (抓抖动/丢包严重的节点) ---
+        #   复用 204 探针连发 LOSS_PROBE_COUNT 次, 零额外带宽成本。
+        #   延迟测"能不能通", 丢包测"通得稳不稳" — 跨太平洋链路的核心问题是丢包,
+        #   现有判定对此完全失明。
+        loss_rate = measure_packet_loss(proxies, LOSS_PROBE_COUNT) if speed_bps > 0 else 1.0
+        # 丢包 > MAX_LOSS_RATE → 不可用; 20%~34% → 视为不稳, 叠加门槛惩罚
+        loss_unstable = LOSS_UNSTABLE_PENALTY <= loss_rate < MAX_LOSS_RATE
+        if loss_rate >= MAX_LOSS_RATE:
+            speed_bps = 0            # 判死: 走下面 is_stalled 统一出口
+
+        # --- 6) 首包时间 (TTFB) 判定 ---
+        #   latency 是握手 RTT, TTFB 是"服务器开始回数据" —— 两者背离时
+        #   (RTT 低但 TTFB 高) 用户体感是"点了没反应"。超上限直接淘汰;
+        #   偏慢但未超限视为响应迟钝, 叠加门槛惩罚。
+        ttfb_slow = ttfb_ms > 1500
+        if ttfb_ms > MAX_TTFB_MS:
+            speed_bps = 0
+
         # 断流判定: 稳态吞吐达不到门槛 → 断流/极慢, 真实不可用
-        # 不稳定节点 (复测掉速 >40%) 门槛上浮 ×1.5, 双保险
-        speed_threshold = int(SPEED_MIN_BYTES_PER_S *
-                              (SPEED_UNSTABLE_PENALTY if speed_unstable else 1))
+        # 不稳定节点门槛上浮: 复测掉速 / 交叉测速落差 / 丢包 20%+ / TTFB 迟钝, 四者累乘。
+        # ★ 必须设上限: 四项全中会累乘到 1.5^4 = 5.06×, 门槛 200KB/s → 1012KB/s,
+        #   比 premium 线还高, 把"只是有点抖但本来很快"的节点全砍掉, 过严反失真。
+        penalty = 1.0
+        if speed_unstable:
+            penalty *= SPEED_UNSTABLE_PENALTY
+        if loss_unstable:
+            penalty *= SPEED_UNSTABLE_PENALTY
+        if ttfb_slow:
+            penalty *= TTFB_UNSTABLE_PENALTY
+        penalty = min(penalty, MAX_SPEED_PENALTY)
+        speed_threshold = int(SPEED_MIN_BYTES_PER_S * penalty)
         is_stalled = speed_bps < speed_threshold
         is_premium = speed_bps >= SPEED_TIER_GOOD and not is_stalled
 
@@ -1532,7 +1660,12 @@ def test_single_node(item, keep_alive_check=True):
             "is_warp": is_warp,
             "speed_bps": speed_bps,
             "speed_retest_bps": speed_retest,
+            "speed_cross_bps": speed_cross,
             "speed_unstable": speed_unstable,
+            "ttfb_ms": ttfb_ms,
+            "ttfb_slow": ttfb_slow,
+            "loss_rate": loss_rate,
+            "loss_unstable": loss_unstable,
             "is_premium": is_premium,
             "is_stalled": is_stalled,
         }
@@ -1593,6 +1726,25 @@ def run_liveness_test(candidates: list) -> list:
         hit_dist[r.get("alive_hits", 0)] = hit_dist.get(r.get("alive_hits", 0), 0) + 1
     print(f"[+] 跨源命中分布 (需≥{MIN_LIVENESS_HITS}): "
           + " | ".join(f"{k}源:{v}" for k, v in sorted(hit_dist.items())))
+    # 新增三维度统计
+    ttfb = sorted(r.get("ttfb_ms", 0) for r in results if r.get("ttfb_ms", 0) > 0)
+    if ttfb:
+        print(f"[+] 首包 TTFB (上限 {MAX_TTFB_MS}ms): "
+              f"最快 {ttfb[0]}ms | 中位 {ttfb[len(ttfb)//2]}ms | 最慢 {ttfb[-1]}ms")
+    losses = sorted(r.get("loss_rate", 0) for r in results)
+    if losses:
+        zero_loss = sum(1 for v in losses if v == 0)
+        print(f"[+] 丢包率 (淘汰线 {MAX_LOSS_RATE:.0%}): "
+              f"零丢包 {zero_loss}/{len(losses)} | "
+              f"中位 {losses[len(losses)//2]:.0%} | 最差 {losses[-1]:.0%}")
+    # 交叉测速生效判定: 采信了交叉结果 (speed_cross>0) 的节点中,
+    # 有多少被取最小值后掉到了首轮之下 (= 说明对某些源不通畅)
+    cross_used = [r for r in results if r.get("speed_cross_bps", 0) > 0]
+    cross_lowered = sum(1 for r in cross_used
+                        if r.get("speed_cross_bps", 0) < r.get("speed_retest_bps", 0) or
+                        r.get("speed_cross_bps", 0) < r.get("speed_bps", 0))
+    print(f"[+] 交叉测速 (≥{SPEED_CROSS_MIN_ENDPOINTS}端点取最小值): "
+          f"采信 {len(cross_used)} 个 | 其中被最小值拉低 {cross_lowered}")
     return results  # 保留全部信息, 分类阶段再决定去留
 
 
@@ -1845,9 +1997,23 @@ def classify_network_type(ip: str, country: str, asn, org: str, ip_api_rec: dict
 # ═══════════════════════════════════════════N═══════════════════════
 
 def outbound_to_clash(node: dict, name: str) -> dict:
-    """sing-box outbound → Clash (Meta/mihomo) proxy dict"""
+    """sing-box outbound → Clash (Meta/mihomo) proxy dict
+
+    ★ 端口跳跃节点 (hy2 mport) 的 sing-box outbound 里没有 server_port
+      (见 parse_hysteria2: 端口区间会 pop 掉 server_port), 直接 node["server_port"]
+      会 KeyError: 'server_port' 崩掉整个导出流程 ——
+      实测 #64 就死在这里 (新增订阅源带来大量 mport 节点, 把这个潜伏 bug 引爆了)。
+      兜底逻辑与 outbound_to_v2ray_link 保持一致: 取 server_ports 首区间起始端口。
+    """
     t = node.get("type")
-    server, port = node["server"], node["server_port"]
+    if "server_port" in node:
+        port = node["server_port"]
+    elif node.get("server_ports"):
+        # "2087:2097" → 2087 (取首个跳跃区间的起始端口作为代表)
+        port = int(str(node["server_ports"][0]).split(":")[0])
+    else:
+        return {}          # 无端口信息 → 无法生成 clash 配置, 跳过该节点
+    server = node["server"]
     proxy = {"name": name, "server": server, "port": port, "udp": True}
 
     if t == "vless":
@@ -2247,7 +2413,12 @@ def classify_and_export(test_results: list):
             "latency_ms": r["latency_ms"],
             "speed_bps": r["speed_bps"],
             "speed_retest_bps": r.get("speed_retest_bps", 0),
+            "speed_cross_bps": r.get("speed_cross_bps", 0),
             "speed_unstable": r.get("speed_unstable", False),
+            "ttfb_ms": r.get("ttfb_ms", 0),
+            "ttfb_slow": r.get("ttfb_slow", False),
+            "loss_rate": r.get("loss_rate", 1.0),
+            "loss_unstable": r.get("loss_unstable", False),
             "is_premium": r.get("is_premium", False),
             "mitm_risk": r["mitm_risk"],
             "is_warp": r.get("is_warp", False),
@@ -2394,10 +2565,19 @@ def classify_and_export(test_results: list):
     non_residential = [n for n in unique_nodes if n not in residential]
     print(f"[*] 家宽/移动网络节点: {len(residential)} | 普通(机房/CDN): {len(non_residential)}")
 
-    # 排序: 家宽在前, 延迟升序
-    unique_nodes.sort(key=lambda x: (0 if x in residential else 1, x["latency_ms"]))
-    residential.sort(key=lambda x: x["latency_ms"])
-    non_residential.sort(key=lambda x: x["latency_ms"])
+    # 排序: 家宽在前, 组内按"可用性综合分"升序
+    #   ★ 旧版只按 latency 升序, 等于默认"延迟低 = 体验好"。但跨太平洋链路上
+    #     丢包率和首包时间对体感的权重远大于延迟 —— 一个 80ms/丢包 15% 的节点
+    #     排序会排在 300ms/零丢包 前面, 实际体验更差。
+    #   综合分 = 延迟 + 丢包惩罚(每次丢失按 1500ms 计) + TTFB 的一半。
+    def _quality_key(n):
+        loss = n.get("loss_rate", 1.0) or 0.0
+        ttfb = n.get("ttfb_ms", 0) or 0
+        return (n["latency_ms"] + loss * 1500.0 + ttfb * 0.5)
+
+    unique_nodes.sort(key=lambda x: (0 if x in residential else 1, _quality_key(x)))
+    residential.sort(key=_quality_key)
+    non_residential.sort(key=_quality_key)
     # ★ 链式复测双跳失败的家宽 → 降级普通区 (v2rayN 链式场景不可靠)
     #    保留在总订阅/国家订阅里 (直连场景仍可用), 只是退出家宽专区
 
@@ -2425,7 +2605,7 @@ def make_node_name(item, idx, force_residential=False):
     # Scamalytics 风控分: 高风险节点名内标注 (R分数), 低危不标 (保持简洁)
     fraud = item.get("fraud_score", -1)
     risk_tag = f" R{fraud}" if 0 <= fraud < 75 and fraud >= 40 else (" ⚠R" if fraud >= 75 else "")
-    # 吞吐标注: 优选级 (≥1MB/s) 标 ⚡; 不稳定 (复测掉速>40%) 标 ⚠S; 其余标具体速率便于择优
+    # 吞吐标注: 优选级 (≥1MB/s) 标 ⚡; 不稳定 (复测掉速/交叉落差) 标 ⚠S; 其余标速率
     spd = item.get("speed_bps", 0) or 0
     if item.get("is_premium"):
         speed_tag = f" ⚡{spd // 1024}K"
@@ -2435,9 +2615,16 @@ def make_node_name(item, idx, force_residential=False):
         speed_tag = f" {spd // 1024}K"
     else:
         speed_tag = ""
+    # 链路质量标注: 丢包 ⚠L<百分比> (≥20% 才标, 低于此属正常抖动不打扰)
+    loss = item.get("loss_rate", 0) or 0
+    loss_tag = f" ⚠L{loss:.0%}" if loss >= 0.20 else ""
+    # 首包迟钝标注: TTFB > 1500ms (RTT 低但首包慢 = 用户体感"点了没反应")
+    ttfb = item.get("ttfb_ms", 0) or 0
+    ttfb_tag = f" ⏱{ttfb}ms" if (ttfb and ttfb > 1500) else ""
     # WARP 套壳节点标注 (出口 IP 属 Cloudflare, 非真实落地)
     warp_tag = " ⚠WARP" if item.get("is_warp") else ""
-    return f"{flag} {cname} {idx:02d}{tag}{speed_tag}{warp_tag}{risk_tag} - NEKO"
+    return (f"{flag} {cname} {idx:02d}{tag}{speed_tag}{loss_tag}{ttfb_tag}"
+            f"{warp_tag}{risk_tag} - NEKO")
 
 
 def export_all(unique_nodes, residential, non_residential):
@@ -2450,10 +2637,14 @@ def export_all(unique_nodes, residential, non_residential):
             ob = item["outbound"]
             if not ob:
                 continue
-            links.append(outbound_to_v2ray_link(ob, name))
+            # 三个转换器都可能返回空 (无端口信息的端口跳跃节点):
+            # 任何一个为空就整条跳过, 避免订阅里混入空行/半截配置
+            link = outbound_to_v2ray_link(ob, name)
             cp = outbound_to_clash(ob, name)
-            if cp:
-                proxies.append(cp)
+            if not (link and cp):
+                continue
+            links.append(link)
+            proxies.append(cp)
             sb_nodes.append(outbound_to_singbox(ob, name))
         return links, proxies, sb_nodes
 

@@ -62,6 +62,7 @@ SOURCE_URLS = [
     "https://gist.githubusercontent.com/shuaidaoya/9e5cf2749c0ce79932dd9229d9b4162b/raw/base64.txt",
     "https://raw.githubusercontent.com/awesome-vpn/awesome-vpn/master/all",
     "https://raw.githubusercontent.com/ZYFXS/ZYFXS001/refs/heads/main/3v-youtube%40ZYFXS",
+    "https://gist.githubusercontent.com/guidongone/72bdfb8a20164bac35debfb182ed646d/raw/864533db03b328588c8543bb78bd90fed2664259/V2ray261003.txt",
 ]
 
 OUTPUT_DIR = "output"

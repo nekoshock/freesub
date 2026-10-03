@@ -9,9 +9,11 @@
      (vless/vmess/trojan/ss/hysteria2/tuic/anytls + reality + 全部传输层)
   2. 真实测活（sing-box v1.14 内核，逐节点 SOCKS 入站 + 节点出站）:
      - 阶段A 端口预检: TCP/QUIC 直连握手, 快速丢弃死端口 (削减 90% 无效工作)
-     - 阶段B 真实探测: 多 URL 探测 (gstatic 204 / cloudflare trace) 
+     - 阶段B 真实探测: 多 URL 探测 (gstatic 204 / cloudflare trace)
        + 经代理取真实出口 IP (api.ip.sb/geoip → 一次拿 country+asn+isp)
-       + Cloudflare 限时下载测速 → 断流节点识别 (吞吐量不足)
+       + Cloudflare 限时下载测速 → 断流节点识别 (稳态吞吐 < 200KB/s)
+         · 分母只取首数据块后的稳态区间 (剔除握手/TLS/RTT, 否则快节点被系统性低估)
+         · 1MB 二次复测取最小值 (防 CDN 缓存/TCP 突发骗过单轮结果)
        + cloudflare trace tls=VERIFIED → MITM/劫持节点识别
   3. 分类与导出:
      - 国家: 出口 IP ip-api.com 批量(45req/min 免费) → MaxMind GeoLite2 兜底
@@ -82,9 +84,26 @@ PROBE_TIMEOUT          = 12      # 活性首击超时 (秒) — 容纳慢启动�
 PROBE_RETRY_TIMEOUT    = 4       # 活性重试超时 (秒) — 死节点快速放弃
 PORT_KNOCK_TIMEOUT     = 2.5     # 端口预检超时
 IP_ECHO_TIMEOUT        = 6.0     # 出口 IP 检测超时
-SPEED_TEST_BYTES       = 2_500_000   # 2.5MB 下载测速 (2.5MB 足以算准吞吐且 < 70KB/s 判定线不变)
-SPEED_TEST_BUDGET      = 5.0         # 测速时间预算 (秒) — 2.5MB@70KB/s=36s 必断流, 5s 预算足够判型
-SPEED_MIN_BYTES_PER_S  = 70_000      # 吞吐 < 70KB/s 判定断流/不可用 (标准不变)
+# ★ 吞吐门槛 (2026-10 收紧: 断流线 70KB/s → 200KB/s, 分级线 1MB/s)
+#   收紧同时修正了旧版测速的三个系统性错误 (否则单纯抬门槛=误杀快节点):
+#     1) 分母只取"首数据块→结束"的稳态区间, 握手/TLS/首包 RTT 全部剔除
+#        (旧版 t_speed 在 GET 之前起算 → 实测 1MB/s 的节点只算出 500KB/s)
+#     2) 并发 48→24, 避免 48 个节点在单台机器上互抢带宽 (阈值 >500KB/s 时自污染)
+#     3) 两轮测速取最小值入库 (1MB 复测), 防缓存层/TCP 突发骗过首轮
+SPEED_TEST_BYTES       = 5_000_000   # 5MB 下载测速 (样本更多, 压掉 TCP 慢启动)
+SPEED_TEST_BUDGET      = 8.0         # 测速时间预算 (秒) — 需 ≥ 门槛对应耗时, 否则平均速率被截断拉低
+SPEED_MIN_BYTES_PER_S  = 200_000     # 吞吐 < 200KB/s (≈1.6Mbps) 判定断流/不可用 ★收紧
+SPEED_TIER_GOOD        = 1_000_000   # ≥ 1MB/s (≈8Mbps) 标为 premium 优选级
+SPEED_WARMUP           = 0.6         # 丢弃首包后 0.6s 数据 (握手 + TCP 慢启动期)
+SPEED_IDLE_TIMEOUT     = 2.0         # 空闲 > 2s 无数据 = 断流签名 (原 3.0 偏宽)
+SPEED_CHUNK_SIZE       = 32768       # 原 65536 太大, 细粒度更能反映瞬时速率
+SPEED_MIN_DATA_BYTES   = 200_000     # 有效测速样本下限, 低于此值视为无法测速
+# --- 二次复测 (稳定性) ---
+SPEED_RETEST_BYTES     = 1_000_000   # 复测样本 1MB (小样本快速验证)
+SPEED_RETEST_BUDGET    = 4.0         # 复测预算 (秒)
+SPEED_RETEST_WARMUP    = 0.3         # 复测热身更短 (1MB 样本, 握手占比更大)
+SPEED_STABLE_RATIO     = 0.6         # 复测/首测 < 0.6 → 判定首测虚高 (缓存突发)
+SPEED_UNSTABLE_PENALTY = 1.5         # 不稳定节点的实际门槛上浮倍数 (×200KB/s = 300KB/s)
 IP_ECHO_URLS = [                    # 经代理获取出口 IP (多路冗余)
     "https://api.ip.sb/geoip",                         # JSON: country_code/asn/isp
     "https://ipinfo.io/json",                          # JSON: country/org
@@ -99,8 +118,19 @@ SPEED_TEST_URLS = [               # 测速端点多路 (实测部分节点商屏
     "https://speed.cloudflare.com/__down?bytes=" + str(SPEED_TEST_BYTES),
     "https://cachefly.cachefly.net/10mb.test",
 ]
+SPEED_RETEST_URLS = [             # 复测端点 (1MB 小样本)
+    "https://speed.cloudflare.com/__down?bytes=" + str(SPEED_RETEST_BYTES),
+    "https://cachefly.cachefly.net/10mb.test",
+]
 TRACE_URL = "https://www.cloudflare.com/cdn-cgi/trace"      # warp=on 检测套壳节点
-MAX_WORKERS_TEST    = 48            # 同时 sing-box 实测节点数 (Azure 2C7G 实测 24→48 稳定; sing-box 单实例 < 30MB)
+# WARP 套壳节点策略: "drop"=直接淘汰 | "demote"=保留但不入家宽专区 | "off"=只打标记
+#   套壳 WARP 节点的出口 IP 是 Cloudflare 自己的 IP, 归属地/风控画像全失真,
+#   且部分流媒体/支付场景直接不可用。默认 drop (宁缺毋滥)。
+WARP_POLICY = os.environ.get("WARP_POLICY", "drop").strip().lower()
+if WARP_POLICY not in ("drop", "demote", "off"):
+    print(f"[!] WARP_POLICY={WARP_POLICY!r} 非法, 回退 'drop' (可选: drop/demote/off)")
+    WARP_POLICY = "drop"
+MAX_WORKERS_TEST    = 24            # 同时 sing-box 实测节点数 (★48→24: 测速阶段 48 并发会互抢单台机器带宽, 阈值抬高后自污染成假阴性; sing-box 单实例 < 30MB)
 MAX_WORKERS_FETCH   = 8
 MAX_WORKERS_CLASSIFY = 32
 
@@ -1149,6 +1179,61 @@ def print_once(key: str, msg: str):
         print(msg)
 
 
+def measure_download_speed(proxies: dict, urls: list, budget: float,
+                           warmup: float, chunk_size: int = SPEED_CHUNK_SIZE,
+                           idle_timeout: float = SPEED_IDLE_TIMEOUT) -> int:
+    """限时下载测速 → 返回稳态吞吐 (B/s, 0 = 失败/断流)
+
+    ★ 关键修正: 分母只取"首数据块 → 结束"的稳态区间。
+      旧版 t_speed 在 GET() 之前起算, 把 TCP/TLS 握手 + 首包 RTT 算进分母,
+      导致真实越快的节点被低估得越狠 (实测 1MB/s 节点只算出 ~500KB/s),
+      那样单纯抬高 SPEED_MIN_BYTES_PER_S 等于按快慢反向淘汰。
+      现改为: 首块到达才开始计时, 前 warmup 秒的数据丢弃 (握手 + TCP 慢启动)。
+    """
+    for speed_url in urls:
+        downloaded = 0        # 全部收到的字节 (含热身期, 用于判断是否真拿到数据)
+        steady_bytes = 0      # 稳态区间内的字节 (用于算速率)
+        t_start = time.time()
+        last_chunk_time = t_start
+        t_first = None        # 首数据块时刻 = 握手结束
+        t_steady = None       # 热身结束后首个数据块 = 稳态区间起点 (速率分母起点)
+        # 热身期取固定值与预算的 12% 取小: 预算越大热身占比越小, 避免长预算下
+        # 固定 0.6s 把有效样本削掉一截
+        warm = min(warmup, budget * 0.12)
+        try:
+            with PROBE_SESSION.get(speed_url, proxies=proxies,
+                                   timeout=(5, budget), stream=True) as r:
+                if r.status_code != 200:
+                    continue
+                for chunk in r.iter_content(chunk_size=chunk_size):
+                    now = time.time()
+                    if chunk:
+                        if t_first is None:
+                            t_first = now
+                        # 握手 + TCP 慢启动阶段的数据整体丢弃 (含其耗时)
+                        if t_steady is None and now - t_first > warm:
+                            t_steady = now
+                        if t_steady is not None:
+                            steady_bytes += len(chunk)
+                        downloaded += len(chunk)
+                        last_chunk_time = now
+                    # 总预算超限 → 正常截断 (拿已有数据算吞吐)
+                    if now - t_start > budget:
+                        break
+                    # 空闲超限无任何数据 → 断流签名, 立即中止
+                    if now - last_chunk_time > idle_timeout:
+                        break
+            # 样本不足 → 该端点作废, 换下一个 (防用几十KB 算出虚高瞬时值)
+            if downloaded < SPEED_MIN_DATA_BYTES or t_steady is None:
+                continue
+            elapsed = max(time.time() - t_steady, 0.001)
+            steady_bytes = max(steady_bytes, 1)
+            return int(steady_bytes / elapsed)
+        except Exception:
+            continue
+    return 0  # 全部端点都失败 (数据量不足或 0 字节) → 无法测速
+
+
 def test_single_node(item, keep_alive_check=True):
     """返回 dict 或 None; 含: 活性/延迟/出口IP/国家/ASN/ISP/速度/MITM"""
     raw, outbound, server, port, proto = item
@@ -1207,15 +1292,18 @@ def test_single_node(item, keep_alive_check=True):
                    "https": f"socks5h://127.0.0.1:{socks_port}"}
 
         # --- 1) 活性探测: 分层超时重试 (首击宽 12s 容慢节点保准确率; 重试窄 4s 快速放弃死节点) ---
+        #     延迟按"每次尝试各自计时"取最快一次, 不用跨尝试的累计时间:
+        #     旧版 t0 在循环外, 若首击耗满 12s 才失败、第二个 URL 秒通,
+        #     latency 会记成 ~12s 而非真实 RTT → 去重/排序全被污染 (慢节点反被优先)
         alive_hits, latency_ms = 0, 99999
-        t0 = time.time()
         for i, url in enumerate(LIVENESS_URLS):
             timeout = PROBE_TIMEOUT if i == 0 else PROBE_RETRY_TIMEOUT
+            t_try = time.time()
             try:
                 r = PROBE_SESSION.get(url, proxies=proxies, timeout=timeout, allow_redirects=False)
                 if r.status_code in (204, 200):
                     alive_hits += 1
-                    latency_ms = min(latency_ms, (time.time() - t0) * 1000)
+                    latency_ms = min(latency_ms, (time.time() - t_try) * 1000)
                     break  # 任一成功即可
             except Exception:
                 continue
@@ -1282,38 +1370,34 @@ def test_single_node(item, keep_alive_check=True):
         except Exception:
             pass
 
-        # --- 4) 断流检测: 限时下载测速 (chunked 读 + 空闲计时; 多端点兜底防测速站被屏蔽) ---
-        # 断流签名: 连接建立且首包正常, 但中途停止送数据 → 空闲超时强断
-        speed_bps = 0
-        for speed_url in SPEED_TEST_URLS:
-            downloaded = 0
-            t_speed = time.time()
-            last_chunk_time = time.time()
-            try:
-                with PROBE_SESSION.get(speed_url, proxies=proxies,
-                                       timeout=(5, SPEED_TEST_BUDGET), stream=True) as r:
-                    if r.status_code == 200:
-                        for chunk in r.iter_content(chunk_size=65536):
-                            now = time.time()
-                            if chunk:
-                                downloaded += len(chunk)
-                                last_chunk_time = now
-                            # 总预算超限 → 正常截断 (拿已有数据算吞吐)
-                            if now - t_speed > SPEED_TEST_BUDGET:
-                                break
-                            # 空闲 > 3s 无任何数据 → 断流签名, 立即中止
-                            if now - last_chunk_time > 3.0:
-                                break
-                elapsed = max(time.time() - t_speed, 0.001)
-                if downloaded > 0:
-                    speed_bps = int(downloaded / elapsed)
-                    break  # 首个成功端点的结果即有效
-            except Exception:
-                continue
-        # 全部端点都失败 (下载0字节) → 视为断流 (活性已过但无法承载数据流)
+        # --- 4) 断流检测: 限时下载测速 (稳态吞吐, 剔除握手期; 端点多路兜底) ---
+        speed_bps = measure_download_speed(proxies, SPEED_TEST_URLS,
+                                           SPEED_TEST_BUDGET, SPEED_WARMUP)
 
-        # 断流判定: 连 70KB/s 都达不到 → 断流/极慢, 真实不可用
-        is_stalled = speed_bps < SPEED_MIN_BYTES_PER_S
+        # --- 4b) 二次复测 (稳定性闸): 1MB 小样本, 与首测取最小值 ---
+        #   动机: 单轮测速会被 CDN 缓存层 / TCP 突发流量骗过 (瞬时冲高后断流)。
+        #   复测明显掉速 → 首测虚高, 取小值入库; 复测完全失败 → 直接判不可用。
+        speed_retest = 0
+        speed_unstable = False
+        if speed_bps > 0:
+            speed_retest = measure_download_speed(proxies, SPEED_RETEST_URLS,
+                                                  SPEED_RETEST_BUDGET, SPEED_RETEST_WARMUP)
+            if speed_retest <= 0:
+                # 复测一条数据都拿不到 → 首测结果是假象, 视为断流
+                speed_bps = 0
+            else:
+                if speed_retest < speed_bps:
+                    # 掉速超过 (1 - STABLE_RATIO) → 标记不稳定, 门槛上浮惩罚
+                    if speed_retest < speed_bps * SPEED_STABLE_RATIO:
+                        speed_unstable = True
+                    speed_bps = min(speed_bps, speed_retest)
+
+        # 断流判定: 稳态吞吐达不到门槛 → 断流/极慢, 真实不可用
+        # 不稳定节点 (复测掉速 >40%) 门槛上浮 ×1.5, 双保险
+        speed_threshold = int(SPEED_MIN_BYTES_PER_S *
+                              (SPEED_UNSTABLE_PENALTY if speed_unstable else 1))
+        is_stalled = speed_bps < speed_threshold
+        is_premium = speed_bps >= SPEED_TIER_GOOD and not is_stalled
 
         result = {
             "raw": raw,
@@ -1330,6 +1414,9 @@ def test_single_node(item, keep_alive_check=True):
             "mitm_risk": mitm_risk,
             "is_warp": is_warp,
             "speed_bps": speed_bps,
+            "speed_retest_bps": speed_retest,
+            "speed_unstable": speed_unstable,
+            "is_premium": is_premium,
             "is_stalled": is_stalled,
         }
         return result
@@ -1370,7 +1457,14 @@ def run_liveness_test(candidates: list) -> list:
     alive = [r for r in results if r["alive"] and not r["is_stalled"]]
     mitm = sum(1 for r in results if r["mitm_risk"])
     stalled = sum(1 for r in results if r["is_stalled"])
+    unstable = sum(1 for r in results if r.get("speed_unstable"))
+    premium = sum(1 for r in results if r.get("is_premium"))
+    speeds = sorted((r["speed_bps"] for r in results if r["speed_bps"] > 0), reverse=True)
     print(f"[+] 测活完成: 真活 {len(alive)} | 断流淘汰 {stalled} | MITM 风险 {mitm}")
+    print(f"[+] 吞吐分布 (门槛 {SPEED_MIN_BYTES_PER_S//1000}KB/s): "
+          f"优选≥{SPEED_TIER_GOOD//1000}KB/s {premium} | 复测不稳 {unstable} | "
+          f"最快 {speeds[0]//1000 if speeds else 0}KB/s | "
+          f"中位 {speeds[len(speeds)//2]//1000 if speeds else 0}KB/s")
     return results  # 保留全部信息, 分类阶段再决定去留
 
 
@@ -2024,7 +2118,11 @@ def classify_and_export(test_results: list):
             "isp": r.get("exit_isp_online") or (rec.get("isp") if rec else ""),
             "latency_ms": r["latency_ms"],
             "speed_bps": r["speed_bps"],
+            "speed_retest_bps": r.get("speed_retest_bps", 0),
+            "speed_unstable": r.get("speed_unstable", False),
+            "is_premium": r.get("is_premium", False),
             "mitm_risk": r["mitm_risk"],
+            "is_warp": r.get("is_warp", False),
             "is_stalled": r["is_stalled"],
         })
 
@@ -2040,6 +2138,16 @@ def classify_and_export(test_results: list):
     # 断流节点已无 (在 liveness 阶段淘汰), 但 double-check
     safe_nodes = [n for n in safe_nodes if not n["is_stalled"]]
     print(f"[*] MITM 劫持高风险节点已剔除: {mitm_dropped}")
+
+    # ── WARP 套壳节点过滤 (is_warp 此前算出却未接入任何判定, 这里正式生效) ──
+    #   套壳节点出口 IP 属 Cloudflare, 国家/ISP/风控画像全部失真, 且流媒体场景常不可用
+    warp_total = sum(1 for n in safe_nodes if n.get("is_warp"))
+    if warp_total and WARP_POLICY == "drop":
+        before = len(safe_nodes)
+        safe_nodes = [n for n in safe_nodes if not n.get("is_warp")]
+        print(f"[*] WARP 套壳节点已剔除 (WARP_POLICY=drop): {before - len(safe_nodes)}/{warp_total}")
+    elif warp_total:
+        print(f"[*] WARP 套壳节点: {warp_total} 个 (WARP_POLICY={WARP_POLICY}, 不淘汰仅标记)")
 
     # ── Scamalytics 风控评分 (免费 HTML, 逐个; 只查家宽候选 + 抽样普通节点) ──
     # 家宽候选: 全查 (宁缺毋滥); 普通节点: 每 IP 查一次 (通常 <= 出口 IP 数)
@@ -2129,6 +2237,12 @@ def classify_and_export(test_results: list):
                 n["net_type"] = "datacenter"
                 n["confidence"] = 70
                 continue
+            # WARP 套壳节点 (demote 模式): 出口 IP 属 Cloudflare, 归属地画像失真,
+            # 绝不能进家宽专区 (会伪装成当地家宽), 降级为普通节点
+            if n.get("is_warp") and WARP_POLICY != "off":
+                n["net_type"] = "datacenter"
+                n["confidence"] = 70
+                continue
             if n["exit_ip"] and n["exit_ip"] not in res_seen_ip:
                 res_seen_ip.add(n["exit_ip"])
                 residential.append(n)
@@ -2173,7 +2287,19 @@ def make_node_name(item, idx, force_residential=False):
     # Scamalytics 风控分: 高风险节点名内标注 (R分数), 低危不标 (保持简洁)
     fraud = item.get("fraud_score", -1)
     risk_tag = f" R{fraud}" if 0 <= fraud < 75 and fraud >= 40 else (" ⚠R" if fraud >= 75 else "")
-    return f"{flag} {cname} {idx:02d}{tag}{risk_tag} - NEKO"
+    # 吞吐标注: 优选级 (≥1MB/s) 标 ⚡; 不稳定 (复测掉速>40%) 标 ⚠S; 其余标具体速率便于择优
+    spd = item.get("speed_bps", 0) or 0
+    if item.get("is_premium"):
+        speed_tag = f" ⚡{spd // 1024}K"
+    elif item.get("speed_unstable"):
+        speed_tag = f" ⚠S{spd // 1024}K"
+    elif spd > 0:
+        speed_tag = f" {spd // 1024}K"
+    else:
+        speed_tag = ""
+    # WARP 套壳节点标注 (出口 IP 属 Cloudflare, 非真实落地)
+    warp_tag = " ⚠WARP" if item.get("is_warp") else ""
+    return f"{flag} {cname} {idx:02d}{tag}{speed_tag}{warp_tag}{risk_tag} - NEKO"
 
 
 def export_all(unique_nodes, residential, non_residential):

@@ -1429,6 +1429,7 @@ def measure_download_speed(proxies: dict, urls: list, budget: float,
         last_chunk_time = t_start
         t_first = None        # 首数据块时刻 = 握手结束
         t_steady = None       # 热身结束后首个数据块 = 稳态区间起点 (速率分母起点)
+        t_warmup_end = None   # 热身期结束时刻 (= t_first + warm)
         # 热身期取固定值与预算的 12% 取小: 预算越大热身占比越小, 避免长预算下
         # 固定 0.6s 把有效样本削掉一截
         warm = min(warmup, budget * 0.12)
@@ -1447,8 +1448,16 @@ def measure_download_speed(proxies: dict, urls: list, budget: float,
                     if chunk:
                         if t_first is None:
                             t_first = now
-                        # 握手 + TCP 慢启动阶段的数据整体丢弃 (含其耗时)
-                        if t_steady is None and now - t_first > warm:
+                            t_warmup_end = t_first + warm     # 热身期结束时刻
+                        # ★ 2026-10-04 修正 (#68 暴露): 原写法用
+                        #   "if t_steady is None and now-t_first>warm" 判定稳态起点,
+                        #   但它要求**恰好有一个 chunk 跨过 warm 线**才能赋值。
+                        #   两种情况会永久保留 t_steady=None:
+                        #     ① 预算在 warm 期内耗尽 → break 时一个 chunk 都没跨线
+                        #     ② 数据在 warm 期内全部收完 (小样本 + 快节点)
+                        #   结果: 下到 10MB 也被判"样本不足(10485760B/8s)" (#68 实测 90 个)。
+                        #   现在改为: 一旦已过热身时刻, 当前这个 chunk 无条件建立稳态起点。
+                        if t_steady is None and now >= t_warmup_end:
                             t_steady = now
                         if t_steady is not None:
                             steady_bytes += len(chunk)
@@ -1460,8 +1469,19 @@ def measure_download_speed(proxies: dict, urls: list, budget: float,
                     # 空闲超限无任何数据 → 断流签名, 立即中止
                     if now - last_chunk_time > idle_timeout:
                         break
-            # 样本不足 → 该端点作废, 换下一个 (防用几十KB 算出虚高瞬时值)
-            if downloaded < SPEED_MIN_DATA_BYTES or t_steady is None:
+            # 样本量判定: 只要拿到过数据就够算速率 (SPEED_MIN_DATA_BYTES 兜底防虚高瞬时值)。
+            # ★ 若 t_steady 仍为 None (预算在热身期内耗尽), 降级用"总下载量/总耗时"计算 ——
+            #   宁可给一个偏保守的估计, 也不要把已下过 MB 级数据的节点误判成"样本不足"。
+            if t_steady is None:
+                if downloaded >= SPEED_MIN_DATA_BYTES:
+                    elapsed_fallback = max(time.time() - t_first, 0.001) if t_first else 1.0
+                    bps_fallback = int(downloaded / elapsed_fallback)
+                    if with_ttfb:
+                        return bps_fallback, int((t_first - t_start) * 1000), "热身期耗尽(降级估算)"
+                    return bps_fallback, "热身期耗尽(降级估算)"
+                fail_reason = f"样本不足({downloaded}B/{budget:.0f}s)"
+                continue
+            if downloaded < SPEED_MIN_DATA_BYTES:
                 fail_reason = f"样本不足({downloaded}B/{budget:.0f}s)"
                 continue
             elif not fail_reason:

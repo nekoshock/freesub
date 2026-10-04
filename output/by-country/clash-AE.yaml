@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇦🇪 阿联酋 (UAE) 01 6898K - NEKO
+- name: 🇦🇪 阿联酋 (UAE) 01 ⚠S8119K - NEKO
   server: hy2.aspidnet.xyz
   port: 443
   udp: true
@@ -14,27 +14,40 @@ proxies:
   skip-cert-verify: false
   obfs: salamander
   obfs-password: rG07s3COMIEvdnQipRyWzx_H_2xygNC3
-- name: 🇦🇪 阿联酋 (UAE) 02 5101K - NEKO
-  server: 217.60.33.215
+- name: 🇦🇪 阿联酋 (UAE) 02 7437K - NEKO
+  server: streambox.wwwinternetvideo.click
   port: 443
   udp: true
   type: hysteria2
   password: 865e271f7c97b549b024255c9d02cebe9cc0c2c070a82b1e11bb11b9cd88dd01
   sni: streambox.wwwinternetvideo.click
   skip-cert-verify: true
+- name: 🇦🇪 阿联酋 (UAE) 03 3532K - NEKO
+  server: 84.235.244.108
+  port: 22573
+  udp: true
+  type: vless
+  uuid: 39947382-3212-41c9-bc3a-589574ac8b23
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: uae.unixzone.us
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇦🇪 阿联酋 (UAE) 01 6898K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 02 5101K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 01 ⚠S8119K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 02 7437K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 03 3532K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇦🇪 阿联酋 (UAE) 01 6898K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 02 5101K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 01 ⚠S8119K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 02 7437K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 03 3532K - NEKO
 rules:
 - MATCH,PROXIES

@@ -5,22 +5,23 @@
   "outbounds": [
     {
       "type": "vless",
-      "tag": "🇲🇩 摩尔多瓦 (Moldova) 01 3525K - NEKO",
-      "server": "89.35.14.43",
+      "tag": "🇦🇶 AQ 01 4363K - NEKO",
+      "server": "2.27.26.128",
       "server_port": 443,
-      "uuid": "6d257a71-6d98-42d2-983a-34363b6dedcd",
+      "uuid": "8710a337-f504-4b75-8989-224cfd803b2d",
+      "flow": "xtls-rprx-vision",
       "tls": {
         "enabled": true,
-        "server_name": "md7.mediacorp.fyi",
-        "insecure": false,
+        "server_name": "aq-1.global-cdn.org",
         "utls": {
           "enabled": true,
-          "fingerprint": "firefox"
+          "fingerprint": "safari"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "HKkU-5UanGjWdmX8E-EGulXMk1BnidkFsVveyyOlTg8",
+          "short_id": "90f9d05bf95cb335"
         }
-      },
-      "transport": {
-        "type": "grpc",
-        "service_name": "mobile.api.Event"
       }
     },
     {
@@ -28,14 +29,14 @@
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇲🇩 摩尔多瓦 (Moldova) 01 3525K - NEKO"
+        "🇦🇶 AQ 01 4363K - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇲🇩 摩尔多瓦 (Moldova) 01 3525K - NEKO"
+        "🇦🇶 AQ 01 4363K - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

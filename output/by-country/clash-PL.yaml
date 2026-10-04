@@ -4,31 +4,83 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇵🇱 波兰 (Poland) 01 ⚠S3863K - NEKO
-  server: 45.192.12.93
+- name: 🇵🇱 波兰 (Poland) 01 5188K - NEKO
+  server: node75.tomalgopas.fun
+  port: 443
+  udp: true
+  type: vless
+  uuid: 3464a5bd-6a17-4ac3-8ca9-86a54c1aac7b
+  tls: true
+  reality-opts:
+    public-key: tKAYeVSM4yLXiOdKLMFP751fhII6YyqfbMXy_MSuejI
+  servername: samsung.com
+  client-fingerprint: firefox
+  network: grpc
+  grpc-opts:
+    grpc-service-name: vless-grpc
+- name: 🇵🇱 波兰 (Poland) 02 ⚠S4214K - NEKO
+  server: scrap.halyvanedorogo.ru
+  port: 35076
+  udp: true
+  type: hysteria2
+  password: b4c8ee9caa74b7ba0a61
+  sni: scrap.halyvanedorogo.ru
+  skip-cert-verify: true
+- name: 🇵🇱 波兰 (Poland) 03 5706K - NEKO
+  server: 138.124.104.2
+  port: 443
+  udp: true
+  type: vless
+  uuid: 3464a5bd-6a17-4ac3-8ca9-86a54c1aac7b
+  tls: true
+  reality-opts:
+    public-key: tKAYeVSM4yLXiOdKLMFP751fhII6YyqfbMXy_MSuejI
+  servername: samsung.com
+  client-fingerprint: firefox
+  network: grpc
+  grpc-opts:
+    grpc-service-name: vless-grpc
+- name: 🇵🇱 波兰 (Poland) 04 3416K - NEKO
+  server: go.wwwinternetvideo.click
   port: 443
   udp: true
   type: hysteria2
   password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
   sni: admin.wwwinternetvideo.click
-  skip-cert-verify: false
-- name: 🇵🇱 波兰 (Poland) 02 ⚠S2771K - NEKO
-  server: streambox.wwwinternetvideo.click
+  skip-cert-verify: true
+- name: 🇵🇱 波兰 (Poland) 05 4283K - NEKO
+  server: 217.30.10.44
+  port: 9099
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: 7heRqkPG3hg4UnRm
+- name: 🇵🇱 波兰 (Poland) 06 4476K - NEKO
+  server: 217.30.10.44
+  port: 9071
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: mENfxTFQpRKKh4As
+- name: 🇵🇱 波兰 (Poland) 07 4970K - NEKO
+  server: 149.50.116.171
   port: 443
   udp: true
-  type: hysteria2
-  password: 865e271f7c97b549b024255c9d02cebe9cc0c2c070a82b1e11bb11b9cd88dd01
-  sni: streambox.wwwinternetvideo.click
-  skip-cert-verify: true
-- name: 🇵🇱 波兰 (Poland) 03 2428K - NEKO
-  server: 144.31.49.47
-  port: 443
+  type: vless
+  uuid: 65616081-1772-49d7-a793-42bc13d22f69
+  tls: true
+  reality-opts:
+    public-key: gS0qvWKumWcOVoAgf8SHt6Sm3tqpBw07c5sA_Clb1hg
+  servername: pl-1-1.imnotgay.party
+  client-fingerprint: firefox
+- name: 🇵🇱 波兰 (Poland) 08 4297K - NEKO
+  server: 217.30.10.44
+  port: 9006
   udp: true
-  type: hysteria2
-  password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
-  sni: admin.wwwinternetvideo.click
-  skip-cert-verify: true
-- name: 🇵🇱 波兰 (Poland) 04 3668K - NEKO
+  type: ss
+  cipher: aes-256-cfb
+  password: FAdUvMJUq5vDgKEq
+- name: 🇵🇱 波兰 (Poland) 09 3795K - NEKO
   server: 70.34.255.101
   port: 80
   udp: true
@@ -37,7 +89,29 @@ proxies:
   network: ws
   ws-opts:
     path: /
-- name: 🇵🇱 波兰 (Poland) 05 3582K - NEKO
+- name: 🇵🇱 波兰 (Poland) 10 4408K - NEKO
+  server: 50.7.249.138
+  port: 443
+  udp: true
+  type: vless
+  uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+  flow: xtls-rprx-vision
+  tls: true
+  servername: polkadotnewone.failspace.top
+  skip-cert-verify: false
+  client-fingerprint: firefox
+- name: 🇵🇱 波兰 (Poland) 11 4219K - NEKO
+  server: 50.7.249.155
+  port: 443
+  udp: true
+  type: vless
+  uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+  flow: xtls-rprx-vision
+  tls: true
+  servername: poland-good.failspace.top
+  skip-cert-verify: false
+  client-fingerprint: firefox
+- name: 🇵🇱 波兰 (Poland) 12 4295K - NEKO
   server: 2.59.253.251
   port: 443
   udp: true
@@ -50,30 +124,8 @@ proxies:
     short-id: db04ce8bdb8900f1
   servername: nvidia.com
   client-fingerprint: firefox
-- name: 🇵🇱 波兰 (Poland) 06 ⚠S1779K - NEKO
-  server: 50.7.249.138
-  port: 443
-  udp: true
-  type: vless
-  uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
-  flow: xtls-rprx-vision
-  tls: true
-  servername: polkadotnewone.failspace.top
-  skip-cert-verify: false
-  client-fingerprint: firefox
-- name: 🇵🇱 波兰 (Poland) 07 3510K - NEKO
-  server: poland-good.failspace.top
-  port: 443
-  udp: true
-  type: vless
-  uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
-  flow: xtls-rprx-vision
-  tls: true
-  servername: poland-good.failspace.top
-  skip-cert-verify: false
-  client-fingerprint: chrome
-- name: 🇵🇱 波兰 (Poland) 08 3461K - NEKO
-  server: pol-pol-poland.failspace.top
+- name: 🇵🇱 波兰 (Poland) 13 4685K - NEKO
+  server: 50.7.249.98
   port: 443
   udp: true
   type: vless
@@ -82,8 +134,8 @@ proxies:
   tls: true
   servername: pol-pol-poland.failspace.top
   skip-cert-verify: false
-  client-fingerprint: chrome
-- name: 🇵🇱 波兰 (Poland) 09 3736K - NEKO
+  client-fingerprint: edge
+- name: 🇵🇱 波兰 (Poland) 14 4254K - NEKO
   server: 70.34.252.154
   port: 80
   udp: true
@@ -92,43 +144,142 @@ proxies:
   network: ws
   ws-opts:
     path: /
-- name: 🇵🇱 波兰 (Poland) 10 3604K - NEKO
-  server: 202.78.163.237
+- name: 🇵🇱 波兰 (Poland) 15 4199K - NEKO
+  server: pl999.failspace.top
+  port: 443
+  udp: true
+  type: vless
+  uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+  flow: xtls-rprx-vision
+  tls: true
+  servername: pl999.failspace.top
+  skip-cert-verify: false
+  client-fingerprint: firefox
+- name: 🇵🇱 波兰 (Poland) 16 4102K - NEKO
+  server: cheerful-swan.rooster465.autos
   port: 443
   udp: true
   type: trojan
   password: UX82473651
   sni: cheerful-swan.rooster465.autos
-  skip-cert-verify: false
+  skip-cert-verify: true
+- name: 🇵🇱 波兰 (Poland) 17 4605K - NEKO
+  server: 83.168.95.145
+  port: 443
+  udp: true
+  type: vless
+  uuid: f28e0ce1-ed75-4e90-b069-5215a80dfb4a
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: AcuvO982QLzf76fVydfSuJIiF5520rmj7AxpaxyRwUg
+    short-id: d345ad4657adeef9
+  servername: google.com
+  client-fingerprint: safari
+- name: 🇵🇱 波兰 (Poland) 18 4406K - NEKO
+  server: 83.168.107.220
+  port: 443
+  udp: true
+  type: vless
+  uuid: b1813cbd-831f-4cb3-baf8-5bc0cc8298bc
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: s0lbZ5BO3ctZjE8DzsXkNL0NvLl6FgLG6532NQzXigo
+    short-id: c56d4f1c
+  servername: google.com
+  client-fingerprint: safari
+- name: 🇵🇱 波兰 (Poland) 19 4920K - NEKO
+  server: 31.77.13.19
+  port: 2063
+  udp: true
+  type: vless
+  uuid: b18d5990-96eb-4587-a386-7f8ef7591e6a
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: MMpt_jWc4J3oySBdf5sPDVRkiWlZmOObth6A1scM9BM
+  servername: rusbid.de
+  client-fingerprint: chrome
+- name: 🇵🇱 波兰 (Poland) 20 3122K - NEKO
+  server: 62.152.58.90
+  port: 443
+  udp: true
+  type: vless
+  uuid: 1bb2af63-4472-44ed-9c70-8f316258b68b
+  tls: true
+  reality-opts:
+    public-key: JBKJlzuJH1YzDHAoz28wEKbzWTGpDpKjgtSq0oT0a0k
+    short-id: 27e53bbcab7593d7
+  servername: 360.yandex.ru
+  client-fingerprint: random
+  network: grpc
+  grpc-opts:
+    grpc-service-name: ''
+- name: 🇵🇱 波兰 (Poland) 21 5458K ⚠L20% - NEKO
+  server: 82.118.22.161
+  port: 443
+  udp: true
+  type: vless
+  uuid: 05488656-d4bf-4634-8b2e-e4ff5a56c7e2
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: xY1KpNxaIGmi6jfeudYQ_aaLGQqWK_uHStnwUFd2_2E
+    short-id: fa3ea655619a3e78
+  servername: www.cloudflare.com
+  client-fingerprint: safari
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇵🇱 波兰 (Poland) 01 ⚠S3863K - NEKO
-  - 🇵🇱 波兰 (Poland) 02 ⚠S2771K - NEKO
-  - 🇵🇱 波兰 (Poland) 03 2428K - NEKO
-  - 🇵🇱 波兰 (Poland) 04 3668K - NEKO
-  - 🇵🇱 波兰 (Poland) 05 3582K - NEKO
-  - 🇵🇱 波兰 (Poland) 06 ⚠S1779K - NEKO
-  - 🇵🇱 波兰 (Poland) 07 3510K - NEKO
-  - 🇵🇱 波兰 (Poland) 08 3461K - NEKO
-  - 🇵🇱 波兰 (Poland) 09 3736K - NEKO
-  - 🇵🇱 波兰 (Poland) 10 3604K - NEKO
+  - 🇵🇱 波兰 (Poland) 01 5188K - NEKO
+  - 🇵🇱 波兰 (Poland) 02 ⚠S4214K - NEKO
+  - 🇵🇱 波兰 (Poland) 03 5706K - NEKO
+  - 🇵🇱 波兰 (Poland) 04 3416K - NEKO
+  - 🇵🇱 波兰 (Poland) 05 4283K - NEKO
+  - 🇵🇱 波兰 (Poland) 06 4476K - NEKO
+  - 🇵🇱 波兰 (Poland) 07 4970K - NEKO
+  - 🇵🇱 波兰 (Poland) 08 4297K - NEKO
+  - 🇵🇱 波兰 (Poland) 09 3795K - NEKO
+  - 🇵🇱 波兰 (Poland) 10 4408K - NEKO
+  - 🇵🇱 波兰 (Poland) 11 4219K - NEKO
+  - 🇵🇱 波兰 (Poland) 12 4295K - NEKO
+  - 🇵🇱 波兰 (Poland) 13 4685K - NEKO
+  - 🇵🇱 波兰 (Poland) 14 4254K - NEKO
+  - 🇵🇱 波兰 (Poland) 15 4199K - NEKO
+  - 🇵🇱 波兰 (Poland) 16 4102K - NEKO
+  - 🇵🇱 波兰 (Poland) 17 4605K - NEKO
+  - 🇵🇱 波兰 (Poland) 18 4406K - NEKO
+  - 🇵🇱 波兰 (Poland) 19 4920K - NEKO
+  - 🇵🇱 波兰 (Poland) 20 3122K - NEKO
+  - 🇵🇱 波兰 (Poland) 21 5458K ⚠L20% - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇵🇱 波兰 (Poland) 01 ⚠S3863K - NEKO
-  - 🇵🇱 波兰 (Poland) 02 ⚠S2771K - NEKO
-  - 🇵🇱 波兰 (Poland) 03 2428K - NEKO
-  - 🇵🇱 波兰 (Poland) 04 3668K - NEKO
-  - 🇵🇱 波兰 (Poland) 05 3582K - NEKO
-  - 🇵🇱 波兰 (Poland) 06 ⚠S1779K - NEKO
-  - 🇵🇱 波兰 (Poland) 07 3510K - NEKO
-  - 🇵🇱 波兰 (Poland) 08 3461K - NEKO
-  - 🇵🇱 波兰 (Poland) 09 3736K - NEKO
-  - 🇵🇱 波兰 (Poland) 10 3604K - NEKO
+  - 🇵🇱 波兰 (Poland) 01 5188K - NEKO
+  - 🇵🇱 波兰 (Poland) 02 ⚠S4214K - NEKO
+  - 🇵🇱 波兰 (Poland) 03 5706K - NEKO
+  - 🇵🇱 波兰 (Poland) 04 3416K - NEKO
+  - 🇵🇱 波兰 (Poland) 05 4283K - NEKO
+  - 🇵🇱 波兰 (Poland) 06 4476K - NEKO
+  - 🇵🇱 波兰 (Poland) 07 4970K - NEKO
+  - 🇵🇱 波兰 (Poland) 08 4297K - NEKO
+  - 🇵🇱 波兰 (Poland) 09 3795K - NEKO
+  - 🇵🇱 波兰 (Poland) 10 4408K - NEKO
+  - 🇵🇱 波兰 (Poland) 11 4219K - NEKO
+  - 🇵🇱 波兰 (Poland) 12 4295K - NEKO
+  - 🇵🇱 波兰 (Poland) 13 4685K - NEKO
+  - 🇵🇱 波兰 (Poland) 14 4254K - NEKO
+  - 🇵🇱 波兰 (Poland) 15 4199K - NEKO
+  - 🇵🇱 波兰 (Poland) 16 4102K - NEKO
+  - 🇵🇱 波兰 (Poland) 17 4605K - NEKO
+  - 🇵🇱 波兰 (Poland) 18 4406K - NEKO
+  - 🇵🇱 波兰 (Poland) 19 4920K - NEKO
+  - 🇵🇱 波兰 (Poland) 20 3122K - NEKO
+  - 🇵🇱 波兰 (Poland) 21 5458K ⚠L20% - NEKO
 rules:
 - MATCH,PROXIES

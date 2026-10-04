@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇪🇸 西班牙 (Spain) 01 ⚠S5287K - NEKO
+- name: 🇪🇸 西班牙 (Spain) 01 ⚠S5826K - NEKO
   server: 185.174.137.172
   port: 8446
   udp: true
@@ -12,7 +12,7 @@ proxies:
   password: e9dc02d400b67c727aca1620
   sni: 185.174.137.172
   skip-cert-verify: true
-- name: 🇪🇸 西班牙 (Spain) 02 ⚠S671K - NEKO
+- name: 🇪🇸 西班牙 (Spain) 02 1497K - NEKO
   server: 193.238.154.5
   port: 443
   udp: true
@@ -25,41 +25,34 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: cdn.v1.AssetService
-- name: 🇪🇸 西班牙 (Spain) 03 3787K - NEKO
-  server: 85.90.217.42
-  port: 22324
+- name: 🇪🇸 西班牙 (Spain) 03 5924K - NEKO
+  server: 83.147.18.3
+  port: 443
   udp: true
-  type: vmess
-  uuid: 04621bae-ab36-11ec-b909-0242ac120002
-  alterId: 0
-  cipher: auto
-- name: 🇪🇸 西班牙 (Spain) 04 3503K - NEKO
-  server: 108.181.121.226
-  port: 8388
-  udp: true
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: WSyL4XTwNsdv
-- name: 🇪🇸 西班牙 (Spain) 05 3650K - NEKO
+  type: vless
+  uuid: 9f61cdf4-810d-4052-bbc7-2da0c8e20104
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: 3iVJAIGPx6JMlhlRmfpGrHkSmLpHJ4CPvBBH7KsFrFA
+    short-id: fd8cf7e1173f0edb
+  servername: www.cloudflare.com
+  client-fingerprint: chrome
+- name: 🇪🇸 西班牙 (Spain) 04 4324K - NEKO
   server: 140.174.184.5
   port: 8388
   udp: true
   type: ss
   cipher: chacha20-ietf-poly1305
   password: qItG8SueYQcP
-- name: 🇪🇸 西班牙 (Spain) 06 3406K - NEKO
-  server: es2.h1cloud.net
-  port: 25535
+- name: 🇪🇸 西班牙 (Spain) 05 4099K - NEKO
+  server: 108.181.121.226
+  port: 8388
   udp: true
-  type: vless
-  uuid: c379d8e4-c67d-42ec-a3ed-ca99d1ad0546
-  tls: true
-  reality-opts:
-    public-key: Jh7CocBJSA55VZcLfXwXwoQ_Hi5pV-L1vv1SY-IrSh4
-    short-id: 7642ce57308852e7
-  servername: www.microsoft.com
-  client-fingerprint: firefox
-- name: 🇪🇸 西班牙 (Spain) 07 3547K - NEKO
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: WSyL4XTwNsdv
+- name: 🇪🇸 西班牙 (Spain) 06 4750K - NEKO
   server: 212.227.235.66
   port: 2053
   udp: true
@@ -71,7 +64,19 @@ proxies:
     short-id: 29e8dcd2b37aaa7f
   servername: www.apple.com
   client-fingerprint: chrome
-- name: 🇪🇸 西班牙 (Spain) 08 3621K - NEKO
+- name: 🇪🇸 西班牙 (Spain) 07 3978K - NEKO
+  server: es2.h1cloud.net
+  port: 25535
+  udp: true
+  type: vless
+  uuid: c379d8e4-c67d-42ec-a3ed-ca99d1ad0546
+  tls: true
+  reality-opts:
+    public-key: Jh7CocBJSA55VZcLfXwXwoQ_Hi5pV-L1vv1SY-IrSh4
+    short-id: 7642ce57308852e7
+  servername: www.microsoft.com
+  client-fingerprint: firefox
+- name: 🇪🇸 西班牙 (Spain) 08 3857K - NEKO
   server: 46.28.71.247
   port: 443
   udp: true
@@ -89,26 +94,26 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇪🇸 西班牙 (Spain) 01 ⚠S5287K - NEKO
-  - 🇪🇸 西班牙 (Spain) 02 ⚠S671K - NEKO
-  - 🇪🇸 西班牙 (Spain) 03 3787K - NEKO
-  - 🇪🇸 西班牙 (Spain) 04 3503K - NEKO
-  - 🇪🇸 西班牙 (Spain) 05 3650K - NEKO
-  - 🇪🇸 西班牙 (Spain) 06 3406K - NEKO
-  - 🇪🇸 西班牙 (Spain) 07 3547K - NEKO
-  - 🇪🇸 西班牙 (Spain) 08 3621K - NEKO
+  - 🇪🇸 西班牙 (Spain) 01 ⚠S5826K - NEKO
+  - 🇪🇸 西班牙 (Spain) 02 1497K - NEKO
+  - 🇪🇸 西班牙 (Spain) 03 5924K - NEKO
+  - 🇪🇸 西班牙 (Spain) 04 4324K - NEKO
+  - 🇪🇸 西班牙 (Spain) 05 4099K - NEKO
+  - 🇪🇸 西班牙 (Spain) 06 4750K - NEKO
+  - 🇪🇸 西班牙 (Spain) 07 3978K - NEKO
+  - 🇪🇸 西班牙 (Spain) 08 3857K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇪🇸 西班牙 (Spain) 01 ⚠S5287K - NEKO
-  - 🇪🇸 西班牙 (Spain) 02 ⚠S671K - NEKO
-  - 🇪🇸 西班牙 (Spain) 03 3787K - NEKO
-  - 🇪🇸 西班牙 (Spain) 04 3503K - NEKO
-  - 🇪🇸 西班牙 (Spain) 05 3650K - NEKO
-  - 🇪🇸 西班牙 (Spain) 06 3406K - NEKO
-  - 🇪🇸 西班牙 (Spain) 07 3547K - NEKO
-  - 🇪🇸 西班牙 (Spain) 08 3621K - NEKO
+  - 🇪🇸 西班牙 (Spain) 01 ⚠S5826K - NEKO
+  - 🇪🇸 西班牙 (Spain) 02 1497K - NEKO
+  - 🇪🇸 西班牙 (Spain) 03 5924K - NEKO
+  - 🇪🇸 西班牙 (Spain) 04 4324K - NEKO
+  - 🇪🇸 西班牙 (Spain) 05 4099K - NEKO
+  - 🇪🇸 西班牙 (Spain) 06 4750K - NEKO
+  - 🇪🇸 西班牙 (Spain) 07 3978K - NEKO
+  - 🇪🇸 西班牙 (Spain) 08 3857K - NEKO
 rules:
 - MATCH,PROXIES

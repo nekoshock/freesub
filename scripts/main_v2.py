@@ -79,6 +79,11 @@ SOURCE_URLS = [
     "https://raw.githubusercontent.com/ebrasha/free-v2ray-public-list/refs/heads/main/V2Ray-Config-By-EbraSha.txt",
     "https://raw.githubusercontent.com/zhuhaiuk/free-nodes/main/nodes.txt",
     "https://raw.githubusercontent.com/0xRadikal/Free-v2ray-Configs/main/verified/configs_base64.txt",
+    "https://raw.githubusercontent.com/iboxz/free-v2ray-collector/main/main/mix.txt",
+    "https://gitlab.com/igareck/vpn-configs-for-russia/-/raw/main/Export/v2rayN_PC/BLACK_VLESS_RUS_mobile_v2rayN.txt",
+    "https://www.xrayvip.com/free.txt",
+    "https://raw.githubusercontent.com/MatinGhanbari/v2ray-configs/main/subscriptions/v2ray/super-sub.txt",
+    "https://raw.githubusercontent.com/snakem982/proxypool/main/source/v2ray-2.txt",
 ]
 
 OUTPUT_DIR = "output"

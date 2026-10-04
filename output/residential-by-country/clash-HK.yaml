@@ -4,25 +4,40 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇭🇰 中国香港 (Hong Kong) 01 (家宽) ⚠S7196K - NEKO
-  server: 5e367597-tmm5c0-typ01r-1p0be.hk3.hyhuawei.com
+- name: 🇭🇰 中国香港 (Hong Kong) 01 (家宽) ⚠S2726K - NEKO
+  server: 54fb07dd-tk7400-toh6wi-jx5r.pccw3.hyhuawei.com
   port: 443
   udp: true
-  type: hysteria2
-  password: 55cce5a4-56b7-11ee-af82-f23c9164ca5d
-  sni: 5e367597-tmm5c0-typ01r-1p0be.hk3.hyhuawei.com
-  skip-cert-verify: true
+  type: tuic
+  uuid: 73bfcc1c-5814-5f2a-b43a-3ef6af011db8
+  password: 73bfcc1c-5814-5f2a-b43a-3ef6af011db8
+  sni: 54fb07dd-tk7400-toh6wi-jx5r.pccw3.hyhuawei.com
+  skip-cert-verify: false
+  congestion-controller: bbr
+  udp-relay-mode: native
+  alpn:
+  - h3
+- name: 🇭🇰 中国香港 (Hong Kong) 02 (移动家宽) 2950K - NEKO
+  server: zfd-hkv2.kunlun01dns.com
+  port: 16115
+  udp: true
+  type: vmess
+  uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
+  alterId: 0
+  cipher: auto
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇭🇰 中国香港 (Hong Kong) 01 (家宽) ⚠S7196K - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 (家宽) ⚠S2726K - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 (移动家宽) 2950K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇭🇰 中国香港 (Hong Kong) 01 (家宽) ⚠S7196K - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 (家宽) ⚠S2726K - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 (移动家宽) 2950K - NEKO
 rules:
 - MATCH,PROXIES

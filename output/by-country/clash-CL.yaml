@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇱 智利 (Chile) 01 3592K - NEKO
+- name: 🇨🇱 智利 (Chile) 01 4706K - NEKO
   server: platform101.golnamakcert.top
   port: 80
   udp: true
@@ -15,7 +15,16 @@ proxies:
     path: /platform101
     headers:
       Host: platform101.halalkhor.info
-- name: 🇨🇱 智利 (Chile) 02 3555K - NEKO
+- name: 🇨🇱 智利 (Chile) 02 4693K - NEKO
+  server: platform103.golnamakcert.top
+  port: 80
+  udp: true
+  type: vless
+  uuid: e13cf851-b4fd-413b-8d49-146e6eb8e5d4
+  network: ws
+  ws-opts:
+    path: /platform103
+- name: 🇨🇱 智利 (Chile) 03 4758K - NEKO
   server: platform106.golnamakcert.top
   port: 80
   udp: true
@@ -26,29 +35,7 @@ proxies:
     path: /platform106
     headers:
       Host: platform106.halalkhor.info
-- name: 🇨🇱 智利 (Chile) 03 3827K - NEKO
-  server: platform102.golnamakcert.top
-  port: 80
-  udp: true
-  type: vless
-  uuid: e13cf851-b4fd-413b-8d49-146e6eb8e5d4
-  network: ws
-  ws-opts:
-    path: /platform102
-    headers:
-      Host: platform102.halalkhor.info
-- name: 🇨🇱 智利 (Chile) 04 314K - NEKO
-  server: platform115.golnamakcert.top
-  port: 80
-  udp: true
-  type: vless
-  uuid: e13cf851-b4fd-413b-8d49-146e6eb8e5d4
-  network: ws
-  ws-opts:
-    path: /platform115
-    headers:
-      Host: platform115.halalkhor.info
-- name: 🇨🇱 智利 (Chile) 05 3882K - NEKO
+- name: 🇨🇱 智利 (Chile) 04 4951K - NEKO
   server: platform107.golnamakcert.top
   port: 80
   udp: true
@@ -57,18 +44,9 @@ proxies:
   network: ws
   ws-opts:
     path: /platform107
-- name: 🇨🇱 智利 (Chile) 06 3980K - NEKO
-  server: platform118.golnamakcert.top
-  port: 80
-  udp: true
-  type: vless
-  uuid: e13cf851-b4fd-413b-8d49-146e6eb8e5d4
-  network: ws
-  ws-opts:
-    path: /platform118
     headers:
-      Host: platform118.halalkhor.info
-- name: 🇨🇱 智利 (Chile) 07 3951K - NEKO
+      Host: platform107.halalkhor.info
+- name: 🇨🇱 智利 (Chile) 05 4746K - NEKO
   server: platform113.golnamakcert.top
   port: 80
   udp: true
@@ -79,18 +57,40 @@ proxies:
     path: /platform113
     headers:
       Host: platform113.halalkhor.info
-- name: 🇨🇱 智利 (Chile) 08 3941K - NEKO
-  server: platform117.golnamakcert.top
+- name: 🇨🇱 智利 (Chile) 06 4615K - NEKO
+  server: platform118.golnamakcert.top
   port: 80
   udp: true
   type: vless
   uuid: e13cf851-b4fd-413b-8d49-146e6eb8e5d4
   network: ws
   ws-opts:
-    path: /platform117
+    path: /platform118
     headers:
-      Host: platform117.halalkhor.info
-- name: 🇨🇱 智利 (Chile) 09 3908K - NEKO
+      Host: platform118.halalkhor.info
+- name: 🇨🇱 智利 (Chile) 07 4665K - NEKO
+  server: platform115.golnamakcert.top
+  port: 80
+  udp: true
+  type: vless
+  uuid: e13cf851-b4fd-413b-8d49-146e6eb8e5d4
+  network: ws
+  ws-opts:
+    path: /platform115
+    headers:
+      Host: platform115.halalkhor.info
+- name: 🇨🇱 智利 (Chile) 08 4762K - NEKO
+  server: platform102.golnamakcert.top
+  port: 80
+  udp: true
+  type: vless
+  uuid: e13cf851-b4fd-413b-8d49-146e6eb8e5d4
+  network: ws
+  ws-opts:
+    path: /platform102
+    headers:
+      Host: platform102.halalkhor.info
+- name: 🇨🇱 智利 (Chile) 09 4746K - NEKO
   server: platform108.golnamakcert.top
   port: 80
   udp: true
@@ -101,7 +101,7 @@ proxies:
     path: /platform108
     headers:
       Host: platform108.halalkhor.info
-- name: 🇨🇱 智利 (Chile) 10 272K - NEKO
+- name: 🇨🇱 智利 (Chile) 10 987K - NEKO
   server: platform109.golnamakcert.top
   port: 80
   udp: true
@@ -112,48 +112,35 @@ proxies:
     path: /platform109
     headers:
       Host: platform109.halalkhor.info
-- name: 🇨🇱 智利 (Chile) 11 277K - NEKO
-  server: platform103.golnamakcert.top
-  port: 80
-  udp: true
-  type: vless
-  uuid: e13cf851-b4fd-413b-8d49-146e6eb8e5d4
-  network: ws
-  ws-opts:
-    path: /platform103
-    headers:
-      Host: platform103.halalkhor.info
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇨🇱 智利 (Chile) 01 3592K - NEKO
-  - 🇨🇱 智利 (Chile) 02 3555K - NEKO
-  - 🇨🇱 智利 (Chile) 03 3827K - NEKO
-  - 🇨🇱 智利 (Chile) 04 314K - NEKO
-  - 🇨🇱 智利 (Chile) 05 3882K - NEKO
-  - 🇨🇱 智利 (Chile) 06 3980K - NEKO
-  - 🇨🇱 智利 (Chile) 07 3951K - NEKO
-  - 🇨🇱 智利 (Chile) 08 3941K - NEKO
-  - 🇨🇱 智利 (Chile) 09 3908K - NEKO
-  - 🇨🇱 智利 (Chile) 10 272K - NEKO
-  - 🇨🇱 智利 (Chile) 11 277K - NEKO
+  - 🇨🇱 智利 (Chile) 01 4706K - NEKO
+  - 🇨🇱 智利 (Chile) 02 4693K - NEKO
+  - 🇨🇱 智利 (Chile) 03 4758K - NEKO
+  - 🇨🇱 智利 (Chile) 04 4951K - NEKO
+  - 🇨🇱 智利 (Chile) 05 4746K - NEKO
+  - 🇨🇱 智利 (Chile) 06 4615K - NEKO
+  - 🇨🇱 智利 (Chile) 07 4665K - NEKO
+  - 🇨🇱 智利 (Chile) 08 4762K - NEKO
+  - 🇨🇱 智利 (Chile) 09 4746K - NEKO
+  - 🇨🇱 智利 (Chile) 10 987K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇱 智利 (Chile) 01 3592K - NEKO
-  - 🇨🇱 智利 (Chile) 02 3555K - NEKO
-  - 🇨🇱 智利 (Chile) 03 3827K - NEKO
-  - 🇨🇱 智利 (Chile) 04 314K - NEKO
-  - 🇨🇱 智利 (Chile) 05 3882K - NEKO
-  - 🇨🇱 智利 (Chile) 06 3980K - NEKO
-  - 🇨🇱 智利 (Chile) 07 3951K - NEKO
-  - 🇨🇱 智利 (Chile) 08 3941K - NEKO
-  - 🇨🇱 智利 (Chile) 09 3908K - NEKO
-  - 🇨🇱 智利 (Chile) 10 272K - NEKO
-  - 🇨🇱 智利 (Chile) 11 277K - NEKO
+  - 🇨🇱 智利 (Chile) 01 4706K - NEKO
+  - 🇨🇱 智利 (Chile) 02 4693K - NEKO
+  - 🇨🇱 智利 (Chile) 03 4758K - NEKO
+  - 🇨🇱 智利 (Chile) 04 4951K - NEKO
+  - 🇨🇱 智利 (Chile) 05 4746K - NEKO
+  - 🇨🇱 智利 (Chile) 06 4615K - NEKO
+  - 🇨🇱 智利 (Chile) 07 4665K - NEKO
+  - 🇨🇱 智利 (Chile) 08 4762K - NEKO
+  - 🇨🇱 智利 (Chile) 09 4746K - NEKO
+  - 🇨🇱 智利 (Chile) 10 987K - NEKO
 rules:
 - MATCH,PROXIES

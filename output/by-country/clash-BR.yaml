@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇧🇷 巴西 (Brazil) 01 2972K - NEKO
+- name: 🇧🇷 巴西 (Brazil) 01 ⚠S3264K - NEKO
   server: 35.247.243.231
   port: 443
   udp: true
@@ -16,7 +16,7 @@ proxies:
     short-id: b62a4da6cd1c4dd6
   servername: www.cloudflare.com
   client-fingerprint: chrome
-- name: 🇧🇷 巴西 (Brazil) 02 3105K - NEKO
+- name: 🇧🇷 巴西 (Brazil) 02 ⚠S3432K - NEKO
   server: 34.151.245.65
   port: 443
   udp: true
@@ -28,7 +28,7 @@ proxies:
     short-id: 4b414f69a06e1e81
   servername: www.cloudflare.com
   client-fingerprint: chrome
-- name: 🇧🇷 巴西 (Brazil) 03 2773K - NEKO
+- name: 🇧🇷 巴西 (Brazil) 03 3289K - NEKO
   server: 89.39.161.157
   port: 443
   udp: true
@@ -49,16 +49,16 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇧🇷 巴西 (Brazil) 01 2972K - NEKO
-  - 🇧🇷 巴西 (Brazil) 02 3105K - NEKO
-  - 🇧🇷 巴西 (Brazil) 03 2773K - NEKO
+  - 🇧🇷 巴西 (Brazil) 01 ⚠S3264K - NEKO
+  - 🇧🇷 巴西 (Brazil) 02 ⚠S3432K - NEKO
+  - 🇧🇷 巴西 (Brazil) 03 3289K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇧🇷 巴西 (Brazil) 01 2972K - NEKO
-  - 🇧🇷 巴西 (Brazil) 02 3105K - NEKO
-  - 🇧🇷 巴西 (Brazil) 03 2773K - NEKO
+  - 🇧🇷 巴西 (Brazil) 01 ⚠S3264K - NEKO
+  - 🇧🇷 巴西 (Brazil) 02 ⚠S3432K - NEKO
+  - 🇧🇷 巴西 (Brazil) 03 3289K - NEKO
 rules:
 - MATCH,PROXIES

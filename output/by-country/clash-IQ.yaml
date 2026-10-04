@@ -1,0 +1,52 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: info
+proxies:
+- name: 🇮🇶 IQ 01 ⚠S24404K - NEKO
+  server: 172.67.156.87
+  port: 443
+  udp: true
+  type: vless
+  uuid: 4ccf70f9-7632-4b5a-9557-10d2dd347bb2
+  tls: true
+  servername: tO6R63-kkCHIgHQM2.vXZ0dDUq7to7SU0cdQF.wOrKERS.Dev
+  skip-cert-verify: false
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /vl/VEyizgqHTVJUF3AcZhYc7j0dW3wCfGYE?ed=2560
+    headers:
+      Host: to6r63-kkchighqm2.vxz0dduq7to7su0cdqf.workers.dev
+- name: 🇮🇶 IQ 02 ⚠S45211K - NEKO
+  server: 172.67.208.235
+  port: 2096
+  udp: true
+  type: vless
+  uuid: b9ede7a5-5b4b-4aee-ac37-2c307e587e47
+  tls: true
+  servername: courses.mftplus.qzz.io
+  skip-cert-verify: false
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /eyJqdW5rIjoidVkzQm1ROUg4dyIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=
+    headers:
+      Host: courses.mftplus.qzz.io
+proxy-groups:
+- name: PROXIES
+  type: select
+  proxies:
+  - AUTO
+  - 🇮🇶 IQ 01 ⚠S24404K - NEKO
+  - 🇮🇶 IQ 02 ⚠S45211K - NEKO
+- name: AUTO
+  type: url-test
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  proxies:
+  - 🇮🇶 IQ 01 ⚠S24404K - NEKO
+  - 🇮🇶 IQ 02 ⚠S45211K - NEKO
+rules:
+- MATCH,PROXIES

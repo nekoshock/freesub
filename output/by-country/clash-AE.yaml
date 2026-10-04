@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇦🇪 阿联酋 (UAE) 01 7660K - NEKO
+- name: 🇦🇪 阿联酋 (UAE) 01 ⚠S5906K - NEKO
   server: 130.49.161.70
   port: 443
   udp: true
@@ -14,24 +14,16 @@ proxies:
   skip-cert-verify: false
   obfs: salamander
   obfs-password: rG07s3COMIEvdnQipRyWzx_H_2xygNC3
-- name: 🇦🇪 阿联酋 (UAE) 02 5002K - NEKO
-  server: 45.192.12.93
+- name: 🇦🇪 阿联酋 (UAE) 02 ⚠S7575K - NEKO
+  server: admin.wwwinternetvideo.click
   port: 443
   udp: true
   type: hysteria2
   password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
   sni: admin.wwwinternetvideo.click
   skip-cert-verify: false
-- name: 🇦🇪 阿联酋 (UAE) 03 7181K - NEKO
-  server: streambox.wwwinternetvideo.click
-  port: 443
-  udp: true
-  type: hysteria2
-  password: 865e271f7c97b549b024255c9d02cebe9cc0c2c070a82b1e11bb11b9cd88dd01
-  sni: streambox.wwwinternetvideo.click
-  skip-cert-verify: true
-- name: 🇦🇪 阿联酋 (UAE) 04 3148K - NEKO
-  server: 31.59.150.11
+- name: 🇦🇪 阿联酋 (UAE) 03 5495K - NEKO
+  server: node-nl.shtormvpn.shop
   port: 443
   udp: true
   type: vless
@@ -41,24 +33,50 @@ proxies:
   reality-opts:
     public-key: yI6maXxTQ8zRHg39X8YMQtKW-IVfNIn0_OCUIQKmcXw
   servername: google.com
+  client-fingerprint: edge
+- name: 🇦🇪 阿联酋 (UAE) 04 3042K - NEKO
+  server: uae.unixzone.us
+  port: 22573
+  udp: true
+  type: vless
+  uuid: 39947382-3212-41c9-bc3a-589574ac8b23
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: uae.unixzone.us
+- name: 🇦🇪 阿联酋 (UAE) 05 3746K - NEKO
+  server: 146.70.102.82
+  port: 443
+  udp: true
+  type: vless
+  uuid: 31fd2fde-ca69-450e-8c03-eaad819b06b9
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: GDer6NQYXdbccrFI0tLn2671PjCvrcSy0R7TKY8vG1k
+    short-id: 002fb4ec7b3088cc
+  servername: www.datadoghq.com
   client-fingerprint: firefox
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇦🇪 阿联酋 (UAE) 01 7660K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 02 5002K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 03 7181K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 04 3148K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 01 ⚠S5906K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 02 ⚠S7575K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 03 5495K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 04 3042K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 05 3746K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇦🇪 阿联酋 (UAE) 01 7660K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 02 5002K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 03 7181K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 04 3148K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 01 ⚠S5906K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 02 ⚠S7575K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 03 5495K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 04 3042K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 05 3746K - NEKO
 rules:
 - MATCH,PROXIES

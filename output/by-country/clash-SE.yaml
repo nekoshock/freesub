@@ -4,56 +4,42 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇸🇪 瑞典 (Sweden) 01 5077K - NEKO
-  server: 62.60.159.81
-  port: 2053
-  udp: true
-  type: vless
-  uuid: fc00adfb-232a-46ce-8b93-0c70e516aa8a
-  tls: true
-  reality-opts:
-    public-key: ygmJxS-Mc7g0buNSUTVGhazT-FoBjyYtLLfUYIQxFTw
-    short-id: d0ea1847066af5a6
-  servername: www.samsung.com
-  client-fingerprint: safari
-  network: grpc
-  grpc-opts:
-    grpc-service-name: grpce5bb9e71
-- name: 🇸🇪 瑞典 (Sweden) 02 4333K - NEKO
-  server: 13.49.21.155
-  port: 443
-  udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: amazonskr05
-- name: 🇸🇪 瑞典 (Sweden) 03 3899K - NEKO
-  server: 13.60.213.145
-  port: 443
-  udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: amazonskr05
-- name: 🇸🇪 瑞典 (Sweden) 04 ⚠S1322K - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 01 ⚠S1905K - NEKO
   server: 13.48.177.148
   port: 443
   udp: true
   type: ss
   cipher: aes-256-cfb
   password: amazonskr05
-- name: 🇸🇪 瑞典 (Sweden) 05 ⚠S3202K - NEKO
-  server: 132.243.231.12
+- name: 🇸🇪 瑞典 (Sweden) 02 3391K - NEKO
+  server: 13.62.228.76
   port: 443
   udp: true
-  type: vless
-  uuid: 87fd990d-ca93-440a-bbd4-e8281c4a0910
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: zWDvtTWK-cWWwHDMHMXcOpQy4k3EKp7yw-5e0wTZAUM
-    short-id: 5efa80b939612291
-  servername: d3-se1.cloud-cdn.xyz
-  client-fingerprint: firefox
-- name: 🇸🇪 瑞典 (Sweden) 06 3762K - NEKO
+  type: ss
+  cipher: aes-256-cfb
+  password: amazonskr05
+- name: 🇸🇪 瑞典 (Sweden) 03 ⚠S3020K - NEKO
+  server: 13.49.21.155
+  port: 443
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: amazonskr05
+- name: 🇸🇪 瑞典 (Sweden) 04 3583K - NEKO
+  server: 51.20.96.231
+  port: 443
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: amazonskr05
+- name: 🇸🇪 瑞典 (Sweden) 05 3529K - NEKO
+  server: 51.20.86.152
+  port: 443
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: amazonskr05
+- name: 🇸🇪 瑞典 (Sweden) 06 3662K - NEKO
   server: 132.243.231.4
   port: 443
   udp: true
@@ -66,20 +52,21 @@ proxies:
     short-id: 5efa80b939612291
   servername: d3-se1.cloud-cdn.xyz
   client-fingerprint: chrome
-- name: 🇸🇪 瑞典 (Sweden) 07 4270K - NEKO
-  server: 143.246.196.207
+- name: 🇸🇪 瑞典 (Sweden) 07 3697K - NEKO
+  server: 132.243.231.12
   port: 443
   udp: true
   type: vless
-  uuid: ac0c2945-b758-11f1-8181-54db13ea7d40
+  uuid: 87fd990d-ca93-440a-bbd4-e8281c4a0910
   flow: xtls-rprx-vision
   tls: true
   reality-opts:
-    public-key: wSjV1yR_rhDUdoNbM9zIXNGLASLp9RorComnyoayo2c
-  servername: www.blocket.se
+    public-key: zWDvtTWK-cWWwHDMHMXcOpQy4k3EKp7yw-5e0wTZAUM
+    short-id: 5efa80b939612291
+  servername: d3-se1.cloud-cdn.xyz
   client-fingerprint: firefox
-- name: 🇸🇪 瑞典 (Sweden) 08 516K - NEKO
-  server: 144.31.235.214
+- name: 🇸🇪 瑞典 (Sweden) 08 3720K - NEKO
+  server: swed4.o4ka-internet.com
   port: 443
   udp: true
   type: vless
@@ -90,23 +77,33 @@ proxies:
     public-key: V2JprbR_aJkS7uX6anyU3nrswGxdvDQT2HpY4WnzuC8
     short-id: 5629431325884ff0
   servername: swed4.o4ka-internet.com
-  client-fingerprint: firefox
-- name: 🇸🇪 瑞典 (Sweden) 09 4949K - NEKO
-  server: sub.merky.top
+  client-fingerprint: random
+- name: 🇸🇪 瑞典 (Sweden) 09 284K - NEKO
+  server: 31.207.7.74
   port: 443
   udp: true
   type: vless
-  uuid: 6e05822a-e9da-4135-a9db-71aa07a944af
+  uuid: 2412bd96-925b-43f2-81d1-0ed4f0793699
+  flow: xtls-rprx-vision
   tls: true
-  servername: sub.merky.top
-  skip-cert-verify: false
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /merky-connect/de6/
-    headers:
-      Host: sub.merky.top
-- name: 🇸🇪 瑞典 (Sweden) 10 4116K - NEKO
+  reality-opts:
+    public-key: RDL0RVmgFM3fdqXRSHBF2A53YF9TPFu2aeJQhMTaY3s
+    short-id: 457ae5b8bef4d1b3
+  servername: pkg.go.dev
+  client-fingerprint: firefox
+- name: 🇸🇪 瑞典 (Sweden) 10 3377K - NEKO
+  server: 143.246.196.207
+  port: 443
+  udp: true
+  type: vless
+  uuid: ac0c2945-b758-11f1-8181-54db13ea7d40
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: wSjV1yR_rhDUdoNbM9zIXNGLASLp9RorComnyoayo2c
+  servername: www.blocket.se
+  client-fingerprint: ''
+- name: 🇸🇪 瑞典 (Sweden) 11 3431K - NEKO
   server: svip.skycon808.com
   port: 60005
   udp: true
@@ -114,35 +111,54 @@ proxies:
   password: 13f0acfa-38c1-4e82-a758-583aa31740df
   sni: xjp18.2uuzhe.com
   skip-cert-verify: true
+- name: 🇸🇪 瑞典 (Sweden) 12 3988K - NEKO
+  server: 94.143.231.146
+  port: 443
+  udp: true
+  type: vless
+  uuid: 6e05822a-e9da-4135-a9db-71aa07a944af
+  tls: true
+  servername: sub.merky.top
+  skip-cert-verify: false
+  client-fingerprint: firefox
+  network: ws
+  ws-opts:
+    path: /merky-connect/de6/
+    headers:
+      Host: sub.merky.top
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇸🇪 瑞典 (Sweden) 01 5077K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 4333K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 03 3899K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 04 ⚠S1322K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 05 ⚠S3202K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 06 3762K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 07 4270K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 08 516K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 09 4949K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 10 4116K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 ⚠S1905K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 3391K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 03 ⚠S3020K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 04 3583K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 05 3529K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 06 3662K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 07 3697K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 08 3720K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 09 284K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 10 3377K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 11 3431K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 12 3988K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇸🇪 瑞典 (Sweden) 01 5077K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 4333K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 03 3899K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 04 ⚠S1322K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 05 ⚠S3202K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 06 3762K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 07 4270K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 08 516K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 09 4949K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 10 4116K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 ⚠S1905K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 3391K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 03 ⚠S3020K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 04 3583K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 05 3529K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 06 3662K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 07 3697K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 08 3720K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 09 284K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 10 3377K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 11 3431K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 12 3988K - NEKO
 rules:
 - MATCH,PROXIES

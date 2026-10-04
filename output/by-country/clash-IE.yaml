@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇮🇪 爱尔兰 (Ireland) 01 6185K - NEKO
+- name: 🇮🇪 爱尔兰 (Ireland) 01 3976K - NEKO
   server: loved-shark.rooster465.autos
   port: 443
   udp: true
@@ -12,32 +12,17 @@ proxies:
   password: UX82473651
   sni: loved-shark.rooster465.autos
   skip-cert-verify: true
-- name: 🇮🇪 爱尔兰 (Ireland) 02 ⚠S1217K - NEKO
-  server: 3.9.135.156
-  port: 51847
-  udp: true
-  type: vless
-  uuid: 391a01e9-b664-407b-9158-610fab3f5920
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: S6noV0L8eNASnTe1gXLutLZNdfENsvKMsOJiGQYi6nc
-    short-id: 0eec442e7b34d2f2
-  servername: www.tesla.com
-  client-fingerprint: firefox
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇮🇪 爱尔兰 (Ireland) 01 6185K - NEKO
-  - 🇮🇪 爱尔兰 (Ireland) 02 ⚠S1217K - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 01 3976K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇮🇪 爱尔兰 (Ireland) 01 6185K - NEKO
-  - 🇮🇪 爱尔兰 (Ireland) 02 ⚠S1217K - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 01 3976K - NEKO
 rules:
 - MATCH,PROXIES

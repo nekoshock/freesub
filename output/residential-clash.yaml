@@ -4,46 +4,32 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇺🇸 美国 (United States) 01 (移动家宽) 24706K - NEKO
-  server: 104.18.34.14
-  port: 2052
-  udp: true
-  type: vless
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🇭🇰 中国香港 (Hong Kong) 02 (家宽) ⚠S7266K - NEKO
-  server: 7017cade-tmm5c0-u1dz9j-12hj8.nw4.hyhuawei.com
+- name: 🇭🇰 中国香港 (Hong Kong) 01 (家宽) ⚠S7196K - NEKO
+  server: 5e367597-tmm5c0-typ01r-1p0be.hk3.hyhuawei.com
   port: 443
   udp: true
   type: hysteria2
-  password: 5acc7a7c-d7ea-11eb-8673-f23c9164ca5d
-  sni: 7017cade-tmm5c0-u1dz9j-12hj8.nw4.hyhuawei.com
+  password: 55cce5a4-56b7-11ee-af82-f23c9164ca5d
+  sni: 5e367597-tmm5c0-typ01r-1p0be.hk3.hyhuawei.com
   skip-cert-verify: true
-- name: 🇹🇷 土耳其 (Turkey) 03 (移动家宽) 472K - NEKO
-  server: tutaim.azad0namah.ir
-  port: 8080
+- name: 🇺🇸 美国 (United States) 02 (移动家宽) 368K - NEKO
+  server: www.wto.org
+  port: 8443
   udp: true
-  type: vless
-  uuid: fdc1206a-9d2e-42b7-b615-9ccea8cf70ee
-- name: 🇹🇷 土耳其 (Turkey) 04 (移动家宽) ⚠S2060K - NEKO
+  type: trojan
+  password: ec1fa47d-4eac-4b3f-8cae-4a2982d43e2f
+  sni: jiangjc.pages.dev
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /
+- name: 🇹🇷 土耳其 (Turkey) 03 (移动家宽) 255K - NEKO
   server: test.keoplentuio.xyz
   port: 2053
   udp: true
   type: vless
   uuid: 9ef61079-6f7d-4911-9608-943da85d8e6f
-- name: 🇭🇰 中国香港 (Hong Kong) 05 (移动家宽) 3648K - NEKO
-  server: zfd-hkv2.kunlun01dns.com
-  port: 16115
-  udp: true
-  type: vmess
-  uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
-  alterId: 0
-  cipher: auto
-- name: 🇹🇼 中国台湾 (Taiwan) 06 (家宽) 3852K - NEKO
+- name: 🇹🇼 中国台湾 (Taiwan) 04 (家宽) ⚠S413K - NEKO
   server: hinet1.2yly.com
   port: 24215
   udp: true
@@ -54,37 +40,37 @@ proxies:
     public-key: mdWKUPMVTtTbDqK10BPb89OcqBC2-Lx-4NOYtqc1GWE
   servername: addons.mozilla.org
   client-fingerprint: chrome
-- name: 🇹🇼 中国台湾 (Taiwan) 07 (家宽) 3631K - NEKO
-  server: ac7548f3ebe045b39a90288ff1e97526.pnuqcnp.cn
+- name: 🇹🇼 中国台湾 (Taiwan) 05 (家宽) ⚠S4967K - NEKO
+  server: argo6.5671234.xyz
   port: 443
   udp: true
-  type: anytls
-  password: 9sK2mP8xQ7vL3nZ6
-  sni: ac7548f3ebe045b39a90288ff1e97526.lwdnxf.cn
-  skip-cert-verify: true
+  type: vless
+  uuid: 08aaab35-a42d-4755-a03e-20c18cb1b3e8
+  tls: true
+  servername: argo6.5671234.xyz
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /e8e2cecb6188f7fb
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇺🇸 美国 (United States) 01 (移动家宽) 24706K - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 (家宽) ⚠S7266K - NEKO
-  - 🇹🇷 土耳其 (Turkey) 03 (移动家宽) 472K - NEKO
-  - 🇹🇷 土耳其 (Turkey) 04 (移动家宽) ⚠S2060K - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 05 (移动家宽) 3648K - NEKO
-  - 🇹🇼 中国台湾 (Taiwan) 06 (家宽) 3852K - NEKO
-  - 🇹🇼 中国台湾 (Taiwan) 07 (家宽) 3631K - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 (家宽) ⚠S7196K - NEKO
+  - 🇺🇸 美国 (United States) 02 (移动家宽) 368K - NEKO
+  - 🇹🇷 土耳其 (Turkey) 03 (移动家宽) 255K - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 04 (家宽) ⚠S413K - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 05 (家宽) ⚠S4967K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇺🇸 美国 (United States) 01 (移动家宽) 24706K - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 (家宽) ⚠S7266K - NEKO
-  - 🇹🇷 土耳其 (Turkey) 03 (移动家宽) 472K - NEKO
-  - 🇹🇷 土耳其 (Turkey) 04 (移动家宽) ⚠S2060K - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 05 (移动家宽) 3648K - NEKO
-  - 🇹🇼 中国台湾 (Taiwan) 06 (家宽) 3852K - NEKO
-  - 🇹🇼 中国台湾 (Taiwan) 07 (家宽) 3631K - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 (家宽) ⚠S7196K - NEKO
+  - 🇺🇸 美国 (United States) 02 (移动家宽) 368K - NEKO
+  - 🇹🇷 土耳其 (Turkey) 03 (移动家宽) 255K - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 04 (家宽) ⚠S413K - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 05 (家宽) ⚠S4967K - NEKO
 rules:
 - MATCH,PROXIES

@@ -4,20 +4,14 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇫🇮 芬兰 (Finland) 01 ⚠S3570K - NEKO
-  server: 2.27.207.30
-  port: 443
+- name: 🇫🇮 芬兰 (Finland) 01 3369K - NEKO
+  server: 185.103.110.68
+  port: 18283
   udp: true
-  type: vless
-  uuid: a5dd2dd9-0995-449e-be67-4a409890dc42
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: nG28Y1q-Ul2oBH-FegAkzGtvY6IRCIwras1k8CLwdGo
-    short-id: da4d87fa
-  servername: jdbdb.huinaduok.fans
-  client-fingerprint: random
-- name: 🇫🇮 芬兰 (Finland) 02 3662K - NEKO
+  type: ss
+  cipher: aes-128-gcm
+  password: f9300a9bf39ae0347c3a3bfbc4dd7754
+- name: 🇫🇮 芬兰 (Finland) 02 3765K - NEKO
   server: 151.241.137.132
   port: 443
   udp: true
@@ -29,7 +23,7 @@ proxies:
     public-key: SB1uC0OEveYjSiS_Nuw9Ld-uVVXWqi794OGnldthY3I
   servername: finland.ali-bard.online
   client-fingerprint: firefox
-- name: 🇫🇮 芬兰 (Finland) 03 3264K - NEKO
+- name: 🇫🇮 芬兰 (Finland) 03 3691K - NEKO
   server: 95.216.27.15
   port: 2053
   udp: true
@@ -41,36 +35,36 @@ proxies:
     short-id: d368b94e275ab080
   servername: www.google.com
   client-fingerprint: firefox
-- name: 🇫🇮 芬兰 (Finland) 04 ⚠S1242K - NEKO
-  server: 65.108.3.59
-  port: 443
+- name: 🇫🇮 芬兰 (Finland) 04 3801K - NEKO
+  server: 144.31.27.215
+  port: 43000
   udp: true
   type: vless
-  uuid: 8df2e661-6f46-471b-9133-7fc13a0daa35
+  uuid: 47f79fc1-0646-40e8-8a58-73e85d183d5a
   flow: xtls-rprx-vision
   tls: true
   reality-opts:
-    public-key: jDoORbrtDrvAlFSo19CJbc99C4ev8SAo1MwczSUt9no
-    short-id: 90ec9bba2019
-  servername: web.eitaa.com
-  client-fingerprint: firefox
+    public-key: dxCQnOekn14riFxt3vdwDNydvW47FsmwFG6BJ2mUgEg
+    short-id: 568d87a47271344e
+  servername: 144.31.27.215
+  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇫🇮 芬兰 (Finland) 01 ⚠S3570K - NEKO
-  - 🇫🇮 芬兰 (Finland) 02 3662K - NEKO
-  - 🇫🇮 芬兰 (Finland) 03 3264K - NEKO
-  - 🇫🇮 芬兰 (Finland) 04 ⚠S1242K - NEKO
+  - 🇫🇮 芬兰 (Finland) 01 3369K - NEKO
+  - 🇫🇮 芬兰 (Finland) 02 3765K - NEKO
+  - 🇫🇮 芬兰 (Finland) 03 3691K - NEKO
+  - 🇫🇮 芬兰 (Finland) 04 3801K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇫🇮 芬兰 (Finland) 01 ⚠S3570K - NEKO
-  - 🇫🇮 芬兰 (Finland) 02 3662K - NEKO
-  - 🇫🇮 芬兰 (Finland) 03 3264K - NEKO
-  - 🇫🇮 芬兰 (Finland) 04 ⚠S1242K - NEKO
+  - 🇫🇮 芬兰 (Finland) 01 3369K - NEKO
+  - 🇫🇮 芬兰 (Finland) 02 3765K - NEKO
+  - 🇫🇮 芬兰 (Finland) 03 3691K - NEKO
+  - 🇫🇮 芬兰 (Finland) 04 3801K - NEKO
 rules:
 - MATCH,PROXIES

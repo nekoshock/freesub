@@ -4,30 +4,39 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇱🇻 拉脱维亚 (Latvia) 01 3475K - NEKO
-  server: latinki.pumpkinpie.study
+- name: 🇱🇻 拉脱维亚 (Latvia) 01 3729K - NEKO
+  server: 185.135.86.175
+  port: 9036
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: hbtvgUz5uNYyB3Rf
+- name: 🇱🇻 拉脱维亚 (Latvia) 02 3358K - NEKO
+  server: 138.124.180.137
   port: 443
   udp: true
   type: vless
-  uuid: 8f6e49e6-7f03-4f10-9da9-1716158d80ed
+  uuid: 5234b2b7-5e07-422c-8159-d62a676c00c6
   flow: xtls-rprx-vision
   tls: true
   reality-opts:
-    public-key: wHTq_owme8N6237B37GhneBcNJQtzRdIFouRkSscgnQ
-    short-id: 40fac5d64bc6a540
-  servername: latinki.pumpkinpie.study
-  client-fingerprint: random
+    public-key: GBdkyDLfr0LIZo_94Xv8ycAKOmkjArYzwJAEMhuXX2c
+    short-id: 33acba1b
+  servername: www.apple.com
+  client-fingerprint: firefox
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇱🇻 拉脱维亚 (Latvia) 01 3475K - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 01 3729K - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 02 3358K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇱🇻 拉脱维亚 (Latvia) 01 3475K - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 01 3729K - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 02 3358K - NEKO
 rules:
 - MATCH,PROXIES

@@ -4,78 +4,26 @@
   },
   "outbounds": [
     {
-      "type": "hysteria2",
-      "tag": "🇭🇰 中国香港 (Hong Kong) 01 (家宽) ⚠S5814K - NEKO",
-      "server": "39c981a4-tmm5c0-u093mf-1mina.hk3.hyhuawei.com",
-      "server_port": 443,
-      "password": "367e233c-2f54-11ee-9ae1-f23c9164ca5d",
-      "tls": {
-        "enabled": true,
-        "server_name": "39c981a4-tmm5c0-u093mf-1mina.hk3.hyhuawei.com",
-        "insecure": true
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "🇭🇰 中国香港 (Hong Kong) 02 (家宽) 7278K - NEKO",
-      "server": "aecfea9b-tmm5c0-tpw4i4-1pckg.nw4.hyhuawei.com",
-      "server_port": 443,
-      "password": "526a1128-7487-11ee-9bca-f23c913c8d2b",
-      "tls": {
-        "enabled": true,
-        "server_name": "aecfea9b-tmm5c0-tpw4i4-1pckg.nw4.hyhuawei.com",
-        "insecure": true
-      }
-    },
-    {
-      "type": "tuic",
-      "tag": "🇭🇰 中国香港 (Hong Kong) 03 (家宽) ⚠S3326K - NEKO",
-      "server": "54fb07dd-tk7400-toh6wi-jx5r.pccw3.hyhuawei.com",
-      "server_port": 443,
-      "uuid": "73bfcc1c-5814-5f2a-b43a-3ef6af011db8",
-      "password": "73bfcc1c-5814-5f2a-b43a-3ef6af011db8",
-      "congestion_control": "bbr",
-      "udp_relay_mode": "native",
-      "tls": {
-        "enabled": true,
-        "server_name": "54fb07dd-tk7400-toh6wi-jx5r.pccw3.hyhuawei.com",
-        "insecure": false,
-        "alpn": [
-          "h3"
-        ]
-      }
-    },
-    {
-      "type": "anytls",
-      "tag": "🇭🇰 中国香港 (Hong Kong) 04 (家宽) 2607K - NEKO",
-      "server": "ac7548f3ebe045b39a90288ff1e97528.pnuqcnp.cn",
-      "server_port": 443,
-      "password": "9sK2mP8xQ7vL3nZ6",
-      "tls": {
-        "enabled": true,
-        "server_name": "ac7548f3ebe045b39a90288ff1e97528.lwdnxf.cn",
-        "insecure": true
-      }
+      "type": "vmess",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 01 (移动家宽) 4129K - NEKO",
+      "server": "dog-hk.kunlun01dns.com",
+      "server_port": 21022,
+      "uuid": "9464ca40-dd75-3742-a628-d931a9f413b2",
+      "security": "auto"
     },
     {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇭🇰 中国香港 (Hong Kong) 01 (家宽) ⚠S5814K - NEKO",
-        "🇭🇰 中国香港 (Hong Kong) 02 (家宽) 7278K - NEKO",
-        "🇭🇰 中国香港 (Hong Kong) 03 (家宽) ⚠S3326K - NEKO",
-        "🇭🇰 中国香港 (Hong Kong) 04 (家宽) 2607K - NEKO"
+        "🇭🇰 中国香港 (Hong Kong) 01 (移动家宽) 4129K - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇭🇰 中国香港 (Hong Kong) 01 (家宽) ⚠S5814K - NEKO",
-        "🇭🇰 中国香港 (Hong Kong) 02 (家宽) 7278K - NEKO",
-        "🇭🇰 中国香港 (Hong Kong) 03 (家宽) ⚠S3326K - NEKO",
-        "🇭🇰 中国香港 (Hong Kong) 04 (家宽) 2607K - NEKO"
+        "🇭🇰 中国香港 (Hong Kong) 01 (移动家宽) 4129K - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

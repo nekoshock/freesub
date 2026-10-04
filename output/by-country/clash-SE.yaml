@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇸🇪 瑞典 (Sweden) 01 ⚠S371K - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 01 ⚠S2275K - NEKO
   server: 132.243.231.4
   port: 443
   udp: true
@@ -16,21 +16,8 @@ proxies:
     public-key: zWDvtTWK-cWWwHDMHMXcOpQy4k3EKp7yw-5e0wTZAUM
     short-id: 5efa80b939612291
   servername: d3-se1.cloud-cdn.xyz
-  client-fingerprint: edge
-- name: 🇸🇪 瑞典 (Sweden) 02 3610K - NEKO
-  server: 31.207.7.74
-  port: 443
-  udp: true
-  type: vless
-  uuid: 2412bd96-925b-43f2-81d1-0ed4f0793699
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: RDL0RVmgFM3fdqXRSHBF2A53YF9TPFu2aeJQhMTaY3s
-    short-id: 457ae5b8bef4d1b3
-  servername: pkg.go.dev
   client-fingerprint: firefox
-- name: 🇸🇪 瑞典 (Sweden) 03 3322K - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 02 3392K - NEKO
   server: 143.246.196.207
   port: 443
   udp: true
@@ -42,38 +29,29 @@ proxies:
     public-key: wSjV1yR_rhDUdoNbM9zIXNGLASLp9RorComnyoayo2c
   servername: www.blocket.se
   client-fingerprint: firefox
-- name: 🇸🇪 瑞典 (Sweden) 04 4000K - NEKO
-  server: 94.143.231.146
-  port: 443
+- name: 🇸🇪 瑞典 (Sweden) 03 2654K - NEKO
+  server: svip.skycon808.com
+  port: 60005
   udp: true
-  type: vless
-  uuid: 6e05822a-e9da-4135-a9db-71aa07a944af
-  tls: true
-  servername: sub.merky.top
-  skip-cert-verify: false
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /merky-connect/de6/
-    headers:
-      Host: sub.merky.top
+  type: anytls
+  password: 13f0acfa-38c1-4e82-a758-583aa31740df
+  sni: xjp18.2uuzhe.com
+  skip-cert-verify: true
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇸🇪 瑞典 (Sweden) 01 ⚠S371K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 3610K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 03 3322K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 04 4000K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 ⚠S2275K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 3392K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 03 2654K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇸🇪 瑞典 (Sweden) 01 ⚠S371K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 3610K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 03 3322K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 04 4000K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 ⚠S2275K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 3392K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 03 2654K - NEKO
 rules:
 - MATCH,PROXIES

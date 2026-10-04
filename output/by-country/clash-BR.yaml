@@ -4,32 +4,33 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇱🇰 斯里兰卡 (Sri Lanka) 01 3436K - NEKO
-  server: trackydev.site
+- name: 🇧🇷 巴西 (Brazil) 01 3354K - NEKO
+  server: 89.39.161.157
   port: 443
   udp: true
-  type: vless
-  uuid: 92d67828-4c56-4795-af5a-f387651380dc
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  alterId: 0
+  cipher: auto
   tls: true
-  servername: trackydev.site
+  servername: aksai.org
   skip-cert-verify: false
-  client-fingerprint: random
   network: ws
   ws-opts:
-    path: /
+    path: /linkvws
     headers:
-      Host: trackydev.site
+      Host: aksai.org
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇱🇰 斯里兰卡 (Sri Lanka) 01 3436K - NEKO
+  - 🇧🇷 巴西 (Brazil) 01 3354K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇱🇰 斯里兰卡 (Sri Lanka) 01 3436K - NEKO
+  - 🇧🇷 巴西 (Brazil) 01 3354K - NEKO
 rules:
 - MATCH,PROXIES

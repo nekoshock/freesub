@@ -5,22 +5,22 @@
   "outbounds": [
     {
       "type": "vless",
-      "tag": "🇨🇾 塞浦路斯 (Cyprus) 01 4631K - NEKO",
-      "server": "194.76.154.31",
-      "server_port": 40443,
-      "uuid": "9f0baff8-bdee-4de9-9515-bcc4932b41fa",
+      "tag": "🇲🇩 摩尔多瓦 (Moldova) 01 3525K - NEKO",
+      "server": "89.35.14.43",
+      "server_port": 443,
+      "uuid": "6d257a71-6d98-42d2-983a-34363b6dedcd",
       "tls": {
         "enabled": true,
-        "server_name": "deepl.com",
+        "server_name": "md7.mediacorp.fyi",
+        "insecure": false,
         "utls": {
           "enabled": true,
-          "fingerprint": "chrome"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "MN6QjUHDUXyteMdR-cDna89fq4X3qgQhLnNqTtRUbBQ",
-          "short_id": "a8ae"
+          "fingerprint": "firefox"
         }
+      },
+      "transport": {
+        "type": "grpc",
+        "service_name": "mobile.api.Event"
       }
     },
     {
@@ -28,14 +28,14 @@
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇨🇾 塞浦路斯 (Cyprus) 01 4631K - NEKO"
+        "🇲🇩 摩尔多瓦 (Moldova) 01 3525K - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇨🇾 塞浦路斯 (Cyprus) 01 4631K - NEKO"
+        "🇲🇩 摩尔多瓦 (Moldova) 01 3525K - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

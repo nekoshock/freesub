@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇦🇺 澳大利亚 (Australia) 01 3480K - NEKO
+- name: 🇦🇺 澳大利亚 (Australia) 01 3403K - NEKO
   server: vpn-au-001.fastervpn.world
   port: 443
   udp: true
@@ -12,8 +12,18 @@ proxies:
   password: H7mP2xY9kJ4nQ8wR5tF6vB3z
   sni: vpn-au-001.fastervpn.world
   skip-cert-verify: true
-- name: 🇦🇺 澳大利亚 (Australia) 02 3185K - NEKO
-  server: 35.197.168.118
+- name: 🇦🇺 澳大利亚 (Australia) 02 255K - NEKO
+  server: 152.67.115.203
+  port: 443
+  udp: true
+  type: hysteria2
+  password: 633bc3be486b646190661ac2387c150a
+  sni: www.bing.com
+  skip-cert-verify: true
+  obfs: salamander
+  obfs-password: 850a3fb1cd33a28f12d837578ae1a2e7
+- name: 🇦🇺 澳大利亚 (Australia) 03 3657K - NEKO
+  server: 34.87.229.148
   port: 443
   udp: true
   type: vless
@@ -29,14 +39,16 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇦🇺 澳大利亚 (Australia) 01 3480K - NEKO
-  - 🇦🇺 澳大利亚 (Australia) 02 3185K - NEKO
+  - 🇦🇺 澳大利亚 (Australia) 01 3403K - NEKO
+  - 🇦🇺 澳大利亚 (Australia) 02 255K - NEKO
+  - 🇦🇺 澳大利亚 (Australia) 03 3657K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇦🇺 澳大利亚 (Australia) 01 3480K - NEKO
-  - 🇦🇺 澳大利亚 (Australia) 02 3185K - NEKO
+  - 🇦🇺 澳大利亚 (Australia) 01 3403K - NEKO
+  - 🇦🇺 澳大利亚 (Australia) 02 255K - NEKO
+  - 🇦🇺 澳大利亚 (Australia) 03 3657K - NEKO
 rules:
 - MATCH,PROXIES

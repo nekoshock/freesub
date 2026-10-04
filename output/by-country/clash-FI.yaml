@@ -4,7 +4,20 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇫🇮 芬兰 (Finland) 01 ⚠S5410K - NEKO
+- name: 🇫🇮 芬兰 (Finland) 01 ⚠S3570K - NEKO
+  server: 2.27.207.30
+  port: 443
+  udp: true
+  type: vless
+  uuid: a5dd2dd9-0995-449e-be67-4a409890dc42
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: nG28Y1q-Ul2oBH-FegAkzGtvY6IRCIwras1k8CLwdGo
+    short-id: da4d87fa
+  servername: jdbdb.huinaduok.fans
+  client-fingerprint: random
+- name: 🇫🇮 芬兰 (Finland) 02 3662K - NEKO
   server: 151.241.137.132
   port: 443
   udp: true
@@ -16,14 +29,7 @@ proxies:
     public-key: SB1uC0OEveYjSiS_Nuw9Ld-uVVXWqi794OGnldthY3I
   servername: finland.ali-bard.online
   client-fingerprint: firefox
-- name: 🇫🇮 芬兰 (Finland) 02 4657K - NEKO
-  server: foodal.color-shop.ir
-  port: 5566
-  udp: true
-  type: ss
-  cipher: 2022-blake3-aes-256-gcm
-  password: olF2/aNyAxEBf0CHoFlkGlAXUdw+ap1CzFd3AL4WuuM=:d8C1FciKoaFD6xRFbCYyFYlT44MV3zYlXvD6DfhsSqo=
-- name: 🇫🇮 芬兰 (Finland) 03 5077K - NEKO
+- name: 🇫🇮 芬兰 (Finland) 03 3264K - NEKO
   server: 95.216.27.15
   port: 2053
   udp: true
@@ -35,21 +41,36 @@ proxies:
     short-id: d368b94e275ab080
   servername: www.google.com
   client-fingerprint: firefox
+- name: 🇫🇮 芬兰 (Finland) 04 ⚠S1242K - NEKO
+  server: 65.108.3.59
+  port: 443
+  udp: true
+  type: vless
+  uuid: 8df2e661-6f46-471b-9133-7fc13a0daa35
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: jDoORbrtDrvAlFSo19CJbc99C4ev8SAo1MwczSUt9no
+    short-id: 90ec9bba2019
+  servername: web.eitaa.com
+  client-fingerprint: firefox
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇫🇮 芬兰 (Finland) 01 ⚠S5410K - NEKO
-  - 🇫🇮 芬兰 (Finland) 02 4657K - NEKO
-  - 🇫🇮 芬兰 (Finland) 03 5077K - NEKO
+  - 🇫🇮 芬兰 (Finland) 01 ⚠S3570K - NEKO
+  - 🇫🇮 芬兰 (Finland) 02 3662K - NEKO
+  - 🇫🇮 芬兰 (Finland) 03 3264K - NEKO
+  - 🇫🇮 芬兰 (Finland) 04 ⚠S1242K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇫🇮 芬兰 (Finland) 01 ⚠S5410K - NEKO
-  - 🇫🇮 芬兰 (Finland) 02 4657K - NEKO
-  - 🇫🇮 芬兰 (Finland) 03 5077K - NEKO
+  - 🇫🇮 芬兰 (Finland) 01 ⚠S3570K - NEKO
+  - 🇫🇮 芬兰 (Finland) 02 3662K - NEKO
+  - 🇫🇮 芬兰 (Finland) 03 3264K - NEKO
+  - 🇫🇮 芬兰 (Finland) 04 ⚠S1242K - NEKO
 rules:
 - MATCH,PROXIES

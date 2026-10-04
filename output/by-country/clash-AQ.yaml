@@ -4,30 +4,30 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇦🇱 AL 01 ⚠S7351K - NEKO
-  server: new3.api.go-vpn.club
+- name: 🇦🇶 AQ 01 3753K - NEKO
+  server: 2.27.26.128
   port: 443
   udp: true
   type: vless
-  uuid: 41e71ba7-d389-47aa-94f7-ed1f55fdbcdf
+  uuid: 8710a337-f504-4b75-8989-224cfd803b2d
   flow: xtls-rprx-vision
   tls: true
   reality-opts:
-    public-key: E1te_g9q6EWQVOCgjwI4PF-cml9qqW7OEAf33tYkUxQ
-    short-id: 17d334ad29b2ff40
-  servername: cdnjs.com
-  client-fingerprint: firefox
+    public-key: HKkU-5UanGjWdmX8E-EGulXMk1BnidkFsVveyyOlTg8
+    short-id: 90f9d05bf95cb335
+  servername: aq-1.global-cdn.org
+  client-fingerprint: safari
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇦🇱 AL 01 ⚠S7351K - NEKO
+  - 🇦🇶 AQ 01 3753K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇦🇱 AL 01 ⚠S7351K - NEKO
+  - 🇦🇶 AQ 01 3753K - NEKO
 rules:
 - MATCH,PROXIES

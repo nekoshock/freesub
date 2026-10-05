@@ -4,23 +4,42 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇹🇷 土耳其 (Turkey) 01 (移动家宽) 430K - NEKO
-  server: test.keoplentuio.xyz
-  port: 2053
+- name: 🇦🇹 奥地利 (Austria) 01 (家宽) 5262K - NEKO
+  server: 31.77.227.6
+  port: 52006
   udp: true
   type: vless
-  uuid: 9ef61079-6f7d-4911-9608-943da85d8e6f
+  uuid: bc659d88-a1e0-076c-a49a-7b51b26a7a7f
+  flow: xtls-rprx-vision
+  tls: true
+  servername: bigdick.gamegrow.ru
+  skip-cert-verify: false
+- name: 🇹🇼 中国台湾 (Taiwan) 02 (家宽) 1424K - NEKO
+  server: tw6.dexlos.com
+  port: 8080
+  udp: true
+  type: tuic
+  uuid: D7286728-678E-443B-B76B-B699654C66DD
+  password: D7286728-678E-443B-B76B-B699654C66DD
+  sni: tw6.dexlos.com
+  skip-cert-verify: true
+  congestion-controller: bbr
+  udp-relay-mode: native
+  alpn:
+  - h3
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇹🇷 土耳其 (Turkey) 01 (移动家宽) 430K - NEKO
+  - 🇦🇹 奥地利 (Austria) 01 (家宽) 5262K - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 02 (家宽) 1424K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇹🇷 土耳其 (Turkey) 01 (移动家宽) 430K - NEKO
+  - 🇦🇹 奥地利 (Austria) 01 (家宽) 5262K - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 02 (家宽) 1424K - NEKO
 rules:
 - MATCH,PROXIES

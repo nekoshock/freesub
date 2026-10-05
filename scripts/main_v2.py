@@ -84,6 +84,7 @@ SOURCE_URLS = [
     "https://www.xrayvip.com/free.txt",
     "https://raw.githubusercontent.com/MatinGhanbari/v2ray-configs/main/subscriptions/v2ray/super-sub.txt",
     "https://raw.githubusercontent.com/snakem982/proxypool/main/source/v2ray-2.txt",
+    "https://raw.githubusercontent.com/ZYFXS/ZYFXS001/refs/heads/main/youtube%40ZYFXS--5v",
 ]
 
 OUTPUT_DIR = "output"

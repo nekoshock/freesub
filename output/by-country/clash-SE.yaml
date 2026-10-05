@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇸🇪 瑞典 (Sweden) 01 4965K - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 01 4570K - NEKO
   server: 62.60.159.81
   port: 2053
   udp: true
@@ -19,7 +19,7 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: grpce5bb9e71
-- name: 🇸🇪 瑞典 (Sweden) 02 4369K - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 02 3820K - NEKO
   server: 132.243.231.12
   port: 443
   udp: true
@@ -32,7 +32,7 @@ proxies:
     short-id: 5efa80b939612291
   servername: d3-se1.cloud-cdn.xyz
   client-fingerprint: chrome
-- name: 🇸🇪 瑞典 (Sweden) 03 ⚠S2700K - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 03 ⚠S1686K - NEKO
   server: 132.243.231.4
   port: 443
   udp: true
@@ -45,18 +45,7 @@ proxies:
     short-id: 5efa80b939612291
   servername: d3-se1.cloud-cdn.xyz
   client-fingerprint: chrome
-- name: 🇸🇪 瑞典 (Sweden) 04 ⚠S6614K - NEKO
-  server: psf-2.weedly.top
-  port: 80
-  udp: true
-  type: vless
-  uuid: 33016f3d-8509-493c-bd8b-d26447d48135
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: stigmata.ir
-- name: 🇸🇪 瑞典 (Sweden) 05 4009K - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 04 3769K - NEKO
   server: 143.246.199.124
   port: 443
   udp: true
@@ -68,25 +57,50 @@ proxies:
     public-key: wSjV1yR_rhDUdoNbM9zIXNGLASLp9RorComnyoayo2c
   servername: www.blocket.se
   client-fingerprint: chrome
+- name: 🇸🇪 瑞典 (Sweden) 05 3600K - NEKO
+  server: 143.246.196.207
+  port: 443
+  udp: true
+  type: vless
+  uuid: ac0c2945-b758-11f1-8181-54db13ea7d40
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: wSjV1yR_rhDUdoNbM9zIXNGLASLp9RorComnyoayo2c
+  servername: www.blocket.se
+  client-fingerprint: firefox
+- name: 🇸🇪 瑞典 (Sweden) 06 ⚠S6244K - NEKO
+  server: psf-2.weedly.top
+  port: 80
+  udp: true
+  type: vless
+  uuid: 33016f3d-8509-493c-bd8b-d26447d48135
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: stigmata.ir
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇸🇪 瑞典 (Sweden) 01 4965K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 4369K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 03 ⚠S2700K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 04 ⚠S6614K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 05 4009K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 4570K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 3820K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 03 ⚠S1686K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 04 3769K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 05 3600K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 06 ⚠S6244K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇸🇪 瑞典 (Sweden) 01 4965K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 4369K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 03 ⚠S2700K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 04 ⚠S6614K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 05 4009K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 4570K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 3820K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 03 ⚠S1686K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 04 3769K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 05 3600K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 06 ⚠S6244K - NEKO
 rules:
 - MATCH,PROXIES

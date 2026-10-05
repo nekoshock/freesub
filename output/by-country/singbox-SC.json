@@ -5,25 +5,48 @@
   "outbounds": [
     {
       "type": "shadowsocks",
-      "tag": "🇸🇨 塞舌尔 (Seychelles) 01 219K - NEKO",
+      "tag": "🇸🇨 塞舌尔 (Seychelles) 01 374K - NEKO",
       "server": "45.207.207.25",
       "server_port": 443,
       "method": "aes-256-gcm",
       "password": "gj1+XKulKV0nmw6IThckOkkJh5DSM7+C"
     },
     {
+      "type": "vless",
+      "tag": "🇸🇨 塞舌尔 (Seychelles) 02 4567K - NEKO",
+      "server": "156.226.174.234",
+      "server_port": 443,
+      "uuid": "0cbb5fd1-f76b-44f5-ba6d-c1780a07290c",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.cloudflare.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "fIHyB12KhckFIltSSEJMUWap0NnVtyGo_HjIi9jQAxg",
+          "short_id": "0f1bc0ca817772cb"
+        }
+      }
+    },
+    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇸🇨 塞舌尔 (Seychelles) 01 219K - NEKO"
+        "🇸🇨 塞舌尔 (Seychelles) 01 374K - NEKO",
+        "🇸🇨 塞舌尔 (Seychelles) 02 4567K - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇸🇨 塞舌尔 (Seychelles) 01 219K - NEKO"
+        "🇸🇨 塞舌尔 (Seychelles) 01 374K - NEKO",
+        "🇸🇨 塞舌尔 (Seychelles) 02 4567K - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

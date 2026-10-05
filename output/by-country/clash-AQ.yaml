@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇦🇶 AQ 01 4363K - NEKO
+- name: 🇦🇶 AQ 01 3860K - NEKO
   server: 2.27.26.128
   port: 443
   udp: true
@@ -16,18 +16,18 @@ proxies:
     public-key: HKkU-5UanGjWdmX8E-EGulXMk1BnidkFsVveyyOlTg8
     short-id: 90f9d05bf95cb335
   servername: aq-1.global-cdn.org
-  client-fingerprint: safari
+  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇦🇶 AQ 01 4363K - NEKO
+  - 🇦🇶 AQ 01 3860K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇦🇶 AQ 01 4363K - NEKO
+  - 🇦🇶 AQ 01 3860K - NEKO
 rules:
 - MATCH,PROXIES

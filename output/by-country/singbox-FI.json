@@ -4,16 +4,28 @@
   },
   "outbounds": [
     {
-      "type": "shadowsocks",
-      "tag": "🇫🇮 芬兰 (Finland) 01 3099K - NEKO",
-      "server": "185.103.110.68",
-      "server_port": 18283,
-      "method": "aes-128-gcm",
-      "password": "f9300a9bf39ae0347c3a3bfbc4dd7754"
+      "type": "hysteria2",
+      "tag": "🇫🇮 芬兰 (Finland) 01 ⚠S4674K - NEKO",
+      "server": "144.31.212.253",
+      "server_port": 443,
+      "password": "cf83b611-6cba-4535-adcb-8da06c6a9146",
+      "tls": {
+        "enabled": true,
+        "server_name": "vps155-edge.kermemehori.ru",
+        "insecure": false
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇫🇮 芬兰 (Finland) 02 4911K - NEKO",
+      "server": "fisgww.povrak.ir",
+      "server_port": 58179,
+      "uuid": "e71635b8-53b8-45bc-871d-428efe6eaf7c",
+      "security": "auto"
     },
     {
       "type": "vless",
-      "tag": "🇫🇮 芬兰 (Finland) 02 3730K - NEKO",
+      "tag": "🇫🇮 芬兰 (Finland) 03 ⚠S5360K - NEKO",
       "server": "151.241.137.132",
       "server_port": 443,
       "uuid": "5786d86f-7731-4174-b1a3-84297e54b015",
@@ -34,7 +46,7 @@
     },
     {
       "type": "vless",
-      "tag": "🇫🇮 芬兰 (Finland) 03 3639K - NEKO",
+      "tag": "🇫🇮 芬兰 (Finland) 04 ⚠S3853K - NEKO",
       "server": "95.216.27.15",
       "server_port": 2053,
       "uuid": "1c81f6d3-5771-4c5d-9fdd-1655eff50634",
@@ -54,30 +66,35 @@
     },
     {
       "type": "vless",
-      "tag": "🇫🇮 芬兰 (Finland) 04 ⚠S486K - NEKO",
-      "server": "199.232.78.187",
-      "server_port": 443,
-      "uuid": "e5db2535-b1a0-4c34-8830-4edb11519f4f",
+      "tag": "🇫🇮 芬兰 (Finland) 05 4748K - NEKO",
+      "server": "144.31.27.215",
+      "server_port": 43000,
+      "uuid": "47f79fc1-0646-40e8-8a58-73e85d183d5a",
+      "flow": "xtls-rprx-vision",
       "tls": {
         "enabled": true,
-        "server_name": "ssl.fastly.com",
-        "insecure": false,
-        "alpn": [
-          "h3",
-          "h2",
-          "http/1.1"
-        ],
+        "server_name": "144.31.27.215",
         "utls": {
           "enabled": true,
           "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "dxCQnOekn14riFxt3vdwDNydvW47FsmwFG6BJ2mUgEg",
+          "short_id": "568d87a47271344e"
         }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/",
-        "headers": {
-          "Host": "V2HOUSEGG.global.ssl.fastly.net"
-        }
+      }
+    },
+    {
+      "type": "hysteria2",
+      "tag": "🇫🇮 芬兰 (Finland) 06 595K ⚠L20% - NEKO",
+      "server": "78.17.209.108",
+      "server_port": 8444,
+      "password": "d402d4c0b8354a90b70bb2566dce9a08",
+      "tls": {
+        "enabled": true,
+        "server_name": "i.wareznet.ru",
+        "insecure": true
       }
     },
     {
@@ -85,20 +102,24 @@
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇫🇮 芬兰 (Finland) 01 3099K - NEKO",
-        "🇫🇮 芬兰 (Finland) 02 3730K - NEKO",
-        "🇫🇮 芬兰 (Finland) 03 3639K - NEKO",
-        "🇫🇮 芬兰 (Finland) 04 ⚠S486K - NEKO"
+        "🇫🇮 芬兰 (Finland) 01 ⚠S4674K - NEKO",
+        "🇫🇮 芬兰 (Finland) 02 4911K - NEKO",
+        "🇫🇮 芬兰 (Finland) 03 ⚠S5360K - NEKO",
+        "🇫🇮 芬兰 (Finland) 04 ⚠S3853K - NEKO",
+        "🇫🇮 芬兰 (Finland) 05 4748K - NEKO",
+        "🇫🇮 芬兰 (Finland) 06 595K ⚠L20% - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇫🇮 芬兰 (Finland) 01 3099K - NEKO",
-        "🇫🇮 芬兰 (Finland) 02 3730K - NEKO",
-        "🇫🇮 芬兰 (Finland) 03 3639K - NEKO",
-        "🇫🇮 芬兰 (Finland) 04 ⚠S486K - NEKO"
+        "🇫🇮 芬兰 (Finland) 01 ⚠S4674K - NEKO",
+        "🇫🇮 芬兰 (Finland) 02 4911K - NEKO",
+        "🇫🇮 芬兰 (Finland) 03 ⚠S5360K - NEKO",
+        "🇫🇮 芬兰 (Finland) 04 ⚠S3853K - NEKO",
+        "🇫🇮 芬兰 (Finland) 05 4748K - NEKO",
+        "🇫🇮 芬兰 (Finland) 06 595K ⚠L20% - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

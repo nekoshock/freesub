@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇸🇨 塞舌尔 (Seychelles) 01 37126K - NEKO
+- name: 🇸🇨 塞舌尔 (Seychelles) 01 ⚠S9399K - NEKO
   server: 45.202.240.4
   port: 33091
   udp: true
@@ -12,8 +12,19 @@ proxies:
   password: 776b4834-caaf-4006-ab21-409e958867af
   sni: www.bing.com
   skip-cert-verify: true
-- name: 🇸🇨 塞舌尔 (Seychelles) 02 685K - NEKO
-  server: hk3n.wxgqlfx.vip
+- name: 🇸🇨 塞舌尔 (Seychelles) 02 ⚠S19959K - NEKO
+  server: 199.232.78.160
+  port: 443
+  udp: true
+  type: trojan
+  password: mitivpn
+  sni: ssl.fastly.com
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /---@MetiVIP---@MetiVIP/---@MetiVIP---@MetiVIP/---@MetiVIP---@MetiVIP/des---@MetiVIP---@MetiVIP/---@MetiVIP---@MetiVIP/---@MetiVIP---@MetiVIP
+- name: 🇸🇨 塞舌尔 (Seychelles) 03 673K - NEKO
+  server: 156.226.168.221
   port: 35193
   udp: true
   type: vless
@@ -30,14 +41,16 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇸🇨 塞舌尔 (Seychelles) 01 37126K - NEKO
-  - 🇸🇨 塞舌尔 (Seychelles) 02 685K - NEKO
+  - 🇸🇨 塞舌尔 (Seychelles) 01 ⚠S9399K - NEKO
+  - 🇸🇨 塞舌尔 (Seychelles) 02 ⚠S19959K - NEKO
+  - 🇸🇨 塞舌尔 (Seychelles) 03 673K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇸🇨 塞舌尔 (Seychelles) 01 37126K - NEKO
-  - 🇸🇨 塞舌尔 (Seychelles) 02 685K - NEKO
+  - 🇸🇨 塞舌尔 (Seychelles) 01 ⚠S9399K - NEKO
+  - 🇸🇨 塞舌尔 (Seychelles) 02 ⚠S19959K - NEKO
+  - 🇸🇨 塞舌尔 (Seychelles) 03 673K - NEKO
 rules:
 - MATCH,PROXIES

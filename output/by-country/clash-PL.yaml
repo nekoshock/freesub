@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇵🇱 波兰 (Poland) 01 5061K - NEKO
+- name: 🇵🇱 波兰 (Poland) 01 ⚠S5925K - NEKO
   server: 217.60.33.215
   port: 443
   udp: true
@@ -12,7 +12,7 @@ proxies:
   password: 865e271f7c97b549b024255c9d02cebe9cc0c2c070a82b1e11bb11b9cd88dd01
   sni: streambox.wwwinternetvideo.click
   skip-cert-verify: true
-- name: 🇵🇱 波兰 (Poland) 02 5504K - NEKO
+- name: 🇵🇱 波兰 (Poland) 02 ⚠S6057K - NEKO
   server: scrap.halyvanedorogo.ru
   port: 35076
   udp: true
@@ -20,24 +20,7 @@ proxies:
   password: b4c8ee9caa74b7ba0a61
   sni: scrap.halyvanedorogo.ru
   skip-cert-verify: true
-- name: 🇵🇱 波兰 (Poland) 03 3659K - NEKO
-  server: go.wwwinternetvideo.click
-  port: 443
-  udp: true
-  type: hysteria2
-  password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
-  sni: admin.wwwinternetvideo.click
-  skip-cert-verify: true
-- name: 🇵🇱 波兰 (Poland) 04 3750K - NEKO
-  server: 70.34.252.154
-  port: 80
-  udp: true
-  type: vless
-  uuid: d9c7ec1f-5aa3-469a-b860-760c686806b0
-  network: ws
-  ws-opts:
-    path: /
-- name: 🇵🇱 波兰 (Poland) 05 3823K - NEKO
+- name: 🇵🇱 波兰 (Poland) 03 5164K - NEKO
   server: 70.34.255.101
   port: 80
   udp: true
@@ -46,19 +29,33 @@ proxies:
   network: ws
   ws-opts:
     path: /
-- name: 🇵🇱 波兰 (Poland) 06 3713K - NEKO
-  server: 81.90.20.200
-  port: 443
+- name: 🇵🇱 波兰 (Poland) 04 5304K - NEKO
+  server: 70.34.252.154
+  port: 80
   udp: true
   type: vless
-  uuid: 51c14658-8873-4454-9383-c41fc80bde4b
-  flow: xtls-rprx-vision
-  tls: true
-  servername: pl.pupoe.sbs
+  uuid: d9c7ec1f-5aa3-469a-b860-760c686806b0
+  network: ws
+  ws-opts:
+    path: /
+- name: 🇵🇱 波兰 (Poland) 05 ⚠S383K - NEKO
+  server: 144.31.49.47
+  port: 443
+  udp: true
+  type: hysteria2
+  password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
+  sni: admin.wwwinternetvideo.click
+  skip-cert-verify: true
+- name: 🇵🇱 波兰 (Poland) 06 4773K - NEKO
+  server: 202.78.163.237
+  port: 443
+  udp: true
+  type: trojan
+  password: UX82473651
+  sni: cheerful-swan.rooster465.autos
   skip-cert-verify: false
-  client-fingerprint: firefox
-- name: 🇵🇱 波兰 (Poland) 07 ⚠S383K - NEKO
-  server: 2.59.253.251
+- name: 🇵🇱 波兰 (Poland) 07 ⚠S474K - NEKO
+  server: 144.31.131.38
   port: 443
   udp: true
   type: vless
@@ -68,41 +65,41 @@ proxies:
   reality-opts:
     public-key: fNfokzklCF4l_c8k8PciOCjm5ecNoF_sNLjEtaO-xzI
     short-id: db04ce8bdb8900f1
-  servername: nvidia.com
-  client-fingerprint: firefox
-- name: 🇵🇱 波兰 (Poland) 08 3379K - NEKO
-  server: cheerful-swan.rooster465.autos
+  servername: prod.pl-node-01.security-sbrf.ru
+  client-fingerprint: chrome
+- name: 🇵🇱 波兰 (Poland) 08 ⚠S368K - NEKO
+  server: pl.tronsg.com
   port: 443
   udp: true
   type: trojan
-  password: UX82473651
-  sni: cheerful-swan.rooster465.autos
-  skip-cert-verify: true
+  password: Trojan@82164024
+  sni: pl.tronsg.com
+  skip-cert-verify: false
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇵🇱 波兰 (Poland) 01 5061K - NEKO
-  - 🇵🇱 波兰 (Poland) 02 5504K - NEKO
-  - 🇵🇱 波兰 (Poland) 03 3659K - NEKO
-  - 🇵🇱 波兰 (Poland) 04 3750K - NEKO
-  - 🇵🇱 波兰 (Poland) 05 3823K - NEKO
-  - 🇵🇱 波兰 (Poland) 06 3713K - NEKO
-  - 🇵🇱 波兰 (Poland) 07 ⚠S383K - NEKO
-  - 🇵🇱 波兰 (Poland) 08 3379K - NEKO
+  - 🇵🇱 波兰 (Poland) 01 ⚠S5925K - NEKO
+  - 🇵🇱 波兰 (Poland) 02 ⚠S6057K - NEKO
+  - 🇵🇱 波兰 (Poland) 03 5164K - NEKO
+  - 🇵🇱 波兰 (Poland) 04 5304K - NEKO
+  - 🇵🇱 波兰 (Poland) 05 ⚠S383K - NEKO
+  - 🇵🇱 波兰 (Poland) 06 4773K - NEKO
+  - 🇵🇱 波兰 (Poland) 07 ⚠S474K - NEKO
+  - 🇵🇱 波兰 (Poland) 08 ⚠S368K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇵🇱 波兰 (Poland) 01 5061K - NEKO
-  - 🇵🇱 波兰 (Poland) 02 5504K - NEKO
-  - 🇵🇱 波兰 (Poland) 03 3659K - NEKO
-  - 🇵🇱 波兰 (Poland) 04 3750K - NEKO
-  - 🇵🇱 波兰 (Poland) 05 3823K - NEKO
-  - 🇵🇱 波兰 (Poland) 06 3713K - NEKO
-  - 🇵🇱 波兰 (Poland) 07 ⚠S383K - NEKO
-  - 🇵🇱 波兰 (Poland) 08 3379K - NEKO
+  - 🇵🇱 波兰 (Poland) 01 ⚠S5925K - NEKO
+  - 🇵🇱 波兰 (Poland) 02 ⚠S6057K - NEKO
+  - 🇵🇱 波兰 (Poland) 03 5164K - NEKO
+  - 🇵🇱 波兰 (Poland) 04 5304K - NEKO
+  - 🇵🇱 波兰 (Poland) 05 ⚠S383K - NEKO
+  - 🇵🇱 波兰 (Poland) 06 4773K - NEKO
+  - 🇵🇱 波兰 (Poland) 07 ⚠S474K - NEKO
+  - 🇵🇱 波兰 (Poland) 08 ⚠S368K - NEKO
 rules:
 - MATCH,PROXIES

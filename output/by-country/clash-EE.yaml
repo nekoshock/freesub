@@ -4,7 +4,20 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇪🇪 爱沙尼亚 (Estonia) 01 5278K - NEKO
+- name: 🇪🇪 爱沙尼亚 (Estonia) 01 ⚠S4763K - NEKO
+  server: 89.125.13.202
+  port: 443
+  udp: true
+  type: vless
+  uuid: 87fd990d-ca93-440a-bbd4-e8281c4a0910
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: g36Z7YIqJMJP-uv3DBr72X5jvfjyW1qIAxa8TkWmpmQ
+    short-id: ad6e08b22389abd2
+  servername: d3-ee1.cloud-cdn.xyz
+  client-fingerprint: chrome
+- name: 🇪🇪 爱沙尼亚 (Estonia) 02 ⚠S5497K - NEKO
   server: 109.206.241.10
   port: 449
   udp: true
@@ -12,16 +25,7 @@ proxies:
   password: oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1
   sni: russiapower.accesscam.org
   skip-cert-verify: true
-- name: 🇪🇪 爱沙尼亚 (Estonia) 02 3950K - NEKO
-  server: 94.183.170.135
-  port: 443
-  udp: true
-  type: vless
-  uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
-  network: ws
-  ws-opts:
-    path: /
-- name: 🇪🇪 爱沙尼亚 (Estonia) 03 4641K - NEKO
+- name: 🇪🇪 爱沙尼亚 (Estonia) 03 5047K - NEKO
   server: 94.183.170.135
   port: 8443
   udp: true
@@ -30,8 +34,17 @@ proxies:
   tls: true
   servername: estproxy4.lockdwn.com
   skip-cert-verify: false
-  client-fingerprint: chrome
-- name: 🇪🇪 爱沙尼亚 (Estonia) 04 3780K - NEKO
+  client-fingerprint: firefox
+- name: 🇪🇪 爱沙尼亚 (Estonia) 04 ⚠S3702K - NEKO
+  server: 94.183.170.135
+  port: 443
+  udp: true
+  type: vless
+  uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
+  network: ws
+  ws-opts:
+    path: /
+- name: 🇪🇪 爱沙尼亚 (Estonia) 05 5604K - NEKO
   server: 194.26.141.148
   port: 8443
   udp: true
@@ -51,18 +64,20 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇪🇪 爱沙尼亚 (Estonia) 01 5278K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 02 3950K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 03 4641K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 04 3780K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 01 ⚠S4763K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 02 ⚠S5497K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 03 5047K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 04 ⚠S3702K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 05 5604K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇪🇪 爱沙尼亚 (Estonia) 01 5278K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 02 3950K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 03 4641K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 04 3780K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 01 ⚠S4763K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 02 ⚠S5497K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 03 5047K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 04 ⚠S3702K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 05 5604K - NEKO
 rules:
 - MATCH,PROXIES

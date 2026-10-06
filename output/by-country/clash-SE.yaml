@@ -4,7 +4,17 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇸🇪 瑞典 (Sweden) 01 2088K - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 01 ⚠S5982K - NEKO
+  server: 77.110.96.201
+  port: 36264
+  udp: true
+  type: hysteria2
+  password: Telegram-vpnjey
+  sni: se.vpnjey2.dpdns.org
+  skip-cert-verify: true
+  obfs: salamander
+  obfs-password: Telegram@vpnjey
+- name: 🇸🇪 瑞典 (Sweden) 02 ⚠S1320K - NEKO
   server: 62.60.159.81
   port: 2053
   udp: true
@@ -19,7 +29,33 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: grpce5bb9e71
-- name: 🇸🇪 瑞典 (Sweden) 02 ⚠S717K - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 03 ⚠S3930K - NEKO
+  server: 132.243.231.12
+  port: 443
+  udp: true
+  type: vless
+  uuid: 87fd990d-ca93-440a-bbd4-e8281c4a0910
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: zWDvtTWK-cWWwHDMHMXcOpQy4k3EKp7yw-5e0wTZAUM
+    short-id: 5efa80b939612291
+  servername: d3-se1.cloud-cdn.xyz
+  client-fingerprint: firefox
+- name: 🇸🇪 瑞典 (Sweden) 04 ⚠S581K - NEKO
+  server: 132.243.231.4
+  port: 443
+  udp: true
+  type: vless
+  uuid: 87fd990d-ca93-440a-bbd4-e8281c4a0910
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: zWDvtTWK-cWWwHDMHMXcOpQy4k3EKp7yw-5e0wTZAUM
+    short-id: 5efa80b939612291
+  servername: d3-se1.cloud-cdn.xyz
+  client-fingerprint: firefox
+- name: 🇸🇪 瑞典 (Sweden) 05 6039K - NEKO
   server: 94.143.231.146
   port: 443
   udp: true
@@ -28,7 +64,7 @@ proxies:
   tls: true
   servername: sub.merky.top
   skip-cert-verify: false
-  client-fingerprint: chrome
+  client-fingerprint: firefox
   network: ws
   ws-opts:
     path: /merky-connect/de6/
@@ -39,14 +75,20 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇸🇪 瑞典 (Sweden) 01 2088K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 ⚠S717K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 ⚠S5982K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 ⚠S1320K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 03 ⚠S3930K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 04 ⚠S581K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 05 6039K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇸🇪 瑞典 (Sweden) 01 2088K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 ⚠S717K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 ⚠S5982K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 ⚠S1320K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 03 ⚠S3930K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 04 ⚠S581K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 05 6039K - NEKO
 rules:
 - MATCH,PROXIES

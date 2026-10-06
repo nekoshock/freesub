@@ -4,17 +4,23 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇷🇴 罗马尼亚 (Romania) 01 ⚠S5212K - NEKO
-  server: 162.249.125.133
+- name: 🇷🇴 罗马尼亚 (Romania) 01 ⚠S9646K - NEKO
+  server: 77.74.123.98
+  port: 8443
+  udp: true
+  type: hysteria2
+  password: s0_sdK93x9wer_D02Lz9cvK3_Sa014Oakl_C2z
+  sni: grape-test-italy.dynuddns.net
+  skip-cert-verify: false
+- name: 🇷🇴 罗马尼亚 (Romania) 02 ⚠S6112K - NEKO
+  server: 185.156.44.99
   port: 443
   udp: true
   type: hysteria2
-  password: QCgqi_I4EkV8UR-OgQ_tG4EnVTEVvIyR2GgRBzrIn2s
-  sni: hy2-new.aspidnet.xyz
-  skip-cert-verify: false
-  obfs: salamander
-  obfs-password: c1b4086fea89914496c7e10967a419216566
-- name: 🇷🇴 罗马尼亚 (Romania) 02 ⚠S6020K - NEKO
+  password: gf1:gfhysteria2024
+  sni: whatsapp.com
+  skip-cert-verify: true
+- name: 🇷🇴 罗马尼亚 (Romania) 03 ⚠S6761K - NEKO
   server: hy2-new.aspidnet.xyz
   port: 443
   udp: true
@@ -24,15 +30,45 @@ proxies:
   skip-cert-verify: true
   obfs: salamander
   obfs-password: c1b4086fea89914496c7e10967a419216566
-- name: 🇷🇴 罗马尼亚 (Romania) 03 570K - NEKO
-  server: 103.126.51.49
+- name: 🇷🇴 罗马尼亚 (Romania) 04 ⚠S5990K - NEKO
+  server: 162.249.125.133
+  port: 443
+  udp: true
+  type: hysteria2
+  password: QCgqi_I4EkV8UR-OgQ_tG4EnVTEVvIyR2GgRBzrIn2s
+  sni: hy2-new.aspidnet.xyz
+  skip-cert-verify: false
+  obfs: salamander
+  obfs-password: c1b4086fea89914496c7e10967a419216566
+- name: 🇷🇴 罗马尼亚 (Romania) 05 ⚠S6073K - NEKO
+  server: 103.126.51.50
   port: 8443
   udp: true
   type: hysteria2
   password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
   sni: ocober-romania-new.yyuyy.com
-  skip-cert-verify: true
-- name: 🇷🇴 罗马尼亚 (Romania) 04 4302K - NEKO
+  skip-cert-verify: false
+- name: 🇷🇴 罗马尼亚 (Romania) 06 757K - NEKO
+  server: bogging-eyeteeth-fly.freesocks.work
+  port: 443
+  udp: true
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: QFWzCw2uX9B9i6qAYeFBIE
+- name: 🇷🇴 罗马尼亚 (Romania) 07 4806K - NEKO
+  server: 109.104.106.15
+  port: 443
+  udp: true
+  type: vless
+  uuid: 87fd990d-ca93-440a-bbd4-e8281c4a0910
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: a_v5l6R-rpVGlENLeONW4sz-GdRwIoDqISOWXGov8nw
+    short-id: 87709fed663228e5
+  servername: d3-ro.cloud-cdn.xyz
+  client-fingerprint: chrome
+- name: 🇷🇴 罗马尼亚 (Romania) 08 4674K - NEKO
   server: 109.104.106.149
   port: 443
   udp: true
@@ -45,7 +81,7 @@ proxies:
     short-id: 87709fed663228e5
   servername: d3-ro.cloud-cdn.xyz
   client-fingerprint: chrome
-- name: 🇷🇴 罗马尼亚 (Romania) 05 4314K - NEKO
+- name: 🇷🇴 罗马尼亚 (Romania) 09 4678K - NEKO
   server: 146.70.124.85
   port: 443
   udp: true
@@ -57,26 +93,49 @@ proxies:
     public-key: byzvlw97wjAAAfHs5AZRV0P0H6_JKBEZ4yfLS0HNewE
     short-id: fe24f8a0a560056e
   servername: www.datadoghq.com
+  client-fingerprint: firefox
+- name: 🇷🇴 罗马尼亚 (Romania) 10 4553K - NEKO
+  server: 193.163.203.253
+  port: 443
+  udp: true
+  type: vless
+  uuid: 441afe11-a180-4516-bb80-80a8a6b38705
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: gE8LUmGFXik94SoDXNiAG5KprGyhjoRwDuhGebgAVWk
+    short-id: 5ee019e02e6ed99a
+  servername: yandex.ru
   client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇷🇴 罗马尼亚 (Romania) 01 ⚠S5212K - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 02 ⚠S6020K - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 03 570K - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 04 4302K - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 05 4314K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 01 ⚠S9646K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 02 ⚠S6112K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 03 ⚠S6761K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 04 ⚠S5990K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 05 ⚠S6073K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 06 757K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 07 4806K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 08 4674K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 09 4678K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 10 4553K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇷🇴 罗马尼亚 (Romania) 01 ⚠S5212K - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 02 ⚠S6020K - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 03 570K - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 04 4302K - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 05 4314K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 01 ⚠S9646K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 02 ⚠S6112K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 03 ⚠S6761K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 04 ⚠S5990K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 05 ⚠S6073K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 06 757K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 07 4806K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 08 4674K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 09 4678K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 10 4553K - NEKO
 rules:
 - MATCH,PROXIES

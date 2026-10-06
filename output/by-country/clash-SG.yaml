@@ -4,15 +4,54 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇸🇬 新加坡 (Singapore) 01 5066K - NEKO
+- name: 🇸🇬 新加坡 (Singapore) 01 ⚠S6257K - NEKO
+  server: 1aa4c1e2-tmeqo0-trnd2c-jjv2.sg7.hyhuawei.com
+  port: 443
+  udp: true
+  type: hysteria2
+  password: 31676725-b0fd-fed2-c857-2da8ce5a6e4f
+  sni: 1aa4c1e2-tmeqo0-trnd2c-jjv2.sg7.hyhuawei.com
+  skip-cert-verify: false
+- name: 🇸🇬 新加坡 (Singapore) 02 4719K - NEKO
   server: 138.2.73.238
   port: 50160
   udp: true
   type: hysteria2
   password: f87376e17da040ed04c9665ce8972930
-  sni: 138.2.73.238
+  sni: www.bing.com
   skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 02 3303K - NEKO
+- name: 🇸🇬 新加坡 (Singapore) 03 5041K - NEKO
+  server: 138.2.89.249
+  port: 443
+  udp: true
+  type: hysteria2
+  password: d042d150716709bb778cc73889cddb02
+  sni: www.bing.com
+  skip-cert-verify: true
+  obfs: salamander
+  obfs-password: 309502c4a8df10b46fb976d4a8c43f42
+- name: 🇸🇬 新加坡 (Singapore) 04 2302K - NEKO
+  server: 146.235.16.130
+  port: 33738
+  udp: true
+  type: tuic
+  uuid: 2d1ad594-80a4-4bfb-87a6-038e39701f51
+  password: 2d1ad594-80a4-4bfb-87a6-038e39701f51
+  sni: sg2-8sb.6121999.dpdns.org
+  skip-cert-verify: false
+  congestion-controller: bbr
+  udp-relay-mode: quic
+  alpn:
+  - h3
+- name: 🇸🇬 新加坡 (Singapore) 05 2893K - NEKO
+  server: 149.88.23.207
+  port: 18000
+  udp: true
+  type: vmess
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+- name: 🇸🇬 新加坡 (Singapore) 06 2889K - NEKO
   server: 149.88.23.202
   port: 18000
   udp: true
@@ -20,91 +59,91 @@ proxies:
   uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
   alterId: 0
   cipher: auto
-- name: 🇸🇬 新加坡 (Singapore) 03 3134K - NEKO
-  server: ww11.levikogjgfdd.ir
-  port: 18000
+- name: 🇸🇬 新加坡 (Singapore) 07 1563K - NEKO
+  server: s3.huhiuh.space
+  port: 18642
   udp: true
-  type: vmess
-  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-  alterId: 0
-  cipher: auto
-- name: 🇸🇬 新加坡 (Singapore) 04 2570K - NEKO
+  type: hysteria2
+  password: user317_windows:c70565e9-a99f-40ef-b96c-469a3949eed2
+  sni: www.bing.com
+  skip-cert-verify: true
+- name: 🇸🇬 新加坡 (Singapore) 08 2715K - NEKO
+  server: 68.183.227.45
+  port: 8080
+  udp: true
+  type: ss
+  cipher: rc4-md5
+  password: 14fFPrbezE3HDZzsMOr6
+- name: 🇸🇬 新加坡 (Singapore) 09 2188K - NEKO
+  server: 128.199.172.224
+  port: 8080
+  udp: true
+  type: ss
+  cipher: rc4-md5
+  password: 14fFPrbezE3HDZzsMOr6
+- name: 🇸🇬 新加坡 (Singapore) 10 2630K - NEKO
   server: 68.183.235.122
   port: 8080
   udp: true
   type: ss
   cipher: rc4-md5
   password: 14fFPrbezE3HDZzsMOr6
-- name: 🇸🇬 新加坡 (Singapore) 05 2889K - NEKO
-  server: 68.183.227.236
-  port: 8080
-  udp: true
-  type: ss
-  cipher: rc4-md5
-  password: 14fFPrbezE3HDZzsMOr6
-- name: 🇸🇬 新加坡 (Singapore) 06 2654K - NEKO
-  server: inviting-ferret.rooster465.autos
-  port: 443
-  udp: true
-  type: trojan
-  password: UX82473651
-  sni: inviting-ferret.rooster465.autos
-  skip-cert-verify: false
-- name: 🇸🇬 新加坡 (Singapore) 07 5333K - NEKO
-  server: support.zoom.us
-  port: 80
+- name: 🇸🇬 新加坡 (Singapore) 11 2976K - NEKO
+  server: 203.137.165.164
+  port: 57554
   udp: true
   type: vless
-  uuid: 9b0025a3-3a36-4915-b4e1-89c5cd65c9cb
+  uuid: 8e6709d7-5e17-4f9c-87db-afa184f513cf
+  tls: true
+  servername: woc0zvrf11w2endu.dphdlc1u77bs3y4kvussbuap4p576f1ws7igthq8zbf3.workers.dev
+  skip-cert-verify: false
+  client-fingerprint: chrome
   network: ws
   ws-opts:
-    path: /shalana
+    path: /@Marisa_kristi
     headers:
-      Host: onhit.shalana.shop
-- name: 🇸🇬 新加坡 (Singapore) 08 2610K - NEKO
-  server: 52.221.218.179
+      Host: woc0zvrf11w2endu.dphdlc1u77bs3y4kvussbuap4p576f1ws7igthq8zbf3.workers.dev
+- name: 🇸🇬 新加坡 (Singapore) 12 2347K - NEKO
+  server: holy-lamb.rooster465.autos
   port: 443
   udp: true
   type: trojan
   password: UX82473651
-  sni: real-cardinal.rooster465.autos
-  skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 09 2931K - NEKO
-  server: 129.150.51.127
-  port: 34249
-  udp: true
-  type: vless
-  uuid: 0590ab38-cb22-41d3-8312-6f396a5cec58
-  tls: true
-  servername: www.microsoft.com
-  skip-cert-verify: true
+  sni: holy-lamb.rooster465.autos
+  skip-cert-verify: false
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇸🇬 新加坡 (Singapore) 01 5066K - NEKO
-  - 🇸🇬 新加坡 (Singapore) 02 3303K - NEKO
-  - 🇸🇬 新加坡 (Singapore) 03 3134K - NEKO
-  - 🇸🇬 新加坡 (Singapore) 04 2570K - NEKO
-  - 🇸🇬 新加坡 (Singapore) 05 2889K - NEKO
-  - 🇸🇬 新加坡 (Singapore) 06 2654K - NEKO
-  - 🇸🇬 新加坡 (Singapore) 07 5333K - NEKO
-  - 🇸🇬 新加坡 (Singapore) 08 2610K - NEKO
-  - 🇸🇬 新加坡 (Singapore) 09 2931K - NEKO
+  - 🇸🇬 新加坡 (Singapore) 01 ⚠S6257K - NEKO
+  - 🇸🇬 新加坡 (Singapore) 02 4719K - NEKO
+  - 🇸🇬 新加坡 (Singapore) 03 5041K - NEKO
+  - 🇸🇬 新加坡 (Singapore) 04 2302K - NEKO
+  - 🇸🇬 新加坡 (Singapore) 05 2893K - NEKO
+  - 🇸🇬 新加坡 (Singapore) 06 2889K - NEKO
+  - 🇸🇬 新加坡 (Singapore) 07 1563K - NEKO
+  - 🇸🇬 新加坡 (Singapore) 08 2715K - NEKO
+  - 🇸🇬 新加坡 (Singapore) 09 2188K - NEKO
+  - 🇸🇬 新加坡 (Singapore) 10 2630K - NEKO
+  - 🇸🇬 新加坡 (Singapore) 11 2976K - NEKO
+  - 🇸🇬 新加坡 (Singapore) 12 2347K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇸🇬 新加坡 (Singapore) 01 5066K - NEKO
-  - 🇸🇬 新加坡 (Singapore) 02 3303K - NEKO
-  - 🇸🇬 新加坡 (Singapore) 03 3134K - NEKO
-  - 🇸🇬 新加坡 (Singapore) 04 2570K - NEKO
-  - 🇸🇬 新加坡 (Singapore) 05 2889K - NEKO
-  - 🇸🇬 新加坡 (Singapore) 06 2654K - NEKO
-  - 🇸🇬 新加坡 (Singapore) 07 5333K - NEKO
-  - 🇸🇬 新加坡 (Singapore) 08 2610K - NEKO
-  - 🇸🇬 新加坡 (Singapore) 09 2931K - NEKO
+  - 🇸🇬 新加坡 (Singapore) 01 ⚠S6257K - NEKO
+  - 🇸🇬 新加坡 (Singapore) 02 4719K - NEKO
+  - 🇸🇬 新加坡 (Singapore) 03 5041K - NEKO
+  - 🇸🇬 新加坡 (Singapore) 04 2302K - NEKO
+  - 🇸🇬 新加坡 (Singapore) 05 2893K - NEKO
+  - 🇸🇬 新加坡 (Singapore) 06 2889K - NEKO
+  - 🇸🇬 新加坡 (Singapore) 07 1563K - NEKO
+  - 🇸🇬 新加坡 (Singapore) 08 2715K - NEKO
+  - 🇸🇬 新加坡 (Singapore) 09 2188K - NEKO
+  - 🇸🇬 新加坡 (Singapore) 10 2630K - NEKO
+  - 🇸🇬 新加坡 (Singapore) 11 2976K - NEKO
+  - 🇸🇬 新加坡 (Singapore) 12 2347K - NEKO
 rules:
 - MATCH,PROXIES

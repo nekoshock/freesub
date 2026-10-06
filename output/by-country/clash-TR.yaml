@@ -4,37 +4,28 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇹🇷 土耳其 (Turkey) 01 ⚠S1877K - NEKO
-  server: 153.56.210.134
-  port: 34121
+- name: 🇹🇷 土耳其 (Turkey) 01 424K - NEKO
+  server: me17.msjia8844.site
+  port: 7443
   udp: true
   type: hysteria2
-  password: c8ed6cd1-6566-4f7a-819e-1c55b2b360c9
-  sni: www.bing.com
-  skip-cert-verify: true
+  password: M8LP9DztTr3znqCkmf-r08CQLBLLFK1r
+  sni: me17.msjia8844.site
+  skip-cert-verify: false
   obfs: salamander
-  obfs-password: 9a33460c-b037-47aa-a606-d04211f4e0ec
-- name: 🇹🇷 土耳其 (Turkey) 02 ⚠S1944K - NEKO
-  server: 85.192.48.142
-  port: 443
+  obfs-password: u3Soh9_Ui0UmcuY6vk0ug8Lq
+- name: 🇹🇷 土耳其 (Turkey) 02 3629K - NEKO
+  server: cookie.wookshop.ir
+  port: 43233
   udp: true
   type: vless
-  uuid: adc11f30-e4cb-4985-bf5e-f9ded69c019f
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: fNfokzklCF4l_c8k8PciOCjm5ecNoF_sNLjEtaO-xzI
-    short-id: db04ce8bdb8900f1
-  servername: nvidia.com
-  client-fingerprint: firefox
-- name: 🇹🇷 土耳其 (Turkey) 03 2919K - NEKO
-  server: 206.1.103.221
-  port: 42264
-  udp: true
-  type: ss
-  cipher: 2022-blake3-aes-256-gcm
-  password: Rzv4KXTXvFEqeALuBgzETlujcXrzIAsrSMAevky5x8c=:hdA4n/xn83dcbzxCAxapim47QxGlbAUPQ8I1rbC2RN8=
-- name: 🇹🇷 土耳其 (Turkey) 04 ⚠S3717K - NEKO
+  uuid: 568bcbbc-7a90-4164-8b5d-1c0bbeccfa38
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: cookie.wookshop.ir
+- name: 🇹🇷 土耳其 (Turkey) 03 3455K - NEKO
   server: 78.135.73.47
   port: 443
   udp: true
@@ -47,36 +38,21 @@ proxies:
     short-id: f46cd3ea3d1eb72d
   servername: www.datadoghq.com
   client-fingerprint: firefox
-- name: 🇹🇷 土耳其 (Turkey) 05 2515K - NEKO
-  server: nimm.mpd.cc.cd
-  port: 2053
-  udp: true
-  type: trojan
-  password: e309e031-991e-4656-9934-44d10deb8fd8
-  sni: nimm.mpd.cc.cd
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /0962
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇹🇷 土耳其 (Turkey) 01 ⚠S1877K - NEKO
-  - 🇹🇷 土耳其 (Turkey) 02 ⚠S1944K - NEKO
-  - 🇹🇷 土耳其 (Turkey) 03 2919K - NEKO
-  - 🇹🇷 土耳其 (Turkey) 04 ⚠S3717K - NEKO
-  - 🇹🇷 土耳其 (Turkey) 05 2515K - NEKO
+  - 🇹🇷 土耳其 (Turkey) 01 424K - NEKO
+  - 🇹🇷 土耳其 (Turkey) 02 3629K - NEKO
+  - 🇹🇷 土耳其 (Turkey) 03 3455K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇹🇷 土耳其 (Turkey) 01 ⚠S1877K - NEKO
-  - 🇹🇷 土耳其 (Turkey) 02 ⚠S1944K - NEKO
-  - 🇹🇷 土耳其 (Turkey) 03 2919K - NEKO
-  - 🇹🇷 土耳其 (Turkey) 04 ⚠S3717K - NEKO
-  - 🇹🇷 土耳其 (Turkey) 05 2515K - NEKO
+  - 🇹🇷 土耳其 (Turkey) 01 424K - NEKO
+  - 🇹🇷 土耳其 (Turkey) 02 3629K - NEKO
+  - 🇹🇷 土耳其 (Turkey) 03 3455K - NEKO
 rules:
 - MATCH,PROXIES

@@ -4,14 +4,14 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇫🇮 芬兰 (Finland) 01 ⚠S4660K - NEKO
+- name: 🇫🇮 芬兰 (Finland) 01 3099K - NEKO
   server: 185.103.110.68
   port: 18283
   udp: true
   type: ss
   cipher: aes-128-gcm
   password: f9300a9bf39ae0347c3a3bfbc4dd7754
-- name: 🇫🇮 芬兰 (Finland) 02 ⚠S5411K - NEKO
+- name: 🇫🇮 芬兰 (Finland) 02 3730K - NEKO
   server: 151.241.137.132
   port: 443
   udp: true
@@ -23,7 +23,7 @@ proxies:
     public-key: SB1uC0OEveYjSiS_Nuw9Ld-uVVXWqi794OGnldthY3I
   servername: finland.ali-bard.online
   client-fingerprint: firefox
-- name: 🇫🇮 芬兰 (Finland) 03 4618K - NEKO
+- name: 🇫🇮 芬兰 (Finland) 03 3639K - NEKO
   server: 95.216.27.15
   port: 2053
   udp: true
@@ -35,66 +35,38 @@ proxies:
     short-id: d368b94e275ab080
   servername: www.google.com
   client-fingerprint: firefox
-- name: 🇫🇮 芬兰 (Finland) 04 ⚠S3273K - NEKO
-  server: 144.31.27.215
-  port: 43000
+- name: 🇫🇮 芬兰 (Finland) 04 ⚠S486K - NEKO
+  server: 199.232.78.187
+  port: 443
   udp: true
   type: vless
-  uuid: 47f79fc1-0646-40e8-8a58-73e85d183d5a
-  flow: xtls-rprx-vision
+  uuid: e5db2535-b1a0-4c34-8830-4edb11519f4f
   tls: true
-  reality-opts:
-    public-key: dxCQnOekn14riFxt3vdwDNydvW47FsmwFG6BJ2mUgEg
-    short-id: 568d87a47271344e
-  servername: 144.31.27.215
+  servername: ssl.fastly.com
+  skip-cert-verify: false
   client-fingerprint: chrome
-- name: 🇫🇮 芬兰 (Finland) 05 4511K - NEKO
-  server: 188.130.209.216
-  port: 443
-  udp: true
-  type: vless
-  uuid: 444623e9-f27d-487c-b7cc-436931967e79
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: M7yPV6xLi9h6EevpqZfXLZBuxoey8kz1c6Bh0pK5fho
-    short-id: 170ab9ced015571f
-  servername: emaar.ru
-  client-fingerprint: safari
-- name: 🇫🇮 芬兰 (Finland) 06 ⚠S776K - NEKO
-  server: 13.143.129.45
-  port: 443
-  udp: true
-  type: vless
-  uuid: df53b6c2-8005-475c-9eb9-74e1be785dc8
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: CsoM3VUYii1XxgxnrT4VEe-EALgn60k6BaKMJVP9qAM
-    short-id: 7dd08043
-  servername: addons.mozilla.org
-  client-fingerprint: randomized
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: V2HOUSEGG.global.ssl.fastly.net
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇫🇮 芬兰 (Finland) 01 ⚠S4660K - NEKO
-  - 🇫🇮 芬兰 (Finland) 02 ⚠S5411K - NEKO
-  - 🇫🇮 芬兰 (Finland) 03 4618K - NEKO
-  - 🇫🇮 芬兰 (Finland) 04 ⚠S3273K - NEKO
-  - 🇫🇮 芬兰 (Finland) 05 4511K - NEKO
-  - 🇫🇮 芬兰 (Finland) 06 ⚠S776K - NEKO
+  - 🇫🇮 芬兰 (Finland) 01 3099K - NEKO
+  - 🇫🇮 芬兰 (Finland) 02 3730K - NEKO
+  - 🇫🇮 芬兰 (Finland) 03 3639K - NEKO
+  - 🇫🇮 芬兰 (Finland) 04 ⚠S486K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇫🇮 芬兰 (Finland) 01 ⚠S4660K - NEKO
-  - 🇫🇮 芬兰 (Finland) 02 ⚠S5411K - NEKO
-  - 🇫🇮 芬兰 (Finland) 03 4618K - NEKO
-  - 🇫🇮 芬兰 (Finland) 04 ⚠S3273K - NEKO
-  - 🇫🇮 芬兰 (Finland) 05 4511K - NEKO
-  - 🇫🇮 芬兰 (Finland) 06 ⚠S776K - NEKO
+  - 🇫🇮 芬兰 (Finland) 01 3099K - NEKO
+  - 🇫🇮 芬兰 (Finland) 02 3730K - NEKO
+  - 🇫🇮 芬兰 (Finland) 03 3639K - NEKO
+  - 🇫🇮 芬兰 (Finland) 04 ⚠S486K - NEKO
 rules:
 - MATCH,PROXIES

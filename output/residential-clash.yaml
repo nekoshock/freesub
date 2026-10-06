@@ -4,42 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇺🇸 美国 (United States) 01 (家宽) 21857K - NEKO
-  server: 162.159.43.187
-  port: 80
-  udp: true
-  type: vless
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🇺🇸 美国 (United States) 02 (家宽) 497K - NEKO
-  server: 155.117.19.17
-  port: 443
-  udp: true
-  type: hysteria2
-  password: 5fa748137b6d822308eea4611f474ad5
-  sni: www.bing.com
-  skip-cert-verify: true
-  obfs: salamander
-  obfs-password: a39ca173b57ac7021b08bf3e3de9f1f6
-- name: 🇭🇰 中国香港 (Hong Kong) 03 (家宽) 7076K - NEKO
-  server: c8dc0c18-tmrpc0-tt8rqc-jjv2.hk3.hyhuawei.com
-  port: 443
-  udp: true
-  type: hysteria2
-  password: 31676725-b0fd-fed2-c857-2da8ce5a6e4f
-  sni: c8dc0c18-tmrpc0-tt8rqc-jjv2.hk3.hyhuawei.com
-  skip-cert-verify: true
-- name: 🇹🇷 土耳其 (Turkey) 04 (移动家宽) 2422K - NEKO
-  server: test.keoplentuio.xyz
-  port: 2053
-  udp: true
-  type: vless
-  uuid: 9ef61079-6f7d-4911-9608-943da85d8e6f
-- name: 🇦🇹 奥地利 (Austria) 05 (家宽) ⚠S6517K - NEKO
+- name: 🇦🇹 奥地利 (Austria) 01 (家宽) 4022K - NEKO
   server: 31.77.227.6
   port: 52006
   udp: true
@@ -49,25 +14,35 @@ proxies:
   tls: true
   servername: bigdick.gamegrow.ru
   skip-cert-verify: false
+  client-fingerprint: chrome
+- name: 🇹🇼 中国台湾 (Taiwan) 02 (家宽) ⚠S5041K - NEKO
+  server: 172.66.152.4
+  port: 443
+  udp: true
+  type: vless
+  uuid: 08aaab35-a42d-4755-a03e-20c18cb1b3e8
+  tls: true
+  servername: argo6.5671234.xyz
+  skip-cert-verify: false
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /e8e2cecb6188f7fb
+    headers:
+      Host: argo6.5671234.xyz
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇺🇸 美国 (United States) 01 (家宽) 21857K - NEKO
-  - 🇺🇸 美国 (United States) 02 (家宽) 497K - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 03 (家宽) 7076K - NEKO
-  - 🇹🇷 土耳其 (Turkey) 04 (移动家宽) 2422K - NEKO
-  - 🇦🇹 奥地利 (Austria) 05 (家宽) ⚠S6517K - NEKO
+  - 🇦🇹 奥地利 (Austria) 01 (家宽) 4022K - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 02 (家宽) ⚠S5041K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇺🇸 美国 (United States) 01 (家宽) 21857K - NEKO
-  - 🇺🇸 美国 (United States) 02 (家宽) 497K - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 03 (家宽) 7076K - NEKO
-  - 🇹🇷 土耳其 (Turkey) 04 (移动家宽) 2422K - NEKO
-  - 🇦🇹 奥地利 (Austria) 05 (家宽) ⚠S6517K - NEKO
+  - 🇦🇹 奥地利 (Austria) 01 (家宽) 4022K - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 02 (家宽) ⚠S5041K - NEKO
 rules:
 - MATCH,PROXIES

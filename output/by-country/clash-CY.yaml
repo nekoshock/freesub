@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇾 塞浦路斯 (Cyprus) 01 21637K - NEKO
+- name: 🇨🇾 塞浦路斯 (Cyprus) 01 23699K - NEKO
   server: 2.56.123.131
   port: 443
   udp: true
@@ -17,7 +17,7 @@ proxies:
     short-id: 9da47879658f9f25
   servername: contact.yump.online
   client-fingerprint: firefox
-- name: 🇨🇾 塞浦路斯 (Cyprus) 02 7019K - NEKO
+- name: 🇨🇾 塞浦路斯 (Cyprus) 02 7421K - NEKO
   server: 194.76.154.31
   port: 40443
   udp: true
@@ -29,19 +29,34 @@ proxies:
     short-id: a8ae
   servername: deepl.com
   client-fingerprint: chrome
+- name: 🇨🇾 塞浦路斯 (Cyprus) 03 ⚠S1602K - NEKO
+  server: 185.166.154.111
+  port: 443
+  udp: true
+  type: vless
+  uuid: 91d734be-a3d0-4d50-83ab-74cf7b6966fa
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: bQZcMViJWXus9rMSTOa-ZAaUJC0mIlPx7XmzrLp8GQU
+    short-id: 94f32cfc
+  servername: cdn.bulkavpn.top
+  client-fingerprint: firefox
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇨🇾 塞浦路斯 (Cyprus) 01 21637K - NEKO
-  - 🇨🇾 塞浦路斯 (Cyprus) 02 7019K - NEKO
+  - 🇨🇾 塞浦路斯 (Cyprus) 01 23699K - NEKO
+  - 🇨🇾 塞浦路斯 (Cyprus) 02 7421K - NEKO
+  - 🇨🇾 塞浦路斯 (Cyprus) 03 ⚠S1602K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇾 塞浦路斯 (Cyprus) 01 21637K - NEKO
-  - 🇨🇾 塞浦路斯 (Cyprus) 02 7019K - NEKO
+  - 🇨🇾 塞浦路斯 (Cyprus) 01 23699K - NEKO
+  - 🇨🇾 塞浦路斯 (Cyprus) 02 7421K - NEKO
+  - 🇨🇾 塞浦路斯 (Cyprus) 03 ⚠S1602K - NEKO
 rules:
 - MATCH,PROXIES

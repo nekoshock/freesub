@@ -4,8 +4,61 @@
   },
   "outbounds": [
     {
+      "type": "hysteria2",
+      "tag": "🇹🇷 土耳其 (Turkey) 01 ⚠S5901K - NEKO",
+      "server": "162.249.126.39",
+      "server_port": 9443,
+      "password": "9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z",
+      "tls": {
+        "enabled": true,
+        "server_name": "hop-germany-september.dynuddns.com",
+        "insecure": false
+      }
+    },
+    {
       "type": "vless",
-      "tag": "🇹🇷 土耳其 (Turkey) 01 4331K - NEKO",
+      "tag": "🇹🇷 土耳其 (Turkey) 02 296K - NEKO",
+      "server": "85.192.48.142",
+      "server_port": 443,
+      "uuid": "adc11f30-e4cb-4985-bf5e-f9ded69c019f",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "nvidia.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": ""
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "fNfokzklCF4l_c8k8PciOCjm5ecNoF_sNLjEtaO-xzI",
+          "short_id": "db04ce8bdb8900f1"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇹🇷 土耳其 (Turkey) 03 ⚠S5996K - NEKO",
+      "server": "ststictr.hamiramkemax.ir",
+      "server_port": 1081,
+      "uuid": "250865f0-4a0f-4e2e-8d14-4c39a25d0bef",
+      "tls": {
+        "enabled": true,
+        "server_name": "www12.gameservice-iramn3.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "_UlBf1BRa52KM89xxvfbSHuLZWrvWuGuhvbsL3gx01A",
+          "short_id": "daa22fbb023ab4a2"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇹🇷 土耳其 (Turkey) 04 4702K - NEKO",
       "server": "151.241.226.201",
       "server_port": 2053,
       "uuid": "0eed6293-8cf1-4e77-ac10-9c3d50d0b2f8",
@@ -24,57 +77,24 @@
       }
     },
     {
-      "type": "vless",
-      "tag": "🇹🇷 土耳其 (Turkey) 02 1465K - NEKO",
-      "server": "cookie.wookshop.ir",
-      "server_port": 43233,
-      "uuid": "568bcbbc-7a90-4164-8b5d-1c0bbeccfa38",
-      "transport": {
-        "type": "ws",
-        "path": "/",
-        "headers": {
-          "Host": "cookie.wookshop.ir"
-        }
-      }
-    },
-    {
-      "type": "vless",
-      "tag": "🇹🇷 土耳其 (Turkey) 03 4339K - NEKO",
-      "server": "78.135.73.47",
-      "server_port": 443,
-      "uuid": "25e16692-d097-4e69-9e2d-8415609c1968",
-      "flow": "xtls-rprx-vision",
-      "tls": {
-        "enabled": true,
-        "server_name": "www.datadoghq.com",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "sZAJkAu23wp1WKY-qeaeiwR38izP5OyfhumoE9xhbB8",
-          "short_id": "f46cd3ea3d1eb72d"
-        }
-      }
-    },
-    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇹🇷 土耳其 (Turkey) 01 4331K - NEKO",
-        "🇹🇷 土耳其 (Turkey) 02 1465K - NEKO",
-        "🇹🇷 土耳其 (Turkey) 03 4339K - NEKO"
+        "🇹🇷 土耳其 (Turkey) 01 ⚠S5901K - NEKO",
+        "🇹🇷 土耳其 (Turkey) 02 296K - NEKO",
+        "🇹🇷 土耳其 (Turkey) 03 ⚠S5996K - NEKO",
+        "🇹🇷 土耳其 (Turkey) 04 4702K - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇹🇷 土耳其 (Turkey) 01 4331K - NEKO",
-        "🇹🇷 土耳其 (Turkey) 02 1465K - NEKO",
-        "🇹🇷 土耳其 (Turkey) 03 4339K - NEKO"
+        "🇹🇷 土耳其 (Turkey) 01 ⚠S5901K - NEKO",
+        "🇹🇷 土耳其 (Turkey) 02 296K - NEKO",
+        "🇹🇷 土耳其 (Turkey) 03 ⚠S5996K - NEKO",
+        "🇹🇷 土耳其 (Turkey) 04 4702K - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

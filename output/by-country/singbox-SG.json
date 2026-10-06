@@ -4,8 +4,34 @@
   },
   "outbounds": [
     {
+      "type": "vless",
+      "tag": "🇸🇬 新加坡 (Singapore) 01 12166K - NEKO",
+      "server": "188.114.97.6",
+      "server_port": 8080,
+      "uuid": "47fcef29-ab4e-4aa6-932b-d95a18f28a4e",
+      "transport": {
+        "type": "ws",
+        "path": "/?ed=2560",
+        "headers": {
+          "Host": "zb1zi.s3nx.dyz.hh.vavava.kdns.fr"
+        }
+      }
+    },
+    {
       "type": "hysteria2",
-      "tag": "🇸🇬 新加坡 (Singapore) 01 245K - NEKO",
+      "tag": "🇸🇬 新加坡 (Singapore) 02 ⚠S2103K - NEKO",
+      "server": "138.2.73.238",
+      "server_port": 50160,
+      "password": "f87376e17da040ed04c9665ce8972930",
+      "tls": {
+        "enabled": true,
+        "server_name": "138.2.73.238",
+        "insecure": true
+      }
+    },
+    {
+      "type": "hysteria2",
+      "tag": "🇸🇬 新加坡 (Singapore) 03 325K - NEKO",
       "server": "138.2.89.249",
       "server_port": 443,
       "password": "d042d150716709bb778cc73889cddb02",
@@ -20,8 +46,20 @@
       }
     },
     {
+      "type": "hysteria2",
+      "tag": "🇸🇬 新加坡 (Singapore) 04 2939K - NEKO",
+      "server": "vpn-sg-001.fastervpn.world",
+      "server_port": 443,
+      "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+      "tls": {
+        "enabled": true,
+        "server_name": "vpn-sg-001.fastervpn.world",
+        "insecure": true
+      }
+    },
+    {
       "type": "tuic",
-      "tag": "🇸🇬 新加坡 (Singapore) 02 386K - NEKO",
+      "tag": "🇸🇬 新加坡 (Singapore) 05 1612K - NEKO",
       "server": "146.235.16.130",
       "server_port": 33738,
       "uuid": "2d1ad594-80a4-4bfb-87a6-038e39701f51",
@@ -38,38 +76,8 @@
       }
     },
     {
-      "type": "tuic",
-      "tag": "🇸🇬 新加坡 (Singapore) 03 671K - NEKO",
-      "server": "sg2-8sb.6121999.dpdns.org",
-      "server_port": 33738,
-      "uuid": "2d1ad594-80a4-4bfb-87a6-038e39701f51",
-      "password": "2d1ad594-80a4-4bfb-87a6-038e39701f51",
-      "congestion_control": "bbr",
-      "udp_relay_mode": "quic",
-      "tls": {
-        "enabled": true,
-        "server_name": "sg2-8sb.6121999.dpdns.org",
-        "insecure": false,
-        "alpn": [
-          "h3"
-        ]
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "🇸🇬 新加坡 (Singapore) 04 2504K - NEKO",
-      "server": "138.2.73.238",
-      "server_port": 50160,
-      "password": "f87376e17da040ed04c9665ce8972930",
-      "tls": {
-        "enabled": true,
-        "server_name": "138.2.73.238",
-        "insecure": true
-      }
-    },
-    {
       "type": "vmess",
-      "tag": "🇸🇬 新加坡 (Singapore) 05 2961K - NEKO",
+      "tag": "🇸🇬 新加坡 (Singapore) 06 2842K - NEKO",
       "server": "149.88.23.207",
       "server_port": 18000,
       "uuid": "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe",
@@ -77,45 +85,69 @@
     },
     {
       "type": "vmess",
-      "tag": "🇸🇬 新加坡 (Singapore) 06 2615K - NEKO",
+      "tag": "🇸🇬 新加坡 (Singapore) 07 2789K - NEKO",
       "server": "149.88.23.202",
       "server_port": 18000,
       "uuid": "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe",
       "security": "auto"
     },
     {
-      "type": "shadowsocks",
-      "tag": "🇸🇬 新加坡 (Singapore) 07 2431K - NEKO",
-      "server": "68.183.227.45",
-      "server_port": 8080,
-      "method": "rc4-md5",
-      "password": "14fFPrbezE3HDZzsMOr6"
+      "type": "trojan",
+      "tag": "🇸🇬 新加坡 (Singapore) 08 2359K - NEKO",
+      "server": "52.221.220.227",
+      "server_port": 443,
+      "password": "UX82473651",
+      "tls": {
+        "enabled": true,
+        "server_name": "pet-antelope.rooster465.autos",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇸🇬 新加坡 (Singapore) 09 787K - NEKO",
+      "server": "13.212.81.3",
+      "server_port": 443,
+      "password": "UX82473651",
+      "tls": {
+        "enabled": true,
+        "server_name": "holy-lamb.rooster465.autos",
+        "insecure": false
+      }
     },
     {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇸🇬 新加坡 (Singapore) 01 245K - NEKO",
-        "🇸🇬 新加坡 (Singapore) 02 386K - NEKO",
-        "🇸🇬 新加坡 (Singapore) 03 671K - NEKO",
-        "🇸🇬 新加坡 (Singapore) 04 2504K - NEKO",
-        "🇸🇬 新加坡 (Singapore) 05 2961K - NEKO",
-        "🇸🇬 新加坡 (Singapore) 06 2615K - NEKO",
-        "🇸🇬 新加坡 (Singapore) 07 2431K - NEKO"
+        "🇸🇬 新加坡 (Singapore) 01 12166K - NEKO",
+        "🇸🇬 新加坡 (Singapore) 02 ⚠S2103K - NEKO",
+        "🇸🇬 新加坡 (Singapore) 03 325K - NEKO",
+        "🇸🇬 新加坡 (Singapore) 04 2939K - NEKO",
+        "🇸🇬 新加坡 (Singapore) 05 1612K - NEKO",
+        "🇸🇬 新加坡 (Singapore) 06 2842K - NEKO",
+        "🇸🇬 新加坡 (Singapore) 07 2789K - NEKO",
+        "🇸🇬 新加坡 (Singapore) 08 2359K - NEKO",
+        "🇸🇬 新加坡 (Singapore) 09 787K - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇸🇬 新加坡 (Singapore) 01 245K - NEKO",
-        "🇸🇬 新加坡 (Singapore) 02 386K - NEKO",
-        "🇸🇬 新加坡 (Singapore) 03 671K - NEKO",
-        "🇸🇬 新加坡 (Singapore) 04 2504K - NEKO",
-        "🇸🇬 新加坡 (Singapore) 05 2961K - NEKO",
-        "🇸🇬 新加坡 (Singapore) 06 2615K - NEKO",
-        "🇸🇬 新加坡 (Singapore) 07 2431K - NEKO"
+        "🇸🇬 新加坡 (Singapore) 01 12166K - NEKO",
+        "🇸🇬 新加坡 (Singapore) 02 ⚠S2103K - NEKO",
+        "🇸🇬 新加坡 (Singapore) 03 325K - NEKO",
+        "🇸🇬 新加坡 (Singapore) 04 2939K - NEKO",
+        "🇸🇬 新加坡 (Singapore) 05 1612K - NEKO",
+        "🇸🇬 新加坡 (Singapore) 06 2842K - NEKO",
+        "🇸🇬 新加坡 (Singapore) 07 2789K - NEKO",
+        "🇸🇬 新加坡 (Singapore) 08 2359K - NEKO",
+        "🇸🇬 新加坡 (Singapore) 09 787K - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

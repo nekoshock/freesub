@@ -4,26 +4,20 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇸🇨 塞舌尔 (Seychelles) 01 ⚠S9399K - NEKO
-  server: 45.202.240.4
-  port: 33091
-  udp: true
-  type: anytls
-  password: 776b4834-caaf-4006-ab21-409e958867af
-  sni: www.bing.com
-  skip-cert-verify: true
-- name: 🇸🇨 塞舌尔 (Seychelles) 02 ⚠S19959K - NEKO
-  server: 199.232.78.160
+- name: 🇸🇨 塞舌尔 (Seychelles) 01 4427K - NEKO
+  server: 45.142.31.21
   port: 443
   udp: true
-  type: trojan
-  password: mitivpn
-  sni: ssl.fastly.com
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /---@MetiVIP---@MetiVIP/---@MetiVIP---@MetiVIP/---@MetiVIP---@MetiVIP/des---@MetiVIP---@MetiVIP/---@MetiVIP---@MetiVIP/---@MetiVIP---@MetiVIP
-- name: 🇸🇨 塞舌尔 (Seychelles) 03 673K - NEKO
+  type: vless
+  uuid: 2b781b4a-5942-48e0-a7f3-5a07b7b488c1
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: AhLy7ha7FF2EQfu-3SxOFKUwExyHActYPHtyv82KNCI
+    short-id: 15bcc0a77c3cacdf
+  servername: gr-root.sworkingvpn.com
+  client-fingerprint: firefox
+- name: 🇸🇨 塞舌尔 (Seychelles) 02 538K - NEKO
   server: 156.226.168.221
   port: 35193
   udp: true
@@ -41,16 +35,14 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇸🇨 塞舌尔 (Seychelles) 01 ⚠S9399K - NEKO
-  - 🇸🇨 塞舌尔 (Seychelles) 02 ⚠S19959K - NEKO
-  - 🇸🇨 塞舌尔 (Seychelles) 03 673K - NEKO
+  - 🇸🇨 塞舌尔 (Seychelles) 01 4427K - NEKO
+  - 🇸🇨 塞舌尔 (Seychelles) 02 538K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇸🇨 塞舌尔 (Seychelles) 01 ⚠S9399K - NEKO
-  - 🇸🇨 塞舌尔 (Seychelles) 02 ⚠S19959K - NEKO
-  - 🇸🇨 塞舌尔 (Seychelles) 03 673K - NEKO
+  - 🇸🇨 塞舌尔 (Seychelles) 01 4427K - NEKO
+  - 🇸🇨 塞舌尔 (Seychelles) 02 538K - NEKO
 rules:
 - MATCH,PROXIES

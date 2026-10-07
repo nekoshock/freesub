@@ -4,25 +4,25 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇭🇰 中国香港 (Hong Kong) 01 (移动家宽) 3521K - NEKO
-  server: dog-hk.kunlun01dns.com
-  port: 21019
+- name: 🇭🇰 中国香港 (Hong Kong) 01 (家宽) ⚠S4784K - NEKO
+  server: bff4b219-tmkao0-tnnrly-g43g.hk3.hyhuawei.com
+  port: 443
   udp: true
-  type: vmess
-  uuid: 9464ca40-dd75-3742-a628-d931a9f413b2
-  alterId: 0
-  cipher: auto
+  type: hysteria2
+  password: 6ddb6a68-d5f5-ca30-3943-cf0c9876d50c
+  sni: bff4b219-tmkao0-tnnrly-g43g.hk3.hyhuawei.com
+  skip-cert-verify: true
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇭🇰 中国香港 (Hong Kong) 01 (移动家宽) 3521K - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 (家宽) ⚠S4784K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇭🇰 中国香港 (Hong Kong) 01 (移动家宽) 3521K - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 (家宽) ⚠S4784K - NEKO
 rules:
 - MATCH,PROXIES

@@ -4,35 +4,35 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇹🇼 中国台湾 (Taiwan) 01 3115K - NEKO
-  server: 160.187.100.109
+- name: 🇹🇼 中国台湾 (Taiwan) 01 4352K - NEKO
+  server: vpn-tw-002.fastervpn.world
   port: 443
   udp: true
   type: hysteria2
   password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: 160.187.100.109
+  sni: t.me
   skip-cert-verify: true
-- name: 🇹🇼 中国台湾 (Taiwan) 02 1081K - NEKO
-  server: 165.154.195.38
-  port: 35034
+- name: 🇹🇼 中国台湾 (Taiwan) 02 4174K - NEKO
+  server: 103.115.109.49
+  port: 443
   udp: true
-  type: vmess
-  uuid: 959a8caf-4cea-43d0-a548-3628e7ddfafc
-  alterId: 0
-  cipher: auto
+  type: hysteria2
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: https://t.me/WangCai2🇨🇳
+  skip-cert-verify: true
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇹🇼 中国台湾 (Taiwan) 01 3115K - NEKO
-  - 🇹🇼 中国台湾 (Taiwan) 02 1081K - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 01 4352K - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 02 4174K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇹🇼 中国台湾 (Taiwan) 01 3115K - NEKO
-  - 🇹🇼 中国台湾 (Taiwan) 02 1081K - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 01 4352K - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 02 4174K - NEKO
 rules:
 - MATCH,PROXIES

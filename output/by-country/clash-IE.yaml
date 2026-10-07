@@ -4,16 +4,16 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇮🇪 爱尔兰 (Ireland) 01 ⚠S6795K - NEKO
-  server: 34.242.77.118
+- name: 🇮🇪 爱尔兰 (Ireland) 01 4315K - NEKO
+  server: sacred-anemone.rooster465.autos
   port: 443
   udp: true
   type: trojan
   password: UX82473651
   sni: sacred-anemone.rooster465.autos
   skip-cert-verify: false
-- name: 🇮🇪 爱尔兰 (Ireland) 02 ⚠S1551K - NEKO
-  server: loved-shark.rooster465.autos
+- name: 🇮🇪 爱尔兰 (Ireland) 02 3776K - NEKO
+  server: 3.253.106.233
   port: 443
   udp: true
   type: trojan
@@ -25,14 +25,14 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇮🇪 爱尔兰 (Ireland) 01 ⚠S6795K - NEKO
-  - 🇮🇪 爱尔兰 (Ireland) 02 ⚠S1551K - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 01 4315K - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 02 3776K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇮🇪 爱尔兰 (Ireland) 01 ⚠S6795K - NEKO
-  - 🇮🇪 爱尔兰 (Ireland) 02 ⚠S1551K - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 01 4315K - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 02 3776K - NEKO
 rules:
 - MATCH,PROXIES

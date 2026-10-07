@@ -4,7 +4,20 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇸🇪 瑞典 (Sweden) 01 ⚠S3527K - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 01 3347K - NEKO
+  server: 132.243.231.4
+  port: 443
+  udp: true
+  type: vless
+  uuid: 87fd990d-ca93-440a-bbd4-e8281c4a0910
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: zWDvtTWK-cWWwHDMHMXcOpQy4k3EKp7yw-5e0wTZAUM
+    short-id: 5efa80b939612291
+  servername: d3-se1.cloud-cdn.xyz
+  client-fingerprint: chrome
+- name: 🇸🇪 瑞典 (Sweden) 02 3481K - NEKO
   server: 62.60.159.81
   port: 2053
   udp: true
@@ -19,8 +32,8 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: grpce5bb9e71
-- name: 🇸🇪 瑞典 (Sweden) 02 ⚠S3695K - NEKO
-  server: 132.243.231.4
+- name: 🇸🇪 瑞典 (Sweden) 03 ⚠S2066K - NEKO
+  server: 132.243.231.12
   port: 443
   udp: true
   type: vless
@@ -32,36 +45,43 @@ proxies:
     short-id: 5efa80b939612291
   servername: d3-se1.cloud-cdn.xyz
   client-fingerprint: chrome
-- name: 🇸🇪 瑞典 (Sweden) 03 ⚠S4978K - NEKO
-  server: sub.merky.top
-  port: 443
+- name: 🇸🇪 瑞典 (Sweden) 04 353K - NEKO
+  server: 77.110.96.201
+  port: 36264
   udp: true
-  type: vless
-  uuid: 6e05822a-e9da-4135-a9db-71aa07a944af
-  tls: true
-  servername: sub.merky.top
-  skip-cert-verify: false
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /merky-connect/de6/
-    headers:
-      Host: sub.merky.top
+  type: hysteria2
+  password: Telegram-vpnjey
+  sni: se.vpnjey2.dpdns.org
+  skip-cert-verify: true
+  obfs: salamander
+  obfs-password: Telegram@vpnjey
+- name: 🇸🇪 瑞典 (Sweden) 05 1913K - NEKO
+  server: svip.skycon808.com
+  port: 60005
+  udp: true
+  type: anytls
+  password: 13f0acfa-38c1-4e82-a758-583aa31740df
+  sni: xjp18.2uuzhe.com
+  skip-cert-verify: true
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇸🇪 瑞典 (Sweden) 01 ⚠S3527K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 ⚠S3695K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 03 ⚠S4978K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 3347K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 3481K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 03 ⚠S2066K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 04 353K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 05 1913K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇸🇪 瑞典 (Sweden) 01 ⚠S3527K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 ⚠S3695K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 03 ⚠S4978K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 3347K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 3481K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 03 ⚠S2066K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 04 353K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 05 1913K - NEKO
 rules:
 - MATCH,PROXIES

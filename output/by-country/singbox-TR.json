@@ -4,40 +4,44 @@
   },
   "outbounds": [
     {
-      "type": "shadowsocks",
-      "tag": "🇹🇷 土耳其 (Turkey) 01 2662K - NEKO",
-      "server": "206.1.100.83",
-      "server_port": 25178,
-      "method": "2022-blake3-aes-256-gcm",
-      "password": "ADzlhA3ndouUCY3JbLddR/jwgYY7IDGc1T+5DuCix9Y=:KyFe2akGo5hcrswbMkD2+BM52si+D7lzyccZFTd4xaU="
-    },
-    {
       "type": "hysteria2",
-      "tag": "🇹🇷 土耳其 (Turkey) 02 5873K - NEKO",
-      "server": "162.249.126.39",
-      "server_port": 9443,
-      "password": "9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z",
+      "tag": "🇹🇷 土耳其 (Turkey) 01 ⚠S5950K - NEKO",
+      "server": "153.56.210.134",
+      "server_port": 34121,
+      "password": "c8ed6cd1-6566-4f7a-819e-1c55b2b360c9",
       "tls": {
         "enabled": true,
-        "server_name": "hop-germany-september.dynuddns.com",
-        "insecure": false
+        "server_name": "www.bing.com",
+        "insecure": true
+      },
+      "obfs": {
+        "type": "salamander",
+        "password": "9a33460c-b037-47aa-a606-d04211f4e0ec"
       }
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇹🇷 土耳其 (Turkey) 02 3473K - NEKO",
+      "server": "bale.xv98.ir",
+      "server_port": 5051,
+      "method": "chacha20-ietf-poly1305",
+      "password": "68mL2QkZEBlxWa3hcslGDw"
     },
     {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇹🇷 土耳其 (Turkey) 01 2662K - NEKO",
-        "🇹🇷 土耳其 (Turkey) 02 5873K - NEKO"
+        "🇹🇷 土耳其 (Turkey) 01 ⚠S5950K - NEKO",
+        "🇹🇷 土耳其 (Turkey) 02 3473K - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇹🇷 土耳其 (Turkey) 01 2662K - NEKO",
-        "🇹🇷 土耳其 (Turkey) 02 5873K - NEKO"
+        "🇹🇷 土耳其 (Turkey) 01 ⚠S5950K - NEKO",
+        "🇹🇷 土耳其 (Turkey) 02 3473K - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

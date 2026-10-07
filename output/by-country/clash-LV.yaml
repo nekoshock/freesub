@@ -4,78 +4,57 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇱🇻 拉脱维亚 (Latvia) 01 3632K - NEKO
+- name: 🇱🇻 拉脱维亚 (Latvia) 01 3972K - NEKO
   server: 185.135.86.175
-  port: 9068
+  port: 9034
   udp: true
   type: ss
   cipher: aes-256-cfb
-  password: mwgRg9hRq3b4Qnwb
-- name: 🇱🇻 拉脱维亚 (Latvia) 02 3525K - NEKO
+  password: Yg4MbdXFQ9HFFVY6
+- name: 🇱🇻 拉脱维亚 (Latvia) 02 3622K - NEKO
   server: 185.135.86.175
-  port: 9094
+  port: 9082
   udp: true
   type: ss
   cipher: aes-256-cfb
-  password: rpgbNnU9rDDU4aWZ
-- name: 🇱🇻 拉脱维亚 (Latvia) 03 3517K - NEKO
-  server: 185.135.86.175
-  port: 9036
-  udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: hbtvgUz5uNYyB3Rf
-- name: 🇱🇻 拉脱维亚 (Latvia) 04 3671K - NEKO
-  server: 185.135.86.175
-  port: 9007
-  udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: kSPmvwdFzGMMW5pY
-- name: 🇱🇻 拉脱维亚 (Latvia) 05 3467K - NEKO
+  password: 45xgMgm386pjWjTx
+- name: 🇱🇻 拉脱维亚 (Latvia) 03 3969K - NEKO
   server: 185.135.86.175
   port: 9033
   udp: true
   type: ss
   cipher: aes-256-cfb
   password: UTJA57ypk2XKQpnm
-- name: 🇱🇻 拉脱维亚 (Latvia) 06 3379K - NEKO
-  server: 185.135.86.175
-  port: 9017
+- name: 🇱🇻 拉脱维亚 (Latvia) 04 3806K - NEKO
+  server: 138.124.180.137
+  port: 443
   udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: HAVAdE3nXhqA5nHp
-- name: 🇱🇻 拉脱维亚 (Latvia) 07 3465K - NEKO
-  server: 185.135.86.175
-  port: 9086
-  udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: 37Z4TFCYhfxcpc9Q
+  type: vless
+  uuid: 5234b2b7-5e07-422c-8159-d62a676c00c6
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: GBdkyDLfr0LIZo_94Xv8ycAKOmkjArYzwJAEMhuXX2c
+    short-id: 33acba1b
+  servername: www.apple.com
+  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇱🇻 拉脱维亚 (Latvia) 01 3632K - NEKO
-  - 🇱🇻 拉脱维亚 (Latvia) 02 3525K - NEKO
-  - 🇱🇻 拉脱维亚 (Latvia) 03 3517K - NEKO
-  - 🇱🇻 拉脱维亚 (Latvia) 04 3671K - NEKO
-  - 🇱🇻 拉脱维亚 (Latvia) 05 3467K - NEKO
-  - 🇱🇻 拉脱维亚 (Latvia) 06 3379K - NEKO
-  - 🇱🇻 拉脱维亚 (Latvia) 07 3465K - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 01 3972K - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 02 3622K - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 03 3969K - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 04 3806K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇱🇻 拉脱维亚 (Latvia) 01 3632K - NEKO
-  - 🇱🇻 拉脱维亚 (Latvia) 02 3525K - NEKO
-  - 🇱🇻 拉脱维亚 (Latvia) 03 3517K - NEKO
-  - 🇱🇻 拉脱维亚 (Latvia) 04 3671K - NEKO
-  - 🇱🇻 拉脱维亚 (Latvia) 05 3467K - NEKO
-  - 🇱🇻 拉脱维亚 (Latvia) 06 3379K - NEKO
-  - 🇱🇻 拉脱维亚 (Latvia) 07 3465K - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 01 3972K - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 02 3622K - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 03 3969K - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 04 3806K - NEKO
 rules:
 - MATCH,PROXIES

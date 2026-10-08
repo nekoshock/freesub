@@ -4,24 +4,24 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇰🇷 韩国 (South Korea) 01 (家宽) 3578K - NEKO
-  server: p141.panda001.net
-  port: 4652
+- name: 🇿🇦 南非 (South Africa) 01 2489K - NEKO
+  server: 102.133.165.160
+  port: 16233
   udp: true
   type: ss
-  cipher: aes-256-cfb
-  password: qwerREWQ@@
+  cipher: chacha20-ietf-poly1305
+  password: Xsy8Ox4yOV3xLlpxtjzs3X
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇰🇷 韩国 (South Korea) 01 (家宽) 3578K - NEKO
+  - 🇿🇦 南非 (South Africa) 01 2489K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇰🇷 韩国 (South Korea) 01 (家宽) 3578K - NEKO
+  - 🇿🇦 南非 (South Africa) 01 2489K - NEKO
 rules:
 - MATCH,PROXIES

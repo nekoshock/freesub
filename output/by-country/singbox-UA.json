@@ -5,22 +5,24 @@
   "outbounds": [
     {
       "type": "vless",
-      "tag": "🇧🇾 白俄罗斯 (Belarus) 01 3553K - NEKO",
-      "server": "89.125.96.80",
-      "server_port": 2053,
-      "uuid": "6c713691-3ca2-0008-ad25-113d1bed6b03",
+      "tag": "🇺🇦 乌克兰 (Ukraine) 01 5166K - NEKO",
+      "server": "45.158.185.172",
+      "server_port": 443,
+      "uuid": "698b212d-ca12-4794-8256-252a6e1b4533",
       "tls": {
         "enabled": true,
-        "server_name": "wss.zazazuza.ru",
+        "server_name": "z5n1.vpnpolar.online",
         "insecure": false,
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
+        "alpn": [
+          "http/1.1"
+        ]
       },
       "transport": {
         "type": "ws",
-        "path": "/vpn-wss/fluxor/59011/"
+        "path": "/beeline",
+        "headers": {
+          "Host": "z5n1.vpnpolar.online"
+        }
       }
     },
     {
@@ -28,14 +30,14 @@
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇧🇾 白俄罗斯 (Belarus) 01 3553K - NEKO"
+        "🇺🇦 乌克兰 (Ukraine) 01 5166K - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇧🇾 白俄罗斯 (Belarus) 01 3553K - NEKO"
+        "🇺🇦 乌克兰 (Ukraine) 01 5166K - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

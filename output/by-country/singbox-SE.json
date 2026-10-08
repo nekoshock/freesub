@@ -4,26 +4,29 @@
   },
   "outbounds": [
     {
-      "type": "shadowsocks",
-      "tag": "🇦🇹 奥地利 (Austria) 01 3726K - NEKO",
-      "server": "82.110.60.9",
-      "server_port": 19999,
-      "method": "aes-256-gcm",
-      "password": "ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
+      "type": "vless",
+      "tag": "🇸🇪 瑞典 (Sweden) 01 3897K - NEKO",
+      "server": "70.34.199.238",
+      "server_port": 80,
+      "uuid": "98b76bb7-b2d1-47a8-8767-0d294c33e749",
+      "transport": {
+        "type": "ws",
+        "path": "/"
+      }
     },
     {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇦🇹 奥地利 (Austria) 01 3726K - NEKO"
+        "🇸🇪 瑞典 (Sweden) 01 3897K - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇦🇹 奥地利 (Austria) 01 3726K - NEKO"
+        "🇸🇪 瑞典 (Sweden) 01 3897K - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

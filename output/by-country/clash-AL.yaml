@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇦🇱 AL 01 4099K - NEKO
+- name: 🇦🇱 AL 01 4002K - NEKO
   server: 78.159.131.79
   port: 443
   udp: true
@@ -17,20 +17,7 @@ proxies:
     short-id: 15bcc0a77c3cacdf
   servername: nl-root.sworkingvpn.com
   client-fingerprint: firefox
-- name: 🇦🇱 AL 02 4037K - NEKO
-  server: 194.93.61.100
-  port: 443
-  udp: true
-  type: vless
-  uuid: 41e71ba7-d389-47aa-94f7-ed1f55fdbcdf
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: E1te_g9q6EWQVOCgjwI4PF-cml9qqW7OEAf33tYkUxQ
-    short-id: 17d334ad29b2ff40
-  servername: cdnjs.com
-  client-fingerprint: chrome
-- name: 🇦🇱 AL 03 3608K - NEKO
+- name: 🇦🇱 AL 02 3762K - NEKO
   server: 45.89.60.202
   port: 443
   udp: true
@@ -48,16 +35,14 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇦🇱 AL 01 4099K - NEKO
-  - 🇦🇱 AL 02 4037K - NEKO
-  - 🇦🇱 AL 03 3608K - NEKO
+  - 🇦🇱 AL 01 4002K - NEKO
+  - 🇦🇱 AL 02 3762K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇦🇱 AL 01 4099K - NEKO
-  - 🇦🇱 AL 02 4037K - NEKO
-  - 🇦🇱 AL 03 3608K - NEKO
+  - 🇦🇱 AL 01 4002K - NEKO
+  - 🇦🇱 AL 02 3762K - NEKO
 rules:
 - MATCH,PROXIES

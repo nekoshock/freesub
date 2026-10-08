@@ -4,24 +4,26 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇦🇹 奥地利 (Austria) 01 3726K - NEKO
-  server: 82.110.60.9
-  port: 19999
+- name: 🇸🇪 瑞典 (Sweden) 01 3897K - NEKO
+  server: 70.34.199.238
+  port: 80
   udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+  type: vless
+  uuid: 98b76bb7-b2d1-47a8-8767-0d294c33e749
+  network: ws
+  ws-opts:
+    path: /
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇦🇹 奥地利 (Austria) 01 3726K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 3897K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇦🇹 奥地利 (Austria) 01 3726K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 3897K - NEKO
 rules:
 - MATCH,PROXIES

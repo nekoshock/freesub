@@ -4,25 +4,24 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇭🇰 中国香港 (Hong Kong) 01 (家宽) ⚠S4784K - NEKO
-  server: bff4b219-tmkao0-tnnrly-g43g.hk3.hyhuawei.com
-  port: 443
+- name: 🇰🇷 韩国 (South Korea) 01 (家宽) 3503K - NEKO
+  server: p141.panda001.net
+  port: 4652
   udp: true
-  type: hysteria2
-  password: 6ddb6a68-d5f5-ca30-3943-cf0c9876d50c
-  sni: bff4b219-tmkao0-tnnrly-g43g.hk3.hyhuawei.com
-  skip-cert-verify: true
+  type: ss
+  cipher: aes-256-cfb
+  password: qwerREWQ@@
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇭🇰 中国香港 (Hong Kong) 01 (家宽) ⚠S4784K - NEKO
+  - 🇰🇷 韩国 (South Korea) 01 (家宽) 3503K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇭🇰 中国香港 (Hong Kong) 01 (家宽) ⚠S4784K - NEKO
+  - 🇰🇷 韩国 (South Korea) 01 (家宽) 3503K - NEKO
 rules:
 - MATCH,PROXIES

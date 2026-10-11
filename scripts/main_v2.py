@@ -92,6 +92,7 @@ SOURCE_URLS = [
     "https://raw.githubusercontent.com/MatinGhanbari/v2ray-configs/main/subscriptions/v2ray/super-sub.txt",
     "https://raw.githubusercontent.com/snakem982/proxypool/main/source/v2ray-2.txt",
     "https://raw.githubusercontent.com/ZYFXS/ZYFXS001/refs/heads/main/youtube%40ZYFXS--5v",
+    "https://gist.githubusercontent.com/guidongone/ac60f0dfeff1a514ebbf795af03abc7f/raw/61620b2129097d1aad6b4f6910ccce98219ce38f/V2ray261011.txt",
 ]
 
 OUTPUT_DIR = "output"

@@ -4,17 +4,37 @@
   },
   "outbounds": [
     {
-      "type": "vmess",
-      "tag": "🇦🇺 澳大利亚 (Australia) 01 ⚠S512K - NEKO",
-      "server": "23.162.200.198",
-      "server_port": 18000,
-      "uuid": "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe",
-      "security": "auto"
+      "type": "hysteria2",
+      "tag": "🇦🇺 澳大利亚 (Australia) 01 3954K - NEKO",
+      "server": "152.67.115.203",
+      "server_port": 443,
+      "password": "633bc3be486b646190661ac2387c150a",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.bing.com",
+        "insecure": true
+      },
+      "obfs": {
+        "type": "salamander",
+        "password": "850a3fb1cd33a28f12d837578ae1a2e7"
+      }
     },
     {
       "type": "hysteria2",
-      "tag": "🇦🇺 澳大利亚 (Australia) 02 2449K - NEKO",
-      "server": "159.13.42.167",
+      "tag": "🇦🇺 澳大利亚 (Australia) 02 3560K - NEKO",
+      "server": "vpn-au-001.fastervpn.world",
+      "server_port": 443,
+      "password": "H7mP2xY9kJ4nQ8wR5tF6vB3z",
+      "tls": {
+        "enabled": true,
+        "server_name": "127.0.0.1",
+        "insecure": true
+      }
+    },
+    {
+      "type": "hysteria2",
+      "tag": "🇦🇺 澳大利亚 (Australia) 03 959K - NEKO",
+      "server": "137.23.2.56",
       "password": "b42d90fa667942aebc734d60",
       "tls": {
         "enabled": true,
@@ -26,13 +46,12 @@
         "password": "b42d90fa667942aebc734d60"
       },
       "server_ports": [
-        "20000:30000",
-        "20000:20000"
+        "20000:30000"
       ]
     },
     {
       "type": "vless",
-      "tag": "🇦🇺 澳大利亚 (Australia) 03 3554K - NEKO",
+      "tag": "🇦🇺 澳大利亚 (Australia) 04 3238K - NEKO",
       "server": "51.161.204.244",
       "server_port": 443,
       "uuid": "36e89875-9c53-482b-bc41-d3890e9da176",
@@ -56,18 +75,20 @@
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇦🇺 澳大利亚 (Australia) 01 ⚠S512K - NEKO",
-        "🇦🇺 澳大利亚 (Australia) 02 2449K - NEKO",
-        "🇦🇺 澳大利亚 (Australia) 03 3554K - NEKO"
+        "🇦🇺 澳大利亚 (Australia) 01 3954K - NEKO",
+        "🇦🇺 澳大利亚 (Australia) 02 3560K - NEKO",
+        "🇦🇺 澳大利亚 (Australia) 03 959K - NEKO",
+        "🇦🇺 澳大利亚 (Australia) 04 3238K - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇦🇺 澳大利亚 (Australia) 01 ⚠S512K - NEKO",
-        "🇦🇺 澳大利亚 (Australia) 02 2449K - NEKO",
-        "🇦🇺 澳大利亚 (Australia) 03 3554K - NEKO"
+        "🇦🇺 澳大利亚 (Australia) 01 3954K - NEKO",
+        "🇦🇺 澳大利亚 (Australia) 02 3560K - NEKO",
+        "🇦🇺 澳大利亚 (Australia) 03 959K - NEKO",
+        "🇦🇺 澳大利亚 (Australia) 04 3238K - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

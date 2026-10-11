@@ -4,23 +4,25 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇭🇰 中国香港 (Hong Kong) 01 5930K - NEKO
-  server: 43.161.230.103
-  port: 8443
-  udp: true
-  type: hysteria2
-  password: HysTeria2026!Proxy
-  sni: mz.hkychina.com
-  skip-cert-verify: true
-- name: 🇭🇰 中国香港 (Hong Kong) 02 3128K - NEKO
-  server: 202.146.222.29
+- name: 🇭🇰 中国香港 (Hong Kong) 01 3099K - NEKO
+  server: 202.146.222.174
   port: 443
   udp: true
   type: hysteria2
   password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: speedtest.tinkoff.ru
+  sni: https%3a%2f%2ft.me%2foneclickvpnkeys
   skip-cert-verify: true
-- name: 🇭🇰 中国香港 (Hong Kong) 03 3065K - NEKO
+- name: 🇭🇰 中国香港 (Hong Kong) 02 1102K - NEKO
+  server: nas.aizhzo.com
+  port: 5010
+  udp: true
+  type: hysteria2
+  password: eBTe6Ax2pUts8oMEWoYVDfnSlHfkLffQ
+  sni: nas.aizhzo.com
+  skip-cert-verify: true
+  obfs: salamander
+  obfs-password: 7M4RXPFcQyQEGbkxBPfXo4bilMhCW2U9
+- name: 🇭🇰 中国香港 (Hong Kong) 03 3092K - NEKO
   server: 202.146.222.89
   port: 443
   udp: true
@@ -28,29 +30,40 @@ proxies:
   password: H7mP2xY9kJ4nQ8wR5tF6vB3z
   sni: 202.146.222.89
   skip-cert-verify: true
-- name: 🇭🇰 中国香港 (Hong Kong) 04 3099K - NEKO
-  server: 202.146.222.174
-  port: 443
-  udp: true
-  type: hysteria2
-  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: https://t.me/wangcai2
-  skip-cert-verify: true
-- name: 🇭🇰 中国香港 (Hong Kong) 05 1008K - NEKO
-  server: 103.149.182.79
-  port: 8388
-  udp: true
-  type: ss
-  cipher: chacha20-ietf
-  password: asd123456
-- name: 🇭🇰 中国香港 (Hong Kong) 06 4061K - NEKO
-  server: 46.17.45.31
-  port: 50660
+- name: 🇭🇰 中国香港 (Hong Kong) 04 649K - NEKO
+  server: 46.29.166.27
+  port: 20221
   udp: true
   type: ss
   cipher: aes-256-gcm
-  password: bdb313adf74c2ede
-- name: 🇭🇰 中国香港 (Hong Kong) 07 3388K - NEKO
+  password: 6b39ae3234dfd68b
+- name: 🇭🇰 中国香港 (Hong Kong) 05 2930K - NEKO
+  server: 45.207.157.24
+  port: 9443
+  udp: true
+  type: vless
+  uuid: fe0721ac-c577-4938-b7ca-8ab5f43bb8da
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: 0hIFPaEn4RdFib8_eP8HYxMywR5izEwM3JA2W1Zo8U4
+    short-id: b390142456517acc
+  servername: www.amazon.com
+  client-fingerprint: random
+- name: 🇭🇰 中国香港 (Hong Kong) 06 3024K - NEKO
+  server: 82.29.36.250
+  port: 443
+  udp: true
+  type: vless
+  uuid: 41a7af38-0bb1-4493-aa8d-634af0c2548b
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: 09XPceP705hC-5sEDXDSLeL2eMOrF-mFISK8JaJ7q2g
+    short-id: 09353d6dc5b789
+  servername: aws.amazon.com
+  client-fingerprint: random
+- name: 🇭🇰 中国香港 (Hong Kong) 07 3628K - NEKO
   server: jumpernode.site
   port: 443
   udp: true
@@ -68,24 +81,24 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇭🇰 中国香港 (Hong Kong) 01 5930K - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 3128K - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 03 3065K - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 04 3099K - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 05 1008K - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 06 4061K - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 07 3388K - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 3099K - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 1102K - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 03 3092K - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 04 649K - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 05 2930K - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 06 3024K - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 07 3628K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇭🇰 中国香港 (Hong Kong) 01 5930K - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 3128K - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 03 3065K - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 04 3099K - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 05 1008K - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 06 4061K - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 07 3388K - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 3099K - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 1102K - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 03 3092K - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 04 649K - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 05 2930K - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 06 3024K - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 07 3628K - NEKO
 rules:
 - MATCH,PROXIES

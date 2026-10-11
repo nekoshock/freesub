@@ -4,49 +4,99 @@
   },
   "outbounds": [
     {
+      "type": "hysteria2",
+      "tag": "🇺🇸 美国 (United States) 01 (家宽) 10900K - NEKO",
+      "server": "155.117.19.17",
+      "server_port": 443,
+      "password": "5fa748137b6d822308eea4611f474ad5",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.bing.com",
+        "insecure": true
+      },
+      "obfs": {
+        "type": "salamander",
+        "password": "a39ca173b57ac7021b08bf3e3de9f1f6"
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇺🇸 美国 (United States) 02 (家宽) 32643K R40 - NEKO",
+      "server": "185.207.197.123",
+      "server_port": 443,
+      "uuid": "1d16c6e0-1bbe-435b-b661-90043fee999c",
+      "tls": {
+        "enabled": true,
+        "server_name": "notls.lukongtou.eu.org",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram-WangCai2🇨🇳",
+        "headers": {
+          "Host": "notls.lukongtou.eu.org"
+        }
+      }
+    },
+    {
       "type": "shadowsocks",
-      "tag": "🇰🇷 韩国 (South Korea) 01 (家宽) 3578K - NEKO",
+      "tag": "🇹🇷 土耳其 (Turkey) 03 (移动家宽) 217K - NEKO",
+      "server": "tumspr.azad0namah.ir",
+      "server_port": 5566,
+      "method": "2022-blake3-aes-128-gcm",
+      "password": "8NwabdWBXK1q1QaBhF69rw==:Lzvg7nuGDOIqso68553eNQ=="
+    },
+    {
+      "type": "vmess",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 04 (移动家宽) 2940K - NEKO",
+      "server": "dog-hk.kunlun01dns.com",
+      "server_port": 21022,
+      "uuid": "9464ca40-dd75-3742-a628-d931a9f413b2",
+      "security": "auto"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 05 (移动家宽) 2942K - NEKO",
+      "server": "dog-hk.kunlun01dns.com",
+      "server_port": 21021,
+      "uuid": "9464ca40-dd75-3742-a628-d931a9f413b2",
+      "security": "auto"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇰🇷 韩国 (South Korea) 06 (家宽) 2659K - NEKO",
       "server": "p141.panda001.net",
       "server_port": 4652,
       "method": "aes-256-cfb",
       "password": "qwerREWQ@@"
     },
     {
-      "type": "vless",
-      "tag": "🇭🇰 中国香港 (Hong Kong) 02 (家宽) 3189K - NEKO",
-      "server": "t4.qifei.app",
-      "server_port": 443,
-      "uuid": "b98d4c6e-6770-4a31-8256-a4750cdea0e7",
-      "flow": "xtls-rprx-vision",
-      "tls": {
-        "enabled": true,
-        "server_name": "s3.ap-east-1.amazonaws.com",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "0i_xAxYgSNx5NMpK2lOaWGS-CvAiD_LneYPO0MF0owo",
-          "short_id": "1a"
-        }
-      }
-    },
-    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇰🇷 韩国 (South Korea) 01 (家宽) 3578K - NEKO",
-        "🇭🇰 中国香港 (Hong Kong) 02 (家宽) 3189K - NEKO"
+        "🇺🇸 美国 (United States) 01 (家宽) 10900K - NEKO",
+        "🇺🇸 美国 (United States) 02 (家宽) 32643K R40 - NEKO",
+        "🇹🇷 土耳其 (Turkey) 03 (移动家宽) 217K - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 04 (移动家宽) 2940K - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 05 (移动家宽) 2942K - NEKO",
+        "🇰🇷 韩国 (South Korea) 06 (家宽) 2659K - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇰🇷 韩国 (South Korea) 01 (家宽) 3578K - NEKO",
-        "🇭🇰 中国香港 (Hong Kong) 02 (家宽) 3189K - NEKO"
+        "🇺🇸 美国 (United States) 01 (家宽) 10900K - NEKO",
+        "🇺🇸 美国 (United States) 02 (家宽) 32643K R40 - NEKO",
+        "🇹🇷 土耳其 (Turkey) 03 (移动家宽) 217K - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 04 (移动家宽) 2940K - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 05 (移动家宽) 2942K - NEKO",
+        "🇰🇷 韩国 (South Korea) 06 (家宽) 2659K - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

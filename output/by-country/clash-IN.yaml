@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇮🇳 印度 (India) 01 3475K - NEKO
+- name: 🇮🇳 印度 (India) 01 1564K - NEKO
   server: 194.61.31.126
   port: 2053
   udp: true
@@ -15,8 +15,16 @@ proxies:
     public-key: PuAGLfJy6cu1TNoHuKIKSxPetCbZI41fc8hQDjWPIAU
     short-id: 9980e0609b0d3891
   servername: www.apple.com
-  client-fingerprint: firefox
-- name: 🇮🇳 印度 (India) 02 3148K - NEKO
+  client-fingerprint: chrome
+- name: 🇮🇳 印度 (India) 02 3508K - NEKO
+  server: tttyder.wsone.icu
+  port: 443
+  udp: true
+  type: trojan
+  password: M7v%w11Se*
+  sni: tttyder.wsone.icu
+  skip-cert-verify: false
+- name: 🇮🇳 印度 (India) 03 3305K - NEKO
   server: 148.113.5.44
   port: 443
   udp: true
@@ -28,20 +36,22 @@ proxies:
     public-key: QLjTpkXRB453R9fXhJzKkc_q_gSm2MZrIOuxW4uW-mI
     short-id: 221873918e0bb74d
   servername: www.cloudflare.com
-  client-fingerprint: chrome
+  client-fingerprint: random
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇮🇳 印度 (India) 01 3475K - NEKO
-  - 🇮🇳 印度 (India) 02 3148K - NEKO
+  - 🇮🇳 印度 (India) 01 1564K - NEKO
+  - 🇮🇳 印度 (India) 02 3508K - NEKO
+  - 🇮🇳 印度 (India) 03 3305K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇮🇳 印度 (India) 01 3475K - NEKO
-  - 🇮🇳 印度 (India) 02 3148K - NEKO
+  - 🇮🇳 印度 (India) 01 1564K - NEKO
+  - 🇮🇳 印度 (India) 02 3508K - NEKO
+  - 🇮🇳 印度 (India) 03 3305K - NEKO
 rules:
 - MATCH,PROXIES

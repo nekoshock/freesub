@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇫🇮 芬兰 (Finland) 01 ⚠S4725K - NEKO
+- name: 🇫🇮 芬兰 (Finland) 01 ⚠S6782K - NEKO
   server: 144.31.212.253
   port: 443
   udp: true
@@ -12,48 +12,88 @@ proxies:
   password: cf83b611-6cba-4535-adcb-8da06c6a9146
   sni: 144.31.212.253
   skip-cert-verify: true
-- name: 🇫🇮 芬兰 (Finland) 02 ⚠S7024K - NEKO
-  server: 87.251.17.11
-  port: 9443
+- name: 🇫🇮 芬兰 (Finland) 02 ⚠S2679K - NEKO
+  server: 85.209.129.5
+  port: 443
+  udp: true
+  type: trojan
+  password: muLkJXY1WyEbDdP-AoNpjg3HddPCAcBA
+  sni: fl.global-cdn.org
+  skip-cert-verify: true
+  network: grpc
+  grpc-opts:
+    grpc-service-name: ajv
+- name: 🇫🇮 芬兰 (Finland) 03 ⚠S2969K - NEKO
+  server: finkawwwbroy5.qcloud.surf
+  port: 20326
   udp: true
   type: hysteria2
-  password: e3c3b722-1264-4cdc-a97c-b0a1bb73cd67
-  sni: onecloudstream.com
-  skip-cert-verify: true
-- name: 🇫🇮 芬兰 (Finland) 03 4272K - NEKO
-  server: 185.103.110.66
-  port: 18280
-  udp: true
-  type: ss
-  cipher: aes-128-gcm
-  password: f9300a9bf39ae0347c3a3bfbc4dd7754
-- name: 🇫🇮 芬兰 (Finland) 04 4967K - NEKO
+  password: 4ad3dbf5-2005-4d96-b56c-a0ca9905cab6
+  sni: finkawwwbroy5.qcloud.surf
+  skip-cert-verify: false
+- name: 🇫🇮 芬兰 (Finland) 04 5431K - NEKO
   server: 185.103.110.68
   port: 18283
   udp: true
   type: ss
   cipher: aes-128-gcm
   password: f9300a9bf39ae0347c3a3bfbc4dd7754
-- name: 🇫🇮 芬兰 (Finland) 05 5425K - NEKO
-  server: 151.241.137.132
+- name: 🇫🇮 芬兰 (Finland) 05 5246K - NEKO
+  server: 185.103.110.66
+  port: 18280
+  udp: true
+  type: ss
+  cipher: aes-128-gcm
+  password: f9300a9bf39ae0347c3a3bfbc4dd7754
+- name: 🇫🇮 芬兰 (Finland) 06 ⚠S6250K - NEKO
+  server: edge10.cyrionflare.com
+  port: 2052
+  udp: true
+  type: vless
+  uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
+- name: 🇫🇮 芬兰 (Finland) 07 3666K - NEKO
+  server: 87.228.92.114
+  port: 25481
+  udp: true
+  type: vless
+  uuid: 68c3d665-b2b5-4ffb-9f37-9f3d8c47324d
+  tls: true
+  reality-opts:
+    public-key: mhIAHuZIEr2NpdGGSeOxar7VRSgEfVoNwb_G8Y0073E
+    short-id: 3b84fc70657725af
+  servername: www.bing.com
+  client-fingerprint: chrome
+  network: grpc
+  grpc-opts:
+    grpc-service-name: 8cb5baa18cd7
+- name: 🇫🇮 芬兰 (Finland) 08 805K - NEKO
+  server: ss.ll0ll.vip
+  port: 2096
+  udp: true
+  type: vless
+  uuid: f13b36ac-3765-4458-8a4d-08575038c463
+  tls: true
+  reality-opts:
+    public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
+  servername: id.vk.com
+  client-fingerprint: random
+  network: grpc
+  grpc-opts:
+    grpc-service-name: vless-grpc-reality
+- name: 🇫🇮 芬兰 (Finland) 09 5323K - NEKO
+  server: fi.pythonsetupbib.online
   port: 443
   udp: true
   type: vless
-  uuid: 5786d86f-7731-4174-b1a3-84297e54b015
+  uuid: f8d52ece-fad4-478d-875d-df6eed3befa7
   flow: xtls-rprx-vision
   tls: true
   reality-opts:
-    public-key: SB1uC0OEveYjSiS_Nuw9Ld-uVVXWqi794OGnldthY3I
-  servername: finland.ali-bard.online
-  client-fingerprint: random
-- name: 🇫🇮 芬兰 (Finland) 06 5053K - NEKO
-  server: 45.149.114.171
-  port: 777
-  udp: true
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: Jeoq8ujfkqZKKvACQhoqBQ1PA3uq4242
-- name: 🇫🇮 芬兰 (Finland) 07 4711K - NEKO
+    public-key: ZqVz1kWNxh_5zQ5PPkoPHoaXQOvppM0ZyIo8uKp2dCg
+    short-id: bdf5852d1423e694
+  servername: fi.pythonsetupbib.online
+  client-fingerprint: chrome
+- name: 🇫🇮 芬兰 (Finland) 10 5436K - NEKO
   server: 95.216.27.15
   port: 2053
   udp: true
@@ -65,8 +105,21 @@ proxies:
     short-id: d368b94e275ab080
   servername: www.google.com
   client-fingerprint: firefox
-- name: 🇫🇮 芬兰 (Finland) 08 525K - NEKO
-  server: van2.ragnarok-it.xyz
+- name: 🇫🇮 芬兰 (Finland) 11 4531K - NEKO
+  server: 144.31.27.215
+  port: 43000
+  udp: true
+  type: vless
+  uuid: 47f79fc1-0646-40e8-8a58-73e85d183d5a
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: dxCQnOekn14riFxt3vdwDNydvW47FsmwFG6BJ2mUgEg
+    short-id: 568d87a47271344e
+  servername: 144.31.27.215
+  client-fingerprint: edge
+- name: 🇫🇮 芬兰 (Finland) 12 4786K - NEKO
+  server: 195.226.92.129
   port: 8446
   udp: true
   type: vless
@@ -78,46 +131,39 @@ proxies:
     short-id: 7bac4b112d30d1
   servername: amd.com
   client-fingerprint: edge
-- name: 🇫🇮 芬兰 (Finland) 09 453K - NEKO
-  server: 65.108.3.59
-  port: 443
-  udp: true
-  type: vless
-  uuid: 8df2e661-6f46-471b-9133-7fc13a0daa35
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: jDoORbrtDrvAlFSo19CJbc99C4ev8SAo1MwczSUt9no
-    short-id: 90ec9bba2019
-  servername: web.eitaa.com
-  client-fingerprint: firefox
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇫🇮 芬兰 (Finland) 01 ⚠S4725K - NEKO
-  - 🇫🇮 芬兰 (Finland) 02 ⚠S7024K - NEKO
-  - 🇫🇮 芬兰 (Finland) 03 4272K - NEKO
-  - 🇫🇮 芬兰 (Finland) 04 4967K - NEKO
-  - 🇫🇮 芬兰 (Finland) 05 5425K - NEKO
-  - 🇫🇮 芬兰 (Finland) 06 5053K - NEKO
-  - 🇫🇮 芬兰 (Finland) 07 4711K - NEKO
-  - 🇫🇮 芬兰 (Finland) 08 525K - NEKO
-  - 🇫🇮 芬兰 (Finland) 09 453K - NEKO
+  - 🇫🇮 芬兰 (Finland) 01 ⚠S6782K - NEKO
+  - 🇫🇮 芬兰 (Finland) 02 ⚠S2679K - NEKO
+  - 🇫🇮 芬兰 (Finland) 03 ⚠S2969K - NEKO
+  - 🇫🇮 芬兰 (Finland) 04 5431K - NEKO
+  - 🇫🇮 芬兰 (Finland) 05 5246K - NEKO
+  - 🇫🇮 芬兰 (Finland) 06 ⚠S6250K - NEKO
+  - 🇫🇮 芬兰 (Finland) 07 3666K - NEKO
+  - 🇫🇮 芬兰 (Finland) 08 805K - NEKO
+  - 🇫🇮 芬兰 (Finland) 09 5323K - NEKO
+  - 🇫🇮 芬兰 (Finland) 10 5436K - NEKO
+  - 🇫🇮 芬兰 (Finland) 11 4531K - NEKO
+  - 🇫🇮 芬兰 (Finland) 12 4786K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇫🇮 芬兰 (Finland) 01 ⚠S4725K - NEKO
-  - 🇫🇮 芬兰 (Finland) 02 ⚠S7024K - NEKO
-  - 🇫🇮 芬兰 (Finland) 03 4272K - NEKO
-  - 🇫🇮 芬兰 (Finland) 04 4967K - NEKO
-  - 🇫🇮 芬兰 (Finland) 05 5425K - NEKO
-  - 🇫🇮 芬兰 (Finland) 06 5053K - NEKO
-  - 🇫🇮 芬兰 (Finland) 07 4711K - NEKO
-  - 🇫🇮 芬兰 (Finland) 08 525K - NEKO
-  - 🇫🇮 芬兰 (Finland) 09 453K - NEKO
+  - 🇫🇮 芬兰 (Finland) 01 ⚠S6782K - NEKO
+  - 🇫🇮 芬兰 (Finland) 02 ⚠S2679K - NEKO
+  - 🇫🇮 芬兰 (Finland) 03 ⚠S2969K - NEKO
+  - 🇫🇮 芬兰 (Finland) 04 5431K - NEKO
+  - 🇫🇮 芬兰 (Finland) 05 5246K - NEKO
+  - 🇫🇮 芬兰 (Finland) 06 ⚠S6250K - NEKO
+  - 🇫🇮 芬兰 (Finland) 07 3666K - NEKO
+  - 🇫🇮 芬兰 (Finland) 08 805K - NEKO
+  - 🇫🇮 芬兰 (Finland) 09 5323K - NEKO
+  - 🇫🇮 芬兰 (Finland) 10 5436K - NEKO
+  - 🇫🇮 芬兰 (Finland) 11 4531K - NEKO
+  - 🇫🇮 芬兰 (Finland) 12 4786K - NEKO
 rules:
 - MATCH,PROXIES

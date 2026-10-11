@@ -4,68 +4,61 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇷🇴 罗马尼亚 (Romania) 01 8769K - NEKO
-  server: 77.74.123.105
+- name: 🇷🇴 罗马尼亚 (Romania) 01 885K - NEKO
+  server: 77.74.123.110
   port: 8443
   udp: true
   type: hysteria2
   password: s0_sdK93x9wer_D02Lz9cvK3_Sa014Oakl_C2z
   sni: grape-test-italy.dynuddns.net
-  skip-cert-verify: true
-- name: 🇷🇴 罗马尼亚 (Romania) 02 ⚠S5602K - NEKO
-  server: hy2-new.aspidnet.xyz
+  skip-cert-verify: false
+- name: 🇷🇴 罗马尼亚 (Romania) 02 6282K - NEKO
+  server: 162.249.125.133
   port: 443
   udp: true
   type: hysteria2
   password: QCgqi_I4EkV8UR-OgQ_tG4EnVTEVvIyR2GgRBzrIn2s
   sni: hy2-new.aspidnet.xyz
-  skip-cert-verify: true
+  skip-cert-verify: false
   obfs: salamander
   obfs-password: c1b4086fea89914496c7e10967a419216566
-- name: 🇷🇴 罗马尼亚 (Romania) 03 ⚠S6628K - NEKO
+- name: 🇷🇴 罗马尼亚 (Romania) 03 ⚠S6465K - NEKO
   server: 185.156.44.99
   port: 443
   udp: true
   type: hysteria2
   password: gf1:gfhysteria2024
-  sni: www.amazon.com
+  sni: vk.com
   skip-cert-verify: true
-- name: 🇷🇴 罗马尼亚 (Romania) 04 467K - NEKO
-  server: bogging-eyeteeth-fly.freesocks.work
+- name: 🇷🇴 罗马尼亚 (Romania) 04 881K - NEKO
+  server: ro1.gigobingo.ru
   port: 443
   udp: true
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: QFWzCw2uX9B9i6qAYeFBIE
-- name: 🇷🇴 罗马尼亚 (Romania) 05 6529K - NEKO
-  server: 95.133.247.98
+  type: vless
+  uuid: 3e0c1fbf-467a-49d7-abd2-3a158628f3d0
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: Aj6Op88j_eYXxoBw095KS_NnKCBm5uwa874uumXdiDQ
+    short-id: ef7c4e4302bd52d7
+  servername: ro1.gigobingo.ru
+  client-fingerprint: qq
+- name: 🇷🇴 罗马尼亚 (Romania) 05 5131K - NEKO
+  server: 77.74.123.110
   port: 995
   udp: true
   type: vless
-  uuid: df275727-c25a-450b-99c3-29e4e6b0b6b9
+  uuid: d5eb7d7c-244c-46bd-87c9-ea1abfad915c
   tls: true
-  servername: love-paris.roxa.org
+  servername: italy-pay-october.yyuyy.com
   skip-cert-verify: false
-  client-fingerprint: firefox
+  client-fingerprint: random
   network: httpupgrade
   httpupgrade-opts:
     path: /api/v1
     headers:
-      Host: love-paris.roxa.org
-- name: 🇷🇴 罗马尼亚 (Romania) 06 ⚠S422K - NEKO
-  server: glazatushi.yandex-api.com
-  port: 443
-  udp: true
-  type: vless
-  uuid: 1b7ee703-fa08-4305-8469-ae3e30e61e44
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: _qSbW4JL4Ffqvj25vX-6a2ul9Qlj6PBdlF0ghsf_0RQ
-    short-id: a9dc98a7dc87a7dc
-  servername: glazatushi.yandex-api.com
-  client-fingerprint: random
-- name: 🇷🇴 罗马尼亚 (Romania) 07 4514K - NEKO
+      Host: italy-pay-october.yyuyy.com
+- name: 🇷🇴 罗马尼亚 (Romania) 06 4714K - NEKO
   server: 146.70.124.85
   port: 443
   udp: true
@@ -78,44 +71,44 @@ proxies:
     short-id: fe24f8a0a560056e
   servername: www.datadoghq.com
   client-fingerprint: firefox
-- name: 🇷🇴 罗马尼亚 (Romania) 08 4628K ⚠L20% - NEKO
-  server: 46.28.67.55
-  port: 443
+- name: 🇷🇴 罗马尼亚 (Romania) 07 4893K - NEKO
+  server: 103.126.51.58
+  port: 995
   udp: true
   type: vless
-  uuid: d1a6a033-fdbd-46a6-a177-3370ba042b9f
-  flow: xtls-rprx-vision
+  uuid: 1fc575d3-81bb-44d5-9efa-4131c7cc677a
   tls: true
-  reality-opts:
-    public-key: i2dJ1_XGDpp50qpEclh6SWSWkxt4B0t2hi2qOVQbeSU
-    short-id: d06d78e974491b6e
-  servername: www.cloudflare.com
-  client-fingerprint: chrome
+  servername: ocober-romania-new.yyuyy.com
+  skip-cert-verify: false
+  client-fingerprint: random
+  network: httpupgrade
+  httpupgrade-opts:
+    path: /api/v1
+    headers:
+      Host: ocober-romania-new.yyuyy.com
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇷🇴 罗马尼亚 (Romania) 01 8769K - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 02 ⚠S5602K - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 03 ⚠S6628K - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 04 467K - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 05 6529K - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 06 ⚠S422K - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 07 4514K - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 08 4628K ⚠L20% - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 01 885K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 02 6282K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 03 ⚠S6465K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 04 881K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 05 5131K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 06 4714K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 07 4893K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇷🇴 罗马尼亚 (Romania) 01 8769K - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 02 ⚠S5602K - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 03 ⚠S6628K - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 04 467K - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 05 6529K - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 06 ⚠S422K - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 07 4514K - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 08 4628K ⚠L20% - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 01 885K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 02 6282K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 03 ⚠S6465K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 04 881K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 05 5131K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 06 4714K - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 07 4893K - NEKO
 rules:
 - MATCH,PROXIES

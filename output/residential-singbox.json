@@ -5,7 +5,7 @@
   "outbounds": [
     {
       "type": "hysteria2",
-      "tag": "🇺🇸 美国 (United States) 01 (家宽) 10900K - NEKO",
+      "tag": "🇺🇸 美国 (United States) 01 (家宽) 10494K - NEKO",
       "server": "155.117.19.17",
       "server_port": 443,
       "password": "5fa748137b6d822308eea4611f474ad5",
@@ -20,83 +20,61 @@
       }
     },
     {
-      "type": "vless",
-      "tag": "🇺🇸 美国 (United States) 02 (家宽) 32643K R40 - NEKO",
-      "server": "185.207.197.123",
-      "server_port": 443,
-      "uuid": "1d16c6e0-1bbe-435b-b661-90043fee999c",
-      "tls": {
-        "enabled": true,
-        "server_name": "notls.lukongtou.eu.org",
-        "insecure": false,
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/Telegram-WangCai2🇨🇳",
-        "headers": {
-          "Host": "notls.lukongtou.eu.org"
-        }
-      }
-    },
-    {
-      "type": "shadowsocks",
-      "tag": "🇹🇷 土耳其 (Turkey) 03 (移动家宽) 217K - NEKO",
-      "server": "tumspr.azad0namah.ir",
-      "server_port": 5566,
-      "method": "2022-blake3-aes-128-gcm",
-      "password": "8NwabdWBXK1q1QaBhF69rw==:Lzvg7nuGDOIqso68553eNQ=="
+      "type": "vmess",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 02 (移动家宽) 3158K - NEKO",
+      "server": "dog-hk.kunlun01dns.com",
+      "server_port": 21020,
+      "uuid": "9464ca40-dd75-3742-a628-d931a9f413b2",
+      "security": "auto"
     },
     {
       "type": "vmess",
-      "tag": "🇭🇰 中国香港 (Hong Kong) 04 (移动家宽) 2940K - NEKO",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 03 (移动家宽) 2859K - NEKO",
       "server": "dog-hk.kunlun01dns.com",
       "server_port": 21022,
       "uuid": "9464ca40-dd75-3742-a628-d931a9f413b2",
       "security": "auto"
     },
     {
-      "type": "vmess",
-      "tag": "🇭🇰 中国香港 (Hong Kong) 05 (移动家宽) 2942K - NEKO",
-      "server": "dog-hk.kunlun01dns.com",
-      "server_port": 21021,
-      "uuid": "9464ca40-dd75-3742-a628-d931a9f413b2",
-      "security": "auto"
-    },
-    {
-      "type": "shadowsocks",
-      "tag": "🇰🇷 韩国 (South Korea) 06 (家宽) 2659K - NEKO",
-      "server": "p141.panda001.net",
-      "server_port": 4652,
-      "method": "aes-256-cfb",
-      "password": "qwerREWQ@@"
+      "type": "vless",
+      "tag": "🇦🇹 奥地利 (Austria) 04 (家宽) 2351K ⚠L20% - NEKO",
+      "server": "at-3.wizard.select",
+      "server_port": 443,
+      "uuid": "074b00de-c4d0-11f1-9902-a337233c6cda",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "at-3.wizard.select",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "S9OR9-SQHGl717N9AV_LoouRgSd-M4Yz7os10Mj8XxI",
+          "short_id": "cee953f6"
+        }
+      }
     },
     {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇺🇸 美国 (United States) 01 (家宽) 10900K - NEKO",
-        "🇺🇸 美国 (United States) 02 (家宽) 32643K R40 - NEKO",
-        "🇹🇷 土耳其 (Turkey) 03 (移动家宽) 217K - NEKO",
-        "🇭🇰 中国香港 (Hong Kong) 04 (移动家宽) 2940K - NEKO",
-        "🇭🇰 中国香港 (Hong Kong) 05 (移动家宽) 2942K - NEKO",
-        "🇰🇷 韩国 (South Korea) 06 (家宽) 2659K - NEKO"
+        "🇺🇸 美国 (United States) 01 (家宽) 10494K - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 02 (移动家宽) 3158K - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 03 (移动家宽) 2859K - NEKO",
+        "🇦🇹 奥地利 (Austria) 04 (家宽) 2351K ⚠L20% - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇺🇸 美国 (United States) 01 (家宽) 10900K - NEKO",
-        "🇺🇸 美国 (United States) 02 (家宽) 32643K R40 - NEKO",
-        "🇹🇷 土耳其 (Turkey) 03 (移动家宽) 217K - NEKO",
-        "🇭🇰 中国香港 (Hong Kong) 04 (移动家宽) 2940K - NEKO",
-        "🇭🇰 中国香港 (Hong Kong) 05 (移动家宽) 2942K - NEKO",
-        "🇰🇷 韩国 (South Korea) 06 (家宽) 2659K - NEKO"
+        "🇺🇸 美国 (United States) 01 (家宽) 10494K - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 02 (移动家宽) 3158K - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 03 (移动家宽) 2859K - NEKO",
+        "🇦🇹 奥地利 (Austria) 04 (家宽) 2351K ⚠L20% - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

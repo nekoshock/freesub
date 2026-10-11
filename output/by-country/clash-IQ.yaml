@@ -4,60 +4,31 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇮🇶 IQ 01 22334K - NEKO
-  server: 104.18.32.47
+- name: 🇮🇶 IQ 01 22625K - NEKO
+  server: 190.93.245.219
   port: 443
   udp: true
   type: vless
-  uuid: 11e9eea1-b1a9-4f02-a1a1-b24f7664b1cf
+  uuid: 9f397d58-c976-4ef5-915c-7a5908e1a9ac
   tls: true
-  servername: ancIEnt-HeaRt-60c5.dPccgIzieB.WoRKers.dEV
+  servername: steep-disk-97e3.tmp3445678.workers.dev
   skip-cert-verify: false
-  client-fingerprint: chrome
   network: ws
   ws-opts:
-    path: /eyJqdW5rIjoiYW1sczlYWkFHOCIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0
+    path: /
     headers:
-      Host: ancient-heart-60c5.dpccgizieb.workers.dev
-- name: 🇮🇶 IQ 02 25816K - NEKO
-  server: 104.21.70.21
-  port: 8080
-  udp: true
-  type: vless
-  uuid: 33918b20-9e02-4dc6-8b30-79b2d4b2e0e6
-  network: ws
-  ws-opts:
-    path: /eyJqdW5rIjoiUjJBU3JkVlRwSWtnciIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbImJwYi55b3VzZWYuaXNlZ2Fyby5jb20iXX0
-    headers:
-      Host: auto-scale-238b2b.infra-core-1630dd.workers.dev
-- name: 🇮🇶 IQ 03 ⚠S1668K - NEKO
-  server: arcturus.yokkastars.com
-  port: 40443
-  udp: true
-  type: vless
-  uuid: bb0f1ed0-0298-40a1-adb1-1f5d6ab33d54
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: w4AYHvQnQS6olDqoG9ptLOtgehaWOsv9HQhDax5bLA4
-    short-id: db46e2946fc466fd
-  servername: deepl.com
-  client-fingerprint: safari
+      Host: steep-disk-97e3.tmp3445678.workers.dev
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇮🇶 IQ 01 22334K - NEKO
-  - 🇮🇶 IQ 02 25816K - NEKO
-  - 🇮🇶 IQ 03 ⚠S1668K - NEKO
+  - 🇮🇶 IQ 01 22625K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇮🇶 IQ 01 22334K - NEKO
-  - 🇮🇶 IQ 02 25816K - NEKO
-  - 🇮🇶 IQ 03 ⚠S1668K - NEKO
+  - 🇮🇶 IQ 01 22625K - NEKO
 rules:
 - MATCH,PROXIES

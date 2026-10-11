@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇺🇸 美国 (United States) 01 (家宽) 10900K - NEKO
+- name: 🇺🇸 美国 (United States) 01 (家宽) 10494K - NEKO
   server: 155.117.19.17
   port: 443
   udp: true
@@ -14,29 +14,15 @@ proxies:
   skip-cert-verify: true
   obfs: salamander
   obfs-password: a39ca173b57ac7021b08bf3e3de9f1f6
-- name: 🇺🇸 美国 (United States) 02 (家宽) 32643K R40 - NEKO
-  server: 185.207.197.123
-  port: 443
+- name: 🇭🇰 中国香港 (Hong Kong) 02 (移动家宽) 3158K - NEKO
+  server: dog-hk.kunlun01dns.com
+  port: 21020
   udp: true
-  type: vless
-  uuid: 1d16c6e0-1bbe-435b-b661-90043fee999c
-  tls: true
-  servername: notls.lukongtou.eu.org
-  skip-cert-verify: false
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /Telegram-WangCai2🇨🇳
-    headers:
-      Host: notls.lukongtou.eu.org
-- name: 🇹🇷 土耳其 (Turkey) 03 (移动家宽) 217K - NEKO
-  server: tumspr.azad0namah.ir
-  port: 5566
-  udp: true
-  type: ss
-  cipher: 2022-blake3-aes-128-gcm
-  password: 8NwabdWBXK1q1QaBhF69rw==:Lzvg7nuGDOIqso68553eNQ==
-- name: 🇭🇰 中国香港 (Hong Kong) 04 (移动家宽) 2940K - NEKO
+  type: vmess
+  uuid: 9464ca40-dd75-3742-a628-d931a9f413b2
+  alterId: 0
+  cipher: auto
+- name: 🇭🇰 中国香港 (Hong Kong) 03 (移动家宽) 2859K - NEKO
   server: dog-hk.kunlun01dns.com
   port: 21022
   udp: true
@@ -44,42 +30,36 @@ proxies:
   uuid: 9464ca40-dd75-3742-a628-d931a9f413b2
   alterId: 0
   cipher: auto
-- name: 🇭🇰 中国香港 (Hong Kong) 05 (移动家宽) 2942K - NEKO
-  server: dog-hk.kunlun01dns.com
-  port: 21021
+- name: 🇦🇹 奥地利 (Austria) 04 (家宽) 2351K ⚠L20% - NEKO
+  server: at-3.wizard.select
+  port: 443
   udp: true
-  type: vmess
-  uuid: 9464ca40-dd75-3742-a628-d931a9f413b2
-  alterId: 0
-  cipher: auto
-- name: 🇰🇷 韩国 (South Korea) 06 (家宽) 2659K - NEKO
-  server: p141.panda001.net
-  port: 4652
-  udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: qwerREWQ@@
+  type: vless
+  uuid: 074b00de-c4d0-11f1-9902-a337233c6cda
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: S9OR9-SQHGl717N9AV_LoouRgSd-M4Yz7os10Mj8XxI
+    short-id: cee953f6
+  servername: at-3.wizard.select
+  client-fingerprint: firefox
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇺🇸 美国 (United States) 01 (家宽) 10900K - NEKO
-  - 🇺🇸 美国 (United States) 02 (家宽) 32643K R40 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 03 (移动家宽) 217K - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 04 (移动家宽) 2940K - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 05 (移动家宽) 2942K - NEKO
-  - 🇰🇷 韩国 (South Korea) 06 (家宽) 2659K - NEKO
+  - 🇺🇸 美国 (United States) 01 (家宽) 10494K - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 (移动家宽) 3158K - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 03 (移动家宽) 2859K - NEKO
+  - 🇦🇹 奥地利 (Austria) 04 (家宽) 2351K ⚠L20% - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇺🇸 美国 (United States) 01 (家宽) 10900K - NEKO
-  - 🇺🇸 美国 (United States) 02 (家宽) 32643K R40 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 03 (移动家宽) 217K - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 04 (移动家宽) 2940K - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 05 (移动家宽) 2942K - NEKO
-  - 🇰🇷 韩国 (South Korea) 06 (家宽) 2659K - NEKO
+  - 🇺🇸 美国 (United States) 01 (家宽) 10494K - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 (移动家宽) 3158K - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 03 (移动家宽) 2859K - NEKO
+  - 🇦🇹 奥地利 (Austria) 04 (家宽) 2351K ⚠L20% - NEKO
 rules:
 - MATCH,PROXIES

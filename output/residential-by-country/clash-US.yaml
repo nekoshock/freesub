@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇺🇸 美国 (United States) 01 (家宽) 10900K - NEKO
+- name: 🇺🇸 美国 (United States) 01 (家宽) 10494K - NEKO
   server: 155.117.19.17
   port: 443
   udp: true
@@ -14,34 +14,17 @@ proxies:
   skip-cert-verify: true
   obfs: salamander
   obfs-password: a39ca173b57ac7021b08bf3e3de9f1f6
-- name: 🇺🇸 美国 (United States) 02 (家宽) 32643K R40 - NEKO
-  server: 185.207.197.123
-  port: 443
-  udp: true
-  type: vless
-  uuid: 1d16c6e0-1bbe-435b-b661-90043fee999c
-  tls: true
-  servername: notls.lukongtou.eu.org
-  skip-cert-verify: false
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /Telegram-WangCai2🇨🇳
-    headers:
-      Host: notls.lukongtou.eu.org
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇺🇸 美国 (United States) 01 (家宽) 10900K - NEKO
-  - 🇺🇸 美国 (United States) 02 (家宽) 32643K R40 - NEKO
+  - 🇺🇸 美国 (United States) 01 (家宽) 10494K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇺🇸 美国 (United States) 01 (家宽) 10900K - NEKO
-  - 🇺🇸 美国 (United States) 02 (家宽) 32643K R40 - NEKO
+  - 🇺🇸 美国 (United States) 01 (家宽) 10494K - NEKO
 rules:
 - MATCH,PROXIES

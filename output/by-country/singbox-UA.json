@@ -5,15 +5,23 @@
   "outbounds": [
     {
       "type": "vless",
-      "tag": "🇱🇰 斯里兰卡 (Sri Lanka) 01 3363K - NEKO",
-      "server": "support.zoom.us",
-      "server_port": 80,
-      "uuid": "2d7a04af-3ac8-40e7-aff0-9f58b2be6405",
+      "tag": "🇺🇦 乌克兰 (Ukraine) 01 5389K - NEKO",
+      "server": "45.158.185.172",
+      "server_port": 443,
+      "uuid": "49e4b91a-bd15-4e54-9b51-41a3380afb51",
+      "tls": {
+        "enabled": true,
+        "server_name": "z5n1.vpnpolar.online",
+        "insecure": false,
+        "alpn": [
+          "http/1.1"
+        ]
+      },
       "transport": {
         "type": "ws",
-        "path": "/",
+        "path": "/beeline",
         "headers": {
-          "Host": "free.sahanwickramasinghe.me"
+          "Host": "z5n1.vpnpolar.online"
         }
       }
     },
@@ -22,14 +30,14 @@
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇱🇰 斯里兰卡 (Sri Lanka) 01 3363K - NEKO"
+        "🇺🇦 乌克兰 (Ukraine) 01 5389K - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇱🇰 斯里兰卡 (Sri Lanka) 01 3363K - NEKO"
+        "🇺🇦 乌克兰 (Ukraine) 01 5389K - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

@@ -4,23 +4,23 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇦🇹 奥地利 (Austria) 01 ⚠S7140K - NEKO
+- name: 🇦🇹 奥地利 (Austria) 01 2883K - NEKO
   server: 5.254.51.108
   port: 9443
   udp: true
   type: hysteria2
   password: Hc9_NX924RE_Mn948rgrwiub_m93V84nll
   sni: keyhop-voxility-at.dynuddns.com
-  skip-cert-verify: true
-- name: 🇦🇹 奥地利 (Austria) 02 5629K - NEKO
+  skip-cert-verify: false
+- name: 🇦🇹 奥地利 (Austria) 02 5496K - NEKO
   server: 82.110.60.9
   port: 19999
   udp: true
   type: ss
   cipher: aes-256-gcm
   password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇦🇹 奥地利 (Austria) 03 3325K - NEKO
-  server: ns.ll0ll.vip
+- name: 🇦🇹 奥地利 (Austria) 03 2428K - NEKO
+  server: 80.87.194.252
   port: 2096
   udp: true
   type: vless
@@ -33,66 +33,21 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: vless-grpc-reality
-- name: 🇦🇹 奥地利 (Austria) 04 4853K - NEKO
-  server: 5.otherconnectius.com
-  port: 443
-  udp: true
-  type: vless
-  uuid: d6999f4f-ad21-4922-8ce1-d19bc1040b84
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: zHBghkPsbtlZgPf5q2Ngu1FunKztIMk1wU2bXnlKcTA
-    short-id: 48f24adb
-  servername: 5.otherconnectius.com
-  client-fingerprint: chrome
-- name: 🇦🇹 奥地利 (Austria) 05 ⚠S1324K - NEKO
-  server: at-3.wizard.select
-  port: 443
-  udp: true
-  type: vless
-  uuid: 074b00de-c4d0-11f1-9902-a337233c6cda
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: S9OR9-SQHGl717N9AV_LoouRgSd-M4Yz7os10Mj8XxI
-    short-id: cee953f6
-  servername: at-3.wizard.select
-  client-fingerprint: chrome
-- name: 🇦🇹 奥地利 (Austria) 06 292K - NEKO
-  server: kozyavka.yandex-api.com
-  port: 443
-  udp: true
-  type: vless
-  uuid: 1b7ee703-fa08-4305-8469-ae3e30e61e44
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: _qSbW4JL4Ffqvj25vX-6a2ul9Qlj6PBdlF0ghsf_0RQ
-    short-id: a9dc98a7dc87a7dc
-  servername: kozyavka.yandex-api.com
-  client-fingerprint: random
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇦🇹 奥地利 (Austria) 01 ⚠S7140K - NEKO
-  - 🇦🇹 奥地利 (Austria) 02 5629K - NEKO
-  - 🇦🇹 奥地利 (Austria) 03 3325K - NEKO
-  - 🇦🇹 奥地利 (Austria) 04 4853K - NEKO
-  - 🇦🇹 奥地利 (Austria) 05 ⚠S1324K - NEKO
-  - 🇦🇹 奥地利 (Austria) 06 292K - NEKO
+  - 🇦🇹 奥地利 (Austria) 01 2883K - NEKO
+  - 🇦🇹 奥地利 (Austria) 02 5496K - NEKO
+  - 🇦🇹 奥地利 (Austria) 03 2428K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇦🇹 奥地利 (Austria) 01 ⚠S7140K - NEKO
-  - 🇦🇹 奥地利 (Austria) 02 5629K - NEKO
-  - 🇦🇹 奥地利 (Austria) 03 3325K - NEKO
-  - 🇦🇹 奥地利 (Austria) 04 4853K - NEKO
-  - 🇦🇹 奥地利 (Austria) 05 ⚠S1324K - NEKO
-  - 🇦🇹 奥地利 (Austria) 06 292K - NEKO
+  - 🇦🇹 奥地利 (Austria) 01 2883K - NEKO
+  - 🇦🇹 奥地利 (Austria) 02 5496K - NEKO
+  - 🇦🇹 奥地利 (Austria) 03 2428K - NEKO
 rules:
 - MATCH,PROXIES

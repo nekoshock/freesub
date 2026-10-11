@@ -1,0 +1,33 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: info
+proxies:
+- name: 🇦🇹 奥地利 (Austria) 01 (家宽) 2351K ⚠L20% - NEKO
+  server: at-3.wizard.select
+  port: 443
+  udp: true
+  type: vless
+  uuid: 074b00de-c4d0-11f1-9902-a337233c6cda
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: S9OR9-SQHGl717N9AV_LoouRgSd-M4Yz7os10Mj8XxI
+    short-id: cee953f6
+  servername: at-3.wizard.select
+  client-fingerprint: firefox
+proxy-groups:
+- name: PROXIES
+  type: select
+  proxies:
+  - AUTO
+  - 🇦🇹 奥地利 (Austria) 01 (家宽) 2351K ⚠L20% - NEKO
+- name: AUTO
+  type: url-test
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  proxies:
+  - 🇦🇹 奥地利 (Austria) 01 (家宽) 2351K ⚠L20% - NEKO
+rules:
+- MATCH,PROXIES

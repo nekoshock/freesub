@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇮🇪 爱尔兰 (Ireland) 01 ⚠S7511K - NEKO
+- name: 🇮🇪 爱尔兰 (Ireland) 01 ⚠S5758K - NEKO
   server: adapting-basilisk.rooster465.autos
   port: 443
   udp: true
@@ -12,15 +12,15 @@ proxies:
   password: UX82473651
   sni: adapting-basilisk.rooster465.autos
   skip-cert-verify: false
-- name: 🇮🇪 爱尔兰 (Ireland) 02 ⚠S5629K - NEKO
-  server: master-possum.rooster465.autos
+- name: 🇮🇪 爱尔兰 (Ireland) 02 ⚠S899K - NEKO
+  server: 34.242.77.118
   port: 443
   udp: true
   type: trojan
   password: UX82473651
-  sni: master-possum.rooster465.autos
-  skip-cert-verify: true
-- name: 🇮🇪 爱尔兰 (Ireland) 03 ⚠S3676K - NEKO
+  sni: sacred-anemone.rooster465.autos
+  skip-cert-verify: false
+- name: 🇮🇪 爱尔兰 (Ireland) 03 ⚠S958K - NEKO
   server: loved-shark.rooster465.autos
   port: 443
   udp: true
@@ -28,31 +28,21 @@ proxies:
   password: UX82473651
   sni: loved-shark.rooster465.autos
   skip-cert-verify: false
-- name: 🇮🇪 爱尔兰 (Ireland) 04 2658K - NEKO
-  server: ie.tronsg.com
-  port: 443
-  udp: true
-  type: trojan
-  password: Trojan@82164024
-  sni: ie.tronsg.com
-  skip-cert-verify: true
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇮🇪 爱尔兰 (Ireland) 01 ⚠S7511K - NEKO
-  - 🇮🇪 爱尔兰 (Ireland) 02 ⚠S5629K - NEKO
-  - 🇮🇪 爱尔兰 (Ireland) 03 ⚠S3676K - NEKO
-  - 🇮🇪 爱尔兰 (Ireland) 04 2658K - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 01 ⚠S5758K - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 02 ⚠S899K - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 03 ⚠S958K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇮🇪 爱尔兰 (Ireland) 01 ⚠S7511K - NEKO
-  - 🇮🇪 爱尔兰 (Ireland) 02 ⚠S5629K - NEKO
-  - 🇮🇪 爱尔兰 (Ireland) 03 ⚠S3676K - NEKO
-  - 🇮🇪 爱尔兰 (Ireland) 04 2658K - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 01 ⚠S5758K - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 02 ⚠S899K - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 03 ⚠S958K - NEKO
 rules:
 - MATCH,PROXIES

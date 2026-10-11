@@ -4,8 +4,28 @@
   },
   "outbounds": [
     {
+      "type": "hysteria2",
+      "tag": "🇪🇸 西班牙 (Spain) 01 ⚠S4375K - NEKO",
+      "server": "185.174.137.172",
+      "server_port": 8446,
+      "password": "e9dc02d400b67c727aca1620",
+      "tls": {
+        "enabled": true,
+        "server_name": "185.174.137.172",
+        "insecure": true
+      }
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇪🇸 西班牙 (Spain) 02 3686K - NEKO",
+      "server": "108.181.121.226",
+      "server_port": 8388,
+      "method": "chacha20-ietf-poly1305",
+      "password": "WSyL4XTwNsdv"
+    },
+    {
       "type": "vless",
-      "tag": "🇪🇸 西班牙 (Spain) 01 ⚠S6695K - NEKO",
+      "tag": "🇪🇸 西班牙 (Spain) 03 4209K - NEKO",
       "server": "212.227.235.66",
       "server_port": 2053,
       "uuid": "ead0dd61-d398-40ad-80d6-a0e1e516d7d3",
@@ -24,16 +44,8 @@
       }
     },
     {
-      "type": "shadowsocks",
-      "tag": "🇪🇸 西班牙 (Spain) 02 4792K - NEKO",
-      "server": "108.181.121.226",
-      "server_port": 8388,
-      "method": "chacha20-ietf-poly1305",
-      "password": "WSyL4XTwNsdv"
-    },
-    {
       "type": "vless",
-      "tag": "🇪🇸 西班牙 (Spain) 03 973K - NEKO",
+      "tag": "🇪🇸 西班牙 (Spain) 04 3932K - NEKO",
       "server": "46.28.71.247",
       "server_port": 443,
       "uuid": "12c53e32-e589-47d6-b857-e4132294f767",
@@ -43,7 +55,7 @@
         "server_name": "www.cloudflare.com",
         "utls": {
           "enabled": true,
-          "fingerprint": "firefox"
+          "fingerprint": "ios"
         },
         "reality": {
           "enabled": true,
@@ -57,18 +69,20 @@
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇪🇸 西班牙 (Spain) 01 ⚠S6695K - NEKO",
-        "🇪🇸 西班牙 (Spain) 02 4792K - NEKO",
-        "🇪🇸 西班牙 (Spain) 03 973K - NEKO"
+        "🇪🇸 西班牙 (Spain) 01 ⚠S4375K - NEKO",
+        "🇪🇸 西班牙 (Spain) 02 3686K - NEKO",
+        "🇪🇸 西班牙 (Spain) 03 4209K - NEKO",
+        "🇪🇸 西班牙 (Spain) 04 3932K - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇪🇸 西班牙 (Spain) 01 ⚠S6695K - NEKO",
-        "🇪🇸 西班牙 (Spain) 02 4792K - NEKO",
-        "🇪🇸 西班牙 (Spain) 03 973K - NEKO"
+        "🇪🇸 西班牙 (Spain) 01 ⚠S4375K - NEKO",
+        "🇪🇸 西班牙 (Spain) 02 3686K - NEKO",
+        "🇪🇸 西班牙 (Spain) 03 4209K - NEKO",
+        "🇪🇸 西班牙 (Spain) 04 3932K - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

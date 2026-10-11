@@ -4,7 +4,22 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇪🇸 西班牙 (Spain) 01 ⚠S6695K - NEKO
+- name: 🇪🇸 西班牙 (Spain) 01 ⚠S4375K - NEKO
+  server: 185.174.137.172
+  port: 8446
+  udp: true
+  type: hysteria2
+  password: e9dc02d400b67c727aca1620
+  sni: 185.174.137.172
+  skip-cert-verify: true
+- name: 🇪🇸 西班牙 (Spain) 02 3686K - NEKO
+  server: 108.181.121.226
+  port: 8388
+  udp: true
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: WSyL4XTwNsdv
+- name: 🇪🇸 西班牙 (Spain) 03 4209K - NEKO
   server: 212.227.235.66
   port: 2053
   udp: true
@@ -16,14 +31,7 @@ proxies:
     short-id: 29e8dcd2b37aaa7f
   servername: www.apple.com
   client-fingerprint: firefox
-- name: 🇪🇸 西班牙 (Spain) 02 4792K - NEKO
-  server: 108.181.121.226
-  port: 8388
-  udp: true
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: WSyL4XTwNsdv
-- name: 🇪🇸 西班牙 (Spain) 03 973K - NEKO
+- name: 🇪🇸 西班牙 (Spain) 04 3932K - NEKO
   server: 46.28.71.247
   port: 443
   udp: true
@@ -35,22 +43,24 @@ proxies:
     public-key: v4MuZIvFrTPT5GHMSaPryUAbIZlLstmsUTzmC1E-JTE
     short-id: 0dfc23fe80778c00
   servername: www.cloudflare.com
-  client-fingerprint: firefox
+  client-fingerprint: ios
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇪🇸 西班牙 (Spain) 01 ⚠S6695K - NEKO
-  - 🇪🇸 西班牙 (Spain) 02 4792K - NEKO
-  - 🇪🇸 西班牙 (Spain) 03 973K - NEKO
+  - 🇪🇸 西班牙 (Spain) 01 ⚠S4375K - NEKO
+  - 🇪🇸 西班牙 (Spain) 02 3686K - NEKO
+  - 🇪🇸 西班牙 (Spain) 03 4209K - NEKO
+  - 🇪🇸 西班牙 (Spain) 04 3932K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇪🇸 西班牙 (Spain) 01 ⚠S6695K - NEKO
-  - 🇪🇸 西班牙 (Spain) 02 4792K - NEKO
-  - 🇪🇸 西班牙 (Spain) 03 973K - NEKO
+  - 🇪🇸 西班牙 (Spain) 01 ⚠S4375K - NEKO
+  - 🇪🇸 西班牙 (Spain) 02 3686K - NEKO
+  - 🇪🇸 西班牙 (Spain) 03 4209K - NEKO
+  - 🇪🇸 西班牙 (Spain) 04 3932K - NEKO
 rules:
 - MATCH,PROXIES

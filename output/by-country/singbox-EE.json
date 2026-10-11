@@ -5,7 +5,7 @@
   "outbounds": [
     {
       "type": "vless",
-      "tag": "🇪🇪 爱沙尼亚 (Estonia) 01 7698K - NEKO",
+      "tag": "🇪🇪 爱沙尼亚 (Estonia) 01 6877K - NEKO",
       "server": "178.214.113.10",
       "server_port": 8443,
       "uuid": "c6db98c5-9959-425e-9340-300779fc4e4b",
@@ -25,7 +25,7 @@
     },
     {
       "type": "vless",
-      "tag": "🇪🇪 爱沙尼亚 (Estonia) 02 10086K - NEKO",
+      "tag": "🇪🇪 爱沙尼亚 (Estonia) 02 6805K - NEKO",
       "server": "185.209.15.100",
       "server_port": 8443,
       "uuid": "c6db98c5-9959-425e-9340-300779fc4e4b",
@@ -33,6 +33,9 @@
         "enabled": true,
         "server_name": "n1.vimeostream.online",
         "insecure": false,
+        "alpn": [
+          "h2"
+        ],
         "utls": {
           "enabled": true,
           "fingerprint": "firefox"
@@ -45,7 +48,7 @@
     },
     {
       "type": "vless",
-      "tag": "🇪🇪 爱沙尼亚 (Estonia) 03 6203K - NEKO",
+      "tag": "🇪🇪 爱沙尼亚 (Estonia) 03 4510K - NEKO",
       "server": "185.209.15.100",
       "server_port": 443,
       "uuid": "c6db98c5-9959-425e-9340-300779fc4e4b",
@@ -65,25 +68,9 @@
       }
     },
     {
-      "type": "trojan",
-      "tag": "🇪🇪 爱沙尼亚 (Estonia) 04 5556K - NEKO",
-      "server": "109.206.241.10",
-      "server_port": 449,
-      "password": "oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1",
-      "tls": {
-        "enabled": true,
-        "server_name": "109.206.241.10",
-        "insecure": true,
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      }
-    },
-    {
       "type": "vless",
-      "tag": "🇪🇪 爱沙尼亚 (Estonia) 05 4975K - NEKO",
-      "server": "185.252.177.216",
+      "tag": "🇪🇪 爱沙尼亚 (Estonia) 04 4072K - NEKO",
+      "server": "est-1.ardesnode.ru",
       "server_port": 443,
       "uuid": "616c7b3b-41f4-4038-88c6-d6fedd0ae4a7",
       "flow": "xtls-rprx-vision",
@@ -102,44 +89,31 @@
       }
     },
     {
-      "type": "vless",
-      "tag": "🇪🇪 爱沙尼亚 (Estonia) 06 5071K - NEKO",
-      "server": "94.183.170.135",
-      "server_port": 443,
-      "uuid": "06c4e938-2954-478f-a870-ca1b163e30e9",
-      "transport": {
-        "type": "ws",
-        "path": "/",
-        "headers": {
-          "Host": "estproxy4.lockdwn.com"
-        }
-      }
-    },
-    {
-      "type": "vless",
-      "tag": "🇪🇪 爱沙尼亚 (Estonia) 07 5303K - NEKO",
-      "server": "94.183.170.135",
-      "server_port": 8443,
-      "uuid": "06c4e938-2954-478f-a870-ca1b163e30e9",
+      "type": "trojan",
+      "tag": "🇪🇪 爱沙尼亚 (Estonia) 05 4286K - NEKO",
+      "server": "109.206.241.10",
+      "server_port": 449,
+      "password": "oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1",
       "tls": {
         "enabled": true,
-        "server_name": "estproxy4.lockdwn.com",
-        "insecure": false
+        "server_name": "russiapower.accesscam.org",
+        "insecure": true
       }
     },
     {
       "type": "vless",
-      "tag": "🇪🇪 爱沙尼亚 (Estonia) 08 3815K - NEKO",
-      "server": "77.72.85.246",
+      "tag": "🇪🇪 爱沙尼亚 (Estonia) 06 2690K - NEKO",
+      "server": "194.26.141.148",
       "server_port": 8443,
       "uuid": "6c713691-3ca2-4446-ad25-113d1bed6b03",
       "tls": {
         "enabled": true,
         "server_name": "fdghyt.com",
         "insecure": false,
-        "alpn": [
-          "http/1.1"
-        ]
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
       },
       "transport": {
         "type": "ws",
@@ -150,32 +124,51 @@
       }
     },
     {
+      "type": "vless",
+      "tag": "🇪🇪 爱沙尼亚 (Estonia) 07 ⚠S295K - NEKO",
+      "server": "u5.luxcloud.space",
+      "server_port": 443,
+      "uuid": "fc87e0d6-0f6a-423a-828e-1fed7e7ef29c",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "u5.luxcloud.space",
+        "insecure": false,
+        "alpn": [
+          "h2",
+          "http/1.1"
+        ],
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇪🇪 爱沙尼亚 (Estonia) 01 7698K - NEKO",
-        "🇪🇪 爱沙尼亚 (Estonia) 02 10086K - NEKO",
-        "🇪🇪 爱沙尼亚 (Estonia) 03 6203K - NEKO",
-        "🇪🇪 爱沙尼亚 (Estonia) 04 5556K - NEKO",
-        "🇪🇪 爱沙尼亚 (Estonia) 05 4975K - NEKO",
-        "🇪🇪 爱沙尼亚 (Estonia) 06 5071K - NEKO",
-        "🇪🇪 爱沙尼亚 (Estonia) 07 5303K - NEKO",
-        "🇪🇪 爱沙尼亚 (Estonia) 08 3815K - NEKO"
+        "🇪🇪 爱沙尼亚 (Estonia) 01 6877K - NEKO",
+        "🇪🇪 爱沙尼亚 (Estonia) 02 6805K - NEKO",
+        "🇪🇪 爱沙尼亚 (Estonia) 03 4510K - NEKO",
+        "🇪🇪 爱沙尼亚 (Estonia) 04 4072K - NEKO",
+        "🇪🇪 爱沙尼亚 (Estonia) 05 4286K - NEKO",
+        "🇪🇪 爱沙尼亚 (Estonia) 06 2690K - NEKO",
+        "🇪🇪 爱沙尼亚 (Estonia) 07 ⚠S295K - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇪🇪 爱沙尼亚 (Estonia) 01 7698K - NEKO",
-        "🇪🇪 爱沙尼亚 (Estonia) 02 10086K - NEKO",
-        "🇪🇪 爱沙尼亚 (Estonia) 03 6203K - NEKO",
-        "🇪🇪 爱沙尼亚 (Estonia) 04 5556K - NEKO",
-        "🇪🇪 爱沙尼亚 (Estonia) 05 4975K - NEKO",
-        "🇪🇪 爱沙尼亚 (Estonia) 06 5071K - NEKO",
-        "🇪🇪 爱沙尼亚 (Estonia) 07 5303K - NEKO",
-        "🇪🇪 爱沙尼亚 (Estonia) 08 3815K - NEKO"
+        "🇪🇪 爱沙尼亚 (Estonia) 01 6877K - NEKO",
+        "🇪🇪 爱沙尼亚 (Estonia) 02 6805K - NEKO",
+        "🇪🇪 爱沙尼亚 (Estonia) 03 4510K - NEKO",
+        "🇪🇪 爱沙尼亚 (Estonia) 04 4072K - NEKO",
+        "🇪🇪 爱沙尼亚 (Estonia) 05 4286K - NEKO",
+        "🇪🇪 爱沙尼亚 (Estonia) 06 2690K - NEKO",
+        "🇪🇪 爱沙尼亚 (Estonia) 07 ⚠S295K - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

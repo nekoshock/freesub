@@ -5,14 +5,14 @@
   "outbounds": [
     {
       "type": "hysteria2",
-      "tag": "🇦🇪 阿联酋 (UAE) 01 ⚠S8129K - NEKO",
-      "server": "130.49.161.70",
+      "tag": "🇦🇪 阿联酋 (UAE) 01 ⚠S3880K - NEKO",
+      "server": "hy2.aspidnet.xyz",
       "server_port": 443,
       "password": "p7Q76LzlnS4hIzr1W3staBOnUe_WwSkR",
       "tls": {
         "enabled": true,
         "server_name": "hy2.aspidnet.xyz",
-        "insecure": true
+        "insecure": false
       },
       "obfs": {
         "type": "salamander",
@@ -21,8 +21,32 @@
     },
     {
       "type": "vless",
-      "tag": "🇦🇪 阿联酋 (UAE) 02 813K - NEKO",
-      "server": "157.228.155.238",
+      "tag": "🇦🇪 阿联酋 (UAE) 02 4434K - NEKO",
+      "server": "31.59.210.26",
+      "server_port": 2088,
+      "uuid": "5413edfb-08d6-4fba-b51c-809c04feb127",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.yandex.ru",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "qq"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "Eq3c19Y0WGB1APWMADQB-oxCvZFSVFAQxG5L6b8EkUg",
+          "short_id": "b1ad165f903c62fe"
+        }
+      },
+      "transport": {
+        "type": "grpc",
+        "service_name": "astracat"
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇦🇪 阿联酋 (UAE) 03 4767K - NEKO",
+      "server": "157.228.155.185",
       "server_port": 443,
       "uuid": "df53b6c2-8005-475c-9eb9-74e1be785dc8",
       "flow": "xtls-rprx-vision",
@@ -35,38 +59,14 @@
         },
         "reality": {
           "enabled": true,
-          "public_key": "5BDht3tAZdKEKpJymGlRK9JugOnieA-kMSWz_0FoE0I",
-          "short_id": "6f76ad09"
+          "public_key": "4q8nqNb-0c-akP3XqVmen67BLXJVlx48a_GDRw16nVg",
+          "short_id": "5ea112e8"
         }
       }
     },
     {
       "type": "vless",
-      "tag": "🇦🇪 阿联酋 (UAE) 03 ⚠S2891K - NEKO",
-      "server": "31.59.210.32",
-      "server_port": 443,
-      "uuid": "5413edfb-08d6-4fba-b51c-809c04feb127",
-      "tls": {
-        "enabled": true,
-        "server_name": "www.yandex.ru",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "random"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "qvVoQPNyuM86jBvBqOL-Z9VO_C9jMi_ZH8bb4fotNWA",
-          "short_id": "7ec4374ffc6308fd"
-        }
-      },
-      "transport": {
-        "type": "grpc",
-        "service_name": "astracat"
-      }
-    },
-    {
-      "type": "vless",
-      "tag": "🇦🇪 阿联酋 (UAE) 04 5410K - NEKO",
+      "tag": "🇦🇪 阿联酋 (UAE) 04 4313K - NEKO",
       "server": "31.59.210.37",
       "server_port": 443,
       "uuid": "5413edfb-08d6-4fba-b51c-809c04feb127",
@@ -75,7 +75,7 @@
         "server_name": "www.yandex.ru",
         "utls": {
           "enabled": true,
-          "fingerprint": "safari"
+          "fingerprint": "edge"
         },
         "reality": {
           "enabled": true,
@@ -90,13 +90,12 @@
     },
     {
       "type": "vless",
-      "tag": "🇦🇪 阿联酋 (UAE) 05 3647K - NEKO",
+      "tag": "🇦🇪 阿联酋 (UAE) 05 2244K - NEKO",
       "server": "84.235.244.108",
       "server_port": 22573,
       "uuid": "39947382-3212-41c9-bc3a-589574ac8b23",
       "transport": {
         "type": "ws",
-        "path": "/",
         "headers": {
           "Host": "uae.unixzone.us"
         }
@@ -107,22 +106,22 @@
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇦🇪 阿联酋 (UAE) 01 ⚠S8129K - NEKO",
-        "🇦🇪 阿联酋 (UAE) 02 813K - NEKO",
-        "🇦🇪 阿联酋 (UAE) 03 ⚠S2891K - NEKO",
-        "🇦🇪 阿联酋 (UAE) 04 5410K - NEKO",
-        "🇦🇪 阿联酋 (UAE) 05 3647K - NEKO"
+        "🇦🇪 阿联酋 (UAE) 01 ⚠S3880K - NEKO",
+        "🇦🇪 阿联酋 (UAE) 02 4434K - NEKO",
+        "🇦🇪 阿联酋 (UAE) 03 4767K - NEKO",
+        "🇦🇪 阿联酋 (UAE) 04 4313K - NEKO",
+        "🇦🇪 阿联酋 (UAE) 05 2244K - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇦🇪 阿联酋 (UAE) 01 ⚠S8129K - NEKO",
-        "🇦🇪 阿联酋 (UAE) 02 813K - NEKO",
-        "🇦🇪 阿联酋 (UAE) 03 ⚠S2891K - NEKO",
-        "🇦🇪 阿联酋 (UAE) 04 5410K - NEKO",
-        "🇦🇪 阿联酋 (UAE) 05 3647K - NEKO"
+        "🇦🇪 阿联酋 (UAE) 01 ⚠S3880K - NEKO",
+        "🇦🇪 阿联酋 (UAE) 02 4434K - NEKO",
+        "🇦🇪 阿联酋 (UAE) 03 4767K - NEKO",
+        "🇦🇪 阿联酋 (UAE) 04 4313K - NEKO",
+        "🇦🇪 阿联酋 (UAE) 05 2244K - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

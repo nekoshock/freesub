@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇪🇪 爱沙尼亚 (Estonia) 01 7698K - NEKO
+- name: 🇪🇪 爱沙尼亚 (Estonia) 01 6877K - NEKO
   server: 178.214.113.10
   port: 8443
   udp: true
@@ -17,7 +17,7 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: nl1grpc
-- name: 🇪🇪 爱沙尼亚 (Estonia) 02 10086K - NEKO
+- name: 🇪🇪 爱沙尼亚 (Estonia) 02 6805K - NEKO
   server: 185.209.15.100
   port: 8443
   udp: true
@@ -30,7 +30,7 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: nl1grpc
-- name: 🇪🇪 爱沙尼亚 (Estonia) 03 6203K - NEKO
+- name: 🇪🇪 爱沙尼亚 (Estonia) 03 4510K - NEKO
   server: 185.209.15.100
   port: 443
   udp: true
@@ -43,16 +43,8 @@ proxies:
     short-id: c334408a1056aaf8
   servername: n1.vimeostream.online
   client-fingerprint: firefox
-- name: 🇪🇪 爱沙尼亚 (Estonia) 04 5556K - NEKO
-  server: 109.206.241.10
-  port: 449
-  udp: true
-  type: trojan
-  password: oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1
-  sni: 109.206.241.10
-  skip-cert-verify: true
-- name: 🇪🇪 爱沙尼亚 (Estonia) 05 4975K - NEKO
-  server: 185.252.177.216
+- name: 🇪🇪 爱沙尼亚 (Estonia) 04 4072K - NEKO
+  server: est-1.ardesnode.ru
   port: 443
   udp: true
   type: vless
@@ -64,28 +56,16 @@ proxies:
     short-id: 9ea74b83f4993ca9
   servername: est-1.ardesnode.ru
   client-fingerprint: chrome
-- name: 🇪🇪 爱沙尼亚 (Estonia) 06 5071K - NEKO
-  server: 94.183.170.135
-  port: 443
+- name: 🇪🇪 爱沙尼亚 (Estonia) 05 4286K - NEKO
+  server: 109.206.241.10
+  port: 449
   udp: true
-  type: vless
-  uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: estproxy4.lockdwn.com
-- name: 🇪🇪 爱沙尼亚 (Estonia) 07 5303K - NEKO
-  server: 94.183.170.135
-  port: 8443
-  udp: true
-  type: vless
-  uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
-  tls: true
-  servername: estproxy4.lockdwn.com
-  skip-cert-verify: false
-- name: 🇪🇪 爱沙尼亚 (Estonia) 08 3815K - NEKO
-  server: 77.72.85.246
+  type: trojan
+  password: oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1
+  sni: russiapower.accesscam.org
+  skip-cert-verify: true
+- name: 🇪🇪 爱沙尼亚 (Estonia) 06 2690K - NEKO
+  server: 194.26.141.148
   port: 8443
   udp: true
   type: vless
@@ -93,36 +73,46 @@ proxies:
   tls: true
   servername: fdghyt.com
   skip-cert-verify: false
+  client-fingerprint: firefox
   network: ws
   ws-opts:
     path: /vpn-wss/fluxor/59011/
     headers:
       Host: fdghyt.com
+- name: 🇪🇪 爱沙尼亚 (Estonia) 07 ⚠S295K - NEKO
+  server: u5.luxcloud.space
+  port: 443
+  udp: true
+  type: vless
+  uuid: fc87e0d6-0f6a-423a-828e-1fed7e7ef29c
+  flow: xtls-rprx-vision
+  tls: true
+  servername: u5.luxcloud.space
+  skip-cert-verify: false
+  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇪🇪 爱沙尼亚 (Estonia) 01 7698K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 02 10086K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 03 6203K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 04 5556K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 05 4975K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 06 5071K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 07 5303K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 08 3815K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 01 6877K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 02 6805K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 03 4510K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 04 4072K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 05 4286K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 06 2690K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 07 ⚠S295K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇪🇪 爱沙尼亚 (Estonia) 01 7698K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 02 10086K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 03 6203K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 04 5556K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 05 4975K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 06 5071K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 07 5303K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 08 3815K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 01 6877K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 02 6805K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 03 4510K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 04 4072K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 05 4286K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 06 2690K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 07 ⚠S295K - NEKO
 rules:
 - MATCH,PROXIES

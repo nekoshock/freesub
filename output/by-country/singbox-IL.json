@@ -5,7 +5,7 @@
   "outbounds": [
     {
       "type": "vless",
-      "tag": "🇮🇱 以色列 (Israel) 01 ⚠S18088K - NEKO",
+      "tag": "🇮🇱 以色列 (Israel) 01 10057K - NEKO",
       "server": "185.95.231.156",
       "server_port": 443,
       "uuid": "1f8cf47a-b66a-4916-979f-26edfcf44eea",
@@ -15,7 +15,7 @@
         "server_name": "www.apple.com",
         "utls": {
           "enabled": true,
-          "fingerprint": "chrome"
+          "fingerprint": "random"
         },
         "reality": {
           "enabled": true,
@@ -25,18 +25,30 @@
       }
     },
     {
+      "type": "vless",
+      "tag": "🇮🇱 以色列 (Israel) 02 4413K - NEKO",
+      "server": "31.57.185.253",
+      "server_port": 55932,
+      "uuid": "c6117371-7a24-4621-bac0-f70fa266b061",
+      "transport": {
+        "type": "grpc"
+      }
+    },
+    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇮🇱 以色列 (Israel) 01 ⚠S18088K - NEKO"
+        "🇮🇱 以色列 (Israel) 01 10057K - NEKO",
+        "🇮🇱 以色列 (Israel) 02 4413K - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇮🇱 以色列 (Israel) 01 ⚠S18088K - NEKO"
+        "🇮🇱 以色列 (Israel) 01 10057K - NEKO",
+        "🇮🇱 以色列 (Israel) 02 4413K - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

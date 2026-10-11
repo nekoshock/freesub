@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇺🇸 美国 (United States) 01 (家宽) 10494K - NEKO
+- name: 🇺🇸 美国 (United States) 01 (家宽) 16629K - NEKO
   server: 155.117.19.17
   port: 443
   udp: true
@@ -14,52 +14,70 @@ proxies:
   skip-cert-verify: true
   obfs: salamander
   obfs-password: a39ca173b57ac7021b08bf3e3de9f1f6
-- name: 🇭🇰 中国香港 (Hong Kong) 02 (移动家宽) 3158K - NEKO
-  server: dog-hk.kunlun01dns.com
-  port: 21020
+- name: 🇰🇷 韩国 (South Korea) 02 (家宽) 3275K - NEKO
+  server: p141.panda001.net
+  port: 4652
   udp: true
-  type: vmess
-  uuid: 9464ca40-dd75-3742-a628-d931a9f413b2
-  alterId: 0
-  cipher: auto
-- name: 🇭🇰 中国香港 (Hong Kong) 03 (移动家宽) 2859K - NEKO
-  server: dog-hk.kunlun01dns.com
-  port: 21022
-  udp: true
-  type: vmess
-  uuid: 9464ca40-dd75-3742-a628-d931a9f413b2
-  alterId: 0
-  cipher: auto
-- name: 🇦🇹 奥地利 (Austria) 04 (家宽) 2351K ⚠L20% - NEKO
-  server: at-3.wizard.select
+  type: ss
+  cipher: aes-256-cfb
+  password: qwerREWQ@@
+- name: 🇹🇼 中国台湾 (Taiwan) 03 (家宽) 615K - NEKO
+  server: 24864168545164.d6f54hd1j.cc
   port: 443
   udp: true
-  type: vless
-  uuid: 074b00de-c4d0-11f1-9902-a337233c6cda
-  flow: xtls-rprx-vision
+  type: vmess
+  uuid: ecdc303d-bcbf-4129-bc02-dd67703f7081
+  alterId: 0
+  cipher: auto
   tls: true
-  reality-opts:
-    public-key: S9OR9-SQHGl717N9AV_LoouRgSd-M4Yz7os10Mj8XxI
-    short-id: cee953f6
-  servername: at-3.wizard.select
-  client-fingerprint: firefox
+  servername: 24864168545164.d6f54hd1j.cc
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 24864168545164.d6f54hd1j.cc
+- name: 🇹🇼 中国台湾 (Taiwan) 04 (家宽) 3826K - NEKO
+  server: 654168416355441.d6f54hd1j.cc
+  port: 443
+  udp: true
+  type: vmess
+  uuid: ecdc303d-bcbf-4129-bc02-dd67703f7081
+  alterId: 0
+  cipher: auto
+  tls: true
+  servername: 654168416355441.d6f54hd1j.cc
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /
+- name: 🇸🇬 新加坡 (Singapore) 05 (家宽) 400K - NEKO
+  server: s3.huhiuh.space
+  port: 18642
+  udp: true
+  type: hysteria2
+  password: user317_windows:c70565e9-a99f-40ef-b96c-469a3949eed2
+  sni: www.bing.com
+  skip-cert-verify: true
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇺🇸 美国 (United States) 01 (家宽) 10494K - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 (移动家宽) 3158K - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 03 (移动家宽) 2859K - NEKO
-  - 🇦🇹 奥地利 (Austria) 04 (家宽) 2351K ⚠L20% - NEKO
+  - 🇺🇸 美国 (United States) 01 (家宽) 16629K - NEKO
+  - 🇰🇷 韩国 (South Korea) 02 (家宽) 3275K - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 03 (家宽) 615K - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 04 (家宽) 3826K - NEKO
+  - 🇸🇬 新加坡 (Singapore) 05 (家宽) 400K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇺🇸 美国 (United States) 01 (家宽) 10494K - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 (移动家宽) 3158K - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 03 (移动家宽) 2859K - NEKO
-  - 🇦🇹 奥地利 (Austria) 04 (家宽) 2351K ⚠L20% - NEKO
+  - 🇺🇸 美国 (United States) 01 (家宽) 16629K - NEKO
+  - 🇰🇷 韩国 (South Korea) 02 (家宽) 3275K - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 03 (家宽) 615K - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 04 (家宽) 3826K - NEKO
+  - 🇸🇬 新加坡 (Singapore) 05 (家宽) 400K - NEKO
 rules:
 - MATCH,PROXIES

@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇮🇩 印尼 (Indonesia) 01 2819K - NEKO
+- name: 🇮🇩 印尼 (Indonesia) 01 2928K - NEKO
   server: 103.172.197.2
   port: 29172
   udp: true
@@ -16,17 +16,32 @@ proxies:
     public-key: pff94OJwuKXnF7_3SJ8KKJuAN4GJtInBlR-kg-4mwzQ
   servername: aws.amazon.com
   client-fingerprint: safari
+- name: 🇮🇩 印尼 (Indonesia) 02 2294K - NEKO
+  server: 154.21.203.106
+  port: 46984
+  udp: true
+  type: vless
+  uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: XBntt77MdH3EMkPXibOAO_NSBrL_aqwiLItU98rqlHE
+    short-id: 9c3c0f8ec8b4af12
+  servername: www.lamer.com.sg
+  client-fingerprint: firefox
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇮🇩 印尼 (Indonesia) 01 2819K - NEKO
+  - 🇮🇩 印尼 (Indonesia) 01 2928K - NEKO
+  - 🇮🇩 印尼 (Indonesia) 02 2294K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇮🇩 印尼 (Indonesia) 01 2819K - NEKO
+  - 🇮🇩 印尼 (Indonesia) 01 2928K - NEKO
+  - 🇮🇩 印尼 (Indonesia) 02 2294K - NEKO
 rules:
 - MATCH,PROXIES

@@ -4,74 +4,24 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇺🇸 美国 (United States) 01 (家宽) 15768K - NEKO
-  server: 155.117.19.17
-  port: 443
-  udp: true
-  type: hysteria2
-  password: 5fa748137b6d822308eea4611f474ad5
-  sni: www.bing.com
-  skip-cert-verify: true
-  obfs: salamander
-  obfs-password: a39ca173b57ac7021b08bf3e3de9f1f6
-- name: 🇭🇰 中国香港 (Hong Kong) 02 (家宽) 6535K - NEKO
-  server: 916164fa-tn2tc0-trgaw0-1h240.hk3.hyhuawei.com
-  port: 443
-  udp: true
-  type: hysteria2
-  password: 28a5ce18-e7a1-11ec-91b2-f23c91cfbbc9
-  sni: 916164fa-tn2tc0-trgaw0-1h240.hk3.hyhuawei.com
-  skip-cert-verify: true
-- name: 🇭🇰 中国香港 (Hong Kong) 03 (移动家宽) 3508K - NEKO
-  server: dog-hk.kunlun01dns.com
-  port: 21022
-  udp: true
-  type: vmess
-  uuid: 9464ca40-dd75-3742-a628-d931a9f413b2
-  alterId: 0
-  cipher: auto
-- name: 🇰🇷 韩国 (South Korea) 04 (家宽) 228K - NEKO
+- name: 🇰🇷 韩国 (South Korea) 01 (家宽) ⚠S1036K - NEKO
   server: p141.panda001.net
   port: 4652
   udp: true
   type: ss
   cipher: aes-256-cfb
   password: qwerREWQ@@
-- name: 🇹🇼 中国台湾 (Taiwan) 05 (家宽) 1976K - NEKO
-  server: 24864168545164.d6f54hd1j.cc
-  port: 443
-  udp: true
-  type: vmess
-  uuid: ecdc303d-bcbf-4129-bc02-dd67703f7081
-  alterId: 0
-  cipher: auto
-  tls: true
-  servername: 24864168545164.d6f54hd1j.cc
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: 24864168545164.d6f54hd1j.cc
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇺🇸 美国 (United States) 01 (家宽) 15768K - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 (家宽) 6535K - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 03 (移动家宽) 3508K - NEKO
-  - 🇰🇷 韩国 (South Korea) 04 (家宽) 228K - NEKO
-  - 🇹🇼 中国台湾 (Taiwan) 05 (家宽) 1976K - NEKO
+  - 🇰🇷 韩国 (South Korea) 01 (家宽) ⚠S1036K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇺🇸 美国 (United States) 01 (家宽) 15768K - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 (家宽) 6535K - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 03 (移动家宽) 3508K - NEKO
-  - 🇰🇷 韩国 (South Korea) 04 (家宽) 228K - NEKO
-  - 🇹🇼 中国台湾 (Taiwan) 05 (家宽) 1976K - NEKO
+  - 🇰🇷 韩国 (South Korea) 01 (家宽) ⚠S1036K - NEKO
 rules:
 - MATCH,PROXIES

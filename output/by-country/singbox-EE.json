@@ -5,22 +5,8 @@
   "outbounds": [
     {
       "type": "vless",
-      "tag": "🇪🇪 爱沙尼亚 (Estonia) 01 3713K - NEKO",
-      "server": "94.183.170.135",
-      "server_port": 443,
-      "uuid": "06c4e938-2954-478f-a870-ca1b163e30e9",
-      "transport": {
-        "type": "ws",
-        "path": "/",
-        "headers": {
-          "Host": "94.183.170.135"
-        }
-      }
-    },
-    {
-      "type": "vless",
-      "tag": "🇪🇪 爱沙尼亚 (Estonia) 02 3888K - NEKO",
-      "server": "185.252.177.216",
+      "tag": "🇪🇪 爱沙尼亚 (Estonia) 01 3917K - NEKO",
+      "server": "est-1.ardesnode.ru",
       "server_port": 443,
       "uuid": "616c7b3b-41f4-4038-88c6-d6fedd0ae4a7",
       "flow": "xtls-rprx-vision",
@@ -40,19 +26,34 @@
     },
     {
       "type": "vless",
-      "tag": "🇪🇪 爱沙尼亚 (Estonia) 03 3989K - NEKO",
+      "tag": "🇪🇪 爱沙尼亚 (Estonia) 02 3644K - NEKO",
+      "server": "94.183.170.135",
+      "server_port": 443,
+      "uuid": "06c4e938-2954-478f-a870-ca1b163e30e9",
+      "transport": {
+        "type": "ws",
+        "path": "/"
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇪🇪 爱沙尼亚 (Estonia) 03 4609K - NEKO",
       "server": "94.183.170.135",
       "server_port": 8443,
       "uuid": "06c4e938-2954-478f-a870-ca1b163e30e9",
       "tls": {
         "enabled": true,
         "server_name": "estproxy4.lockdwn.com",
-        "insecure": false
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
       }
     },
     {
       "type": "vless",
-      "tag": "🇪🇪 爱沙尼亚 (Estonia) 04 3065K - NEKO",
+      "tag": "🇪🇪 爱沙尼亚 (Estonia) 04 1561K - NEKO",
       "server": "ee.h1cloud.net",
       "server_port": 25895,
       "uuid": "f90b7d43-69e2-4b46-a672-8029bc6796a2",
@@ -61,7 +62,7 @@
         "server_name": "www.samsung.com",
         "utls": {
           "enabled": true,
-          "fingerprint": "edge"
+          "fingerprint": "chrome"
         },
         "reality": {
           "enabled": true,
@@ -71,49 +72,24 @@
       }
     },
     {
-      "type": "vless",
-      "tag": "🇪🇪 爱沙尼亚 (Estonia) 05 1587K - NEKO",
-      "server": "177.3.208.65",
-      "server_port": 443,
-      "uuid": "4f34bc04-479c-49ba-91a8-6bb9ed15031c",
-      "tls": {
-        "enabled": true,
-        "server_name": "tgmansion.site",
-        "insecure": false,
-        "utls": {
-          "enabled": true,
-          "fingerprint": "firefox"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/vless-ee",
-        "headers": {
-          "Host": "tgmansion.site"
-        }
-      }
-    },
-    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇪🇪 爱沙尼亚 (Estonia) 01 3713K - NEKO",
-        "🇪🇪 爱沙尼亚 (Estonia) 02 3888K - NEKO",
-        "🇪🇪 爱沙尼亚 (Estonia) 03 3989K - NEKO",
-        "🇪🇪 爱沙尼亚 (Estonia) 04 3065K - NEKO",
-        "🇪🇪 爱沙尼亚 (Estonia) 05 1587K - NEKO"
+        "🇪🇪 爱沙尼亚 (Estonia) 01 3917K - NEKO",
+        "🇪🇪 爱沙尼亚 (Estonia) 02 3644K - NEKO",
+        "🇪🇪 爱沙尼亚 (Estonia) 03 4609K - NEKO",
+        "🇪🇪 爱沙尼亚 (Estonia) 04 1561K - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇪🇪 爱沙尼亚 (Estonia) 01 3713K - NEKO",
-        "🇪🇪 爱沙尼亚 (Estonia) 02 3888K - NEKO",
-        "🇪🇪 爱沙尼亚 (Estonia) 03 3989K - NEKO",
-        "🇪🇪 爱沙尼亚 (Estonia) 04 3065K - NEKO",
-        "🇪🇪 爱沙尼亚 (Estonia) 05 1587K - NEKO"
+        "🇪🇪 爱沙尼亚 (Estonia) 01 3917K - NEKO",
+        "🇪🇪 爱沙尼亚 (Estonia) 02 3644K - NEKO",
+        "🇪🇪 爱沙尼亚 (Estonia) 03 4609K - NEKO",
+        "🇪🇪 爱沙尼亚 (Estonia) 04 1561K - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

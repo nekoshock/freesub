@@ -4,8 +4,16 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇸🇪 瑞典 (Sweden) 01 4867K - NEKO
-  server: swe.wizard.select
+- name: 🇸🇪 瑞典 (Sweden) 01 873K - NEKO
+  server: sweedenqfds777.qcloud.surf
+  port: 21223
+  udp: true
+  type: hysteria2
+  password: 8bd04756-3beb-4348-82c9-d35453df50ce
+  sni: sweedenqfds777.qcloud.surf
+  skip-cert-verify: false
+- name: 🇸🇪 瑞典 (Sweden) 02 3819K - NEKO
+  server: 193.27.200.200
   port: 443
   udp: true
   type: vless
@@ -16,8 +24,8 @@ proxies:
     public-key: Sikc1gu5t_uwitf1xTTChP9tpT_sjY530p2tioHbmz0
     short-id: 3b20e438da99
   servername: swe.wizard.select
-  client-fingerprint: qq
-- name: 🇸🇪 瑞典 (Sweden) 02 4469K - NEKO
+  client-fingerprint: firefox
+- name: 🇸🇪 瑞典 (Sweden) 03 4007K - NEKO
   server: 45.138.103.238
   port: 443
   udp: true
@@ -29,35 +37,22 @@ proxies:
     public-key: Kb8SsVPprs46BJSUNp5JvWLI-TFEiHmlBOXLQd37Glg
     short-id: a1037b25dcef6aa7
   servername: sw.golangwikito.cfd
-  client-fingerprint: firefox
-- name: 🇸🇪 瑞典 (Sweden) 03 4102K - NEKO
-  server: se3.h1cloud.net
-  port: 25119
-  udp: true
-  type: vless
-  uuid: f90b7d43-69e2-4b46-a672-8029bc6796a2
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: szPq4a3cvxfBOmGyg-UJCV3d1Jqjnj7YR3gaxyYtnk4
-    short-id: 10f517
-  servername: www.samsung.com
-  client-fingerprint: chrome
+  client-fingerprint: random
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇸🇪 瑞典 (Sweden) 01 4867K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 4469K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 03 4102K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 873K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 3819K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 03 4007K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇸🇪 瑞典 (Sweden) 01 4867K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 4469K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 03 4102K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 873K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 3819K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 03 4007K - NEKO
 rules:
 - MATCH,PROXIES

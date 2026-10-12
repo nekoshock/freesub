@@ -4,12 +4,12 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇹🇭 泰国 (Thailand) 01 2727K - NEKO
-  server: 119.46.51.45
-  port: 37515
+- name: 🇹🇼 中国台湾 (Taiwan) 01 532K - NEKO
+  server: 165.154.195.38
+  port: 35034
   udp: true
   type: vmess
-  uuid: 9b76bc31-17a5-4454-934a-8d5fb602cd70
+  uuid: 959a8caf-4cea-43d0-a548-3628e7ddfafc
   alterId: 0
   cipher: auto
 proxy-groups:
@@ -17,12 +17,12 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇹🇭 泰国 (Thailand) 01 2727K - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 01 532K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇹🇭 泰国 (Thailand) 01 2727K - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 01 532K - NEKO
 rules:
 - MATCH,PROXIES

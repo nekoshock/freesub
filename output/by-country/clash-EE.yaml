@@ -4,19 +4,8 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇪🇪 爱沙尼亚 (Estonia) 01 3713K - NEKO
-  server: 94.183.170.135
-  port: 443
-  udp: true
-  type: vless
-  uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: 94.183.170.135
-- name: 🇪🇪 爱沙尼亚 (Estonia) 02 3888K - NEKO
-  server: 185.252.177.216
+- name: 🇪🇪 爱沙尼亚 (Estonia) 01 3917K - NEKO
+  server: est-1.ardesnode.ru
   port: 443
   udp: true
   type: vless
@@ -28,7 +17,16 @@ proxies:
     short-id: 9ea74b83f4993ca9
   servername: est-1.ardesnode.ru
   client-fingerprint: chrome
-- name: 🇪🇪 爱沙尼亚 (Estonia) 03 3989K - NEKO
+- name: 🇪🇪 爱沙尼亚 (Estonia) 02 3644K - NEKO
+  server: 94.183.170.135
+  port: 443
+  udp: true
+  type: vless
+  uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
+  network: ws
+  ws-opts:
+    path: /
+- name: 🇪🇪 爱沙尼亚 (Estonia) 03 4609K - NEKO
   server: 94.183.170.135
   port: 8443
   udp: true
@@ -37,7 +35,8 @@ proxies:
   tls: true
   servername: estproxy4.lockdwn.com
   skip-cert-verify: false
-- name: 🇪🇪 爱沙尼亚 (Estonia) 04 3065K - NEKO
+  client-fingerprint: chrome
+- name: 🇪🇪 爱沙尼亚 (Estonia) 04 1561K - NEKO
   server: ee.h1cloud.net
   port: 25895
   udp: true
@@ -48,41 +47,24 @@ proxies:
     public-key: jOVKSP-bS9OkILJ8Epz8hadh6qhavCrOiJYeF0NCn0k
     short-id: a73f0410d728c823
   servername: www.samsung.com
-  client-fingerprint: edge
-- name: 🇪🇪 爱沙尼亚 (Estonia) 05 1587K - NEKO
-  server: 177.3.208.65
-  port: 443
-  udp: true
-  type: vless
-  uuid: 4f34bc04-479c-49ba-91a8-6bb9ed15031c
-  tls: true
-  servername: tgmansion.site
-  skip-cert-verify: false
-  client-fingerprint: firefox
-  network: ws
-  ws-opts:
-    path: /vless-ee
-    headers:
-      Host: tgmansion.site
+  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇪🇪 爱沙尼亚 (Estonia) 01 3713K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 02 3888K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 03 3989K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 04 3065K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 05 1587K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 01 3917K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 02 3644K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 03 4609K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 04 1561K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇪🇪 爱沙尼亚 (Estonia) 01 3713K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 02 3888K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 03 3989K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 04 3065K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 05 1587K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 01 3917K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 02 3644K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 03 4609K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 04 1561K - NEKO
 rules:
 - MATCH,PROXIES

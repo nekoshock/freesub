@@ -4,8 +4,8 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇦🇪 阿联酋 (UAE) 01 ⚠S3744K - NEKO
-  server: hy2.aspidnet.xyz
+- name: 🇦🇪 阿联酋 (UAE) 01 ⚠S4445K - NEKO
+  server: 130.49.161.70
   port: 443
   udp: true
   type: hysteria2
@@ -14,7 +14,7 @@ proxies:
   skip-cert-verify: false
   obfs: salamander
   obfs-password: rG07s3COMIEvdnQipRyWzx_H_2xygNC3
-- name: 🇦🇪 阿联酋 (UAE) 02 4941K - NEKO
+- name: 🇦🇪 阿联酋 (UAE) 02 4448K - NEKO
   server: 157.228.155.185
   port: 443
   udp: true
@@ -26,8 +26,17 @@ proxies:
     public-key: 4q8nqNb-0c-akP3XqVmen67BLXJVlx48a_GDRw16nVg
     short-id: 5ea112e8
   servername: addons.mozilla.org
-  client-fingerprint: randomized
-- name: 🇦🇪 阿联酋 (UAE) 03 1645K - NEKO
+  client-fingerprint: chrome
+- name: 🇦🇪 阿联酋 (UAE) 03 6467K ⚠L20% - NEKO
+  server: 104.143.223.79
+  port: 2085
+  udp: true
+  type: vless
+  uuid: 14e227c3-5a83-4b4d-a41a-e5f499c79415
+  network: grpc
+  grpc-opts:
+    grpc-service-name: vless
+- name: 🇦🇪 阿联酋 (UAE) 04 551K - NEKO
   server: 157.228.155.238
   port: 443
   udp: true
@@ -39,8 +48,8 @@ proxies:
     public-key: 5BDht3tAZdKEKpJymGlRK9JugOnieA-kMSWz_0FoE0I
     short-id: 6f76ad09
   servername: addons.mozilla.org
-  client-fingerprint: chrome
-- name: 🇦🇪 阿联酋 (UAE) 04 3356K - NEKO
+  client-fingerprint: firefox
+- name: 🇦🇪 阿联酋 (UAE) 05 2270K - NEKO
   server: uae.unixzone.us
   port: 22573
   udp: true
@@ -56,18 +65,20 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇦🇪 阿联酋 (UAE) 01 ⚠S3744K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 02 4941K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 03 1645K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 04 3356K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 01 ⚠S4445K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 02 4448K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 03 6467K ⚠L20% - NEKO
+  - 🇦🇪 阿联酋 (UAE) 04 551K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 05 2270K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇦🇪 阿联酋 (UAE) 01 ⚠S3744K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 02 4941K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 03 1645K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 04 3356K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 01 ⚠S4445K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 02 4448K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 03 6467K ⚠L20% - NEKO
+  - 🇦🇪 阿联酋 (UAE) 04 551K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 05 2270K - NEKO
 rules:
 - MATCH,PROXIES

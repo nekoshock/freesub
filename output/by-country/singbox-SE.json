@@ -5,17 +5,51 @@
   "outbounds": [
     {
       "type": "hysteria2",
-      "tag": "🇸🇪 瑞典 (Sweden) 01 2195K - NEKO",
+      "tag": "🇸🇪 瑞典 (Sweden) 01 6415K - NEKO",
+      "server": "77.110.96.201",
+      "server_port": 36264,
+      "password": "Telegram-vpnjey",
+      "tls": {
+        "enabled": true,
+        "server_name": "se.vpnjey2.dpdns.org",
+        "insecure": true
+      },
+      "obfs": {
+        "type": "salamander",
+        "password": "Telegram@vpnjey"
+      }
+    },
+    {
+      "type": "hysteria2",
+      "tag": "🇸🇪 瑞典 (Sweden) 02 ⚠S804K - NEKO",
       "server": "sweedenqfds777.qcloud.surf",
       "server_port": 21223,
-      "password": "408c51e8-9246-483d-ba73-34ab4e202eb9",
+      "password": "4ad3dbf5-2005-4d96-b56c-a0ca9905cab6",
       "tls": {
         "enabled": true,
         "server_name": "sweedenqfds777.qcloud.surf",
-        "insecure": false,
-        "alpn": [
-          "h3"
-        ]
+        "insecure": false
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇸🇪 瑞典 (Sweden) 03 4541K - NEKO",
+      "server": "45.138.103.238",
+      "server_port": 443,
+      "uuid": "f8d52ece-fad4-478d-875d-df6eed3befa7",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "sw.golangwikito.cfd",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "Kb8SsVPprs46BJSUNp5JvWLI-TFEiHmlBOXLQd37Glg",
+          "short_id": "a1037b25dcef6aa7"
+        }
       }
     },
     {
@@ -23,14 +57,18 @@
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇸🇪 瑞典 (Sweden) 01 2195K - NEKO"
+        "🇸🇪 瑞典 (Sweden) 01 6415K - NEKO",
+        "🇸🇪 瑞典 (Sweden) 02 ⚠S804K - NEKO",
+        "🇸🇪 瑞典 (Sweden) 03 4541K - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇸🇪 瑞典 (Sweden) 01 2195K - NEKO"
+        "🇸🇪 瑞典 (Sweden) 01 6415K - NEKO",
+        "🇸🇪 瑞典 (Sweden) 02 ⚠S804K - NEKO",
+        "🇸🇪 瑞典 (Sweden) 03 4541K - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

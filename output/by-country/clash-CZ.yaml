@@ -4,15 +4,30 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇿 捷克 (Czech) 01 289K - NEKO
-  server: cz.h2.cleanersaz.help
+- name: 🇨🇿 捷克 (Czech) 01 1679K - NEKO
+  server: 95.85.238.173
   port: 443
   udp: true
   type: hysteria2
   password: c-E0lamG8OnEj9M_uh3oJPmIXqYIVGctO-NHELF1TmNYs7Jl
   sni: cz.h2.cleanersaz.help
+  skip-cert-verify: true
+- name: 🇨🇿 捷克 (Czech) 02 ⚠S11531K - NEKO
+  server: 188.114.97.6
+  port: 443
+  udp: true
+  type: vless
+  uuid: 93fa8bdb-9cca-4a3e-8355-b7c12e4f595e
+  tls: true
+  servername: fornewiran.ade-1000.workers.dev
   skip-cert-verify: false
-- name: 🇨🇿 捷克 (Czech) 02 4123K - NEKO
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /vl/yLWNcuUuw1jlJpkDhGy
+    headers:
+      Host: fornewiran.ade-1000.workers.dev
+- name: 🇨🇿 捷克 (Czech) 03 4301K - NEKO
   server: 195.123.245.241
   port: 443
   udp: true
@@ -30,14 +45,16 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇨🇿 捷克 (Czech) 01 289K - NEKO
-  - 🇨🇿 捷克 (Czech) 02 4123K - NEKO
+  - 🇨🇿 捷克 (Czech) 01 1679K - NEKO
+  - 🇨🇿 捷克 (Czech) 02 ⚠S11531K - NEKO
+  - 🇨🇿 捷克 (Czech) 03 4301K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇿 捷克 (Czech) 01 289K - NEKO
-  - 🇨🇿 捷克 (Czech) 02 4123K - NEKO
+  - 🇨🇿 捷克 (Czech) 01 1679K - NEKO
+  - 🇨🇿 捷克 (Czech) 02 ⚠S11531K - NEKO
+  - 🇨🇿 捷克 (Czech) 03 4301K - NEKO
 rules:
 - MATCH,PROXIES

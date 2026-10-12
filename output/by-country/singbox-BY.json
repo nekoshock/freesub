@@ -4,15 +4,19 @@
   },
   "outbounds": [
     {
-      "type": "hysteria2",
-      "tag": "🇸🇬 新加坡 (Singapore) 01 (家宽) 400K - NEKO",
-      "server": "s3.huhiuh.space",
-      "server_port": 18642,
-      "password": "user317_windows:c70565e9-a99f-40ef-b96c-469a3949eed2",
+      "type": "vless",
+      "tag": "🇧🇾 白俄罗斯 (Belarus) 01 5055K - NEKO",
+      "server": "89.125.96.80",
+      "server_port": 2053,
+      "uuid": "6c713691-3ca2-0008-ad25-113d1bed6b03",
       "tls": {
         "enabled": true,
-        "server_name": "www.bing.com",
-        "insecure": true
+        "server_name": "wss.zazazuza.ru",
+        "insecure": false
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/vpn-wss/fluxor/59011/"
       }
     },
     {
@@ -20,14 +24,14 @@
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇸🇬 新加坡 (Singapore) 01 (家宽) 400K - NEKO"
+        "🇧🇾 白俄罗斯 (Belarus) 01 5055K - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇸🇬 新加坡 (Singapore) 01 (家宽) 400K - NEKO"
+        "🇧🇾 白俄罗斯 (Belarus) 01 5055K - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

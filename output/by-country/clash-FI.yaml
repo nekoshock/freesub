@@ -4,7 +4,23 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇫🇮 芬兰 (Finland) 01 3739K - NEKO
+- name: 🇫🇮 芬兰 (Finland) 01 ⚠S5962K - NEKO
+  server: 144.31.212.253
+  port: 443
+  udp: true
+  type: hysteria2
+  password: cf83b611-6cba-4535-adcb-8da06c6a9146
+  sni: vps155-edge.kermemehori.ru
+  skip-cert-verify: true
+- name: 🇫🇮 芬兰 (Finland) 02 ⚠S5771K - NEKO
+  server: finkawwwbroy5.qcloud.surf
+  port: 20326
+  udp: true
+  type: hysteria2
+  password: 6656cc0a-5908-4d04-a436-64f5843c0c7a
+  sni: finkawwwbroy5.qcloud.surf
+  skip-cert-verify: false
+- name: 🇫🇮 芬兰 (Finland) 03 5636K - NEKO
   server: 170.168.4.59
   port: 17170
   udp: true
@@ -17,43 +33,64 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: trail-grpc
-- name: 🇫🇮 芬兰 (Finland) 02 ⚠S4898K - NEKO
-  server: 144.31.212.253
+- name: 🇫🇮 芬兰 (Finland) 04 ⚠S994K - NEKO
+  server: fi-p1.h1cloud.net
+  port: 25481
+  udp: true
+  type: vless
+  uuid: 68c3d665-b2b5-4ffb-9f37-9f3d8c47324d
+  tls: true
+  reality-opts:
+    public-key: mhIAHuZIEr2NpdGGSeOxar7VRSgEfVoNwb_G8Y0073E
+    short-id: 3b84fc70657725af
+  servername: www.bing.com
+  client-fingerprint: random
+  network: grpc
+  grpc-opts:
+    grpc-service-name: 8cb5baa18cd7
+- name: 🇫🇮 芬兰 (Finland) 05 425K - NEKO
+  server: 45.133.151.188
   port: 443
   udp: true
-  type: hysteria2
-  password: cf83b611-6cba-4535-adcb-8da06c6a9146
-  sni: 144.31.212.253
-  skip-cert-verify: true
-- name: 🇫🇮 芬兰 (Finland) 03 2825K - NEKO
-  server: finkawwwbroy5.qcloud.surf
-  port: 20326
-  udp: true
-  type: hysteria2
-  password: 8bd04756-3beb-4348-82c9-d35453df50ce
-  sni: finkawwwbroy5.qcloud.surf
-  skip-cert-verify: false
-- name: 🇫🇮 芬兰 (Finland) 04 3743K - NEKO
-  server: 185.103.110.68
-  port: 18283
-  udp: true
-  type: ss
-  cipher: aes-128-gcm
-  password: f9300a9bf39ae0347c3a3bfbc4dd7754
-- name: 🇫🇮 芬兰 (Finland) 05 4348K - NEKO
+  type: vless
+  uuid: 9a0e84f8-4b58-477f-99da-5fac5a2e58e8
+  tls: true
+  reality-opts:
+    public-key: pAgrBKJCmuSJHIzYkEJTqsOBOVBK_DMtEqFPo-PaTkg
+    short-id: b3c9d0c6bdd114a6
+  servername: 36a466g.fi1.h1clayd.click
+  client-fingerprint: firefox
+  network: grpc
+  grpc-opts:
+    grpc-service-name: 0adb9638509b
+- name: 🇫🇮 芬兰 (Finland) 06 4194K - NEKO
   server: 185.103.110.66
   port: 18280
   udp: true
   type: ss
   cipher: aes-128-gcm
   password: f9300a9bf39ae0347c3a3bfbc4dd7754
-- name: 🇫🇮 芬兰 (Finland) 06 4018K - NEKO
+- name: 🇫🇮 芬兰 (Finland) 07 5571K - NEKO
   server: edge10.cyrionflare.com
   port: 2052
   udp: true
   type: vless
   uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
-- name: 🇫🇮 芬兰 (Finland) 07 4020K - NEKO
+- name: 🇫🇮 芬兰 (Finland) 08 4156K - NEKO
+  server: 185.103.110.68
+  port: 18283
+  udp: true
+  type: ss
+  cipher: aes-128-gcm
+  password: f9300a9bf39ae0347c3a3bfbc4dd7754
+- name: 🇫🇮 芬兰 (Finland) 09 4641K - NEKO
+  server: 45.149.114.171
+  port: 777
+  udp: true
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: Jeoq8ujfkqZKKvACQhoqBQ1PA3uq4242
+- name: 🇫🇮 芬兰 (Finland) 10 4294K - NEKO
   server: 95.216.27.15
   port: 2053
   udp: true
@@ -65,44 +102,65 @@ proxies:
     short-id: d368b94e275ab080
   servername: www.google.com
   client-fingerprint: chrome
-- name: 🇫🇮 芬兰 (Finland) 08 3876K - NEKO
-  server: 144.31.27.215
-  port: 43000
+- name: 🇫🇮 芬兰 (Finland) 11 4485K - NEKO
+  server: fi.pythonsetupbib.online
+  port: 443
   udp: true
   type: vless
-  uuid: 47f79fc1-0646-40e8-8a58-73e85d183d5a
+  uuid: f8d52ece-fad4-478d-875d-df6eed3befa7
   flow: xtls-rprx-vision
   tls: true
   reality-opts:
-    public-key: dxCQnOekn14riFxt3vdwDNydvW47FsmwFG6BJ2mUgEg
-    short-id: 568d87a47271344e
-  servername: 144.31.27.215
+    public-key: ZqVz1kWNxh_5zQ5PPkoPHoaXQOvppM0ZyIo8uKp2dCg
+    short-id: bdf5852d1423e694
+  servername: fi.pythonsetupbib.online
+  client-fingerprint: chrome
+- name: 🇫🇮 芬兰 (Finland) 12 ⚠S3029K - NEKO
+  server: van2.ragnarok-it.xyz
+  port: 8446
+  udp: true
+  type: vless
+  uuid: a61496c3-f256-4a36-8a52-8638b9cc900a
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: Y6ZtoxCUW1qFIvLTNfbrsyfCDoIBaRsqGNtbF_mcAXM
+    short-id: 7bac4b112d30d1
+  servername: amd.com
   client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇫🇮 芬兰 (Finland) 01 3739K - NEKO
-  - 🇫🇮 芬兰 (Finland) 02 ⚠S4898K - NEKO
-  - 🇫🇮 芬兰 (Finland) 03 2825K - NEKO
-  - 🇫🇮 芬兰 (Finland) 04 3743K - NEKO
-  - 🇫🇮 芬兰 (Finland) 05 4348K - NEKO
-  - 🇫🇮 芬兰 (Finland) 06 4018K - NEKO
-  - 🇫🇮 芬兰 (Finland) 07 4020K - NEKO
-  - 🇫🇮 芬兰 (Finland) 08 3876K - NEKO
+  - 🇫🇮 芬兰 (Finland) 01 ⚠S5962K - NEKO
+  - 🇫🇮 芬兰 (Finland) 02 ⚠S5771K - NEKO
+  - 🇫🇮 芬兰 (Finland) 03 5636K - NEKO
+  - 🇫🇮 芬兰 (Finland) 04 ⚠S994K - NEKO
+  - 🇫🇮 芬兰 (Finland) 05 425K - NEKO
+  - 🇫🇮 芬兰 (Finland) 06 4194K - NEKO
+  - 🇫🇮 芬兰 (Finland) 07 5571K - NEKO
+  - 🇫🇮 芬兰 (Finland) 08 4156K - NEKO
+  - 🇫🇮 芬兰 (Finland) 09 4641K - NEKO
+  - 🇫🇮 芬兰 (Finland) 10 4294K - NEKO
+  - 🇫🇮 芬兰 (Finland) 11 4485K - NEKO
+  - 🇫🇮 芬兰 (Finland) 12 ⚠S3029K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇫🇮 芬兰 (Finland) 01 3739K - NEKO
-  - 🇫🇮 芬兰 (Finland) 02 ⚠S4898K - NEKO
-  - 🇫🇮 芬兰 (Finland) 03 2825K - NEKO
-  - 🇫🇮 芬兰 (Finland) 04 3743K - NEKO
-  - 🇫🇮 芬兰 (Finland) 05 4348K - NEKO
-  - 🇫🇮 芬兰 (Finland) 06 4018K - NEKO
-  - 🇫🇮 芬兰 (Finland) 07 4020K - NEKO
-  - 🇫🇮 芬兰 (Finland) 08 3876K - NEKO
+  - 🇫🇮 芬兰 (Finland) 01 ⚠S5962K - NEKO
+  - 🇫🇮 芬兰 (Finland) 02 ⚠S5771K - NEKO
+  - 🇫🇮 芬兰 (Finland) 03 5636K - NEKO
+  - 🇫🇮 芬兰 (Finland) 04 ⚠S994K - NEKO
+  - 🇫🇮 芬兰 (Finland) 05 425K - NEKO
+  - 🇫🇮 芬兰 (Finland) 06 4194K - NEKO
+  - 🇫🇮 芬兰 (Finland) 07 5571K - NEKO
+  - 🇫🇮 芬兰 (Finland) 08 4156K - NEKO
+  - 🇫🇮 芬兰 (Finland) 09 4641K - NEKO
+  - 🇫🇮 芬兰 (Finland) 10 4294K - NEKO
+  - 🇫🇮 芬兰 (Finland) 11 4485K - NEKO
+  - 🇫🇮 芬兰 (Finland) 12 ⚠S3029K - NEKO
 rules:
 - MATCH,PROXIES

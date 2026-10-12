@@ -4,23 +4,23 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇹🇼 中国台湾 (Taiwan) 01 4374K - NEKO
-  server: 160.187.100.109
-  port: 443
-  udp: true
-  type: hysteria2
-  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: 'off'
-  skip-cert-verify: true
-- name: 🇹🇼 中国台湾 (Taiwan) 02 4023K - NEKO
+- name: 🇹🇼 中国台湾 (Taiwan) 01 4175K - NEKO
   server: 103.115.109.49
   port: 443
   udp: true
   type: hysteria2
   password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: https://t.me/wangcai2🇨🇳
+  sni: https%3a%2f%2ft.me%2foneclickvpnkeys
   skip-cert-verify: true
-- name: 🇹🇼 中国台湾 (Taiwan) 03 2554K - NEKO
+- name: 🇹🇼 中国台湾 (Taiwan) 02 3971K - NEKO
+  server: vpn-tw-002.fastervpn.world
+  port: 443
+  udp: true
+  type: hysteria2
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: 127.0.0.1
+  skip-cert-verify: true
+- name: 🇹🇼 中国台湾 (Taiwan) 03 3838K - NEKO
   server: tw8.dexlos.com
   port: 8080
   udp: true
@@ -33,20 +33,7 @@ proxies:
   udp-relay-mode: native
   alpn:
   - h3
-- name: 🇹🇼 中国台湾 (Taiwan) 04 3049K - NEKO
-  server: tw5.dexlos.com
-  port: 8080
-  udp: true
-  type: tuic
-  uuid: 8A9905B7-801B-41AF-BFC9-2034212770F6
-  password: 8A9905B7-801B-41AF-BFC9-2034212770F6
-  sni: tw5.dexlos.com
-  skip-cert-verify: true
-  congestion-controller: bbr
-  udp-relay-mode: native
-  alpn:
-  - h3
-- name: 🇹🇼 中国台湾 (Taiwan) 05 ⚠S1024K - NEKO
+- name: 🇹🇼 中国台湾 (Taiwan) 04 1569K - NEKO
   server: 60.248.219.78
   port: 443
   udp: true
@@ -65,20 +52,18 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇹🇼 中国台湾 (Taiwan) 01 4374K - NEKO
-  - 🇹🇼 中国台湾 (Taiwan) 02 4023K - NEKO
-  - 🇹🇼 中国台湾 (Taiwan) 03 2554K - NEKO
-  - 🇹🇼 中国台湾 (Taiwan) 04 3049K - NEKO
-  - 🇹🇼 中国台湾 (Taiwan) 05 ⚠S1024K - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 01 4175K - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 02 3971K - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 03 3838K - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 04 1569K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇹🇼 中国台湾 (Taiwan) 01 4374K - NEKO
-  - 🇹🇼 中国台湾 (Taiwan) 02 4023K - NEKO
-  - 🇹🇼 中国台湾 (Taiwan) 03 2554K - NEKO
-  - 🇹🇼 中国台湾 (Taiwan) 04 3049K - NEKO
-  - 🇹🇼 中国台湾 (Taiwan) 05 ⚠S1024K - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 01 4175K - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 02 3971K - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 03 3838K - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 04 1569K - NEKO
 rules:
 - MATCH,PROXIES

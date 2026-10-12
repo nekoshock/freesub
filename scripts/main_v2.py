@@ -1211,26 +1211,39 @@ ENABLE_WORKERS_STATIC = 64         # 静态筛无网络, 纯内存判断, 并发
 
 
 def is_insecure_node(outbound: dict) -> bool:
-    """判断节点是否关闭了证书校验 (主动降级安全性, 测活阶段无法检出)"""
+    """判断节点是否关闭了证书校验 (主动降级安全性, 测活阶段无法检出)
+
+    ★ 2026-10-11 修复: 旧版只查**顶层** insecure 字段, 漏掉了 `tls.insecure` ——
+      而 `_parse_tls_params()` (L826) 生成 vless/trojan 的 insecure 时, 写的正是
+      `outbound["tls"]["insecure"]`。也就是说**所有 allowInsecure=1 的 vless/trojan
+      节点, 静态预筛全部检测不到**, 这道闸对它们形同虚设。
+      现在两种位置都查。
+    """
     if not isinstance(outbound, dict):
         return False
-    # 1) 顶层 insecure / allow_insecure 布尔开关
+
+    def _truthy(v) -> bool:
+        return v is True or (isinstance(v, str) and v.strip().lower() in ("1", "true", "yes"))
+
+    tls = outbound.get("tls") if isinstance(outbound.get("tls"), dict) else {}
+
+    # 1) insecure / allow_insecure 布尔开关 —— 顶层与 tls 内都要查 (★ 修复点)
     for f in INSECURE_FIELDS:
-        v = outbound.get(f)
-        if v is True or (isinstance(v, str) and v.strip().lower() in ("1", "true", "yes")):
+        if _truthy(outbound.get(f)) or _truthy(tls.get(f)):
             return True
+    # tls.insecure 是 _parse_tls_params 的实际产出字段名, 单独兜一次
+    if _truthy(tls.get("insecure")):
+        return True
     # 2) tls.security = none (明文传输)
-    tls = outbound.get("tls")
-    if isinstance(tls, dict):
-        if str(tls.get("security", "")).strip().lower() in NONE_SECURITY_VALUES:
-            return True
+    if str(tls.get("security", "")).strip().lower() in NONE_SECURITY_VALUES:
+        return True
     # 3) 走 TLS/Reality 但 sni 指向本地回环 (常见于生成错误的配置, 证书必然不匹配)
     #    注意: sni 缺失/为空本身不算危险 — 很多服务端靠 IP 或默认值协商,
     #    只有显式写成 127.0.0.1/localhost 才是配置错误。
-    sni = outbound.get("sni") or outbound.get("servername")
+    sni = outbound.get("sni") or outbound.get("servername") or tls.get("server_name")
     if isinstance(sni, str) and sni.strip().lower() in ("127.0.0.1", "::1", "localhost"):
         # 仅当该节点确实走 TLS/Reality 时才判定 (plain 协议无 sni 属正常)
-        if isinstance(tls, dict) or outbound.get("reality") or outbound.get("flow"):
+        if tls or outbound.get("reality") or outbound.get("flow"):
             return True
     return False
 
@@ -1382,8 +1395,16 @@ def knock_port(server: str, port: int, protocol_type: str) -> bool:
         判定: FRONT_PROXY 有值 = 本地链式模式 = 本地视角; 否则视为 Actions 视角。
     """
     if protocol_type in ("hysteria2", "tuic"):
-        # QUIC 无法轻量预检 UDP 端口连通性, 且本地 UDP 常被 QoS → 放行交阶段B
-        return True
+        # QUIC 无法 TCP 预检 UDP 端口连通性, 且本地 UDP 常被 QoS → 不硬淘汰。
+        # ★ P1-2 修复 (2026-10-11): 但旧版无条件 return True, 连"域名已失效、
+        #   DNS 都解析不出来"的节点也放行进阶段B, 白等 8.3s 单节点开销。
+        #   现在至少验证域名可解析 + 端口合法 —— 解析失败基本等于节点已死。
+        #   #70 实测 hysteria2 有 282 个全量进测活, 其中域名失效的占一部分。
+        try:
+            ip = resolve_host(server)
+        except Exception:
+            return False
+        return bool(ip) and 0 < int(port) < 65536
     try:
         ip = resolve_host(server)
         if not ip:
@@ -1967,6 +1988,7 @@ def test_single_node(item, keep_alive_check=True, chain_relay: dict = None):
             "server": server,
             "port": port,
             "proto": proto,
+            "outbound": outbound,      # ★ P0-1 依赖: 回填时要用它重算凭据指纹对齐 DEDUP_MAP key
             "alive": True,
             "alive_hits": alive_hits,
             "latency_ms": int(latency_ms),
@@ -2790,10 +2812,36 @@ def ipapi_is_verify(ip: str) -> dict:
 
 def classify_and_export(test_results: list, ip_api_info: dict = None):
     print("[*] 出口 IP 情报与分类 ...")
+
+    # ── P1-1 修复 (2026-10-11): 去重前置到情报查询之前 ──
+    #   旧版顺序: 建 nodes → 风险过滤 → Scamalytics/ipapi.is → 去重。
+    #   问题: classify_network_type() / offline_ip_lookup() / resolve_host() 全在
+    #         **去重前**对全量节点执行, 而回填会让 test_results 远大于最终节点数。
+    #   #70 实测: 1064 个节点进分类 → 去重后 445, 约 619 个节点的分类计算是纯浪费。
+    #   现在先用 exit_ip:port 去重, 下游全部只在去重后的集合上跑。
+    #   ★ 键与排序完全沿用原 L3004-3016 的逻辑, 保证结果不变。
+    def _dedup_rank(n):
+        spd = n.get("speed_bps", 0) or 0
+        return (0 if spd >= SPEED_MIN_BYTES_PER_S else 1,      # 速度达标优先
+                n["latency_ms"],                                 # 延迟次之
+                -spd)                                            # 同延迟取吞吐更高
+
+    best_by_key = {}
+    for n in test_results:
+        key = f"{n['exit_ip']}:{n['port']}" if n["exit_ip"] else f"{n['server']}:{n['port']}|{n['raw'][:64]}"
+        cur = best_by_key.get(key)
+        if not cur or _dedup_rank(n) < _dedup_rank(cur):
+            best_by_key[key] = n
+    deduped_results = list(best_by_key.values())
+    dedup_dropped = len(test_results) - len(deduped_results)
+    if dedup_dropped:
+        print(f"[*] 去重前置: {len(test_results)} → {len(deduped_results)} "
+              f"(剔除重复 {dedup_dropped}, 保留速度最优 — 后续情报查询只跑去重后集合)")
+    test_results = deduped_results
+
     # 收集全部出口 IP
     all_exit_ips = []
     seen_ip = set()
-    no_exit_ip = []
     for r in test_results:
         if r["exit_ip"] and r["exit_ip"] not in seen_ip:
             seen_ip.add(r["exit_ip"])
@@ -2995,26 +3043,12 @@ def classify_and_export(test_results: list, ip_api_info: dict = None):
     if downgraded:
         print(f"[*] 高 fraud 分 (≥75) 家宽候选降级: {downgraded} 个")
 
-    # ── 去重 (同出口IP+端口 只留最优) ──
-    #   ★ 旧版按 latency 最小者保留, 会把同一出口 IP 下**速度最快**的那个节点丢掉,
-    #     只留下延迟最低但吞吐一般的 (排序键与用户实际体感脱节)。
-    #   现改为: 速度达标者优先 → 速度相同取延迟更低 → 再相同取吞吐更高。
-    #   延迟已在上游由 MAX_LATENCY_MS 兜底, 这里不需要再当主键。
-    def _dedup_rank(n):
-        spd = n.get("speed_bps", 0) or 0
-        return (0 if spd >= SPEED_MIN_BYTES_PER_S else 1,      # 速度达标优先
-                n["latency_ms"],                                 # 延迟次之
-                -spd)                                            # 同延迟取吞吐更高
-
-    best_by_key = {}
-    for n in safe_nodes:
-        key = f"{n['exit_ip']}:{n['port']}" if n["exit_ip"] else f"{n['server']}:{n['port']}|{n['raw'][:64]}"
-        cur = best_by_key.get(key)
-        if not cur or _dedup_rank(n) < _dedup_rank(cur):
-            best_by_key[key] = n
-    unique_nodes = list(best_by_key.values())
-    dup_dropped = len(safe_nodes) - len(unique_nodes)
-    print(f"[*] 去重: {len(safe_nodes)} → {len(unique_nodes)} (剔除重复 {dup_dropped}, 保留速度最优)")
+    # ── 去重已在函数开头完成 (P1-1: 前置到情报查询之前, 见上方 deduped_results) ──
+    #   排序规则保持不变: 速度达标者优先 → 速度相同取延迟更低 → 再相同取吞吐更高。
+    #   (旧版按 latency 最小者保留会丢掉同出口 IP 下吞吐最好的那个, 已修正)
+    # ★ 必须取 safe_nodes (已过 MITM/断流/WARP/黑名单/fraud 过滤), 不能取 nodes ——
+    #   否则风险过滤全部被绕过, 高危节点直接进订阅。
+    unique_nodes = safe_nodes
 
     # 去重: 出口IP+端口 唯一化, 家宽区严格防同IP刷屏
     # ★ 链式复测 (chain_retest) 双跳失败的家宽候选 → 不进家宽专区 (降级普通)
@@ -3023,6 +3057,10 @@ def classify_and_export(test_results: list, ip_api_info: dict = None):
         if r.get("_chain_failed"):
             chain_failed_raws.add(r.get("raw"))
     residential = []
+    # ★ 这是**有意的第二次去重** (不要当成冗余删掉):
+    #   上方的去重键是 exit_ip:port, 同一住宅 IP 若开多个端口会有多条记录;
+    #   家宽区要"防同 IP 刷屏"(一个真实家庭宽带刷出几十条会淹没整个专区),
+    #   所以这里按裸 exit_ip 再去一次, 每个住宅 IP 只留一条。
     res_seen_ip = set()
     for n in unique_nodes:
         if n["net_type"] in ("residential", "mobile") and n["confidence"] >= 60:
@@ -3491,6 +3529,33 @@ export default {{
 # 主流程
 # ═══════════════════════════════════════════N═══════════════════════
 
+def _verify_export_lineage(unique_nodes: list, test_results: list) -> bool:
+    """闭环校验: 每个出库节点的 raw 必须能追溯到"已测活 ∪ 已补筛查的回填体"
+
+    返回 True = 全部有据可查; False = 存在无法追溯的节点 (已打警告)。
+
+    ★ 为什么需要: 去重/回填/风险过滤跨多个函数协作, 光靠读代码很难确信
+      "没有未经测试的节点混进订阅"。这里用一次集合比对把它变成可验证的事实。
+    合法来源只有两种:
+      ① test_results 里的 raw —— 跑过完整 sing-box 测活 (或链式复测)
+      ② 回填产生的 raw —— 代表节点测活通过, 且克隆体已补跑 is_insecure_node (P0-2)
+    其它任何来源(例如绕过回填直接 append)都会在这里暴露。
+    """
+    traced = set()
+    for r in test_results:
+        raw = r.get("raw")
+        if raw:
+            traced.add(raw)
+    orphans = [n for n in unique_nodes if n.get("raw") not in traced]
+    if orphans:
+        print(f"[!] 闭环校验失败: {len(orphans)}/{len(unique_nodes)} 个出库节点无法追溯到测活记录")
+        for n in orphans[:5]:
+            print(f"      · {n.get('proto')} {n.get('server')}:{n.get('port')} raw={str(n.get('raw'))[:70]}")
+        print(f"    → 这些节点未经测试筛选就进了订阅, 需检查回填/去重路径是否有新分支")
+        return False
+    return True
+
+
 def main():
     t_start = time.time()
     print(f"==== 免费节点测活订阅池 v2 · 启动于 {datetime.now(timezone.utc).isoformat()} ====")
@@ -3503,34 +3568,76 @@ def main():
     # 2. 解析
     candidates = []
     parse_fail = 0
+    parse_fail_samples = []        # ★ P2: 旧版只报计数, 失败样本全丢 → 无法定位是哪个源/哪种格式烂了
+    blacklist_hit = 0              # ★ P2: 占位/广告节点剔除原先完全无计数
     for uri in raw_nodes:
         parsed = parse_node_uri(uri)
         if not parsed:
             parse_fail += 1
+            if len(parse_fail_samples) < 5:
+                parse_fail_samples.append(uri[:80])
             continue
         outbound, server, port, proto = parsed
         # 屏蔽占位/广告节点
         if BLACKLIST_NAME_HINTS.search(urllib.parse.unquote(uri.split("#", 1)[-1] if "#" in uri else "")):
+            blacklist_hit += 1
             continue
         candidates.append((uri, outbound, server, port, proto))
 
-    # 2.5 ★ 测前去重 (凭据指纹): 同 凭据+目标+协议 只测一次, 重复项不回填
-    #     key = (server, port, proto, 凭据指纹): 凭据不同 → 服务端校验结果可能不同, 不可合并
-    #     凭据指纹: uuid/password 各协议的核心身份字段 (vless uuid / vmess id+alterId /
-    #               trojan password / ss 2022密钥 / hy2 auth / tuic uuid+passwd / anytls password)
-    #     完全相同 = 同一节点被多源重复收录 (免费池常态, 30+ 份不同名字) → 只测一次
+    # 2.5 ★ 测前去重 (凭据指纹): 同 凭据+目标+协议+配置 只测一次, 测活后回填有效项
+    #     key = (server, port, proto, 凭据指纹): 四项全同才判为"同一节点被多源重复收录"
+    #     ★ P0-3 修复 (2026-10-11): 旧版指纹只取 uuid/password 等单一凭据字段,
+    #       导致"同 uuid 不同 reality/transport 配置"被判为同一节点:
+    #         vless://U@1.2.3.4:443?security=tls&type=ws&path=/a
+    #         vless://U@1.2.3.4:443?security=reality&pbk=KEY&type=grpc
+    #       后果① 漏测: 后者永远不进测活, 代表失败时白白丢掉一个本可用的配置;
+    #           后果② 误判: 代表成功时后者继承"可用", 但它自己的配置可能根本连不上。
+    #       现在把影响服务端握手/路由的字段一并纳入指纹。
     def cred_fingerprint(outbound: dict, proto: str) -> str:
         try:
             if proto == "vless":
-                return f"{outbound.get('uuid','')}"
+                tls = outbound.get("tls") or {}
+                reality = tls.get("reality") or {}
+                tr = outbound.get("transport") or {}
+                # 关键区分字段: 缺任一都会让"同 uuid 不同配置"被误判为同一节点
+                #   flow            — xtls-vision 与空 flow 的握手行为不同
+                #   server_name     — SNI 决定证书校验目标与 CDN 回源
+                #   insecure        — 是否校验证书, 直接影响 MITM 风险
+                #   public_key      — Reality 握手核心, 不同就连不上 (最高区分度)
+                #   short_id        — Reality 短 ID, 服务端按它路由
+                #   transport.type  — tcp/ws/grpc/http 的转发路径完全不同
+                return "|".join([
+                    str(outbound.get("uuid", "")),
+                    str(outbound.get("flow", "")),
+                    str(tls.get("server_name", "")),
+                    str(int(bool(tls.get("insecure")))),
+                    str(reality.get("public_key", "")),
+                    str(reality.get("short_id", "")),
+                    str(tr.get("type", "")),
+                ])
             if proto == "vmess":
-                return f"{outbound.get('uuid','') or outbound.get('user_id','')}"
+                # alter_id 区分 vmess 的旧/新协议模式; transport.type 区分 ws/grpc
+                tr = outbound.get("transport") or {}
+                tls = outbound.get("tls") or {}
+                return "|".join([
+                    str(outbound.get("uuid", "") or outbound.get("user_id", "")),
+                    str(outbound.get("alter_id", "")),
+                    str(tr.get("type", "")),
+                    str(tls.get("server_name", "")),
+                ])
             if proto == "trojan":
-                return f"{outbound.get('password','')}"
+                # sni 是 trojan 的实际路由目标, 同密码不同 sni 是不同的入口
+                tls = outbound.get("tls") or {}
+                return "|".join([
+                    str(outbound.get("password", "")),
+                    str(tls.get("server_name", "")),
+                ])
             if proto == "shadowsocks":
                 return f"{outbound.get('method','')}|{outbound.get('password','')}"
             if proto == "hysteria2":
-                return f"{outbound.get('password','') or ''}|{outbound.get('server_ports','')}"
+                # ★ server_ports 已从指纹移除: 它是端口跳跃的**路由参数**而非身份凭据。
+                #   同密码不同端口范围本质是同一份凭据, 旧版把它们当不同节点白测两遍。
+                return f"{outbound.get('password','') or ''}"
             if proto == "tuic":
                 return f"{outbound.get('uuid','')}|{outbound.get('password','')}"
             if proto == "anytls":
@@ -3540,14 +3647,12 @@ def main():
         except Exception:
             return ""  # 指纹失败 → 不合并 (宁慢不错)
 
-    # ★ 测前去重 (凭据指纹): 同 凭据+目标+协议 只测一次。
-    #   key = (server, port, proto, 凭据指纹): 凭据不同 → 服务端校验结果可能不同, 不可合并。
+    # ★ 测前去重 (凭据指纹): 四项全同 (server, port, proto, 指纹) 只测一次。
     #   完全相同 = 同一节点被多源重复收录 (免费池常态, 30+ 份不同名字) → 只测一次。
     #   ★ 这是**测前**去重, 是整条流水线省时间的关键一步: 4838 → 2340,
     #     少起 2498 次 sing-box 进程、少跑 2498 轮探测。
-    #   被剔除的重复 URI **不再回填** (2026-10 起): 测活后的回填既不省时间
-    #     (测试量已由这里定死), 也因出口IP相同必然在分类去重处被折叠, 还会让
-    #     重复项在测活后会回填 (见步骤 4.5), 保证多源收录的同一节点不丢失。
+    #   被剔除的重复 URI **会回填** (步骤 4.5): 测活确认代表真活后, 重复项继承其结果,
+    #     保证多源收录的同一节点不丢失。回填前逐条复查 insecure (P0-2)。
     # seen_keys 记录 key → [该 key 下的全部 URI] (首个是代表节点, 其余是重复项)
     seen_keys, deduped, dup_count = {}, [], 0
     for item in candidates:
@@ -3573,6 +3678,12 @@ def main():
     for _, _, _, _, p in candidates:
         proto_stat[p] = proto_stat.get(p, 0) + 1
     print(f"[*] 解析成功(去重后): {len(candidates)} | 失败 {parse_fail} | 协议分布 {proto_stat}")
+    if blacklist_hit:
+        print(f"    占位/广告节点剔除: {blacklist_hit} (BLACKLIST_NAME_HINTS 命中)")
+    if parse_fail_samples:
+        print(f"    解析失败样本 (前 {len(parse_fail_samples)} 条, 便于定位烂源/格式):")
+        for s in parse_fail_samples:
+            print(f"      · {s}")
 
     if not candidates:
         print("[!] 无可测节点 (订阅源全部失效?) — 保留上次 output, 不覆盖订阅文件")
@@ -3592,21 +3703,36 @@ def main():
     #   ⚠️ 入场条件比历史版本更严: 只回填**真活**(alive 且未断流)的代表节点结果,
     #      断流/未测到的代表节点不回填, 避免把失败的结论扩散给同源的其它 URI。
     if DEDUP_MAP:
+        # ★ P0-1 修复: result_by_key 的键必须与 DEDUP_MAP 完全同维度(4段, 含凭据指纹)。
+        #   旧版用 3 段 (server, port, proto) 做键, 同一 server:port:proto 下不同凭据的
+        #   节点会互相覆盖, 导致 uri2 拿到 uuid-B 的测活结果却配着 uuid-A 的 outbound。
         result_by_key = {}
         for r in test_results:
-            key = ((r["server"] or "").lower(), r["port"], r["proto"])
-            result_by_key[key] = r
+            fp = cred_fingerprint(r.get("outbound") or {}, r["proto"]) \
+                 if r.get("outbound") else ""
+            result_by_key[((r["server"] or "").lower(), r["port"], r["proto"], fp)] = r
         expanded = list(test_results)
         backfilled = 0
+        insecure_backfill = 0     # P0-2: 克隆体自身 insecure 被拦截的计数
         for key, uris in DEDUP_MAP.items():
             if len(uris) <= 1:
                 continue
-            lookup = (key[0], key[1], key[2])
-            r = result_by_key.get(lookup)
+            # ★ 直接用 DEDUP_MAP 的完整 4 段 key 查表, 不再截断成 3 段
+            r = result_by_key.get(key)
             # 只继承"确认为有效"的代表节点结果 (alive 且未断流)
             if not r or not r.get("alive") or r.get("is_stalled"):
                 continue
             for extra_uri in uris[1:]:
+                # ★ P0-2 修复: 克隆体的 raw 与代表不同, 可能带代表没有的危险字段
+                #   (如 allowInsecure=1)。代表通过静态预筛 ≠ 它的重复项也安全 ——
+                #   因为指纹(vless 只 uuid)相同就会被判重复, 而 insecure 字段不在指纹里。
+                #   必须逐条复查, 否则 insecure 节点会绕过 static_prescreen 入库。
+                parsed = parse_node_uri(extra_uri)
+                if not parsed:
+                    continue
+                if is_insecure_node(parsed[0]):
+                    insecure_backfill += 1
+                    continue
                 # dict(r) 浅拷贝: 保证 speed_bps/latency_ms/loss_rate/ttfb_ms/
                 # alive/is_stalled/is_premium 等所有状态字段与代表节点完全一致,
                 # 只替换 raw 为本条 URI (后续 classify 会据此解析出各自的 outbound)
@@ -3617,6 +3743,9 @@ def main():
                 backfilled += 1
         if backfilled:
             print(f"[+] 重复节点回填: +{backfilled} (继承真活代表节点的测活结果)")
+        if insecure_backfill:
+            print(f"    回填时拦截 insecure 克隆体: {insecure_backfill} 个 "
+                  f"(代表通过预筛但重复项关闭证书校验 — 已拦截, 未入库)")
         test_results = expanded
 
 
@@ -3647,6 +3776,12 @@ def main():
     if not unique_nodes:
         print("[!] 分类后无存活节点 — 保留上次 output")
         return
+
+    # ★ P2 闭环校验: 每个出库节点必须能追溯到"已测活"或"已补筛查的回填体"。
+    #   硬要求"未经测试筛选的节点不被保留" —— 用断言把它变成可验证的,
+    #   而不是靠人肉 review 代码路径。发现漏网之鱼时打警告并指出具体 raw, 便于定位。
+    _verify_export_lineage(unique_nodes, test_results)
+
     total, res = export_all(unique_nodes, residential, non_residential)
     update_readme(total, res)
 

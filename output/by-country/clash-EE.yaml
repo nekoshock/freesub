@@ -4,29 +4,33 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇪🇪 爱沙尼亚 (Estonia) 01 3917K - NEKO
-  server: est-1.ardesnode.ru
+- name: 🇪🇪 爱沙尼亚 (Estonia) 01 ⚠S2436K - NEKO
+  server: 93.123.39.84
   port: 443
   udp: true
   type: vless
-  uuid: 616c7b3b-41f4-4038-88c6-d6fedd0ae4a7
+  uuid: 5298d5c5-0633-4989-95c8-68ee13cd507e
+  tls: true
+  servername: ee2x.global-cdn.org
+  skip-cert-verify: false
+  client-fingerprint: chrome
+  network: grpc
+  grpc-opts:
+    grpc-service-name: content.v1.Feed
+- name: 🇪🇪 爱沙尼亚 (Estonia) 02 4167K - NEKO
+  server: 185.31.242.61
+  port: 443
+  udp: true
+  type: vless
+  uuid: ee18d188-14cc-417e-beb1-70e4add6d023
   flow: xtls-rprx-vision
   tls: true
   reality-opts:
-    public-key: PKlt_5ASsz137EvA9SKSadtjEv1k_U7VRtoelKCgADs
-    short-id: 9ea74b83f4993ca9
-  servername: est-1.ardesnode.ru
+    public-key: 7mRrVzTchVLWWBru5fCgTvtdkL7lVJ_qRj9HW8Rd8X0
+    short-id: 0da7e14db353e7d0
+  servername: est.nztvpn.com
   client-fingerprint: chrome
-- name: 🇪🇪 爱沙尼亚 (Estonia) 02 3644K - NEKO
-  server: 94.183.170.135
-  port: 443
-  udp: true
-  type: vless
-  uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
-  network: ws
-  ws-opts:
-    path: /
-- name: 🇪🇪 爱沙尼亚 (Estonia) 03 4609K - NEKO
+- name: 🇪🇪 爱沙尼亚 (Estonia) 03 4669K - NEKO
   server: 94.183.170.135
   port: 8443
   udp: true
@@ -36,7 +40,31 @@ proxies:
   servername: estproxy4.lockdwn.com
   skip-cert-verify: false
   client-fingerprint: chrome
-- name: 🇪🇪 爱沙尼亚 (Estonia) 04 1561K - NEKO
+- name: 🇪🇪 爱沙尼亚 (Estonia) 04 4399K - NEKO
+  server: 94.183.170.135
+  port: 443
+  udp: true
+  type: vless
+  uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 94.183.170.135
+- name: 🇪🇪 爱沙尼亚 (Estonia) 05 ⚠S1847K - NEKO
+  server: zahvatpribaltovonline.vvzzkontaktezzvv.garden
+  port: 443
+  udp: true
+  type: vless
+  uuid: ace33fb8-c593-4b17-8f72-f3359b6e9638
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: r1MW0o1DsC6EEWN-KPKnoXszb1trxlKShRIgOpxqHBk
+    short-id: d98e7afec9c0c359
+  servername: zahvatpribaltovonline.vvzzkontaktezzvv.garden
+  client-fingerprint: firefox
+- name: 🇪🇪 爱沙尼亚 (Estonia) 06 4770K - NEKO
   server: ee.h1cloud.net
   port: 25895
   udp: true
@@ -47,24 +75,43 @@ proxies:
     public-key: jOVKSP-bS9OkILJ8Epz8hadh6qhavCrOiJYeF0NCn0k
     short-id: a73f0410d728c823
   servername: www.samsung.com
+  client-fingerprint: random
+- name: 🇪🇪 爱沙尼亚 (Estonia) 07 4542K - NEKO
+  server: 93.89.220.37
+  port: 443
+  udp: true
+  type: vless
+  uuid: 185e2bb3-2934-48d0-bbd5-dd20d16e83ee
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: lwKaUQ81wJUJRsqAPsfTPj5V_f9N50UYEwzRI_nuq2g
+    short-id: e88cb983f3c97528
+  servername: ibm.com
   client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇪🇪 爱沙尼亚 (Estonia) 01 3917K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 02 3644K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 03 4609K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 04 1561K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 01 ⚠S2436K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 02 4167K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 03 4669K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 04 4399K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 05 ⚠S1847K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 06 4770K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 07 4542K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇪🇪 爱沙尼亚 (Estonia) 01 3917K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 02 3644K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 03 4609K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 04 1561K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 01 ⚠S2436K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 02 4167K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 03 4669K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 04 4399K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 05 ⚠S1847K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 06 4770K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 07 4542K - NEKO
 rules:
 - MATCH,PROXIES

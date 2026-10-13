@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇰🇷 韩国 (South Korea) 01 4663K - NEKO
+- name: 🇰🇷 韩国 (South Korea) 01 3869K - NEKO
   server: 152.69.231.175
   port: 50160
   udp: true
@@ -12,35 +12,52 @@ proxies:
   password: 1beb216e3f60aea9555dae60d219a5ca
   sni: 152-69-231-175.liao.kdns.fr
   skip-cert-verify: false
-- name: 🇰🇷 韩国 (South Korea) 02 2566K - NEKO
-  server: 49.254.204.134
-  port: 1774
+- name: 🇰🇷 韩国 (South Korea) 02 2379K - NEKO
+  server: working-tomcat.rooster465.autos
+  port: 443
   udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: 1234!@#$
-- name: 🇰🇷 韩国 (South Korea) 03 3379K - NEKO
-  server: 141.164.45.187
-  port: 8888
+  type: trojan
+  password: UX82473651
+  sni: working-tomcat.rooster465.autos
+  skip-cert-verify: false
+- name: 🇰🇷 韩国 (South Korea) 03 1004K - NEKO
+  server: 3.35.168.225
+  port: 443
   udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: Y6R9pAtvxxzmGC
-- name: 🇰🇷 韩国 (South Korea) 04 2181K - NEKO
-  server: 141.164.45.187
-  port: 6697
+  type: trojan
+  password: UX82473651
+  sni: noted-cougar.rooster465.autos
+  skip-cert-verify: false
+- name: 🇰🇷 韩国 (South Korea) 04 3844K - NEKO
+  server: cunning-grub.rooster465.autos
+  port: 443
   udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: TEzjfAYq2IjtuoS
-- name: 🇰🇷 韩国 (South Korea) 05 3537K - NEKO
-  server: mm.good2026.com
-  port: 11251
+  type: trojan
+  password: UX82473651
+  sni: cunning-grub.rooster465.autos
+  skip-cert-verify: false
+- name: 🇰🇷 韩国 (South Korea) 05 3301K - NEKO
+  server: 64.176.231.183
+  port: 443
   udp: true
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: 99234c60-b01a-4d67-889a-cab58ab0061a
-- name: 🇰🇷 韩国 (South Korea) 06 3676K - NEKO
+  type: vless
+  uuid: 583cc910-b57c-4dd0-a4a7-cea51a30b032
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: GR_zPAgxF9PZ70Z9UpSmMlcd2STyoAC0fZTSHkTTCGE
+    short-id: ca193e889d958f81
+  servername: www.apple.com
+  client-fingerprint: chrome
+- name: 🇰🇷 韩国 (South Korea) 06 3884K - NEKO
+  server: 3.36.52.203
+  port: 443
+  udp: true
+  type: trojan
+  password: UX82473651
+  sni: inviting-rabbit.rooster465.autos
+  skip-cert-verify: false
+- name: 🇰🇷 韩国 (South Korea) 07 3866K - NEKO
   server: pure-kodiak.rooster465.autos
   port: 443
   udp: true
@@ -48,7 +65,7 @@ proxies:
   password: UX82473651
   sni: pure-kodiak.rooster465.autos
   skip-cert-verify: false
-- name: 🇰🇷 韩国 (South Korea) 07 3270K - NEKO
+- name: 🇰🇷 韩国 (South Korea) 08 3766K - NEKO
   server: glorious-lark.rooster465.autos
   port: 443
   udp: true
@@ -56,50 +73,22 @@ proxies:
   password: UX82473651
   sni: glorious-lark.rooster465.autos
   skip-cert-verify: false
-- name: 🇰🇷 韩国 (South Korea) 08 3674K - NEKO
-  server: fancy-skink.rooster465.autos
+- name: 🇰🇷 韩国 (South Korea) 09 2674K - NEKO
+  server: 141.164.45.187
+  port: 2376
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: faBAoD54k87UJG7
+- name: 🇰🇷 韩国 (South Korea) 10 3501K - NEKO
+  server: 3.35.207.188
   port: 443
   udp: true
   type: trojan
   password: UX82473651
-  sni: fancy-skink.rooster465.autos
+  sni: main-fawn.rooster465.autos
   skip-cert-verify: false
-- name: 🇰🇷 韩国 (South Korea) 09 3675K - NEKO
-  server: 43.203.120.240
-  port: 443
-  udp: true
-  type: trojan
-  password: UX82473651
-  sni: cunning-grub.rooster465.autos
-  skip-cert-verify: false
-- name: 🇰🇷 韩国 (South Korea) 10 3674K - NEKO
-  server: inviting-rabbit.rooster465.autos
-  port: 443
-  udp: true
-  type: trojan
-  password: UX82473651
-  sni: inviting-rabbit.rooster465.autos
-  skip-cert-verify: false
-- name: 🇰🇷 韩国 (South Korea) 11 3647K - NEKO
-  server: central-jawfish.rooster465.autos
-  port: 443
-  udp: true
-  type: trojan
-  password: UX82473651
-  sni: central-jawfish.rooster465.autos
-  skip-cert-verify: false
-- name: 🇰🇷 韩国 (South Korea) 12 3637K - NEKO
-  server: 132.145.80.230
-  port: 80
-  udp: true
-  type: vmess
-  uuid: 5155860e-d07d-46c3-9128-3afbd84626c7
-  alterId: 0
-  cipher: auto
-  network: ws
-  ws-opts:
-    path: /cctv13.m3u8
-- name: 🇰🇷 韩国 (South Korea) 13 3889K - NEKO
+- name: 🇰🇷 韩国 (South Korea) 11 3626K - NEKO
   server: 34.22.111.30
   port: 443
   udp: true
@@ -110,21 +99,8 @@ proxies:
     public-key: M0QKczb2MzOH45qDViIAbb9LPrVVyCp880D4HlwIKnA
     short-id: 8685f8b4d9f4f51e
   servername: www.cloudflare.com
-  client-fingerprint: firefox
-- name: 🇰🇷 韩国 (South Korea) 14 ⚠S1493K - NEKO
-  server: 3.39.4.109
-  port: 13672
-  udp: true
-  type: vless
-  uuid: 814bd064-544d-4255-a070-5705c03f6da9
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
-    short-id: 48050fab
-  servername: www.apple.com
-  client-fingerprint: edge
-- name: 🇰🇷 韩国 (South Korea) 15 3780K - NEKO
+  client-fingerprint: qq
+- name: 🇰🇷 韩国 (South Korea) 12 2984K - NEKO
   server: 3.39.4.109
   port: 18967
   udp: true
@@ -136,41 +112,22 @@ proxies:
     public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
     short-id: 48050fab
   servername: www.apple.com
-  client-fingerprint: firefox
-- name: 🇰🇷 韩国 (South Korea) 16 ⚠S1810K - NEKO
-  server: 52.78.42.192
-  port: 443
+  client-fingerprint: chrome
+- name: 🇰🇷 韩国 (South Korea) 13 1629K - NEKO
+  server: 3.39.4.109
+  port: 13672
   udp: true
-  type: trojan
-  password: UX82473651
-  sni: working-tomcat.rooster465.autos
-  skip-cert-verify: false
-- name: 🇰🇷 韩国 (South Korea) 17 ⚠S416K - NEKO
-  server: 3.35.207.188
-  port: 443
-  udp: true
-  type: trojan
-  password: UX82473651
-  sni: main-fawn.rooster465.autos
-  skip-cert-verify: false
-- name: 🇰🇷 韩国 (South Korea) 18 ⚠S406K - NEKO
-  server: 13.125.69.162
-  port: 443
-  udp: true
-  type: trojan
-  password: UX82473651
-  sni: engaging-toucan.rooster465.autos
-  skip-cert-verify: false
-- name: 🇰🇷 韩国 (South Korea) 19 3823K - NEKO
-  server: 3.34.131.153
-  port: 443
-  udp: true
-  type: trojan
-  password: UX82473651
-  sni: pretty-rat.rooster465.autos
-  skip-cert-verify: false
-- name: 🇰🇷 韩国 (South Korea) 20 2408K - NEKO
-  server: 52.78.203.191
+  type: vless
+  uuid: 814bd064-544d-4255-a070-5705c03f6da9
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
+    short-id: 48050fab
+  servername: www.apple.com
+  client-fingerprint: chrome
+- name: 🇰🇷 韩国 (South Korea) 14 ⚠S319K - NEKO
+  server: delicate-buck.rooster465.autos
   port: 443
   udp: true
   type: trojan
@@ -182,50 +139,38 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇰🇷 韩国 (South Korea) 01 4663K - NEKO
-  - 🇰🇷 韩国 (South Korea) 02 2566K - NEKO
-  - 🇰🇷 韩国 (South Korea) 03 3379K - NEKO
-  - 🇰🇷 韩国 (South Korea) 04 2181K - NEKO
-  - 🇰🇷 韩国 (South Korea) 05 3537K - NEKO
-  - 🇰🇷 韩国 (South Korea) 06 3676K - NEKO
-  - 🇰🇷 韩国 (South Korea) 07 3270K - NEKO
-  - 🇰🇷 韩国 (South Korea) 08 3674K - NEKO
-  - 🇰🇷 韩国 (South Korea) 09 3675K - NEKO
-  - 🇰🇷 韩国 (South Korea) 10 3674K - NEKO
-  - 🇰🇷 韩国 (South Korea) 11 3647K - NEKO
-  - 🇰🇷 韩国 (South Korea) 12 3637K - NEKO
-  - 🇰🇷 韩国 (South Korea) 13 3889K - NEKO
-  - 🇰🇷 韩国 (South Korea) 14 ⚠S1493K - NEKO
-  - 🇰🇷 韩国 (South Korea) 15 3780K - NEKO
-  - 🇰🇷 韩国 (South Korea) 16 ⚠S1810K - NEKO
-  - 🇰🇷 韩国 (South Korea) 17 ⚠S416K - NEKO
-  - 🇰🇷 韩国 (South Korea) 18 ⚠S406K - NEKO
-  - 🇰🇷 韩国 (South Korea) 19 3823K - NEKO
-  - 🇰🇷 韩国 (South Korea) 20 2408K - NEKO
+  - 🇰🇷 韩国 (South Korea) 01 3869K - NEKO
+  - 🇰🇷 韩国 (South Korea) 02 2379K - NEKO
+  - 🇰🇷 韩国 (South Korea) 03 1004K - NEKO
+  - 🇰🇷 韩国 (South Korea) 04 3844K - NEKO
+  - 🇰🇷 韩国 (South Korea) 05 3301K - NEKO
+  - 🇰🇷 韩国 (South Korea) 06 3884K - NEKO
+  - 🇰🇷 韩国 (South Korea) 07 3866K - NEKO
+  - 🇰🇷 韩国 (South Korea) 08 3766K - NEKO
+  - 🇰🇷 韩国 (South Korea) 09 2674K - NEKO
+  - 🇰🇷 韩国 (South Korea) 10 3501K - NEKO
+  - 🇰🇷 韩国 (South Korea) 11 3626K - NEKO
+  - 🇰🇷 韩国 (South Korea) 12 2984K - NEKO
+  - 🇰🇷 韩国 (South Korea) 13 1629K - NEKO
+  - 🇰🇷 韩国 (South Korea) 14 ⚠S319K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇰🇷 韩国 (South Korea) 01 4663K - NEKO
-  - 🇰🇷 韩国 (South Korea) 02 2566K - NEKO
-  - 🇰🇷 韩国 (South Korea) 03 3379K - NEKO
-  - 🇰🇷 韩国 (South Korea) 04 2181K - NEKO
-  - 🇰🇷 韩国 (South Korea) 05 3537K - NEKO
-  - 🇰🇷 韩国 (South Korea) 06 3676K - NEKO
-  - 🇰🇷 韩国 (South Korea) 07 3270K - NEKO
-  - 🇰🇷 韩国 (South Korea) 08 3674K - NEKO
-  - 🇰🇷 韩国 (South Korea) 09 3675K - NEKO
-  - 🇰🇷 韩国 (South Korea) 10 3674K - NEKO
-  - 🇰🇷 韩国 (South Korea) 11 3647K - NEKO
-  - 🇰🇷 韩国 (South Korea) 12 3637K - NEKO
-  - 🇰🇷 韩国 (South Korea) 13 3889K - NEKO
-  - 🇰🇷 韩国 (South Korea) 14 ⚠S1493K - NEKO
-  - 🇰🇷 韩国 (South Korea) 15 3780K - NEKO
-  - 🇰🇷 韩国 (South Korea) 16 ⚠S1810K - NEKO
-  - 🇰🇷 韩国 (South Korea) 17 ⚠S416K - NEKO
-  - 🇰🇷 韩国 (South Korea) 18 ⚠S406K - NEKO
-  - 🇰🇷 韩国 (South Korea) 19 3823K - NEKO
-  - 🇰🇷 韩国 (South Korea) 20 2408K - NEKO
+  - 🇰🇷 韩国 (South Korea) 01 3869K - NEKO
+  - 🇰🇷 韩国 (South Korea) 02 2379K - NEKO
+  - 🇰🇷 韩国 (South Korea) 03 1004K - NEKO
+  - 🇰🇷 韩国 (South Korea) 04 3844K - NEKO
+  - 🇰🇷 韩国 (South Korea) 05 3301K - NEKO
+  - 🇰🇷 韩国 (South Korea) 06 3884K - NEKO
+  - 🇰🇷 韩国 (South Korea) 07 3866K - NEKO
+  - 🇰🇷 韩国 (South Korea) 08 3766K - NEKO
+  - 🇰🇷 韩国 (South Korea) 09 2674K - NEKO
+  - 🇰🇷 韩国 (South Korea) 10 3501K - NEKO
+  - 🇰🇷 韩国 (South Korea) 11 3626K - NEKO
+  - 🇰🇷 韩国 (South Korea) 12 2984K - NEKO
+  - 🇰🇷 韩国 (South Korea) 13 1629K - NEKO
+  - 🇰🇷 韩国 (South Korea) 14 ⚠S319K - NEKO
 rules:
 - MATCH,PROXIES

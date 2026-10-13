@@ -4,7 +4,14 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇧🇷 巴西 (Brazil) 01 ⚠S3044K - NEKO
+- name: 🇧🇷 巴西 (Brazil) 01 4439K - NEKO
+  server: 216.128.168.190
+  port: 8388
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: owVdNnQcdPgthSyX
+- name: 🇧🇷 巴西 (Brazil) 02 3755K - NEKO
   server: 35.199.90.53
   port: 443
   udp: true
@@ -21,12 +28,14 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇧🇷 巴西 (Brazil) 01 ⚠S3044K - NEKO
+  - 🇧🇷 巴西 (Brazil) 01 4439K - NEKO
+  - 🇧🇷 巴西 (Brazil) 02 3755K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇧🇷 巴西 (Brazil) 01 ⚠S3044K - NEKO
+  - 🇧🇷 巴西 (Brazil) 01 4439K - NEKO
+  - 🇧🇷 巴西 (Brazil) 02 3755K - NEKO
 rules:
 - MATCH,PROXIES

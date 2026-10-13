@@ -1,0 +1,120 @@
+{
+  "log": {
+    "level": "warn"
+  },
+  "outbounds": [
+    {
+      "type": "vless",
+      "tag": "🇨🇾 塞浦路斯 (Cyprus) 01 1119K - NEKO",
+      "server": "194.76.154.31",
+      "server_port": 40443,
+      "uuid": "9f0baff8-bdee-4de9-9515-bcc4932b41fa",
+      "tls": {
+        "enabled": true,
+        "server_name": "deepl.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "MN6QjUHDUXyteMdR-cDna89fq4X3qgQhLnNqTtRUbBQ",
+          "short_id": "a8ae"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇨🇾 塞浦路斯 (Cyprus) 02 ⚠S1965K - NEKO",
+      "server": "cdn.bulkavpn.top",
+      "server_port": 443,
+      "uuid": "91d734be-a3d0-4d50-83ab-74cf7b6966fa",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.bulkavpn.top",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "bQZcMViJWXus9rMSTOa-ZAaUJC0mIlPx7XmzrLp8GQU",
+          "short_id": "94f32cfc"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇨🇾 塞浦路斯 (Cyprus) 03 4701K - NEKO",
+      "server": "co-a.speedtec.ru",
+      "server_port": 443,
+      "uuid": "019fbe0f-2d9f-4b89-9f81-e1e36129892a",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "co-pl.speedtec.ru",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "random"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "EBISh6QAVskJ_nvet-Qio9jS2yqxe9de6GMScYlbjhI",
+          "short_id": "226509f017e4c36d"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇨🇾 塞浦路斯 (Cyprus) 04 3499K - NEKO",
+      "server": "185.76.241.49",
+      "server_port": 443,
+      "uuid": "9ee57d03-dcf5-488b-aff7-305301879353",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "ru-in-est-4vp.movietop24.site",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "-vbYsY2UQcGl7Z6eTc5KDhxOfo_OhsqFlI_SyeL4TSE",
+          "short_id": "b927c029ece94e02"
+        }
+      }
+    },
+    {
+      "type": "selector",
+      "tag": "select",
+      "outbounds": [
+        "auto",
+        "🇨🇾 塞浦路斯 (Cyprus) 01 1119K - NEKO",
+        "🇨🇾 塞浦路斯 (Cyprus) 02 ⚠S1965K - NEKO",
+        "🇨🇾 塞浦路斯 (Cyprus) 03 4701K - NEKO",
+        "🇨🇾 塞浦路斯 (Cyprus) 04 3499K - NEKO"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "auto",
+      "outbounds": [
+        "🇨🇾 塞浦路斯 (Cyprus) 01 1119K - NEKO",
+        "🇨🇾 塞浦路斯 (Cyprus) 02 ⚠S1965K - NEKO",
+        "🇨🇾 塞浦路斯 (Cyprus) 03 4701K - NEKO",
+        "🇨🇾 塞浦路斯 (Cyprus) 04 3499K - NEKO"
+      ],
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+    {
+      "type": "block",
+      "tag": "block"
+    }
+  ]
+}

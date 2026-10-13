@@ -5,39 +5,7 @@
   "outbounds": [
     {
       "type": "vless",
-      "tag": "🇨🇭 瑞士 (Switzerland) 01 6715K - NEKO",
-      "server": "138.124.63.224",
-      "server_port": 8444,
-      "uuid": "f55e9aba-7b14-4f6f-b59a-d5b3d45c9309",
-      "tls": {
-        "enabled": true,
-        "server_name": "github.com",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "FWitre1jinQR7qz5HQ0q2Q4Gg9xA9B0SyizCziN7Ch0",
-          "short_id": "457fab2ac885dbe0"
-        }
-      },
-      "transport": {
-        "type": "grpc",
-        "service_name": "GunService"
-      }
-    },
-    {
-      "type": "shadowsocks",
-      "tag": "🇨🇭 瑞士 (Switzerland) 02 2142K - NEKO",
-      "server": "132.243.175.144",
-      "server_port": 8388,
-      "method": "chacha20-ietf-poly1305",
-      "password": "e8KgS8fD0yDqYFpgN4G5piCOt9aFyqA3"
-    },
-    {
-      "type": "vless",
-      "tag": "🇨🇭 瑞士 (Switzerland) 03 5199K - NEKO",
+      "tag": "🇨🇭 瑞士 (Switzerland) 01 4668K - NEKO",
       "server": "45.90.59.15",
       "server_port": 443,
       "uuid": "3950b45e-740d-4dca-ac95-505ec8534592",
@@ -57,22 +25,40 @@
       }
     },
     {
+      "type": "vless",
+      "tag": "🇨🇭 瑞士 (Switzerland) 02 4337K - NEKO",
+      "server": "138.124.96.88",
+      "server_port": 41826,
+      "uuid": "2eb3f6a0-df6e-49b6-994c-177acdd50a97",
+      "tls": {
+        "enabled": true,
+        "server_name": "sweden.homyak.app",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "random"
+        }
+      },
+      "transport": {
+        "type": "httpupgrade",
+        "path": "/"
+      }
+    },
+    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇨🇭 瑞士 (Switzerland) 01 6715K - NEKO",
-        "🇨🇭 瑞士 (Switzerland) 02 2142K - NEKO",
-        "🇨🇭 瑞士 (Switzerland) 03 5199K - NEKO"
+        "🇨🇭 瑞士 (Switzerland) 01 4668K - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 02 4337K - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇨🇭 瑞士 (Switzerland) 01 6715K - NEKO",
-        "🇨🇭 瑞士 (Switzerland) 02 2142K - NEKO",
-        "🇨🇭 瑞士 (Switzerland) 03 5199K - NEKO"
+        "🇨🇭 瑞士 (Switzerland) 01 4668K - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 02 4337K - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

@@ -4,33 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇪🇸 西班牙 (Spain) 01 ⚠S1689K - NEKO
-  server: 5.188.181.201
-  port: 9025
-  udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: XPtzA9sCug3SPR4c
-- name: 🇪🇸 西班牙 (Spain) 02 ⚠S913K - NEKO
-  server: 5.188.181.201
-  port: 9011
-  udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: M3t2ZEQcMGRWBjRa
-- name: 🇪🇸 西班牙 (Spain) 03 4907K - NEKO
-  server: es3.h1cloud.net
-  port: 25136
-  udp: true
-  type: vless
-  uuid: c1c13ef7-affa-47e1-8967-25cc67679c10
-  tls: true
-  reality-opts:
-    public-key: nkmfL3QCskKAfBUk-OiTgcWyIXGmXrZVtDEoio0Qo1w
-    short-id: f78838fbd85e59ae
-  servername: www.cloudflare.com
-  client-fingerprint: firefox
-- name: 🇪🇸 西班牙 (Spain) 04 ⚠S4553K - NEKO
+- name: 🇪🇸 西班牙 (Spain) 01 4722K - NEKO
   server: 212.227.235.66
   port: 2053
   udp: true
@@ -42,67 +16,17 @@ proxies:
     short-id: 29e8dcd2b37aaa7f
   servername: www.apple.com
   client-fingerprint: chrome
-- name: 🇪🇸 西班牙 (Spain) 05 5658K - NEKO
-  server: 83.147.18.3
-  port: 443
-  udp: true
-  type: vless
-  uuid: 9f61cdf4-810d-4052-bbc7-2da0c8e20104
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: 3iVJAIGPx6JMlhlRmfpGrHkSmLpHJ4CPvBBH7KsFrFA
-    short-id: fd8cf7e1173f0edb
-  servername: www.cloudflare.com
-  client-fingerprint: chrome
-- name: 🇪🇸 西班牙 (Spain) 06 3409K - NEKO
-  server: 196.245.52.146
-  port: 25535
-  udp: true
-  type: vless
-  uuid: c379d8e4-c67d-42ec-a3ed-ca99d1ad0546
-  tls: true
-  reality-opts:
-    public-key: Jh7CocBJSA55VZcLfXwXwoQ_Hi5pV-L1vv1SY-IrSh4
-    short-id: 7642ce57308852e7
-  servername: www.microsoft.com
-  client-fingerprint: firefox
-- name: 🇪🇸 西班牙 (Spain) 07 4648K - NEKO
-  server: 46.28.71.247
-  port: 443
-  udp: true
-  type: vless
-  uuid: 12c53e32-e589-47d6-b857-e4132294f767
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: v4MuZIvFrTPT5GHMSaPryUAbIZlLstmsUTzmC1E-JTE
-    short-id: 0dfc23fe80778c00
-  servername: www.cloudflare.com
-  client-fingerprint: ios
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇪🇸 西班牙 (Spain) 01 ⚠S1689K - NEKO
-  - 🇪🇸 西班牙 (Spain) 02 ⚠S913K - NEKO
-  - 🇪🇸 西班牙 (Spain) 03 4907K - NEKO
-  - 🇪🇸 西班牙 (Spain) 04 ⚠S4553K - NEKO
-  - 🇪🇸 西班牙 (Spain) 05 5658K - NEKO
-  - 🇪🇸 西班牙 (Spain) 06 3409K - NEKO
-  - 🇪🇸 西班牙 (Spain) 07 4648K - NEKO
+  - 🇪🇸 西班牙 (Spain) 01 4722K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇪🇸 西班牙 (Spain) 01 ⚠S1689K - NEKO
-  - 🇪🇸 西班牙 (Spain) 02 ⚠S913K - NEKO
-  - 🇪🇸 西班牙 (Spain) 03 4907K - NEKO
-  - 🇪🇸 西班牙 (Spain) 04 ⚠S4553K - NEKO
-  - 🇪🇸 西班牙 (Spain) 05 5658K - NEKO
-  - 🇪🇸 西班牙 (Spain) 06 3409K - NEKO
-  - 🇪🇸 西班牙 (Spain) 07 4648K - NEKO
+  - 🇪🇸 西班牙 (Spain) 01 4722K - NEKO
 rules:
 - MATCH,PROXIES

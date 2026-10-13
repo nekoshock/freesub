@@ -4,19 +4,8 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇮🇶 IQ 01 17472K - NEKO
-  server: www.speedtest.net
-  port: 80
-  udp: true
-  type: vless
-  uuid: 63f1ef69-92fd-427a-b3e4-98ffddf81ac6
-  network: ws
-  ws-opts:
-    path: /nPKoVRUdyuRZ6jpY/YnBiLnlvdXNlZi5pc2VnYXJvLmNvbSxwcm94eWlwLmNtbGl1c3Nzcy5uZXQsbmltYS5uc2NsLmlyLHR1cmsucmFkaWNhbGl6YXRpb24uaXI=
-    headers:
-      Host: young-rice-749e.heliy78750.workers.dev
-- name: 🇮🇶 IQ 02 ⚠S1555K - NEKO
-  server: arcturus.yokkastars.com
+- name: 🇮🇶 IQ 01 629K - NEKO
+  server: 178.17.57.120
   port: 40443
   udp: true
   type: vless
@@ -27,20 +16,18 @@ proxies:
     public-key: w4AYHvQnQS6olDqoG9ptLOtgehaWOsv9HQhDax5bLA4
     short-id: db46e2946fc466fd
   servername: deepl.com
-  client-fingerprint: firefox
+  client-fingerprint: qq
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇮🇶 IQ 01 17472K - NEKO
-  - 🇮🇶 IQ 02 ⚠S1555K - NEKO
+  - 🇮🇶 IQ 01 629K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇮🇶 IQ 01 17472K - NEKO
-  - 🇮🇶 IQ 02 ⚠S1555K - NEKO
+  - 🇮🇶 IQ 01 629K - NEKO
 rules:
 - MATCH,PROXIES

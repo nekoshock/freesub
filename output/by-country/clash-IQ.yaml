@@ -4,8 +4,8 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇮🇶 IQ 01 629K - NEKO
-  server: 178.17.57.120
+- name: 🇮🇶 IQ 01 ⚠S980K - NEKO
+  server: arcturus.yokkastars.com
   port: 40443
   udp: true
   type: vless
@@ -16,18 +16,18 @@ proxies:
     public-key: w4AYHvQnQS6olDqoG9ptLOtgehaWOsv9HQhDax5bLA4
     short-id: db46e2946fc466fd
   servername: deepl.com
-  client-fingerprint: qq
+  client-fingerprint: safari
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇮🇶 IQ 01 629K - NEKO
+  - 🇮🇶 IQ 01 ⚠S980K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇮🇶 IQ 01 629K - NEKO
+  - 🇮🇶 IQ 01 ⚠S980K - NEKO
 rules:
 - MATCH,PROXIES

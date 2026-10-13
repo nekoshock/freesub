@@ -4,35 +4,35 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇮🇪 爱尔兰 (Ireland) 01 6202K - NEKO
-  server: adapting-basilisk.rooster465.autos
+- name: 🇮🇪 爱尔兰 (Ireland) 01 6135K - NEKO
+  server: master-possum.rooster465.autos
+  port: 443
+  udp: true
+  type: trojan
+  password: UX82473651
+  sni: master-possum.rooster465.autos
+  skip-cert-verify: false
+- name: 🇮🇪 爱尔兰 (Ireland) 02 1138K - NEKO
+  server: 54.72.130.222
   port: 443
   udp: true
   type: trojan
   password: UX82473651
   sni: adapting-basilisk.rooster465.autos
   skip-cert-verify: false
-- name: 🇮🇪 爱尔兰 (Ireland) 02 2155K - NEKO
-  server: loved-shark.rooster465.autos
-  port: 443
-  udp: true
-  type: trojan
-  password: UX82473651
-  sni: loved-shark.rooster465.autos
-  skip-cert-verify: false
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇮🇪 爱尔兰 (Ireland) 01 6202K - NEKO
-  - 🇮🇪 爱尔兰 (Ireland) 02 2155K - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 01 6135K - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 02 1138K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇮🇪 爱尔兰 (Ireland) 01 6202K - NEKO
-  - 🇮🇪 爱尔兰 (Ireland) 02 2155K - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 01 6135K - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 02 1138K - NEKO
 rules:
 - MATCH,PROXIES

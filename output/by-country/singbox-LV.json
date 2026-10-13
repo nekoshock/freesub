@@ -4,8 +4,45 @@
   },
   "outbounds": [
     {
+      "type": "shadowsocks",
+      "tag": "🇱🇻 拉脱维亚 (Latvia) 01 4025K - NEKO",
+      "server": "185.135.86.175",
+      "server_port": 9017,
+      "method": "aes-256-cfb",
+      "password": "HAVAdE3nXhqA5nHp"
+    },
+    {
       "type": "vless",
-      "tag": "🇱🇻 拉脱维亚 (Latvia) 01 3589K - NEKO",
+      "tag": "🇱🇻 拉脱维亚 (Latvia) 02 2951K - NEKO",
+      "server": "216.173.71.43",
+      "server_port": 443,
+      "uuid": "ee18d188-14cc-417e-beb1-70e4add6d023",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "lv.nztvpn.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "miDhSALrcCvSfc38VjCDYlzNh5M61NMR5IkUli7IN08",
+          "short_id": "0da7e14db353e7d0"
+        }
+      }
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇱🇻 拉脱维亚 (Latvia) 03 3795K - NEKO",
+      "server": "185.135.86.175",
+      "server_port": 9086,
+      "method": "aes-256-cfb",
+      "password": "37Z4TFCYhfxcpc9Q"
+    },
+    {
+      "type": "vless",
+      "tag": "🇱🇻 拉脱维亚 (Latvia) 04 4210K - NEKO",
       "server": "138.124.180.137",
       "server_port": 443,
       "uuid": "5234b2b7-5e07-422c-8159-d62a676c00c6",
@@ -15,7 +52,7 @@
         "server_name": "www.apple.com",
         "utls": {
           "enabled": true,
-          "fingerprint": "edge"
+          "fingerprint": "firefox"
         },
         "reality": {
           "enabled": true,
@@ -25,51 +62,24 @@
       }
     },
     {
-      "type": "shadowsocks",
-      "tag": "🇱🇻 拉脱维亚 (Latvia) 02 3799K - NEKO",
-      "server": "185.135.86.175",
-      "server_port": 9086,
-      "method": "aes-256-cfb",
-      "password": "37Z4TFCYhfxcpc9Q"
-    },
-    {
-      "type": "vless",
-      "tag": "🇱🇻 拉脱维亚 (Latvia) 03 3728K - NEKO",
-      "server": "31.57.106.241",
-      "server_port": 443,
-      "uuid": "a4801105-c0c7-4cab-87c6-f257ff2afc09",
-      "flow": "xtls-rprx-vision",
-      "tls": {
-        "enabled": true,
-        "server_name": "www.lmt.lv",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "firefox"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "4SJB--DChFNhmOUz0-BZK2dS3GhZ1yZwMVIhmpobB0o",
-          "short_id": "44f7c5615039ae1b"
-        }
-      }
-    },
-    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇱🇻 拉脱维亚 (Latvia) 01 3589K - NEKO",
-        "🇱🇻 拉脱维亚 (Latvia) 02 3799K - NEKO",
-        "🇱🇻 拉脱维亚 (Latvia) 03 3728K - NEKO"
+        "🇱🇻 拉脱维亚 (Latvia) 01 4025K - NEKO",
+        "🇱🇻 拉脱维亚 (Latvia) 02 2951K - NEKO",
+        "🇱🇻 拉脱维亚 (Latvia) 03 3795K - NEKO",
+        "🇱🇻 拉脱维亚 (Latvia) 04 4210K - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇱🇻 拉脱维亚 (Latvia) 01 3589K - NEKO",
-        "🇱🇻 拉脱维亚 (Latvia) 02 3799K - NEKO",
-        "🇱🇻 拉脱维亚 (Latvia) 03 3728K - NEKO"
+        "🇱🇻 拉脱维亚 (Latvia) 01 4025K - NEKO",
+        "🇱🇻 拉脱维亚 (Latvia) 02 2951K - NEKO",
+        "🇱🇻 拉脱维亚 (Latvia) 03 3795K - NEKO",
+        "🇱🇻 拉脱维亚 (Latvia) 04 4210K - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

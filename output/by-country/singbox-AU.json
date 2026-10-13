@@ -4,8 +4,26 @@
   },
   "outbounds": [
     {
+      "type": "hysteria2",
+      "tag": "🇦🇺 澳大利亚 (Australia) 01 280K - NEKO",
+      "server": "137.23.2.56",
+      "password": "b42d90fa667942aebc734d60",
+      "tls": {
+        "enabled": true,
+        "server_name": "rmgyvpn.rest",
+        "insecure": false
+      },
+      "obfs": {
+        "type": "salamander",
+        "password": "b42d90fa667942aebc734d60"
+      },
+      "server_ports": [
+        "20000:30000"
+      ]
+    },
+    {
       "type": "vless",
-      "tag": "🇦🇺 澳大利亚 (Australia) 01 3355K - NEKO",
+      "tag": "🇦🇺 澳大利亚 (Australia) 02 3840K - NEKO",
       "server": "144.172.65.72",
       "server_port": 8443,
       "uuid": "8afeb33c-b686-43e9-a629-0d98f991ec28",
@@ -29,14 +47,16 @@
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇦🇺 澳大利亚 (Australia) 01 3355K - NEKO"
+        "🇦🇺 澳大利亚 (Australia) 01 280K - NEKO",
+        "🇦🇺 澳大利亚 (Australia) 02 3840K - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇦🇺 澳大利亚 (Australia) 01 3355K - NEKO"
+        "🇦🇺 澳大利亚 (Australia) 01 280K - NEKO",
+        "🇦🇺 澳大利亚 (Australia) 02 3840K - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

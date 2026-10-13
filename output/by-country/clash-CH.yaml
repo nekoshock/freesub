@@ -4,7 +4,21 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇭 瑞士 (Switzerland) 01 4668K - NEKO
+- name: 🇨🇭 瑞士 (Switzerland) 01 4619K - NEKO
+  server: lte.homyak.app
+  port: 41826
+  udp: true
+  type: vless
+  uuid: 2eb3f6a0-df6e-49b6-994c-177acdd50a97
+  tls: true
+  servername: sweden.homyak.app
+  skip-cert-verify: false
+  network: httpupgrade
+  httpupgrade-opts:
+    path: /
+    headers:
+      Host: ''
+- name: 🇨🇭 瑞士 (Switzerland) 02 4520K ⚠L20% - NEKO
   server: 45.90.59.15
   port: 443
   udp: true
@@ -17,34 +31,19 @@ proxies:
     short-id: 19253fae84102271
   servername: www.cloudflare.com
   client-fingerprint: firefox
-- name: 🇨🇭 瑞士 (Switzerland) 02 4337K - NEKO
-  server: 138.124.96.88
-  port: 41826
-  udp: true
-  type: vless
-  uuid: 2eb3f6a0-df6e-49b6-994c-177acdd50a97
-  tls: true
-  servername: sweden.homyak.app
-  skip-cert-verify: false
-  client-fingerprint: random
-  network: httpupgrade
-  httpupgrade-opts:
-    path: /
-    headers:
-      Host: ''
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇨🇭 瑞士 (Switzerland) 01 4668K - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 02 4337K - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 01 4619K - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 02 4520K ⚠L20% - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇭 瑞士 (Switzerland) 01 4668K - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 02 4337K - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 01 4619K - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 02 4520K ⚠L20% - NEKO
 rules:
 - MATCH,PROXIES

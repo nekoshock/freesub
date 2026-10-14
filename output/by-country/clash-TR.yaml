@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇹🇷 土耳其 (Turkey) 01 4821K - NEKO
+- name: 🇹🇷 土耳其 (Turkey) 01 8077K - NEKO
   server: 62.60.233.157
   port: 8444
   udp: true
@@ -18,7 +18,7 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: GunService
-- name: 🇹🇷 土耳其 (Turkey) 02 225K - NEKO
+- name: 🇹🇷 土耳其 (Turkey) 02 619K - NEKO
   server: 85.192.48.142
   port: 443
   udp: true
@@ -30,8 +30,8 @@ proxies:
     public-key: fNfokzklCF4l_c8k8PciOCjm5ecNoF_sNLjEtaO-xzI
     short-id: db04ce8bdb8900f1
   servername: nvidia.com
-  client-fingerprint: chrome
-- name: 🇹🇷 土耳其 (Turkey) 03 2660K - NEKO
+  client-fingerprint: firefox
+- name: 🇹🇷 土耳其 (Turkey) 03 3941K - NEKO
   server: 78.135.73.47
   port: 443
   udp: true
@@ -43,8 +43,8 @@ proxies:
     public-key: sZAJkAu23wp1WKY-qeaeiwR38izP5OyfhumoE9xhbB8
     short-id: f46cd3ea3d1eb72d
   servername: www.datadoghq.com
-  client-fingerprint: firefox
-- name: 🇹🇷 土耳其 (Turkey) 04 3925K - NEKO
+  client-fingerprint: chrome
+- name: 🇹🇷 土耳其 (Turkey) 04 4851K - NEKO
   server: 151.241.226.201
   port: 2053
   udp: true
@@ -55,8 +55,8 @@ proxies:
     public-key: bYW_MmB_CUHrsyoCAUKviI2LZdHf63yY2yOPXbih104
     short-id: 9e419c0759b54d6f
   servername: www.apple.com
-  client-fingerprint: chrome
-- name: 🇹🇷 土耳其 (Turkey) 05 ⚠S5535K - NEKO
+  client-fingerprint: firefox
+- name: 🇹🇷 土耳其 (Turkey) 05 2559K - NEKO
   server: 172.67.176.3
   port: 2053
   udp: true
@@ -67,7 +67,7 @@ proxies:
   network: ws
   ws-opts:
     path: /0962
-- name: 🇹🇷 土耳其 (Turkey) 06 3728K - NEKO
+- name: 🇹🇷 土耳其 (Turkey) 06 ⚠S3964K - NEKO
   server: tr.datanode-internal.net
   port: 443
   udp: true
@@ -85,22 +85,22 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇹🇷 土耳其 (Turkey) 01 4821K - NEKO
-  - 🇹🇷 土耳其 (Turkey) 02 225K - NEKO
-  - 🇹🇷 土耳其 (Turkey) 03 2660K - NEKO
-  - 🇹🇷 土耳其 (Turkey) 04 3925K - NEKO
-  - 🇹🇷 土耳其 (Turkey) 05 ⚠S5535K - NEKO
-  - 🇹🇷 土耳其 (Turkey) 06 3728K - NEKO
+  - 🇹🇷 土耳其 (Turkey) 01 8077K - NEKO
+  - 🇹🇷 土耳其 (Turkey) 02 619K - NEKO
+  - 🇹🇷 土耳其 (Turkey) 03 3941K - NEKO
+  - 🇹🇷 土耳其 (Turkey) 04 4851K - NEKO
+  - 🇹🇷 土耳其 (Turkey) 05 2559K - NEKO
+  - 🇹🇷 土耳其 (Turkey) 06 ⚠S3964K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇹🇷 土耳其 (Turkey) 01 4821K - NEKO
-  - 🇹🇷 土耳其 (Turkey) 02 225K - NEKO
-  - 🇹🇷 土耳其 (Turkey) 03 2660K - NEKO
-  - 🇹🇷 土耳其 (Turkey) 04 3925K - NEKO
-  - 🇹🇷 土耳其 (Turkey) 05 ⚠S5535K - NEKO
-  - 🇹🇷 土耳其 (Turkey) 06 3728K - NEKO
+  - 🇹🇷 土耳其 (Turkey) 01 8077K - NEKO
+  - 🇹🇷 土耳其 (Turkey) 02 619K - NEKO
+  - 🇹🇷 土耳其 (Turkey) 03 3941K - NEKO
+  - 🇹🇷 土耳其 (Turkey) 04 4851K - NEKO
+  - 🇹🇷 土耳其 (Turkey) 05 2559K - NEKO
+  - 🇹🇷 土耳其 (Turkey) 06 ⚠S3964K - NEKO
 rules:
 - MATCH,PROXIES

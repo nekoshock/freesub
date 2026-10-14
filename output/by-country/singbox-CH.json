@@ -5,23 +5,77 @@
   "outbounds": [
     {
       "type": "vless",
-      "tag": "🇨🇭 瑞士 (Switzerland) 01 4619K - NEKO",
-      "server": "lte.homyak.app",
-      "server_port": 41826,
-      "uuid": "2eb3f6a0-df6e-49b6-994c-177acdd50a97",
+      "tag": "🇨🇭 瑞士 (Switzerland) 01 293K - NEKO",
+      "server": "ch.srv.vbuste.ru",
+      "server_port": 444,
+      "uuid": "318c935d-c195-41d3-99ad-9bbcfdab3386",
       "tls": {
         "enabled": true,
-        "server_name": "sweden.homyak.app",
-        "insecure": false
+        "server_name": "ch.srv.vbuste.ru",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "0-or5ogGhYbBgsVSrSC2Fhxyp2BN97Y9pqIdg61Qd08",
+          "short_id": "4be4110078ebed4a"
+        }
       },
       "transport": {
-        "type": "httpupgrade",
-        "path": "/"
+        "type": "grpc"
       }
     },
     {
       "type": "vless",
-      "tag": "🇨🇭 瑞士 (Switzerland) 02 4520K ⚠L20% - NEKO",
+      "tag": "🇨🇭 瑞士 (Switzerland) 02 30597K - NEKO",
+      "server": "medium.com",
+      "server_port": 443,
+      "uuid": "f2a73750-3087-48ff-a763-1348c15dce68",
+      "tls": {
+        "enabled": true,
+        "server_name": "rayan-007.maxima.dpdns.org",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/ ",
+        "headers": {
+          "Host": "rayan-007.maxima.dpdns.org"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇨🇭 瑞士 (Switzerland) 03 7422K - NEKO",
+      "server": "138.124.63.224",
+      "server_port": 8444,
+      "uuid": "f55e9aba-7b14-4f6f-b59a-d5b3d45c9309",
+      "tls": {
+        "enabled": true,
+        "server_name": "github.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "FWitre1jinQR7qz5HQ0q2Q4Gg9xA9B0SyizCziN7Ch0",
+          "short_id": "457fab2ac885dbe0"
+        }
+      },
+      "transport": {
+        "type": "grpc",
+        "service_name": "GunService"
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇨🇭 瑞士 (Switzerland) 04 6159K - NEKO",
       "server": "45.90.59.15",
       "server_port": 443,
       "uuid": "3950b45e-740d-4dca-ac95-505ec8534592",
@@ -41,20 +95,56 @@
       }
     },
     {
+      "type": "vless",
+      "tag": "🇨🇭 瑞士 (Switzerland) 05 5703K - NEKO",
+      "server": "138.124.96.88",
+      "server_port": 41826,
+      "uuid": "2eb3f6a0-df6e-49b6-994c-177acdd50a97",
+      "tls": {
+        "enabled": true,
+        "server_name": "sweden.homyak.app",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "random"
+        }
+      },
+      "transport": {
+        "type": "httpupgrade",
+        "path": "/"
+      }
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇨🇭 瑞士 (Switzerland) 06 2094K - NEKO",
+      "server": "132.243.175.144",
+      "server_port": 8388,
+      "method": "chacha20-ietf-poly1305",
+      "password": "e8KgS8fD0yDqYFpgN4G5piCOt9aFyqA3"
+    },
+    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇨🇭 瑞士 (Switzerland) 01 4619K - NEKO",
-        "🇨🇭 瑞士 (Switzerland) 02 4520K ⚠L20% - NEKO"
+        "🇨🇭 瑞士 (Switzerland) 01 293K - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 02 30597K - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 03 7422K - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 04 6159K - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 05 5703K - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 06 2094K - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇨🇭 瑞士 (Switzerland) 01 4619K - NEKO",
-        "🇨🇭 瑞士 (Switzerland) 02 4520K ⚠L20% - NEKO"
+        "🇨🇭 瑞士 (Switzerland) 01 293K - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 02 30597K - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 03 7422K - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 04 6159K - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 05 5703K - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 06 2094K - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

@@ -4,42 +4,32 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇦🇺 澳大利亚 (Australia) 01 280K - NEKO
-  server: 137.23.2.56
-  port: 20000
-  udp: true
-  type: hysteria2
-  password: b42d90fa667942aebc734d60
-  sni: rmgyvpn.rest
-  skip-cert-verify: false
-  obfs: salamander
-  obfs-password: b42d90fa667942aebc734d60
-  ports: 20000-30000
-- name: 🇦🇺 澳大利亚 (Australia) 02 3840K - NEKO
-  server: 144.172.65.72
-  port: 8443
+- name: 🇦🇺 澳大利亚 (Australia) 01 6002K - NEKO
+  server: 104.18.155.229
+  port: 443
   udp: true
   type: vless
-  uuid: 8afeb33c-b686-43e9-a629-0d98f991ec28
-  flow: xtls-rprx-vision
+  uuid: 42026ed0-7d74-4585-8e46-0fe6aa4d665a
   tls: true
-  reality-opts:
-    public-key: f25sygANXTpzdc9YPCwkggwSmm3piA3BluSeHdfG-hg
-  servername: www.tradingview.com
-  client-fingerprint: random
+  servername: www.genflix.co.id.r3xxe.eu.cc
+  skip-cert-verify: false
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /au-do
+    headers:
+      Host: www.genflix.co.id.r3xxe.eu.cc
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇦🇺 澳大利亚 (Australia) 01 280K - NEKO
-  - 🇦🇺 澳大利亚 (Australia) 02 3840K - NEKO
+  - 🇦🇺 澳大利亚 (Australia) 01 6002K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇦🇺 澳大利亚 (Australia) 01 280K - NEKO
-  - 🇦🇺 澳大利亚 (Australia) 02 3840K - NEKO
+  - 🇦🇺 澳大利亚 (Australia) 01 6002K - NEKO
 rules:
 - MATCH,PROXIES

@@ -4,20 +4,34 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇪🇪 爱沙尼亚 (Estonia) 01 ⚠S1952K - NEKO
-  server: 93.123.39.84
+- name: 🇪🇪 爱沙尼亚 (Estonia) 01 6978K - NEKO
+  server: 13.143.239.81
   port: 443
   udp: true
   type: vless
-  uuid: 5298d5c5-0633-4989-95c8-68ee13cd507e
+  uuid: c6e3c24c-ce20-4ad5-8c8c-68cb05890ea8
   tls: true
-  servername: ee2x.global-cdn.org
-  skip-cert-verify: false
-  client-fingerprint: chrome
+  reality-opts:
+    public-key: aYz4_13W8gtAXGBrWeqJXtExahAJ9kUPDapqeyAlYCk
+  servername: ee-1-1.unturned-rust-dead.lol
+  client-fingerprint: random
   network: grpc
   grpc-opts:
-    grpc-service-name: content.v1.Feed
-- name: 🇪🇪 爱沙尼亚 (Estonia) 02 4491K - NEKO
+    grpc-service-name: ee-grpc
+- name: 🇪🇪 爱沙尼亚 (Estonia) 02 ⚠S1842K - NEKO
+  server: 188.225.38.216
+  port: 443
+  udp: true
+  type: vless
+  uuid: 30292475-4666-4c26-bcb2-338a0919958b
+  tls: true
+  servername: lalibobi.online
+  skip-cert-verify: false
+  client-fingerprint: edge
+  network: grpc
+  grpc-opts:
+    grpc-service-name: lalibobi.orbit.v3.Connect
+- name: 🇪🇪 爱沙尼亚 (Estonia) 03 5236K - NEKO
   server: 185.31.242.61
   port: 443
   udp: true
@@ -29,18 +43,9 @@ proxies:
     public-key: 7mRrVzTchVLWWBru5fCgTvtdkL7lVJ_qRj9HW8Rd8X0
     short-id: 0da7e14db353e7d0
   servername: est.nztvpn.com
-  client-fingerprint: random
-- name: 🇪🇪 爱沙尼亚 (Estonia) 03 3688K - NEKO
-  server: 94.183.170.135
-  port: 443
-  udp: true
-  type: vless
-  uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
-  network: ws
-  ws-opts:
-    path: /
-- name: 🇪🇪 爱沙尼亚 (Estonia) 04 ⚠S549K - NEKO
-  server: zahvatpribaltovonline.vvzzkontaktezzvv.garden
+  client-fingerprint: chrome
+- name: 🇪🇪 爱沙尼亚 (Estonia) 04 4906K - NEKO
+  server: 5.181.201.37
   port: 443
   udp: true
   type: vless
@@ -51,8 +56,8 @@ proxies:
     public-key: r1MW0o1DsC6EEWN-KPKnoXszb1trxlKShRIgOpxqHBk
     short-id: d98e7afec9c0c359
   servername: zahvatpribaltovonline.vvzzkontaktezzvv.garden
-  client-fingerprint: firefox
-- name: 🇪🇪 爱沙尼亚 (Estonia) 05 3734K - NEKO
+  client-fingerprint: random
+- name: 🇪🇪 爱沙尼亚 (Estonia) 05 4878K - NEKO
   server: 94.183.170.135
   port: 8443
   udp: true
@@ -61,7 +66,17 @@ proxies:
   tls: true
   servername: estproxy4.lockdwn.com
   skip-cert-verify: false
-- name: 🇪🇪 爱沙尼亚 (Estonia) 06 ⚠S493K - NEKO
+  client-fingerprint: firefox
+- name: 🇪🇪 爱沙尼亚 (Estonia) 06 4784K - NEKO
+  server: 94.183.170.135
+  port: 443
+  udp: true
+  type: vless
+  uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
+  network: ws
+  ws-opts:
+    path: /
+- name: 🇪🇪 爱沙尼亚 (Estonia) 07 4734K - NEKO
   server: ee.h1cloud.net
   port: 25895
   udp: true
@@ -72,28 +87,47 @@ proxies:
     public-key: jOVKSP-bS9OkILJ8Epz8hadh6qhavCrOiJYeF0NCn0k
     short-id: a73f0410d728c823
   servername: www.samsung.com
-  client-fingerprint: safari
+  client-fingerprint: firefox
+- name: 🇪🇪 爱沙尼亚 (Estonia) 08 5137K - NEKO
+  server: 177.3.208.65
+  port: 443
+  udp: true
+  type: vless
+  uuid: 4f34bc04-479c-49ba-91a8-6bb9ed15031c
+  tls: true
+  servername: tgmansion.site
+  skip-cert-verify: false
+  client-fingerprint: firefox
+  network: ws
+  ws-opts:
+    path: /vless-ee
+    headers:
+      Host: tgmansion.site
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇪🇪 爱沙尼亚 (Estonia) 01 ⚠S1952K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 02 4491K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 03 3688K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 04 ⚠S549K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 05 3734K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 06 ⚠S493K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 01 6978K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 02 ⚠S1842K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 03 5236K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 04 4906K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 05 4878K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 06 4784K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 07 4734K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 08 5137K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇪🇪 爱沙尼亚 (Estonia) 01 ⚠S1952K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 02 4491K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 03 3688K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 04 ⚠S549K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 05 3734K - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 06 ⚠S493K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 01 6978K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 02 ⚠S1842K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 03 5236K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 04 4906K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 05 4878K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 06 4784K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 07 4734K - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 08 5137K - NEKO
 rules:
 - MATCH,PROXIES

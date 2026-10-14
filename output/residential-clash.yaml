@@ -4,8 +4,14 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇰🇷 韩国 (South Korea) 01 (家宽) 3600K - NEKO
-  server: 218.237.185.234
+- name: 🇹🇷 土耳其 (Turkey) 01 (移动家宽) 1445K - NEKO
+  server: test.keoplentuio.xyz
+  port: 2053
+  udp: true
+  type: vless
+  uuid: 9ef61079-6f7d-4911-9608-943da85d8e6f
+- name: 🇰🇷 韩国 (South Korea) 02 (家宽) 2084K - NEKO
+  server: p141.panda001.net
   port: 4652
   udp: true
   type: ss
@@ -16,12 +22,14 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇰🇷 韩国 (South Korea) 01 (家宽) 3600K - NEKO
+  - 🇹🇷 土耳其 (Turkey) 01 (移动家宽) 1445K - NEKO
+  - 🇰🇷 韩国 (South Korea) 02 (家宽) 2084K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇰🇷 韩国 (South Korea) 01 (家宽) 3600K - NEKO
+  - 🇹🇷 土耳其 (Turkey) 01 (移动家宽) 1445K - NEKO
+  - 🇰🇷 韩国 (South Korea) 02 (家宽) 2084K - NEKO
 rules:
 - MATCH,PROXIES

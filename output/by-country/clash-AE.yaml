@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇦🇪 阿联酋 (UAE) 01 2956K - NEKO
+- name: 🇦🇪 阿联酋 (UAE) 01 455K - NEKO
   server: 130.49.161.70
   port: 443
   udp: true
@@ -14,7 +14,7 @@ proxies:
   skip-cert-verify: false
   obfs: salamander
   obfs-password: rG07s3COMIEvdnQipRyWzx_H_2xygNC3
-- name: 🇦🇪 阿联酋 (UAE) 02 1571K - NEKO
+- name: 🇦🇪 阿联酋 (UAE) 02 4169K - NEKO
   server: 31.59.210.26
   port: 2088
   udp: true
@@ -25,11 +25,41 @@ proxies:
     public-key: Eq3c19Y0WGB1APWMADQB-oxCvZFSVFAQxG5L6b8EkUg
     short-id: b1ad165f903c62fe
   servername: www.yandex.ru
-  client-fingerprint: ios
+  client-fingerprint: safari
   network: grpc
   grpc-opts:
     grpc-service-name: astracat
-- name: 🇦🇪 阿联酋 (UAE) 03 3560K - NEKO
+- name: 🇦🇪 阿联酋 (UAE) 03 4171K - NEKO
+  server: 31.59.210.32
+  port: 443
+  udp: true
+  type: vless
+  uuid: 5413edfb-08d6-4fba-b51c-809c04feb127
+  tls: true
+  reality-opts:
+    public-key: qvVoQPNyuM86jBvBqOL-Z9VO_C9jMi_ZH8bb4fotNWA
+    short-id: 7ec4374ffc6308fd
+  servername: www.yandex.ru
+  client-fingerprint: chrome
+  network: grpc
+  grpc-opts:
+    grpc-service-name: astracat
+- name: 🇦🇪 阿联酋 (UAE) 04 3966K - NEKO
+  server: 31.59.210.37
+  port: 443
+  udp: true
+  type: vless
+  uuid: 5413edfb-08d6-4fba-b51c-809c04feb127
+  tls: true
+  reality-opts:
+    public-key: 5k0dtOSzmshCubdYeKppsUdHU4i2ghaB9uSJSzGjHW4
+    short-id: 6dbf4931096f9890
+  servername: www.yandex.ru
+  client-fingerprint: chrome
+  network: grpc
+  grpc-opts:
+    grpc-service-name: astracat
+- name: 🇦🇪 阿联酋 (UAE) 05 3603K - NEKO
   server: 31.59.210.25
   port: 2087
   udp: true
@@ -44,22 +74,7 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: astracat
-- name: 🇦🇪 阿联酋 (UAE) 04 3491K - NEKO
-  server: 31.59.210.37
-  port: 443
-  udp: true
-  type: vless
-  uuid: 5413edfb-08d6-4fba-b51c-809c04feb127
-  tls: true
-  reality-opts:
-    public-key: 5k0dtOSzmshCubdYeKppsUdHU4i2ghaB9uSJSzGjHW4
-    short-id: 6dbf4931096f9890
-  servername: www.yandex.ru
-  client-fingerprint: edge
-  network: grpc
-  grpc-opts:
-    grpc-service-name: astracat
-- name: 🇦🇪 阿联酋 (UAE) 05 2858K - NEKO
+- name: 🇦🇪 阿联酋 (UAE) 06 4519K - NEKO
   server: 157.228.155.238
   port: 443
   udp: true
@@ -72,7 +87,7 @@ proxies:
     short-id: 6f76ad09
   servername: addons.mozilla.org
   client-fingerprint: chrome
-- name: 🇦🇪 阿联酋 (UAE) 06 ⚠S2489K - NEKO
+- name: 🇦🇪 阿联酋 (UAE) 07 3250K - NEKO
   server: 157.228.155.185
   port: 443
   udp: true
@@ -85,7 +100,17 @@ proxies:
     short-id: 5ea112e8
   servername: addons.mozilla.org
   client-fingerprint: chrome
-- name: 🇦🇪 阿联酋 (UAE) 07 3240K - NEKO
+- name: 🇦🇪 阿联酋 (UAE) 08 ⚠S2678K - NEKO
+  server: 37.9.4.112
+  port: 17701
+  udp: true
+  type: hysteria2
+  password: 56ff50da-a238-4646-95ab-dd159634bd87
+  sni: ru03.arpanet-cdn.com
+  skip-cert-verify: false
+  obfs: salamander
+  obfs-password: 588c76723192f87cfe6d6786816177cd2bd9773acdc545928d7d1d5e8338d4ce
+- name: 🇦🇪 阿联酋 (UAE) 09 3189K - NEKO
   server: 157.228.128.59
   port: 443
   udp: true
@@ -98,8 +123,8 @@ proxies:
     short-id: 06e00e7c
   servername: addons.mozilla.org
   client-fingerprint: chrome
-- name: 🇦🇪 阿联酋 (UAE) 08 2724K - NEKO
-  server: uae.unixzone.us
+- name: 🇦🇪 阿联酋 (UAE) 10 2594K - NEKO
+  server: 84.235.244.108
   port: 22573
   udp: true
   type: vless
@@ -107,31 +132,37 @@ proxies:
   network: ws
   ws-opts:
     path: /
+    headers:
+      Host: uae.unixzone.us
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇦🇪 阿联酋 (UAE) 01 2956K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 02 1571K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 03 3560K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 04 3491K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 05 2858K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 06 ⚠S2489K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 07 3240K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 08 2724K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 01 455K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 02 4169K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 03 4171K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 04 3966K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 05 3603K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 06 4519K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 07 3250K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 08 ⚠S2678K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 09 3189K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 10 2594K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇦🇪 阿联酋 (UAE) 01 2956K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 02 1571K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 03 3560K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 04 3491K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 05 2858K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 06 ⚠S2489K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 07 3240K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 08 2724K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 01 455K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 02 4169K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 03 4171K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 04 3966K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 05 3603K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 06 4519K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 07 3250K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 08 ⚠S2678K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 09 3189K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 10 2594K - NEKO
 rules:
 - MATCH,PROXIES

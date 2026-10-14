@@ -4,24 +4,24 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇳🇴 挪威 (Norway) 01 3762K - NEKO
-  server: 185.213.23.63
-  port: 990
+- name: 🇿🇦 南非 (South Africa) 01 2031K - NEKO
+  server: 102.133.165.160
+  port: 16233
   udp: true
   type: ss
   cipher: chacha20-ietf-poly1305
-  password: ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=
+  password: Xsy8Ox4yOV3xLlpxtjzs3X
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇳🇴 挪威 (Norway) 01 3762K - NEKO
+  - 🇿🇦 南非 (South Africa) 01 2031K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇳🇴 挪威 (Norway) 01 3762K - NEKO
+  - 🇿🇦 南非 (South Africa) 01 2031K - NEKO
 rules:
 - MATCH,PROXIES

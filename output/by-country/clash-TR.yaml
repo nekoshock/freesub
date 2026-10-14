@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇹🇷 土耳其 (Turkey) 01 4019K - NEKO
+- name: 🇹🇷 土耳其 (Turkey) 01 4272K - NEKO
   server: 62.60.233.157
   port: 8444
   udp: true
@@ -18,7 +18,13 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: GunService
-- name: 🇹🇷 土耳其 (Turkey) 02 3845K - NEKO
+- name: 🇹🇷 土耳其 (Turkey) 02 239K - NEKO
+  server: test.keoplentuio.xyz
+  port: 2053
+  udp: true
+  type: vless
+  uuid: 9ef61079-6f7d-4911-9608-943da85d8e6f
+- name: 🇹🇷 土耳其 (Turkey) 03 3416K - NEKO
   server: 151.241.226.201
   port: 2053
   udp: true
@@ -35,14 +41,16 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇹🇷 土耳其 (Turkey) 01 4019K - NEKO
-  - 🇹🇷 土耳其 (Turkey) 02 3845K - NEKO
+  - 🇹🇷 土耳其 (Turkey) 01 4272K - NEKO
+  - 🇹🇷 土耳其 (Turkey) 02 239K - NEKO
+  - 🇹🇷 土耳其 (Turkey) 03 3416K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇹🇷 土耳其 (Turkey) 01 4019K - NEKO
-  - 🇹🇷 土耳其 (Turkey) 02 3845K - NEKO
+  - 🇹🇷 土耳其 (Turkey) 01 4272K - NEKO
+  - 🇹🇷 土耳其 (Turkey) 02 239K - NEKO
+  - 🇹🇷 土耳其 (Turkey) 03 3416K - NEKO
 rules:
 - MATCH,PROXIES

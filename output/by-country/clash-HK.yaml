@@ -4,25 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇭🇰 中国香港 (Hong Kong) 01 ⚠S518K - NEKO
-  server: nas.aizhzo.com
-  port: 5010
-  udp: true
-  type: hysteria2
-  password: eBTe6Ax2pUts8oMEWoYVDfnSlHfkLffQ
-  sni: nas.aizhzo.com
-  skip-cert-verify: false
-  obfs: salamander
-  obfs-password: 7M4RXPFcQyQEGbkxBPfXo4bilMhCW2U9
-- name: 🇭🇰 中国香港 (Hong Kong) 02 2944K - NEKO
-  server: zfd-hkv1.kunlun01dns.com
-  port: 16115
-  udp: true
-  type: vmess
-  uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
-  alterId: 0
-  cipher: auto
-- name: 🇭🇰 中国香港 (Hong Kong) 03 3091K - NEKO
+- name: 🇭🇰 中国香港 (Hong Kong) 01 ⚠S2190K - NEKO
   server: 103.193.173.51
   port: 39485
   udp: true
@@ -35,21 +17,15 @@ proxies:
     short-id: b9
   servername: www.icloud.com
   client-fingerprint: chrome
-- name: 🇭🇰 中国香港 (Hong Kong) 04 ⚠S2375K - NEKO
-  server: jumpernode.site
-  port: 443
+- name: 🇭🇰 中国香港 (Hong Kong) 02 398K - NEKO
+  server: 45.140.168.141
+  port: 50120
   udp: true
-  type: vless
-  uuid: 23af32ca-bea1-4a5e-bebb-04d1b1b633bc
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: sDKrtAJk2VP_w1w7cFi2O86RdlvQ2E2An5xsRdJlgGE
-    short-id: 6d962e8d8a0dce
-  servername: p-nt-www-amazon-com-kalias.amazon.com
-  client-fingerprint: chrome
-- name: 🇭🇰 中国香港 (Hong Kong) 05 3670K - NEKO
-  server: 202.144.192.76
+  type: ss
+  cipher: aes-256-gcm
+  password: bdb313adf74c2ede
+- name: 🇭🇰 中国香港 (Hong Kong) 03 218K - NEKO
+  server: 47.238.210.5
   port: 13779
   udp: true
   type: vless
@@ -60,25 +36,65 @@ proxies:
     short-id: af1bdd293097b664
   servername: tesla.com
   client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 04 1680K - NEKO
+  server: 154.37.216.186
+  port: 443
+  udp: true
+  type: vless
+  uuid: ebdec762-050b-4d54-b7bf-0406ce22f734
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: KkSH2hoA6PuNJL5ZNUDGuWoAYe5kIwcGbrbCYuxHTx8
+    short-id: f39ad9d9eb26df47
+  servername: www.bing.com
+  client-fingerprint: firefox
+- name: 🇭🇰 中国香港 (Hong Kong) 05 5327K - NEKO
+  server: 202.144.192.76
+  port: 13779
+  udp: true
+  type: vless
+  uuid: 928e6cce-8ced-4243-9a48-a6642edd09b0
+  tls: true
+  reality-opts:
+    public-key: llTyp52oRXnJmQ3I9UUrmlwbMA79B-wLCRHCu-8dLGg
+    short-id: af1bdd293097b664
+  servername: tesla.com
+  client-fingerprint: random
+- name: 🇭🇰 中国香港 (Hong Kong) 06 581K - NEKO
+  server: 207.56.137.51
+  port: 443
+  udp: true
+  type: vless
+  uuid: 01ada9fb-fa2f-45da-a0d0-bce80cdf433b
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: WNifT0qNHWrUsvC6cuvej0rzZe6qPijopbmJyRADOF0
+    short-id: f713561d
+  servername: www.cloudflare.com
+  client-fingerprint: edge
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇭🇰 中国香港 (Hong Kong) 01 ⚠S518K - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 2944K - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 03 3091K - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 04 ⚠S2375K - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 05 3670K - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 ⚠S2190K - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 398K - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 03 218K - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 04 1680K - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 05 5327K - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 06 581K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇭🇰 中国香港 (Hong Kong) 01 ⚠S518K - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 2944K - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 03 3091K - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 04 ⚠S2375K - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 05 3670K - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 ⚠S2190K - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 398K - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 03 218K - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 04 1680K - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 05 5327K - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 06 581K - NEKO
 rules:
 - MATCH,PROXIES

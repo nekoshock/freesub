@@ -4,12 +4,12 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇹🇼 中国台湾 (Taiwan) 01 349K - NEKO
-  server: 165.154.195.38
-  port: 35034
+- name: 🇭🇰 中国香港 (Hong Kong) 01 (移动家宽) 3815K - NEKO
+  server: dog-hk.kunlun01dns.com
+  port: 21021
   udp: true
   type: vmess
-  uuid: 959a8caf-4cea-43d0-a548-3628e7ddfafc
+  uuid: 9464ca40-dd75-3742-a628-d931a9f413b2
   alterId: 0
   cipher: auto
 proxy-groups:
@@ -17,12 +17,12 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇹🇼 中国台湾 (Taiwan) 01 349K - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 (移动家宽) 3815K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇹🇼 中国台湾 (Taiwan) 01 349K - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 (移动家宽) 3815K - NEKO
 rules:
 - MATCH,PROXIES

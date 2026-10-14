@@ -4,15 +4,15 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇸🇪 瑞典 (Sweden) 01 ⚠S4596K - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 01 2736K - NEKO
   server: sweedenqfds777.qcloud.surf
   port: 21223
   udp: true
   type: hysteria2
-  password: 8bd04756-3beb-4348-82c9-d35453df50ce
+  password: 4ad3dbf5-2005-4d96-b56c-a0ca9905cab6
   sni: sweedenqfds777.qcloud.surf
   skip-cert-verify: false
-- name: 🇸🇪 瑞典 (Sweden) 02 ⚠S4042K - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 02 2889K - NEKO
   server: 62.60.159.81
   port: 2053
   udp: true
@@ -23,57 +23,18 @@ proxies:
     public-key: ygmJxS-Mc7g0buNSUTVGhazT-FoBjyYtLLfUYIQxFTw
     short-id: d0ea1847066af5a6
   servername: www.samsung.com
-  client-fingerprint: chrome
+  client-fingerprint: safari
   network: grpc
   grpc-opts:
     grpc-service-name: grpce5bb9e71
-- name: 🇸🇪 瑞典 (Sweden) 03 ⚠S5351K - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 03 3785K - NEKO
   server: 70.34.212.124
   port: 8388
   udp: true
   type: ss
   cipher: aes-256-gcm
   password: AxIYWtskJWIIaefW
-- name: 🇸🇪 瑞典 (Sweden) 04 5119K - NEKO
-  server: swerka.loknietotop.digital
-  port: 443
-  udp: true
-  type: vless
-  uuid: ace33fb8-c593-4b17-8f72-f3359b6e9638
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: x6p656szvu_3CKLsJ4NtkooRvdTVGx7IoPca_p58_jA
-    short-id: fb442438e2223836
-  servername: swerka.loknietotop.digital
-  client-fingerprint: firefox
-- name: 🇸🇪 瑞典 (Sweden) 05 ⚠S4484K - NEKO
-  server: se3.h1cloud.net
-  port: 25119
-  udp: true
-  type: vless
-  uuid: f90b7d43-69e2-4b46-a672-8029bc6796a2
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: szPq4a3cvxfBOmGyg-UJCV3d1Jqjnj7YR3gaxyYtnk4
-    short-id: 10f517
-  servername: www.samsung.com
-  client-fingerprint: chrome
-- name: 🇸🇪 瑞典 (Sweden) 06 5187K - NEKO
-  server: 46.246.125.153
-  port: 443
-  udp: true
-  type: vless
-  uuid: a16a3e32-8d63-4dec-8c67-1361388a64ca
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: ftglT-Ghp2FPiPlwyEAldfiAE1IL_AJ9UCkfCj0zk2I
-    short-id: a83b77e064761e3c
-  servername: res.cdn.office.net
-  client-fingerprint: chrome
-- name: 🇸🇪 瑞典 (Sweden) 07 15359K ⚠L20% - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 04 3630K - NEKO
   server: swe.wizard.select
   port: 443
   udp: true
@@ -85,9 +46,9 @@ proxies:
     public-key: Sikc1gu5t_uwitf1xTTChP9tpT_sjY530p2tioHbmz0
     short-id: 3b20e438da99
   servername: swe.wizard.select
-  client-fingerprint: qq
-- name: 🇸🇪 瑞典 (Sweden) 08 ⚠S6224K - NEKO
-  server: 94.143.231.146
+  client-fingerprint: edge
+- name: 🇸🇪 瑞典 (Sweden) 05 3931K - NEKO
+  server: sub.merky.top
   port: 443
   udp: true
   type: vless
@@ -95,34 +56,31 @@ proxies:
   tls: true
   servername: sub.merky.top
   skip-cert-verify: false
+  client-fingerprint: chrome
   network: ws
   ws-opts:
     path: /merky-connect/de6/
+    headers:
+      Host: sub.merky.top
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇸🇪 瑞典 (Sweden) 01 ⚠S4596K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 ⚠S4042K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 03 ⚠S5351K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 04 5119K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 05 ⚠S4484K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 06 5187K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 07 15359K ⚠L20% - NEKO
-  - 🇸🇪 瑞典 (Sweden) 08 ⚠S6224K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 2736K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 2889K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 03 3785K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 04 3630K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 05 3931K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇸🇪 瑞典 (Sweden) 01 ⚠S4596K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 ⚠S4042K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 03 ⚠S5351K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 04 5119K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 05 ⚠S4484K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 06 5187K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 07 15359K ⚠L20% - NEKO
-  - 🇸🇪 瑞典 (Sweden) 08 ⚠S6224K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 2736K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 2889K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 03 3785K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 04 3630K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 05 3931K - NEKO
 rules:
 - MATCH,PROXIES

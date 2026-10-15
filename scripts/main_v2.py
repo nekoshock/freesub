@@ -1,33 +1,61 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-免费节点自动测活订阅池 v2 — 全协议 · 高精度 · 低误杀
+免费节点自动测活订阅池 v3 — 全协议 · 高精度 · 低误杀 · 国内可用性导向
 ====================================================
 
-架构（三阶段流水线）:
+★ v3 核心变化 (相对 v2): 新增"国内可用性"维度。
+  v2 的全部判定都跑在 GitHub Actions (Azure US) 的**海外视角**上 ——
+  一个节点从美国秒开、满速下载, 不代表国内能用: 入口端口被 GFW 限流/
+  域名被 DNS 污染/协议无伪装被 DPI 识别/线路回国质量差, 这些从海外
+  视角完全看不见。v3 在不花钱、只用免费公共服务的前提下补上这块:
+    · 入口侧静态评分: 端口(443/80/其他) × 协议伪装(Reality/CDN前置/TLS/明文)
+      × 入口 IP 是否落在 CDN 网段 × 域名在大陆 DNS 是否被污染
+    · 入口线路质量: 入口 rDNS/ASN 识别 CN2 GIA / 联通4837 / 移动CMI 等精品网
+    · 回国方向实测: 经节点 TCP 握手国内公共 DNS (223.5.5.5/114.114.114.114)
+      量回国 RTT; 经节点请求 baidu/bilibili/jd 验"回国通不通"
+      (很多节点只转发海外流量, 国内站点直接拒 —— 回国场景用户抓瞎)
+    · (可选) RIPE Atlas 中国探针: 真·中国大陆视角 ping 入口 IP,
+      免费账号领 5 万额度即可用, 默认关闭, 配置 ATLAS_API_KEY 后生效
+  产出: 独立的"国内友好订阅" (cn-friendly), 节点名打 🇨🇳/⚠D/⚠P/⚠U/⚠C 标记,
+  组内排序按国内可用性加权。
+
+架构（四阶段流水线）:
   1. 抓取订阅源 → 解析全部协议 URI 为统一节点对象
      (vless/vmess/trojan/ss/hysteria2/tuic/anytls + reality + 全部传输层)
   2. 真实测活（sing-box v1.14 内核，逐节点 SOCKS 入站 + 节点出站）:
      - 阶段A 端口预检: TCP/QUIC 直连握手, 快速丢弃死端口 (削减 90% 无效工作)
-     - 阶段B 真实探测: 跨源活性探测 (Google/Cloudflare/Microsoft, 至少 2 源通过)
+     - 阶段B 真实探测 (v3 起组内并发, 单节点最坏耗时 ~52s → ~35s, 死节点 ~20s → ~12s):
+       · 活性三源探测 (Google/Cloudflare/Microsoft, 至少 2 源通过) + 出口 IP
+         回声**并发** (旧串行最坏 12+4+4+6=26s, 现 max(12,6)≈12s)
        + 延迟上限门槛 (MAX_LATENCY_MS, 此前延迟只排序不淘汰)
        + 经代理取真实出口 IP (api.ip.sb/geoip → 一次拿 country+asn+isp)
        + Cloudflare 限时下载测速 → 断流节点识别 (稳态吞吐 < 200KB/s)
          · 分母只取首数据块后的稳态区间 (剔除握手/TLS/RTT, 否则快节点被系统性低估)
          · 1MB 二次复测取最小值 (防 CDN 缓存/TCP 突发骗过单轮结果)
+           ★ v3: 首测已低于门槛的节点跳过复测 (注定断流, 省 4s×大量节点)
          · 跨端点交叉测速 (按需触发: 仅当首测疑似 CDN 短路时才跑物理机房
            Hetzner/Linode 端点; 正常结果直接采用, 省掉每节点 5~8 秒)
          · 重复节点回填 (多源收录的同一节点, 测活后继承真活代表节点的结果)
          · 测速健全性护栏 (全体中位数过高 = CDN 短路, 撤销⚡优选标记)
-       + 丢包率探测 (复用 204 探针连发 5 次, 抓抖动严重的节点)
+       · MITM 复检 + WARP 检测**并发** (旧串行 4+4s)
+       · 丢包率探测 (复用 204 探针连发 5 次) + v3 回国方向探测**并发**:
+         裸 SOCKS5 TCP 握手 223.5.5.5:443/114.114.114.114:53 → 回国 RTT;
+         经节点 HTTP 请求 baidu/bilibili/jd → 回国可达性
        + 首包时间 TTFB (与握手 RTT 互补, 抓"延迟低但首包慢"的体感杀手)
        + cloudflare trace tls=VERIFIED → MITM/劫持节点识别
-  3. 分类与导出:
+  3. 家宽链式复测 (v3 起改 **lite 模式**: 只跑活性+轻测速 ~3s,
+     旧全量 ~8.3s — 62 候选 515s → ~90s)
+  4. 分类与导出:
      - 国家: 出口 IP ip-api.com 批量(45req/min 免费) → MaxMind GeoLite2 兜底
      - 属性: hosting=true/CDN网段/IDC ASN → 机房 | mobile=true → 移动
             | 运营商白名单+rDNS → 家宽
+     - 入口线路 (v3 新增): 入口 IP rDNS/ASN → CN2GIA/4837/CMI 精品网标记
+     - 国内可用性综合分 cn_score (静态 + 入口线路 + 回国实测 + 可选 Atlas)
      - 去重: 出口IP+端口 唯一化 (保留速度最优), 家宽区严格防同IP刷屏
-     - 排序: 家宽优先, 组内按综合质量分 (延迟 + 丢包惩罚 + 半个 TTFB)
+     - 排序: 家宽优先, 组内按综合质量分 (延迟 + 丢包惩罚 + 半个 TTFB
+            + 国内可用性加权) — v3 起国内用户视角优先
+     - 导出: 全量 / 家宽 / 按国家 / **国内友好订阅 (v3 新增)**
 """
 
 import os
@@ -346,6 +374,120 @@ if WARP_POLICY not in ("drop", "demote", "off"):
     print(f"[!] WARP_POLICY={WARP_POLICY!r} 非法, 回退 'drop' (可选: drop/demote/off)")
     WARP_POLICY = "drop"
 MAX_WORKERS_TEST    = 24            # 同时 sing-box 实测节点数 (★48→24: 测速阶段 48 并发会互抢单台机器带宽, 阈值抬高后自污染成假阴性; sing-box 单实例 < 30MB)
+
+# ══════════════════════════════════════════════════════════════════
+# 国内可用性 (China-usability) 配置 — v3 新增
+#   设计原则: 全部用**免费公共服务**, 零购买; 能在 GitHub Actions 上跑。
+#   覆盖三个盲区: ① 入口能不能进 (GFW 抗力) ② 域名在大陆解析是否正常
+#                ③ 回国方向通不通 / 快不快
+# ══════════════════════════════════════════════════════════════════
+
+# --- 回国方向探测 (经节点访问国内目标; 全部免费公共可达, 无需 key) ---
+#   TCP RTT 目标: 国内公共 DNS 的 TCP 端口 (裸 SOCKS5 CONNECT 握手计时,
+#   量的是"节点出口 → 国内"的真实往返, 即用户回国流量的链路质量)
+CN_EXIT_TCP_PROBES = [
+    ("223.5.5.5", 443),        # 阿里公共 DNS (DoH over TLS 端口, 全球可达)
+    ("114.114.114.114", 53),   # 114DNS (TCP DNS, 全球可达)
+]
+#   HTTP 可达性目标: 国内站点 (经节点请求, 2xx/3xx 算可达)
+#   为什么必须测: 大量节点/机场只转发海外流量, 对国内目标直接拒 —
+#   这类节点"出国"没问题, 但用户想看 B 站/连国服游戏/访问国内 API 时抓瞎。
+CN_EXIT_HTTP_PROBES = [
+    "https://www.baidu.com",
+    "https://www.bilibili.com",
+    "https://www.jd.com",
+]
+CN_EXIT_TIMEOUT        = 4.0       # 单个回国探测超时 (秒)
+CN_EXIT_RTT_GOOD_MS    = 350       # 回国 RTT ≤ 350ms → 加分 (国内站体感可接受)
+CN_EXIT_RTT_BAD_MS     = 900       # 回国 RTT > 900ms → 扣分 (国内站明显卡顿)
+CN_EXIT_HTTP_MIN_OK    = 1         # 至少几个 HTTP 目标可达才算"回国通"
+
+# --- DoH DNS 污染对比 (中国公共 DNS vs 全球 DNS; 全部免 key) ---
+#   DNSPod/阿里 是大陆用户最常用的公共 DNS (运营商 DNS 大同小异),
+#   Cloudflare 代表海外正确解析。三者对比:
+#     大陆侧解析失败(NXDOMAIN/SERVFAIL/空) 且 海外正常 → 域名被污染,
+#     国内客户端用默认 DNS 连不上该节点 (v2rayN 默认不走 DoH)。
+#   只认"硬失败", 不认"结果不同" — GeoDNS/CDN 分地域返回不同 IP 是合法场景。
+CN_DOH_JSON = [
+    ("dnspod",  "https://doh.pub/resolve?name={d}&type=A"),          # DNSPod 公共 DoH (JSON)
+    ("alidns",  "https://dns.alidns.com/resolve?name={d}&type=A"),   # 阿里公共 DNS (JSON)
+]
+GLOBAL_DOH_JSON = [
+    ("cloudflare", "https://cloudflare-dns.com/dns-query?name={d}&type=A"),  # RFC8484 (Accept: dns-json)
+]
+DNS_CHECK_TIMEOUT = 6.0           # 单个 DoH 查询超时 (秒)
+DNS_CHECK_WORKERS = 24            # DNS 污染预查并发数
+
+# --- 静态 China 友好度评分 (入口侧 GFW 抗力; 纯本地计算, 零请求) ---
+#   预测分, 在端口预检前算完, 用于: ① 测试优先级排序 ② 国内友好订阅入选
+#   评分语义 (0~100+):
+#     端口 443  = HTTPS 天然伪装, GFW 极少整面墙 443        → +30
+#     端口 80   = 可用但明文特征明显                          → +12
+#     其他端口 = 随机高端口是 GFW 周期性限流/重置的常客      → +0
+#     Reality   = 无证书+真前端伪装, 抗主动探测最强          → +25
+#     CDN 前置  = 入口 IP 落在 CDN 任播段, 墙 IP 墙不掉      → +18
+#     web 传输  = ws/grpc/httpupgrade (流量形态像网页)       → +12
+#     裸 TLS    = 有证书但直连 IP, 可被主动探测+墙 IP        → +8
+#     无 TLS    = SS 明文等, DPI 可识别                      → -15
+#     QUIC 系   = hy2/tuic 走 UDP, GFW 对 UDP 有 QoS 传统   → -12 (只扣分不淘汰)
+#     域名干净  = 大陆 DNS 解析正常                          → +10
+#     域名被污染= 国内默认 DNS 下直接连不上                  → -45
+#     直连 IP   = 无 DNS 污染风险, 但也没有 CDN 掩护         → +6
+CN_SCORE_PORT_443        = 30
+CN_SCORE_PORT_80         = 12
+CN_SCORE_REALITY         = 25
+CN_SCORE_TLS_CDN         = 18
+CN_SCORE_TLS_WEB         = 12
+CN_SCORE_TLS_PLAIN       = 8
+CN_SCORE_NO_TLS_PENALTY  = -15
+CN_SCORE_QUIC_PENALTY    = -12
+CN_SCORE_DNS_OK          = 10
+CN_SCORE_DNS_POLLUTED    = -45
+CN_SCORE_IP_LITERAL      = 6
+
+# --- 动态加分 (测活后才有; 入口线路 + 回国实测) ---
+CN_SCORE_RDNS_CN2        = 22      # 入口 rDNS 含 cn2/gia → CN2 GIA 精品网
+CN_SCORE_RDNS_4837       = 18      # 入口 rDNS 含 4837 → 联通精品网
+CN_SCORE_RDNS_CMCC       = 16      # 入口 rDNS 含 cmcc/cmi/9808 → 移动内网
+CN_SCORE_ASN_CNCLOUD     = 10      # 入口 ASN 为中国云厂商 (回国路由通常较好)
+CN_SCORE_EXIT_OK         = 15      # 回国方向可达 (baidu/bilibili/jd 至少1个通)
+CN_SCORE_EXIT_RTT_GOOD   = 10      # 回国 RTT ≤ CN_EXIT_RTT_GOOD_MS
+CN_SCORE_EXIT_RTT_BAD    = -8      # 回国 RTT > CN_EXIT_RTT_BAD_MS
+CN_SCORE_LAT_GOOD        = 5       # 海外延迟 ≤ 300ms (链路底子好)
+
+CN_FRIENDLY_MIN_SCORE    = 55      # 国内友好订阅入选总分门槛
+CN_QUALITY_WEIGHT        = 5.0     # 组内排序权重: (100-cn_score)×W 毫秒等效惩罚
+
+# 入口 rDNS 精品网关键词 (按点分 token 匹配, 防子串误判)
+#   CN2 GIA 是电信精品网, rDNS 习惯带 cn2/gia; 4837 联通; cmcc/cmi 移动
+CN_LINE_RDNS_TOKENS = {
+    "cn2":    {"cn2", "cn2gia", "gia"},
+    "cu4837": {"4837"},
+    "cmi":    {"cmcc", "cmi", "9808", "chinamobile"},
+}
+# 入口 ASN ∈ 中国云厂商 → 回国路由通常优于随机海外 IDC
+#   (可自行扩充: 火山引擎/百度云/金山云等自有 ASN)
+CN_CLOUD_ASNS = {
+    45102,   # 阿里云国际 (Alibaba Cloud International)
+    37963,   # 阿里云 (杭州)
+    45090,   # 腾讯云 (Tencent Cloud)
+    132203,  # 腾讯 (深圳) 网络
+    55990,   # 华为云 (Huawei Cloud)
+}
+
+# --- (可选) RIPE Atlas 中国探针 ping — 真·中国大陆视角 ---
+#   免费: RIPE NCC Access 账号注册即领 5 万 credits (一次性),
+#   Atlas 在中国大陆有 600+ 在线探针。开启后每轮对少量候选入口 IP
+#   发起中国探针 ping, 直接测量"大陆 → 入口"的可达性与 RTT/丢包。
+#   用法: GitHub Secrets 加 ATLAS_API_KEY (atlas.ripe.net → Create a Key),
+#         ATLAS_MAX_IPS 控制每轮测多少个 IP (默认 20), 防止烧额度。
+#   不配 key 则整个模块静默跳过, 不影响主流程。
+ATLAS_API_KEY      = os.environ.get("ATLAS_API_KEY", "").strip()
+ATLAS_MAX_IPS      = int(os.environ.get("ATLAS_MAX_IPS") or 20)
+ATLAS_MAX_PROBES   = int(os.environ.get("ATLAS_MAX_PROBES") or 20)
+ATLAS_WAIT_SECONDS = int(os.environ.get("ATLAS_WAIT_SECONDS") or 210)
+ATLAS_API_CREATE   = "https://atlas.ripe.net/api/v2/measurements//?key="
+ATLAS_API_PROBES   = "https://atlas.ripe.net/api/v2/probes/?country_code=CN&status=1&is_public=true&page_size=100"
 
 # ══════════════════════════════════════════════════════════════════
 # 方案1: 测速健全性护栏 (防"测出内网级假速度")
@@ -1384,6 +1526,29 @@ def resolve_host(host: str) -> str:
         return ""
 
 
+def prefetch_dns(hosts, workers: int = 32):
+    """并发预热 _DNS_CACHE (v3 新增)
+
+    ★ 为什么需要: static_cn_prescore 要在端口预检**之前**跑, 而它要查入口 IP
+      是否落在 CDN 网段 → 需要域名解析。若逐个串行 DoH, 2000 个唯一域名
+      × ~0.3s = 10 分钟, 全烧在等待上。预检本身是 64 并发, 域名在预检时才
+      第一次解析 —— 提前并发预热后, 预筛/预检全部命中缓存。
+    返回: 成功解析数 (仅日志用)
+    """
+    todo = [h for h in {x for x in hosts if x} if not is_ip_literal(h) and h not in _DNS_CACHE]
+    if not todo:
+        return 0
+    ok = [0]
+
+    def _one(h):
+        if resolve_host(h):
+            ok[0] += 1
+
+    with ThreadPoolExecutor(max_workers=workers) as ex:
+        list(ex.map(_one, todo))
+    return ok[0]
+
+
 def knock_port(server: str, port: int, protocol_type: str) -> bool:
     """TCP 直连预检 (DoH 解析防本地 DNS 污染); QUIC 类直接放行阶段B
 
@@ -1432,6 +1597,8 @@ def prefilter_candidates(candidates: list) -> list:
         return knock_port(server, port, proto)
 
     with ThreadPoolExecutor(max_workers=64) as ex:
+        # ★ v3: 域名已在 2.7 步并发预热 (prefetch_dns), 这里全部命中缓存,
+        #   64 并发的 TCP 握手就是本阶段唯一成本 (每候选 0.1~2.5s)。
         for item, ok in zip(candidates, ex.map(_knock, candidates)):
             (passed if ok else failed).append(item)
 
@@ -1696,8 +1863,9 @@ def _is_speed_shortcircuit(speed_bps: int, speed_retest: int,
     return False
 
 
-def test_single_node(item, keep_alive_check=True, chain_relay: dict = None):
-    """返回 dict 或 None; 含: 活性/延迟/出口IP/国家/ASN/ISP/速度/MITM
+def test_single_node(item, keep_alive_check=True, chain_relay: dict = None,
+                     lite: bool = False):
+    """返回 dict 或 None; 含: 活性/延迟/出口IP/国家/ASN/ISP/速度/MITM/回国方向
 
     chain_relay: 可选的 sing-box outbound dict, 作为前置跳板 (detour 双跳)。
     ★ 2026-10-04 改造: 旧版从 os.environ["CHAIN_RELAY_OUT"] 读 relay, 改成显式入参。
@@ -1706,6 +1874,18 @@ def test_single_node(item, keep_alive_check=True, chain_relay: dict = None):
         ② 易污染 —— 中途异常若 finally 清理也失败, relay 会泄漏到后续所有阶段;
         ③ 隐式依赖 —— 单独调用 test_single_node 时行为受外部环境变量影响, 不可测。
       build_test_config 本就收 chain_relay 参数, 这里只是把来源从全局改为调用方显式传入。
+
+    lite=True (v3 新增, 链式复测专用): 只跑 活性三源 + 出口IP + 3 秒轻测速 (~3s),
+        跳过 MITM/WARP/复测/交叉/丢包/回国探测 —— 双跳复测只关心"隧道通不通",
+        旧版在这里跑全量套件 (~8.3s/候选) 是纯浪费。
+
+    ★ v3 并行化改造 (组内并发; 死节点最坏 ~52.5s → ~30s, 活节点省 1~8s):
+      ① 活性三源探针 + 出口IP回声并发 (旧串行最坏 12+4+4+6=26s → max(12,6))
+         —— 探针之间本就无依赖, 串行等待是纯烧时间; 出口IP与探针同样无依赖
+      ② MITM 复检 + WARP 检测并发 (旧串行 4+4s → max(4,4))
+      ③ 丢包探测 + 回国方向探测并发 —— 回国探测新增的耗时蹭丢包的等待窗口,
+         净增 ≈ 0
+      ④ 首测已低于吞吐门槛 → 跳过 1MB 复测 (注定断流, 省 4s × 大量节点)
     """
     raw, outbound, server, port, proto = item
     socks_port = _alloc_socks_port()
@@ -1755,92 +1935,141 @@ def test_single_node(item, keep_alive_check=True, chain_relay: dict = None):
         proxies = {"http": f"socks5h://127.0.0.1:{socks_port}",
                    "https": f"socks5h://127.0.0.1:{socks_port}"}
 
-        # --- 1) 活性探测: 跨源多探针 (Google/Cloudflare/Microsoft), 至少 MIN_LIVENESS_HITS 源通过 ---
+        # --- 1) 活性探测 (跨源多探针) + 出口 IP 回声 — v3: 并发执行 ---
         #     延迟按"每次尝试各自计时"取最快一次, 不用跨尝试的累计时间:
         #     旧版 t0 在循环外, 若首击耗满 12s 才失败、第二个 URL 秒通,
         #     latency 会记成 ~12s 而非真实 RTT → 去重/排序全被污染 (慢节点反被优先)
-        #     ★ 不再 break: 三个源都要探完, 才能识别"只对单源通"的选择性转发节点
-        #     (提前 break 会漏判 — 第一个源通就直接判活, 等于退回旧版的宽松标准)
-        alive_hits, latency_ms = 0, 99999
-        for i, (probe_name, url, expect) in enumerate(LIVENESS_PROBES):
-            timeout = PROBE_TIMEOUT if i == 0 else PROBE_RETRY_TIMEOUT
+        #     ★ 三个源全部探完 (不提前 break): 识别"只对单源通"的选择性转发节点
+        #     ★ v3: 三源探针 + 出口IP 四个请求互相无依赖, 并发发;
+        #        死节点最坏从 12+4+4+6=26s 降到 max(12,6)=12s
+        def _probe_one(idx, name, url, expect):
+            timeout = PROBE_TIMEOUT if idx == 0 else PROBE_RETRY_TIMEOUT
             t_try = time.time()
             try:
-                r = PROBE_SESSION.get(url, proxies=proxies, timeout=timeout, allow_redirects=False)
+                r = PROBE_SESSION.get(url, proxies=proxies, timeout=timeout,
+                                      allow_redirects=False)
                 if r.status_code in expect:
-                    alive_hits += 1
-                    latency_ms = min(latency_ms, (time.time() - t_try) * 1000)
-                else:
-                    # 该源明确拒绝 (403/407/302 等) = 选择性转发, 但不直接判死,
-                    # 交给 MIN_LIVENESS_HITS 裁决
-                    pass
+                    return True, (time.time() - t_try) * 1000
             except Exception:
-                continue
+                pass
+            # 该源明确拒绝 (403/407/302 等) = 选择性转发, 不直接判死,
+            # 交给 MIN_LIVENESS_HITS 裁决
+            return False, 0.0
+
+        def _fetch_exit_ip():
+            """真实出口 IP (多路冗余) — 与探针并发, 不额外占墙钟时间"""
+            for url in IP_ECHO_URLS:
+                try:
+                    r = PROBE_SESSION.get(url, proxies=proxies, timeout=IP_ECHO_TIMEOUT)
+                    if r.status_code != 200:
+                        continue
+                    j = r.json()
+                    ip = (j.get("ip") or j.get("query") or j.get("your_ip") or "").strip()
+                    if not ip:
+                        continue
+                    country = asn = asn_org = isp = None
+                    if url.startswith("https://api.ip.sb"):
+                        country = j.get("country_code")
+                        asn = j.get("asn")
+                        asn_org = (j.get("asn_organization") or j.get("organization") or "")
+                        isp = (j.get("isp") or j.get("organization") or "")
+                    elif url.startswith("https://ipinfo.io"):
+                        country = country or (j.get("country") or "").upper()
+                        org = j.get("org") or ""
+                        if org and not asn:
+                            mm = re.match(r"^AS(\d+)\s+(.*)", org)
+                            if mm:
+                                asn, asn_org = int(mm.group(1)), mm.group(2)
+                        isp = isp or org
+                    elif "ip-api.com" in url:
+                        country = country or (j.get("countryCode") or "").upper()
+                        asn = asn or j.get("as")
+                        asn_org = asn_org or (j.get("asname") or j.get("org") or "")
+                        isp = isp or (j.get("isp") or j.get("org") or "")
+                    return ip, country, asn, asn_org, isp
+                except Exception:
+                    continue
+            return None, None, None, None, None
+
+        alive_hits, latency_ms = 0, 99999
+        exit_ip = exit_country = exit_asn = exit_asn_org = exit_isp = None
+        with ThreadPoolExecutor(max_workers=4) as grp:
+            probe_futs = [grp.submit(_probe_one, i, n, u, e)
+                          for i, (n, u, e) in enumerate(LIVENESS_PROBES)]
+            ip_fut = grp.submit(_fetch_exit_ip)
+            for f in as_completed(probe_futs):
+                ok, ms = f.result()
+                if ok:
+                    alive_hits += 1
+                    if ms < latency_ms:
+                        latency_ms = ms
+            exit_ip, exit_country, exit_asn, exit_asn_org, exit_isp = ip_fut.result()
+
         if alive_hits < MIN_LIVENESS_HITS:
             return None
         # 延迟上限门槛: 活性过了但延迟过高的节点体验极差, 此前延迟只排序不淘汰
         if latency_ms > MAX_LATENCY_MS:
             return None
 
-        # --- 2) 真实出口 IP (多路冗余) ---
-        exit_ip, exit_country, exit_asn, exit_asn_org, exit_isp = None, None, None, None, None
-        for url in IP_ECHO_URLS:
+        # --- lite 模式 (v3, 链式复测专用): 隧道通 + 出口正常 + 轻测速即判双跳可用 ---
+        if lite:
+            spd, _fail = measure_download_speed(proxies, SPEED_TEST_URLS,
+                                                3.0, 0.3)
+            return {
+                "raw": raw, "server": server, "port": port, "proto": proto,
+                "outbound": outbound, "alive": True, "alive_hits": alive_hits,
+                "latency_ms": int(latency_ms), "exit_ip": exit_ip,
+                "exit_country_online": exit_country,
+                "exit_asn_online": exit_asn,
+                "exit_asn_org_online": (exit_asn_org or "")[:120],
+                "exit_isp_online": (exit_isp or "")[:120],
+                "mitm_risk": False, "is_warp": False,
+                "speed_bps": spd, "speed_retest_bps": 0,
+                "retest_failed": False, "retest_fail_reason": "",
+                "speed_fail_reason": _fail or "",
+                "speed_cross_bps": 0, "cross_fail_names": [],
+                "cross_fail_reasons": [], "cross_all_failed": False,
+                "cross_skipped": True, "speed_shortcircuit": False,
+                "speed_unstable": False, "ttfb_ms": 0, "ttfb_slow": False,
+                "loss_rate": None, "loss_unstable": False,
+                "is_premium": False, "is_stalled": spd < SPEED_MIN_BYTES_PER_S,
+                "cn_exit_rtt_ms": None, "cn_exit_reachable": False,
+                "cn_exit_http_ok": 0, "retest_skipped": True, "_lite": True,
+            }
+
+        # --- 3) MITM 劫持检测 + WARP 套壳检测 — v3: 并发 (旧串行 4+4s) ---
+        def _mitm_check():
+            # 3a) 独立复检一次带 verify=True 的请求: SSLError = TLS 拦截
             try:
-                r = PROBE_SESSION.get(url, proxies=proxies, timeout=IP_ECHO_TIMEOUT)
-                if r.status_code != 200:
-                    continue
-                j = r.json()
-                ip = (j.get("ip") or j.get("query") or j.get("your_ip") or "").strip()
-                if not ip:
-                    continue
-                exit_ip = ip
-                if url.startswith("https://api.ip.sb"):
-                    exit_country = j.get("country_code")
-                    exit_asn = j.get("asn")
-                    exit_asn_org = (j.get("asn_organization") or j.get("organization") or "")
-                    exit_isp = (j.get("isp") or j.get("organization") or "")
-                elif url.startswith("https://ipinfo.io"):
-                    exit_country = exit_country or (j.get("country") or "").upper()
-                    org = j.get("org") or ""
-                    if org and not exit_asn:
-                        mm = re.match(r"^AS(\d+)\s+(.*)", org)
-                        if mm:
-                            exit_asn, exit_asn_org = int(mm.group(1)), mm.group(2)
-                    exit_isp = exit_isp or org
-                elif "ip-api.com" in url:
-                    exit_country = exit_country or (j.get("countryCode") or "").upper()
-                    exit_asn = exit_asn or j.get("as")
-                    exit_asn_org = exit_asn_org or j.get("asname") or j.get("org") or ""
-                    exit_isp = exit_isp or j.get("isp") or j.get("org") or ""
-                break
+                r = PROBE_SESSION.get("https://www.gstatic.com/generate_204",
+                                      proxies=proxies, timeout=PROBE_RETRY_TIMEOUT,
+                                      verify=True)
+                if r.status_code in (204, 200):
+                    return False
+                return r.status_code in (301, 302, 403, 407, 502, 503) or len(r.content) > 0
+            except requests.exceptions.SSLError:
+                # 证书链验证失败 = TLS 拦截 (MITM) 或劣质自签劫持
+                return True
             except Exception:
-                continue
+                return False  # 网络层失败不算 MITM (活性探测已通过)
 
-        # --- 3) MITM 劫持检测 (轻量: 复用活性首击的 gstatic 请求已验证证书链) ---
-        # 3a) 独立复检一次带 verify=True 的请求: SSLError = TLS 拦截
-        mitm_risk = False
-        try:
-            r = PROBE_SESSION.get("https://www.gstatic.com/generate_204", proxies=proxies,
-                                  timeout=PROBE_RETRY_TIMEOUT, verify=True)
-            if r.status_code in (204, 200):
-                mitm_risk = False
-            else:
-                mitm_risk = r.status_code in (301, 302, 403, 407, 502, 503) or len(r.content) > 0
-        except requests.exceptions.SSLError:
-            # 证书链验证失败 = TLS 拦截 (MITM) 或劣质自签劫持
-            mitm_risk = True
-        except Exception:
-            pass  # 网络层失败不算 MITM (活性探测已通过)
+        def _warp_check():
+            # 3b) cloudflare trace: warp=on = 套壳 WARP 节点 (非真实出口, 降权标记)
+            try:
+                r = PROBE_SESSION.get(TRACE_URL, proxies=proxies,
+                                      timeout=PROBE_RETRY_TIMEOUT, verify=True)
+                if r.status_code == 200:
+                    if re.search(r"^warp=on", r.text, re.M):
+                        return True
+            except Exception:
+                pass
+            return False
 
-        # 3b) cloudflare trace: warp=on = 套壳 WARP 节点 (非真实出口, 降权标记) — 4s 窄超时
-        is_warp = False
-        try:
-            r = PROBE_SESSION.get(TRACE_URL, proxies=proxies, timeout=PROBE_RETRY_TIMEOUT, verify=True)
-            if r.status_code == 200:
-                if re.search(r"^warp=on", r.text, re.M):
-                    is_warp = True
-        except Exception:
-            pass
+        with ThreadPoolExecutor(max_workers=2) as grp:
+            mitm_fut = grp.submit(_mitm_check)
+            warp_fut = grp.submit(_warp_check)
+            mitm_risk = mitm_fut.result()
+            is_warp = warp_fut.result()
 
         # --- 4) 断流检测: 限时下载测速 (稳态吞吐, 剔除握手期; 端点多路兜底) ---
         #     with_ttfb=True 同时取首包时间 (与握手 RTT 互补, 见下方 TTFB 判定)
@@ -1850,16 +2079,19 @@ def test_single_node(item, keep_alive_check=True, chain_relay: dict = None):
         # --- 4b) 二次复测 (稳定性闸): 1MB 小样本, 与首测取最小值 ---
         #   动机: 单轮测速会被 CDN 缓存层 / TCP 突发流量骗过 (瞬时冲高后断流)。
         #   复测明显掉速 → 首测虚高, 取小值入库。
+        #   ★ v3 新增门槛闸: 首测已低于 SPEED_MIN_BYTES_PER_S 的节点注定断流
+        #     (惩罚系数 ≥1, 门槛只升不降), 复测无论什么结果都改变不了结局,
+        #     还要白等 4s — 直接跳过 (实测大量节点死在这一步, 累计省数分钟)。
         #   ★ 2026-10-04 修正 (#67 事故): 旧版"复测完全失败 → speed_bps=0 直接判死"。
         #     复测只有 1MB 样本 / 4 秒预算, 本身失败率高 (端点抖动、超时、样本不足),
         #     把"复测没测出来"等同于"节点已断流"会产生大量误杀。
         #     现在改为: 复测失败只标记 retest_failed, 保留首测结果继续判定。
-        #     真正断流的节点在首测(5MB/8秒)就已被 SPEED_MIN_BYTES_PER_S 卡掉。
         speed_retest = 0
         retest_failed = False
         retest_fail_reason = ""
+        retest_skipped = False
         speed_unstable = False
-        if speed_bps > 0:
+        if speed_bps >= SPEED_MIN_BYTES_PER_S:
             speed_retest, retest_fail_reason = measure_download_speed(
                 proxies, SPEED_RETEST_URLS, SPEED_RETEST_BUDGET, SPEED_RETEST_WARMUP)
             if speed_retest <= 0:
@@ -1871,6 +2103,8 @@ def test_single_node(item, keep_alive_check=True, chain_relay: dict = None):
                     if speed_retest < speed_bps * SPEED_STABLE_RATIO:
                         speed_unstable = True
                     speed_bps = min(speed_bps, speed_retest)
+        elif speed_bps > 0:
+            retest_skipped = True   # 低于门槛, 跳过复测 (v3)
 
         # --- 4c) 跨端点交叉测速 (按需触发: 仅当 Cloudflare 测速疑似短路时才启动) ---
         #   ★ 2026-10-04 改造 (原无条件触发 → 按需触发):
@@ -1884,6 +2118,8 @@ def test_single_node(item, keep_alive_check=True, chain_relay: dict = None):
         #     "特供节点"会被拉回真实水平)。
         #   逐个回退: 某端点不通就顺次试下一个, 直到拿到有效结果;
         #   失败的端点按名字记入 cross_fail_names, 便于回查是端点故障还是节点问题。
+        #   ★ v3: 低于门槛的节点已在上面跳过复测, 且慢节点不可能触发短路信号,
+        #     因此交叉对这一大类节点天然不再执行 (省 5~8s × 大量)。
         speed_cross = 0
         cross_results = []                # [(端点名, 速度)] 首个成功端点即停
         cross_fail_names = []
@@ -1938,16 +2174,29 @@ def test_single_node(item, keep_alive_check=True, chain_relay: dict = None):
             # 未触发短路 (或无结果) → 不做交叉, 直接采用 Cloudflare 测速值
             cross_skipped = True
 
-        # --- 5) 丢包率探测 (抓抖动/丢包严重的节点) ---
-        #   复用 204 探针连发 LOSS_PROBE_COUNT 次, 零额外带宽成本。
-        #   延迟测"能不能通", 丢包测"通得稳不稳" — 跨太平洋链路的核心问题是丢包,
-        #   现有判定对此完全失明。
+        # --- 5) 丢包率探测 + 回国方向探测 — v3: 并发 (仅对已过吞吐门槛的节点) ---
+        #   丢包: 复用 204 探针连发 LOSS_PROBE_COUNT 次, 零额外带宽成本。
+        #     延迟测"能不能通", 丢包测"通得稳不稳" — 跨太平洋链路的核心问题是丢包,
+        #     现有判定对此完全失明。
+        #   回国方向 (v3 新增): 裸 SOCKS5 握手国内公共 DNS 量回国 RTT + 经节点
+        #     请求 baidu/bilibili/jd 验回国可达性 — 只对"已过门槛"的节点跑,
+        #     注定断流的节点不配再花 1 秒; 两个探测并发, 净增墙钟 ≈ 0。
         #   ★ 2026-10-04 修正 (#67 事故): 旧版写 `else 1.0`, 把"没测到丢包"直接
         #     等同于"100% 丢包", 于是 speed_bps=0 的节点全被判死, 造成
         #     **真活 0** (实测 #67: 480 个节点全被填 100% 丢包后判死,
         #      而 TTFB 中位 634ms 明明证明隧道是通的)。
         #     现在用 None 表示"未测", 判定时跳过丢包维度, 交由吞吐门槛裁决。
-        loss_rate = measure_packet_loss(proxies, LOSS_PROBE_COUNT) if speed_bps > 0 else None
+        loss_rate = None
+        cn_exit = {"rtt_ms": None, "http_ok": 0,
+                   "http_total": len(CN_EXIT_HTTP_PROBES),
+                   "reachable": False, "detail": "未测(未过吞吐门槛)"}
+        speed_pass = speed_bps >= SPEED_MIN_BYTES_PER_S
+        if speed_pass:
+            with ThreadPoolExecutor(max_workers=2) as grp:
+                loss_fut = grp.submit(measure_packet_loss, proxies, LOSS_PROBE_COUNT)
+                cn_fut = grp.submit(probe_cn_exit, proxies, socks_port)
+                loss_rate = loss_fut.result()
+                cn_exit = cn_fut.result()
         # 丢包 ≥ MAX_LOSS_RATE → 不可用; LOSS_UNSTABLE_PENALTY~MAX 之间 → 不稳
         # ★ None (未测) 不参与任何丢包判定, 绝不能当成丢包
         loss_unstable = (loss_rate is not None
@@ -2003,6 +2252,7 @@ def test_single_node(item, keep_alive_check=True, chain_relay: dict = None):
             "speed_retest_bps": speed_retest,
             "retest_failed": retest_failed,          # 复测没测出来 (≠ 节点断流)
             "retest_fail_reason": retest_fail_reason,
+            "retest_skipped": retest_skipped,        # v3: 低于门槛跳过复测
             "speed_fail_reason": speed_fail,          # 主测速失败原因 (HTTP403/超时/样本不足)
             "speed_cross_bps": speed_cross,
             "cross_fail_names": cross_fail_names,        # 失败端点名, 便于回查
@@ -2017,6 +2267,11 @@ def test_single_node(item, keep_alive_check=True, chain_relay: dict = None):
             "loss_unstable": loss_unstable,
             "is_premium": is_premium,
             "is_stalled": is_stalled,
+            # ── v3 国内可用性字段 ──
+            "cn_exit_rtt_ms": cn_exit.get("rtt_ms"),          # 回国 RTT (出口→国内 DNS)
+            "cn_exit_reachable": cn_exit.get("reachable"),    # 回国 HTTP 可达 (baidu/bili/jd)
+            "cn_exit_http_ok": cn_exit.get("http_ok", 0),
+            "cn_exit_detail": cn_exit.get("detail", ""),
         }
         return result
     except Exception:
@@ -2076,15 +2331,22 @@ def _apply_speed_sanity_guard(results: list) -> bool:
     return False
 
 
-def run_liveness_test(candidates: list) -> list:
+def run_liveness_test(candidates: list, prescore_map: dict = None) -> list:
     print(f"[*] sing-box 全协议真实测活: {len(candidates)} 节点 (并发 {MAX_WORKERS_TEST}) ...")
     results = []
     done_count = [0]
     # 端点熔断状态按轮次重置 —— 端点可达性会随时间漂移, 不跨轮沿用
     _reset_endpoint_breaker()
+    # v3: 静态 CN 预测分随结果透传给 classify 阶段 (回填克隆体继承代表的值)
+    prescore_map = prescore_map or {}
 
     def _work(item):
-        return test_single_node(item)
+        r = test_single_node(item)
+        if r:
+            ps = prescore_map.get(item[0])
+            if ps:
+                r["cn_prescore"], r["cn_prescore_flags"] = ps
+        return r
 
     with ThreadPoolExecutor(max_workers=MAX_WORKERS_TEST) as ex:
         futs = {ex.submit(_work, it): it for it in candidates}
@@ -2101,8 +2363,10 @@ def run_liveness_test(candidates: list) -> list:
     stalled = sum(1 for r in results if r["is_stalled"])
     unstable = sum(1 for r in results if r.get("speed_unstable"))
     premium = sum(1 for r in results if r.get("is_premium"))
+    retest_skipped = sum(1 for r in results if r.get("retest_skipped"))
     speeds = sorted((r["speed_bps"] for r in results if r["speed_bps"] > 0), reverse=True)
-    print(f"[+] 测活完成: 真活 {len(alive)} | 断流淘汰 {stalled} | MITM 风险 {mitm}")
+    print(f"[+] 测活完成: 真活 {len(alive)} | 断流淘汰 {stalled} (其中 {retest_skipped} 个首测即低于门槛, "
+          f"已跳过复测省 ~4s/个) | MITM 风险 {mitm}")
 
     # ★ 2026-10-04 新增: 测速失败原因归集 (#67 事故时只能看到"最快 0KB/s",
     #   无法判断是端点 403 / 超时 / 样本不足 / 断流)。现在一眼能看出瓶颈在哪一环。
@@ -2298,7 +2562,9 @@ def chain_retest(test_results: list, ip_api_info: dict = None) -> list:
                     r["server"], r["port"], r["proto"])
             if not item[1]:
                 return r, False
-            recheck = test_single_node(item, chain_relay=relay_out)
+            # ★ v3: lite=True — 双跳复测只关心"隧道通不通", 跑全量套件
+            #   (MITM/WARP/复测/交叉/丢包/回国 ~8.3s) 是纯浪费, 轻量模式 ~3s。
+            recheck = test_single_node(item, chain_relay=relay_out, lite=True)
             return r, bool(recheck and recheck.get("alive") and not recheck.get("is_stalled"))
         except Exception:
             return r, False      # 异常 = 双跳不可用, 不让单点失败拖垮整轮
@@ -2371,16 +2637,73 @@ def offline_ip_lookup(ip: str, country_reader, asn_reader) -> tuple:
     return country, asn, org
 
 
+_RDNS_CACHE = {}
+_RDNS_LOCK = threading.Lock()
+
+
 def get_rdns(ip: str) -> str:
+    """rDNS 反查 (带缓存) — v3: 旧版无缓存且被 classify 单线程循环调用,
+    每个 unknown 节点一次 2s 超时, 400 节点最坏 800s (13 分钟) 全烧在这。
+    现在: 结果缓存 + classify 前 prefetch_rdns 并发预热, 循环内全命中。"""
+    if not ip:
+        return ""
+    with _RDNS_LOCK:
+        if ip in _RDNS_CACHE:
+            return _RDNS_CACHE[ip]
     old = socket.getdefaulttimeout()
     try:
         socket.setdefaulttimeout(2.0)
         host, _, _ = socket.gethostbyaddr(ip)
-        return host.lower()
+        result = host.lower()
     except Exception:
-        return ""
+        result = ""
     finally:
         socket.setdefaulttimeout(old)
+    with _RDNS_LOCK:
+        _RDNS_CACHE[ip] = result
+    return result
+
+
+def prefetch_rdns(ips, workers: int = 32) -> int:
+    """并发预热 rDNS 缓存 (v3 新增; 入口线路判定 + classify 兜底共用)"""
+    todo = []
+    seen = set()
+    for ip in ips:
+        if ip and ip not in seen:
+            seen.add(ip)
+            with _RDNS_LOCK:
+                if ip not in _RDNS_CACHE:
+                    todo.append(ip)
+    if not todo:
+        return 0
+    with ThreadPoolExecutor(max_workers=workers) as ex:
+        list(ex.map(get_rdns, todo))
+    return len(todo)
+
+
+def detect_cn_line(ip: str) -> str:
+    """入口 IP 的回国精品网线路识别 (v3 新增)
+
+    社区通行做法: 高端口/CN2 宿主习惯在 rDNS 里带线路名 (cn2/gia/4837/
+    cmcc...), 这是唯一零成本能看出"这台机回国走什么路"的信号。
+    返回 "" (无标记) 或线路名。
+    匹配规则: 字母关键词按点分 token 精确/前缀匹配 (防 "gia" 撞 "giant");
+    数字关键词 (4837/9808) 用子串匹配 (真实 rDNS 常写成 v-4837.line.xxx)。
+    """
+    rdns = get_rdns(ip)
+    if not rdns:
+        return ""
+    tokens = set(rdns.split("."))
+    for line, kws in CN_LINE_RDNS_TOKENS.items():
+        for kw in kws:
+            if kw.isdigit():
+                if kw in rdns:
+                    return line
+            else:
+                for t in tokens:
+                    if t == kw or (len(kw) >= 3 and t.startswith(kw)):
+                        return line
+    return ""
 
 
 def classify_network_type(ip: str, country: str, asn, org: str, ip_api_rec: dict = None) -> tuple:
@@ -2464,6 +2787,460 @@ def classify_network_type(ip: str, country: str, asn, org: str, ip_api_rec: dict
                 return "residential", 60
 
     return "unknown", 30
+
+
+# ══════════════════════════════════════════════════════════════════
+# 国内可用性核心 (v3 新增)
+#   全部零购买: DoH 用公共 DNS、回国探测用国内公共站点/公共 DNS、
+#   Atlas 用免费账号额度 (可选, 默认关)。
+# ══════════════════════════════════════════════════════════════════
+
+# DNS 污染判定缓存 (main 预查填充; static_cn_prescore 只读)
+_DNS_POLLUTION_CACHE = {}
+
+
+def _socks5_connect_rtt(socks_port: int, host: str, port: int, timeout: float):
+    """裸 SOCKS5 (无认证) CONNECT 握手 → 返回 RTT 毫秒; 失败返回 None
+
+    ★ 为什么不用 requests: requests 的 socks 代理只支持 http(s) 协议,
+      没法对任意 TCP 目标 (223.5.5.5:443) 做"只握手不传输"的纯 RTT 测量。
+      这里手写最小 SOCKS5 客户端 (greeting + CONNECT), 拿到 TCP 建连即关,
+      量的是"节点出口 → 国内目标"的真实往返 = 用户回国流量的链路质量。
+    """
+    t0 = time.time()
+    try:
+        s = socket.create_connection(("127.0.0.1", socks_port), timeout=timeout)
+        try:
+            def _recv_exact(n):
+                """精确读满 n 字节 — TCP 分片下 recv(n) 可能只返回一部分,
+                少读会把合法应答误判成失败 (跨境链路上分片是常态)"""
+                buf = b""
+                while len(buf) < n:
+                    chunk = s.recv(n - len(buf))
+                    if not chunk:
+                        break
+                    buf += chunk
+                return buf
+
+            # ① 问候: VER=5, NMETHODS=1, METHOD=0 (no auth)
+            s.sendall(b"\x05\x01\x00")
+            resp = _recv_exact(2)
+            if len(resp) != 2 or resp[0] != 5 or resp[1] != 0:
+                return None
+            # ② CONNECT: VER=5 CMD=1 RSV=0 ATYP=1(IPv4) DST.ADDR DST.PORT
+            req = (b"\x05\x01\x00\x01"
+                   + socket.inet_aton(host) + int(port).to_bytes(2, "big"))
+            s.sendall(req)
+            rep = _recv_exact(10)     # IPv4 应答固定 10 字节
+            if len(rep) < 2 or rep[1] != 0:
+                return None
+            return int((time.time() - t0) * 1000)
+        finally:
+            s.close()
+    except Exception:
+        return None
+
+
+def probe_cn_exit(proxies: dict, socks_port: int,
+                  timeout: float = CN_EXIT_TIMEOUT) -> dict:
+    """回国方向探测 (v3 新增): 经节点测量"出口 → 国内"的可达性与 RTT
+
+    两个盲区一次补上:
+      ① 回国 RTT — 裸 SOCKS5 握手国内公共 DNS, 用户访问国内站/
+         国服游戏/国内 API 的链路质量 (出国快不代表回国快)
+      ② 回国可达性 — 经节点 HTTP 请求 baidu/bilibili/jd;
+         大量节点只转发海外流量, 对国内目标直接拒 (回国场景不可用)
+    返回 {"rtt_ms": int|None, "http_ok": int, "http_total": int,
+          "reachable": bool, "detail": str}
+    """
+    rtts = []
+
+    def _tcp(host, port):
+        return _socks5_connect_rtt(socks_port, host, port, timeout)
+
+    def _http(url):
+        try:
+            r = PROBE_SESSION.get(url, proxies=proxies, timeout=timeout,
+                                  allow_redirects=False)
+            return r.status_code < 400
+        except Exception:
+            return False
+
+    with ThreadPoolExecutor(max_workers=5) as ex:
+        tcp_futs = [ex.submit(_tcp, h, p) for h, p in CN_EXIT_TCP_PROBES]
+        http_futs = [ex.submit(_http, u) for u in CN_EXIT_HTTP_PROBES]
+        for f in as_completed(tcp_futs):
+            v = f.result()
+            if v is not None:
+                rtts.append(v)
+        http_ok = sum(1 for f in as_completed(http_futs) if f.result())
+
+    rtt_ms = min(rtts) if rtts else None
+    http_total = len(CN_EXIT_HTTP_PROBES)
+    reachable = http_ok >= CN_EXIT_HTTP_MIN_OK
+    detail = f"回国RTT={rtt_ms}ms" if rtt_ms is not None else "回国RTT=?"
+    detail += f" HTTP可达{http_ok}/{http_total}"
+    return {"rtt_ms": rtt_ms, "http_ok": http_ok, "http_total": http_total,
+            "reachable": reachable, "detail": detail}
+
+
+def _doh_resolve(url_template: str, domain: str):
+    """DoH JSON 查询 → (status, [A记录]); 网络失败 (None, [])
+    DNSPod/阿里 /resolve 与 Cloudflare dns-query (Accept: dns-json)
+    返回同构 JSON: {"Status": int, "Answer": [{"type":1,"data":ip}]}"""
+    try:
+        r = DIRECT_SESSION.get(url_template.format(d=domain),
+                               timeout=DNS_CHECK_TIMEOUT,
+                               headers={"Accept": "application/dns-json",
+                                        "User-Agent": USER_AGENT})
+        if r.status_code != 200:
+            return None, []
+        j = r.json()
+        status = j.get("Status")
+        ips = [a["data"] for a in (j.get("Answer") or [])
+               if a.get("type") == 1 and a.get("data")]
+        return status, ips
+    except Exception:
+        return None, []
+
+
+def check_dns_pollution(domain: str) -> dict:
+    """DNS 污染对比: 大陆公共 DNS (DNSPod/阿里) vs 全球 DNS (Cloudflare)
+
+    判定 (只认硬失败, 不认"结果不同" — GeoDNS/CDN 分地域返回不同 IP 合法):
+      polluted = 大陆侧**全部**解析失败 (NXDOMAIN/SERVFAIL/REFUSED) 或
+                 返回空, 且全球侧解析成功。
+    返回 {"polluted": bool, "cn_ok": bool, "global_ok": bool, "detail": str}
+    域名是 IP 字面量 → 不过 DNS, 直接返回不污染。
+    """
+    if is_ip_literal(domain):
+        return {"polluted": False, "cn_ok": None, "global_ok": None,
+                "detail": "ip-literal"}
+    key = domain.lower().rstrip(".")
+    cached = _DNS_POLLUTION_CACHE.get(key)
+    if cached is not None:
+        return cached
+
+    cn_fail, cn_ok_cnt, cn_detail = 0, 0, []
+    for name, tpl in CN_DOH_JSON:
+        status, ips = _doh_resolve(tpl, key)
+        if status is None:
+            cn_detail.append(f"{name}:网络失败")
+            continue                      # 网络失败 ≠ 污染 (Actions 视角可能被墙)
+        if status == 0 and ips:
+            cn_ok_cnt += 1
+            cn_detail.append(f"{name}:ok")
+        else:
+            cn_fail += 1
+            cn_detail.append(f"{name}:status={status}/empty")
+
+    g_ok, g_detail = False, []
+    for name, tpl in GLOBAL_DOH_JSON:
+        status, ips = _doh_resolve(tpl, key)
+        if status == 0 and ips:
+            g_ok = True
+            g_detail.append(f"{name}:ok({len(ips)})")
+        else:
+            g_detail.append(f"{name}:status={status}/empty")
+
+    # 大陆侧有任一解析成功 → 不判污染; 大陆全部网络失败 → 无信号, 不判
+    polluted = bool(cn_fail) and cn_ok_cnt == 0 and g_ok
+    result = {"polluted": polluted,
+              "cn_ok": (cn_ok_cnt > 0),
+              "global_ok": g_ok,
+              "detail": "CN[" + ",".join(cn_detail) + "] G[" + ",".join(g_detail) + "]"}
+    _DNS_POLLUTION_CACHE[key] = result
+    return result
+
+
+def precheck_dns_pollution(hosts, workers: int = DNS_CHECK_WORKERS):
+    """并发预查全部唯一域名的 DNS 污染状态 (v3 新增; main 在预检前调用)"""
+    domains = []
+    seen = set()
+    for h in hosts:
+        if h and not is_ip_literal(h):
+            k = h.lower().rstrip(".")
+            if k not in seen:
+                seen.add(k)
+                domains.append(k)
+    if not domains:
+        return 0, 0
+    polluted = [0]
+
+    def _one(d):
+        try:
+            if check_dns_pollution(d).get("polluted"):
+                polluted[0] += 1
+        except Exception:
+            pass
+
+    with ThreadPoolExecutor(max_workers=workers) as ex:
+        list(ex.map(_one, domains))
+    return len(domains), polluted[0]
+
+
+def _entry_ip_in_cdn(ip_str: str) -> bool:
+    """入口 IP 是否落在已知 CDN/Anycast 网段 (GFW 墙 IP 墙不掉)"""
+    if not ip_str:
+        return False
+    try:
+        ip_obj = ipaddress.ip_address(ip_str)
+    except ValueError:
+        return False
+    for net in CLOUDFLARE_IP_NETWORKS:
+        if ip_obj in net:
+            return True
+    for net in CDN_IP_NETWORKS_EXTRA:
+        if ip_obj in net:
+            return True
+    return False
+
+
+def static_cn_prescore(item) -> tuple:
+    """静态 China 友好度**预测分** (v3 新增; 零网络请求, 只用缓存)
+
+    在端口预检前对每个候选算一遍, 用于:
+      ① 测试优先级排序 (高分先测 — 时间预算有限时先保国内友好节点)
+      ② 国内友好订阅的入围基础分
+    不含入口 rDNS 线路 (那要等节点真活才值得查, 见 compute_cn_score)。
+    返回 (score:int, flags:list)
+    """
+    raw, outbound, server, port, proto = item
+    score, flags = 0, []
+    tls = outbound.get("tls") or {}
+    reality = bool(tls.get("reality"))
+    tls_on = bool(tls.get("enabled"))
+    transport = (outbound.get("transport") or {}).get("type")
+
+    # ── 端口 (GFW 对 443 最宽容, 随机高端口是周期性限流常客) ──
+    if port == 443:
+        score += CN_SCORE_PORT_443
+        flags.append("443")
+    elif port == 80:
+        score += CN_SCORE_PORT_80
+        flags.append("80")
+    else:
+        flags.append("非443")
+
+    # ── 协议/传输伪装 (DPI 可识别性) ──
+    if proto in ("hysteria2", "tuic"):
+        score += CN_SCORE_QUIC_PENALTY
+        flags.append("QUIC")
+    if reality:
+        score += CN_SCORE_REALITY
+        flags.append("Reality")
+    elif tls_on:
+        entry_ip = server if is_ip_literal(server) else resolve_host(server)
+        if _entry_ip_in_cdn(entry_ip):
+            score += CN_SCORE_TLS_CDN
+            flags.append("CDN前置")
+        elif transport in ("ws", "grpc", "http", "httpupgrade"):
+            score += CN_SCORE_TLS_WEB
+            flags.append("web传输")
+        else:
+            score += CN_SCORE_TLS_PLAIN
+    else:
+        score += CN_SCORE_NO_TLS_PENALTY
+        flags.append("无TLS")
+
+    # ── 域名卫生 (IP 字面量无 DNS 风险; 域名查污染缓存) ──
+    if is_ip_literal(server):
+        score += CN_SCORE_IP_LITERAL
+        flags.append("直连IP")
+    else:
+        dns_info = _DNS_POLLUTION_CACHE.get(server.lower().rstrip("."))
+        if dns_info:
+            if dns_info.get("polluted"):
+                score += CN_SCORE_DNS_POLLUTED
+                flags.append("DNS污染")
+            elif dns_info.get("global_ok"):
+                score += CN_SCORE_DNS_OK
+                flags.append("DNS正常")
+    return score, flags
+
+
+def compute_cn_score(n: dict) -> tuple:
+    """国内可用性综合分 (v3 新增; classify 阶段对每个出库节点调用)
+
+    组成 = 静态预测分 (测试前) + 入口精品网线路 (真活后查 rDNS/ASN)
+          + 回国方向实测 (经节点) + 海外延迟底子
+    返回 (score:int, flags:list) — flags 同时用于节点名标注。
+    """
+    score = n.get("cn_prescore", 0) or 0
+    flags = list(n.get("cn_prescore_flags") or [])
+
+    line = n.get("entry_line") or ""
+    if line == "cn2":
+        score += CN_SCORE_RDNS_CN2
+        flags.append("CN2GIA")
+    elif line == "cu4837":
+        score += CN_SCORE_RDNS_4837
+        flags.append("联通4837")
+    elif line == "cmi":
+        score += CN_SCORE_RDNS_CMCC
+        flags.append("移动CMI")
+
+    if n.get("entry_asn") in CN_CLOUD_ASNS:
+        score += CN_SCORE_ASN_CNCLOUD
+        flags.append("中国云入口")
+
+    if n.get("cn_exit_reachable"):
+        score += CN_SCORE_EXIT_OK
+        flags.append("回国通")
+    else:
+        flags.append("回国不通")
+
+    rtt = n.get("cn_exit_rtt_ms")
+    if rtt is not None:
+        if rtt <= CN_EXIT_RTT_GOOD_MS:
+            score += CN_SCORE_EXIT_RTT_GOOD
+        elif rtt > CN_EXIT_RTT_BAD_MS:
+            score += CN_SCORE_EXIT_RTT_BAD
+
+    # (可选) Atlas 中国探针实测: 唯一真·大陆视角信号, 权重给最高档
+    #   可达率 ≥50% → 强加分; <50% → 强扣分 (IP 被墙/路由黑洞的直接证据)
+    ar = n.get("atlas_ok_ratio")
+    if ar is not None:
+        if ar >= 0.5:
+            score += 20
+            flags.append(f"大陆可达{ar:.0%}")
+        else:
+            score -= 25
+            flags.append(f"大陆不可达{ar:.0%}")
+
+    if 0 < (n.get("latency_ms") or 99999) <= 300:
+        score += CN_SCORE_LAT_GOOD
+
+    return score, flags
+
+
+# ══════════════════════════════════════════════════════════════════
+# (可选) RIPE Atlas 中国探针 ping — 真·中国大陆视角
+#   免费: 注册 RIPE NCC Access 账号可一次性领取 50,000 credits;
+#   Atlas 在中国大陆有 600+ 在线探针。本模块每轮只对少量候选入口 IP
+#   发起一次性 ping, 直接测"大陆 → 入口"可达性/RTT/丢包, 是唯一能
+#   真正回答"国内能不能连上"的免费手段。不配 ATLAS_API_KEY 则静默跳过。
+# ══════════════════════════════════════════════════════════════════
+
+def _atlas_get_probe_ids() -> list:
+    """取在线的大陆公共探针 ID (最多 ATLAS_MAX_PROBES 个)"""
+    r = DIRECT_SESSION.get(ATLAS_API_PROBES, timeout=20,
+                           headers={"Accept": "application/json"})
+    r.raise_for_status()
+    j = r.json()
+    ids = [p["id"] for p in (j.get("results") or [])
+           if p.get("id") and p.get("status") == 1]
+    return ids[:ATLAS_MAX_PROBES]
+
+
+def _atlas_create_ping(ip: str, probe_ids: list) -> int:
+    """对单个入口 IP 创建一次性 ping 测量 → measurement id"""
+    body = {
+        "definitions": [{
+            "type": "ping", "target": ip, "af": 4,
+            "packets": 3, "description": "freesub cn-check",
+        }],
+        "probes": [{"type": "probes",
+                    "value": ",".join(str(i) for i in probe_ids),
+                    "requested": len(probe_ids)}],
+        "is_oneoff": True,
+    }
+    r = DIRECT_SESSION.post(ATLAS_API_CREATE + ATLAS_API_KEY,
+                            json=body, timeout=30,
+                            headers={"Accept": "application/json"})
+    r.raise_for_status()
+    mids = r.json().get("measurements") or []
+    return int(mids[0]) if mids else 0
+
+
+def _atlas_fetch_result(mid: int):
+    """拉取单个测量结果 → (可达比例, 中位RTTms, 样本探针数); 无数据 (None,None,0)"""
+    r = DIRECT_SESSION.get(
+        f"https://atlas.ripe.net/api/v2/measurements/{mid}/results/",
+        timeout=20, headers={"Accept": "application/json"})
+    if r.status_code != 200:
+        return None, None, 0
+    j = r.json()
+    rows = j.get("results") if isinstance(j, dict) else j
+    if not rows:
+        return None, None, 0
+    sent = rcvd = 0
+    rtts = []
+    for row in rows:
+        s = row.get("sent")
+        c = row.get("rcvd")
+        if s is None or c is None:
+            res = row.get("result") or []
+            s = len(res)
+            c = sum(1 for x in res if isinstance(x, dict) and "rtt" in x)
+        sent += s or 0
+        rcvd += c or 0
+        rtt = row.get("avg") or row.get("min")
+        if rtt is None:
+            res = [x.get("rtt") for x in (row.get("result") or [])
+                   if isinstance(x, dict) and "rtt" in x]
+            rtt = min(res) if res else None
+        if rtt is not None:
+            rtts.append(float(rtt))
+    if sent <= 0:
+        return None, None, 0
+    ratio = rcvd / float(sent)
+    rtts.sort()
+    med = rtts[len(rtts) // 2] if rtts else None
+    return ratio, med, len(rows)
+
+
+def atlas_cn_ping(entry_ips: list) -> dict:
+    """(可选) 批量中国探针 ping → {ip: {"ok_ratio":f,"rtt_ms":int|None,"probes":n}}
+
+    预算保护: 每轮最多 ATLAS_MAX_IPS 个 IP × ATLAS_MAX_PROBES 个探针,
+    一次性 ping 每探针约 1 credit (5 万免费额度够上百轮, 仍建议盯着余额)。
+    任何一步失败都只影响对应 IP, 绝不抛异常中断主流程。
+    """
+    if not ATLAS_API_KEY or ATLAS_MAX_IPS <= 0 or not entry_ips:
+        return {}
+    ips = [ip for ip in entry_ips if ip][:ATLAS_MAX_IPS]
+    if not ips:
+        return {}
+    out = {}
+    try:
+        probe_ids = _atlas_get_probe_ids()
+        if not probe_ids:
+            print("[!] Atlas: 未取到在线大陆探针, 跳过")
+            return {}
+        print(f"[*] RIPE Atlas 中国探针 ping: {len(ips)} 个入口 IP × "
+              f"{len(probe_ids)} 探针 (免费额度, 每轮最多 {ATLAS_MAX_IPS} IP) ...")
+        pend = {}      # ip -> measurement id
+        for ip in ips:
+            try:
+                mid = _atlas_create_ping(ip, probe_ids)
+                if mid:
+                    pend[ip] = mid
+            except Exception as e:
+                print(f"[!] Atlas 创建测量失败 {ip}: {str(e)[:60]}")
+        if not pend:
+            return {}
+        deadline = time.time() + max(30, ATLAS_WAIT_SECONDS)
+        while time.time() < deadline and pend:
+            time.sleep(15)
+            for ip in list(pend):
+                try:
+                    ratio, med, cnt = _atlas_fetch_result(pend[ip])
+                except Exception:
+                    continue
+                if ratio is not None:
+                    out[ip] = {"ok_ratio": ratio,
+                               "rtt_ms": int(med) if med is not None else None,
+                               "probes": cnt}
+                    del pend[ip]
+            if pend:
+                print(f"[*] Atlas: 等待 {len(pend)}/{len(ips)} 个测量结果 ...")
+        ok = sum(1 for v in out.values() if v["ok_ratio"] >= 0.5)
+        print(f"[+] Atlas 中国探针结果: {len(out)}/{len(ips)} 个 IP 有数据, "
+              f"其中 {ok} 个大陆可达率 ≥50%")
+    except Exception as e:
+        print(f"[!] Atlas 模块异常 (不影响主流程): {str(e)[:80]}")
+    return out
 
 
 # ═══════════════════════════════════════════N═══════════════════════
@@ -2839,6 +3616,50 @@ def classify_and_export(test_results: list, ip_api_info: dict = None):
               f"(剔除重复 {dedup_dropped}, 保留速度最优 — 后续情报查询只跑去重后集合)")
     test_results = deduped_results
 
+    # ── v3: 入口侧情报 (国内可用性判定用; 并发 + 缓存, 零额外串行等待) ──
+    #   ① 入口 IP 解析 (域名 → IP; resolve_host 带缓存, 端口预检阶段已预热过)
+    #   ② 入口 rDNS 线路 (CN2GIA/4837/CMI) — 只对真活节点查, 死节点不配花 rDNS
+    #   ③ (可选) RIPE Atlas 中国探针 ping — 真·大陆视角, 默认关闭
+    #   ★ 旧版 classify 循环内**单线程** get_rdns (每节点最坏 2s), 400 个 unknown
+    #     节点最坏 800s 全烧在这 — v3 起并发预热, 循环内全缓存命中。
+    entry_ip_map = {}        # raw -> 入口 IP
+    ip_best_score = {}       # 入口 IP -> 该 IP 下最高静态 CN 分 (Atlas 选样用)
+    entry_ips = []
+    for r in test_results:
+        if not (r.get("alive") and not r.get("is_stalled")):
+            continue
+        srv = r.get("server") or ""
+        ip = srv if is_ip_literal(srv) else resolve_host(srv)
+        entry_ip_map[r["raw"]] = ip or ""
+        if ip:
+            ip_best_score[ip] = max(ip_best_score.get(ip, -999),
+                                    r.get("cn_prescore", 0) or 0)
+            if ip not in entry_ips:
+                entry_ips.append(ip)
+    prefetch_rdns(entry_ips)
+    line_stat = {}
+    for ip in entry_ips:
+        ln = detect_cn_line(ip)
+        if ln:
+            line_stat[ln] = line_stat.get(ln, 0) + 1
+    if line_stat:
+        detail = " ".join(f"{k}:{v}" for k, v in sorted(line_stat.items(), key=lambda x: -x[1]))
+        print(f"[*] 入口精品网线路 (rDNS 识别): {detail}")
+
+    # (可选) Atlas 中国探针: 只对静态分最高的入口 IP 发起 (免费额度有限)
+    atlas_info = {}
+    if ATLAS_API_KEY and ATLAS_MAX_IPS > 0 and entry_ips:
+        try:
+            ranked_ips = sorted(entry_ips, key=lambda ip: -ip_best_score.get(ip, 0))
+            atlas_info = atlas_cn_ping(ranked_ips)
+        except Exception as e:
+            print(f"[!] Atlas 调用跳过: {str(e)[:60]}")
+        if atlas_info:
+            cn_reach = sum(1 for v in atlas_info.values()
+                           if (v.get("ok_ratio") or 0) >= 0.5)
+            print(f"[+] Atlas 大陆视角: {cn_reach}/{len(atlas_info)} 个入口 IP "
+                  f"大陆可达率 ≥50% (真·中国探针实测)")
+
     # 收集全部出口 IP
     all_exit_ips = []
     seen_ip = set()
@@ -2906,6 +3727,18 @@ def classify_and_export(test_results: list, ip_api_info: dict = None):
         if not exit_ip:
             country = country or "OTHER"
 
+        # ── v3: 入口侧国内可用性情报 (入口 IP 的线路/ASN; Atlas 实测) ──
+        entry_ip = entry_ip_map.get(r["raw"], "")
+        entry_line = detect_cn_line(entry_ip) if entry_ip else ""
+        entry_asn = None
+        if entry_ip and asn_reader:
+            try:
+                a = asn_reader.get(entry_ip)
+                entry_asn = a.get("autonomous_system_number") if a else None
+            except Exception:
+                entry_asn = None
+        atlas_rec = atlas_info.get(entry_ip) if entry_ip else None
+
         nodes.append({
             "raw": r["raw"],
             "server": r["server"],
@@ -2934,6 +3767,16 @@ def classify_and_export(test_results: list, ip_api_info: dict = None):
             "mitm_risk": r["mitm_risk"],
             "is_warp": r.get("is_warp", False),
             "is_stalled": r["is_stalled"],
+            # ── v3 国内可用性字段 ──
+            "cn_prescore": r.get("cn_prescore", 0) or 0,
+            "cn_prescore_flags": r.get("cn_prescore_flags") or [],
+            "entry_ip": entry_ip,
+            "entry_line": entry_line,
+            "entry_asn": entry_asn,
+            "cn_exit_rtt_ms": r.get("cn_exit_rtt_ms"),
+            "cn_exit_reachable": r.get("cn_exit_reachable", False),
+            "atlas_ok_ratio": (atlas_rec or {}).get("ok_ratio"),
+            "atlas_rtt_ms": (atlas_rec or {}).get("rtt_ms"),
         })
 
     if country_reader:
@@ -3087,21 +3930,49 @@ def classify_and_export(test_results: list, ip_api_info: dict = None):
     non_residential = [n for n in unique_nodes if n not in residential]
     print(f"[*] 家宽/移动网络节点: {len(residential)} | 普通(机房/CDN): {len(non_residential)}")
 
+    # ── v3: 国内可用性综合分 + 国内友好订阅入选 ──
+    #   cn_score = 静态预测分(端口/协议伪装/CDN/域名卫生)
+    #            + 入口精品网线路(CN2GIA/4837/CMI/中国云)
+    #            + 回国方向实测(可达性/RTT) + (可选)Atlas 大陆探针实测
+    #   入选国内友好订阅的硬条件: 总分 ≥ 门槛 且 域名未被 DNS 污染
+    #   (国内客户端默认 DNS 连不上污染域名, 这是"国内能不能用"的一票否决项)
+    cn_friendly = []
+    for n in unique_nodes:
+        score, flags = compute_cn_score(n)
+        n["cn_score"] = score
+        n["cn_flags"] = flags
+        n["cn_friendly"] = (score >= CN_FRIENDLY_MIN_SCORE
+                            and "DNS污染" not in flags
+                            and not n.get("is_warp"))
+        if n["cn_friendly"]:
+            cn_friendly.append(n)
+    n_back = sum(1 for n in unique_nodes if "回国不通" in (n.get("cn_flags") or []))
+    n_dns = sum(1 for n in unique_nodes if "DNS污染" in (n.get("cn_flags") or []))
+    n_line = sum(1 for n in unique_nodes if n.get("entry_line"))
+    print(f"[*] 国内可用性评分: 友好订阅入选 {len(cn_friendly)}/{len(unique_nodes)} "
+          f"(门槛 {CN_FRIENDLY_MIN_SCORE}) | 精品网入口 {n_line} | "
+          f"回国不通 {n_back} | DNS 污染 {n_dns}")
+
     # 排序: 家宽在前, 组内按"可用性综合分"升序
     #   ★ 旧版只按 latency 升序, 等于默认"延迟低 = 体验好"。但跨太平洋链路上
     #     丢包率和首包时间对体感的权重远大于延迟 —— 一个 80ms/丢包 15% 的节点
     #     排序会排在 300ms/零丢包 前面, 实际体验更差。
     #   综合分 = 延迟 + 丢包惩罚(每次丢失按 1500ms 计) + TTFB 的一半。
+    #   ★ v3: 再加国内可用性加权 (100-cn_score)×W —— 组内排序从此是
+    #     "国内用户视角": 同样延迟下, 国内友好的节点排前面。
     def _quality_key(n):
         # ★ loss_rate 为 None 表示"未测丢包"(非 0 也非 100%), 按 0 参与排序,
         #   不能因为缺数据就把节点排到最末 (#67 事故衍生问题)
         loss = n.get("loss_rate") or 0.0
         ttfb = n.get("ttfb_ms", 0) or 0
-        return (n["latency_ms"] + loss * 1500.0 + ttfb * 0.5)
+        cn_penalty = (100 - (n.get("cn_score") or 0)) * CN_QUALITY_WEIGHT
+        return (n["latency_ms"] + loss * 1500.0 + ttfb * 0.5 + cn_penalty)
 
     unique_nodes.sort(key=lambda x: (0 if x in residential else 1, _quality_key(x)))
     residential.sort(key=_quality_key)
     non_residential.sort(key=_quality_key)
+    # v3: 国内友好订阅按 cn_score 降序 (同分再看质量分)
+    cn_friendly.sort(key=lambda x: (-(x.get("cn_score") or 0), _quality_key(x)))
     # ★ 链式复测双跳失败的家宽 → 降级普通区 (v2rayN 链式场景不可靠)
     #    保留在总订阅/国家订阅里 (直连场景仍可用), 只是退出家宽专区
 
@@ -3115,7 +3986,7 @@ def classify_and_export(test_results: list, ip_api_info: dict = None):
         else:
             n["outbound"] = None
 
-    return unique_nodes, residential, non_residential
+    return unique_nodes, residential, non_residential, cn_friendly
 
 
 def make_node_name(item, idx, force_residential=False):
@@ -3152,12 +4023,34 @@ def make_node_name(item, idx, force_residential=False):
     ttfb_tag = f" ⏱{ttfb}ms" if (ttfb and ttfb > TTFB_SLOW_MS) else ""
     # WARP 套壳节点标注 (出口 IP 属 Cloudflare, 非真实落地)
     warp_tag = " ⚠WARP" if item.get("is_warp") else ""
+    # ── v3 国内可用性标注 (节点名内, 客户端列表一眼可见) ──
+    #   🇨🇳  = 国内友好订阅成员 (cn_score ≥ 门槛, 端口/伪装/域名/回国全过线)
+    #   ⚠D = 域名在大陆被 DNS 污染 (默认 DNS 下连不上)
+    #   ⚠P = 非 443/80 端口 (GFW 周期性限流常客)
+    #   ⚠U = QUIC/UDP 系 (hy2/tuic, GFW 对 UDP 有 QoS 传统)
+    #   ⚠C = 回国方向不通 (只出国不回国, 国内站点/国服不可用)
+    cn_flags = item.get("cn_flags") or []
+    if item.get("cn_friendly"):
+        cn_tag = " 🇨🇳"
+    else:
+        marks = []
+        if "DNS污染" in cn_flags:
+            marks.append("⚠D")
+        if "非443" in cn_flags:
+            marks.append("⚠P")
+        if "QUIC" in cn_flags:
+            marks.append("⚠U")
+        if "回国不通" in cn_flags:
+            marks.append("⚠C")
+        cn_tag = (" " + "".join(marks)) if marks else ""
     return (f"{flag} {cname} {idx:02d}{tag}{speed_tag}{loss_tag}{ttfb_tag}"
-            f"{warp_tag}{risk_tag} - NEKO")
+            f"{warp_tag}{cn_tag}{risk_tag} - NEKO")
 
 
-def export_all(unique_nodes, residential, non_residential):
+def export_all(unique_nodes, residential, non_residential, cn_friendly=None):
+    """v3: 新增 cn_friendly (国内友好订阅) 导出"""
     ensure_directories()
+    cn_friendly = cn_friendly or []
 
     def build_group(nodes_list, force_res=False):
         links, proxies, sb_nodes = [], [], []
@@ -3256,8 +4149,30 @@ def export_all(unique_nodes, residential, non_residential):
         print(f"[*] 家宽合并: 原始 {len(residential)} → 合并后 {len(res_merged)} "
               f"(跨地区去重剔除 {merge_dropped} 个同落地IP副本) | 覆盖地区: {merge_kept_cc}")
 
-    print(f"[*] 导出完毕: 全量 {len(all_links)} | 家宽 {len(res_links)} | 家宽合并 {len(ml)}")
-    return len(all_links), len(res_links)
+    # 6) ★ v3 国内友好订阅 (国内可用性优选 — 直击"国内能不能用")
+    #    入选: cn_score ≥ CN_FRIENDLY_MIN_SCORE 且域名未被 DNS 污染 (一票否决)
+    #    排序: cn_score 降序 (同分看质量分) — 订阅里越靠前越该先用
+    if cn_friendly:
+        cn_links, cn_proxies, cn_sb = build_group(cn_friendly)
+    else:
+        cn_links, cn_proxies, cn_sb = [], [], []
+    with open(os.path.join(OUTPUT_DIR, "cn-friendly.txt"), "w", encoding="utf-8") as f:
+        f.write(base64.b64encode("\n".join(cn_links).encode()).decode())
+    if cn_proxies:
+        export_clash_yaml(cn_proxies, os.path.join(OUTPUT_DIR, "cn-friendly-clash.yaml"))
+        export_singbox_json(cn_sb, os.path.join(OUTPUT_DIR, "cn-friendly-singbox.json"))
+    else:
+        # 空状态: 清掉上一轮遗留文件, 避免链接指向过期数据
+        for fn in ("cn-friendly-clash.yaml", "cn-friendly-singbox.json"):
+            p = os.path.join(OUTPUT_DIR, fn)
+            if os.path.exists(p):
+                os.remove(p)
+        print("[!] 国内友好订阅为空 — 已生成空 cn-friendly.txt, "
+              "并清理上一轮的 cn-friendly-* 文件 (避免链接指向过期数据)")
+
+    print(f"[*] 导出完毕: 全量 {len(all_links)} | 家宽 {len(res_links)} | "
+          f"家宽合并 {len(ml)} | 国内友好 {len(cn_links)}")
+    return len(all_links), len(res_links), len(cn_links)
 
 
 def _merge_residential(residential: list) -> tuple:
@@ -3332,7 +4247,7 @@ def export_singbox_json(sb_nodes, filepath):
 # README 生成
 # ═══════════════════════════════════════════N═══════════════════════
 
-def update_readme(total_count, res_count):
+def update_readme(total_count, res_count, cn_count=0):
     repo_name = os.environ.get("GITHUB_REPOSITORY", "hezhanleiok/freesub").strip()
     cache_bust = ""
     # 私有化部署 Worker 脚本里的仓库参数 (默认值兜底)
@@ -3393,6 +4308,7 @@ def update_readme(total_count, res_count):
 
 > 👤 **定制规范命名**: 所有订阅节点均重命名为 `国旗 地区 序号 (家宽) - xiaohe`
 > ⚡ **真实可用保障**: 所有节点由 `sing-box v{SINGBOX_VERSION}` 内核建立实际代理隧道, 完成真实 HTTPS 双向传输握手 + 出口 IP 穿透验证 + Cloudflare 限速下载断流检测 + TLS 证书校验 (MITM 劫持识别), 拒绝虚假通畅、断流节点与高危劫持节点。
+> 🇨🇳 **国内可用性导向 (v3 新增)**: 在海外视角测活之外, 增加入口侧 GFW 抗力静态评分 (端口/协议伪装/CDN 前置/域名 DNS 污染对比) + 入口精品网线路识别 (CN2 GIA/联通 4837/移动 CMI) + 回国方向实测 (经节点访问百度/B 站/京东 + 国内公共 DNS 握手 RTT), 达标节点进入独立的**国内友好订阅**, 节点名打 🇨🇳 标记; 风险项打 ⚠D(域名污染)/⚠P(非443端口)/⚠U(QUIC)/⚠C(回国不通)。
 > 🛡️ **全协议支持**: VLESS (Reality/Vision) · VMESS · Trojan · Shadowsocks · Hysteria2 · TUIC · AnyTLS
 
 ---
@@ -3450,6 +4366,40 @@ def update_readme(total_count, res_count):
 | 地区/国家 | 节点数 | V2RayN 专属订阅 | Clash 专属订阅 | sing-box 专属订阅 |
 | :--- | :---: | :---: | :---: | :---: |
 {normal_table}
+
+---
+
+## 🇨🇳 国内友好订阅 (国内可用性优选 · v3 新增)
+
+> 上面的订阅回答"节点活不活", 这一节回答**"节点在国内能不能用"**。CI 跑在海外 (Azure US),
+> 从美国秒连、满速下载的节点, 国内用户连不上是常态 —— 入口端口被 GFW 限流、域名被 DNS
+> 污染、协议无伪装被 DPI 识别、线路回国质量差, 这些从海外视角全都看不见。
+> 国内友好订阅用五路信号把这类节点提前标出来 (全部免费公共服务, 零购买):
+
+| 信号族 | 具体手段 | 拦住/标出什么 |
+| :--- | :--- | :--- |
+| ① 入口端口 | 443 > 80 > 随机高端口 | 随机高端口是 GFW 周期性限流/重置的常客 |
+| ② 协议伪装 | Reality > CDN 前置 (ws/grpc over CDN IP) > web 传输 > 裸 TLS > 明文 | DPI 可识别性 = 被墙风险 |
+| ③ 域名卫生 | DNSPod/阿里 (大陆公共 DNS) vs Cloudflare 解析结果对比 | 域名在大陆被污染 → 默认 DNS 下直接连不上 (⚠D) |
+| ④ 入口线路 | 入口 IP rDNS/ASN 识别 CN2 GIA / 联通 4837 / 移动 CMI / 中国云 | 回国链路质量 (延迟/丢包的根源) |
+| ⑤ 回国方向 | 经节点 TCP 握手 223.5.5.5/114.114.114.114 量回国 RTT; 经节点请求百度/B 站/京东 | 只出国不回国的节点 (国内站点/国服不可用, ⚠C) |
+
+**入选规则**: 综合分 `cn_score` ≥ {CN_FRIENDLY_MIN_SCORE} 且域名未被 DNS 污染 (一票否决);
+订阅内按 cn_score 降序, 越靠前越该先用。**可选进阶**: 配置免费 RIPE Atlas key
+(注册即领 5 万额度) 后, 还会用中国大陆 600+ 真实探针 ping 入口 IP, 直接实测
+"大陆 → 节点"可达性 — 这是唯一真·中国视角的信号 (默认关闭, 见脚本内 Atlas 模块说明)。
+
+**订阅入口** (节点名带 🇨🇳 标记):
+
+| 客户端 / 格式 | 节点数 | 免翻 CDN 订阅直链 (国内直连) | 官方原生 Raw 直链 (开启代理) |
+| :--- | :---: | :--- | :--- |
+| ⚡ **V2RayN (Base64)** | `{cn_count}` | [免翻 CDN 直链](https://cdn.jsdelivr.net/gh/{repo_name}@main/output/cn-friendly.txt) | [官方 Raw 直链](https://raw.githubusercontent.com/{repo_name}/main/output/cn-friendly.txt) |
+| 📦 **Clash (YAML)** | `{cn_count}` | [免翻 CDN 直链](https://cdn.jsdelivr.net/gh/{repo_name}@main/output/cn-friendly-clash.yaml) | [官方 Raw 直链](https://raw.githubusercontent.com/{repo_name}/main/output/cn-friendly-clash.yaml) |
+| 📦 **sing-box (JSON)** | `{cn_count}` | [免翻 CDN 直链](https://cdn.jsdelivr.net/gh/{repo_name}@main/output/cn-friendly-singbox.json) | [官方 Raw 直链](https://raw.githubusercontent.com/{repo_name}/main/output/cn-friendly-singbox.json) |
+
+> ⚠️ **诚实声明**: 不配 Atlas key 时, "大陆 → 入口"这一跳没有真探针, 靠的是端口/伪装/
+> 线路/DNS 这些**静态与代理侧信号**推断 (它们与 GFW 行为的相关性很高, 但不是实测)。
+> 要 100% 确定某个节点国内可达, 要么配 Atlas key, 要么以你本机的实测为准。
 
 ---
 
@@ -3518,7 +4468,8 @@ export default {{
 ## 🛠️ 项目使用说明
 1. **自动更新机制**：GitHub Actions 每 6 小时全自动运行并刷新上述全部订阅与数据。
 2. **测活标准**：节点必须通过 ① 静态预筛(剔除关闭证书校验) ② 端口预检 ③ sing-box 实际隧道跨源活性探测 (Google/Cloudflare/Microsoft 至少 2 源) ④ 真实出口 IP 穿透获取 (延迟 ≤ 1500ms) ⑤ 限时下载测速 (稳态吞吐 ≥ 200KB/s, 5MB 首测 + 1MB 复测取最小值 + Hetzner 物理机房交叉测速) ⑥ 丢包率 ≤ 25% ⑦ 首包 TTFB ≤ 1800ms ⑧ TLS 证书校验非 MITM, 方可入库。
-3. **多客户端兼容**：Clash / v2rayN / sing-box 全格式订阅。
+3. **国内可用性标准 (v3)**：入库后再过五路国内向信号 — ① 入口端口/协议伪装静态评分 (443/Reality/CDN 前置优先) ② 域名经大陆公共 DNS 与全球 DNS 对比, 被污染者打 ⚠D 并排除出国内友好订阅 ③ 入口 IP rDNS/ASN 精品网线路识别 (CN2 GIA/4837/CMI) ④ 经节点实测回国方向 (百度/B 站/京东可达性 + 国内公共 DNS 握手 RTT) ⑤ (可选) RIPE Atlas 中国大陆探针实测。综合分 ≥ {CN_FRIENDLY_MIN_SCORE} 且域名干净的节点进入**国内友好订阅** (cn-friendly), 节点名打 🇨🇳。
+4. **多客户端兼容**：Clash / v2rayN / sing-box 全格式订阅。
 """
     with open(os.path.join(BASEDIR, "README.md"), "w", encoding="utf-8") as f:
         f.write(readme)
@@ -3558,7 +4509,7 @@ def _verify_export_lineage(unique_nodes: list, test_results: list) -> bool:
 
 def main():
     t_start = time.time()
-    print(f"==== 免费节点测活订阅池 v2 · 启动于 {datetime.now(timezone.utc).isoformat()} ====")
+    print(f"==== 免费节点测活订阅池 v3 (国内可用性导向) · 启动于 {datetime.now(timezone.utc).isoformat()} ====")
     ensure_directories()
     setup_environment()
 
@@ -3674,6 +4625,30 @@ def main():
     #     必须在凭据去重之后 — 先去重才不会对同一垃圾节点重复报计数
     candidates = static_prescreen(candidates)
 
+    # 2.7 ★ v3 国内可用性预筛 (全部零成本, 在端口预检前完成):
+    #     ① DNS 污染预查: 大陆公共 DNS (DNSPod/阿里) vs 全球 DNS (Cloudflare)
+    #        并发查全部唯一域名 — 域名被污染的节点, 国内客户端默认 DNS 下
+    #        连不上, 静态评分 -45 并排除出国内友好订阅 (一票否决)
+    #     ② 域名解析并发预热: 静态评分要查"入口 IP 是否在 CDN 网段",
+    #        提前并发解析, 端口预检阶段全部命中缓存 (消掉串行 DoH 等待)
+    #     ③ 静态 China 友好度评分: 端口/协议伪装/CDN 前置/域名卫生
+    #     ④ 按静态分降序重排测试顺序: 高分节点先测先出结果 —
+    #        CI 时长有限时, 国内友好节点优先拿到完整测活, 不会被
+    #        一堆注定断流的低分节点挤占 (总测试量不变, 只改顺序)
+    n_dom, n_polluted = precheck_dns_pollution([c[2] for c in candidates])
+    if n_dom:
+        print(f"[*] DNS 污染预查: {n_dom} 个唯一域名, {n_polluted} 个在大陆解析异常 "
+              f"(静态评分 {CN_SCORE_DNS_POLLUTED}, 排除出国内友好订阅)")
+    n_resolved = prefetch_dns([c[2] for c in candidates])
+    prescore_map = {}
+    for it in candidates:
+        s, fl = static_cn_prescore(it)
+        prescore_map[it[0]] = (s, fl)
+    candidates.sort(key=lambda it: -prescore_map[it[0]][0])
+    hi = sum(1 for it in candidates if prescore_map[it[0]][0] >= CN_FRIENDLY_MIN_SCORE)
+    print(f"[*] 静态 China 友好度预评分: 预测分 ≥{CN_FRIENDLY_MIN_SCORE} 的候选 {hi} 个 "
+          f"(域名解析预热 {n_resolved} 个; 已按预测分降序进入测试)")
+
     proto_stat = {}
     for _, _, _, _, p in candidates:
         proto_stat[p] = proto_stat.get(p, 0) + 1
@@ -3692,8 +4667,8 @@ def main():
     # 3. 端口预检
     candidates = prefilter_candidates(candidates)
 
-    # 4. 真实测活 (只测去重后的代表节点)
-    test_results = run_liveness_test(candidates)
+    # 4. 真实测活 (只测去重后的代表节点; 已按静态 CN 分降序, 高分先测)
+    test_results = run_liveness_test(candidates, prescore_map=prescore_map)
 
     # 4.5 ★ 重复节点结果回填: 同 凭据+目标+协议 的重复 URI 继承代表节点的测活结果。
     #   前提: key = (server, port, proto, 凭据指纹) 完全相同 → 服务端认的是同一份凭据,
@@ -3771,7 +4746,7 @@ def main():
     if not test_results:
         print("[!] 全部节点测活失败 — 保留上次 output, 不覆盖订阅文件")
         return
-    unique_nodes, residential, non_residential = classify_and_export(
+    unique_nodes, residential, non_residential, cn_friendly = classify_and_export(
         test_results, ip_api_info=ip_api_shared)
     if not unique_nodes:
         print("[!] 分类后无存活节点 — 保留上次 output")
@@ -3782,14 +4757,15 @@ def main():
     #   而不是靠人肉 review 代码路径。发现漏网之鱼时打警告并指出具体 raw, 便于定位。
     _verify_export_lineage(unique_nodes, test_results)
 
-    total, res = export_all(unique_nodes, residential, non_residential)
-    update_readme(total, res)
+    total, res, cn = export_all(unique_nodes, residential, non_residential,
+                                cn_friendly=cn_friendly)
+    update_readme(total, res, cn)
 
 
     # 统计报告
     elapsed = time.time() - t_start
     print("\n===== 运行报告 =====")
-    print(f"总耗时: {elapsed:.0f}s ({elapsed/60:.1f} 分钟) | 抓取 {len(raw_nodes)} → 静态预筛+去重后 {len(candidates)} → 真活 {len(test_results)} → 去重后 {len(unique_nodes)} → 家宽 {len(residential)}")
+    print(f"总耗时: {elapsed:.0f}s ({elapsed/60:.1f} 分钟) | 抓取 {len(raw_nodes)} → 静态预筛+去重后 {len(candidates)} → 真活 {len(test_results)} → 去重后 {len(unique_nodes)} → 家宽 {len(residential)} → 国内友好 {len(cn_friendly)}")
     by_type = {}
     for n in unique_nodes:
         by_type[n["net_type"]] = by_type.get(n["net_type"], 0) + 1
@@ -3803,6 +4779,13 @@ def main():
         by_country[n["country"]] = by_country.get(n["country"], 0) + 1
     top_c = sorted(by_country.items(), key=lambda x: -x[1])[:10]
     print(f"国家 Top10: {top_c}")
+    if cn_friendly:
+        top_cn = sorted(cn_friendly, key=lambda x: -(x.get("cn_score") or 0))[:5]
+        detail = " | ".join(
+            f"{n['proto']}/{n['server']}:{n['port']} cn={n.get('cn_score')}"
+            + (f" atlas={n['atlas_ok_ratio']:.0%}" if n.get("atlas_ok_ratio") is not None else "")
+            for n in top_cn)
+        print(f"国内友好 Top5 (cn_score): {detail}")
 
 
 if __name__ == "__main__":

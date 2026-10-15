@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇭🇰 中国香港 (Hong Kong) 01 1421K 🇨🇳 - NEKO
+- name: 🇭🇰 中国香港 (Hong Kong) 01 1050K 🇨🇳 - NEKO
   server: 34.92.19.135
   port: 443
   udp: true
@@ -16,56 +16,102 @@ proxies:
     short-id: 56d4e7ae4f86fa39
   servername: www.cloudflare.com
   client-fingerprint: chrome
-- name: 🇭🇰 中国香港 (Hong Kong) 02 ⚠S294K 🇨🇳 - NEKO
-  server: 103.193.173.51
-  port: 39485
-  udp: true
-  type: vless
-  uuid: 25b3faeb-89b0-4dff-b0a3-0e70997dc962
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: pzmFiyOtVaKJpJlXYC_hJcDw0hiPvPZ661uZn4NO0Xs
-    short-id: b9
-  servername: www.icloud.com
-  client-fingerprint: chrome
-- name: 🇭🇰 中国香港 (Hong Kong) 03 929K ⚠P - NEKO
-  server: 45.140.168.141
-  port: 50120
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: bdb313adf74c2ede
-- name: 🇭🇰 中国香港 (Hong Kong) 04 1066K 🇨🇳 - NEKO
-  server: 207.56.137.51
+- name: 🇭🇰 中国香港 (Hong Kong) 02 558K 🇨🇳 - NEKO
+  server: 82.29.36.250
   port: 443
   udp: true
   type: vless
-  uuid: 01ada9fb-fa2f-45da-a0d0-bce80cdf433b
+  uuid: 41a7af38-0bb1-4493-aa8d-634af0c2548b
   flow: xtls-rprx-vision
   tls: true
   reality-opts:
-    public-key: WNifT0qNHWrUsvC6cuvej0rzZe6qPijopbmJyRADOF0
-    short-id: f713561d
-  servername: www.cloudflare.com
+    public-key: 09XPceP705hC-5sEDXDSLeL2eMOrF-mFISK8JaJ7q2g
+    short-id: ac3342a709db
+  servername: aws.amazon.com
   client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 03 3751K ⚠P - NEKO
+  server: sth.free-outline.giize.com
+  port: 1081
+  udp: true
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: 6qmp91myp2jj13dt
+- name: 🇭🇰 中国香港 (Hong Kong) 04 1404K 🇨🇳 - NEKO
+  server: 154.37.216.186
+  port: 443
+  udp: true
+  type: vless
+  uuid: ebdec762-050b-4d54-b7bf-0406ce22f734
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: KkSH2hoA6PuNJL5ZNUDGuWoAYe5kIwcGbrbCYuxHTx8
+    short-id: f39ad9d9eb26df47
+  servername: www.bing.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 05 932K 🇨🇳 - NEKO
+  server: yg1.ygkkk.dpdns.org
+  port: 443
+  udp: true
+  type: vmess
+  uuid: b2ba4a73-3123-479e-aa96-5973a9ecd0c0
+  alterId: 0
+  cipher: auto
+  tls: true
+  servername: jmp1.907737.xyz
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /b2ba4a73-3123-479e-aa96-5973a9ecd0c0-vm
+    headers:
+      Host: jmp1.907737.xyz
+- name: 🇭🇰 中国香港 (Hong Kong) 06 3789K ⚠L20% 🇨🇳 - NEKO
+  server: 2b9hwy8ocx7q74nm.v.3dns.vip
+  port: 443
+  udp: true
+  type: vmess
+  uuid: f23bb427c1f94373876c2f43e9f790f3
+  alterId: 0
+  cipher: auto
+  tls: true
+  servername: 2b9hwy8ocx7q74nm.v.3dns.vip
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /ws-vmess
+- name: 🇭🇰 中国香港 (Hong Kong) 07 514K ⚠P⚠U - NEKO
+  server: 152.32.254.68
+  port: 5010
+  udp: true
+  type: hysteria2
+  password: eBTe6Ax2pUts8oMEWoYVDfnSlHfkLffQ
+  sni: nas.aizhzo.com
+  skip-cert-verify: false
+  obfs: salamander
+  obfs-password: 7M4RXPFcQyQEGbkxBPfXo4bilMhCW2U9
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇭🇰 中国香港 (Hong Kong) 01 1421K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 ⚠S294K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 03 929K ⚠P - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 04 1066K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 1050K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 558K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 03 3751K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 04 1404K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 05 932K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 06 3789K ⚠L20% 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 07 514K ⚠P⚠U - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇭🇰 中国香港 (Hong Kong) 01 1421K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 ⚠S294K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 03 929K ⚠P - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 04 1066K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 1050K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 558K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 03 3751K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 04 1404K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 05 932K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 06 3789K ⚠L20% 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 07 514K ⚠P⚠U - NEKO
 rules:
 - MATCH,PROXIES

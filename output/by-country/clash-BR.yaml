@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇧🇷 巴西 (Brazil) 01 ⚠S2521K 🇨🇳 - NEKO
+- name: 🇧🇷 巴西 (Brazil) 01 3029K 🇨🇳 - NEKO
   server: 35.199.90.53
   port: 443
   udp: true
@@ -16,7 +16,7 @@ proxies:
     short-id: b62a4da6cd1c4dd6
   servername: www.cloudflare.com
   client-fingerprint: chrome
-- name: 🇧🇷 巴西 (Brazil) 02 3735K - NEKO
+- name: 🇧🇷 巴西 (Brazil) 02 3461K - NEKO
   server: platform101.golnamakcert.top
   port: 80
   udp: true
@@ -32,14 +32,14 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇧🇷 巴西 (Brazil) 01 ⚠S2521K 🇨🇳 - NEKO
-  - 🇧🇷 巴西 (Brazil) 02 3735K - NEKO
+  - 🇧🇷 巴西 (Brazil) 01 3029K 🇨🇳 - NEKO
+  - 🇧🇷 巴西 (Brazil) 02 3461K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇧🇷 巴西 (Brazil) 01 ⚠S2521K 🇨🇳 - NEKO
-  - 🇧🇷 巴西 (Brazil) 02 3735K - NEKO
+  - 🇧🇷 巴西 (Brazil) 01 3029K 🇨🇳 - NEKO
+  - 🇧🇷 巴西 (Brazil) 02 3461K - NEKO
 rules:
 - MATCH,PROXIES

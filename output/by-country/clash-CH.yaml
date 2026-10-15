@@ -4,20 +4,14 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇭 瑞士 (Switzerland) 01 4019K 🇨🇳 - NEKO
-  server: freefl.aiage.work
-  port: 443
+- name: 🇨🇭 瑞士 (Switzerland) 01 4222K ⚠P - NEKO
+  server: 86.106.84.194
+  port: 13261
   udp: true
-  type: vless
-  uuid: 6338c01a-310e-42c3-bf4f-2a20e161054b
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: EqN5QtvWGccdkmL5ZNVDBRxRhWgr6g_vr3ABT8Q2dW4
-    short-id: ff0ddf949624ef2a
-  servername: freefl.aiage.work
-  client-fingerprint: firefox
-- name: 🇨🇭 瑞士 (Switzerland) 02 ⚠S2648K ⚠P⚠U - NEKO
+  type: ss
+  cipher: aes-128-gcm
+  password: 2bf536a4bd6008511734a505d248de2c
+- name: 🇨🇭 瑞士 (Switzerland) 02 491K ⚠P⚠U - NEKO
   server: 104.165.205.42
   port: 8443
   udp: true
@@ -25,7 +19,7 @@ proxies:
   password: 990c8eb6-4c4e-4277-8602-79af8402cdd0
   sni: speedtestmark.com
   skip-cert-verify: false
-- name: 🇨🇭 瑞士 (Switzerland) 03 4804K 🇨🇳 - NEKO
+- name: 🇨🇭 瑞士 (Switzerland) 03 592K 🇨🇳 - NEKO
   server: 138.124.63.224
   port: 8444
   udp: true
@@ -45,16 +39,16 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇨🇭 瑞士 (Switzerland) 01 4019K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 02 ⚠S2648K ⚠P⚠U - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 03 4804K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 01 4222K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 02 491K ⚠P⚠U - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 03 592K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇭 瑞士 (Switzerland) 01 4019K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 02 ⚠S2648K ⚠P⚠U - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 03 4804K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 01 4222K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 02 491K ⚠P⚠U - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 03 592K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

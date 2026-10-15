@@ -4,31 +4,52 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇹🇼 中国台湾 (Taiwan) 01 (家宽) ⚠S1042K - NEKO
-  server: fujrdt.d6f54hd1j.cc
-  port: 443
+- name: 🇹🇷 土耳其 (Turkey) 01 (移动家宽) ⚠S1318K - NEKO
+  server: test.keoplentuio.xyz
+  port: 2053
+  udp: true
+  type: vless
+  uuid: 9ef61079-6f7d-4911-9608-943da85d8e6f
+- name: 🇹🇷 土耳其 (Turkey) 02 (移动家宽) 4226K - NEKO
+  server: 206.1.102.64
+  port: 8080
   udp: true
   type: vmess
-  uuid: d877dc6f-7323-4b47-a7dd-14228cbae854
+  uuid: 184a0393-5c9e-403c-9be6-427b066308e1
   alterId: 0
   cipher: auto
-  tls: true
-  servername: fujrdt.d6f54hd1j.cc
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /
+- name: 🇰🇷 韩国 (South Korea) 03 (家宽) 2194K - NEKO
+  server: p141.panda001.net
+  port: 4652
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: qwerREWQ@@
+- name: 🇭🇰 中国香港 (Hong Kong) 04 (移动家宽) 3023K - NEKO
+  server: dog-hk.kunlun01dns.com
+  port: 21022
+  udp: true
+  type: vmess
+  uuid: 9464ca40-dd75-3742-a628-d931a9f413b2
+  alterId: 0
+  cipher: auto
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇹🇼 中国台湾 (Taiwan) 01 (家宽) ⚠S1042K - NEKO
+  - 🇹🇷 土耳其 (Turkey) 01 (移动家宽) ⚠S1318K - NEKO
+  - 🇹🇷 土耳其 (Turkey) 02 (移动家宽) 4226K - NEKO
+  - 🇰🇷 韩国 (South Korea) 03 (家宽) 2194K - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 04 (移动家宽) 3023K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇹🇼 中国台湾 (Taiwan) 01 (家宽) ⚠S1042K - NEKO
+  - 🇹🇷 土耳其 (Turkey) 01 (移动家宽) ⚠S1318K - NEKO
+  - 🇹🇷 土耳其 (Turkey) 02 (移动家宽) 4226K - NEKO
+  - 🇰🇷 韩国 (South Korea) 03 (家宽) 2194K - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 04 (移动家宽) 3023K - NEKO
 rules:
 - MATCH,PROXIES

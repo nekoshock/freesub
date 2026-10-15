@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇦🇪 阿联酋 (UAE) 01 455K - NEKO
+- name: 🇦🇪 阿联酋 (UAE) 01 ⚠S6731K - NEKO
   server: 130.49.161.70
   port: 443
   udp: true
@@ -14,7 +14,7 @@ proxies:
   skip-cert-verify: false
   obfs: salamander
   obfs-password: rG07s3COMIEvdnQipRyWzx_H_2xygNC3
-- name: 🇦🇪 阿联酋 (UAE) 02 4169K - NEKO
+- name: 🇦🇪 阿联酋 (UAE) 02 6288K - NEKO
   server: 31.59.210.26
   port: 2088
   udp: true
@@ -25,11 +25,34 @@ proxies:
     public-key: Eq3c19Y0WGB1APWMADQB-oxCvZFSVFAQxG5L6b8EkUg
     short-id: b1ad165f903c62fe
   servername: www.yandex.ru
-  client-fingerprint: safari
+  client-fingerprint: random
   network: grpc
   grpc-opts:
     grpc-service-name: astracat
-- name: 🇦🇪 阿联酋 (UAE) 03 4171K - NEKO
+- name: 🇦🇪 阿联酋 (UAE) 03 ⚠S5406K - NEKO
+  server: 157.228.155.238
+  port: 443
+  udp: true
+  type: vless
+  uuid: df53b6c2-8005-475c-9eb9-74e1be785dc8
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: 5BDht3tAZdKEKpJymGlRK9JugOnieA-kMSWz_0FoE0I
+    short-id: 6f76ad09
+  servername: addons.mozilla.org
+  client-fingerprint: chrome
+- name: 🇦🇪 阿联酋 (UAE) 04 ⚠S7092K - NEKO
+  server: 37.9.4.112
+  port: 17701
+  udp: true
+  type: hysteria2
+  password: 56ff50da-a238-4646-95ab-dd159634bd87
+  sni: ru03.arpanet-cdn.com
+  skip-cert-verify: false
+  obfs: salamander
+  obfs-password: 588c76723192f87cfe6d6786816177cd2bd9773acdc545928d7d1d5e8338d4ce
+- name: 🇦🇪 阿联酋 (UAE) 05 6341K - NEKO
   server: 31.59.210.32
   port: 443
   udp: true
@@ -44,22 +67,7 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: astracat
-- name: 🇦🇪 阿联酋 (UAE) 04 3966K - NEKO
-  server: 31.59.210.37
-  port: 443
-  udp: true
-  type: vless
-  uuid: 5413edfb-08d6-4fba-b51c-809c04feb127
-  tls: true
-  reality-opts:
-    public-key: 5k0dtOSzmshCubdYeKppsUdHU4i2ghaB9uSJSzGjHW4
-    short-id: 6dbf4931096f9890
-  servername: www.yandex.ru
-  client-fingerprint: chrome
-  network: grpc
-  grpc-opts:
-    grpc-service-name: astracat
-- name: 🇦🇪 阿联酋 (UAE) 05 3603K - NEKO
+- name: 🇦🇪 阿联酋 (UAE) 06 5403K - NEKO
   server: 31.59.210.25
   port: 2087
   udp: true
@@ -74,20 +82,7 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: astracat
-- name: 🇦🇪 阿联酋 (UAE) 06 4519K - NEKO
-  server: 157.228.155.238
-  port: 443
-  udp: true
-  type: vless
-  uuid: df53b6c2-8005-475c-9eb9-74e1be785dc8
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: 5BDht3tAZdKEKpJymGlRK9JugOnieA-kMSWz_0FoE0I
-    short-id: 6f76ad09
-  servername: addons.mozilla.org
-  client-fingerprint: chrome
-- name: 🇦🇪 阿联酋 (UAE) 07 3250K - NEKO
+- name: 🇦🇪 阿联酋 (UAE) 07 ⚠S6719K - NEKO
   server: 157.228.155.185
   port: 443
   udp: true
@@ -100,17 +95,18 @@ proxies:
     short-id: 5ea112e8
   servername: addons.mozilla.org
   client-fingerprint: chrome
-- name: 🇦🇪 阿联酋 (UAE) 08 ⚠S2678K - NEKO
-  server: 37.9.4.112
-  port: 17701
+- name: 🇦🇪 阿联酋 (UAE) 08 ⚠S5131K - NEKO
+  server: 185.253.116.33
+  port: 14430
   udp: true
-  type: hysteria2
-  password: 56ff50da-a238-4646-95ab-dd159634bd87
-  sni: ru03.arpanet-cdn.com
-  skip-cert-verify: false
-  obfs: salamander
-  obfs-password: 588c76723192f87cfe6d6786816177cd2bd9773acdc545928d7d1d5e8338d4ce
-- name: 🇦🇪 阿联酋 (UAE) 09 3189K - NEKO
+  type: vless
+  uuid: aee7ae19-672f-49d8-8a92-aa7cdfc89f89
+  network: ws
+  ws-opts:
+    path: /vless
+    headers:
+      Host: 185.253.116.33
+- name: 🇦🇪 阿联酋 (UAE) 09 2985K - NEKO
   server: 157.228.128.59
   port: 443
   udp: true
@@ -123,7 +119,7 @@ proxies:
     short-id: 06e00e7c
   servername: addons.mozilla.org
   client-fingerprint: chrome
-- name: 🇦🇪 阿联酋 (UAE) 10 2594K - NEKO
+- name: 🇦🇪 阿联酋 (UAE) 10 2180K - NEKO
   server: 84.235.244.108
   port: 22573
   udp: true
@@ -134,35 +130,62 @@ proxies:
     path: /
     headers:
       Host: uae.unixzone.us
+- name: 🇦🇪 阿联酋 (UAE) 11 2917K - NEKO
+  server: 95.174.68.188
+  port: 14430
+  udp: true
+  type: vless
+  uuid: 965ffbbe-c6b6-4d5f-8dea-6d8abc55d9c0
+  network: ws
+  ws-opts:
+    path: /vless
+- name: 🇦🇪 阿联酋 (UAE) 12 3846K - NEKO
+  server: 203.137.165.164
+  port: 57554
+  udp: true
+  type: vless
+  uuid: 91cf01c5-62c1-44cd-80e0-df6310025dab
+  tls: true
+  servername: c6dbx99g6stb418qeo.t3jmlj0r152zji4htdkm9.workers.dev
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /@Marisa_kristifp=chrome
+    headers:
+      Host: c6dbx99g6stb418qeo.t3jmlj0r152zji4htdkm9.workers.dev
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇦🇪 阿联酋 (UAE) 01 455K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 02 4169K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 03 4171K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 04 3966K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 05 3603K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 06 4519K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 07 3250K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 08 ⚠S2678K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 09 3189K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 10 2594K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 01 ⚠S6731K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 02 6288K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 03 ⚠S5406K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 04 ⚠S7092K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 05 6341K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 06 5403K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 07 ⚠S6719K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 08 ⚠S5131K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 09 2985K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 10 2180K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 11 2917K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 12 3846K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇦🇪 阿联酋 (UAE) 01 455K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 02 4169K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 03 4171K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 04 3966K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 05 3603K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 06 4519K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 07 3250K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 08 ⚠S2678K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 09 3189K - NEKO
-  - 🇦🇪 阿联酋 (UAE) 10 2594K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 01 ⚠S6731K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 02 6288K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 03 ⚠S5406K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 04 ⚠S7092K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 05 6341K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 06 5403K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 07 ⚠S6719K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 08 ⚠S5131K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 09 2985K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 10 2180K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 11 2917K - NEKO
+  - 🇦🇪 阿联酋 (UAE) 12 3846K - NEKO
 rules:
 - MATCH,PROXIES

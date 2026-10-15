@@ -5,7 +5,31 @@
   "outbounds": [
     {
       "type": "vless",
-      "tag": "🇨🇭 瑞士 (Switzerland) 01 4124K - NEKO",
+      "tag": "🇨🇭 瑞士 (Switzerland) 01 8553K - NEKO",
+      "server": "138.124.63.224",
+      "server_port": 8444,
+      "uuid": "f55e9aba-7b14-4f6f-b59a-d5b3d45c9309",
+      "tls": {
+        "enabled": true,
+        "server_name": "github.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "FWitre1jinQR7qz5HQ0q2Q4Gg9xA9B0SyizCziN7Ch0",
+          "short_id": "457fab2ac885dbe0"
+        }
+      },
+      "transport": {
+        "type": "grpc",
+        "service_name": "GunService"
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇨🇭 瑞士 (Switzerland) 02 ⚠S5267K - NEKO",
       "server": "45.90.59.15",
       "server_port": 443,
       "uuid": "3950b45e-740d-4dca-ac95-505ec8534592",
@@ -15,7 +39,7 @@
         "server_name": "www.cloudflare.com",
         "utls": {
           "enabled": true,
-          "fingerprint": "edge"
+          "fingerprint": "chrome"
         },
         "reality": {
           "enabled": true,
@@ -25,18 +49,94 @@
       }
     },
     {
+      "type": "vless",
+      "tag": "🇨🇭 瑞士 (Switzerland) 03 1886K - NEKO",
+      "server": "128.241.25.3",
+      "server_port": 30021,
+      "uuid": "71f4c34f-6d8a-4f6c-a1d8-7bcca7a0599e",
+      "tls": {
+        "enabled": true,
+        "server_name": "mw5qisav.wjwqvie0wb1eqhb8e83clqdoq3m5p9a4on.workers.dev",
+        "insecure": false
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/@Marisa_kristifp=chrome",
+        "headers": {
+          "Host": "mw5qisav.wjwqvie0wb1eqhb8e83clqdoq3m5p9a4on.workers.dev"
+        }
+      }
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇨🇭 瑞士 (Switzerland) 04 2322K - NEKO",
+      "server": "132.243.175.144",
+      "server_port": 8388,
+      "method": "chacha20-ietf-poly1305",
+      "password": "e8KgS8fD0yDqYFpgN4G5piCOt9aFyqA3"
+    },
+    {
+      "type": "vless",
+      "tag": "🇨🇭 瑞士 (Switzerland) 05 ⚠S7386K - NEKO",
+      "server": "129.153.71.28",
+      "server_port": 28863,
+      "uuid": "4f1f5604-a256-4432-a477-52c3dce7dded",
+      "tls": {
+        "enabled": true,
+        "server_name": "wkytah9k8oggj60.qzfi0skkopy875xhtc0l9pwds.workers.dev",
+        "insecure": false
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/@Marisa_kristifp=chrome",
+        "headers": {
+          "Host": "wkytah9k8oggj60.qzfi0skkopy875xhtc0l9pwds.workers.dev"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇨🇭 瑞士 (Switzerland) 06 3197K - NEKO",
+      "server": "45.133.151.186",
+      "server_port": 25393,
+      "uuid": "d54a7512-dda3-4218-8ae7-c591d300fd7c",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.samsung.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "04F4vhrx_H_SHsrsVw1eCpwlysu4kL3hTl9GAr00XkI",
+          "short_id": "bcc707a7148e4a0c"
+        }
+      }
+    },
+    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇨🇭 瑞士 (Switzerland) 01 4124K - NEKO"
+        "🇨🇭 瑞士 (Switzerland) 01 8553K - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 02 ⚠S5267K - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 03 1886K - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 04 2322K - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 05 ⚠S7386K - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 06 3197K - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇨🇭 瑞士 (Switzerland) 01 4124K - NEKO"
+        "🇨🇭 瑞士 (Switzerland) 01 8553K - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 02 ⚠S5267K - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 03 1886K - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 04 2322K - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 05 ⚠S7386K - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 06 3197K - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

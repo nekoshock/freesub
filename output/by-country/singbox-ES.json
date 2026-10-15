@@ -5,23 +5,23 @@
   "outbounds": [
     {
       "type": "shadowsocks",
-      "tag": "🇪🇸 西班牙 (Spain) 01 2609K - NEKO",
+      "tag": "🇪🇸 西班牙 (Spain) 01 3263K - NEKO",
+      "server": "5.188.181.201",
+      "server_port": 9019,
+      "method": "aes-256-cfb",
+      "password": "GA9KzeEgvfxNrgmM"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇪🇸 西班牙 (Spain) 02 2210K - NEKO",
       "server": "5.188.181.201",
       "server_port": 9027,
       "method": "aes-256-cfb",
       "password": "EXN3S3eQpjE7EJu8"
     },
     {
-      "type": "shadowsocks",
-      "tag": "🇪🇸 西班牙 (Spain) 02 2380K - NEKO",
-      "server": "5.188.181.201",
-      "server_port": 9014,
-      "method": "aes-256-cfb",
-      "password": "KnJGad3FqTvjqbaX"
-    },
-    {
       "type": "vless",
-      "tag": "🇪🇸 西班牙 (Spain) 03 4597K - NEKO",
+      "tag": "🇪🇸 西班牙 (Spain) 03 ⚠S5996K - NEKO",
       "server": "212.227.235.66",
       "server_port": 2053,
       "uuid": "ead0dd61-d398-40ad-80d6-a0e1e516d7d3",
@@ -40,22 +40,68 @@
       }
     },
     {
+      "type": "vless",
+      "tag": "🇪🇸 西班牙 (Spain) 04 303K - NEKO",
+      "server": "46.28.71.247",
+      "server_port": 443,
+      "uuid": "12c53e32-e589-47d6-b857-e4132294f767",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.cloudflare.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "v4MuZIvFrTPT5GHMSaPryUAbIZlLstmsUTzmC1E-JTE",
+          "short_id": "0dfc23fe80778c00"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇪🇸 西班牙 (Spain) 05 4716K - NEKO",
+      "server": "193.238.154.78",
+      "server_port": 443,
+      "uuid": "897d47f8-4dd5-42a1-bcd0-bef19caff55a",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "gateway.icloud.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "4eE3K8Eac-ELze-LwRyJolqmhPqgCVqwQM1DKu6i0Ts",
+          "short_id": "e93d46ee3735069e"
+        }
+      }
+    },
+    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇪🇸 西班牙 (Spain) 01 2609K - NEKO",
-        "🇪🇸 西班牙 (Spain) 02 2380K - NEKO",
-        "🇪🇸 西班牙 (Spain) 03 4597K - NEKO"
+        "🇪🇸 西班牙 (Spain) 01 3263K - NEKO",
+        "🇪🇸 西班牙 (Spain) 02 2210K - NEKO",
+        "🇪🇸 西班牙 (Spain) 03 ⚠S5996K - NEKO",
+        "🇪🇸 西班牙 (Spain) 04 303K - NEKO",
+        "🇪🇸 西班牙 (Spain) 05 4716K - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇪🇸 西班牙 (Spain) 01 2609K - NEKO",
-        "🇪🇸 西班牙 (Spain) 02 2380K - NEKO",
-        "🇪🇸 西班牙 (Spain) 03 4597K - NEKO"
+        "🇪🇸 西班牙 (Spain) 01 3263K - NEKO",
+        "🇪🇸 西班牙 (Spain) 02 2210K - NEKO",
+        "🇪🇸 西班牙 (Spain) 03 ⚠S5996K - NEKO",
+        "🇪🇸 西班牙 (Spain) 04 303K - NEKO",
+        "🇪🇸 西班牙 (Spain) 05 4716K - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

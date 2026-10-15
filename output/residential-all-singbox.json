@@ -4,34 +4,55 @@
   },
   "outbounds": [
     {
+      "type": "vless",
+      "tag": "🇹🇷 土耳其 (Turkey) 01 (移动家宽) ⚠S1318K - NEKO",
+      "server": "test.keoplentuio.xyz",
+      "server_port": 2053,
+      "uuid": "9ef61079-6f7d-4911-9608-943da85d8e6f"
+    },
+    {
       "type": "vmess",
-      "tag": "🇹🇼 中国台湾 (Taiwan) 01 (家宽) ⚠S1042K - NEKO",
-      "server": "fujrdt.d6f54hd1j.cc",
-      "server_port": 443,
-      "uuid": "d877dc6f-7323-4b47-a7dd-14228cbae854",
-      "security": "auto",
-      "tls": {
-        "enabled": true,
-        "server_name": "fujrdt.d6f54hd1j.cc",
-        "insecure": false
-      },
-      "transport": {
-        "type": "ws"
-      }
+      "tag": "🇹🇷 土耳其 (Turkey) 02 (移动家宽) 4226K - NEKO",
+      "server": "206.1.102.64",
+      "server_port": 8080,
+      "uuid": "184a0393-5c9e-403c-9be6-427b066308e1",
+      "security": "auto"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇰🇷 韩国 (South Korea) 03 (家宽) 2194K - NEKO",
+      "server": "p141.panda001.net",
+      "server_port": 4652,
+      "method": "aes-256-cfb",
+      "password": "qwerREWQ@@"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 04 (移动家宽) 3023K - NEKO",
+      "server": "dog-hk.kunlun01dns.com",
+      "server_port": 21022,
+      "uuid": "9464ca40-dd75-3742-a628-d931a9f413b2",
+      "security": "auto"
     },
     {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇹🇼 中国台湾 (Taiwan) 01 (家宽) ⚠S1042K - NEKO"
+        "🇹🇷 土耳其 (Turkey) 01 (移动家宽) ⚠S1318K - NEKO",
+        "🇹🇷 土耳其 (Turkey) 02 (移动家宽) 4226K - NEKO",
+        "🇰🇷 韩国 (South Korea) 03 (家宽) 2194K - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 04 (移动家宽) 3023K - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇹🇼 中国台湾 (Taiwan) 01 (家宽) ⚠S1042K - NEKO"
+        "🇹🇷 土耳其 (Turkey) 01 (移动家宽) ⚠S1318K - NEKO",
+        "🇹🇷 土耳其 (Turkey) 02 (移动家宽) 4226K - NEKO",
+        "🇰🇷 韩国 (South Korea) 03 (家宽) 2194K - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 04 (移动家宽) 3023K - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

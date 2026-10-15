@@ -5,25 +5,51 @@
   "outbounds": [
     {
       "type": "shadowsocks",
-      "tag": "🇦🇹 奥地利 (Austria) 01 5445K - NEKO",
+      "tag": "🇦🇹 奥地利 (Austria) 01 3869K - NEKO",
       "server": "82.110.60.9",
       "server_port": 19999,
       "method": "aes-256-gcm",
       "password": "ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
     },
     {
+      "type": "vless",
+      "tag": "🇦🇹 奥地利 (Austria) 02 358K - NEKO",
+      "server": "153.76.167.140",
+      "server_port": 2096,
+      "uuid": "768712b8-81dc-440f-9b38-4523bf767df4",
+      "tls": {
+        "enabled": true,
+        "server_name": "id.vk.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc",
+          "short_id": ""
+        }
+      },
+      "transport": {
+        "type": "grpc",
+        "service_name": "vless-grpc-reality"
+      }
+    },
+    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇦🇹 奥地利 (Austria) 01 5445K - NEKO"
+        "🇦🇹 奥地利 (Austria) 01 3869K - NEKO",
+        "🇦🇹 奥地利 (Austria) 02 358K - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇦🇹 奥地利 (Austria) 01 5445K - NEKO"
+        "🇦🇹 奥地利 (Austria) 01 3869K - NEKO",
+        "🇦🇹 奥地利 (Austria) 02 358K - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

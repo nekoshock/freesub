@@ -4,7 +4,22 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇭 瑞士 (Switzerland) 01 8553K - NEKO
+- name: 🇨🇭 瑞士 (Switzerland) 01 276K - NEKO
+  server: ch.srv.vbuste.ru
+  port: 444
+  udp: true
+  type: vless
+  uuid: 318c935d-c195-41d3-99ad-9bbcfdab3386
+  tls: true
+  reality-opts:
+    public-key: 0-or5ogGhYbBgsVSrSC2Fhxyp2BN97Y9pqIdg61Qd08
+    short-id: 4be4110078ebed4a
+  servername: ch.srv.vbuste.ru
+  client-fingerprint: firefox
+  network: grpc
+  grpc-opts:
+    grpc-service-name: ''
+- name: 🇨🇭 瑞士 (Switzerland) 02 779K - NEKO
   server: 138.124.63.224
   port: 8444
   udp: true
@@ -19,7 +34,7 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: GunService
-- name: 🇨🇭 瑞士 (Switzerland) 02 ⚠S5267K - NEKO
+- name: 🇨🇭 瑞士 (Switzerland) 03 4049K - NEKO
   server: 45.90.59.15
   port: 443
   udp: true
@@ -31,75 +46,22 @@ proxies:
     public-key: P7S4UPFlQbmiBr4txyy8NZIMTrmO3UdxyH16WBU-YzY
     short-id: 19253fae84102271
   servername: www.cloudflare.com
-  client-fingerprint: chrome
-- name: 🇨🇭 瑞士 (Switzerland) 03 1886K - NEKO
-  server: 128.241.25.3
-  port: 30021
-  udp: true
-  type: vless
-  uuid: 71f4c34f-6d8a-4f6c-a1d8-7bcca7a0599e
-  tls: true
-  servername: mw5qisav.wjwqvie0wb1eqhb8e83clqdoq3m5p9a4on.workers.dev
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /@Marisa_kristifp=chrome
-    headers:
-      Host: mw5qisav.wjwqvie0wb1eqhb8e83clqdoq3m5p9a4on.workers.dev
-- name: 🇨🇭 瑞士 (Switzerland) 04 2322K - NEKO
-  server: 132.243.175.144
-  port: 8388
-  udp: true
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: e8KgS8fD0yDqYFpgN4G5piCOt9aFyqA3
-- name: 🇨🇭 瑞士 (Switzerland) 05 ⚠S7386K - NEKO
-  server: 129.153.71.28
-  port: 28863
-  udp: true
-  type: vless
-  uuid: 4f1f5604-a256-4432-a477-52c3dce7dded
-  tls: true
-  servername: wkytah9k8oggj60.qzfi0skkopy875xhtc0l9pwds.workers.dev
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /@Marisa_kristifp=chrome
-    headers:
-      Host: wkytah9k8oggj60.qzfi0skkopy875xhtc0l9pwds.workers.dev
-- name: 🇨🇭 瑞士 (Switzerland) 06 3197K - NEKO
-  server: 45.133.151.186
-  port: 25393
-  udp: true
-  type: vless
-  uuid: d54a7512-dda3-4218-8ae7-c591d300fd7c
-  tls: true
-  reality-opts:
-    public-key: 04F4vhrx_H_SHsrsVw1eCpwlysu4kL3hTl9GAr00XkI
-    short-id: bcc707a7148e4a0c
-  servername: www.samsung.com
   client-fingerprint: firefox
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇨🇭 瑞士 (Switzerland) 01 8553K - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 02 ⚠S5267K - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 03 1886K - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 04 2322K - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 05 ⚠S7386K - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 06 3197K - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 01 276K - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 02 779K - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 03 4049K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇭 瑞士 (Switzerland) 01 8553K - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 02 ⚠S5267K - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 03 1886K - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 04 2322K - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 05 ⚠S7386K - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 06 3197K - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 01 276K - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 02 779K - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 03 4049K - NEKO
 rules:
 - MATCH,PROXIES

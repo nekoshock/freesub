@@ -5,30 +5,40 @@
   "outbounds": [
     {
       "type": "vless",
-      "tag": "🇨🇭 瑞士 (Switzerland) 01 276K - NEKO",
-      "server": "ch.srv.vbuste.ru",
-      "server_port": 444,
-      "uuid": "318c935d-c195-41d3-99ad-9bbcfdab3386",
+      "tag": "🇨🇭 瑞士 (Switzerland) 01 4019K 🇨🇳 - NEKO",
+      "server": "freefl.aiage.work",
+      "server_port": 443,
+      "uuid": "6338c01a-310e-42c3-bf4f-2a20e161054b",
+      "flow": "xtls-rprx-vision",
       "tls": {
         "enabled": true,
-        "server_name": "ch.srv.vbuste.ru",
+        "server_name": "freefl.aiage.work",
         "utls": {
           "enabled": true,
           "fingerprint": "firefox"
         },
         "reality": {
           "enabled": true,
-          "public_key": "0-or5ogGhYbBgsVSrSC2Fhxyp2BN97Y9pqIdg61Qd08",
-          "short_id": "4be4110078ebed4a"
+          "public_key": "EqN5QtvWGccdkmL5ZNVDBRxRhWgr6g_vr3ABT8Q2dW4",
+          "short_id": "ff0ddf949624ef2a"
         }
-      },
-      "transport": {
-        "type": "grpc"
+      }
+    },
+    {
+      "type": "hysteria2",
+      "tag": "🇨🇭 瑞士 (Switzerland) 02 ⚠S2648K ⚠P⚠U - NEKO",
+      "server": "104.165.205.42",
+      "server_port": 8443,
+      "password": "990c8eb6-4c4e-4277-8602-79af8402cdd0",
+      "tls": {
+        "enabled": true,
+        "server_name": "speedtestmark.com",
+        "insecure": false
       }
     },
     {
       "type": "vless",
-      "tag": "🇨🇭 瑞士 (Switzerland) 02 779K - NEKO",
+      "tag": "🇨🇭 瑞士 (Switzerland) 03 4804K 🇨🇳 - NEKO",
       "server": "138.124.63.224",
       "server_port": 8444,
       "uuid": "f55e9aba-7b14-4f6f-b59a-d5b3d45c9309",
@@ -51,43 +61,22 @@
       }
     },
     {
-      "type": "vless",
-      "tag": "🇨🇭 瑞士 (Switzerland) 03 4049K - NEKO",
-      "server": "45.90.59.15",
-      "server_port": 443,
-      "uuid": "3950b45e-740d-4dca-ac95-505ec8534592",
-      "flow": "xtls-rprx-vision",
-      "tls": {
-        "enabled": true,
-        "server_name": "www.cloudflare.com",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "firefox"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "P7S4UPFlQbmiBr4txyy8NZIMTrmO3UdxyH16WBU-YzY",
-          "short_id": "19253fae84102271"
-        }
-      }
-    },
-    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇨🇭 瑞士 (Switzerland) 01 276K - NEKO",
-        "🇨🇭 瑞士 (Switzerland) 02 779K - NEKO",
-        "🇨🇭 瑞士 (Switzerland) 03 4049K - NEKO"
+        "🇨🇭 瑞士 (Switzerland) 01 4019K 🇨🇳 - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 02 ⚠S2648K ⚠P⚠U - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 03 4804K 🇨🇳 - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇨🇭 瑞士 (Switzerland) 01 276K - NEKO",
-        "🇨🇭 瑞士 (Switzerland) 02 779K - NEKO",
-        "🇨🇭 瑞士 (Switzerland) 03 4049K - NEKO"
+        "🇨🇭 瑞士 (Switzerland) 01 4019K 🇨🇳 - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 02 ⚠S2648K ⚠P⚠U - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 03 4804K 🇨🇳 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

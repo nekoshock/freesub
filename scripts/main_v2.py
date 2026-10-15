@@ -1332,6 +1332,232 @@ PARSERS = {
 # 排除明显加密残缺/占位节点
 BLACKLIST_NAME_HINTS = re.compile(r"(剩余流量|流量重置|expire|expired|官网|套餐|telegram\.me|t\.me/|获取订阅)", re.I)
 
+
+# ══════════════════════════════════════════════════════════════════
+# 凭据指纹 + 配置一致性 (v3 审计加固: 堵住"未测活节点漏进交付")
+#
+# ★ 审计发现的真实漏洞 (2026-10-16):
+#   P0-3 (2026-10-11) 把 reality/transport.type 纳入了指纹, 但**没纳全** —
+#   同样一份凭据 + 不同的服务端路由参数, 会被判为"同一节点":
+#       vless://U@host:443?type=ws&path=/a     ← 代表, 测活通过
+#       vless://U@host:443?type=ws&path=/b     ← 指纹相同被判重, 从不测活,
+#                                                 回填继承代表的"可用"结论
+#   而 path/host/obfs/sni 这些字段**服务端是按它路由的** — /a 通不代表 /b 通。
+#   后果: 一个根本连不上的配置, 顶着继承来的测活结论混进最终订阅。
+#   hy2 更明显: 旧指纹只有 password, 同密码不同 obfs-password/sni 全被判重。
+#
+# ★ 修复 (双保险):
+#   ① 指纹补全 — 所有影响服务端握手/路由的字段全部纳入 (本函数);
+#   ② 回填兜底 — 克隆体与代表的 outbound 做归一化深度比较 (_outbound_equiv),
+#      不一致的一律不回填 (见 main() 回填段), 指纹再怎么改都有最终兜底。
+# ══════════════════════════════════════════════════════════════════
+
+def _tr_field(tr: dict, *keys, default=""):
+    """transport 字段取值 (host 在 headers.Host 里, 单独处理)"""
+    for k in keys:
+        v = tr.get(k)
+        if v:
+            return str(v)
+    return default
+
+
+def cred_fingerprint(outbound: dict, proto: str) -> str:
+    """凭据+配置指纹: 四项全同 (server, port, proto, 指纹) 才判"同一节点"
+
+    ★ v3 补全 (2026-10-16 审计): 把 P0-3 漏掉的服务端路由字段全部纳入 —
+      path/host (ws/h2/httpupgrade 的服务端路由目标)、obfs (hy2 的混淆密码,
+      服务端按它认证)、sni/alpn (证书与协商目标)、congestion_control/
+      udp_relay_mode (tuic 的会话行为)。缺任一都会让"同凭据不同配置"被
+      误判为同一节点 → 漏测 + 继承错误结论。
+    ★ 宁慢不错: 指纹失败 (异常) 返回 "" → 不合并, 两个都测。
+    """
+    try:
+        tls = outbound.get("tls") or {}
+        tr = outbound.get("transport") or {}
+        tr_host = (tr.get("headers") or {}).get("Host", "") if isinstance(tr.get("headers"), dict) else ""
+        if proto == "vless":
+            reality = tls.get("reality") or {}
+            # 关键区分字段: 缺任一都会让"同 uuid 不同配置"被误判为同一节点
+            #   flow            — xtls-vision 与空 flow 的握手行为不同
+            #   server_name     — SNI 决定证书校验目标与 CDN 回源
+            #   insecure        — 是否校验证书, 直接影响 MITM 风险
+            #   public_key      — Reality 握手核心, 不同就连不上 (最高区分度)
+            #   short_id        — Reality 短 ID, 服务端按它路由
+            #   transport.type  — tcp/ws/grpc/http 的转发路径完全不同
+            #   path/host       — ws/h2 的服务端路由目标, 不同 path 服务端转发到不同入口
+            #   max_early_data  — 0-RTT 行为差异
+            #   alpn            — h2 协商差异
+            return "|".join([
+                str(outbound.get("uuid", "")),
+                str(outbound.get("flow", "")),
+                str(tls.get("server_name", "")),
+                str(int(bool(tls.get("insecure")))),
+                str(reality.get("public_key", "")),
+                str(reality.get("short_id", "")),
+                str(tr.get("type", "")),
+                str(_tr_field(tr, "path")),
+                str(tr_host),
+                str(tr.get("max_early_data", "")),
+                ",".join(tls.get("alpn") or []),
+            ])
+        if proto == "vmess":
+            # alter_id 区分旧/新协议模式; path/host 是 ws/h2 的服务端路由目标
+            return "|".join([
+                str(outbound.get("uuid", "") or outbound.get("user_id", "")),
+                str(outbound.get("alter_id", "")),
+                str(tr.get("type", "")),
+                str(tls.get("server_name", "")),
+                str(_tr_field(tr, "path")),
+                str(tr_host),
+                str(tr.get("max_early_data", "")),
+            ])
+        if proto == "trojan":
+            # sni 是实际路由目标; transport/path 决定走哪条转发路径
+            return "|".join([
+                str(outbound.get("password", "")),
+                str(tls.get("server_name", "")),
+                str(tr.get("type", "")),
+                str(_tr_field(tr, "path")),
+                str(tr_host),
+                ",".join(tls.get("alpn") or []),
+            ])
+        if proto == "shadowsocks":
+            # ss 无 TLS/传输层路由参数, method+password 即全部身份
+            return f"{outbound.get('method','')}|{outbound.get('password','')}"
+        if proto == "hysteria2":
+            # ★ server_ports 已从指纹移除: 它是端口跳跃的**路由参数**而非身份凭据,
+            #   同密码不同端口范围本质是同一份凭据 (跳跃由同一服务端处理)。
+            #   ★ 但 sni/obfs 必须纳入: obfs-password 服务端按它认证, 不同就连不上;
+            #     sni 决定证书校验目标。
+            obfs = outbound.get("obfs") or {}
+            return "|".join([
+                str(outbound.get("password", "") or ""),
+                str(tls.get("server_name", "")),
+                str(obfs.get("type", "")),
+                str(obfs.get("password", "") or ""),
+                ",".join(tls.get("alpn") or []),
+            ])
+        if proto == "tuic":
+            # congestion_control/udp_relay_mode 影响会话行为; sni/alpn 影响协商
+            return "|".join([
+                str(outbound.get("uuid", "")),
+                str(outbound.get("password", "")),
+                str(tls.get("server_name", "")),
+                ",".join(tls.get("alpn") or []),
+                str(outbound.get("congestion_control", "")),
+                str(outbound.get("udp_relay_mode", "")),
+            ])
+        if proto == "anytls":
+            return "|".join([
+                str(outbound.get("password", "")),
+                str(tls.get("server_name", "")),
+                ",".join(tls.get("alpn") or []),
+            ])
+        return json.dumps({k: v for k, v in outbound.items()
+                           if k in ("uuid", "password", "user_id", "method")}, sort_keys=True)
+    except Exception:
+        return ""  # 指纹失败 → 不合并 (宁慢不错)
+
+
+# 回填一致性比较时忽略的纯装饰字段 (不影响服务端行为)
+_EQUIV_IGNORE_KEYS = {"tag", "detour"}
+
+
+def _normalize_outbound(ob: dict) -> dict:
+    """归一化 outbound: 去装饰字段 + 空值清理 + 排序, 供深度比较"""
+    if not isinstance(ob, dict):
+        return {}
+    out = {}
+    for k, v in ob.items():
+        if k in _EQUIV_IGNORE_KEYS:
+            continue
+        if v in (None, "", [], {}):
+            continue
+        if isinstance(v, dict):
+            nv = _normalize_outbound(v)
+            if nv:
+                out[k] = nv
+            continue
+        if isinstance(v, (list, tuple)):
+            nv = [x for x in v if x not in (None, "")]
+            if nv:
+                out[k] = sorted(nv, key=str) if all(isinstance(x, str) for x in nv) else nv
+            continue
+        out[k] = v
+    return out
+
+
+def _outbound_equiv(a: dict, b: dict) -> bool:
+    """两个 outbound 的服务端行为是否等价 (归一化深度比较)
+
+    用途: 回填兜底 — 克隆体与代表即便指纹相同, 也再核对一遍真实配置;
+    任何影响服务端握手/路由的字段不一致 → 不等价 → 不继承测活结果。
+    """
+    try:
+        return _normalize_outbound(a) == _normalize_outbound(b)
+    except Exception:
+        return False   # 比较失败 → 判不等价 (宁慢不错)
+
+
+def final_gate(nodes: list, require_cn_signal: bool = False,
+               label: str = "交付") -> tuple:
+    """交付前最终闸门 (v3 审计加固 2026-10-16)
+
+    ★ 为什么需要: 回填/去重/风险过滤跨多个函数协作, "没有未测活的节点混进
+      订阅"不能只靠代码走查 — 用一次结构化断言把它变成可验证的事实。
+      本闸门检查每个待交付节点:
+        ① 判定字段完整: alive=True / is_stalled=False / mitm_risk=False /
+           fraud_score 已评 / cn_score+cn_flags 已算 / outbound 可导出
+        ② (友好订阅) DNS 信号闭合: 污染判定必须**明确得过** —
+           cn_ok=True (至少一个大陆解析器明确返回正常) 或服务器是 IP 字面量。
+           只认"没判污染"不够: CN DoH 整体不可达时污染检测会静默失效,
+           被污染域名就靠其他分数混进友好订阅 (审计发现的覆盖缺口)。
+           DNS 未闭合 → 只踢出友好订阅并清 🇨🇳 旗标, **不影响全量订阅**
+           (该节点海外侧判定都过, 只是国内向缺证据, 宁缺毋滥)。
+    返回 (通过的节点列表, 问题描述列表); 任何节点被拦都会打日志。
+    """
+    kept, problems = [], []
+    for n in nodes:
+        why = []
+        if not n.get("alive"):
+            why.append("alive=False")
+        if n.get("is_stalled"):
+            why.append("is_stalled=True")
+        if n.get("mitm_risk"):
+            why.append("mitm_risk=True")
+        if "fraud_score" not in n or n.get("fraud_score") is None:
+            why.append("fraud_score未评")
+        if "cn_score" not in n or "cn_flags" not in n \
+                or n.get("cn_score") is None or n.get("cn_flags") is None:
+            why.append("cn_score未算")
+        if not n.get("outbound"):
+            why.append("outbound为空")
+        dns_open_only = False
+        if require_cn_signal and n.get("cn_friendly") and not why:
+            # DNS 闭合: 要么明确判过 CN 解析正常, 要么是 IP 字面量 (无 DNS 面)
+            flags = n.get("cn_prescore_flags") or []
+            if not (("DNS正常" in flags) or ("直连IP" in flags)):
+                why.append("DNS信号未闭合(污染判定无明确结论)")
+                dns_open_only = True
+        if why:
+            if dns_open_only:
+                # 仅 DNS 未闭合: 踢出友好订阅 + 清旗标, 节点本身留在全量
+                n["cn_friendly"] = False
+            problems.append(f"{n.get('proto')} {n.get('server')}:{n.get('port')} "
+                            f"raw={str(n.get('raw'))[:50]} → {';'.join(why)}")
+        else:
+            kept.append(n)
+    if problems:
+        print(f"[!] 最终闸门({label}): 拦截 {len(problems)}/{len(nodes)} 个字段/信号不完整的节点")
+        for p in problems[:5]:
+            print(f"      · {p}")
+        if len(problems) > 5:
+            print(f"      · …其余 {len(problems) - 5} 条从略")
+    else:
+        print(f"[+] 最终闸门({label}): {len(kept)}/{len(nodes)} 个节点全部判定字段完整")
+    return kept, problems
+
+
 # ══════════════════════════════════════════════════════════════════
 # 阶段 0: 静态预筛 (零网络零进程, 纯 URI/outbound 字段检查)
 #   动机: 池子从 10 源扩到 15 源后, 候选涨到 3000+ 量级, 阶段B 单节点最坏
@@ -4537,66 +4763,10 @@ def main():
 
     # 2.5 ★ 测前去重 (凭据指纹): 同 凭据+目标+协议+配置 只测一次, 测活后回填有效项
     #     key = (server, port, proto, 凭据指纹): 四项全同才判为"同一节点被多源重复收录"
-    #     ★ P0-3 修复 (2026-10-11): 旧版指纹只取 uuid/password 等单一凭据字段,
-    #       导致"同 uuid 不同 reality/transport 配置"被判为同一节点:
-    #         vless://U@1.2.3.4:443?security=tls&type=ws&path=/a
-    #         vless://U@1.2.3.4:443?security=reality&pbk=KEY&type=grpc
-    #       后果① 漏测: 后者永远不进测活, 代表失败时白白丢掉一个本可用的配置;
-    #           后果② 误判: 代表成功时后者继承"可用", 但它自己的配置可能根本连不上。
-    #       现在把影响服务端握手/路由的字段一并纳入指纹。
-    def cred_fingerprint(outbound: dict, proto: str) -> str:
-        try:
-            if proto == "vless":
-                tls = outbound.get("tls") or {}
-                reality = tls.get("reality") or {}
-                tr = outbound.get("transport") or {}
-                # 关键区分字段: 缺任一都会让"同 uuid 不同配置"被误判为同一节点
-                #   flow            — xtls-vision 与空 flow 的握手行为不同
-                #   server_name     — SNI 决定证书校验目标与 CDN 回源
-                #   insecure        — 是否校验证书, 直接影响 MITM 风险
-                #   public_key      — Reality 握手核心, 不同就连不上 (最高区分度)
-                #   short_id        — Reality 短 ID, 服务端按它路由
-                #   transport.type  — tcp/ws/grpc/http 的转发路径完全不同
-                return "|".join([
-                    str(outbound.get("uuid", "")),
-                    str(outbound.get("flow", "")),
-                    str(tls.get("server_name", "")),
-                    str(int(bool(tls.get("insecure")))),
-                    str(reality.get("public_key", "")),
-                    str(reality.get("short_id", "")),
-                    str(tr.get("type", "")),
-                ])
-            if proto == "vmess":
-                # alter_id 区分 vmess 的旧/新协议模式; transport.type 区分 ws/grpc
-                tr = outbound.get("transport") or {}
-                tls = outbound.get("tls") or {}
-                return "|".join([
-                    str(outbound.get("uuid", "") or outbound.get("user_id", "")),
-                    str(outbound.get("alter_id", "")),
-                    str(tr.get("type", "")),
-                    str(tls.get("server_name", "")),
-                ])
-            if proto == "trojan":
-                # sni 是 trojan 的实际路由目标, 同密码不同 sni 是不同的入口
-                tls = outbound.get("tls") or {}
-                return "|".join([
-                    str(outbound.get("password", "")),
-                    str(tls.get("server_name", "")),
-                ])
-            if proto == "shadowsocks":
-                return f"{outbound.get('method','')}|{outbound.get('password','')}"
-            if proto == "hysteria2":
-                # ★ server_ports 已从指纹移除: 它是端口跳跃的**路由参数**而非身份凭据。
-                #   同密码不同端口范围本质是同一份凭据, 旧版把它们当不同节点白测两遍。
-                return f"{outbound.get('password','') or ''}"
-            if proto == "tuic":
-                return f"{outbound.get('uuid','')}|{outbound.get('password','')}"
-            if proto == "anytls":
-                return f"{outbound.get('password','')}"
-            return json.dumps({k: v for k, v in outbound.items()
-                              if k in ("uuid", "password", "user_id", "method")}, sort_keys=True)
-        except Exception:
-            return ""  # 指纹失败 → 不合并 (宁慢不错)
+    #     ★ cred_fingerprint 已提升到模块级 (v3 审计加固): P0-3 补不全的路由字段
+    #       (path/host/obfs/sni/alpn/拥塞控制…) 全部纳入, 且回填段再用
+    #       _outbound_equiv 做二次兜底 — "同凭据不同配置"再也混不进继承。
+    #     key = (server, port, proto, 凭据指纹): 四项全同才判为"同一节点被多源重复收录"
 
     # ★ 测前去重 (凭据指纹): 四项全同 (server, port, proto, 指纹) 只测一次。
     #   完全相同 = 同一节点被多源重复收录 (免费池常态, 30+ 份不同名字) → 只测一次。
@@ -4689,6 +4859,7 @@ def main():
         expanded = list(test_results)
         backfilled = 0
         insecure_backfill = 0     # P0-2: 克隆体自身 insecure 被拦截的计数
+        equiv_backfill = 0        # v3: 克隆体与代表配置不一致被拦截的计数
         for key, uris in DEDUP_MAP.items():
             if len(uris) <= 1:
                 continue
@@ -4708,6 +4879,14 @@ def main():
                 if is_insecure_node(parsed[0]):
                     insecure_backfill += 1
                     continue
+                # ★ v3 审计加固 (2026-10-16): 配置一致性兜底。
+                #   指纹已补全路由字段, 但指纹是"设计", 这里是"断言" — 克隆体
+                #   parse 出的真实 outbound 必须与代表的行为等价, 否则不继承。
+                #   堵的是: 同凭据不同 path/obfs/sni 的节点从未测活却顶着
+                #   继承结论进订阅 (指纹万一还有漏, 这里是最后一道闸)。
+                if not _outbound_equiv(parsed[0], r.get("outbound") or {}):
+                    equiv_backfill += 1
+                    continue
                 # dict(r) 浅拷贝: 保证 speed_bps/latency_ms/loss_rate/ttfb_ms/
                 # alive/is_stalled/is_premium 等所有状态字段与代表节点完全一致,
                 # 只替换 raw 为本条 URI (后续 classify 会据此解析出各自的 outbound)
@@ -4721,6 +4900,10 @@ def main():
         if insecure_backfill:
             print(f"    回填时拦截 insecure 克隆体: {insecure_backfill} 个 "
                   f"(代表通过预筛但重复项关闭证书校验 — 已拦截, 未入库)")
+        if equiv_backfill:
+            print(f"    回填时拦截配置不一致克隆体: {equiv_backfill} 个 "
+                  f"(同凭据但 path/obfs/sni 等路由字段不同 → 与服务端行为不等价, "
+                  f"不继承测活结论, 未入库)")
         test_results = expanded
 
 
@@ -4756,6 +4939,28 @@ def main():
     #   硬要求"未经测试筛选的节点不被保留" —— 用断言把它变成可验证的,
     #   而不是靠人肉 review 代码路径。发现漏网之鱼时打警告并指出具体 raw, 便于定位。
     _verify_export_lineage(unique_nodes, test_results)
+
+    # ★ v3 审计加固 (2026-10-16): 交付前最终闸门 — "未经过全套筛选的节点
+    #   不许漏进最终交付"从代码走查升级为结构化断言:
+    #     ① 全量订阅: 判定字段完整 (alive/非断流/非MITM/fraud已评/cn_score已算/outbound可导出)
+    #     ② 国内友好订阅: 追加 DNS 信号闭合 (污染判定必须明确得过, 防 CN DoH
+    #        整体不可达时污染检测静默失效 — 只踢出友好订阅并清旗标, 不动全量)
+    #   子集列表随全量闸门同步收敛 (id 集合过滤, 不用 dict __eq__ — 防误伤)。
+    unique_nodes, gate_problems = final_gate(unique_nodes, label="全量订阅")
+    if not unique_nodes:
+        print("[!] 最终闸门后无存活节点 — 保留上次 output")
+        return
+    if gate_problems:
+        un_ids = {id(n) for n in unique_nodes}
+        residential = [n for n in residential if id(n) in un_ids]
+        cn_friendly = [n for n in cn_friendly if id(n) in un_ids]
+    res_ids = {id(n) for n in residential}
+    non_residential = [n for n in unique_nodes if id(n) not in res_ids]
+    cn_friendly, cn_gate_problems = final_gate(cn_friendly, require_cn_signal=True,
+                                               label="国内友好订阅")
+    if cn_gate_problems:
+        print(f"    → {len(cn_gate_problems)} 个节点因国内向证据不足移出友好订阅 "
+              f"(仍在全量订阅内, 节点名已清 🇨🇳 旗标)")
 
     total, res, cn = export_all(unique_nodes, residential, non_residential,
                                 cn_friendly=cn_friendly)

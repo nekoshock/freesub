@@ -5,7 +5,7 @@
   "outbounds": [
     {
       "type": "shadowsocks",
-      "tag": "🇨🇾 塞浦路斯 (Cyprus) 01 2536K ⚠P - NEKO",
+      "tag": "🇨🇾 塞浦路斯 (Cyprus) 01 3003K ⚠P - NEKO",
       "server": "132.243.238.21",
       "server_port": 8388,
       "method": "aes-256-gcm",
@@ -13,8 +13,25 @@
     },
     {
       "type": "vless",
-      "tag": "🇨🇾 塞浦路斯 (Cyprus) 02 197K 🇨🇳 - NEKO",
-      "server": "hydra.yokkastars.com",
+      "tag": "🇨🇾 塞浦路斯 (Cyprus) 02 3509K 🇨🇳 - NEKO",
+      "server": "77.110.105.122",
+      "server_port": 443,
+      "uuid": "019fbe0f-2d9f-4b89-9f81-e1e36129892a",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "co-pl.speedtec.ru",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "random"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇨🇾 塞浦路斯 (Cyprus) 03 2482K 🇨🇳 - NEKO",
+      "server": "5.253.28.240",
       "server_port": 2443,
       "uuid": "5e679ccd-1586-4d5f-b87b-48251046cad8",
       "tls": {
@@ -22,7 +39,7 @@
         "server_name": "deepl.com",
         "utls": {
           "enabled": true,
-          "fingerprint": "qq"
+          "fingerprint": "firefox"
         },
         "reality": {
           "enabled": true,
@@ -36,20 +53,45 @@
       }
     },
     {
+      "type": "vless",
+      "tag": "🇨🇾 塞浦路斯 (Cyprus) 04 836K ⚠P - NEKO",
+      "server": "5.253.30.99",
+      "server_port": 40443,
+      "uuid": "511c1563-2cb6-4064-abc6-a59ee49818a8",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "deepl.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "cwmcqsfS7klQlkcoUNuATEk0NiPY-NnRb9z8rCJDQw0",
+          "short_id": "88b6"
+        }
+      }
+    },
+    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇨🇾 塞浦路斯 (Cyprus) 01 2536K ⚠P - NEKO",
-        "🇨🇾 塞浦路斯 (Cyprus) 02 197K 🇨🇳 - NEKO"
+        "🇨🇾 塞浦路斯 (Cyprus) 01 3003K ⚠P - NEKO",
+        "🇨🇾 塞浦路斯 (Cyprus) 02 3509K 🇨🇳 - NEKO",
+        "🇨🇾 塞浦路斯 (Cyprus) 03 2482K 🇨🇳 - NEKO",
+        "🇨🇾 塞浦路斯 (Cyprus) 04 836K ⚠P - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇨🇾 塞浦路斯 (Cyprus) 01 2536K ⚠P - NEKO",
-        "🇨🇾 塞浦路斯 (Cyprus) 02 197K 🇨🇳 - NEKO"
+        "🇨🇾 塞浦路斯 (Cyprus) 01 3003K ⚠P - NEKO",
+        "🇨🇾 塞浦路斯 (Cyprus) 02 3509K 🇨🇳 - NEKO",
+        "🇨🇾 塞浦路斯 (Cyprus) 03 2482K 🇨🇳 - NEKO",
+        "🇨🇾 塞浦路斯 (Cyprus) 04 836K ⚠P - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

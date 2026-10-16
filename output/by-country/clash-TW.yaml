@@ -4,75 +4,38 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇹🇼 中国台湾 (Taiwan) 01 5542K ⚠P⚠U - NEKO
-  server: tw4.dexlos.com
-  port: 8080
+- name: 🇹🇼 中国台湾 (Taiwan) 01 ⚠S302K ⚠P - NEKO
+  server: 165.154.195.38
+  port: 35034
   udp: true
-  type: tuic
-  uuid: 8A9905B7-801B-41AF-BFC9-2034212770F6
-  password: 8A9905B7-801B-41AF-BFC9-2034212770F6
-  sni: tw4.dexlos.com
-  skip-cert-verify: false
-  congestion-controller: bbr
-  udp-relay-mode: native
-  alpn:
-  - h3
-- name: 🇹🇼 中国台湾 (Taiwan) 02 5155K ⚠P⚠U - NEKO
-  server: tw8.dexlos.com
-  port: 8080
+  type: vmess
+  uuid: 959a8caf-4cea-43d0-a548-3628e7ddfafc
+  alterId: 0
+  cipher: auto
+- name: 🇹🇼 中国台湾 (Taiwan) 02 1666K ⚠P - NEKO
+  server: hinet1.2yly.com
+  port: 24215
   udp: true
-  type: tuic
-  uuid: 8A9905B7-801B-41AF-BFC9-2034212770F6
-  password: 8A9905B7-801B-41AF-BFC9-2034212770F6
-  sni: tw8.dexlos.com
-  skip-cert-verify: false
-  congestion-controller: bbr
-  udp-relay-mode: native
-  alpn:
-  - h3
-- name: 🇹🇼 中国台湾 (Taiwan) 03 3832K ⚠P⚠U - NEKO
-  server: tw3.dexlos.com
-  port: 8080
-  udp: true
-  type: tuic
-  uuid: 8A9905B7-801B-41AF-BFC9-2034212770F6
-  password: 8A9905B7-801B-41AF-BFC9-2034212770F6
-  sni: tw3.dexlos.com
-  skip-cert-verify: false
-  congestion-controller: bbr
-  udp-relay-mode: native
-  alpn:
-  - h3
-- name: 🇹🇼 中国台湾 (Taiwan) 04 5002K ⚠P⚠U - NEKO
-  server: tw5.dexlos.com
-  port: 8080
-  udp: true
-  type: tuic
-  uuid: 8A9905B7-801B-41AF-BFC9-2034212770F6
-  password: 8A9905B7-801B-41AF-BFC9-2034212770F6
-  sni: tw5.dexlos.com
-  skip-cert-verify: false
-  congestion-controller: bbr
-  udp-relay-mode: native
-  alpn:
-  - h3
+  type: vless
+  uuid: 19d5a678-8396-4e3b-93da-ece618d0e83a
+  tls: true
+  reality-opts:
+    public-key: mdWKUPMVTtTbDqK10BPb89OcqBC2-Lx-4NOYtqc1GWE
+  servername: addons.mozilla.org
+  client-fingerprint: safari
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇹🇼 中国台湾 (Taiwan) 01 5542K ⚠P⚠U - NEKO
-  - 🇹🇼 中国台湾 (Taiwan) 02 5155K ⚠P⚠U - NEKO
-  - 🇹🇼 中国台湾 (Taiwan) 03 3832K ⚠P⚠U - NEKO
-  - 🇹🇼 中国台湾 (Taiwan) 04 5002K ⚠P⚠U - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 01 ⚠S302K ⚠P - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 02 1666K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇹🇼 中国台湾 (Taiwan) 01 5542K ⚠P⚠U - NEKO
-  - 🇹🇼 中国台湾 (Taiwan) 02 5155K ⚠P⚠U - NEKO
-  - 🇹🇼 中国台湾 (Taiwan) 03 3832K ⚠P⚠U - NEKO
-  - 🇹🇼 中国台湾 (Taiwan) 04 5002K ⚠P⚠U - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 01 ⚠S302K ⚠P - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 02 1666K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

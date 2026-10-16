@@ -5,10 +5,24 @@
   "outbounds": [
     {
       "type": "vless",
-      "tag": "🇧🇾 白俄罗斯 (Belarus) 01 457K ⚠P - NEKO",
-      "server": "178.172.227.228",
+      "tag": "🇧🇾 白俄罗斯 (Belarus) 01 3825K ⚠P - NEKO",
+      "server": "178.172.227.124",
+      "server_port": 14430,
+      "uuid": "1af36694-b548-4b18-89a0-bc076eab4ed7",
+      "transport": {
+        "type": "ws",
+        "path": "/vless",
+        "headers": {
+          "Host": "178.172.227.124"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇧🇾 白俄罗斯 (Belarus) 02 ⚠S2924K ⚠P - NEKO",
+      "server": "178.172.227.124",
       "server_port": 10444,
-      "uuid": "b6e5dc56-836f-48c1-9163-b0b0b43b647d",
+      "uuid": "1af36694-b548-4b18-89a0-bc076eab4ed7",
       "flow": "xtls-rprx-vision",
       "tls": {
         "enabled": true,
@@ -25,34 +39,20 @@
       }
     },
     {
-      "type": "vless",
-      "tag": "🇧🇾 白俄罗斯 (Belarus) 02 404K ⚠P - NEKO",
-      "server": "178.172.227.228",
-      "server_port": 14430,
-      "uuid": "b6e5dc56-836f-48c1-9163-b0b0b43b647d",
-      "transport": {
-        "type": "ws",
-        "path": "/vless",
-        "headers": {
-          "Host": "178.172.227.228"
-        }
-      }
-    },
-    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇧🇾 白俄罗斯 (Belarus) 01 457K ⚠P - NEKO",
-        "🇧🇾 白俄罗斯 (Belarus) 02 404K ⚠P - NEKO"
+        "🇧🇾 白俄罗斯 (Belarus) 01 3825K ⚠P - NEKO",
+        "🇧🇾 白俄罗斯 (Belarus) 02 ⚠S2924K ⚠P - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇧🇾 白俄罗斯 (Belarus) 01 457K ⚠P - NEKO",
-        "🇧🇾 白俄罗斯 (Belarus) 02 404K ⚠P - NEKO"
+        "🇧🇾 白俄罗斯 (Belarus) 01 3825K ⚠P - NEKO",
+        "🇧🇾 白俄罗斯 (Belarus) 02 ⚠S2924K ⚠P - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

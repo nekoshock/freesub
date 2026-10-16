@@ -4,28 +4,37 @@
   },
   "outbounds": [
     {
+      "type": "vless",
+      "tag": "🇨🇭 瑞士 (Switzerland) 01 4702K 🇨🇳 - NEKO",
+      "server": "45.90.59.15",
+      "server_port": 443,
+      "uuid": "3950b45e-740d-4dca-ac95-505ec8534592",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.cloudflare.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "P7S4UPFlQbmiBr4txyy8NZIMTrmO3UdxyH16WBU-YzY",
+          "short_id": "19253fae84102271"
+        }
+      }
+    },
+    {
       "type": "shadowsocks",
-      "tag": "🇨🇭 瑞士 (Switzerland) 01 4222K ⚠P - NEKO",
+      "tag": "🇨🇭 瑞士 (Switzerland) 02 4970K ⚠P - NEKO",
       "server": "86.106.84.194",
       "server_port": 13261,
       "method": "aes-128-gcm",
       "password": "2bf536a4bd6008511734a505d248de2c"
     },
     {
-      "type": "hysteria2",
-      "tag": "🇨🇭 瑞士 (Switzerland) 02 491K ⚠P⚠U - NEKO",
-      "server": "104.165.205.42",
-      "server_port": 8443,
-      "password": "990c8eb6-4c4e-4277-8602-79af8402cdd0",
-      "tls": {
-        "enabled": true,
-        "server_name": "speedtestmark.com",
-        "insecure": false
-      }
-    },
-    {
       "type": "vless",
-      "tag": "🇨🇭 瑞士 (Switzerland) 03 592K 🇨🇳 - NEKO",
+      "tag": "🇨🇭 瑞士 (Switzerland) 03 2515K 🇨🇳 - NEKO",
       "server": "138.124.63.224",
       "server_port": 8444,
       "uuid": "f55e9aba-7b14-4f6f-b59a-d5b3d45c9309",
@@ -48,22 +57,68 @@
       }
     },
     {
+      "type": "hysteria2",
+      "tag": "🇨🇭 瑞士 (Switzerland) 04 ⚠S5237K ⚠P⚠U - NEKO",
+      "server": "104.165.205.42",
+      "server_port": 8443,
+      "password": "990c8eb6-4c4e-4277-8602-79af8402cdd0",
+      "tls": {
+        "enabled": true,
+        "server_name": "speedtestmark.com",
+        "insecure": false
+      }
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇨🇭 瑞士 (Switzerland) 05 2227K ⚠P - NEKO",
+      "server": "132.243.175.144",
+      "server_port": 8388,
+      "method": "chacha20-ietf-poly1305",
+      "password": "e8KgS8fD0yDqYFpgN4G5piCOt9aFyqA3"
+    },
+    {
+      "type": "vless",
+      "tag": "🇨🇭 瑞士 (Switzerland) 06 685K 🇨🇳 - NEKO",
+      "server": "208.69.78.217",
+      "server_port": 2053,
+      "uuid": "c0dd6d59-1573-43af-8b70-1470b2632a6d",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.apple.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "A49ue7zXSusJZdErPAewg3jqGdUFIO1a9xOunEKJfC0",
+          "short_id": "ad86e2d52ff40ebd"
+        }
+      }
+    },
+    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇨🇭 瑞士 (Switzerland) 01 4222K ⚠P - NEKO",
-        "🇨🇭 瑞士 (Switzerland) 02 491K ⚠P⚠U - NEKO",
-        "🇨🇭 瑞士 (Switzerland) 03 592K 🇨🇳 - NEKO"
+        "🇨🇭 瑞士 (Switzerland) 01 4702K 🇨🇳 - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 02 4970K ⚠P - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 03 2515K 🇨🇳 - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 04 ⚠S5237K ⚠P⚠U - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 05 2227K ⚠P - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 06 685K 🇨🇳 - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇨🇭 瑞士 (Switzerland) 01 4222K ⚠P - NEKO",
-        "🇨🇭 瑞士 (Switzerland) 02 491K ⚠P⚠U - NEKO",
-        "🇨🇭 瑞士 (Switzerland) 03 592K 🇨🇳 - NEKO"
+        "🇨🇭 瑞士 (Switzerland) 01 4702K 🇨🇳 - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 02 4970K ⚠P - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 03 2515K 🇨🇳 - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 04 ⚠S5237K ⚠P⚠U - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 05 2227K ⚠P - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 06 685K 🇨🇳 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

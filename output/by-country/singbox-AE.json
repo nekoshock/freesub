@@ -5,10 +5,10 @@
   "outbounds": [
     {
       "type": "vless",
-      "tag": "🇦🇪 阿联酋 (UAE) 01 4597K 🇨🇳 - NEKO",
+      "tag": "🇦🇪 阿联酋 (UAE) 01 4210K 🇨🇳 - NEKO",
       "server": "157.228.155.238",
       "server_port": 443,
-      "uuid": "df53b6c2-8005-475c-9eb9-74e1be785dc8",
+      "uuid": "4d852af3-a121-41aa-9aed-4ca40a6f7b4d",
       "flow": "xtls-rprx-vision",
       "tls": {
         "enabled": true,
@@ -25,8 +25,24 @@
       }
     },
     {
+      "type": "hysteria2",
+      "tag": "🇦🇪 阿联酋 (UAE) 02 ⚠S7702K 🇨🇳 - NEKO",
+      "server": "130.49.161.70",
+      "server_port": 443,
+      "password": "p7Q76LzlnS4hIzr1W3staBOnUe_WwSkR",
+      "tls": {
+        "enabled": true,
+        "server_name": "hy2.aspidnet.xyz",
+        "insecure": false
+      },
+      "obfs": {
+        "type": "salamander",
+        "password": "rG07s3COMIEvdnQipRyWzx_H_2xygNC3"
+      }
+    },
+    {
       "type": "vless",
-      "tag": "🇦🇪 阿联酋 (UAE) 02 4196K 🇨🇳 - NEKO",
+      "tag": "🇦🇪 阿联酋 (UAE) 03 4949K 🇨🇳 - NEKO",
       "server": "157.228.155.185",
       "server_port": 443,
       "uuid": "df53b6c2-8005-475c-9eb9-74e1be785dc8",
@@ -36,7 +52,7 @@
         "server_name": "addons.mozilla.org",
         "utls": {
           "enabled": true,
-          "fingerprint": "randomized"
+          "fingerprint": "chrome"
         },
         "reality": {
           "enabled": true,
@@ -47,7 +63,7 @@
     },
     {
       "type": "vless",
-      "tag": "🇦🇪 阿联酋 (UAE) 03 3327K 🇨🇳 - NEKO",
+      "tag": "🇦🇪 阿联酋 (UAE) 04 2672K 🇨🇳 - NEKO",
       "server": "157.228.128.59",
       "server_port": 443,
       "uuid": "df53b6c2-8005-475c-9eb9-74e1be785dc8",
@@ -67,22 +83,78 @@
       }
     },
     {
+      "type": "vless",
+      "tag": "🇦🇪 阿联酋 (UAE) 05 3666K ⚠P - NEKO",
+      "server": "139.185.44.26",
+      "server_port": 8888,
+      "uuid": "46509b23-fe97-45b3-9c89-bd1b2a93bd4e",
+      "tls": {
+        "enabled": true,
+        "server_name": "addons.mozilla.org",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "vBSBoPYKiB5RZ9_jNPEdLnroJ2M7MKw0c1Rvh6-QmV4",
+          "short_id": ""
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇦🇪 阿联酋 (UAE) 06 5127K ⚠P - NEKO",
+      "server": "185.253.116.33",
+      "server_port": 14430,
+      "uuid": "aee7ae19-672f-49d8-8a92-aa7cdfc89f89",
+      "transport": {
+        "type": "ws",
+        "path": "/vless",
+        "headers": {
+          "Host": "185.253.116.33"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇦🇪 阿联酋 (UAE) 07 3449K ⚠P - NEKO",
+      "server": "84.235.244.108",
+      "server_port": 22573,
+      "uuid": "39947382-3212-41c9-bc3a-589574ac8b23",
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "uae.unixzone.us"
+        }
+      }
+    },
+    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇦🇪 阿联酋 (UAE) 01 4597K 🇨🇳 - NEKO",
-        "🇦🇪 阿联酋 (UAE) 02 4196K 🇨🇳 - NEKO",
-        "🇦🇪 阿联酋 (UAE) 03 3327K 🇨🇳 - NEKO"
+        "🇦🇪 阿联酋 (UAE) 01 4210K 🇨🇳 - NEKO",
+        "🇦🇪 阿联酋 (UAE) 02 ⚠S7702K 🇨🇳 - NEKO",
+        "🇦🇪 阿联酋 (UAE) 03 4949K 🇨🇳 - NEKO",
+        "🇦🇪 阿联酋 (UAE) 04 2672K 🇨🇳 - NEKO",
+        "🇦🇪 阿联酋 (UAE) 05 3666K ⚠P - NEKO",
+        "🇦🇪 阿联酋 (UAE) 06 5127K ⚠P - NEKO",
+        "🇦🇪 阿联酋 (UAE) 07 3449K ⚠P - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇦🇪 阿联酋 (UAE) 01 4597K 🇨🇳 - NEKO",
-        "🇦🇪 阿联酋 (UAE) 02 4196K 🇨🇳 - NEKO",
-        "🇦🇪 阿联酋 (UAE) 03 3327K 🇨🇳 - NEKO"
+        "🇦🇪 阿联酋 (UAE) 01 4210K 🇨🇳 - NEKO",
+        "🇦🇪 阿联酋 (UAE) 02 ⚠S7702K 🇨🇳 - NEKO",
+        "🇦🇪 阿联酋 (UAE) 03 4949K 🇨🇳 - NEKO",
+        "🇦🇪 阿联酋 (UAE) 04 2672K 🇨🇳 - NEKO",
+        "🇦🇪 阿联酋 (UAE) 05 3666K ⚠P - NEKO",
+        "🇦🇪 阿联酋 (UAE) 06 5127K ⚠P - NEKO",
+        "🇦🇪 阿联酋 (UAE) 07 3449K ⚠P - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

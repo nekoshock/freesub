@@ -1,0 +1,45 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: info
+proxies:
+- name: 🇸🇪 瑞典 (Sweden) 01 3932K 🇨🇳 - NEKO
+  server: 88.216.223.66
+  port: 443
+  udp: true
+  type: vless
+  uuid: 244d9eab-3311-40c7-b47f-4968dc3088a6
+  tls: true
+  reality-opts:
+    public-key: drl7nndYdfzZY1aQ0eUAWmNV0nsHig2uDnu9siy9biQ
+    short-id: 868419504747f6de
+  servername: tcpswed1.figurapn.ru
+  client-fingerprint: chrome
+- name: 🇸🇪 瑞典 (Sweden) 02 3750K ⚠P - NEKO
+  server: 5.178.109.174
+  port: 14430
+  udp: true
+  type: vless
+  uuid: 80de563a-cac8-40ea-8cb0-4cb082dd92f9
+  network: ws
+  ws-opts:
+    path: /vless
+    headers:
+      Host: 5.178.109.174
+proxy-groups:
+- name: PROXIES
+  type: select
+  proxies:
+  - AUTO
+  - 🇸🇪 瑞典 (Sweden) 01 3932K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 3750K ⚠P - NEKO
+- name: AUTO
+  type: url-test
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  proxies:
+  - 🇸🇪 瑞典 (Sweden) 01 3932K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 3750K ⚠P - NEKO
+rules:
+- MATCH,PROXIES

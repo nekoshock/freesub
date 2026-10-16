@@ -4,56 +4,55 @@
   },
   "outbounds": [
     {
-      "type": "tuic",
-      "tag": "🇹🇼 中国台湾 (Taiwan) 01 (家宽) ⚠S1890K ⚠P⚠U - NEKO",
-      "server": "tw3.dexlos.com",
-      "server_port": 8080,
-      "uuid": "8A9905B7-801B-41AF-BFC9-2034212770F6",
-      "password": "8A9905B7-801B-41AF-BFC9-2034212770F6",
-      "congestion_control": "bbr",
-      "udp_relay_mode": "native",
-      "tls": {
-        "enabled": true,
-        "server_name": "tw3.dexlos.com",
-        "insecure": false,
-        "alpn": [
-          "h3"
-        ]
-      }
+      "type": "vmess",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 01 (移动家宽) 3566K ⚠P - NEKO",
+      "server": "dog-hk.kunlun01dns.com",
+      "server_port": 21020,
+      "uuid": "9464ca40-dd75-3742-a628-d931a9f413b2",
+      "security": "auto"
     },
     {
-      "type": "tuic",
-      "tag": "🇹🇼 中国台湾 (Taiwan) 02 (家宽) 4747K ⚠P⚠U - NEKO",
-      "server": "tw4.dexlos.com",
-      "server_port": 8080,
-      "uuid": "8A9905B7-801B-41AF-BFC9-2034212770F6",
-      "password": "8A9905B7-801B-41AF-BFC9-2034212770F6",
-      "congestion_control": "bbr",
-      "udp_relay_mode": "native",
-      "tls": {
-        "enabled": true,
-        "server_name": "tw4.dexlos.com",
-        "insecure": false,
-        "alpn": [
-          "h3"
-        ]
-      }
+      "type": "vmess",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 02 (移动家宽) 3636K ⚠P - NEKO",
+      "server": "dog-hk.kunlun01dns.com",
+      "server_port": 21021,
+      "uuid": "9464ca40-dd75-3742-a628-d931a9f413b2",
+      "security": "auto"
+    },
+    {
+      "type": "vless",
+      "tag": "🇹🇷 土耳其 (Turkey) 03 (移动家宽) 521K ⚠P - NEKO",
+      "server": "test.keoplentuio.xyz",
+      "server_port": 2053,
+      "uuid": "9ef61079-6f7d-4911-9608-943da85d8e6f"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇰🇷 韩国 (South Korea) 04 (家宽) 2250K ⚠P - NEKO",
+      "server": "p141.panda001.net",
+      "server_port": 4652,
+      "method": "aes-256-cfb",
+      "password": "qwerREWQ@@"
     },
     {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇹🇼 中国台湾 (Taiwan) 01 (家宽) ⚠S1890K ⚠P⚠U - NEKO",
-        "🇹🇼 中国台湾 (Taiwan) 02 (家宽) 4747K ⚠P⚠U - NEKO"
+        "🇭🇰 中国香港 (Hong Kong) 01 (移动家宽) 3566K ⚠P - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 02 (移动家宽) 3636K ⚠P - NEKO",
+        "🇹🇷 土耳其 (Turkey) 03 (移动家宽) 521K ⚠P - NEKO",
+        "🇰🇷 韩国 (South Korea) 04 (家宽) 2250K ⚠P - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇹🇼 中国台湾 (Taiwan) 01 (家宽) ⚠S1890K ⚠P⚠U - NEKO",
-        "🇹🇼 中国台湾 (Taiwan) 02 (家宽) 4747K ⚠P⚠U - NEKO"
+        "🇭🇰 中国香港 (Hong Kong) 01 (移动家宽) 3566K ⚠P - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 02 (移动家宽) 3636K ⚠P - NEKO",
+        "🇹🇷 土耳其 (Turkey) 03 (移动家宽) 521K ⚠P - NEKO",
+        "🇰🇷 韩国 (South Korea) 04 (家宽) 2250K ⚠P - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

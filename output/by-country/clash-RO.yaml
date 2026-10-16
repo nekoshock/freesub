@@ -4,7 +4,17 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇷🇴 罗马尼亚 (Romania) 01 4544K 🇨🇳 - NEKO
+- name: 🇷🇴 罗马尼亚 (Romania) 01 6406K 🇨🇳 - NEKO
+  server: 162.249.125.133
+  port: 443
+  udp: true
+  type: hysteria2
+  password: QCgqi_I4EkV8UR-OgQ_tG4EnVTEVvIyR2GgRBzrIn2s
+  sni: hy2-new.aspidnet.xyz
+  skip-cert-verify: false
+  obfs: salamander
+  obfs-password: c1b4086fea89914496c7e10967a419216566
+- name: 🇷🇴 罗马尼亚 (Romania) 02 3197K 🇨🇳 - NEKO
   server: 46.28.67.55
   port: 443
   udp: true
@@ -17,44 +27,34 @@ proxies:
     short-id: d06d78e974491b6e
   servername: www.cloudflare.com
   client-fingerprint: chrome
-- name: 🇷🇴 罗马尼亚 (Romania) 02 ⚠S6047K 🇨🇳 - NEKO
-  server: 162.249.125.133
-  port: 443
-  udp: true
-  type: hysteria2
-  password: QCgqi_I4EkV8UR-OgQ_tG4EnVTEVvIyR2GgRBzrIn2s
-  sni: hy2-new.aspidnet.xyz
-  skip-cert-verify: false
-  obfs: salamander
-  obfs-password: c1b4086fea89914496c7e10967a419216566
-- name: 🇷🇴 罗马尼亚 (Romania) 03 4696K 🇨🇳 - NEKO
-  server: 146.70.124.85
+- name: 🇷🇴 罗马尼亚 (Romania) 03 2165K 🇨🇳 - NEKO
+  server: 82.117.255.174
   port: 443
   udp: true
   type: vless
-  uuid: 40abbe13-f02e-4da2-9b19-966c2c3eb4ee
+  uuid: 679439c5-28f2-485e-af5f-60a5fcd9c36c
   flow: xtls-rprx-vision
   tls: true
   reality-opts:
-    public-key: byzvlw97wjAAAfHs5AZRV0P0H6_JKBEZ4yfLS0HNewE
-    short-id: fe24f8a0a560056e
-  servername: www.datadoghq.com
+    public-key: 0QDBHaCRO2dPeeSVy3B3R_U12ZOvbvWl1JTFW_ZcpD0
+    short-id: 31e91d43e553bf32
+  servername: gateway.icloud.com
   client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇷🇴 罗马尼亚 (Romania) 01 4544K 🇨🇳 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 02 ⚠S6047K 🇨🇳 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 03 4696K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 01 6406K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 02 3197K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 03 2165K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇷🇴 罗马尼亚 (Romania) 01 4544K 🇨🇳 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 02 ⚠S6047K 🇨🇳 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 03 4696K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 01 6406K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 02 3197K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 03 2165K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

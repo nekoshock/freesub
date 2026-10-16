@@ -4,57 +4,23 @@
   },
   "outbounds": [
     {
-      "type": "tuic",
-      "tag": "🇹🇼 中国台湾 (Taiwan) 01 (家宽) 3017K ⚠P⚠U - NEKO",
-      "server": "tw3.dexlos.com",
-      "server_port": 8080,
-      "uuid": "8A9905B7-801B-41AF-BFC9-2034212770F6",
-      "password": "8A9905B7-801B-41AF-BFC9-2034212770F6",
-      "congestion_control": "bbr",
-      "udp_relay_mode": "native",
+      "type": "vless",
+      "tag": "🇹🇼 中国台湾 (Taiwan) 01 (家宽) 4217K ⚠P - NEKO",
+      "server": "118.167.219.24",
+      "server_port": 24215,
+      "uuid": "19d5a678-8396-4e3b-93da-ece618d0e83a",
       "tls": {
         "enabled": true,
-        "server_name": "tw3.dexlos.com",
-        "insecure": false,
-        "alpn": [
-          "h3"
-        ]
-      }
-    },
-    {
-      "type": "tuic",
-      "tag": "🇹🇼 中国台湾 (Taiwan) 02 (家宽) 1983K ⚠L20% ⚠P⚠U - NEKO",
-      "server": "tw8.dexlos.com",
-      "server_port": 8080,
-      "uuid": "8A9905B7-801B-41AF-BFC9-2034212770F6",
-      "password": "8A9905B7-801B-41AF-BFC9-2034212770F6",
-      "congestion_control": "bbr",
-      "udp_relay_mode": "native",
-      "tls": {
-        "enabled": true,
-        "server_name": "tw8.dexlos.com",
-        "insecure": false,
-        "alpn": [
-          "h3"
-        ]
-      }
-    },
-    {
-      "type": "tuic",
-      "tag": "🇹🇼 中国台湾 (Taiwan) 03 (家宽) 2519K ⚠L20% ⚠P⚠U - NEKO",
-      "server": "tw4.dexlos.com",
-      "server_port": 8080,
-      "uuid": "8A9905B7-801B-41AF-BFC9-2034212770F6",
-      "password": "8A9905B7-801B-41AF-BFC9-2034212770F6",
-      "congestion_control": "bbr",
-      "udp_relay_mode": "native",
-      "tls": {
-        "enabled": true,
-        "server_name": "tw4.dexlos.com",
-        "insecure": false,
-        "alpn": [
-          "h3"
-        ]
+        "server_name": "addons.mozilla.org",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "mdWKUPMVTtTbDqK10BPb89OcqBC2-Lx-4NOYtqc1GWE",
+          "short_id": ""
+        }
       }
     },
     {
@@ -62,18 +28,14 @@
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇹🇼 中国台湾 (Taiwan) 01 (家宽) 3017K ⚠P⚠U - NEKO",
-        "🇹🇼 中国台湾 (Taiwan) 02 (家宽) 1983K ⚠L20% ⚠P⚠U - NEKO",
-        "🇹🇼 中国台湾 (Taiwan) 03 (家宽) 2519K ⚠L20% ⚠P⚠U - NEKO"
+        "🇹🇼 中国台湾 (Taiwan) 01 (家宽) 4217K ⚠P - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇹🇼 中国台湾 (Taiwan) 01 (家宽) 3017K ⚠P⚠U - NEKO",
-        "🇹🇼 中国台湾 (Taiwan) 02 (家宽) 1983K ⚠L20% ⚠P⚠U - NEKO",
-        "🇹🇼 中国台湾 (Taiwan) 03 (家宽) 2519K ⚠L20% ⚠P⚠U - NEKO"
+        "🇹🇼 中国台湾 (Taiwan) 01 (家宽) 4217K ⚠P - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

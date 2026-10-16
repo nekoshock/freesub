@@ -3971,6 +3971,12 @@ def classify_and_export(test_results: list, ip_api_info: dict = None):
             "port": r["port"],
             "proto": r["proto"],
             "outbound": r.get("outbound"),
+            # ★ v3 审计修复 (2026-10-16): alive 键必须显式带上 ——
+            #   final_gate 断言 n.get("alive") 为真, 而 v2 起本 dict 就没这个键
+            #   (v2 没有闸门不需要它), 导致闸门把每个节点都判 alive=False 全杀。
+            #   能走到这里的 r 全是 alive=True (test_single_node 只有通过活性
+            #   门槛才返回 dict), 这里显式落键, 保持数据形状完整。
+            "alive": r.get("alive", True),
             "country": (country or "OTHER").upper(),
             "net_type": net_type,
             "confidence": confidence,

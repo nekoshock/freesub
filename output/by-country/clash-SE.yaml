@@ -4,43 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇸🇪 瑞典 (Sweden) 01 3859K 🇨🇳 - NEKO
-  server: 88.216.223.66
-  port: 443
-  udp: true
-  type: vless
-  uuid: 244d9eab-3311-40c7-b47f-4968dc3088a6
-  tls: true
-  reality-opts:
-    public-key: drl7nndYdfzZY1aQ0eUAWmNV0nsHig2uDnu9siy9biQ
-    short-id: 868419504747f6de
-  servername: tcpswed1.figurapn.ru
-  client-fingerprint: chrome
-- name: 🇸🇪 瑞典 (Sweden) 02 4193K ⚠P - NEKO
-  server: 5.178.109.174
-  port: 14430
-  udp: true
-  type: vless
-  uuid: 80de563a-cac8-40ea-8cb0-4cb082dd92f9
-  network: ws
-  ws-opts:
-    path: /vless
-    headers:
-      Host: 5.178.109.174
-- name: 🇸🇪 瑞典 (Sweden) 03 4224K 🇨🇳 - NEKO
-  server: swe.wizard.select
-  port: 443
-  udp: true
-  type: vless
-  uuid: 3db6eb7e-c548-11f1-9902-a337233c6cda
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: Sikc1gu5t_uwitf1xTTChP9tpT_sjY530p2tioHbmz0
-    short-id: 3b20e438da99
-  servername: swe.wizard.select
-  client-fingerprint: qq
-- name: 🇸🇪 瑞典 (Sweden) 04 5008K 🇨🇳 - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 01 4932K 🇨🇳 - NEKO
   server: 62.60.159.81
   port: 2053
   udp: true
@@ -51,27 +15,31 @@ proxies:
     public-key: ygmJxS-Mc7g0buNSUTVGhazT-FoBjyYtLLfUYIQxFTw
     short-id: d0ea1847066af5a6
   servername: www.samsung.com
-  client-fingerprint: safari
+  client-fingerprint: chrome
   network: grpc
   grpc-opts:
     grpc-service-name: grpce5bb9e71
+- name: 🇸🇪 瑞典 (Sweden) 02 ⚠S342K 🇨🇳 - NEKO
+  server: hy-se.bypassme.online
+  port: 443
+  udp: true
+  type: hysteria2
+  password: e625f8ef-f935-4c7d-a259-0f154b6842fd
+  sni: hy-se.bypassme.online
+  skip-cert-verify: false
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇸🇪 瑞典 (Sweden) 01 3859K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 4193K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 03 4224K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 04 5008K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 4932K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 ⚠S342K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇸🇪 瑞典 (Sweden) 01 3859K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 4193K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 03 4224K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 04 5008K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 4932K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 ⚠S342K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

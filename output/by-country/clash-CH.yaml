@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇭 瑞士 (Switzerland) 01 4062K 🇨🇳 - NEKO
+- name: 🇨🇭 瑞士 (Switzerland) 01 6168K 🇨🇳 - NEKO
   server: 45.90.59.15
   port: 443
   udp: true
@@ -17,37 +17,14 @@ proxies:
     short-id: 19253fae84102271
   servername: www.cloudflare.com
   client-fingerprint: firefox
-- name: 🇨🇭 瑞士 (Switzerland) 02 ⚠S4237K ⚠P - NEKO
-  server: 128.241.25.127
-  port: 30036
-  udp: true
-  type: vless
-  uuid: f5c2ac98-7694-48c2-bd5b-3b93d3e6aa13
-  tls: true
-  servername: kqjifhg9rw.tradsc8p9xp7wxyqmc1wy0ah.workers.dev
-  skip-cert-verify: false
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /@Marisa_kristi
-    headers:
-      Host: kqjifhg9rw.tradsc8p9xp7wxyqmc1wy0ah.workers.dev
-- name: 🇨🇭 瑞士 (Switzerland) 03 4540K ⚠P - NEKO
+- name: 🇨🇭 瑞士 (Switzerland) 02 6036K ⚠P - NEKO
   server: 86.106.84.194
   port: 13261
   udp: true
   type: ss
   cipher: aes-128-gcm
   password: 2bf536a4bd6008511734a505d248de2c
-- name: 🇨🇭 瑞士 (Switzerland) 04 6376K ⚠P⚠U - NEKO
-  server: 104.165.205.42
-  port: 8443
-  udp: true
-  type: hysteria2
-  password: 990c8eb6-4c4e-4277-8602-79af8402cdd0
-  sni: speedtestmark.com
-  skip-cert-verify: false
-- name: 🇨🇭 瑞士 (Switzerland) 05 6035K 🇨🇳 - NEKO
+- name: 🇨🇭 瑞士 (Switzerland) 03 6984K 🇨🇳 - NEKO
   server: 138.124.63.224
   port: 8444
   udp: true
@@ -62,48 +39,30 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: GunService
-- name: 🇨🇭 瑞士 (Switzerland) 06 2190K ⚠P - NEKO
+- name: 🇨🇭 瑞士 (Switzerland) 04 1561K ⚠P - NEKO
   server: 132.243.175.144
   port: 8388
   udp: true
   type: ss
   cipher: chacha20-ietf-poly1305
   password: e8KgS8fD0yDqYFpgN4G5piCOt9aFyqA3
-- name: 🇨🇭 瑞士 (Switzerland) 07 ⚠S303K 🇨🇳 - NEKO
-  server: 208.69.78.217
-  port: 2053
-  udp: true
-  type: vless
-  uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
-  tls: true
-  reality-opts:
-    public-key: A49ue7zXSusJZdErPAewg3jqGdUFIO1a9xOunEKJfC0
-    short-id: ad86e2d52ff40ebd
-  servername: www.apple.com
-  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇨🇭 瑞士 (Switzerland) 01 4062K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 02 ⚠S4237K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 03 4540K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 04 6376K ⚠P⚠U - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 05 6035K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 06 2190K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 07 ⚠S303K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 01 6168K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 02 6036K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 03 6984K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 04 1561K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇭 瑞士 (Switzerland) 01 4062K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 02 ⚠S4237K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 03 4540K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 04 6376K ⚠P⚠U - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 05 6035K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 06 2190K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 07 ⚠S303K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 01 6168K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 02 6036K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 03 6984K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 04 1561K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

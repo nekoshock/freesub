@@ -4,20 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇹🇷 土耳其 (Turkey) 01 483K 🇨🇳 - NEKO
-  server: 85.192.48.142
-  port: 443
-  udp: true
-  type: vless
-  uuid: adc11f30-e4cb-4985-bf5e-f9ded69c019f
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: fNfokzklCF4l_c8k8PciOCjm5ecNoF_sNLjEtaO-xzI
-    short-id: db04ce8bdb8900f1
-  servername: nvidia.com
-  client-fingerprint: ''
-- name: 🇹🇷 土耳其 (Turkey) 02 3630K 🇨🇳 - NEKO
+- name: 🇹🇷 土耳其 (Turkey) 01 4562K 🇨🇳 - NEKO
   server: 78.135.73.47
   port: 443
   udp: true
@@ -30,7 +17,7 @@ proxies:
     short-id: f46cd3ea3d1eb72d
   servername: www.datadoghq.com
   client-fingerprint: chrome
-- name: 🇹🇷 土耳其 (Turkey) 03 4515K 🇨🇳 - NEKO
+- name: 🇹🇷 土耳其 (Turkey) 02 6420K 🇨🇳 - NEKO
   server: 62.60.233.157
   port: 8444
   udp: true
@@ -44,17 +31,7 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: GunService
-- name: 🇹🇷 土耳其 (Turkey) 04 ⚠S1170K ⚠P⚠U - NEKO
-  server: me17.msjia8844.site
-  port: 7443
-  udp: true
-  type: hysteria2
-  password: M8LP9DztTr3znqCkmf-r08CQLBLLFK1r
-  sni: me17.msjia8844.site
-  skip-cert-verify: false
-  obfs: salamander
-  obfs-password: u3Soh9_Ui0UmcuY6vk0ug8Lq
-- name: 🇹🇷 土耳其 (Turkey) 05 3432K ⚠P - NEKO
+- name: 🇹🇷 土耳其 (Turkey) 03 4537K 🇨🇳 - NEKO
   server: 151.241.226.201
   port: 2053
   udp: true
@@ -65,9 +42,22 @@ proxies:
     public-key: bYW_MmB_CUHrsyoCAUKviI2LZdHf63yY2yOPXbih104
     short-id: 9e419c0759b54d6f
   servername: www.apple.com
-  client-fingerprint: chrome
-- name: 🇹🇷 土耳其 (Turkey) 06 ⚠S6974K ⚠P - NEKO
-  server: 104.21.48.18
+  client-fingerprint: firefox
+- name: 🇹🇷 土耳其 (Turkey) 04 ⚠S4348K 🇨🇳 - NEKO
+  server: 177.3.208.65
+  port: 443
+  udp: true
+  type: vless
+  uuid: 4f34bc04-479c-49ba-91a8-6bb9ed15031c
+  tls: true
+  servername: tgmansion.site
+  skip-cert-verify: false
+  client-fingerprint: firefox
+  network: ws
+  ws-opts:
+    path: /vless-tr
+- name: 🇹🇷 土耳其 (Turkey) 05 2643K ⚠P - NEKO
+  server: nimm.mpd.cc.cd
   port: 2053
   udp: true
   type: trojan
@@ -82,22 +72,20 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇹🇷 土耳其 (Turkey) 01 483K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 02 3630K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 03 4515K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 04 ⚠S1170K ⚠P⚠U - NEKO
-  - 🇹🇷 土耳其 (Turkey) 05 3432K ⚠P - NEKO
-  - 🇹🇷 土耳其 (Turkey) 06 ⚠S6974K ⚠P - NEKO
+  - 🇹🇷 土耳其 (Turkey) 01 4562K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 02 6420K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 03 4537K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 04 ⚠S4348K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 05 2643K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇹🇷 土耳其 (Turkey) 01 483K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 02 3630K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 03 4515K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 04 ⚠S1170K ⚠P⚠U - NEKO
-  - 🇹🇷 土耳其 (Turkey) 05 3432K ⚠P - NEKO
-  - 🇹🇷 土耳其 (Turkey) 06 ⚠S6974K ⚠P - NEKO
+  - 🇹🇷 土耳其 (Turkey) 01 4562K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 02 6420K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 03 4537K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 04 ⚠S4348K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 05 2643K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

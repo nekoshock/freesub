@@ -4,18 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇿 捷克 (Czech) 01 11940K 🇨🇳 - NEKO
-  server: 172.67.131.217
-  port: 443
-  udp: true
-  type: trojan
-  password: 6c73b7937b3e44e5982f9d5efa57d8cd
-  sni: aUTO-scale-728382.BuiLD-sVc-267891.wORkErs.dEv
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /tr/9LJwNSQPh5UJMu8TbPKBJPtkZWKkYFFl?ed=2560
-- name: 🇨🇿 捷克 (Czech) 02 4442K 🇨🇳 - NEKO
+- name: 🇨🇿 捷克 (Czech) 01 ⚠S4780K 🇨🇳 - NEKO
   server: 195.123.245.241
   port: 443
   udp: true
@@ -33,14 +22,12 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇨🇿 捷克 (Czech) 01 11940K 🇨🇳 - NEKO
-  - 🇨🇿 捷克 (Czech) 02 4442K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 01 ⚠S4780K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇿 捷克 (Czech) 01 11940K 🇨🇳 - NEKO
-  - 🇨🇿 捷克 (Czech) 02 4442K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 01 ⚠S4780K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

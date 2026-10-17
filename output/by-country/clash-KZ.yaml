@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇰🇿 哈萨克斯坦 (Kazakhstan) 01 5214K 🇨🇳 - NEKO
+- name: 🇰🇿 哈萨克斯坦 (Kazakhstan) 01 3790K 🇨🇳 - NEKO
   server: fi1server.rabstvo.shop
   port: 443
   udp: true
@@ -12,8 +12,8 @@ proxies:
   password: 9yOIR2_QAChKs26rYaiX_aoNnOALd0aU
   sni: fi1server.rabstvo.shop
   skip-cert-verify: false
-- name: 🇰🇿 哈萨克斯坦 (Kazakhstan) 02 3082K - NEKO
-  server: 38.107.234.57
+- name: 🇰🇿 哈萨克斯坦 (Kazakhstan) 02 1957K - NEKO
+  server: 3h-kazakhstan1.09vpn.com
   port: 80
   udp: true
   type: vmess
@@ -23,21 +23,19 @@ proxies:
   network: ws
   ws-opts:
     path: /vmess/
-    headers:
-      Host: google.com
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇰🇿 哈萨克斯坦 (Kazakhstan) 01 5214K 🇨🇳 - NEKO
-  - 🇰🇿 哈萨克斯坦 (Kazakhstan) 02 3082K - NEKO
+  - 🇰🇿 哈萨克斯坦 (Kazakhstan) 01 3790K 🇨🇳 - NEKO
+  - 🇰🇿 哈萨克斯坦 (Kazakhstan) 02 1957K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇰🇿 哈萨克斯坦 (Kazakhstan) 01 5214K 🇨🇳 - NEKO
-  - 🇰🇿 哈萨克斯坦 (Kazakhstan) 02 3082K - NEKO
+  - 🇰🇿 哈萨克斯坦 (Kazakhstan) 01 3790K 🇨🇳 - NEKO
+  - 🇰🇿 哈萨克斯坦 (Kazakhstan) 02 1957K - NEKO
 rules:
 - MATCH,PROXIES

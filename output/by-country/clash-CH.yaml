@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇭 瑞士 (Switzerland) 01 4560K 🇨🇳 - NEKO
+- name: 🇨🇭 瑞士 (Switzerland) 01 4743K 🇨🇳 - NEKO
   server: 45.90.59.15
   port: 443
   udp: true
@@ -17,39 +17,14 @@ proxies:
     short-id: 19253fae84102271
   servername: www.cloudflare.com
   client-fingerprint: firefox
-- name: 🇨🇭 瑞士 (Switzerland) 02 15154K ⚠P - NEKO
-  server: 195.85.59.30
-  port: 8880
+- name: 🇨🇭 瑞士 (Switzerland) 02 4644K ⚠P - NEKO
+  server: 86.106.84.194
+  port: 13261
   udp: true
-  type: vless
-  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: vms.lifetime58.workers.dev
-- name: 🇨🇭 瑞士 (Switzerland) 03 4482K 🇨🇳 - NEKO
-  server: freefl.aiage.work
-  port: 443
-  udp: true
-  type: vless
-  uuid: 6338c01a-310e-42c3-bf4f-2a20e161054b
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: EqN5QtvWGccdkmL5ZNVDBRxRhWgr6g_vr3ABT8Q2dW4
-    short-id: ff0ddf949624ef2a
-  servername: freefl.aiage.work
-  client-fingerprint: firefox
-- name: 🇨🇭 瑞士 (Switzerland) 04 6193K ⚠P⚠U - NEKO
-  server: 104.165.205.42
-  port: 8443
-  udp: true
-  type: hysteria2
-  password: 990c8eb6-4c4e-4277-8602-79af8402cdd0
-  sni: speedtestmark.com
-  skip-cert-verify: false
-- name: 🇨🇭 瑞士 (Switzerland) 05 6198K 🇨🇳 - NEKO
+  type: ss
+  cipher: aes-128-gcm
+  password: 2bf536a4bd6008511734a505d248de2c
+- name: 🇨🇭 瑞士 (Switzerland) 03 2256K 🇨🇳 - NEKO
   server: 138.124.63.224
   port: 8444
   udp: true
@@ -64,43 +39,31 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: GunService
-- name: 🇨🇭 瑞士 (Switzerland) 06 4557K ⚠P - NEKO
-  server: 86.106.84.194
-  port: 13261
+- name: 🇨🇭 瑞士 (Switzerland) 04 382K ⚠P⚠U - NEKO
+  server: 104.165.205.42
+  port: 8443
   udp: true
-  type: ss
-  cipher: aes-128-gcm
-  password: 2bf536a4bd6008511734a505d248de2c
-- name: 🇨🇭 瑞士 (Switzerland) 07 1711K ⚠P - NEKO
-  server: 132.243.175.144
-  port: 8388
-  udp: true
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: e8KgS8fD0yDqYFpgN4G5piCOt9aFyqA3
+  type: hysteria2
+  password: 990c8eb6-4c4e-4277-8602-79af8402cdd0
+  sni: speedtestmark.com
+  skip-cert-verify: false
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇨🇭 瑞士 (Switzerland) 01 4560K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 02 15154K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 03 4482K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 04 6193K ⚠P⚠U - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 05 6198K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 06 4557K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 07 1711K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 01 4743K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 02 4644K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 03 2256K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 04 382K ⚠P⚠U - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇭 瑞士 (Switzerland) 01 4560K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 02 15154K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 03 4482K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 04 6193K ⚠P⚠U - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 05 6198K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 06 4557K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 07 1711K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 01 4743K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 02 4644K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 03 2256K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 04 382K ⚠P⚠U - NEKO
 rules:
 - MATCH,PROXIES

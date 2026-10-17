@@ -4,29 +4,26 @@
   },
   "outbounds": [
     {
-      "type": "vless",
-      "tag": "🇮🇳 印度 (India) 01 2371K ⚠P - NEKO",
-      "server": "13.140.56.100",
-      "server_port": 14430,
-      "uuid": "68512eac-cd53-4de3-8d1e-08f6e04af1a9",
-      "transport": {
-        "type": "ws",
-        "path": "/vless"
-      }
+      "type": "shadowsocks",
+      "tag": "🇨🇱 智利 (Chile) 01 4745K ⚠P - NEKO",
+      "server": "64.176.2.21",
+      "server_port": 8388,
+      "method": "aes-256-gcm",
+      "password": "xBStBEVqvGwHPocc"
     },
     {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇮🇳 印度 (India) 01 2371K ⚠P - NEKO"
+        "🇨🇱 智利 (Chile) 01 4745K ⚠P - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇮🇳 印度 (India) 01 2371K ⚠P - NEKO"
+        "🇨🇱 智利 (Chile) 01 4745K ⚠P - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

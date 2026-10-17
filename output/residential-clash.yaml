@@ -4,48 +4,8 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇭🇰 中国香港 (Hong Kong) 01 (移动家宽) 3758K ⚠P - NEKO
-  server: dog-hk.kunlun01dns.com
-  port: 21022
-  udp: true
-  type: vmess
-  uuid: 9464ca40-dd75-3742-a628-d931a9f413b2
-  alterId: 0
-  cipher: auto
-- name: 🇭🇰 中国香港 (Hong Kong) 02 (移动家宽) 3676K ⚠P - NEKO
-  server: zfd-hkv1.kunlun01dns.com
-  port: 16115
-  udp: true
-  type: vmess
-  uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
-  alterId: 0
-  cipher: auto
-- name: 🇹🇷 土耳其 (Turkey) 03 (移动家宽) ⚠S2792K 🇨🇳 - NEKO
-  server: 177.3.208.65
-  port: 443
-  udp: true
-  type: vless
-  uuid: 4f34bc04-479c-49ba-91a8-6bb9ed15031c
-  tls: true
-  servername: tgmansion.site
-  skip-cert-verify: false
-  client-fingerprint: firefox
-  network: ws
-  ws-opts:
-    path: /vless-tr
-- name: 🇺🇸 美国 (United States) 04 (家宽) 16753K 🇨🇳 - NEKO
-  server: ali-panel-1.terhav.workers.dev
-  port: 443
-  udp: true
-  type: trojan
-  password: 5ffee9b2-4514-4719-97b3-67810ece038d
-  sni: ali-panel-1.terhav.workers.dev
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /
-- name: 🇹🇼 中国台湾 (Taiwan) 05 (家宽) 3386K ⚠P - NEKO
-  server: hinet1.2yly.com
+- name: 🇹🇼 中国台湾 (Taiwan) 01 (家宽) 2557K ⚠P - NEKO
+  server: 118.167.219.24
   port: 24215
   udp: true
   type: vless
@@ -54,43 +14,18 @@ proxies:
   reality-opts:
     public-key: mdWKUPMVTtTbDqK10BPb89OcqBC2-Lx-4NOYtqc1GWE
   servername: addons.mozilla.org
-  client-fingerprint: chrome
-- name: 🇩🇪 德国 (Germany) 06 (家宽) ⚠S3017K ⚠P - NEKO
-  server: 209.38.238.229
-  port: 20202
-  udp: true
-  type: vless
-  uuid: d18c6897-2849-456a-8c46-d7ecece47c20
-  tls: true
-  servername: wzs.echo.net.eu.org
-  skip-cert-verify: false
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /video/HxNMGkZdGw0PRk1GVw8YF14OXkwNVVtIRg1HUlZXSwcZUQABSgMNQRoaSVhfRhoOChkDDUs=
-    headers:
-      Host: wzs.echo.net.eu.org
+  client-fingerprint: firefox
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇭🇰 中国香港 (Hong Kong) 01 (移动家宽) 3758K ⚠P - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 (移动家宽) 3676K ⚠P - NEKO
-  - 🇹🇷 土耳其 (Turkey) 03 (移动家宽) ⚠S2792K 🇨🇳 - NEKO
-  - 🇺🇸 美国 (United States) 04 (家宽) 16753K 🇨🇳 - NEKO
-  - 🇹🇼 中国台湾 (Taiwan) 05 (家宽) 3386K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 06 (家宽) ⚠S3017K ⚠P - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 01 (家宽) 2557K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇭🇰 中国香港 (Hong Kong) 01 (移动家宽) 3758K ⚠P - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 (移动家宽) 3676K ⚠P - NEKO
-  - 🇹🇷 土耳其 (Turkey) 03 (移动家宽) ⚠S2792K 🇨🇳 - NEKO
-  - 🇺🇸 美国 (United States) 04 (家宽) 16753K 🇨🇳 - NEKO
-  - 🇹🇼 中国台湾 (Taiwan) 05 (家宽) 3386K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 06 (家宽) ⚠S3017K ⚠P - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 01 (家宽) 2557K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇿 捷克 (Czech) 01 3873K 🇨🇳 - NEKO
+- name: 🇨🇿 捷克 (Czech) 01 4618K 🇨🇳 - NEKO
   server: 195.123.245.241
   port: 443
   udp: true
@@ -17,17 +17,41 @@ proxies:
     short-id: 23d0950d60bc0d5b
   servername: gateway.icloud.com
   client-fingerprint: chrome
+- name: 🇨🇿 捷克 (Czech) 02 4614K ⚠P - NEKO
+  server: 67.159.18.34
+  port: 17001
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: I6o9NnialYLMEjVt28RF4dpjmr9wMvNL
+- name: 🇨🇿 捷克 (Czech) 03 ⚠S7384K 🇨🇳 - NEKO
+  server: api.mediavolna.cc
+  port: 443
+  udp: true
+  type: vless
+  uuid: 082f5694-9019-4110-b67b-8125dbb9bab8
+  tls: true
+  servername: api.mediavolna.cc
+  skip-cert-verify: false
+  client-fingerprint: safari
+  network: grpc
+  grpc-opts:
+    grpc-service-name: r7Kp4mN9tQ2v
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇨🇿 捷克 (Czech) 01 3873K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 01 4618K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 02 4614K ⚠P - NEKO
+  - 🇨🇿 捷克 (Czech) 03 ⚠S7384K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇿 捷克 (Czech) 01 3873K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 01 4618K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 02 4614K ⚠P - NEKO
+  - 🇨🇿 捷克 (Czech) 03 ⚠S7384K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

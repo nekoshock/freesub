@@ -1,0 +1,69 @@
+{
+  "log": {
+    "level": "warn"
+  },
+  "outbounds": [
+    {
+      "type": "shadowsocks",
+      "tag": "🇧🇬 保加利亚 (Bulgaria) 01 3088K ⚠P - NEKO",
+      "server": "213.183.63.60",
+      "server_port": 9054,
+      "method": "aes-256-cfb",
+      "password": "VcFuyXvND2yQWSFY"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇧🇬 保加利亚 (Bulgaria) 02 ⚠S1570K ⚠P - NEKO",
+      "server": "213.183.63.60",
+      "server_port": 9085,
+      "method": "aes-256-cfb",
+      "password": "9ej82EKe2gq7gLAM"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇧🇬 保加利亚 (Bulgaria) 03 3426K ⚠P - NEKO",
+      "server": "213.183.63.60",
+      "server_port": 9061,
+      "method": "aes-256-cfb",
+      "password": "4R3hUfZ2FHhDmNcP"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇧🇬 保加利亚 (Bulgaria) 04 2604K ⚠P - NEKO",
+      "server": "213.183.63.60",
+      "server_port": 9030,
+      "method": "aes-256-cfb",
+      "password": "GeregetR8cvQHzYr"
+    },
+    {
+      "type": "selector",
+      "tag": "select",
+      "outbounds": [
+        "auto",
+        "🇧🇬 保加利亚 (Bulgaria) 01 3088K ⚠P - NEKO",
+        "🇧🇬 保加利亚 (Bulgaria) 02 ⚠S1570K ⚠P - NEKO",
+        "🇧🇬 保加利亚 (Bulgaria) 03 3426K ⚠P - NEKO",
+        "🇧🇬 保加利亚 (Bulgaria) 04 2604K ⚠P - NEKO"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "auto",
+      "outbounds": [
+        "🇧🇬 保加利亚 (Bulgaria) 01 3088K ⚠P - NEKO",
+        "🇧🇬 保加利亚 (Bulgaria) 02 ⚠S1570K ⚠P - NEKO",
+        "🇧🇬 保加利亚 (Bulgaria) 03 3426K ⚠P - NEKO",
+        "🇧🇬 保加利亚 (Bulgaria) 04 2604K ⚠P - NEKO"
+      ],
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+    {
+      "type": "block",
+      "tag": "block"
+    }
+  ]
+}

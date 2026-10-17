@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇲🇩 摩尔多瓦 (Moldova) 01 3940K 🇨🇳 - NEKO
+- name: 🇲🇩 摩尔多瓦 (Moldova) 01 ⚠S3160K 🇨🇳 - NEKO
   server: 5.252.179.15
   port: 443
   udp: true
@@ -17,7 +17,20 @@ proxies:
     short-id: 296f27de82dad7ff
   servername: www.bing.com
   client-fingerprint: chrome
-- name: 🇲🇩 摩尔多瓦 (Moldova) 02 3504K 🇨🇳 - NEKO
+- name: 🇲🇩 摩尔多瓦 (Moldova) 02 3711K 🇨🇳 - NEKO
+  server: ro2.aiage.work
+  port: 443
+  udp: true
+  type: vless
+  uuid: 6338c01a-310e-42c3-bf4f-2a20e161054b
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: pkKL2cqqPNxc1rqrvhJmexI7NOeZFaGUawAwqQpVY3c
+    short-id: 1d2fecf1d2475168
+  servername: ro2.aiage.work
+  client-fingerprint: chrome
+- name: 🇲🇩 摩尔多瓦 (Moldova) 03 1719K 🇨🇳 - NEKO
   server: md1.aiage.work
   port: 443
   udp: true
@@ -30,49 +43,21 @@ proxies:
     short-id: e829f50f0a3f416b
   servername: md1.aiage.work
   client-fingerprint: chrome
-- name: 🇲🇩 摩尔多瓦 (Moldova) 03 1430K 🇨🇳 - NEKO
-  server: md1.aiage.work
-  port: 443
-  udp: true
-  type: vless
-  uuid: 6338c01a-310e-42c3-bf4f-2a20e161054b
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: 0dtXhkhkh-_MBFoGwzdW4PdlJtVX9oswhJZHbUPGCmo
-    short-id: 5d7a45ac0ad6adff
-  servername: md1.aiage.work
-  client-fingerprint: qq
-- name: 🇲🇩 摩尔多瓦 (Moldova) 04 3119K 🇨🇳 - NEKO
-  server: ro2.aiage.work
-  port: 443
-  udp: true
-  type: vless
-  uuid: 6338c01a-310e-42c3-bf4f-2a20e161054b
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: pkKL2cqqPNxc1rqrvhJmexI7NOeZFaGUawAwqQpVY3c
-    short-id: 1d2fecf1d2475168
-  servername: ro2.aiage.work
-  client-fingerprint: firefox
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇲🇩 摩尔多瓦 (Moldova) 01 3940K 🇨🇳 - NEKO
-  - 🇲🇩 摩尔多瓦 (Moldova) 02 3504K 🇨🇳 - NEKO
-  - 🇲🇩 摩尔多瓦 (Moldova) 03 1430K 🇨🇳 - NEKO
-  - 🇲🇩 摩尔多瓦 (Moldova) 04 3119K 🇨🇳 - NEKO
+  - 🇲🇩 摩尔多瓦 (Moldova) 01 ⚠S3160K 🇨🇳 - NEKO
+  - 🇲🇩 摩尔多瓦 (Moldova) 02 3711K 🇨🇳 - NEKO
+  - 🇲🇩 摩尔多瓦 (Moldova) 03 1719K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇲🇩 摩尔多瓦 (Moldova) 01 3940K 🇨🇳 - NEKO
-  - 🇲🇩 摩尔多瓦 (Moldova) 02 3504K 🇨🇳 - NEKO
-  - 🇲🇩 摩尔多瓦 (Moldova) 03 1430K 🇨🇳 - NEKO
-  - 🇲🇩 摩尔多瓦 (Moldova) 04 3119K 🇨🇳 - NEKO
+  - 🇲🇩 摩尔多瓦 (Moldova) 01 ⚠S3160K 🇨🇳 - NEKO
+  - 🇲🇩 摩尔多瓦 (Moldova) 02 3711K 🇨🇳 - NEKO
+  - 🇲🇩 摩尔多瓦 (Moldova) 03 1719K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

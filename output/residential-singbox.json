@@ -4,9 +4,17 @@
   },
   "outbounds": [
     {
+      "type": "vmess",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 01 (移动家宽) 3773K ⚠P - NEKO",
+      "server": "dog-hk.kunlun01dns.com",
+      "server_port": 21021,
+      "uuid": "9464ca40-dd75-3742-a628-d931a9f413b2",
+      "security": "auto"
+    },
+    {
       "type": "vless",
-      "tag": "🇹🇼 中国台湾 (Taiwan) 01 (家宽) 2557K ⚠P - NEKO",
-      "server": "118.167.219.24",
+      "tag": "🇹🇼 中国台湾 (Taiwan) 02 (家宽) 3254K ⚠P - NEKO",
+      "server": "hinet1.2yly.com",
       "server_port": 24215,
       "uuid": "19d5a678-8396-4e3b-93da-ece618d0e83a",
       "tls": {
@@ -14,7 +22,7 @@
         "server_name": "addons.mozilla.org",
         "utls": {
           "enabled": true,
-          "fingerprint": "firefox"
+          "fingerprint": "chrome"
         },
         "reality": {
           "enabled": true,
@@ -28,14 +36,16 @@
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇹🇼 中国台湾 (Taiwan) 01 (家宽) 2557K ⚠P - NEKO"
+        "🇭🇰 中国香港 (Hong Kong) 01 (移动家宽) 3773K ⚠P - NEKO",
+        "🇹🇼 中国台湾 (Taiwan) 02 (家宽) 3254K ⚠P - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇹🇼 中国台湾 (Taiwan) 01 (家宽) 2557K ⚠P - NEKO"
+        "🇭🇰 中国香港 (Hong Kong) 01 (移动家宽) 3773K ⚠P - NEKO",
+        "🇹🇼 中国台湾 (Taiwan) 02 (家宽) 3254K ⚠P - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

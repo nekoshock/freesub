@@ -4,7 +4,20 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇫🇷 法国 (France) 01 5131K 🇨🇳 - NEKO
+- name: 🇫🇷 法国 (France) 01 ⚠S3085K 🇨🇳 - NEKO
+  server: 195.58.140.146
+  port: 443
+  udp: true
+  type: vless
+  uuid: d7790b85-9659-4558-a405-e0ab57d32984
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: lRuJPDrUb0b32-47hl4BgDoQutqmkuW31N4qVxbDgmI
+    short-id: dc927a04e8572c61
+  servername: d1-fr.cloud-cdn.xyz
+  client-fingerprint: random
+- name: 🇫🇷 法国 (France) 02 4192K 🇨🇳 - NEKO
   server: 137.74.16.237
   port: 443
   udp: true
@@ -17,49 +30,22 @@ proxies:
     short-id: b390e0a721d242b0
   servername: www.icloud.com
   client-fingerprint: chrome
-- name: 🇫🇷 法国 (France) 02 4210K - NEKO
-  server: 54.36.174.140
-  port: 443
-  udp: true
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: e5c65ph
-- name: 🇫🇷 法国 (France) 03 5117K 🇨🇳 - NEKO
-  server: 195.58.140.146
-  port: 443
+- name: 🇫🇷 法国 (France) 03 6294K 🇨🇳 - NEKO
+  server: 152.228.139.33
+  port: 51671
   udp: true
   type: vless
-  uuid: d7790b85-9659-4558-a405-e0ab57d32984
-  flow: xtls-rprx-vision
+  uuid: 75cc7568-abb0-46a8-88be-8137d3c647d4
   tls: true
   reality-opts:
-    public-key: lRuJPDrUb0b32-47hl4BgDoQutqmkuW31N4qVxbDgmI
-    short-id: dc927a04e8572c61
-  servername: d1-fr.cloud-cdn.xyz
-  client-fingerprint: firefox
-- name: 🇫🇷 法国 (France) 04 5397K 🇨🇳 - NEKO
-  server: 149.202.57.89
-  port: 443
-  udp: true
-  type: vless
-  uuid: 126fdbae-bb34-5882-a40c-fb60c5ea4afb
-  flow: xtls-rprx-vision
-  tls: true
-  servername: rgiw5k0gg5-1492025789-direct.kheibarr.com
-  skip-cert-verify: false
+    public-key: -5PowNUY37Pi01YKO9fjRTrum1m_9n6XauaPDpmOJzU
+    short-id: 2fed44d8c59f7e71
+  servername: www.sony.com
   client-fingerprint: chrome
-- name: 🇫🇷 法国 (France) 05 ⚠S829K 🇨🇳 - NEKO
-  server: 188.114.97.6
-  port: 443
-  udp: true
-  type: trojan
-  password: humanity
-  sni: www.calmlunch.com
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /assignment
-- name: 🇫🇷 法国 (France) 06 5421K 🇨🇳 - NEKO
+  network: grpc
+  grpc-opts:
+    grpc-service-name: grpc_common3
+- name: 🇫🇷 法国 (France) 04 4876K 🇨🇳 - NEKO
   server: 51.77.217.70
   port: 2053
   udp: true
@@ -71,14 +57,47 @@ proxies:
     short-id: bfe58beb41f1d09f
   servername: www.apple.com
   client-fingerprint: chrome
-- name: 🇫🇷 法国 (France) 07 4742K ⚠P - NEKO
+- name: 🇫🇷 法国 (France) 05 ⚠S875K ⚠P - NEKO
   server: 37.148.203.124
   port: 12238
   udp: true
   type: ss
   cipher: aes-128-gcm
   password: 6163d9d532e40f417dd8ebb5f9716495
-- name: 🇫🇷 法国 (France) 08 7241K 🇨🇳 - NEKO
+- name: 🇫🇷 法国 (France) 06 3255K 🇨🇳 - NEKO
+  server: 62.210.91.10
+  port: 23576
+  udp: true
+  type: vless
+  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
+    short-id: '01'
+  servername: fuck.rkn
+  client-fingerprint: chrome
+- name: 🇫🇷 法国 (France) 07 ⚠S399K 🇨🇳 - NEKO
+  server: 62.210.91.2
+  port: 23576
+  udp: true
+  type: vless
+  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
+    short-id: '01'
+  servername: fuck.rkn
+  client-fingerprint: ''
+- name: 🇫🇷 法国 (France) 08 3600K ⚠P - NEKO
+  server: 51.83.192.80
+  port: 8388
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: itzvpn@321
+- name: 🇫🇷 法国 (France) 09 6047K 🇨🇳 - NEKO
   server: 152.228.139.33
   port: 35108
   udp: true
@@ -93,40 +112,7 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: grpc-common3
-- name: 🇫🇷 法国 (France) 09 ⚠S883K 🇨🇳 - NEKO
-  server: 152.228.139.33
-  port: 51671
-  udp: true
-  type: vless
-  uuid: 75cc7568-abb0-46a8-88be-8137d3c647d4
-  tls: true
-  reality-opts:
-    public-key: -5PowNUY37Pi01YKO9fjRTrum1m_9n6XauaPDpmOJzU
-    short-id: 2fed44d8c59f7e71
-  servername: www.sony.com
-  client-fingerprint: firefox
-  network: grpc
-  grpc-opts:
-    grpc-service-name: grpc_common3
-- name: 🇫🇷 法国 (France) 10 3986K ⚠P - NEKO
-  server: 51.83.192.80
-  port: 8388
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: itzvpn@321
-- name: 🇫🇷 法国 (France) 11 5327K ⚠P - NEKO
-  server: 138.124.70.41
-  port: 14430
-  udp: true
-  type: vless
-  uuid: 6cc745e3-4eb9-46c8-a4a1-85dee7b87edc
-  network: ws
-  ws-opts:
-    path: /vless
-    headers:
-      Host: 138.124.70.41
-- name: 🇫🇷 法国 (France) 12 4158K 🇨🇳 - NEKO
+- name: 🇫🇷 法国 (France) 10 ⚠S733K 🇨🇳 - NEKO
   server: 54.37.136.194
   port: 2053
   udp: true
@@ -137,28 +123,19 @@ proxies:
     public-key: Vemd9Jjk5xKO8qSC3g8VVagwcb4J1BcTvp86CswQC0A
     short-id: 50ba05992b05c1c3
   servername: www.cloudflare.com
-  client-fingerprint: chrome
-- name: 🇫🇷 法国 (France) 13 552K - NEKO
-  server: 152.228.162.19
-  port: 80
+  client-fingerprint: firefox
+- name: 🇫🇷 法国 (France) 11 4613K ⚠P - NEKO
+  server: 138.124.70.41
+  port: 14430
   udp: true
   type: vless
-  uuid: 25f86cb1-2140-4085-abcb-c3a0ea7a4be0
+  uuid: 6cc745e3-4eb9-46c8-a4a1-85dee7b87edc
   network: ws
   ws-opts:
-    path: /vless/
-- name: 🇫🇷 法国 (France) 14 643K 🇨🇳 - NEKO
-  server: 213.1.145.50
-  port: 443
-  udp: true
-  type: trojan
-  password: humanity
-  sni: www.calmlunch.com
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /assignment
-- name: 🇫🇷 法国 (France) 15 ⚠S6194K 🇨🇳 - NEKO
+    path: /vless
+    headers:
+      Host: 138.124.70.41
+- name: 🇫🇷 法国 (France) 12 ⚠S796K 🇨🇳 - NEKO
   server: skycitybox-bidarbash.sbs
   port: 443
   udp: true
@@ -172,34 +149,19 @@ proxies:
     path: /zoodi
     headers:
       Host: skycitybox-bidarbash.sbs
-- name: 🇫🇷 法国 (France) 16 ⚠S7168K 🇨🇳 - NEKO
-  server: 188.114.98.0
-  port: 443
+- name: 🇫🇷 法国 (France) 13 ⚠S4832K ⚠L20% - NEKO
+  server: 152.228.162.19
+  port: 80
   udp: true
   type: vless
-  uuid: 2bdcf0ac-f84e-471f-98dc-a1807acab1cb
-  tls: true
-  servername: skycitybox-bidarbash.sbs
-  skip-cert-verify: false
-  client-fingerprint: chrome
+  uuid: 25f86cb1-2140-4085-abcb-c3a0ea7a4be0
   network: ws
   ws-opts:
-    path: /zoodi
+    path: /vless/
     headers:
-      Host: skycitybox-bidarbash.sbs
-- name: 🇫🇷 法国 (France) 17 5627K 🇨🇳 - NEKO
-  server: 185.220.100.168
-  port: 443
-  udp: true
-  type: trojan
-  password: humanity
-  sni: www.calmlunch.com
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /assignment
-- name: 🇫🇷 法国 (France) 18 4071K 🇨🇳 - NEKO
-  server: 155.103.71.142
+      Host: ov-france1.09vpn.com
+- name: 🇫🇷 法国 (France) 14 3776K 🇨🇳 - NEKO
+  server: 185.255.179.166
   port: 443
   udp: true
   type: trojan
@@ -214,46 +176,38 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇫🇷 法国 (France) 01 5131K 🇨🇳 - NEKO
-  - 🇫🇷 法国 (France) 02 4210K - NEKO
-  - 🇫🇷 法国 (France) 03 5117K 🇨🇳 - NEKO
-  - 🇫🇷 法国 (France) 04 5397K 🇨🇳 - NEKO
-  - 🇫🇷 法国 (France) 05 ⚠S829K 🇨🇳 - NEKO
-  - 🇫🇷 法国 (France) 06 5421K 🇨🇳 - NEKO
-  - 🇫🇷 法国 (France) 07 4742K ⚠P - NEKO
-  - 🇫🇷 法国 (France) 08 7241K 🇨🇳 - NEKO
-  - 🇫🇷 法国 (France) 09 ⚠S883K 🇨🇳 - NEKO
-  - 🇫🇷 法国 (France) 10 3986K ⚠P - NEKO
-  - 🇫🇷 法国 (France) 11 5327K ⚠P - NEKO
-  - 🇫🇷 法国 (France) 12 4158K 🇨🇳 - NEKO
-  - 🇫🇷 法国 (France) 13 552K - NEKO
-  - 🇫🇷 法国 (France) 14 643K 🇨🇳 - NEKO
-  - 🇫🇷 法国 (France) 15 ⚠S6194K 🇨🇳 - NEKO
-  - 🇫🇷 法国 (France) 16 ⚠S7168K 🇨🇳 - NEKO
-  - 🇫🇷 法国 (France) 17 5627K 🇨🇳 - NEKO
-  - 🇫🇷 法国 (France) 18 4071K 🇨🇳 - NEKO
+  - 🇫🇷 法国 (France) 01 ⚠S3085K 🇨🇳 - NEKO
+  - 🇫🇷 法国 (France) 02 4192K 🇨🇳 - NEKO
+  - 🇫🇷 法国 (France) 03 6294K 🇨🇳 - NEKO
+  - 🇫🇷 法国 (France) 04 4876K 🇨🇳 - NEKO
+  - 🇫🇷 法国 (France) 05 ⚠S875K ⚠P - NEKO
+  - 🇫🇷 法国 (France) 06 3255K 🇨🇳 - NEKO
+  - 🇫🇷 法国 (France) 07 ⚠S399K 🇨🇳 - NEKO
+  - 🇫🇷 法国 (France) 08 3600K ⚠P - NEKO
+  - 🇫🇷 法国 (France) 09 6047K 🇨🇳 - NEKO
+  - 🇫🇷 法国 (France) 10 ⚠S733K 🇨🇳 - NEKO
+  - 🇫🇷 法国 (France) 11 4613K ⚠P - NEKO
+  - 🇫🇷 法国 (France) 12 ⚠S796K 🇨🇳 - NEKO
+  - 🇫🇷 法国 (France) 13 ⚠S4832K ⚠L20% - NEKO
+  - 🇫🇷 法国 (France) 14 3776K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇫🇷 法国 (France) 01 5131K 🇨🇳 - NEKO
-  - 🇫🇷 法国 (France) 02 4210K - NEKO
-  - 🇫🇷 法国 (France) 03 5117K 🇨🇳 - NEKO
-  - 🇫🇷 法国 (France) 04 5397K 🇨🇳 - NEKO
-  - 🇫🇷 法国 (France) 05 ⚠S829K 🇨🇳 - NEKO
-  - 🇫🇷 法国 (France) 06 5421K 🇨🇳 - NEKO
-  - 🇫🇷 法国 (France) 07 4742K ⚠P - NEKO
-  - 🇫🇷 法国 (France) 08 7241K 🇨🇳 - NEKO
-  - 🇫🇷 法国 (France) 09 ⚠S883K 🇨🇳 - NEKO
-  - 🇫🇷 法国 (France) 10 3986K ⚠P - NEKO
-  - 🇫🇷 法国 (France) 11 5327K ⚠P - NEKO
-  - 🇫🇷 法国 (France) 12 4158K 🇨🇳 - NEKO
-  - 🇫🇷 法国 (France) 13 552K - NEKO
-  - 🇫🇷 法国 (France) 14 643K 🇨🇳 - NEKO
-  - 🇫🇷 法国 (France) 15 ⚠S6194K 🇨🇳 - NEKO
-  - 🇫🇷 法国 (France) 16 ⚠S7168K 🇨🇳 - NEKO
-  - 🇫🇷 法国 (France) 17 5627K 🇨🇳 - NEKO
-  - 🇫🇷 法国 (France) 18 4071K 🇨🇳 - NEKO
+  - 🇫🇷 法国 (France) 01 ⚠S3085K 🇨🇳 - NEKO
+  - 🇫🇷 法国 (France) 02 4192K 🇨🇳 - NEKO
+  - 🇫🇷 法国 (France) 03 6294K 🇨🇳 - NEKO
+  - 🇫🇷 法国 (France) 04 4876K 🇨🇳 - NEKO
+  - 🇫🇷 法国 (France) 05 ⚠S875K ⚠P - NEKO
+  - 🇫🇷 法国 (France) 06 3255K 🇨🇳 - NEKO
+  - 🇫🇷 法国 (France) 07 ⚠S399K 🇨🇳 - NEKO
+  - 🇫🇷 法国 (France) 08 3600K ⚠P - NEKO
+  - 🇫🇷 法国 (France) 09 6047K 🇨🇳 - NEKO
+  - 🇫🇷 法国 (France) 10 ⚠S733K 🇨🇳 - NEKO
+  - 🇫🇷 法国 (France) 11 4613K ⚠P - NEKO
+  - 🇫🇷 法国 (France) 12 ⚠S796K 🇨🇳 - NEKO
+  - 🇫🇷 法国 (France) 13 ⚠S4832K ⚠L20% - NEKO
+  - 🇫🇷 法国 (France) 14 3776K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

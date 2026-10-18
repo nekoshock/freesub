@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇪🇪 爱沙尼亚 (Estonia) 01 ⚠S4084K ⚠P - NEKO
+- name: 🇪🇪 爱沙尼亚 (Estonia) 01 3372K ⚠P - NEKO
   server: 196.198.111.138
   port: 8443
   udp: true
@@ -14,7 +14,8 @@ proxies:
   tls: true
   servername: api-6ad3c751.adhil.uk
   skip-cert-verify: false
-- name: 🇪🇪 爱沙尼亚 (Estonia) 02 487K ⚠P - NEKO
+  client-fingerprint: firefox
+- name: 🇪🇪 爱沙尼亚 (Estonia) 02 207K ⚠P - NEKO
   server: 196.198.111.107
   port: 8443
   udp: true
@@ -24,20 +25,20 @@ proxies:
   tls: true
   servername: api-6ad3c751.adhil.uk
   skip-cert-verify: false
-  client-fingerprint: firefox
+  client-fingerprint: ios
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇪🇪 爱沙尼亚 (Estonia) 01 ⚠S4084K ⚠P - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 02 487K ⚠P - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 01 3372K ⚠P - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 02 207K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇪🇪 爱沙尼亚 (Estonia) 01 ⚠S4084K ⚠P - NEKO
-  - 🇪🇪 爱沙尼亚 (Estonia) 02 487K ⚠P - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 01 3372K ⚠P - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 02 207K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

@@ -4,7 +4,14 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇸🇪 瑞典 (Sweden) 01 ⚠S4136K 🇨🇳 - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 01 3368K ⚠P - NEKO
+  server: 70.34.212.124
+  port: 8388
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: AxIYWtskJWIIaefW
+- name: 🇸🇪 瑞典 (Sweden) 02 3818K 🇨🇳 - NEKO
   server: 62.60.159.81
   port: 2053
   udp: true
@@ -19,31 +26,19 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: grpce5bb9e71
-- name: 🇸🇪 瑞典 (Sweden) 02 ⚠S1936K 🇨🇳 - NEKO
-  server: 88.216.223.66
-  port: 443
-  udp: true
-  type: vless
-  uuid: 244d9eab-3311-40c7-b47f-4968dc3088a6
-  tls: true
-  reality-opts:
-    public-key: drl7nndYdfzZY1aQ0eUAWmNV0nsHig2uDnu9siy9biQ
-    short-id: 868419504747f6de
-  servername: tcpswed1.figurapn.ru
-  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇸🇪 瑞典 (Sweden) 01 ⚠S4136K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 ⚠S1936K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 3368K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 3818K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇸🇪 瑞典 (Sweden) 01 ⚠S4136K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 ⚠S1936K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 3368K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 3818K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

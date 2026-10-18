@@ -228,7 +228,7 @@ LOSS_UNSTABLE_PENALTY = 0.10         # 丢包率 ≥10% 即视为不稳 ★收�
 #   空字符串 = 不屏蔽任何国家 (默认关闭, 保持开源仓库通用性);
 #   想启用日本屏蔽时填 "JP" 或 "JP,KR" 等。
 #   生效位置: classify_and_export 的 safe_nodes 过滤 (最早期, 省掉后续情报查询)
-BLOCK_COUNTRIES = "JP,RU"             # 例: "JP" = 剔除落地日本; "JP,KR" = 日本+韩国
+BLOCK_COUNTRIES = ""             # 例: "JP" = 剔除落地日本; "JP,KR" = 日本+韩国
 # --- 首包时间 TTFB (Time To First Byte) ---
 #   现有 latency 测的是 TCP+TLS 握手往返; TTFB 测"服务器开始回数据"的时刻。
 #   两者背离是常态: 很多节点 RTT 很低但首包要 1~2 秒 (服务端缓冲/链路拥塞),

@@ -586,7 +586,7 @@ DEAD_CACHE_TTL_SEC    = DEAD_CACHE_TTL_DAYS * 86400
 DEAD_MIN_HIT          = int(os.environ.get("DEAD_MIN_HIT") or 2)      # 连续两轮才固化
 DEAD_RECHECK_N        = int(os.environ.get("DEAD_RECHECK_N") or 50)   # 每轮抽样复测量
 DEAD_DROP_MAX_RATIO   = float(os.environ.get("DEAD_DROP_MAX_RATIO") or 0.70)
-DEAD_ROUND_FAIL_RATIO = 0.80              # 本轮新死亡占比阈值
+DEAD_ROUND_FAIL_RATIO = float(os.environ.get("DEAD_ROUND_FAIL_RATIO") or 0.99)  # 本轮新死亡占比阈值 (源常态高死~90%, 抬到0.99防锁死缓存; env可调)
 DEAD_ROUND_FAIL_MIN   = 3000              # 且绝对数阈值 (与条件, 防小池误触)
 
 # 死因码 (照抄 speed_fail_reason / cross_fail_names 的归因风格)
@@ -1781,8 +1781,11 @@ def dead_cache_round_guard(cache: dict, stat: dict, n_candidates: int) -> bool:
       若某轮 runner 网络整体故障 / DNS 解析批量失败 / 源集体返回垃圾配置,
       会有**上万节点在同一轮全部判死**。此时"连续两轮"门槛在"两轮都坏"
       的情形下形同虚设, 而固化后下轮它们全被剔除 → 候选被清空。
-      正常轮次的新死亡占比约 43% (6600 死 / 15467 候选), 阈值 0.80 留了
-      1.86 倍余量; 绝对数 3000 与比例是**与**关系, 小池子不会因比例高误触。
+      实测源常态高死: 2026-10-18 连续两轮 ~90% (8765 死 / 9698 候选), 且那轮
+      仍有 1601 真活 + DNS 0 异常 → 是源质量退化, 非 runner 熔断。原阈值 0.80
+      会把这种持续高死误判为故障 → 缓存永远建不起来, 故抬到 0.99: 只拦"≥99% 全灭"
+      的真熔断。误杀兜底靠 DEAD_MIN_HIT=2 + DEAD_DROP_MAX_RATIO + 50/轮抽样复测,
+      不靠这道单轮闸; 绝对数 3000 与比例是**与**关系, 小池子不会因比例高误触。
 
     ★ 缓解链的底座 (最坏后果的边界):
       main() 已有 `if not candidates: return` 会保留上次 output。所以即便

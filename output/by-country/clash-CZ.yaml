@@ -4,7 +4,20 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇿 捷克 (Czech) 01 ⚠S3818K 🇨🇳 - NEKO
+- name: 🇨🇿 捷克 (Czech) 01 8476K 🇨🇳 - NEKO
+  server: stf839dvvyog9d2qa4-b8z6ahgn7b7qi.pages.dev
+  port: 443
+  udp: true
+  type: vless
+  uuid: b2f2f9f2-1864-48ea-839b-22815faff1f1
+  tls: true
+  servername: stf839dvvyog9d2qa4-b8z6ahgn7b7qi.pages.dev
+  skip-cert-verify: false
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /
+- name: 🇨🇿 捷克 (Czech) 02 4172K 🇨🇳 - NEKO
   server: 195.123.245.241
   port: 443
   udp: true
@@ -16,15 +29,8 @@ proxies:
     public-key: hlY5ce1UsVIgE46y5PlEZhUsSaXUnCtoDLLaGrhInjw
     short-id: 23d0950d60bc0d5b
   servername: gateway.icloud.com
-  client-fingerprint: firefox
-- name: 🇨🇿 捷克 (Czech) 02 3490K ⚠P - NEKO
-  server: 67.159.18.34
-  port: 17001
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: I6o9NnialYLMEjVt28RF4dpjmr9wMvNL
-- name: 🇨🇿 捷克 (Czech) 03 7036K 🇨🇳 - NEKO
+  client-fingerprint: chrome
+- name: 🇨🇿 捷克 (Czech) 03 ⚠S7132K 🇨🇳 - NEKO
   server: cl-glb6e059ee.gcdn.co
   port: 443
   udp: true
@@ -39,21 +45,30 @@ proxies:
     path: /qVnRkTxmLwBzHjYpFaDgUcSeNrKxMtVbWqZhPcLsJfGy
     headers:
       Host: node-3.wt419.site
+- name: 🇨🇿 捷克 (Czech) 04 3448K ⚠P - NEKO
+  server: 67.159.18.34
+  port: 17001
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: I6o9NnialYLMEjVt28RF4dpjmr9wMvNL
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇨🇿 捷克 (Czech) 01 ⚠S3818K 🇨🇳 - NEKO
-  - 🇨🇿 捷克 (Czech) 02 3490K ⚠P - NEKO
-  - 🇨🇿 捷克 (Czech) 03 7036K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 01 8476K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 02 4172K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 03 ⚠S7132K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 04 3448K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇿 捷克 (Czech) 01 ⚠S3818K 🇨🇳 - NEKO
-  - 🇨🇿 捷克 (Czech) 02 3490K ⚠P - NEKO
-  - 🇨🇿 捷克 (Czech) 03 7036K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 01 8476K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 02 4172K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 03 ⚠S7132K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 04 3448K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

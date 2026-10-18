@@ -5,7 +5,27 @@
   "outbounds": [
     {
       "type": "vless",
-      "tag": "🇨🇿 捷克 (Czech) 01 ⚠S3818K 🇨🇳 - NEKO",
+      "tag": "🇨🇿 捷克 (Czech) 01 8476K 🇨🇳 - NEKO",
+      "server": "stf839dvvyog9d2qa4-b8z6ahgn7b7qi.pages.dev",
+      "server_port": 443,
+      "uuid": "b2f2f9f2-1864-48ea-839b-22815faff1f1",
+      "tls": {
+        "enabled": true,
+        "server_name": "stf839dvvyog9d2qa4-b8z6ahgn7b7qi.pages.dev",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/"
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇨🇿 捷克 (Czech) 02 4172K 🇨🇳 - NEKO",
       "server": "195.123.245.241",
       "server_port": 443,
       "uuid": "7c053ca8-38cc-45e2-930c-eda1fd66f903",
@@ -15,7 +35,7 @@
         "server_name": "gateway.icloud.com",
         "utls": {
           "enabled": true,
-          "fingerprint": "firefox"
+          "fingerprint": "chrome"
         },
         "reality": {
           "enabled": true,
@@ -25,16 +45,8 @@
       }
     },
     {
-      "type": "shadowsocks",
-      "tag": "🇨🇿 捷克 (Czech) 02 3490K ⚠P - NEKO",
-      "server": "67.159.18.34",
-      "server_port": 17001,
-      "method": "aes-256-gcm",
-      "password": "I6o9NnialYLMEjVt28RF4dpjmr9wMvNL"
-    },
-    {
       "type": "vless",
-      "tag": "🇨🇿 捷克 (Czech) 03 7036K 🇨🇳 - NEKO",
+      "tag": "🇨🇿 捷克 (Czech) 03 ⚠S7132K 🇨🇳 - NEKO",
       "server": "cl-glb6e059ee.gcdn.co",
       "server_port": 443,
       "uuid": "6206cb76-491d-4237-baf1-8c29eea4eafb",
@@ -59,22 +71,32 @@
       }
     },
     {
+      "type": "shadowsocks",
+      "tag": "🇨🇿 捷克 (Czech) 04 3448K ⚠P - NEKO",
+      "server": "67.159.18.34",
+      "server_port": 17001,
+      "method": "aes-256-gcm",
+      "password": "I6o9NnialYLMEjVt28RF4dpjmr9wMvNL"
+    },
+    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇨🇿 捷克 (Czech) 01 ⚠S3818K 🇨🇳 - NEKO",
-        "🇨🇿 捷克 (Czech) 02 3490K ⚠P - NEKO",
-        "🇨🇿 捷克 (Czech) 03 7036K 🇨🇳 - NEKO"
+        "🇨🇿 捷克 (Czech) 01 8476K 🇨🇳 - NEKO",
+        "🇨🇿 捷克 (Czech) 02 4172K 🇨🇳 - NEKO",
+        "🇨🇿 捷克 (Czech) 03 ⚠S7132K 🇨🇳 - NEKO",
+        "🇨🇿 捷克 (Czech) 04 3448K ⚠P - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇨🇿 捷克 (Czech) 01 ⚠S3818K 🇨🇳 - NEKO",
-        "🇨🇿 捷克 (Czech) 02 3490K ⚠P - NEKO",
-        "🇨🇿 捷克 (Czech) 03 7036K 🇨🇳 - NEKO"
+        "🇨🇿 捷克 (Czech) 01 8476K 🇨🇳 - NEKO",
+        "🇨🇿 捷克 (Czech) 02 4172K 🇨🇳 - NEKO",
+        "🇨🇿 捷克 (Czech) 03 ⚠S7132K 🇨🇳 - NEKO",
+        "🇨🇿 捷克 (Czech) 04 3448K ⚠P - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

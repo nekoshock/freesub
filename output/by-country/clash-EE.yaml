@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇪🇪 爱沙尼亚 (Estonia) 01 ⚠S1317K 🇨🇳 - NEKO
+- name: 🇪🇪 爱沙尼亚 (Estonia) 01 3726K 🇨🇳 - NEKO
   server: 77.110.105.122
   port: 443
   udp: true
@@ -17,17 +17,43 @@ proxies:
     short-id: 226509f017e4c36d
   servername: co-es.speedtec.ru
   client-fingerprint: random
+- name: 🇪🇪 爱沙尼亚 (Estonia) 02 3216K ⚠P - NEKO
+  server: 196.198.111.107
+  port: 8443
+  udp: true
+  type: vless
+  uuid: b3441cc7-1e5f-4eb6-8207-90788eeca21e
+  flow: xtls-rprx-vision
+  tls: true
+  servername: api-6ad3c751.adhil.uk
+  skip-cert-verify: false
+  client-fingerprint: firefox
+- name: 🇪🇪 爱沙尼亚 (Estonia) 03 3271K ⚠P - NEKO
+  server: 196.198.111.138
+  port: 8443
+  udp: true
+  type: vless
+  uuid: b3441cc7-1e5f-4eb6-8207-90788eeca21e
+  flow: xtls-rprx-vision
+  tls: true
+  servername: api-6ad3c751.adhil.uk
+  skip-cert-verify: false
+  client-fingerprint: firefox
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇪🇪 爱沙尼亚 (Estonia) 01 ⚠S1317K 🇨🇳 - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 01 3726K 🇨🇳 - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 02 3216K ⚠P - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 03 3271K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇪🇪 爱沙尼亚 (Estonia) 01 ⚠S1317K 🇨🇳 - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 01 3726K 🇨🇳 - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 02 3216K ⚠P - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 03 3271K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

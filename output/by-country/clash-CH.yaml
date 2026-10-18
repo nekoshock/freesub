@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇭 瑞士 (Switzerland) 01 4690K 🇨🇳 - NEKO
+- name: 🇨🇭 瑞士 (Switzerland) 01 3304K 🇨🇳 - NEKO
   server: 45.90.59.15
   port: 443
   udp: true
@@ -16,8 +16,8 @@ proxies:
     public-key: P7S4UPFlQbmiBr4txyy8NZIMTrmO3UdxyH16WBU-YzY
     short-id: 19253fae84102271
   servername: www.cloudflare.com
-  client-fingerprint: chrome
-- name: 🇨🇭 瑞士 (Switzerland) 02 728K ⚠P⚠U - NEKO
+  client-fingerprint: firefox
+- name: 🇨🇭 瑞士 (Switzerland) 02 2842K ⚠P⚠U - NEKO
   server: 104.165.205.42
   port: 8443
   udp: true
@@ -25,7 +25,7 @@ proxies:
   password: 990c8eb6-4c4e-4277-8602-79af8402cdd0
   sni: speedtestmark.com
   skip-cert-verify: false
-- name: 🇨🇭 瑞士 (Switzerland) 03 5138K 🇨🇳 - NEKO
+- name: 🇨🇭 瑞士 (Switzerland) 03 4096K 🇨🇳 - NEKO
   server: 138.124.63.224
   port: 8444
   udp: true
@@ -45,16 +45,16 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇨🇭 瑞士 (Switzerland) 01 4690K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 02 728K ⚠P⚠U - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 03 5138K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 01 3304K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 02 2842K ⚠P⚠U - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 03 4096K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇭 瑞士 (Switzerland) 01 4690K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 02 728K ⚠P⚠U - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 03 5138K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 01 3304K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 02 2842K ⚠P⚠U - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 03 4096K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

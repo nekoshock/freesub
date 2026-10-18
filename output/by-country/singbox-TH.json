@@ -5,13 +5,16 @@
   "outbounds": [
     {
       "type": "vless",
-      "tag": "🇮🇳 印度 (India) 01 2713K ⚠P - NEKO",
-      "server": "13.140.56.100",
-      "server_port": 14430,
-      "uuid": "68512eac-cd53-4de3-8d1e-08f6e04af1a9",
+      "tag": "🇹🇭 泰国 (Thailand) 01 2865K - NEKO",
+      "server": "support.zoom.us.v2ray.simspeedup.com",
+      "server_port": 80,
+      "uuid": "3c52e091-6714-4915-949f-2149fe69951b",
       "transport": {
         "type": "ws",
-        "path": "/vless"
+        "path": "/ws",
+        "headers": {
+          "Host": "support.zoom.us.v2ray.simspeedup.com"
+        }
       }
     },
     {
@@ -19,14 +22,14 @@
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇮🇳 印度 (India) 01 2713K ⚠P - NEKO"
+        "🇹🇭 泰国 (Thailand) 01 2865K - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇮🇳 印度 (India) 01 2713K ⚠P - NEKO"
+        "🇹🇭 泰国 (Thailand) 01 2865K - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

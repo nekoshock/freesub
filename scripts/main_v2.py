@@ -48,6 +48,10 @@
        · 丢包率探测 (复用 204 探针连发 5 次) + v3 回国方向探测**并发**:
          裸 SOCKS5 TCP 握手 223.5.5.5:443/114.114.114.114:53 → 回国 RTT;
          经节点 HTTP 请求 baidu/bilibili/jd → 回国可达性
+       · v3.2 顺序优化: 丢包 + 回国方向 + 真实网页 + MITM + WARP **五路并发**
+         (原 MITM/WARP 在测速前串行 4s×全部节点, 后移后死节点不再白跑,
+         活节点墙钟从累加变取 max); 域名解析预热前移、DNS 污染预查后移到
+         端口预检之后 (只查真候选); 探测连接池 10→64、预检并发 64→128
        · v3.1 真实网页加载 (wikipedia/github/google, 只读响应头):
          204/测速端点是对出口 IP 最宽容的目标, 补测真实网站抓"隧道通但
          网页打不开"的假活节点 — 三个全不可达判死, 有被拦打 ⚠B
@@ -834,6 +838,16 @@ DIRECT_SESSION.headers.update({"User-Agent": USER_AGENT, "Accept": "*/*"})
 PROBE_SESSION = requests.Session()
 PROBE_SESSION.trust_env = False    # 强制隔离: 节点探测链路绝不经本机代理, 防污染测试结果
 PROBE_SESSION.headers.update({"User-Agent": USER_AGENT})
+# ★ v3.2 顺序优化: 扩大连接池 (默认 pool_maxsize=10)。
+#   测活阶段 24 个节点线程 × 组内多路并发请求 (活性3源+IP/丢包/回国/网页/MITM/WARP)
+#   最高 ~120 个并发请求打向同一个 Session — urllib3 的连接池按 host 键计数,
+#   超过 pool_maxsize 的请求会**排队等连接归还**, 组内并发被隐式串行化。
+#   扩到 64: 小请求 (204/HTML头) 真并行, 请求密集阶段整体提速; 大流量测速
+#   本来就是单节点串行下载, 不受影响。零判定变化, 纯速度。
+_probe_adapter = requests.adapters.HTTPAdapter(
+    pool_connections=64, pool_maxsize=64, max_retries=0)
+PROBE_SESSION.mount("http://", _probe_adapter)
+PROBE_SESSION.mount("https://", _probe_adapter)
 
 
 def http_get(url: str, timeout: int = 15, headers: dict = None) -> requests.Response:
@@ -1882,9 +1896,12 @@ def prefilter_candidates(candidates: list) -> list:
         raw, outbound, server, port, proto = item
         return knock_port(server, port, proto)
 
-    with ThreadPoolExecutor(max_workers=64) as ex:
+    # ★ v3.2 顺序优化: 并发 64→128。域名解析已在 2.7 步预热, 本阶段纯 TCP
+    #   握手 (0.1~2.5s), 128 并发对 Azure runner (FD 限制 1024+) 无压力,
+    #   全死场景墙钟 78s → 39s, 一般场景省 ~10~20s。
+    with ThreadPoolExecutor(max_workers=128) as ex:
         # ★ v3: 域名已在 2.7 步并发预热 (prefetch_dns), 这里全部命中缓存,
-        #   64 并发的 TCP 握手就是本阶段唯一成本 (每候选 0.1~2.5s)。
+        #   128 并发的 TCP 握手就是本阶段唯一成本 (每候选 0.1~2.5s)。
         for item, ok in zip(candidates, ex.map(_knock, candidates)):
             (passed if ok else failed).append(item)
 
@@ -2339,7 +2356,12 @@ def test_single_node(item, keep_alive_check=True, chain_relay: dict = None,
                 "web_flags": [], "web_dead": False, "web_detail": "未测(lite)",
             }
 
-        # --- 3) MITM 劫持检测 + WARP 套壳检测 — v3: 并发 (旧串行 4+4s) ---
+        # --- 3) MITM 劫持检测 + WARP 套壳检测 (定义在此, 执行后移至组 C) ---
+        #   ★ v3.2 顺序优化: 这两个检查原来在测速前串行组 (4s), 但它们只服务
+        #     "最终出库判定" (mitm→剔除, warp→drop) — 注定断流的节点跑了也白跑。
+        #     现后移进组 C 与丢包/回国/网页 5 路并发, 且只对 speed_pass 节点执行;
+        #     未执行的节点 mitm_risk/is_warp 取默认 False (它们 is_stalled,
+        #     根本进不了订阅, 无判定影响)。
         def _mitm_check():
             # 3a) 独立复检一次带 verify=True 的请求: SSLError = TLS 拦截
             try:
@@ -2367,11 +2389,8 @@ def test_single_node(item, keep_alive_check=True, chain_relay: dict = None,
                 pass
             return False
 
-        with ThreadPoolExecutor(max_workers=2) as grp:
-            mitm_fut = grp.submit(_mitm_check)
-            warp_fut = grp.submit(_warp_check)
-            mitm_risk = mitm_fut.result()
-            is_warp = warp_fut.result()
+        mitm_risk = False      # 默认值; 仅 speed_pass 节点实测 (见组 C)
+        is_warp = False
 
         # --- 4) 断流检测: 限时下载测速 (稳态吞吐, 剔除握手期; 端点多路兜底) ---
         #     with_ttfb=True 同时取首包时间 (与握手 RTT 互补, 见下方 TTFB 判定)
@@ -2476,7 +2495,7 @@ def test_single_node(item, keep_alive_check=True, chain_relay: dict = None,
             # 未触发短路 (或无结果) → 不做交叉, 直接采用 Cloudflare 测速值
             cross_skipped = True
 
-        # --- 5) 丢包率 + 回国方向 + 真实网页加载 — v3/v3.1: 三路并发 ---
+        # --- 5) 丢包 + 回国 + 真实网页 + MITM + WARP — v3.2: 五路并发 ---
         #   (仅对已过吞吐门槛的节点; 注定断流的节点不配再花 1 秒)
         #   丢包: 复用 204 探针连发, 零额外带宽成本。
         #   回国方向 (v3): 裸 SOCKS5 握手国内公共 DNS 量回国 RTT + 经节点
@@ -2484,6 +2503,9 @@ def test_single_node(item, keep_alive_check=True, chain_relay: dict = None,
         #   真实网页 (v3.1): 经节点请求 wikipedia/github/google, 只拿响应头 —
         #     204 和 CF 测速端点是对出口 IP 最宽容的目标, "延迟好看+测速过"
         #     的节点用户开普通网页照样 403/转圈; 三个目标全不可达 = 假活, 判死。
+        #   MITM/WARP (v3.2 后移至此): 原在测速前串行跑 (4s×全部节点),
+        #     但它们只服务出库判定 — 后移后 ① 死节点不再白跑 4s ② 与其余四路
+        #     并发, 活节点墙钟 = max(4, 丢包, 回国, 网页) 而非累加。
         #   ★ 2026-10-04 修正 (#67 事故): 旧版写 `else 1.0`, 把"没测到丢包"直接
         #     等同于"100% 丢包", 于是 speed_bps=0 的节点全被判死, 造成
         #     **真活 0** (实测 #67: 480 个节点全被填 100% 丢包后判死,
@@ -2497,13 +2519,17 @@ def test_single_node(item, keep_alive_check=True, chain_relay: dict = None,
                     "total": len(WEB_CHECK_PROBES), "detail": "未测(未过吞吐门槛)"}
         speed_pass = speed_bps >= SPEED_MIN_BYTES_PER_S
         if speed_pass:
-            with ThreadPoolExecutor(max_workers=3) as grp:
+            with ThreadPoolExecutor(max_workers=5) as grp:
                 loss_fut = grp.submit(measure_packet_loss, proxies, LOSS_PROBE_COUNT)
                 cn_fut = grp.submit(probe_cn_exit, proxies, socks_port)
                 web_fut = grp.submit(probe_web_load, proxies)
+                mitm_fut = grp.submit(_mitm_check)
+                warp_fut = grp.submit(_warp_check)
                 loss_rate = loss_fut.result()
                 cn_exit = cn_fut.result()
                 web_load = web_fut.result()
+                mitm_risk = mitm_fut.result()
+                is_warp = warp_fut.result()
         # 丢包 ≥ MAX_LOSS_RATE → 不可用; LOSS_UNSTABLE_PENALTY~MAX 之间 → 不稳
         # ★ None (未测) 不参与任何丢包判定, 绝不能当成丢包
         loss_unstable = (loss_rate is not None
@@ -4981,21 +5007,23 @@ def main():
     #     现在对全量候选执行 (测前已无去重, 不存在"同一垃圾节点重复报计数")
     candidates = static_prescreen(candidates)
 
-    # 2.7 ★ v3 国内可用性预筛 (全部零成本, 在端口预检前完成):
-    #     ① DNS 污染预查: 大陆公共 DNS (DNSPod/阿里) vs 全球 DNS (Cloudflare)
-    #        并发查全部唯一域名 — 域名被污染的节点, 国内客户端默认 DNS 下
-    #        连不上, 静态评分 -45 并排除出国内友好订阅 (一票否决)
-    #     ② 域名解析并发预热: 静态评分要查"入口 IP 是否在 CDN 网段",
-    #        提前并发解析, 端口预检阶段全部命中缓存 (消掉串行 DoH 等待)
-    #     ③ 静态 China 友好度评分: 端口/协议伪装/CDN 前置/域名卫生
-    #     ④ 按静态分降序重排测试顺序: 高分节点先测先出结果 —
-    #        CI 时长有限时, 国内友好节点优先拿到完整测活, 不会被
-    #        一堆注定断流的低分节点挤占 (总测试量不变, 只改顺序)
+    # 2.7 ★ v3.2 顺序优化: 域名解析预热前移到此 (端口预检要逐域名解析,
+    #     提前并发预热 → 预检内全部命中缓存); 而 **DNS 污染预查后移到端口
+    #     预检之后** — 旧顺序对全部域名查污染 (含大量预检就会死的死域名),
+    #     新顺序只对预检存活者查, 唯一域名数砍半, 省 ~10~20s; 且污染判定
+    #     只服务"能进订阅的节点", 对死节点查询本就是纯浪费。
+    #     ① 域名解析并发预热 (32 并发)
+    #     ② 端口预检 (砍 50~60% 死节点)  ← 见下方步骤 3
+    #     ③ DNS 污染预查 (只对预检后存活域名; 大陆公共 DNS vs 全球 DNS,
+    #        硬失败且海外正常 = 域名被污染 → 静态评分 -45 并排除出友好订阅)
+    #     ④ 静态 China 友好度评分 + 按分降序 (高分节点先测先出结果)
+    n_resolved = prefetch_dns([c[2] for c in candidates])
+    candidates = prefilter_candidates(candidates)
+
     n_dom, n_polluted = precheck_dns_pollution([c[2] for c in candidates])
     if n_dom:
-        print(f"[*] DNS 污染预查: {n_dom} 个唯一域名, {n_polluted} 个在大陆解析异常 "
+        print(f"[*] DNS 污染预查 (预检后): {n_dom} 个唯一域名, {n_polluted} 个在大陆解析异常 "
               f"(静态评分 {CN_SCORE_DNS_POLLUTED}, 排除出国内友好订阅)")
-    n_resolved = prefetch_dns([c[2] for c in candidates])
     prescore_map = {}
     for it in candidates:
         s, fl = static_cn_prescore(it)
@@ -5020,10 +5048,7 @@ def main():
         print("[!] 无可测节点 (订阅源全部失效?) — 保留上次 output, 不覆盖订阅文件")
         return
 
-    # 3. 端口预检
-    candidates = prefilter_candidates(candidates)
-
-    # 4. 真实测活 (只测去重后的代表节点; 已按静态 CN 分降序, 高分先测)
+    # 4. 真实测活 (已按静态 CN 分降序, 高分先测; 端口预检已在 2.7 步完成)
     test_results = run_liveness_test(candidates, prescore_map=prescore_map)
 
     # 4.5 ★ v3.2 已删除: 重复节点回填 (旧 DEDUP_MAP 继承逻辑)。

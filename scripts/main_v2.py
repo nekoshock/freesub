@@ -25,7 +25,13 @@
      (vless/vmess/trojan/ss/hysteria2/tuic/anytls + reality + 全部传输层)
   2. 真实测活（sing-box v1.14 内核，逐节点 SOCKS 入站 + 节点出站）:
      - 阶段A 端口预检: TCP/QUIC 直连握手, 快速丢弃死端口 (削减 90% 无效工作)
+       ★ v3.2 起测前不再去重 (仅原有筛选), 全部候选直接进预检
      - 阶段B 真实探测 (v3 起组内并发, 单节点最坏耗时 ~52s → ~35s, 死节点 ~20s → ~12s):
+       · v3.2 测活期查重 (流程核心变更): 每个节点先拿完整真实信息 (活性+
+         真实出口 IP) + 完整指纹, 与**已成功测活**的注册表比对 — 重复
+         当场截断 (跳过后续全部测活); 未重复才继续, 成功后注册。
+         (旧"测前指纹去重 + 测后回填克隆体"整体删除, 回填必要性评估
+          见设计文档第 12 节)
        · 活性三源探测 (Google/Cloudflare/Microsoft, 至少 2 源通过) + 出口 IP
          回声**并发** (旧串行最坏 12+4+4+6=26s, 现 max(12,6)≈12s)
        + 延迟上限门槛 (MAX_LATENCY_MS, 此前延迟只排序不淘汰)
@@ -36,7 +42,7 @@
            ★ v3: 首测已低于门槛的节点跳过复测 (注定断流, 省 4s×大量节点)
          · 跨端点交叉测速 (按需触发: 仅当首测疑似 CDN 短路时才跑物理机房
            Hetzner/Linode 端点; 正常结果直接采用, 省掉每节点 5~8 秒)
-         · 重复节点回填 (多源收录的同一节点, 测活后继承真活代表节点的结果)
+         · 重复节点回填 (v3.2 已删除 — 去重后移到测活期, 见阶段B)
          · 测速健全性护栏 (全体中位数过高 = CDN 短路, 撤销⚡优选标记)
        · MITM 复检 + WARP 检测**并发** (旧串行 4+4s)
        · 丢包率探测 (复用 204 探针连发 5 次) + v3 回国方向探测**并发**:
@@ -1359,7 +1365,7 @@ BLACKLIST_NAME_HINTS = re.compile(r"(剩余流量|流量重置|expire|expired|�
 
 
 # ══════════════════════════════════════════════════════════════════
-# 凭据指纹 + 配置一致性 (v3 审计加固: 堵住"未测活节点漏进交付")
+# 凭据指纹 + 完整节点身份键 (v3 审计加固 → v3.2 测活期查重)
 #
 # ★ 审计发现的真实漏洞 (2026-10-16):
 #   P0-3 (2026-10-11) 把 reality/transport.type 纳入了指纹, 但**没纳全** —
@@ -1371,10 +1377,10 @@ BLACKLIST_NAME_HINTS = re.compile(r"(剩余流量|流量重置|expire|expired|�
 #   后果: 一个根本连不上的配置, 顶着继承来的测活结论混进最终订阅。
 #   hy2 更明显: 旧指纹只有 password, 同密码不同 obfs-password/sni 全被判重。
 #
-# ★ 修复 (双保险):
-#   ① 指纹补全 — 所有影响服务端握手/路由的字段全部纳入 (本函数);
-#   ② 回填兜底 — 克隆体与代表的 outbound 做归一化深度比较 (_outbound_equiv),
-#      不一致的一律不回填 (见 main() 回填段), 指纹再怎么改都有最终兜底。
+# ★ 修复路径:
+#   v3.2 之前: ① 指纹补全 (本函数) + ② 回填兜底 (_outbound_equiv 深度比较);
+#   v3.2 (2026-10-18): 去重整体后移到测活阶段, 回填删除 — 每个节点都真测,
+#     指纹完整性由 full_node_key (含真实出口 IP) 承载, equiv 兜底不再需要。
 # ══════════════════════════════════════════════════════════════════
 
 def _tr_field(tr: dict, *keys, default=""):
@@ -1484,44 +1490,73 @@ def cred_fingerprint(outbound: dict, proto: str) -> str:
         return ""  # 指纹失败 → 不合并 (宁慢不错)
 
 
-# 回填一致性比较时忽略的纯装饰字段 (不影响服务端行为)
-_EQUIV_IGNORE_KEYS = {"tag", "detour"}
+# ══════════════════════════════════════════════════════════════════
+# 完整节点身份键 + 测活期查重注册表 (v3.2 流程变更)
+#
+# ★ 流程变更 (2026-10-18, 用户要求): 去重从"测前静态指纹去重 + 测后回填"
+#   整体后移到**测活阶段** —
+#     旧: 测前按 (server, port, proto, 指纹) 去重 → 只测代表 → 测后回填克隆体
+#     新: 测前**不重** (仅原有筛选) → 每个节点进测活 → 拿到完整真实信息
+#         (含真实出口 IP) 后, 与**已成功测活**的节点注册表按完整键比对 →
+#         重复则当场截断 (跳过测速/丢包/回国/网页全部后续) → 未重复才继续测
+#   ★ 为什么更好:
+#     ① 键含真实出口 IP + 完整指纹 — 比测前纯静态指纹信息更全, 判定更准;
+#     ② 每个进订阅的节点都是**真跑过测活**的, 不再有"继承结论"的克隆体
+#        (旧回填的 equiv/insecure 兜底复杂度整体消失);
+#     ③ 失败节点的重复副本不被占位 — 同节点多源收录 = 多次机会, 瞬时
+#        波动丢节点的概率比旧方案 (代表失败即全丢) 更低。
+# ★ 回填已删除: 重复 URI 不再被提前剔除, 各自进测活被注册表挡掉,
+#   "继承代表结果"失去意义 (评估结论见设计文档第 12 节)。
+# ══════════════════════════════════════════════════════════════════
 
+def full_node_key(outbound: dict, proto: str, server: str, port: int,
+                  exit_ip: str = "") -> str:
+    """完整节点身份键 (v3.2 测活期查重用): 入口 + 完整凭据指纹 + 真实出口 IP
 
-def _normalize_outbound(ob: dict) -> dict:
-    """归一化 outbound: 去装饰字段 + 空值清理 + 排序, 供深度比较"""
-    if not isinstance(ob, dict):
-        return {}
-    out = {}
-    for k, v in ob.items():
-        if k in _EQUIV_IGNORE_KEYS:
-            continue
-        if v in (None, "", [], {}):
-            continue
-        if isinstance(v, dict):
-            nv = _normalize_outbound(v)
-            if nv:
-                out[k] = nv
-            continue
-        if isinstance(v, (list, tuple)):
-            nv = [x for x in v if x not in (None, "")]
-            if nv:
-                out[k] = sorted(nv, key=str) if all(isinstance(x, str) for x in nv) else nv
-            continue
-        out[k] = v
-    return out
-
-
-def _outbound_equiv(a: dict, b: dict) -> bool:
-    """两个 outbound 的服务端行为是否等价 (归一化深度比较)
-
-    用途: 回填兜底 — 克隆体与代表即便指纹相同, 也再核对一遍真实配置;
-    任何影响服务端握手/路由的字段不一致 → 不等价 → 不继承测活结果。
+    三者全同 = 同一节点的重复收录 (免费池常态: 同一节点 30+ 个不同名字)。
+    出口 IP 入键的原因: 同一份配置轮换多个出口 (中转) 时, 不同落地值得
+    分别保留; 入口+指纹相同且出口相同, 则必为真重复。
     """
-    try:
-        return _normalize_outbound(a) == _normalize_outbound(b)
-    except Exception:
-        return False   # 比较失败 → 判不等价 (宁慢不错)
+    return "|".join([
+        (server or "").lower(),
+        str(port),
+        proto,
+        cred_fingerprint(outbound, proto),
+        exit_ip or "",
+    ])
+
+
+# 注册表: 完整节点键 → True (仅登记**测活成功**的节点)。
+#   run_liveness_test 每轮 reset; 24 并发下读写必须加锁 (读-改-写非原子,
+#   无锁会漏计 — 与端点熔断器同款教训)。
+_DEDUP_LOCK = threading.Lock()
+_DEDUP_REGISTRY = {}
+
+
+def _reset_dedup_registry():
+    """每轮测活开始前清空注册表"""
+    with _DEDUP_LOCK:
+        _DEDUP_REGISTRY.clear()
+
+
+def dedup_gate(key: str) -> bool:
+    """测活期查重闸: 该完整节点键是否已被**成功节点**占用。
+
+    True = 重复 (调用方应立即截断, 跳过后续测活步骤);
+    False = 新节点 (继续正常测活)。
+    ★ 只挡"已成功"的键: 同节点的多个副本在有一个成功前都有机会 —
+      瞬时波动不会丢节点; 代价是并发窗口内同批副本可能同时漏过
+      (都完整测), 由 classify 阶段 exit_ip:port 去重最终收敛,
+      不影响交付正确性 (只多花几秒测速)。
+    """
+    with _DEDUP_LOCK:
+        return key in _DEDUP_REGISTRY
+
+
+def dedup_register(key: str):
+    """测活成功后登记完整节点键 (供后续副本查重)"""
+    with _DEDUP_LOCK:
+        _DEDUP_REGISTRY[key] = True
 
 
 def final_gate(nodes: list, require_cn_signal: bool = False,
@@ -2115,7 +2150,7 @@ def _is_speed_shortcircuit(speed_bps: int, speed_retest: int,
 
 
 def test_single_node(item, keep_alive_check=True, chain_relay: dict = None,
-                     lite: bool = False):
+                     lite: bool = False, dedup_check: bool = True):
     """返回 dict 或 None; 含: 活性/延迟/出口IP/国家/ASN/ISP/速度/MITM/回国方向
 
     chain_relay: 可选的 sing-box outbound dict, 作为前置跳板 (detour 双跳)。
@@ -2261,6 +2296,19 @@ def test_single_node(item, keep_alive_check=True, chain_relay: dict = None,
         # 延迟上限门槛: 活性过了但延迟过高的节点体验极差, 此前延迟只排序不淘汰
         if latency_ms > MAX_LATENCY_MS:
             return None
+
+        # --- 2.5) v3.2 测活期查重闸: "完整真实信息 + 指纹" 已就位 ---
+        #   到这一步, 完整配置 (outbound) + 真实出口 IP/ASN + 活性/延迟全拿到了,
+        #   与**已成功测活**的节点注册表按完整键比对:
+        #     重复 → 当场截断, 后续测活 (MITM/测速/丢包/回国/网页) 全部跳过;
+        #     未重复 → 继续正常测活, 成功后注册 (见下方 is_stalled 判定后)。
+        #   ★ lite 模式不查重: 链式复测的对象本就是已注册的成功节点,
+        #     查了会被全部挡掉。
+        if dedup_check:
+            dup_key = full_node_key(outbound, proto, server, port, exit_ip or "")
+            if dedup_gate(dup_key):
+                return {"_dup_skipped": True, "raw": raw,
+                        "server": server, "port": port, "proto": proto}
 
         # --- lite 模式 (v3, 链式复测专用): 隧道通 + 出口正常 + 轻测速即判双跳可用 ---
         if lite:
@@ -2498,12 +2546,21 @@ def test_single_node(item, keep_alive_check=True, chain_relay: dict = None,
         is_stalled = speed_bps < speed_threshold
         is_premium = speed_bps >= SPEED_TIER_GOOD and not is_stalled
 
+        # --- v3.2 测活成功 → 登记完整节点键 (供后续副本查重) ---
+        #   ★ 只登记"成功"的节点: 判死者不占位 — 同节点的其他副本仍有补测
+        #     机会 (旧方案"代表失败即全丢"在此场景反而更脆)。
+        #   ★ 并发窗口说明: 24 并发下同批副本可能同时漏过注册表 (都完整测),
+        #     由 classify 阶段 exit_ip:port 去重最终收敛, 不影响交付正确性。
+        if dedup_check and not is_stalled:
+            dedup_register(full_node_key(outbound, proto, server, port,
+                                         exit_ip or ""))
+
         result = {
             "raw": raw,
             "server": server,
             "port": port,
             "proto": proto,
-            "outbound": outbound,      # ★ P0-1 依赖: 回填时要用它重算凭据指纹对齐 DEDUP_MAP key
+            "outbound": outbound,      # classify 阶段重算入口情报 + 重建导出用
             "alive": True,
             "alive_hits": alive_hits,
             "latency_ms": int(latency_ms),
@@ -2608,13 +2665,20 @@ def run_liveness_test(candidates: list, prescore_map: dict = None) -> list:
     print(f"[*] sing-box 全协议真实测活: {len(candidates)} 节点 (并发 {MAX_WORKERS_TEST}) ...")
     results = []
     done_count = [0]
+    dup_skipped = [0]      # v3.2: 测活期查重截断的重复节点计数
     # 端点熔断状态按轮次重置 —— 端点可达性会随时间漂移, 不跨轮沿用
     _reset_endpoint_breaker()
-    # v3: 静态 CN 预测分随结果透传给 classify 阶段 (回填克隆体继承代表的值)
+    # v3.2: 查重注册表按轮次重置 (只登记本轮测活成功的节点)
+    _reset_dedup_registry()
+    # v3: 静态 CN 预测分随结果透传给 classify 阶段
     prescore_map = prescore_map or {}
 
     def _work(item):
         r = test_single_node(item)
+        if r and r.get("_dup_skipped"):
+            # v3.2: 与已成功节点重复 → 已截断, 不计入结果 (后续测活全跳过)
+            dup_skipped[0] += 1
+            return None
         if r:
             ps = prescore_map.get(item[0])
             if ps:
@@ -2629,7 +2693,8 @@ def run_liveness_test(candidates: list, prescore_map: dict = None) -> list:
             if r:
                 results.append(r)
             if done_count[0] % 40 == 0:
-                print(f"[*] 测活进度: {done_count[0]}/{len(candidates)}, 通过 {len(results)}")
+                print(f"[*] 测活进度: {done_count[0]}/{len(candidates)}, "
+                      f"通过 {len(results)} (查重跳过 {dup_skipped[0]})")
 
     alive = [r for r in results if r["alive"] and not r["is_stalled"]]
     mitm = sum(1 for r in results if r["mitm_risk"])
@@ -2639,7 +2704,7 @@ def run_liveness_test(candidates: list, prescore_map: dict = None) -> list:
     retest_skipped = sum(1 for r in results if r.get("retest_skipped"))
     speeds = sorted((r["speed_bps"] for r in results if r["speed_bps"] > 0), reverse=True)
     print(f"[+] 测活完成: 真活 {len(alive)} | 断流淘汰 {stalled} (其中 {retest_skipped} 个首测即低于门槛, "
-          f"已跳过复测省 ~4s/个) | MITM 风险 {mitm}")
+          f"已跳过复测省 ~4s/个) | 查重跳过 {dup_skipped[0]} (v3.2 测活期去重, 未跑后续步骤) | MITM 风险 {mitm}")
 
     # ★ 2026-10-04 新增: 测速失败原因归集 (#67 事故时只能看到"最快 0KB/s",
     #   无法判断是端点 403 / 超时 / 样本不足 / 断流)。现在一眼能看出瓶颈在哪一环。
@@ -4830,11 +4895,12 @@ export default {{
 ---
 
 ## 🛠️ 项目使用说明
-1. **自动更新机制**：GitHub Actions 每 6 小时全自动运行并刷新上述全部订阅与数据。
+1. **自动更新机制**：工作流每 6 小时全自动运行并刷新上述全部订阅与数据 (以 workflow 实际触发配置为准)。
 2. **测活标准**：节点必须通过 ① 静态预筛(剔除关闭证书校验) ② 端口预检 ③ sing-box 实际隧道跨源活性探测 (Google/Cloudflare/Microsoft 至少 2 源) ④ 真实出口 IP 穿透获取 (延迟 ≤ 1500ms) ⑤ 限时下载测速 (稳态吞吐 ≥ 200KB/s, 5MB 首测 + 1MB 复测取最小值 + Hetzner 物理机房交叉测速) ⑥ 丢包率 ≤ 25% ⑦ 首包 TTFB ≤ 1800ms ⑧ TLS 证书校验非 MITM, 方可入库。
-3. **国内可用性标准 (v3)**：入库后再过五路国内向信号 — ① 入口端口/协议伪装静态评分 (443/Reality/CDN 前置优先) ② 域名经大陆公共 DNS 与全球 DNS 对比, 被污染者打 ⚠D 并排除出国内友好订阅 ③ 入口 IP rDNS/ASN 精品网线路识别 (CN2 GIA/4837/CMI) ④ 经节点实测回国方向 (百度/B 站/京东可达性 + 国内公共 DNS 握手 RTT) ⑤ (可选) RIPE Atlas 中国大陆探针实测。综合分 ≥ {CN_FRIENDLY_MIN_SCORE} 且域名干净的节点进入**国内友好订阅** (cn-friendly), 节点名打 🇨🇳。
-4. **真实网页加载标准 (v3.1)**：通过吞吐门槛的节点追加经节点请求 wikipedia/github/google (只读响应头) — 204 端点与 CF 测速是对出口 IP 最宽容的目标, "延迟好看+测速过"的节点开普通网页照样可能 403/转圈 (机房 IP 被 Cloudflare WAF/Google 风控拦)。**三个目标全部不可达 → 判死**; 有被拦的打 ⚠B 标记 (IP 风控脏); 全通的在排序中加分。
-5. **多客户端兼容**：Clash / v2rayN / sing-box 全格式订阅。
+3. **去重时机 (v3.2 变更)**: 测前**不做**去重 (仅原有筛选); 每个节点进测活后, 先取完整真实信息 (含真实出口 IP) + 完整指纹, 与**已成功测活**的节点注册表按"完整节点信息+指纹"比对 — 重复则当场剔除并跳过该节点后续所有测活步骤; 未重复才继续测活, 成功后注册。因此每个进订阅的节点都真实跑过测活 (旧版"测前指纹去重 + 测后回填克隆体"已整体删除)。
+4. **国内可用性标准 (v3)**：入库后再过五路国内向信号 — ① 入口端口/协议伪装静态评分 (443/Reality/CDN 前置优先) ② 域名经大陆公共 DNS 与全球 DNS 对比, 被污染者打 ⚠D 并排除出国内友好订阅 ③ 入口 IP rDNS/ASN 精品网线路识别 (CN2 GIA/4837/CMI) ④ 经节点实测回国方向 (百度/B 站/京东可达性 + 国内公共 DNS 握手 RTT) ⑤ (可选) RIPE Atlas 中国大陆探针实测。综合分 ≥ {CN_FRIENDLY_MIN_SCORE} 且域名干净的节点进入**国内友好订阅** (cn-friendly), 节点名打 🇨🇳。
+5. **真实网页加载标准 (v3.1)**：通过吞吐门槛的节点追加经节点请求 wikipedia/github/google (只读响应头) — 204 端点与 CF 测速是对出口 IP 最宽容的目标, "延迟好看+测速过"的节点开普通网页照样可能 403/转圈 (机房 IP 被 Cloudflare WAF/Google 风控拦)。**三个目标全部不可达 → 判死**; 有被拦的打 ⚠B 标记 (IP 风控脏); 全通的在排序中加分。
+6. **多客户端兼容**：Clash / v2rayN / sing-box 全格式订阅。
 """
     with open(os.path.join(BASEDIR, "README.md"), "w", encoding="utf-8") as f:
         f.write(readme)
@@ -4846,16 +4912,15 @@ export default {{
 # ═══════════════════════════════════════════N═══════════════════════
 
 def _verify_export_lineage(unique_nodes: list, test_results: list) -> bool:
-    """闭环校验: 每个出库节点的 raw 必须能追溯到"已测活 ∪ 已补筛查的回填体"
+    """闭环校验: 每个出库节点的 raw 必须能追溯到"已测活"的节点
 
     返回 True = 全部有据可查; False = 存在无法追溯的节点 (已打警告)。
 
-    ★ 为什么需要: 去重/回填/风险过滤跨多个函数协作, 光靠读代码很难确信
+    ★ 为什么需要: 去重/风险过滤跨多个函数协作, 光靠读代码很难确信
       "没有未经测试的节点混进订阅"。这里用一次集合比对把它变成可验证的事实。
-    合法来源只有两种:
-      ① test_results 里的 raw —— 跑过完整 sing-box 测活 (或链式复测)
-      ② 回填产生的 raw —— 代表节点测活通过, 且克隆体已补跑 is_insecure_node (P0-2)
-    其它任何来源(例如绕过回填直接 append)都会在这里暴露。
+    ★ v3.2 起合法来源只剩一种: test_results 里的 raw — 跑过完整 sing-box
+      测活 (或链式复测)。旧版还有第二种"回填克隆体"来源, 随回填删除一并
+      消失 — 现在每个进订阅的节点都真跑过测活, 校验比旧版更严更简单。
     """
     traced = set()
     for r in test_results:
@@ -4900,38 +4965,20 @@ def main():
             continue
         candidates.append((uri, outbound, server, port, proto))
 
-    # 2.5 ★ 测前去重 (凭据指纹): 同 凭据+目标+协议+配置 只测一次, 测活后回填有效项
-    #     key = (server, port, proto, 凭据指纹): 四项全同才判为"同一节点被多源重复收录"
-    #     ★ cred_fingerprint 已提升到模块级 (v3 审计加固): P0-3 补不全的路由字段
-    #       (path/host/obfs/sni/alpn/拥塞控制…) 全部纳入, 且回填段再用
-    #       _outbound_equiv 做二次兜底 — "同凭据不同配置"再也混不进继承。
-    #     key = (server, port, proto, 凭据指纹): 四项全同才判为"同一节点被多源重复收录"
-
-    # ★ 测前去重 (凭据指纹): 四项全同 (server, port, proto, 指纹) 只测一次。
-    #   完全相同 = 同一节点被多源重复收录 (免费池常态, 30+ 份不同名字) → 只测一次。
-    #   ★ 这是**测前**去重, 是整条流水线省时间的关键一步: 4838 → 2340,
-    #     少起 2498 次 sing-box 进程、少跑 2498 轮探测。
-    #   被剔除的重复 URI **会回填** (步骤 4.5): 测活确认代表真活后, 重复项继承其结果,
-    #     保证多源收录的同一节点不丢失。回填前逐条复查 insecure (P0-2)。
-    # seen_keys 记录 key → [该 key 下的全部 URI] (首个是代表节点, 其余是重复项)
-    seen_keys, deduped, dup_count = {}, [], 0
-    for item in candidates:
-        uri, outbound, server, port, proto = item
-        key = (server.lower() if server else "", port, proto, cred_fingerprint(outbound, proto))
-        if key in seen_keys:
-            seen_keys[key].append(uri)   # 记录重复 URI, 测活后回填
-            dup_count += 1
-        else:
-            seen_keys[key] = [uri]
-            deduped.append(item)
-    if dup_count:
-        print(f"[*] 测前去重(凭据指纹): {len(candidates)} → {len(deduped)} "
-              f"(剔除重复 {dup_count} — 仅测代表节点, 测活后回填有效项)")
-    DEDUP_MAP = seen_keys      # 供测活后回填 (main() 局部使用)
-    candidates = deduped
+    # 2.5 ★ v3.2 流程变更: 测前去重已**删除** — 去重整体后移到测活阶段。
+    #   旧方案: 测前按 (server, port, proto, 指纹) 去重 → 只测代表 → 测后回填
+    #          克隆体 (继承结论)。问题: ① 指纹是静态设计, 漏一个字段就漏一类节点;
+    #          ② 进订阅的"克隆体"从未真测过, 靠继承结论; ③ 回填需要
+    #             insecure 复查 + equiv 兜底两层补丁。
+    #   新方案: 测前只筛不去重 → 每个节点进测活 → 拿到完整真实信息 (含真实
+    #          出口 IP) 后与"已成功测活"注册表按完整键比对 → 重复当场截断
+    #          (跳过后续全部测活) → 未重复才继续测, 成功后注册。
+    #          每个进订阅的节点都是真跑过测活的, 回填及两层补丁整体删除。
+    #   详见: full_node_key / dedup_gate / dedup_register (模块级) 与
+    #        设计文档第 12 节 (含回填必要性评估)。
 
     # 2.6 ★ 静态预筛 (零网络零进程): 砍掉主动关闭证书校验的节点
-    #     必须在凭据去重之后 — 先去重才不会对同一垃圾节点重复报计数
+    #     现在对全量候选执行 (测前已无去重, 不存在"同一垃圾节点重复报计数")
     candidates = static_prescreen(candidates)
 
     # 2.7 ★ v3 国内可用性预筛 (全部零成本, 在端口预检前完成):
@@ -4979,71 +5026,11 @@ def main():
     # 4. 真实测活 (只测去重后的代表节点; 已按静态 CN 分降序, 高分先测)
     test_results = run_liveness_test(candidates, prescore_map=prescore_map)
 
-    # 4.5 ★ 重复节点结果回填: 同 凭据+目标+协议 的重复 URI 继承代表节点的测活结果。
-    #   前提: key = (server, port, proto, 凭据指纹) 完全相同 → 服务端认的是同一份凭据,
-    #   对同一目标的行为一致, 因此可以安全继承 (不会把"不同服务的节点"混为一谈)。
-    #   位置: 必须在 classify_and_export 的 `出口IP:端口` 去重**之前**,
-    #         这样多源收录的同一节点能以各自的 URI 进分类流程, 由最终去重决定谁留。
-    #   ⚠️ 入场条件比历史版本更严: 只回填**真活**(alive 且未断流)的代表节点结果,
-    #      断流/未测到的代表节点不回填, 避免把失败的结论扩散给同源的其它 URI。
-    if DEDUP_MAP:
-        # ★ P0-1 修复: result_by_key 的键必须与 DEDUP_MAP 完全同维度(4段, 含凭据指纹)。
-        #   旧版用 3 段 (server, port, proto) 做键, 同一 server:port:proto 下不同凭据的
-        #   节点会互相覆盖, 导致 uri2 拿到 uuid-B 的测活结果却配着 uuid-A 的 outbound。
-        result_by_key = {}
-        for r in test_results:
-            fp = cred_fingerprint(r.get("outbound") or {}, r["proto"]) \
-                 if r.get("outbound") else ""
-            result_by_key[((r["server"] or "").lower(), r["port"], r["proto"], fp)] = r
-        expanded = list(test_results)
-        backfilled = 0
-        insecure_backfill = 0     # P0-2: 克隆体自身 insecure 被拦截的计数
-        equiv_backfill = 0        # v3: 克隆体与代表配置不一致被拦截的计数
-        for key, uris in DEDUP_MAP.items():
-            if len(uris) <= 1:
-                continue
-            # ★ 直接用 DEDUP_MAP 的完整 4 段 key 查表, 不再截断成 3 段
-            r = result_by_key.get(key)
-            # 只继承"确认为有效"的代表节点结果 (alive 且未断流)
-            if not r or not r.get("alive") or r.get("is_stalled"):
-                continue
-            for extra_uri in uris[1:]:
-                # ★ P0-2 修复: 克隆体的 raw 与代表不同, 可能带代表没有的危险字段
-                #   (如 allowInsecure=1)。代表通过静态预筛 ≠ 它的重复项也安全 ——
-                #   因为指纹(vless 只 uuid)相同就会被判重复, 而 insecure 字段不在指纹里。
-                #   必须逐条复查, 否则 insecure 节点会绕过 static_prescreen 入库。
-                parsed = parse_node_uri(extra_uri)
-                if not parsed:
-                    continue
-                if is_insecure_node(parsed[0]):
-                    insecure_backfill += 1
-                    continue
-                # ★ v3 审计加固 (2026-10-16): 配置一致性兜底。
-                #   指纹已补全路由字段, 但指纹是"设计", 这里是"断言" — 克隆体
-                #   parse 出的真实 outbound 必须与代表的行为等价, 否则不继承。
-                #   堵的是: 同凭据不同 path/obfs/sni 的节点从未测活却顶着
-                #   继承结论进订阅 (指纹万一还有漏, 这里是最后一道闸)。
-                if not _outbound_equiv(parsed[0], r.get("outbound") or {}):
-                    equiv_backfill += 1
-                    continue
-                # dict(r) 浅拷贝: 保证 speed_bps/latency_ms/loss_rate/ttfb_ms/
-                # alive/is_stalled/is_premium 等所有状态字段与代表节点完全一致,
-                # 只替换 raw 为本条 URI (后续 classify 会据此解析出各自的 outbound)
-                clone = dict(r)
-                clone["raw"] = extra_uri
-                clone["backfilled"] = True        # 标记来源, 便于日志与排查
-                expanded.append(clone)
-                backfilled += 1
-        if backfilled:
-            print(f"[+] 重复节点回填: +{backfilled} (继承真活代表节点的测活结果)")
-        if insecure_backfill:
-            print(f"    回填时拦截 insecure 克隆体: {insecure_backfill} 个 "
-                  f"(代表通过预筛但重复项关闭证书校验 — 已拦截, 未入库)")
-        if equiv_backfill:
-            print(f"    回填时拦截配置不一致克隆体: {equiv_backfill} 个 "
-                  f"(同凭据但 path/obfs/sni 等路由字段不同 → 与服务端行为不等价, "
-                  f"不继承测活结论, 未入库)")
-        test_results = expanded
+    # 4.5 ★ v3.2 已删除: 重复节点回填 (旧 DEDUP_MAP 继承逻辑)。
+    #   去重后移到测活阶段后, 重复 URI 不再被提前剔除, 各自进测活被
+    #   dedup_gate 挡掉 — 每个进 test_results 的节点都是真跑过测活的,
+    #   "继承代表结论"失去意义, 连同 P0-2 insecure 复查 / equiv 兜底
+    #   两层补丁一并删除 (设计文档第 12 节有完整评估).
 
 
     # 5. ★ 家宽链式复测: 用最快存活节点做前置双跳复测家宽候选

@@ -4,34 +4,19 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇸🇪 瑞典 (Sweden) 01 3040K 🇨🇳 - NEKO
-  server: se1.h1cloud.net
-  port: 26128
+- name: 🇸🇪 瑞典 (Sweden) 01 ⚠S382K 🇨🇳 - NEKO
+  server: 88.216.223.66
+  port: 443
   udp: true
   type: vless
-  uuid: 68c3d665-b2b5-4ffb-9f37-9f3d8c47324d
+  uuid: 244d9eab-3311-40c7-b47f-4968dc3088a6
   tls: true
   reality-opts:
-    public-key: sACiHit5lNtPRK_eFP6jT8dMPUZ4kQRsfPj_LL5p7Uk
-    short-id: 13ac4d3bdadf1ea1
-  servername: www.icloud.com
-  client-fingerprint: chrome
-  network: grpc
-  grpc-opts:
-    grpc-service-name: df50147201bf
-- name: 🇸🇪 瑞典 (Sweden) 02 2966K 🇨🇳 - NEKO
-  server: se1.h1cloud.net
-  port: 26100
-  udp: true
-  type: vless
-  uuid: 68c3d665-b2b5-4ffb-9f37-9f3d8c47324d
-  tls: true
-  reality-opts:
-    public-key: 1uuvuG2Jl_o6yoVvOYm3hEboArh2Znu7zCy4Tqj36TI
-    short-id: 8045087bda646f1b
-  servername: www.icloud.com
-  client-fingerprint: qq
-- name: 🇸🇪 瑞典 (Sweden) 03 4486K 🇨🇳 - NEKO
+    public-key: drl7nndYdfzZY1aQ0eUAWmNV0nsHig2uDnu9siy9biQ
+    short-id: 868419504747f6de
+  servername: tcpswed1.figurapn.ru
+  client-fingerprint: ''
+- name: 🇸🇪 瑞典 (Sweden) 02 3685K 🇨🇳 - NEKO
   server: 62.60.159.81
   port: 2053
   udp: true
@@ -42,7 +27,7 @@ proxies:
     public-key: ygmJxS-Mc7g0buNSUTVGhazT-FoBjyYtLLfUYIQxFTw
     short-id: d0ea1847066af5a6
   servername: www.samsung.com
-  client-fingerprint: safari
+  client-fingerprint: chrome
   network: grpc
   grpc-opts:
     grpc-service-name: grpce5bb9e71
@@ -51,16 +36,14 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇸🇪 瑞典 (Sweden) 01 3040K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 2966K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 03 4486K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 ⚠S382K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 3685K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇸🇪 瑞典 (Sweden) 01 3040K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 2966K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 03 4486K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 ⚠S382K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 3685K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

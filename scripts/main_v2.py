@@ -123,7 +123,6 @@ SOURCE_URLS = [
     "https://www.ermao.net/sub/v2ray/ermao.net",
     "https://gist.githubusercontent.com/shuaidaoya/9e5cf2749c0ce79932dd9229d9b4162b/raw/base64.txt",
     "https://raw.githubusercontent.com/awesome-vpn/awesome-vpn/master/all",
-    "https://raw.githubusercontent.com/ZYFXS/ZYFXS001/refs/heads/main/3v-youtube%40ZYFXS",
     "https://gist.githubusercontent.com/guidongone/72bdfb8a20164bac35debfb182ed646d/raw/864533db03b328588c8543bb78bd90fed2664259/V2ray261003.txt",
     "https://raw.githubusercontent.com/cbusifabcap/daily_free_vpn/refs/heads/main/Z.txt",
     "https://raw.githubusercontent.com/ebrasha/free-v2ray-public-list/refs/heads/main/V2Ray-Config-By-EbraSha.txt",
@@ -134,8 +133,8 @@ SOURCE_URLS = [
     "https://www.xrayvip.com/free.txt",
     "https://raw.githubusercontent.com/MatinGhanbari/v2ray-configs/main/subscriptions/v2ray/super-sub.txt",
     "https://raw.githubusercontent.com/snakem982/proxypool/main/source/v2ray-2.txt",
-    "https://raw.githubusercontent.com/ZYFXS/ZYFXS001/refs/heads/main/youtube%40ZYFXS--5v",
     "https://gist.githubusercontent.com/guidongone/ac60f0dfeff1a514ebbf795af03abc7f/raw/61620b2129097d1aad6b4f6910ccce98219ce38f/V2ray261011.txt",
+    "https://shadowmere.xyz/api/b64sub/",
 ]
 
 OUTPUT_DIR = "output"

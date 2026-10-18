@@ -4,7 +4,15 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇭🇰 中国香港 (Hong Kong) 01 3029K ⚠P - NEKO
+- name: 🇭🇰 中国香港 (Hong Kong) 01 2030K 🇨🇳 - NEKO
+  server: node1.luoye.ee
+  port: 443
+  udp: true
+  type: trojan
+  password: 55b36ea5-12b3-4640-a87a-fd011e717ffc
+  sni: node1.luoye.ee
+  skip-cert-verify: false
+- name: 🇭🇰 中国香港 (Hong Kong) 02 3090K ⚠P - NEKO
   server: 156.239.13.161
   port: 51443
   udp: true
@@ -17,27 +25,19 @@ proxies:
     short-id: aa5b653590725505
   servername: www.cloudflare.com
   client-fingerprint: chrome
-- name: 🇭🇰 中国香港 (Hong Kong) 02 919K 🇨🇳 - NEKO
-  server: node1.luoye.ee
-  port: 443
-  udp: true
-  type: trojan
-  password: 1d23fec1-1430-46d8-bba6-9a175136fcac
-  sni: node1.luoye.ee
-  skip-cert-verify: false
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇭🇰 中国香港 (Hong Kong) 01 3029K ⚠P - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 919K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 2030K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 3090K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇭🇰 中国香港 (Hong Kong) 01 3029K ⚠P - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 919K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 2030K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 3090K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

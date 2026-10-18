@@ -4,8 +4,20 @@
   },
   "outbounds": [
     {
+      "type": "trojan",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 01 2030K 🇨🇳 - NEKO",
+      "server": "node1.luoye.ee",
+      "server_port": 443,
+      "password": "55b36ea5-12b3-4640-a87a-fd011e717ffc",
+      "tls": {
+        "enabled": true,
+        "server_name": "node1.luoye.ee",
+        "insecure": false
+      }
+    },
+    {
       "type": "vless",
-      "tag": "🇭🇰 中国香港 (Hong Kong) 01 3029K ⚠P - NEKO",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 02 3090K ⚠P - NEKO",
       "server": "156.239.13.161",
       "server_port": 51443,
       "uuid": "3e4c67dd-eeaa-48ad-8066-0dca798cccb3",
@@ -25,36 +37,20 @@
       }
     },
     {
-      "type": "trojan",
-      "tag": "🇭🇰 中国香港 (Hong Kong) 02 919K 🇨🇳 - NEKO",
-      "server": "node1.luoye.ee",
-      "server_port": 443,
-      "password": "1d23fec1-1430-46d8-bba6-9a175136fcac",
-      "tls": {
-        "enabled": true,
-        "server_name": "node1.luoye.ee",
-        "insecure": false,
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      }
-    },
-    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇭🇰 中国香港 (Hong Kong) 01 3029K ⚠P - NEKO",
-        "🇭🇰 中国香港 (Hong Kong) 02 919K 🇨🇳 - NEKO"
+        "🇭🇰 中国香港 (Hong Kong) 01 2030K 🇨🇳 - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 02 3090K ⚠P - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇭🇰 中国香港 (Hong Kong) 01 3029K ⚠P - NEKO",
-        "🇭🇰 中国香港 (Hong Kong) 02 919K 🇨🇳 - NEKO"
+        "🇭🇰 中国香港 (Hong Kong) 01 2030K 🇨🇳 - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 02 3090K ⚠P - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

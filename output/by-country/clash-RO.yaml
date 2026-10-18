@@ -4,7 +4,17 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇷🇴 罗马尼亚 (Romania) 01 4463K 🇨🇳 - NEKO
+- name: 🇷🇴 罗马尼亚 (Romania) 01 ⚠S5681K 🇨🇳 - NEKO
+  server: 162.249.125.133
+  port: 443
+  udp: true
+  type: hysteria2
+  password: QCgqi_I4EkV8UR-OgQ_tG4EnVTEVvIyR2GgRBzrIn2s
+  sni: hy2-new.aspidnet.xyz
+  skip-cert-verify: false
+  obfs: salamander
+  obfs-password: c1b4086fea89914496c7e10967a419216566
+- name: 🇷🇴 罗马尼亚 (Romania) 02 4333K 🇨🇳 - NEKO
   server: 46.28.67.55
   port: 443
   udp: true
@@ -17,30 +27,13 @@ proxies:
     short-id: d06d78e974491b6e
   servername: www.cloudflare.com
   client-fingerprint: chrome
-- name: 🇷🇴 罗马尼亚 (Romania) 02 ⚠S5469K 🇨🇳 - NEKO
-  server: 162.249.125.133
-  port: 443
-  udp: true
-  type: hysteria2
-  password: QCgqi_I4EkV8UR-OgQ_tG4EnVTEVvIyR2GgRBzrIn2s
-  sni: hy2-new.aspidnet.xyz
-  skip-cert-verify: false
-  obfs: salamander
-  obfs-password: c1b4086fea89914496c7e10967a419216566
-- name: 🇷🇴 罗马尼亚 (Romania) 03 3801K 🇨🇳 - NEKO
-  server: 82.117.255.174
-  port: 443
+- name: 🇷🇴 罗马尼亚 (Romania) 03 ⚠S1494K ⚠P - NEKO
+  server: roxnsk.color-shop.ir
+  port: 8080
   udp: true
   type: vless
-  uuid: 679439c5-28f2-485e-af5f-60a5fcd9c36c
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: 0QDBHaCRO2dPeeSVy3B3R_U12ZOvbvWl1JTFW_ZcpD0
-    short-id: 31e91d43e553bf32
-  servername: gateway.icloud.com
-  client-fingerprint: chrome
-- name: 🇷🇴 罗马尼亚 (Romania) 04 4157K 🇨🇳 - NEKO
+  uuid: e3026ffb-cde6-4cfe-b4b7-f76d5264e969
+- name: 🇷🇴 罗马尼亚 (Romania) 04 4676K 🇨🇳 - NEKO
   server: 146.70.124.85
   port: 443
   udp: true
@@ -53,40 +46,23 @@ proxies:
     short-id: fe24f8a0a560056e
   servername: www.datadoghq.com
   client-fingerprint: chrome
-- name: 🇷🇴 罗马尼亚 (Romania) 05 ⚠S4435K ⚠P - NEKO
-  server: edge10.cyrionflare.com
-  port: 2052
-  udp: true
-  type: vless
-  uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
-- name: 🇷🇴 罗马尼亚 (Romania) 06 223K ⚠C - NEKO
-  server: bogging-eyeteeth-fly.freesocks.work
-  port: 443
-  udp: true
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: QFWzCw2uX9B9i6qAYeFBIE
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇷🇴 罗马尼亚 (Romania) 01 4463K 🇨🇳 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 02 ⚠S5469K 🇨🇳 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 03 3801K 🇨🇳 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 04 4157K 🇨🇳 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 05 ⚠S4435K ⚠P - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 06 223K ⚠C - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 01 ⚠S5681K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 02 4333K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 03 ⚠S1494K ⚠P - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 04 4676K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇷🇴 罗马尼亚 (Romania) 01 4463K 🇨🇳 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 02 ⚠S5469K 🇨🇳 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 03 3801K 🇨🇳 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 04 4157K 🇨🇳 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 05 ⚠S4435K ⚠P - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 06 223K ⚠C - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 01 ⚠S5681K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 02 4333K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 03 ⚠S1494K ⚠P - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 04 4676K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

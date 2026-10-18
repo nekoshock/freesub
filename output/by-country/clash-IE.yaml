@@ -4,31 +4,21 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇮🇪 爱尔兰 (Ireland) 01 ⚠S5656K 🇨🇳 - NEKO
-  server: 18.171.245.198
-  port: 443
-  udp: true
-  type: vless
-  uuid: 7060231d-b9ba-495f-a218-bf427940cf3e
-  network: h2
-  h2-opts:
-    host: []
-    path: /
-- name: 🇮🇪 爱尔兰 (Ireland) 02 2594K ⚠P - NEKO
+- name: 🇮🇪 爱尔兰 (Ireland) 01 796K ⚠P - NEKO
   server: 13.135.17.74
   port: 22223
   udp: true
   type: vless
   uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
-- name: 🇮🇪 爱尔兰 (Ireland) 03 1023K ⚠P - NEKO
+- name: 🇮🇪 爱尔兰 (Ireland) 02 ⚠S561K ⚠P - NEKO
   server: 13.135.17.74
-  port: 22224
+  port: 22222
   udp: true
   type: vless
   uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
-- name: 🇮🇪 爱尔兰 (Ireland) 04 ⚠S5866K ⚠P - NEKO
+- name: 🇮🇪 爱尔兰 (Ireland) 03 1248K ⚠P - NEKO
   server: 13.135.17.74
-  port: 22222
+  port: 22224
   udp: true
   type: vless
   uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
@@ -37,18 +27,16 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇮🇪 爱尔兰 (Ireland) 01 ⚠S5656K 🇨🇳 - NEKO
-  - 🇮🇪 爱尔兰 (Ireland) 02 2594K ⚠P - NEKO
-  - 🇮🇪 爱尔兰 (Ireland) 03 1023K ⚠P - NEKO
-  - 🇮🇪 爱尔兰 (Ireland) 04 ⚠S5866K ⚠P - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 01 796K ⚠P - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 02 ⚠S561K ⚠P - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 03 1248K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇮🇪 爱尔兰 (Ireland) 01 ⚠S5656K 🇨🇳 - NEKO
-  - 🇮🇪 爱尔兰 (Ireland) 02 2594K ⚠P - NEKO
-  - 🇮🇪 爱尔兰 (Ireland) 03 1023K ⚠P - NEKO
-  - 🇮🇪 爱尔兰 (Ireland) 04 ⚠S5866K ⚠P - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 01 796K ⚠P - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 02 ⚠S561K ⚠P - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 03 1248K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

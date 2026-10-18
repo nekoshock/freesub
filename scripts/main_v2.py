@@ -87,6 +87,8 @@ import platform
 import subprocess
 import threading
 import ipaddress
+import gzip
+import hashlib
 import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
@@ -546,6 +548,54 @@ SANITY_MEDIAN_MAX       = 3_000_000  # 全体测速中位数 > 3MB/s 判定为"�
 STAGE_B_WORST_SEC   = 52.5
 MAX_WORKERS_FETCH   = 8
 MAX_WORKERS_CLASSIFY = 32
+
+# ══════════════════════════════════════════════════════════════════
+# 跨次运行死节点缓存 (v3.3)
+#   ★ 动机 (CI 实测 2026-10-18): 一轮 20842 抓取 → 16737 静态预筛 →
+#     15467 端口预检 → 测活, 13680 个已处理里**只有 2192 过活性门槛**。
+#     84% 的候选死在测活期, 而"它已经死了"这件事在原架构里完全不留痕
+#     (test_single_node 的 5 个 return None 被 `if r:` 静默丢弃, 连计数
+#     都没有) —— 下一轮同样的死节点要重新花 8~12s × 上万个槽位重测。
+#   ★ 存储选 GitHub Actions cache 的理由 (三个位置都排除过):
+#     ✗ output/  — workflow 有 `git add -A output/`, 会把缓存提交进仓库
+#     ✗ runtime/ — 混装 sing-box 内核 + Country/ASN.mmdb, 且 download_file
+#                  L902 对其中文件"存在即跳过", 会被当内核缓存误判
+#     ✓ .cache/  — 新建目录, 只被 actions/cache restore/save 两个步骤碰
+#     ★ Python 无法自己读写 Actions cache (只能读写被 restore 到工作区的
+#       文件), 所以 workflow 侧必须加 restore + save 两步, 见设计文档。
+#   ★ 四层防误杀 (本功能最大风险 = 把"这轮环境挂了"固化成"节点永久死"):
+#     ① 连续两轮 (DEAD_MIN_HIT=2) —— 时序铁律: 剔除发生在测活**之前**,
+#        本轮的测试结果只能决定**下一轮**是否剔除;
+#     ② 环境故障闸: 新死亡 >80% 候选 且 >3000 条 → 本轮整轮不入缓存;
+#     ③ 剔除比例上限 (DEAD_DROP_MAX_RATIO): 防候选被清空到 0;
+#     ④ 抽样复测 (DEAD_RECHECK_N): 复活即删 + 让 hit 计数能持续累积。
+#   ★ 键复用 node_key (不含 exit_ip): 死节点本来就拿不到 exit_ip, 且
+#     绝不能用序号/下标 —— fetch_raw_nodes 返回 list(set), 顺序跨轮随机。
+# ══════════════════════════════════════════════════════════════════
+DEAD_CACHE_DIR        = os.path.join(BASEDIR, ".cache")
+DEAD_CACHE_SCHEMA     = 1                 # 序列化规则版本 → 键算法变了就 bump
+DEAD_CACHE_FILE       = os.path.join(DEAD_CACHE_DIR,
+                                      f"deadnodes-v{DEAD_CACHE_SCHEMA}.jsonl.gz")
+DEAD_CACHE_ENABLED    = os.environ.get("DEAD_CACHE", "1").strip().lower() \
+                        not in ("0", "false", "off")
+DEAD_CACHE_TTL_DAYS   = int(os.environ.get("DEAD_CACHE_TTL_DAYS") or 3)
+# ★ TTL 必须自己判, 不能靠 Actions cache 的"7 天未访问淘汰": 那 3~7 天
+#   的窗口里 Actions 照样会把缓存发下来, 免费节点寿命以天计, 拿 5 天前的
+#   死亡结论剔除今天的候选是纯误杀。
+DEAD_CACHE_TTL_SEC    = DEAD_CACHE_TTL_DAYS * 86400
+DEAD_MIN_HIT          = int(os.environ.get("DEAD_MIN_HIT") or 2)      # 连续两轮才固化
+DEAD_RECHECK_N        = int(os.environ.get("DEAD_RECHECK_N") or 50)   # 每轮抽样复测量
+DEAD_DROP_MAX_RATIO   = float(os.environ.get("DEAD_DROP_MAX_RATIO") or 0.70)
+DEAD_ROUND_FAIL_RATIO = 0.80              # 本轮新死亡占比阈值
+DEAD_ROUND_FAIL_MIN   = 3000              # 且绝对数阈值 (与条件, 防小池误触)
+
+# 死因码 (照抄 speed_fail_reason / cross_fail_names 的归因风格)
+DEAD_REASON_CHECK   = "schema"           # sing-box check≠0 → 确定性死, 重测不会好
+DEAD_REASON_PORT    = "socks_not_ready"  # 端口未就绪 → 瞬时为主 (进程崩溃/负载)
+DEAD_REASON_LIVE    = "liveness"         # 三源命中不足 → 瞬时为主 (实测占 84%)
+DEAD_REASON_LATENCY = "latency"          # 延迟超限 → 瞬时/体验性
+DEAD_REASON_STALLED = "stalled"          # 隧道通但速度不达标 (过了活性门槛)
+DEAD_REASON_EXCEPT  = "exception"        # 兜底 except → 环境级
 
 # ip-api.com 免费批量: 15 req/min, 每 req ≤100 IP (仅 HTTP)
 IP_API_BATCH_URL = "http://ip-api.com/batch?fields=status,countryCode,isp,org,as,asname,reverse,mobile,proxy,hosting,query"
@@ -1406,101 +1456,61 @@ def _tr_field(tr: dict, *keys, default=""):
     return default
 
 
-def cred_fingerprint(outbound: dict, proto: str) -> str:
-    """凭据+配置指纹: 四项全同 (server, port, proto, 指纹) 才判"同一节点"
+def canonical_outbound_fp(outbound: dict) -> str:
+    """节点配置身份指纹 = 整个 outbound dict 的规范化 JSON 序列化 (v3.3)
 
-    ★ v3 补全 (2026-10-16 审计): 把 P0-3 漏掉的服务端路由字段全部纳入 —
-      path/host (ws/h2/httpupgrade 的服务端路由目标)、obfs (hy2 的混淆密码,
-      服务端按它认证)、sni/alpn (证书与协商目标)、congestion_control/
-      udp_relay_mode (tuic 的会话行为)。缺任一都会让"同凭据不同配置"被
-      误判为同一节点 → 漏测 + 继承错误结论。
-    ★ 宁慢不错: 指纹失败 (异常) 返回 "" → 不合并, 两个都测。
+    ★ v3.3 换掉 v3.2 的手工枚举 cred_fingerprint() —— 根治那一类漏洞:
+      旧实现逐协议手写字段表, 每加一个解析器字段就要补一次, 漏读即
+      "同凭据不同配置被判为同一节点" → 漏测 + 继承错误结论。
+      已实证漏读 5 类 (每一类都会误杀真实存在的不同节点):
+        · uTLS fp             — L1011/L1022/L1172 生成了, 旧指纹却不读
+        · h2/httpupgrade host — 旧实现只读 transport.headers.Host, 而 h2
+          写在 transport["host"] (L1053, list)、httpupgrade 也写在
+          transport["host"] (L1062, str) → 全漏。CDN 分流场景高发
+        · grpc service_name   — 路由目标 (L1047/L1132), 不在旧指纹里
+        · vmess alpn/insecure — 旧 vless 分支有, vmess 分支整段没有
+        · 裸 TCP transport.type — L1031-1032 对 tcp/none/raw 返回 None,
+          该位恒空
+      改成序列化整个 outbound → 漏读在结构上不可能发生。
+      ★ 严格超集证明: 旧指纹读的每个字段都存在于 outbound 之中, 即其
+        字段集是 outbound 字段集的真子集 → 新指纹只会减少错杀, 绝不新增。
+
+    规范化规则 (每条都对应一个具体的误杀/漏杀风险):
+      ① 剔除 tag: 8 个解析器恒写死 "node" (L1079/1106/1159/1213/L1238/
+         L1305/L1331/L1354), 带上只是噪声。
+      ② dict 键排序: json.dumps(sort_keys=True) — 解析顺序与语义无关。
+      ③ list 保序: alpn / server_ports / h2 host 都有序语义, 排序会把
+         "顺序不同"压成"相同" → 新增错杀。保序只会把不同判为不同
+         (多测几个, 宁慢不错), 方向安全。
+      ④ type 敏感: json.dumps 天然区分 1 / "1" / true。旧实现用
+         str(int(bool(x))) 把它们全压成同一个 "1", 是主动的类型混淆。
+      ⑤ 异常兜底: 返回 "" → 调用方必须「空指纹不合并」(宁慢不错)。
+
+    ★ hy2 server_ports 纳入键 (推翻 v3.2 L1473-1474 的手工排除):
+      键的语义从「凭据身份」变成了「客户端配置身份」, 跳跃区间是配置的
+      一部分。且 parse_hysteria2 L1252-1273 已把裸端口与区间统一规范
+      成 "s:s", 不会因写法差异炸出假重复。hy2 只占 1.4% (220 个),
+      最坏多测 220 个 ≈ 37 秒, 正确性优先。
+
+    ★ 本函数已知不覆盖的 (解析器本身有损, 新旧指纹同样受影响, 本次不修):
+      vless 的 packetEncoding/domainStrategy/multiplex/headerType/seed/
+      mode(gun vs grpc 都归 grpc); vmess 的 scy (L1110 硬编码覆盖成
+      "auto") 与 type(http 伪装); _parse_transport L1064 对未知 network
+      静默返回 None (tcp/quic/kcp/无type 四者等价)。这些节点之间仍会
+      互相误杀 —— 但这是**解析阶段**丢的信息, 任何基于 outbound 的指纹
+      都救不回来, 需要在 parser 层修 (见设计文档第 15 节)。
     """
     try:
-        tls = outbound.get("tls") or {}
-        tr = outbound.get("transport") or {}
-        tr_host = (tr.get("headers") or {}).get("Host", "") if isinstance(tr.get("headers"), dict) else ""
-        if proto == "vless":
-            reality = tls.get("reality") or {}
-            # 关键区分字段: 缺任一都会让"同 uuid 不同配置"被误判为同一节点
-            #   flow            — xtls-vision 与空 flow 的握手行为不同
-            #   server_name     — SNI 决定证书校验目标与 CDN 回源
-            #   insecure        — 是否校验证书, 直接影响 MITM 风险
-            #   public_key      — Reality 握手核心, 不同就连不上 (最高区分度)
-            #   short_id        — Reality 短 ID, 服务端按它路由
-            #   transport.type  — tcp/ws/grpc/http 的转发路径完全不同
-            #   path/host       — ws/h2 的服务端路由目标, 不同 path 服务端转发到不同入口
-            #   max_early_data  — 0-RTT 行为差异
-            #   alpn            — h2 协商差异
-            return "|".join([
-                str(outbound.get("uuid", "")),
-                str(outbound.get("flow", "")),
-                str(tls.get("server_name", "")),
-                str(int(bool(tls.get("insecure")))),
-                str(reality.get("public_key", "")),
-                str(reality.get("short_id", "")),
-                str(tr.get("type", "")),
-                str(_tr_field(tr, "path")),
-                str(tr_host),
-                str(tr.get("max_early_data", "")),
-                ",".join(tls.get("alpn") or []),
-            ])
-        if proto == "vmess":
-            # alter_id 区分旧/新协议模式; path/host 是 ws/h2 的服务端路由目标
-            return "|".join([
-                str(outbound.get("uuid", "") or outbound.get("user_id", "")),
-                str(outbound.get("alter_id", "")),
-                str(tr.get("type", "")),
-                str(tls.get("server_name", "")),
-                str(_tr_field(tr, "path")),
-                str(tr_host),
-                str(tr.get("max_early_data", "")),
-            ])
-        if proto == "trojan":
-            # sni 是实际路由目标; transport/path 决定走哪条转发路径
-            return "|".join([
-                str(outbound.get("password", "")),
-                str(tls.get("server_name", "")),
-                str(tr.get("type", "")),
-                str(_tr_field(tr, "path")),
-                str(tr_host),
-                ",".join(tls.get("alpn") or []),
-            ])
-        if proto == "shadowsocks":
-            # ss 无 TLS/传输层路由参数, method+password 即全部身份
-            return f"{outbound.get('method','')}|{outbound.get('password','')}"
-        if proto == "hysteria2":
-            # ★ server_ports 已从指纹移除: 它是端口跳跃的**路由参数**而非身份凭据,
-            #   同密码不同端口范围本质是同一份凭据 (跳跃由同一服务端处理)。
-            #   ★ 但 sni/obfs 必须纳入: obfs-password 服务端按它认证, 不同就连不上;
-            #     sni 决定证书校验目标。
-            obfs = outbound.get("obfs") or {}
-            return "|".join([
-                str(outbound.get("password", "") or ""),
-                str(tls.get("server_name", "")),
-                str(obfs.get("type", "")),
-                str(obfs.get("password", "") or ""),
-                ",".join(tls.get("alpn") or []),
-            ])
-        if proto == "tuic":
-            # congestion_control/udp_relay_mode 影响会话行为; sni/alpn 影响协商
-            return "|".join([
-                str(outbound.get("uuid", "")),
-                str(outbound.get("password", "")),
-                str(tls.get("server_name", "")),
-                ",".join(tls.get("alpn") or []),
-                str(outbound.get("congestion_control", "")),
-                str(outbound.get("udp_relay_mode", "")),
-            ])
-        if proto == "anytls":
-            return "|".join([
-                str(outbound.get("password", "")),
-                str(tls.get("server_name", "")),
-                ",".join(tls.get("alpn") or []),
-            ])
-        return json.dumps({k: v for k, v in outbound.items()
-                           if k in ("uuid", "password", "user_id", "method")}, sort_keys=True)
+        obj = {k: v for k, v in outbound.items() if k != "tag"}
+        return json.dumps(obj, sort_keys=True, ensure_ascii=False,
+                          separators=(",", ":"))
     except Exception:
+        # ★ 宽兜底而非只捕 (TypeError, ValueError): 上面的字典推导会先
+        #   迭代 outbound.items(), 而 items() 是**调用方提供的对象**上的
+        #   方法 —— 任何异常都可能在那里抛出 (不只是序列化阶段的 TypeError)。
+        #   本函数的契约是"指纹失败就返回空串、调用方据此不合并", 所以
+        #   任何异常都必须被吞掉, 否则一个畸形节点会让整个去重阶段崩掉。
+        #   (实测: 自定义 dict 子类覆写 items() 抛 RuntimeError 即可复现)
         return ""  # 指纹失败 → 不合并 (宁慢不错)
 
 
@@ -1523,54 +1533,383 @@ def cred_fingerprint(outbound: dict, proto: str) -> str:
 #   "继承代表结果"失去意义 (评估结论见设计文档第 12 节)。
 # ══════════════════════════════════════════════════════════════════
 
-def full_node_key(outbound: dict, proto: str, server: str, port: int,
-                  exit_ip: str = "") -> str:
-    """完整节点身份键 (v3.2 测活期查重用): 入口 + 完整凭据指纹 + 真实出口 IP
+# ══════════════════════════════════════════════════════════════════
+# 节点配置身份键 (v3.3) + 测前去重
+#
+# ★ v3.3 变更 (2026-10-18): 去重从 v3.2 的「测活期查重」**前移到测前**。
+#   v3.2: 测前不去重 → 每个节点建隧道 (6~26s) 拿到真实信息后才比对 → 
+#         重复节点只能省下测速段 (12~25s), 省不掉前置开销。
+#   v3.3: 测前按「客户端配置身份」去重 → 重复节点连 sing-box 都不启动。
+#         判重键不再含 exit_ip, 因此完全可以在**零网络零进程**时算完。
+#   ★ 为什么移除 exit_ip (它是 v3.2 最大的开销来源):
+#     exit_ip 是**服务端运行时属性**, 不是客户端配置属性。把它放进键里
+#     会造成: 同一份配置因服务端轮换出口 → 判为不同节点 → 订阅里出现
+#     两条配置完全相同的条目, 而出口由服务端负载均衡决定、**用户无法
+#     控制**, 留两条纯是噪音。
+#     出口维度的去重覆盖**没有丢**, 只是换到更准的层: classify 阶段的
+#     三套 exit_ip 去重 (L4048 exit_ip:port / L4370 裸 exit_ip /
+#     L4650 家宽合并 exit_ip:port) 都跑在**真实测活之后**, 拿到的是
+#     exit_ip 真值, 比测前静态判断更准。
+# ══════════════════════════════════════════════════════════════════
 
-    三者全同 = 同一节点的重复收录 (免费池常态: 同一节点 30+ 个不同名字)。
-    出口 IP 入键的原因: 同一份配置轮换多个出口 (中转) 时, 不同落地值得
-    分别保留; 入口+指纹相同且出口相同, 则必为真重复。
+def node_key(outbound: dict, proto: str, server: str, port: int) -> str:
+    """节点配置身份键 = 入口 + 完整 outbound 序列化 (v3.3, 不含 exit_ip)
+
+    入口三元组 + 凭据/配置全字段全同 = 同一份客户端配置。
+    ★ 服务器小写归一 (DNS 大小写不敏感); 不做 DNS 解析 ——
+      "1.2.3.4" 与 "example.com" 指向同机时不该强行合并 (那是同机不同
+      入口, 服务端可能配了不同的路由/限速), 保持字面判定更保守。
     """
     return "|".join([
         (server or "").lower(),
-        str(port),
+        str(int(port)),
         proto,
-        cred_fingerprint(outbound, proto),
-        exit_ip or "",
+        canonical_outbound_fp(outbound),
     ])
 
 
-# 注册表: 完整节点键 → True (仅登记**测活成功**的节点)。
-#   run_liveness_test 每轮 reset; 24 并发下读写必须加锁 (读-改-写非原子,
-#   无锁会漏计 — 与端点熔断器同款教训)。
-_DEDUP_LOCK = threading.Lock()
-_DEDUP_REGISTRY = {}
+def dedup_candidates(candidates: list) -> tuple:
+    """测前去重: 同一份客户端配置只保留一个代表。返回 (kept, stats)
 
+    ★ 为什么能在测活前做: 键 = node_key, 纯本地计算 (json.dumps),
+      零网络零进程。免费池里同一份配置被 30 个源以不同名字收录是常态,
+      而名字 (#fragment) 从不进 outbound —— 8 个解析器全部写死
+      "tag": "node" (L1079/1106/1159/1213/1238/1305/1331/1354),
+      所以「同一节点 30 个不同名字」能被完整命中, 不需要名字参与判定。
 
-def _reset_dedup_registry():
-    """每轮测活开始前清空注册表"""
-    with _DEDUP_LOCK:
-        _DEDUP_REGISTRY.clear()
+    ★ 单线程调用, seen 是纯局部 → 无锁。对照 _DEDUP_REGISTRY 为什么必须
+      加 _DEDUP_LOCK: 那是 24 并发 worker 共享的读-改-写, 不是原子操作。
+      本函数在 main() 里单线程调用一次, 不存在这种竞争。
 
+    ★ 空指纹**不进 seen** —— v3.2 的 full_node_key L1538 把空串直接拼进
+      键, 两个指纹失败的**不同**配置会撞成同一个键 → 误杀。本次修掉。
 
-def dedup_gate(key: str) -> bool:
-    """测活期查重闸: 该完整节点键是否已被**成功节点**占用。
-
-    True = 重复 (调用方应立即截断, 跳过后续测活步骤);
-    False = 新节点 (继续正常测活)。
-    ★ 只挡"已成功"的键: 同节点的多个副本在有一个成功前都有机会 —
-      瞬时波动不会丢节点; 代价是并发窗口内同批副本可能同时漏过
-      (都完整测), 由 classify 阶段 exit_ip:port 去重最终收敛,
-      不影响交付正确性 (只多花几秒测速)。
+    ★ "代表失败即全丢" 的语义 (v3.1 及更早就是这样, 本次不引入新的):
+      同 server:port 的多个副本 TCP 可达性是服务端属性, 所以把去重放在
+      端口预检**之前**并不会让"代表被预检淘汰但副本本该通过" ——
+      反而比 v3.1 更安全 (v3.1 去重在预检之后, 代表可能被预检淘汰)。
     """
-    with _DEDUP_LOCK:
-        return key in _DEDUP_REGISTRY
+    seen, kept = set(), []
+    dropped = nofp = 0
+    for item in candidates:
+        raw, outbound, server, port, proto = item
+        fp = canonical_outbound_fp(outbound)
+        if not fp:
+            nofp += 1
+            kept.append(item)      # 指纹失败 → 保留, 不参与去重 (宁慢不错)
+            continue
+        k = (server.lower(), int(port), proto, fp)
+        if k in seen:
+            dropped += 1
+            continue
+        seen.add(k)
+        kept.append(item)
+    return kept, {"input": len(candidates), "kept": len(kept),
+                  "dropped": dropped, "no_fingerprint": nofp}
+
+# ══════════════════════════════════════════════════════════════════
+# 死节点缓存读写 (v3.3)
+#   本脚本第一个**跨进程持久化**模块 —— 此前所有缓存 (_DNS_CACHE /
+#   _RDNS_CACHE / _DNS_POLLUTION_CACHE / _CB_STATE) 都是进程内内存字典,
+#   随进程消失。没有先例可抄, 故参照 download_file (L899-941) 的四个
+#   约定: 存在性检查 / .tmp 原子替换 / 失败清理 / 半截文件容错。
+# ══════════════════════════════════════════════════════════════════
+
+def _now_ts() -> int:
+    return int(time.time())
 
 
-def dedup_register(key: str):
-    """测活成功后登记完整节点键 (供后续副本查重)"""
-    with _DEDUP_LOCK:
-        _DEDUP_REGISTRY[key] = True
+def load_dead_cache() -> dict:
+    """载入死节点缓存 → {node_key: {h, r, f, l, s}}
+
+    ★ 容错分级 (半截/损坏都不能让整轮崩溃):
+      ① 文件不存在 → 空 dict (首轮正常路径, 不是错误)
+      ② gzip 流损坏 → 空 dict + 告警。比"读出一半"安全: 半份数据可能
+         造成不该有的剔除, 而空缓存只是这轮多测一轮。
+      ③ header 版本不符 → 空 dict + 告警。键算法变了旧键全部失配, 留着
+         只会白占体积; 显式丢弃比静默失配干净 (否则日志上看不出为什么
+         去重命中率突然掉到 0)。
+      ④ 逐行解析失败 → 跳过该行 + 计数 + 告警。上次被 SIGKILL 写到一半
+         的最后一行是真实场景, 不是理论风险。
+      ⑤ 残留 .tmp → 忽略并删除 (写侧崩溃的遗留)。
+
+    ★ TTL 3 天在这里判 (见常量区的说明: 不能靠 Actions 的 7 天淘汰)。
+      判据用 max(l, s) 而非 l:
+        l = 最近一次**测活确认死亡**; 固化的节点此后不再被测, l 会停住
+        s = 最近一次**被剔除**(未测), 每轮剔除时刷新
+      用 max 保证"持续被剔除的活跃死条目不因 TTL 被清" —— 清了它下轮
+      就要重测 8~12s, 缓存白白损失。而真正长期不再出现在任何候选里的
+      (源下架了), 两者都不刷新, 3 天后自然清掉。
+      反之若把两者合并成一个"最后接触时间", 被持续剔除的节点每轮刷新
+      → 永不过期 → 缓存变成只增不减的黑洞。
+    """
+    cache = {}
+    if not DEAD_CACHE_ENABLED or not os.path.exists(DEAD_CACHE_FILE):
+        return cache
+    try:
+        stale = DEAD_CACHE_FILE + ".tmp"
+        if os.path.exists(stale):
+            os.remove(stale)              # ⑤
+    except OSError:
+        pass
+    try:
+        with gzip.open(DEAD_CACHE_FILE, "rt", encoding="utf-8") as f:
+            lines = f.readlines()
+    except Exception as e:
+        print(f"[!] 死节点缓存读取失败 ({str(e)[:70]}) — 本轮按空缓存处理")
+        return cache
+    if not lines:
+        return cache
+    try:
+        hdr = json.loads(lines[0])
+        if int(hdr.get("_v", 0)) != DEAD_CACHE_SCHEMA:
+            print(f"[!] 死节点缓存版本 {hdr.get('_v')} ≠ 当前 {DEAD_CACHE_SCHEMA}, "
+                  f"整份丢弃 (键算法可能已变, 留着只会白占体积)")
+            return cache
+    except Exception:
+        print("[!] 死节点缓存 header 损坏 — 本轮按空缓存处理")
+        return cache
+    now = _now_ts()
+    bad = expired = 0
+    for ln in lines[1:]:                                   # ④
+        ln = ln.strip()
+        if not ln:
+            continue
+        try:
+            rec = json.loads(ln)
+            k = rec["k"]
+            rec["h"] = int(rec.get("h", 1))
+            rec["f"] = int(rec.get("f", now))
+            rec["l"] = int(rec.get("l", now))
+            rec["s"] = int(rec.get("s", 0))
+        except Exception:
+            bad += 1
+            continue
+        if now - max(rec["l"], rec["s"]) > DEAD_CACHE_TTL_SEC:
+            expired += 1
+            continue
+        cache[k] = rec
+    if bad or expired:
+        print(f"[!] 死节点缓存: 坏行 {bad} (半截/格式错) | "
+              f"TTL>{DEAD_CACHE_TTL_DAYS}天丢弃 {expired} | 有效 {len(cache)}")
+    else:
+        _solid = sum(1 for v in cache.values() if v["h"] >= DEAD_MIN_HIT)
+        print(f"[*] 死节点缓存载入: {len(cache)} 条 "
+              f"(已固化 h>={DEAD_MIN_HIT} {_solid} 条, 具备下轮剔除资格)")
+    return cache
+
+
+def save_dead_cache(cache: dict) -> bool:
+    """原子写出死节点缓存 (照抄 download_file 的 .part → os.replace 模式)
+
+    排序输出: 同内容 → 同字节, 便于人工 diff 与排查。
+    """
+    if not DEAD_CACHE_ENABLED:
+        return False
+    os.makedirs(DEAD_CACHE_DIR, exist_ok=True)
+    tmp = DEAD_CACHE_FILE + ".tmp"
+    try:
+        with gzip.open(tmp, "wt", encoding="utf-8", compresslevel=6) as f:
+            f.write(json.dumps({"_v": DEAD_CACHE_SCHEMA, "_n": len(cache),
+                                "_saved": _now_ts()}, sort_keys=True) + "\n")
+            for k in sorted(cache):
+                f.write(json.dumps(cache[k], sort_keys=True,
+                                   separators=(",", ":")) + "\n")
+        os.replace(tmp, DEAD_CACHE_FILE)      # 原子替换: 半截文件永不出现在正式路径
+        print(f"[+] 死节点缓存已写盘: {len(cache)} 条 / "
+              f"{os.path.getsize(DEAD_CACHE_FILE) / 1024:.0f}KB "
+              f"({os.path.relpath(DEAD_CACHE_FILE, BASEDIR)})")
+        return True
+    except Exception as e:
+        print(f"[!] 死节点缓存写盘失败 ({str(e)[:70]}) — 下轮按空缓存处理 (不致命)")
+        try:
+            if os.path.exists(tmp):
+                os.remove(tmp)
+        except OSError:
+            pass
+        return False
+
+
+def update_dead_cache(cache: dict, observed_dead: list,
+                      observed_alive: set = None) -> tuple:
+    """用本轮测活结果更新缓存 → (cache, stat)
+
+    ★★★ 时序铁律 (本功能最容易错的地方) ★★★
+      剔除发生在**测活之前** (select_dead_nodes), 所以本轮的测试结果
+      **只能决定下一轮**是否剔除, 不能决定本轮。这里的 hit+1 写进磁盘,
+      最早生效于下一轮的 load。
+
+      两轮时序表:
+        轮 N   读到 h=1 的条目 → 不具备剔除资格 → 照常测 → 若又死, 落盘 h=2
+        轮 N+1 读到 h=2 → **这轮就剔除**, 不再测 (除非被抽样抽中)
+
+    observed_dead: [(node_key, reason), ...] 本轮采集到的全部死亡 (含 is_stalled)
+    observed_alive: set(node_key) 本轮测活通过且非 stalled 的节点键
+                    (抽样复测的节点也在内 → 复活就走这条路径被删除)
+
+    语义:
+      · 死亡且不在缓存 → 新建 hit=1 (第一轮, **不剔除**, 本轮已照常测过)
+      · 死亡且已在缓存 → hit += 1, l=now, reason 刷新为本轮原因
+      · 存活且在缓存   → **删除该条** (复活)
+      · 未出现在本轮候选里 (源下架) → 不动, 靠 TTL 自然清
+    """
+    now = _now_ts()
+    stat = {"new": 0, "bump": 0, "revived": 0, "solid": 0}
+    observed_alive = observed_alive or set()
+    for k in observed_alive:
+        if cache.pop(k, None) is not None:
+            stat["revived"] += 1
+    for k, reason in observed_dead:
+        cur = cache.get(k)
+        if cur is None:
+            cache[k] = {"k": k, "h": 1, "r": reason,
+                        "f": now, "l": now, "s": 0}
+            stat["new"] += 1
+        else:
+            cur["h"] += 1
+            cur["l"] = now
+            cur["r"] = reason
+            stat["bump"] += 1
+    stat["solid"] = sum(1 for v in cache.values() if v["h"] >= DEAD_MIN_HIT)
+    return cache, stat
+
+
+def dead_cache_round_guard(cache: dict, stat: dict, n_candidates: int) -> bool:
+    """环境级故障闸: False = 本轮死亡数据整轮不入缓存
+
+    ★ 为什么必须有这道闸 (本功能唯一的灾难性风险):
+      若某轮 runner 网络整体故障 / DNS 解析批量失败 / 源集体返回垃圾配置,
+      会有**上万节点在同一轮全部判死**。此时"连续两轮"门槛在"两轮都坏"
+      的情形下形同虚设, 而固化后下轮它们全被剔除 → 候选被清空。
+      正常轮次的新死亡占比约 43% (6600 死 / 15467 候选), 阈值 0.80 留了
+      1.86 倍余量; 绝对数 3000 与比例是**与**关系, 小池子不会因比例高误触。
+
+    ★ 缓解链的底座 (最坏后果的边界):
+      main() 已有 `if not candidates: return` 会保留上次 output。所以即便
+      上面所有防护全部失效, 最坏后果是"连续几轮拿不到新节点", 而不是
+      "发布空订阅"。这一条是整个功能的安全底座。
+    """
+    fresh = stat["new"]
+    if n_candidates >= DEAD_ROUND_FAIL_MIN and \
+            fresh > n_candidates * DEAD_ROUND_FAIL_RATIO:
+        print(f"[!] ★死节点缓存闸: 本轮新增死亡 {fresh} 条 (占候选 "
+              f"{fresh * 100.0 / max(n_candidates, 1):.0f}%, 阈值 "
+              f"{DEAD_ROUND_FAIL_RATIO:.0%}) → 判环境级故障, 本轮数据不入缓存")
+        print(f"    → 沿用上一轮缓存 ({len(cache)} 条); "
+              f"请检查日志里是否有源批量失败 / DNS 批量失败 / 网络故障")
+        return False
+    return True
+
+
+def flush_dead_cache(cache: dict, observed_dead=None, observed_alive=None,
+                     n_candidates: int = 0) -> bool:
+    """把本轮结果合入缓存并写盘。返回是否真的写了。
+
+    ★ 早写原则: 调用点在测活**之后立刻**执行, 不等 classify/导出 ——
+      Actions cache 只在作业成功结束时才保存, 若等到 main() 末尾才写,
+      一旦后续阶段崩溃/被并发限制杀掉就白丢一轮数据。文件早落盘, 剩下
+      的只是"没被 Actions 存下来"这一个环节。
+    """
+    if not DEAD_CACHE_ENABLED:
+        return False
+    if observed_dead is not None:
+        cache, stat = update_dead_cache(cache, observed_dead, observed_alive)
+        if stat["new"] or stat["bump"] or stat["revived"]:
+            print(f"[+] 死节点更新: 新增 {stat['new']} | hit累加 {stat['bump']} | "
+                  f"复活删除 {stat['revived']} | 已固化(h>={DEAD_MIN_HIT}) {stat['solid']}")
+            _rr = Counter(r for _k, r in observed_dead)
+            if _rr:
+                print("    本轮死因分布: "
+                      + " | ".join(f"{k}:{v}" for k, v in _rr.most_common(6)))
+        if not dead_cache_round_guard(cache, stat, n_candidates):
+            return False      # 环境级故障 → 沿用上一轮, 不写盘
+    return save_dead_cache(cache)
+
+
+def _dead_hash(k: str) -> int:
+    """确定性哈希 (md5 而非内置 hash) —— 跨进程稳定, 不受 PYTHONHASHSEED 影响
+
+    ★ 为什么不用内置 hash(): str hash 默认随机化, 同一份缓存文件在两次
+      运行里会得到不同的抽样结果, 日志无法复盘, 且"每轮剔同一批"的
+      上限保护会退化成随机抖动。
+    """
+    return int(hashlib.md5(k.encode("utf-8", "replace")).hexdigest()[:8], 16)
+
+
+def select_dead_nodes(candidates: list, cache: dict) -> tuple:
+    """用死节点缓存剔除候选 (测活之前执行) → (kept, dropped)
+
+    dropped: [(key, item, record), ...] 保留原始 item 是因为缓存里只有键、
+      没有 outbound, 抽样复测要把它放回候选必须用原 item。
+
+    ★ 三重闸:
+      ① h >= DEAD_MIN_HIT (连续两轮) —— TTL 已在 load_dead_cache 判过
+      ② DEAD_DROP_MAX_RATIO: 剔除量硬上限。按 _dead_hash 升序取到该比例
+         为止, 其余照常进测活 —— 防"缓存占满 + 某轮候选全是它们"把候选
+         清空到 0。按哈希序而非随机, 保证每轮被截断的是同一批。
+
+    ★ 被剔除的条目 last_skip = now, 这是"持续剔除就不该过期"的实现;
+      它靠抽样复测保持 hit 的活性 (否则固化的节点永不被测, h 永远停在
+      DEAD_MIN_HIT, TTL 到期后又要全部重测一遍)。
+    """
+    if not cache or not DEAD_CACHE_ENABLED:
+        return candidates, []
+    solid = {k: v for k, v in cache.items() if v["h"] >= DEAD_MIN_HIT}
+    if not solid:
+        return candidates, []
+    kept, dropped = [], []
+    for it in candidates:
+        try:
+            k = node_key(it[1], it[4], it[2], it[3])
+        except Exception:
+            kept.append(it)
+            continue
+        if k in solid:
+            dropped.append((k, it, solid[k]))
+        else:
+            kept.append(it)
+    total = len(kept) + len(dropped)
+    limit = int(total * DEAD_DROP_MAX_RATIO)
+    if len(dropped) > limit:
+        # ★ 上限截断在**小样本**下偏保守: 3 个候选 × 0.70 → int() 得 2,
+        #   会留 1 个照常测活。生产环境候选量在万级, 这个比例上限只在
+        #   "缓存占满候选池"时才真正生效, 小样本行为无实际影响。
+        #   节点总数守恒 (截断时多余项回到 kept), 不会有节点凭空消失。
+        dropped.sort(key=lambda d: _dead_hash(d[0]))
+        kept.extend(d[1] for d in dropped[limit:])
+        dropped = dropped[:limit]
+    now = _now_ts()
+    for k, _it, rec in dropped:
+        rec["s"] = now
+    if dropped:
+        print(f"[+] ★死节点缓存剔除: {len(dropped)}/{total} 候选命中已固化死节点 "
+              f"(连续{DEAD_MIN_HIT}轮 + TTL{DEAD_CACHE_TTL_DAYS}天), 提前不进测活")
+        print(f"   预估省下 {len(dropped) * STAGE_B_WORST_SEC / MAX_WORKERS_TEST / 60:.1f} 分钟 "
+              f"(每节点省最多 {STAGE_B_WORST_SEC:.0f}s 阶段B 开销)")
+        _d = Counter(_rec.get("r", "?") for _k, _i, _rec in dropped)
+        print("    死因分布: " + " | ".join(f"{k}:{v}" for k, v in _d.most_common(5)))
+    return kept, dropped
+
+
+def pick_dead_recheck(dropped: list, limit: int) -> list:
+    """从被剔除条目里确定性抽样 limit 个放回候选 → [item, ...]
+
+    ★ 为什么不用 random.sample: fetch_raw_nodes 返回 list(set), 顺序跨轮
+      不确定 —— random 会让"这轮抽到哪些"变成纯随机, 日志无法复盘。
+      md5(key) 升序取前 limit 个: ① 跨进程稳定 ② 每轮键集变了, 抽样
+      集合自然跟着变 (不是永远只抽同一批) ③ 均匀覆盖全池而非字典序前缀。
+
+    ★ 这同时是 hit 计数能持续累积的**唯一途径**: 固化后的节点若永不被测,
+      h 永远停在 DEAD_MIN_HIT, TTL 到期后它们会被全部清掉、下一轮又要
+      从头重新积累两轮才具备剔除资格 —— 缓存自己把自己废掉了。
+
+    ★ 成本量级: DEAD_RECHECK_N / 候选数 ≈ 50/15467 = 0.32%, 可忽略。
+      这 50 个换来的"复活捕捉 + hit 活性"是缓存不腐化的前提, 极划算。
+    """
+    if limit <= 0 or not dropped:
+        return []
+    ordered = sorted(dropped, key=lambda d: _dead_hash(d[0]))
+    return [it for _k, it, _r in ordered[:limit]]
 
 
 def final_gate(nodes: list, require_cn_signal: bool = False,
@@ -1710,7 +2049,6 @@ def static_prescreen(candidates: list) -> list:
     print(f"[+] 静态预筛通过: {len(kept)} | 剔除关闭证书校验: {dropped}"
           + (f" ({detail})" if detail else ""))
     return kept
-
 
 
 def parse_node_uri(uri: str):
@@ -2166,8 +2504,42 @@ def _is_speed_shortcircuit(speed_bps: int, speed_retest: int,
     return False
 
 
+def _sink_fail(sink, reason: str, item) -> None:
+    """把一次死亡判定记进 sink (跨次运行死节点缓存的采集点)
+
+    ★ 为什么需要它: test_single_node 的 5 个 `return None` 让"这个节点死了"
+      在返回值层面**完全不可见** —— run_liveness_test 的 `if r:` 静默丢弃,
+      调用方既不知道死了多少, 也拿不到死因。本函数是让"死"留痕的唯一途径。
+
+    ★ 为什么 sink 是 list 而不是回调/模块级全局 dict:
+      test_single_node 跑在 24 并发 worker 里, 每个 worker 在自己的调用栈
+      里建一个局部 list → **天然无竞争, 不需要锁**。这与 _DEDUP_REGISTRY
+      形成对照: 那个是跨 worker 共享的读-改-写, 必须加 _DEDUP_LOCK, 否则
+      会漏计 (v3.2 注释里记着这个教训)。合并在主线程 fut.result() 处
+      单线程 extend, 全程单线程写入。
+
+    ★ 为什么用可选入参而不是模块级全局 list:
+      ① 零竞争(同上); ② chain_retest 也调本函数 (lite=True), 显式不传
+      sink → 链式复测的"双跳死"天然不会污染单跳死节点缓存; ③ None 语义
+      完全不变 —— 5 个 return None 照旧返回 None, 下游 _work / _chain_one
+      零改动。
+
+    ★ item 必须是原始五元组 (raw, outbound, server, port, proto):
+      node_key 需要 outbound 算凭据指纹, 而解包失败时这些变量还没绑定 ——
+      所以传 item 而不是解包后的散装参数。解包/算键失败会被这里的 try
+      吞掉: 记不出键就不记, 不制造垃圾条目。
+    """
+    if sink is None:
+        return
+    try:
+        _, outbound, server, port, proto = item
+        sink.append((node_key(outbound, proto, server, port), reason))
+    except Exception:
+        return
+
+
 def test_single_node(item, keep_alive_check=True, chain_relay: dict = None,
-                     lite: bool = False, dedup_check: bool = True):
+                     lite: bool = False, fail_sink: list = None):
     """返回 dict 或 None; 含: 活性/延迟/出口IP/国家/ASN/ISP/速度/MITM/回国方向
 
     chain_relay: 可选的 sing-box outbound dict, 作为前置跳板 (detour 双跳)。
@@ -2189,32 +2561,54 @@ def test_single_node(item, keep_alive_check=True, chain_relay: dict = None,
       ③ 丢包探测 + 回国方向探测并发 —— 回国探测新增的耗时蹭丢包的等待窗口,
          净增 ≈ 0
       ④ 首测已低于吞吐门槛 → 跳过 1MB 复测 (注定断流, 省 4s × 大量节点)
+
+    fail_sink (v3.3 新增): 可选的 list, 收集本次判定为"死"的 (node_key, reason)。
+      ★ 为什么要它: 本函数有 5 个 `return None` (check≠0 / 端口未就绪 /
+        三源命中不足 / 延迟超限 / 兜底异常), 而"死"在返回值层面**完全不可见**
+        —— 调用方的 `if r:` 会静默丢弃, 于是"死多少、死在哪一环"一个字都看不到
+        (实测一轮 13680 个里只有 2192 过门槛, 另外 11488 个怎么死的完全没有记录)。
+        跨次运行死节点缓存需要这份数据才能判断"连续两轮都死"。
+      ★ 每个 worker 传自己的局部 list → 24 并发下零竞争, 不需要锁。
+      ★ chain_retest (lite=True) 不传 → 链式的"双跳死"不污染单跳缓存。
+      ★ None 语义完全不变, 5 个 return None 照旧返回 None, 下游零改动。
     """
-    raw, outbound, server, port, proto = item
-    socks_port = _alloc_socks_port()
-    task_id = uuid.uuid4().hex[:10]
-    cfg_path = os.path.join(RUNTIME_DIR, f"sb_{task_id}.json")
-
-    # 链式前置 (chain relay): 由调用方显式传入 (chain_retest 用, 模拟 v2rayN 链式)
-    config = build_test_config(outbound, socks_port, chain_relay=chain_relay)
-    with open(cfg_path, "w", encoding="utf-8") as f:
-        json.dump(config, f)
-
-    exe = SINGBOX_BIN + (".exe" if os.name == "nt" else "")
-
-    # --- 0) sing-box check 预校验: 快速淘汰 schema 错误 (实测可发现 2022 密钥长度/端口区间等错误) ---
-    try:
-        chk = subprocess.run([exe, "check", "-c", cfg_path],
-                             capture_output=True, text=True, timeout=15,
-                             creationflags=(subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0))
-        if chk.returncode != 0:
-            return None  # 配置级错误 → 该节点无法被 sing-box 使用, 必淘汰
-    except Exception:
-        pass  # check 本身失败不阻止后续 run 尝试
-
+    # ★ v3.3 健壮性修复: 原来下面 5 行 (解包 item / _alloc_socks_port /
+    #   build_test_config / 写 runtime/sb_*.json) 都在 try **之外**
+    #   (try 从 sing-box check 之后才开始) —— 任何异常 (畸形 item、端口耗尽、
+    #   磁盘满) 都会穿透 _work → fut.result() 重抛 → **整个测活阶段崩掉**,
+    #   一轮白跑。另外 check≠0 的 return None 不经过 finally → 配置文件
+    #   残留 (每轮几百个 sb_*.json 堆在 runtime/)。
+    #   现在整段纳入同一个 try/finally: 异常统一归为 DEAD_REASON_EXCEPT,
+    #   且 cfg_path 由 finally 无条件清理。
     proc = None
     result = None
+    cfg_path = None
     try:
+        raw, outbound, server, port, proto = item
+        socks_port = _alloc_socks_port()
+        task_id = uuid.uuid4().hex[:10]
+        cfg_path = os.path.join(RUNTIME_DIR, f"sb_{task_id}.json")
+
+        # 链式前置 (chain relay): 由调用方显式传入 (chain_retest 用, 模拟 v2rayN 链式)
+        config = build_test_config(outbound, socks_port, chain_relay=chain_relay)
+        with open(cfg_path, "w", encoding="utf-8") as f:
+            json.dump(config, f)
+
+        exe = SINGBOX_BIN + (".exe" if os.name == "nt" else "")
+
+        # --- 0) sing-box check 预校验: 快速淘汰 schema 错误 (实测可发现 2022 密钥长度/端口区间等错误) ---
+        try:
+            chk = subprocess.run([exe, "check", "-c", cfg_path],
+                                 capture_output=True, text=True, timeout=15,
+                                 creationflags=(subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0))
+            if chk.returncode != 0:
+                # ★ 确定性死: schema 错误重测也不会好, 是死节点缓存里最值得
+                #   固化的那类 (对比 liveness/端口未就绪等瞬时死)
+                _sink_fail(fail_sink, DEAD_REASON_CHECK, item)
+                return None  # 配置级错误 → 该节点无法被 sing-box 使用, 必淘汰
+        except Exception:
+            pass  # check 本身失败不阻止后续 run 尝试
+
         proc = subprocess.Popen(
             [exe, "run", "-c", cfg_path],
             stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
@@ -2233,6 +2627,9 @@ def test_single_node(item, keep_alive_check=True, chain_relay: dict = None,
             except Exception:
                 time.sleep(0.15)
         if not ready:
+            # ★ 瞬时为主: 进程崩溃可能是配置错, 也可能是端口冲突/机器负载,
+            #   代码捕获不到崩溃原因 (stdout/stderr 全 DEVNULL) → 归为瞬时
+            _sink_fail(fail_sink, DEAD_REASON_PORT, item)
             return None
 
         proxies = {"http": f"socks5h://127.0.0.1:{socks_port}",
@@ -2309,23 +2706,28 @@ def test_single_node(item, keep_alive_check=True, chain_relay: dict = None,
             exit_ip, exit_country, exit_asn, exit_asn_org, exit_isp = ip_fut.result()
 
         if alive_hits < MIN_LIVENESS_HITS:
+            # ★ 瞬时为主: 三源取二的设计本身就是为容忍抖动 (L2258-2259 注释
+            #   "该源明确拒绝 = 选择性转发, 不直接判死, 交给 MIN_LIVENESS_HITS
+            #   裁决")。实测这一类占全部死亡的 84% —— 所以死节点缓存必须靠
+            #   "连续两轮"门槛, 单轮判死绝不能信。
+            _sink_fail(fail_sink, DEAD_REASON_LIVE, item)
             return None
         # 延迟上限门槛: 活性过了但延迟过高的节点体验极差, 此前延迟只排序不淘汰
         if latency_ms > MAX_LATENCY_MS:
+            _sink_fail(fail_sink, DEAD_REASON_LATENCY, item)
             return None
 
-        # --- 2.5) v3.2 测活期查重闸: "完整真实信息 + 指纹" 已就位 ---
-        #   到这一步, 完整配置 (outbound) + 真实出口 IP/ASN + 活性/延迟全拿到了,
-        #   与**已成功测活**的节点注册表按完整键比对:
-        #     重复 → 当场截断, 后续测活 (MITM/测速/丢包/回国/网页) 全部跳过;
-        #     未重复 → 继续正常测活, 成功后注册 (见下方 is_stalled 判定后)。
-        #   ★ lite 模式不查重: 链式复测的对象本就是已注册的成功节点,
-        #     查了会被全部挡掉。
-        if dedup_check:
-            dup_key = full_node_key(outbound, proto, server, port, exit_ip or "")
-            if dedup_gate(dup_key):
-                return {"_dup_skipped": True, "raw": raw,
-                        "server": server, "port": port, "proto": proto}
+        # --- 2.5) v3.3: 测活期查重闸已整体删除 ---
+        #   旧方案在这里拿"配置 + 真实出口 IP"与已成功节点注册表比对, 重复
+        #   就截断后续测活。但它位置太靠后: sing-box check + 进程启动 +
+        #   三源探测 + 出口 IP 已经付掉了 6~26s, 查重只能省下测速段的
+        #   12~25s —— 而**真正该省的重复节点本该一次都不启动进程**。
+        #   v3.3 把去重前移到测活前 (dedup_candidates, 零网络零进程),
+        #   键也不再含 exit_ip, 所以这里天然不可能再有重复, 整段删除。
+        #   ★ 顺带修掉一个功能性 bug: 旧代码条件是 `if dedup_check:`
+        #     但注释写着"lite 模式不查重" —— 少了 `and not lite`, 而
+        #     chain_retest 调用时 dedup_check 取默认 True, 会 100% 命中
+        #     → 家宽候选全被误标 _chain_failed → 家宽专区永远为空。
 
         # --- lite 模式 (v3, 链式复测专用): 隧道通 + 出口正常 + 轻测速即判双跳可用 ---
         if lite:
@@ -2572,14 +2974,21 @@ def test_single_node(item, keep_alive_check=True, chain_relay: dict = None,
         is_stalled = speed_bps < speed_threshold
         is_premium = speed_bps >= SPEED_TIER_GOOD and not is_stalled
 
-        # --- v3.2 测活成功 → 登记完整节点键 (供后续副本查重) ---
-        #   ★ 只登记"成功"的节点: 判死者不占位 — 同节点的其他副本仍有补测
-        #     机会 (旧方案"代表失败即全丢"在此场景反而更脆)。
-        #   ★ 并发窗口说明: 24 并发下同批副本可能同时漏过注册表 (都完整测),
-        #     由 classify 阶段 exit_ip:port 去重最终收敛, 不影响交付正确性。
-        if dedup_check and not is_stalled:
-            dedup_register(full_node_key(outbound, proto, server, port,
-                                         exit_ip or ""))
+        # ★ v3.3: is_stalled (隧道通但速度不达标) 也要进死节点缓存。
+        #   它过了活性门槛, 却要跑完 测速+复测+交叉+丢包+回国+网页 五大步
+        #   才被判死 (实测最贵的一类死法, 单节点 16~25s), 而缓存能让它下轮
+        #   直接不进测活。
+        #   ★ 注意它是**返回值**不是 return None, 所以会进 results 并走完
+        #     classify/export 全流程 (只是被 is_stalled 过滤掉), 必须在这里
+        #     显式采集 —— 否则这一大类完全拿不到。
+        #   ★ 更新缓存时算 observed_alive 必须过滤掉 is_stalled, 否则同一条
+        #     会既"死"又"活", hit 与复活判定互相矛盾。
+        if is_stalled:
+            _sink_fail(fail_sink, DEAD_REASON_STALLED, item)
+
+        # ★ v3.3: 原此处有 "测活成功 → 登记完整节点键" 的 dedup_register
+        #   调用, 已随测活期查重闸整体删除 (见上方 2.5 的说明)。现在每个
+        #   进入测活的节点都是唯一配置, 无需再登记。
 
         result = {
             "raw": raw,
@@ -2631,6 +3040,10 @@ def test_single_node(item, keep_alive_check=True, chain_relay: dict = None,
         }
         return result
     except Exception:
+        # ★ v3.3: 环境级故障 (Popen 失败/二进制缺失/内存错误等), 不是节点问题。
+        #   仍记进 sink 是为了死因归因日志能看出"exception 计数异常高"这个
+        #   危险信号 (那意味着是环境炸了, 而不是一个批节点坏了)。
+        _sink_fail(fail_sink, DEAD_REASON_EXCEPT, item)
         return None
     finally:
         if proc and proc.poll() is None:
@@ -2639,11 +3052,15 @@ def test_single_node(item, keep_alive_check=True, chain_relay: dict = None,
                 proc.wait(timeout=3)
             except Exception:
                 pass
-        try:
-            if os.path.exists(cfg_path):
-                os.remove(cfg_path)
-        except OSError:
-            pass
+        # ★ v3.3: cfg_path 可能为 None —— 现在解包 item / 建配置都在 try 内,
+        #   若在最开头就抛异常 (畸形 item), cfg_path 仍是 None。旧代码里
+        #   cfg_path 声明在 try 外所以永远有值, 现在必须加守卫。
+        if cfg_path:
+            try:
+                if os.path.exists(cfg_path):
+                    os.remove(cfg_path)
+            except OSError:
+                pass
 
 
 def _apply_speed_sanity_guard(results: list) -> bool:
@@ -2687,40 +3104,69 @@ def _apply_speed_sanity_guard(results: list) -> bool:
     return False
 
 
-def run_liveness_test(candidates: list, prescore_map: dict = None) -> list:
+def run_liveness_test(candidates: list, prescore_map: dict = None) -> tuple:
+    """返回 (results, dead_records)
+
+    ★ v3.3 返回值变更: 由 list 改为 (results, dead_records)。
+      dead_records = [(node_key, reason), ...] —— 本轮所有判死的节点,
+      含 is_stalled (它走**返回值**路径, 不在 results 的死视角里)。
+      唯一调用点是 main(), 改签名成本为零, 换来死节点完全可观测
+      (此前 `if r:` 把 None 静默丢弃, 13680 个里另外 11488 个怎么死的
+      一个字都没有, 跨次缓存更无从谈起)。
+    """
     print(f"[*] sing-box 全协议真实测活: {len(candidates)} 节点 (并发 {MAX_WORKERS_TEST}) ...")
     results = []
+    dead_records = []
     done_count = [0]
-    dup_skipped = [0]      # v3.2: 测活期查重截断的重复节点计数
     # 端点熔断状态按轮次重置 —— 端点可达性会随时间漂移, 不跨轮沿用
     _reset_endpoint_breaker()
-    # v3.2: 查重注册表按轮次重置 (只登记本轮测活成功的节点)
-    _reset_dedup_registry()
+    # v3.3: 测活期查重注册表已删除 (去重前移到测前 dedup_candidates)
     # v3: 静态 CN 预测分随结果透传给 classify 阶段
     prescore_map = prescore_map or {}
 
+    # ★ v3.3 防御断言: 去重应该在测活前就完成, 候选集理应唯一。
+    #   不是性能优化, 而是"去重被绕过"的显式告警 —— 否则重复节点会各自
+    #   跑完整流程, 而日志上看不出任何异常 (这是 v3.2 查重闸恒不命中时
+    #   最容易被忽略的失败模式)。10 万次哈希 < 30ms, 可忽略不计。
+    _seen_keys = {node_key(it[1], it[4], it[2], it[3]) for it in candidates}
+    if len(_seen_keys) != len(candidates):
+        print(f"[!] 候选集含 {len(candidates) - len(_seen_keys)} 个重复配置 "
+              f"(dedup_candidates 被绕过?) — 重复项将各自跑完整流程")
+
     def _work(item):
-        r = test_single_node(item)
-        if r and r.get("_dup_skipped"):
-            # v3.2: 与已成功节点重复 → 已截断, 不计入结果 (后续测活全跳过)
-            dup_skipped[0] += 1
-            return None
+        # ★ 每个 worker 调用栈一个**独立局部 list** → worker 线程独占,
+        #   无锁 (对照: _DEDUP_REGISTRY 必须加 _DEDUP_LOCK, 因为它是跨
+        #   worker 共享的读-改-写)。合并在主线程做, 也是单线程。
+        fails = []
+        r = test_single_node(item, fail_sink=fails)
         if r:
             ps = prescore_map.get(item[0])
             if ps:
                 r["cn_prescore"], r["cn_prescore_flags"] = ps
-        return r
+        return r, fails
 
     with ThreadPoolExecutor(max_workers=MAX_WORKERS_TEST) as ex:
         futs = {ex.submit(_work, it): it for it in candidates}
         for fut in as_completed(futs):
             done_count[0] += 1
-            r = fut.result()
+            r, fails = fut.result()
+            dead_records.extend(fails)     # ★ 主线程单线程合并, 无竞争
             if r:
                 results.append(r)
             if done_count[0] % 40 == 0:
                 print(f"[*] 测活进度: {done_count[0]}/{len(candidates)}, "
-                      f"通过 {len(results)} (查重跳过 {dup_skipped[0]})")
+                      f"通过 {len(results)}")
+
+    # ★ v3.3 死亡归因日志 —— 此前这些信息完全不可见:
+    #   实测一轮 13680 个里只有 2192 过活性门槛, 另外那批怎么死的、死在哪
+    #   一环, 旧版一个字都没有 (被 `if r:` 静默丢弃)。现在直接可读, 也是
+    #   死节点缓存"哪类死值得固化"的判断依据 (schema 确定性死 vs liveness 瞬时死)。
+    _dead_measured = len(dead_records) + len(results) - 0
+    print(f"[+] ★死亡归因: 本轮判死 {len(dead_records)} 个 "
+          f"(占已测 {_dead_measured}, {len(dead_records) * 100.0 / max(_dead_measured, 1):.0f}%)")
+    if dead_records:
+        _dr = Counter(r for _k, r in dead_records)
+        print("    " + " | ".join(f"{k}:{v}" for k, v in _dr.most_common(6)))
 
     alive = [r for r in results if r["alive"] and not r["is_stalled"]]
     mitm = sum(1 for r in results if r["mitm_risk"])
@@ -2730,7 +3176,7 @@ def run_liveness_test(candidates: list, prescore_map: dict = None) -> list:
     retest_skipped = sum(1 for r in results if r.get("retest_skipped"))
     speeds = sorted((r["speed_bps"] for r in results if r["speed_bps"] > 0), reverse=True)
     print(f"[+] 测活完成: 真活 {len(alive)} | 断流淘汰 {stalled} (其中 {retest_skipped} 个首测即低于门槛, "
-          f"已跳过复测省 ~4s/个) | 查重跳过 {dup_skipped[0]} (v3.2 测活期去重, 未跑后续步骤) | MITM 风险 {mitm}")
+          f"已跳过复测省 ~4s/个) | 测活期死 {len(candidates) - len(results)} (未过门槛, v3.3 已改为测前去重, 此处仅统计) | MITM 风险 {mitm}")
 
     # ★ 2026-10-04 新增: 测速失败原因归集 (#67 事故时只能看到"最快 0KB/s",
     #   无法判断是端点 403 / 超时 / 样本不足 / 断流)。现在一眼能看出瓶颈在哪一环。
@@ -2838,7 +3284,7 @@ def run_liveness_test(candidates: list, prescore_map: dict = None) -> list:
         # 环境被短路时, 预筛阶段把明显慢的节点筛掉仍然有效, 只撤销"优选"分档
         pass
 
-    return results  # 保留全部信息, 分类阶段再决定去留
+    return results, dead_records  # results 保留全部信息, 分类阶段再决定去留
 
 
 # ═══════════════════════════════════════════N═══════════════════════
@@ -4923,7 +5369,7 @@ export default {{
 ## 🛠️ 项目使用说明
 1. **自动更新机制**：工作流每 6 小时全自动运行并刷新上述全部订阅与数据 (以 workflow 实际触发配置为准)。
 2. **测活标准**：节点必须通过 ① 静态预筛(剔除关闭证书校验) ② 端口预检 ③ sing-box 实际隧道跨源活性探测 (Google/Cloudflare/Microsoft 至少 2 源) ④ 真实出口 IP 穿透获取 (延迟 ≤ 1500ms) ⑤ 限时下载测速 (稳态吞吐 ≥ 200KB/s, 5MB 首测 + 1MB 复测取最小值 + Hetzner 物理机房交叉测速) ⑥ 丢包率 ≤ 25% ⑦ 首包 TTFB ≤ 1800ms ⑧ TLS 证书校验非 MITM, 方可入库。
-3. **去重时机 (v3.2 变更)**: 测前**不做**去重 (仅原有筛选); 每个节点进测活后, 先取完整真实信息 (含真实出口 IP) + 完整指纹, 与**已成功测活**的节点注册表按"完整节点信息+指纹"比对 — 重复则当场剔除并跳过该节点后续所有测活步骤; 未重复才继续测活, 成功后注册。因此每个进订阅的节点都真实跑过测活 (旧版"测前指纹去重 + 测后回填克隆体"已整体删除)。
+3. **去重时机 (v3.3 变更)**: 测前按 `node_key` (server|port|proto|整个 outbound 规范化序列化, **不含 exit_ip**) 去重 —— 零网络零进程, 重复节点连 sing-box 都不启动。指纹从手工枚举改为序列化整个 outbound, 漏读字段在结构上不可能再发生。出口维度的去重仍在 classify 阶段三套 (exit_ip:port / 裸 exit_ip / 家宽合并), 且它们跑在真实测活之后、拿到 exit_ip 真值。v3.2 的"测活期查重闸 + 已成功节点注册表"已整体删除 (它位置太靠后, 重复节点已付掉 6~26s 开销只能省 12~25s)。
 4. **国内可用性标准 (v3)**：入库后再过五路国内向信号 — ① 入口端口/协议伪装静态评分 (443/Reality/CDN 前置优先) ② 域名经大陆公共 DNS 与全球 DNS 对比, 被污染者打 ⚠D 并排除出国内友好订阅 ③ 入口 IP rDNS/ASN 精品网线路识别 (CN2 GIA/4837/CMI) ④ 经节点实测回国方向 (百度/B 站/京东可达性 + 国内公共 DNS 握手 RTT) ⑤ (可选) RIPE Atlas 中国大陆探针实测。综合分 ≥ {CN_FRIENDLY_MIN_SCORE} 且域名干净的节点进入**国内友好订阅** (cn-friendly), 节点名打 🇨🇳。
 5. **真实网页加载标准 (v3.1)**：通过吞吐门槛的节点追加经节点请求 wikipedia/github/google (只读响应头) — 204 端点与 CF 测速是对出口 IP 最宽容的目标, "延迟好看+测速过"的节点开普通网页照样可能 403/转圈 (机房 IP 被 Cloudflare WAF/Google 风控拦)。**三个目标全部不可达 → 判死**; 有被拦的打 ⚠B 标记 (IP 风控脏); 全通的在排序中加分。
 6. **多客户端兼容**：Clash / v2rayN / sing-box 全格式订阅。
@@ -4946,7 +5392,12 @@ def _verify_export_lineage(unique_nodes: list, test_results: list) -> bool:
       "没有未经测试的节点混进订阅"。这里用一次集合比对把它变成可验证的事实。
     ★ v3.2 起合法来源只剩一种: test_results 里的 raw — 跑过完整 sing-box
       测活 (或链式复测)。旧版还有第二种"回填克隆体"来源, 随回填删除一并
-      消失 — 现在每个进订阅的节点都真跑过测活, 校验比旧版更严更简单。
+      消失。
+    ★ v3.3 新增测前去重 (dedup_candidates) 后, 这个不变量**依然成立**,
+      不会因去重产生新告警: 被去重剔除的节点从不进入 candidates,
+      也就从不出现在 test_results / unique_nodes 任何一个集合里 ——
+      它是"从未测过", 而本函数校验的是"进订阅的都测过", 两者不冲突。
+      即"测前就被剔除" ≠ "未经测试却进了订阅"。
     """
     traced = set()
     for r in test_results:
@@ -4991,21 +5442,79 @@ def main():
             continue
         candidates.append((uri, outbound, server, port, proto))
 
-    # 2.5 ★ v3.2 流程变更: 测前去重已**删除** — 去重整体后移到测活阶段。
-    #   旧方案: 测前按 (server, port, proto, 指纹) 去重 → 只测代表 → 测后回填
-    #          克隆体 (继承结论)。问题: ① 指纹是静态设计, 漏一个字段就漏一类节点;
-    #          ② 进订阅的"克隆体"从未真测过, 靠继承结论; ③ 回填需要
-    #             insecure 复查 + equiv 兜底两层补丁。
-    #   新方案: 测前只筛不去重 → 每个节点进测活 → 拿到完整真实信息 (含真实
-    #          出口 IP) 后与"已成功测活"注册表按完整键比对 → 重复当场截断
-    #          (跳过后续全部测活) → 未重复才继续测, 成功后注册。
-    #          每个进订阅的节点都是真跑过测活的, 回填及两层补丁整体删除。
-    #   详见: full_node_key / dedup_gate / dedup_register (模块级) 与
-    #        设计文档第 12 节 (含回填必要性评估)。
+    # 2.5 ★ v3.3 流程变更: 去重回迁到**测前** (v3.2 曾后移到测活期)
+    #   v3.2 的做法: 测前不去重 → 每个节点建隧道 (6~26s) 拿到真实出口 IP
+    #     后与"已成功测活"注册表比对 → 重复才截断。问题:
+    #     ① 查重闸位置太靠后, 重复节点已经付掉了 sing-box check + 进程
+    #        启动 + 三源探测 + 出口 IP 的开销, 只能省下测速段 12~25s;
+    #     ② 闸门条件漏了 `and not lite`, 而 chain_retest 调用时取默认
+    #        True → 家宽候选 100% 命中 → 全被误标 _chain_failed;
+    #     ③ gate→register 之间有 12~25s 未注册窗口, 并发下同键副本
+    #        可同时放行; ④ 空指纹直接拼进键, 指纹失败的不同配置会撞键。
+    #   v3.3 的做法: 测前按**客户端配置身份**去重, 键 = node_key
+    #     (server|port|proto|整个 outbound 规范化序列化), 不含 exit_ip →
+    #     纯本地计算, 零网络零进程, 重复节点连 sing-box 都不启动。
+    #     指纹从"手工枚举字段"改成"序列化整个 outbound", 漏读在结构上
+    #     不可能再发生 (v3.2 的 cred_fingerprint 实证漏读 5 类字段)。
+    #   ★ 出口维度的去重没丢: classify 阶段三套 exit_ip 去重仍在, 且它们
+    #     跑在真实测活之后, 拿到的是 exit_ip 真值, 比测前静态判断更准。
+    #   详见: node_key / dedup_candidates (模块级) 与设计文档第 12 节。
 
     # 2.6 ★ 静态预筛 (零网络零进程): 砍掉主动关闭证书校验的节点
-    #     现在对全量候选执行 (测前已无去重, 不存在"同一垃圾节点重复报计数")
     candidates = static_prescreen(candidates)
+
+    # 2.65 ★ v3.3 测前去重: 同一份客户端配置只保留一个代表
+    #   ★ 关口位置裁决 (为什么放在端口预检之前):
+    #     ① 本关口是纯内存字典查表, 零网络零进程, 是所有关口里成本最低
+    #        的一档 —— 按"越便宜越该前置"原则必然在预检之前;
+    #     ② 预检 (prefilter_candidates) 只做 TCP connect(server_ip,port),
+    #        QUIC 类只验域名可解析 —— **两者都只看 server/port, 与 outbound
+    #        其余字段无关**。所以"先去重后预检"与"先预检后去重"砍掉的
+    #        节点集合完全相同, 但前者少做几千次无意义的 TCP 握手
+    #        (实测 16737→约 7700 候选, 预检墙钟 52s→24s);
+    #     ③ 唯一顾虑"代表被预检淘汰但副本本该通过"不存在: 同 server:port
+    #        的 TCP 可达性是服务端属性, 与凭据/配置无关。
+    #   ★ 先按 raw URI 排序: fetch_raw_nodes 返回 list(set), 顺序随
+    #     PYTHONHASHSEED 随机 → 排序让"保留哪个副本作代表"可复现。
+    candidates.sort(key=lambda it: it[0])
+    candidates, _dedup_stat = dedup_candidates(candidates)
+    _dd = _dedup_stat
+    if _dd["dropped"]:
+        print(f"[+] 测前去重: {_dd['input']} → {_dd['kept']} "
+              f"(剔除重复配置 {_dd['dropped']}, {_dd['dropped']*100.0/max(_dd['input'],1):.1f}%)")
+        print(f"    预估省下 {_dd['dropped']*STAGE_B_WORST_SEC/MAX_WORKERS_TEST/60:.1f} 分钟 "
+              f"(每节点省最多 {STAGE_B_WORST_SEC:.0f}s 阶段B 开销, 且省掉端口预检的 TCP 握手)")
+    if _dd["no_fingerprint"]:
+        print(f"[!] {_dd['no_fingerprint']} 个候选指纹生成失败, 已全部保留不参与去重 (宁慢不错)")
+    print(f"[*] 测前去重后协议分布: " + " | ".join(
+        f"{p}:{n}" for p, n in sorted(Counter(c[4] for c in candidates).items())))
+
+    # 2.66 ★ v3.3 跨次运行死节点缓存: 提前剔除"连续两轮都死"的节点
+    #   ★ 为什么也放在端口预检之前 (与去重同理):
+    #     ① 纯内存字典查表, 零网络零进程, 成本最低的一档;
+    #     ② 缓存里的死节点绝大多数是"端口 TCP 通、隧道死" —— 端口预检
+    #        (纯 TCP 握手) 对它们**根本砍不掉**。放在预检后剔除只能省测活
+    #        成本, 放在预检前则连预检一起省 (输入 16737→约 11787, -29.6%);
+    #     ③ 与测前去重的先后: 两种顺序下"进测活的唯一 node_key 集合"完全
+    #        相同 (同一配置的多个副本剔不剔都收敛到 1 个), 但"先剔死"让
+    #        后续预检/污染预查/预评分的输入更小 —— 净赚, 严格更优。
+    #   ★ 时序铁律: 剔除只读缓存里**上一轮落盘**的 h>=DEAD_MIN_HIT 条目。
+    #     本轮的测试结果只决定**下一轮**是否剔除。
+    dead_cache = load_dead_cache()
+    if dead_cache:
+        candidates, _dead_dropped = select_dead_nodes(candidates, dead_cache)
+        # 抽样复测: 放回少量已固化节点照常测, 复活即从缓存删除。
+        #   ★ 这同时是 hit 计数能持续累积的唯一途径 —— 固化后若永不被测,
+        #     h 永远停在 DEAD_MIN_HIT, TTL 到期后全部清掉、下一轮又要从头
+        #     积累两轮才具备剔除资格, 缓存自己把自己废掉了。
+        _recheck = pick_dead_recheck(_dead_dropped, DEAD_RECHECK_N)
+        if _recheck:
+            candidates = candidates + _recheck
+            print(f"[*] ★死节点抽样复测: 从被剔除的 {len(_dead_dropped)} 个里放回 "
+                  f"{len(_recheck)} 个照常测 (复活即从缓存删除; 也是 hit 能持续"
+                  f"累积的唯一途径)")
+    else:
+        _dead_dropped, _recheck = [], []
 
     # 2.7 ★ v3.2 顺序优化: 域名解析预热前移到此 (端口预检要逐域名解析,
     #     提前并发预热 → 预检内全部命中缓存); 而 **DNS 污染预查后移到端口
@@ -5033,10 +5542,26 @@ def main():
     print(f"[*] 静态 China 友好度预评分: 预测分 ≥{CN_FRIENDLY_MIN_SCORE} 的候选 {hi} 个 "
           f"(域名解析预热 {n_resolved} 个; 已按预测分降序进入测试)")
 
+    # ★ v3.3 新增诊断: prescore 分布直方图
+    #   为什么必须看: 上面那句"已按预测分降序进入测试"暗示排序在起作用,
+    #   但**从未验证过 prescore 真的有区分度**。若大量节点同分, 排序就退化
+    #   成近似稳定序, "高分先测"这一优化等于没做 (v3.3 没加时间预算,
+    #   排序目前只影响顺序不影响规模, 但一旦将来加预算/预算不足时,
+    #   排序质量就直接决定被砍掉的是不是低价值节点)。
+    #   同时打印 hi/candidates 比例: 该比例越低, 说明静态评分对未来加
+    #   "只测高分候选"的预算机制越友好。
+    _hist = Counter(prescore_map[it[0]][0] for it in candidates)
+    print("[*] prescore 分布 (验证排序区分度): " + " | ".join(
+        f"{s}分:{n}" for s, n in sorted(_hist.items(), reverse=True)[:12]))
+    print(f"    ≥{CN_FRIENDLY_MIN_SCORE} 分占比 {hi*100.0/max(len(candidates),1):.1f}% | "
+          f"分值跨度 {max(_hist) if _hist else 0}~{min(_hist) if _hist else 0} | "
+          f"取值档数 {len(_hist)}")
+
     proto_stat = {}
     for _, _, _, _, p in candidates:
         proto_stat[p] = proto_stat.get(p, 0) + 1
-    print(f"[*] 解析成功(去重后): {len(candidates)} | 失败 {parse_fail} | 协议分布 {proto_stat}")
+    print(f"[*] 静态预筛+去重后: {len(candidates)} (原始解析成功 {len(candidates)+_dd['dropped']}) | "
+          f"失败 {parse_fail} | 协议分布 {proto_stat}")
     if blacklist_hit:
         print(f"    占位/广告节点剔除: {blacklist_hit} (BLACKLIST_NAME_HINTS 命中)")
     if parse_fail_samples:
@@ -5046,16 +5571,46 @@ def main():
 
     if not candidates:
         print("[!] 无可测节点 (订阅源全部失效?) — 保留上次 output, 不覆盖订阅文件")
+        # ★ v3.3: 这里也要 flush 一次 —— 目的不是记新死亡, 而是把 load 时
+        #   按 TTL 丢弃掉的过期条目**真正落盘清掉**, 否则它们会在缓存里
+        #   再占 3 天 (每轮都被读进来又被丢, 只是没写回去而已)。
+        save_dead_cache(dead_cache)
         return
 
     # 4. 真实测活 (已按静态 CN 分降序, 高分先测; 端口预检已在 2.7 步完成)
-    test_results = run_liveness_test(candidates, prescore_map=prescore_map)
+    # ★ v3.3 返回值改为 (results, dead_records)
+    test_results, dead_records = run_liveness_test(candidates, prescore_map=prescore_map)
 
-    # 4.5 ★ v3.2 已删除: 重复节点回填 (旧 DEDUP_MAP 继承逻辑)。
-    #   去重后移到测活阶段后, 重复 URI 不再被提前剔除, 各自进测活被
-    #   dedup_gate 挡掉 — 每个进 test_results 的节点都是真跑过测活的,
-    #   "继承代表结论"失去意义, 连同 P0-2 insecure 复查 / equiv 兜底
-    #   两层补丁一并删除 (设计文档第 12 节有完整评估).
+    # 4.2 ★ v3.3 死节点缓存**早写**: 测活一结束就落盘, 不等 classify/导出。
+    #   ★ 为什么必须早写: Actions cache 只在**作业成功结束**时才保存 (被
+    #     并发限制杀掉 exit 143 时不保存)。若等到 main() 末尾才写, 后面任一
+    #     阶段崩溃/被杀就白丢一整轮的死节点数据, 缓存的 hit 累积被打回原点。
+    #     早写让文件先落盘, 剩下的只是"没被 Actions 存下来"这一个环节。
+    #   ★ observed_alive 必须过滤 is_stalled: is_stalled 同时被记进
+    #     dead_records (它是"残废") 和 results (它走返回值路径)。不过滤
+    #     就会同一条既死又活, hit 与复活判定互相矛盾。
+    try:
+        _alive_keys = set()
+        for _r in test_results:
+            if _r.get("alive") and not _r.get("is_stalled"):
+                _alive_keys.add(node_key(_r["outbound"], _r["proto"],
+                                         _r["server"], _r["port"]))
+        flush_dead_cache(dead_cache, observed_dead=dead_records,
+                         observed_alive=_alive_keys, n_candidates=len(candidates))
+    except Exception as e:
+        print(f"[!] 死节点缓存更新失败 ({str(e)[:70]}) — 不影响本轮交付")
+
+    # 4.5 ★ 重复节点回填仍是"已删除"状态 (v3.2 删除, v3.3 让删除更彻底)。
+    #   历史: v3.1 及更早 = 测前去重 + 测后回填克隆体 (未真测的节点继承
+    #   代表结论进订阅, 靠 P0-2 insecure 复查 + equiv 兜底两层补丁);
+    #   v3.2 = 去重后移到测活期, 靠注册表挡重复, 回填失去意义;
+    #   v3.3 = 去重回迁到测前 (dedup_candidates), 重复节点连 sing-box
+    #   都不启动 —— 比 v3.2 更省, 且同样保证"进订阅的都是真跑过测活的"。
+    #   ★ 关键不变式 (被 _verify_export_lineage 依赖): unique_nodes 的
+    #     唯一来源是 classify_and_export 逐条从 test_results 构造 (无回填
+    #     路径), 而 test_results 的每个元素都真跑过 test_single_node。
+    #     被测前去重/死缓存剔除的节点从不进入 candidates, 三个集合里都
+    #     不存在, 所以 _verify_export_lineage 不会因去重而误报。
 
 
     # 5. ★ 家宽链式复测: 用最快存活节点做前置双跳复测家宽候选
@@ -5121,7 +5676,7 @@ def main():
     # 统计报告
     elapsed = time.time() - t_start
     print("\n===== 运行报告 =====")
-    print(f"总耗时: {elapsed:.0f}s ({elapsed/60:.1f} 分钟) | 抓取 {len(raw_nodes)} → 静态预筛+去重后 {len(candidates)} → 真活 {len(test_results)} → 去重后 {len(unique_nodes)} → 家宽 {len(residential)} → 国内友好 {len(cn_friendly)}")
+    print(f"总耗时: {elapsed:.0f}s ({elapsed/60:.1f} 分钟) | 抓取 {len(raw_nodes)} → 静态预筛+去重 {len(candidates)} (测前去重剔除 {_dd['dropped']}) → 真活 {len(test_results)} → 出口去重后 {len(unique_nodes)} → 家宽 {len(residential)} → 国内友好 {len(cn_friendly)}")
     by_type = {}
     for n in unique_nodes:
         by_type[n["net_type"]] = by_type.get(n["net_type"], 0) + 1

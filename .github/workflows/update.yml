@@ -28,12 +28,35 @@ jobs:
         run: |
           pip install -r scripts/requirements.txt
 
+      # ★ v3.3 死节点缓存 restore — 必须在 checkout 之后、Run 之前
+      #   (checkout 会清理未跟踪文件, 先 restore 会被抹掉)
+      - name: Restore dead-node cache
+        uses: actions/cache/restore@v4
+        with:
+          path: .cache
+          # ★ key 含 run_id: Actions 缓存**不可覆盖**, save 时 key 已存在会报错。
+          #   所以每轮存一条新的, restore 靠 restore-keys 前缀回退到最近一条。
+          # ★ v1 与 main_v3.py 的 DEAD_CACHE_SCHEMA 联动: schema bump 时
+          #   两处一起改, 避免旧算法的键被新代码误用。
+          key: deadnodes-v1-${{ github.run_id }}
+          restore-keys: |
+            deadnodes-v1-
+
       - name: Run Real-Prober and Classifier (sing-box v1.14 全协议)
         run: |
           python scripts/main_v2.py
         env:
           # 便于 ip-api 等识别限速; GitHub runner 出口为美国 Azure
           PYTHONUNBUFFERED: '1'
+
+      # ★ v3.3 死节点缓存 save — 紧跟 Run 之后, 越早存越好
+      #   (Python 侧是早写 flush; 即使后面 classify/导出/提交失败, 缓存也已存住)
+      - name: Save dead-node cache
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: .cache
+          key: deadnodes-v1-${{ github.run_id }}
 
       - name: Upload test artifacts (调试用, 7天保留)
         uses: actions/upload-artifact@v4

@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇰🇷 韩国 (South Korea) 01 3709K 🇨🇳 - NEKO
+- name: 🇰🇷 韩国 (South Korea) 01 4010K 🇨🇳 - NEKO
   server: 64.176.231.183
   port: 443
   udp: true
@@ -16,16 +16,16 @@ proxies:
     public-key: GR_zPAgxF9PZ70Z9UpSmMlcd2STyoAC0fZTSHkTTCGE
     short-id: ca193e889d958f81
   servername: www.apple.com
-  client-fingerprint: firefox
-- name: 🇰🇷 韩国 (South Korea) 02 227K ⚠P - NEKO
-  server: 146.56.112.110
-  port: 8888
+  client-fingerprint: random
+- name: 🇰🇷 韩国 (South Korea) 02 3638K 🇨🇳 - NEKO
+  server: 3.34.192.47
+  port: 443
   udp: true
-  type: vmess
-  uuid: e7c302f3-90d6-42dd-9d7d-94a3683a3707
-  alterId: 0
-  cipher: auto
-- name: 🇰🇷 韩国 (South Korea) 03 ⚠S747K ⚠P⚠U - NEKO
+  type: trojan
+  password: UX82473651
+  sni: central-jawfish.rooster465.autos
+  skip-cert-verify: false
+- name: 🇰🇷 韩国 (South Korea) 03 4416K ⚠P⚠U - NEKO
   server: 152.67.200.82
   port: 50160
   udp: true
@@ -33,20 +33,7 @@ proxies:
   password: 3d7634af8cb2c6cb4bac1c0efad8b43d
   sni: 152-67-200-82.liao.kdns.fr
   skip-cert-verify: false
-- name: 🇰🇷 韩国 (South Korea) 04 3109K - NEKO
-  server: 132.145.80.230
-  port: 80
-  udp: true
-  type: vmess
-  uuid: 5155860e-d07d-46c3-9128-3afbd84626c7
-  alterId: 0
-  cipher: auto
-  network: ws
-  ws-opts:
-    path: /cctv13.m3u8
-    headers:
-      Host: kr02.a0a.xyz
-- name: 🇰🇷 韩国 (South Korea) 05 378K ⚠P - NEKO
+- name: 🇰🇷 韩国 (South Korea) 04 393K 🇨🇳 - NEKO
   server: 3.39.4.109
   port: 13672
   udp: true
@@ -58,16 +45,21 @@ proxies:
     public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
     short-id: 48050fab
   servername: www.apple.com
-  client-fingerprint: firefox
-- name: 🇰🇷 韩国 (South Korea) 06 451K 🇨🇳 - NEKO
-  server: pure-kodiak.rooster465.autos
-  port: 443
+  client-fingerprint: chrome
+- name: 🇰🇷 韩国 (South Korea) 05 ⚠S402K ⚠P - NEKO
+  server: 3.39.4.109
+  port: 18967
   udp: true
-  type: trojan
-  password: UX82473651
-  sni: pure-kodiak.rooster465.autos
-  skip-cert-verify: false
-- name: 🇰🇷 韩国 (South Korea) 07 4439K ⚠P⚠U - NEKO
+  type: vless
+  uuid: 814bd064-544d-4255-a070-5705c03f6da9
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
+    short-id: 48050fab
+  servername: www.apple.com
+  client-fingerprint: edge
+- name: 🇰🇷 韩国 (South Korea) 06 ⚠S3396K ⚠P⚠U - NEKO
   server: 150-230-252-217.liao.kdns.fr
   port: 50160
   udp: true
@@ -75,38 +67,94 @@ proxies:
   password: 9cfc9458e48c028ec03ff86ebc71c744
   sni: 150-230-252-217.liao.kdns.fr
   skip-cert-verify: false
-- name: 🇰🇷 韩国 (South Korea) 08 646K ⚠P - NEKO
-  server: p141.panda001.net
-  port: 4652
+- name: 🇰🇷 韩国 (South Korea) 07 2403K 🇨🇳 - NEKO
+  server: 43.201.100.203
+  port: 443
   udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: qwerREWQ@@
+  type: trojan
+  password: UX82473651
+  sni: optimum-snapper.rooster465.autos
+  skip-cert-verify: false
+- name: 🇰🇷 韩国 (South Korea) 08 3944K ⚠P - NEKO
+  server: 151.245.106.49
+  port: 2053
+  udp: true
+  type: vless
+  uuid: a2de9567-9646-45a9-a410-7303a43bdb6c
+  tls: true
+  reality-opts:
+    public-key: F6C33iIbfmt1mUsuLTarIC8ygdHKMqsaGvrSQltyxUo
+    short-id: 429499c03d4cc8a0
+  servername: www.cloudflare.com
+  client-fingerprint: firefox
+- name: 🇰🇷 韩国 (South Korea) 09 2211K 🇨🇳 - NEKO
+  server: 3.35.168.225
+  port: 443
+  udp: true
+  type: trojan
+  password: UX82473651
+  sni: noted-cougar.rooster465.autos
+  skip-cert-verify: false
+- name: 🇰🇷 韩国 (South Korea) 10 ⚠S1684K 🇨🇳 - NEKO
+  server: pure-kodiak.rooster465.autos
+  port: 443
+  udp: true
+  type: trojan
+  password: UX82473651
+  sni: pure-kodiak.rooster465.autos
+  skip-cert-verify: false
+- name: 🇰🇷 韩国 (South Korea) 11 567K ⚠P - NEKO
+  server: 183.109.131.75
+  port: 20086
+  udp: true
+  type: vmess
+  uuid: b26c4803-0bca-467c-a245-c9a80bdd72ec
+  alterId: 0
+  cipher: auto
+  network: ws
+  ws-opts:
+    path: /
+- name: 🇰🇷 韩国 (South Korea) 12 3282K 🇨🇳 - NEKO
+  server: pretty-rat.rooster465.autos
+  port: 443
+  udp: true
+  type: trojan
+  password: UX82473651
+  sni: pretty-rat.rooster465.autos
+  skip-cert-verify: false
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇰🇷 韩国 (South Korea) 01 3709K 🇨🇳 - NEKO
-  - 🇰🇷 韩国 (South Korea) 02 227K ⚠P - NEKO
-  - 🇰🇷 韩国 (South Korea) 03 ⚠S747K ⚠P⚠U - NEKO
-  - 🇰🇷 韩国 (South Korea) 04 3109K - NEKO
-  - 🇰🇷 韩国 (South Korea) 05 378K ⚠P - NEKO
-  - 🇰🇷 韩国 (South Korea) 06 451K 🇨🇳 - NEKO
-  - 🇰🇷 韩国 (South Korea) 07 4439K ⚠P⚠U - NEKO
-  - 🇰🇷 韩国 (South Korea) 08 646K ⚠P - NEKO
+  - 🇰🇷 韩国 (South Korea) 01 4010K 🇨🇳 - NEKO
+  - 🇰🇷 韩国 (South Korea) 02 3638K 🇨🇳 - NEKO
+  - 🇰🇷 韩国 (South Korea) 03 4416K ⚠P⚠U - NEKO
+  - 🇰🇷 韩国 (South Korea) 04 393K 🇨🇳 - NEKO
+  - 🇰🇷 韩国 (South Korea) 05 ⚠S402K ⚠P - NEKO
+  - 🇰🇷 韩国 (South Korea) 06 ⚠S3396K ⚠P⚠U - NEKO
+  - 🇰🇷 韩国 (South Korea) 07 2403K 🇨🇳 - NEKO
+  - 🇰🇷 韩国 (South Korea) 08 3944K ⚠P - NEKO
+  - 🇰🇷 韩国 (South Korea) 09 2211K 🇨🇳 - NEKO
+  - 🇰🇷 韩国 (South Korea) 10 ⚠S1684K 🇨🇳 - NEKO
+  - 🇰🇷 韩国 (South Korea) 11 567K ⚠P - NEKO
+  - 🇰🇷 韩国 (South Korea) 12 3282K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇰🇷 韩国 (South Korea) 01 3709K 🇨🇳 - NEKO
-  - 🇰🇷 韩国 (South Korea) 02 227K ⚠P - NEKO
-  - 🇰🇷 韩国 (South Korea) 03 ⚠S747K ⚠P⚠U - NEKO
-  - 🇰🇷 韩国 (South Korea) 04 3109K - NEKO
-  - 🇰🇷 韩国 (South Korea) 05 378K ⚠P - NEKO
-  - 🇰🇷 韩国 (South Korea) 06 451K 🇨🇳 - NEKO
-  - 🇰🇷 韩国 (South Korea) 07 4439K ⚠P⚠U - NEKO
-  - 🇰🇷 韩国 (South Korea) 08 646K ⚠P - NEKO
+  - 🇰🇷 韩国 (South Korea) 01 4010K 🇨🇳 - NEKO
+  - 🇰🇷 韩国 (South Korea) 02 3638K 🇨🇳 - NEKO
+  - 🇰🇷 韩国 (South Korea) 03 4416K ⚠P⚠U - NEKO
+  - 🇰🇷 韩国 (South Korea) 04 393K 🇨🇳 - NEKO
+  - 🇰🇷 韩国 (South Korea) 05 ⚠S402K ⚠P - NEKO
+  - 🇰🇷 韩国 (South Korea) 06 ⚠S3396K ⚠P⚠U - NEKO
+  - 🇰🇷 韩国 (South Korea) 07 2403K 🇨🇳 - NEKO
+  - 🇰🇷 韩国 (South Korea) 08 3944K ⚠P - NEKO
+  - 🇰🇷 韩国 (South Korea) 09 2211K 🇨🇳 - NEKO
+  - 🇰🇷 韩国 (South Korea) 10 ⚠S1684K 🇨🇳 - NEKO
+  - 🇰🇷 韩国 (South Korea) 11 567K ⚠P - NEKO
+  - 🇰🇷 韩国 (South Korea) 12 3282K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

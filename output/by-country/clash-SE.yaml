@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇸🇪 瑞典 (Sweden) 01 6059K 🇨🇳 - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 01 4445K 🇨🇳 - NEKO
   server: 88.216.223.66
   port: 443
   udp: true
@@ -15,46 +15,21 @@ proxies:
     public-key: drl7nndYdfzZY1aQ0eUAWmNV0nsHig2uDnu9siy9biQ
     short-id: 868419504747f6de
   servername: tcpswed1.figurapn.ru
-  client-fingerprint: firefox
-- name: 🇸🇪 瑞典 (Sweden) 02 ⚠S5379K 🇨🇳 - NEKO
-  server: se1.h1cloud.net
-  port: 26128
+  client-fingerprint: ''
+- name: 🇸🇪 瑞典 (Sweden) 02 215K 🇨🇳 - NEKO
+  server: edge-lab-b.10media.top
+  port: 443
   udp: true
   type: vless
-  uuid: 68c3d665-b2b5-4ffb-9f37-9f3d8c47324d
+  uuid: 9cb8d71c-fe06-4402-a591-eaa1f173b890
   tls: true
-  reality-opts:
-    public-key: sACiHit5lNtPRK_eFP6jT8dMPUZ4kQRsfPj_LL5p7Uk
-    short-id: 13ac4d3bdadf1ea1
-  servername: www.icloud.com
-  client-fingerprint: safari
+  servername: edge-lab-b.10media.top
+  skip-cert-verify: false
+  client-fingerprint: ios
   network: grpc
   grpc-opts:
-    grpc-service-name: df50147201bf
-- name: 🇸🇪 瑞典 (Sweden) 03 6819K 🇨🇳 - NEKO
-  server: se1.h1cloud.net
-  port: 26100
-  udp: true
-  type: vless
-  uuid: 68c3d665-b2b5-4ffb-9f37-9f3d8c47324d
-  tls: true
-  reality-opts:
-    public-key: 1uuvuG2Jl_o6yoVvOYm3hEboArh2Znu7zCy4Tqj36TI
-    short-id: 8045087bda646f1b
-  servername: www.icloud.com
-  client-fingerprint: edge
-- name: 🇸🇪 瑞典 (Sweden) 04 275K ⚠P - NEKO
-  server: 5.178.109.174
-  port: 14430
-  udp: true
-  type: vless
-  uuid: 80de563a-cac8-40ea-8cb0-4cb082dd92f9
-  network: ws
-  ws-opts:
-    path: /vless
-    headers:
-      Host: 5.178.109.174
-- name: 🇸🇪 瑞典 (Sweden) 05 4061K 🇨🇳 - NEKO
+    grpc-service-name: swedenfeed
+- name: 🇸🇪 瑞典 (Sweden) 03 ⚠S2220K 🇨🇳 - NEKO
   server: 62.60.159.81
   port: 2053
   udp: true
@@ -65,44 +40,38 @@ proxies:
     public-key: ygmJxS-Mc7g0buNSUTVGhazT-FoBjyYtLLfUYIQxFTw
     short-id: d0ea1847066af5a6
   servername: www.samsung.com
-  client-fingerprint: chrome
-  network: grpc
-  grpc-opts:
-    grpc-service-name: grpce5bb9e71
-- name: 🇸🇪 瑞典 (Sweden) 06 633K 🇨🇳 - NEKO
-  server: edge-lab-b.10media.top
-  port: 443
-  udp: true
-  type: vless
-  uuid: 9cb8d71c-fe06-4402-a591-eaa1f173b890
-  tls: true
-  servername: edge-lab-b.10media.top
-  skip-cert-verify: false
   client-fingerprint: safari
   network: grpc
   grpc-opts:
-    grpc-service-name: swedenfeed
+    grpc-service-name: grpce5bb9e71
+- name: 🇸🇪 瑞典 (Sweden) 04 449K ⚠P - NEKO
+  server: 5.178.109.174
+  port: 14430
+  udp: true
+  type: vless
+  uuid: 80de563a-cac8-40ea-8cb0-4cb082dd92f9
+  network: ws
+  ws-opts:
+    path: /vless
+    headers:
+      Host: 5.178.109.174
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇸🇪 瑞典 (Sweden) 01 6059K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 ⚠S5379K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 03 6819K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 04 275K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 05 4061K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 06 633K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 4445K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 215K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 03 ⚠S2220K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 04 449K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇸🇪 瑞典 (Sweden) 01 6059K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 ⚠S5379K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 03 6819K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 04 275K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 05 4061K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 06 633K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 4445K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 215K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 03 ⚠S2220K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 04 449K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

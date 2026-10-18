@@ -1,0 +1,74 @@
+{
+  "log": {
+    "level": "warn"
+  },
+  "outbounds": [
+    {
+      "type": "hysteria2",
+      "tag": "🇹🇷 土耳其 (Turkey) 01 (移动家宽) ⚠S1223K ⚠P⚠U - NEKO",
+      "server": "me17.msjia8844.site",
+      "server_port": 7443,
+      "password": "M8LP9DztTr3znqCkmf-r08CQLBLLFK1r",
+      "tls": {
+        "enabled": true,
+        "server_name": "me17.msjia8844.site",
+        "insecure": false
+      },
+      "obfs": {
+        "type": "salamander",
+        "password": "u3Soh9_Ui0UmcuY6vk0ug8Lq"
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇹🇷 土耳其 (Turkey) 02 (移动家宽) 4244K ⚠P - NEKO",
+      "server": "game.jafarghasemivip.ir",
+      "server_port": 8443,
+      "uuid": "53373a04-2dd2-472e-af5d-d55fbffa7dbd",
+      "tls": {
+        "enabled": true,
+        "server_name": "game.jafarghasemivip.ir",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇹🇷 土耳其 (Turkey) 03 (移动家宽) ⚠S2415K ⚠P - NEKO",
+      "server": "test.keoplentuio.xyz",
+      "server_port": 2053,
+      "uuid": "9ef61079-6f7d-4911-9608-943da85d8e6f"
+    },
+    {
+      "type": "selector",
+      "tag": "select",
+      "outbounds": [
+        "auto",
+        "🇹🇷 土耳其 (Turkey) 01 (移动家宽) ⚠S1223K ⚠P⚠U - NEKO",
+        "🇹🇷 土耳其 (Turkey) 02 (移动家宽) 4244K ⚠P - NEKO",
+        "🇹🇷 土耳其 (Turkey) 03 (移动家宽) ⚠S2415K ⚠P - NEKO"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "auto",
+      "outbounds": [
+        "🇹🇷 土耳其 (Turkey) 01 (移动家宽) ⚠S1223K ⚠P⚠U - NEKO",
+        "🇹🇷 土耳其 (Turkey) 02 (移动家宽) 4244K ⚠P - NEKO",
+        "🇹🇷 土耳其 (Turkey) 03 (移动家宽) ⚠S2415K ⚠P - NEKO"
+      ],
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+    {
+      "type": "block",
+      "tag": "block"
+    }
+  ]
+}

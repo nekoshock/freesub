@@ -49,10 +49,22 @@ jobs:
           # 便于 ip-api 等识别限速; GitHub runner 出口为美国 Azure
           PYTHONUNBUFFERED: '1'
 
+      # ★ v3.3 死节点缓存 save 前检查 — .cache 仅脚本正常写盘后才存在
+      #   (环境故障闸否决的轮次不会写盘)。无内容时跳过 save, 既不报
+      #   "Path Validation Error" warning, 也不会用空包顶掉上一轮好缓存。
+      - name: Check dead-node cache readiness
+        if: always()
+        run: |
+          if [ -n "$(ls -A .cache 2>/dev/null)" ]; then
+            echo "dead_cache_ready=true" >> "$GITHUB_ENV"
+          else
+            echo "dead_cache_ready=false" >> "$GITHUB_ENV"
+          fi
+
       # ★ v3.3 死节点缓存 save — 紧跟 Run 之后, 越早存越好
       #   (Python 侧是早写 flush; 即使后面 classify/导出/提交失败, 缓存也已存住)
       - name: Save dead-node cache
-        if: always()
+        if: always() && env.dead_cache_ready == 'true'
         uses: actions/cache/save@v4
         with:
           path: .cache

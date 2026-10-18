@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇸🇪 瑞典 (Sweden) 01 ⚠S584K 🇨🇳 - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 01 ⚠S2472K 🇨🇳 - NEKO
   server: 88.216.223.66
   port: 443
   udp: true
@@ -15,8 +15,8 @@ proxies:
     public-key: drl7nndYdfzZY1aQ0eUAWmNV0nsHig2uDnu9siy9biQ
     short-id: 868419504747f6de
   servername: tcpswed1.figurapn.ru
-  client-fingerprint: firefox
-- name: 🇸🇪 瑞典 (Sweden) 02 4447K 🇨🇳 - NEKO
+  client-fingerprint: ''
+- name: 🇸🇪 瑞典 (Sweden) 02 4600K 🇨🇳 - NEKO
   server: 62.60.159.81
   port: 2053
   udp: true
@@ -31,19 +31,34 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: grpce5bb9e71
+- name: 🇸🇪 瑞典 (Sweden) 03 198K 🇨🇳 - NEKO
+  server: edge-lab-b.10media.top
+  port: 443
+  udp: true
+  type: vless
+  uuid: 9cb8d71c-fe06-4402-a591-eaa1f173b890
+  tls: true
+  servername: edge-lab-b.10media.top
+  skip-cert-verify: false
+  client-fingerprint: safari
+  network: grpc
+  grpc-opts:
+    grpc-service-name: swedenfeed
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇸🇪 瑞典 (Sweden) 01 ⚠S584K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 4447K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 ⚠S2472K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 4600K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 03 198K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇸🇪 瑞典 (Sweden) 01 ⚠S584K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 4447K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 ⚠S2472K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 4600K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 03 198K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

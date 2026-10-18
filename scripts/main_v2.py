@@ -135,6 +135,12 @@ SOURCE_URLS = [
     "https://raw.githubusercontent.com/snakem982/proxypool/main/source/v2ray-2.txt",
     "https://gist.githubusercontent.com/guidongone/ac60f0dfeff1a514ebbf795af03abc7f/raw/61620b2129097d1aad6b4f6910ccce98219ce38f/V2ray261011.txt",
     "https://shadowmere.xyz/api/b64sub/",
+    "https://raw.githubusercontent.com/ProblemTheCode/SylphNet-public/refs/heads/main/sub/sub.txt",
+    "https://raw.githubusercontent.com/penhandev/AutoAiVPN/refs/heads/main/allConfigs.txt",
+    "https://raw.githubusercontent.com/sakha1370/OpenRay/refs/heads/main/output/all_valid_proxies.txt",
+    "https://raw.githack.com/igareck/vpn-configs-for-russia/main/BLACK_VLESS_RUS_mobile.txt",
+    "https://raw.githubusercontent.com/wenxig/free-nodes-sub/refs/heads/main/data/sub.txt",
+    "https://d.zrfme.com/vless-base64",
 ]
 
 OUTPUT_DIR = "output"

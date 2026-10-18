@@ -4,17 +4,17 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇬🇷 希腊 (Greece) 01 4492K 🇨🇳 - NEKO
-  server: 85.90.197.220
+- name: 🇮🇳 印度 (India) 01 3445K 🇨🇳 - NEKO
+  server: 148.113.5.44
   port: 443
   udp: true
   type: vless
-  uuid: 8f704ed6-9a1a-4d04-94dd-1bff501716de
+  uuid: 72ea5a91-ffcc-43d2-9297-5993c3abf186
   flow: xtls-rprx-vision
   tls: true
   reality-opts:
-    public-key: biNcdU5mywtNw-KyPpLHindBxdEyAolT1WJ26N0b7y4
-    short-id: 94acb54627612d43
+    public-key: QLjTpkXRB453R9fXhJzKkc_q_gSm2MZrIOuxW4uW-mI
+    short-id: 221873918e0bb74d
   servername: www.cloudflare.com
   client-fingerprint: chrome
 proxy-groups:
@@ -22,12 +22,12 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇬🇷 希腊 (Greece) 01 4492K 🇨🇳 - NEKO
+  - 🇮🇳 印度 (India) 01 3445K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇬🇷 希腊 (Greece) 01 4492K 🇨🇳 - NEKO
+  - 🇮🇳 印度 (India) 01 3445K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

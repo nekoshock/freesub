@@ -4,7 +4,22 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇸🇬 新加坡 (Singapore) 01 2835K ⚠P - NEKO
+- name: 🇸🇬 新加坡 (Singapore) 01 2912K ⚠P - NEKO
+  server: 149.88.23.207
+  port: 18000
+  udp: true
+  type: vmess
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+- name: 🇸🇬 新加坡 (Singapore) 02 1688K ⚠P - NEKO
+  server: 128.199.172.224
+  port: 8080
+  udp: true
+  type: ss
+  cipher: rc4-md5
+  password: 14fFPrbezE3HDZzsMOr6
+- name: 🇸🇬 新加坡 (Singapore) 03 2895K ⚠P - NEKO
   server: 149.88.23.202
   port: 18000
   udp: true
@@ -12,63 +27,15 @@ proxies:
   uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
   alterId: 0
   cipher: auto
-- name: 🇸🇬 新加坡 (Singapore) 02 2824K ⚠P - NEKO
-  server: 129.150.59.74
-  port: 14384
-  udp: true
-  type: ss
-  cipher: 2022-blake3-aes-256-gcm
-  password: sUR6Ny8Y6PSvHhl/DUxconwxg6VZyFdsdfaVCvEatJo=:7bTEhHgpErKiRjE1ega+H6pcpJsNLFB0CjQseujAHrA=
-- name: 🇸🇬 新加坡 (Singapore) 03 1372K ⚠P⚠U - NEKO
-  server: 146.235.16.130
-  port: 33738
-  udp: true
-  type: tuic
-  uuid: 2d1ad594-80a4-4bfb-87a6-038e39701f51
-  password: 2d1ad594-80a4-4bfb-87a6-038e39701f51
-  sni: sg2-8sb.6121999.dpdns.org
-  skip-cert-verify: false
-  congestion-controller: bbr
-  udp-relay-mode: quic
-  alpn:
-  - h3
-- name: 🇸🇬 新加坡 (Singapore) 04 2661K 🇨🇳 - NEKO
-  server: 88.216.191.10
-  port: 443
-  udp: true
-  type: vless
-  uuid: 244d9eab-3311-40c7-b47f-4968dc3088a6
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: drl7nndYdfzZY1aQ0eUAWmNV0nsHig2uDnu9siy9biQ
-    short-id: 868419504747f6de
-  servername: si1.lazeroe.com
-  client-fingerprint: chrome
-- name: 🇸🇬 新加坡 (Singapore) 05 2372K ⚠P - NEKO
-  server: 68.183.235.122
-  port: 8080
-  udp: true
-  type: ss
-  cipher: rc4-md5
-  password: 14fFPrbezE3HDZzsMOr6
-- name: 🇸🇬 新加坡 (Singapore) 06 2954K ⚠P - NEKO
-  server: ww11.levikogjgfdd.ir
-  port: 18000
-  udp: true
-  type: vmess
-  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-  alterId: 0
-  cipher: auto
-- name: 🇸🇬 新加坡 (Singapore) 07 742K 🇨🇳 - NEKO
-  server: 52.221.223.83
+- name: 🇸🇬 新加坡 (Singapore) 04 1000K 🇨🇳 - NEKO
+  server: glorious-glider.rooster465.autos
   port: 443
   udp: true
   type: trojan
   password: UX82473651
   sni: glorious-glider.rooster465.autos
   skip-cert-verify: false
-- name: 🇸🇬 新加坡 (Singapore) 08 ⚠S6164K 🇨🇳 - NEKO
+- name: 🇸🇬 新加坡 (Singapore) 05 ⚠S970K 🇨🇳 - NEKO
   server: eu3.998998.best
   port: 443
   udp: true
@@ -89,26 +56,20 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇸🇬 新加坡 (Singapore) 01 2835K ⚠P - NEKO
-  - 🇸🇬 新加坡 (Singapore) 02 2824K ⚠P - NEKO
-  - 🇸🇬 新加坡 (Singapore) 03 1372K ⚠P⚠U - NEKO
-  - 🇸🇬 新加坡 (Singapore) 04 2661K 🇨🇳 - NEKO
-  - 🇸🇬 新加坡 (Singapore) 05 2372K ⚠P - NEKO
-  - 🇸🇬 新加坡 (Singapore) 06 2954K ⚠P - NEKO
-  - 🇸🇬 新加坡 (Singapore) 07 742K 🇨🇳 - NEKO
-  - 🇸🇬 新加坡 (Singapore) 08 ⚠S6164K 🇨🇳 - NEKO
+  - 🇸🇬 新加坡 (Singapore) 01 2912K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 02 1688K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 03 2895K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 04 1000K 🇨🇳 - NEKO
+  - 🇸🇬 新加坡 (Singapore) 05 ⚠S970K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇸🇬 新加坡 (Singapore) 01 2835K ⚠P - NEKO
-  - 🇸🇬 新加坡 (Singapore) 02 2824K ⚠P - NEKO
-  - 🇸🇬 新加坡 (Singapore) 03 1372K ⚠P⚠U - NEKO
-  - 🇸🇬 新加坡 (Singapore) 04 2661K 🇨🇳 - NEKO
-  - 🇸🇬 新加坡 (Singapore) 05 2372K ⚠P - NEKO
-  - 🇸🇬 新加坡 (Singapore) 06 2954K ⚠P - NEKO
-  - 🇸🇬 新加坡 (Singapore) 07 742K 🇨🇳 - NEKO
-  - 🇸🇬 新加坡 (Singapore) 08 ⚠S6164K 🇨🇳 - NEKO
+  - 🇸🇬 新加坡 (Singapore) 01 2912K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 02 1688K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 03 2895K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 04 1000K 🇨🇳 - NEKO
+  - 🇸🇬 新加坡 (Singapore) 05 ⚠S970K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

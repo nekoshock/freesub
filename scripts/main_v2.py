@@ -42,6 +42,9 @@
        · 丢包率探测 (复用 204 探针连发 5 次) + v3 回国方向探测**并发**:
          裸 SOCKS5 TCP 握手 223.5.5.5:443/114.114.114.114:53 → 回国 RTT;
          经节点 HTTP 请求 baidu/bilibili/jd → 回国可达性
+       · v3.1 真实网页加载 (wikipedia/github/google, 只读响应头):
+         204/测速端点是对出口 IP 最宽容的目标, 补测真实网站抓"隧道通但
+         网页打不开"的假活节点 — 三个全不可达判死, 有被拦打 ⚠B
        + 首包时间 TTFB (与握手 RTT 互补, 抓"延迟低但首包慢"的体感杀手)
        + cloudflare trace tls=VERIFIED → MITM/劫持节点识别
   3. 家宽链式复测 (v3 起改 **lite 模式**: 只跑活性+轻测速 ~3s,
@@ -401,6 +404,28 @@ CN_EXIT_TIMEOUT        = 4.0       # 单个回国探测超时 (秒)
 CN_EXIT_RTT_GOOD_MS    = 350       # 回国 RTT ≤ 350ms → 加分 (国内站体感可接受)
 CN_EXIT_RTT_BAD_MS     = 900       # 回国 RTT > 900ms → 扣分 (国内站明显卡顿)
 CN_EXIT_HTTP_MIN_OK    = 1         # 至少几个 HTTP 目标可达才算"回国通"
+
+# --- 真实网页加载探针 (v3.1 新增: 抓"隧道通但网页打不开"的假活节点) ---
+#   ★ 为什么加: 204 端点 (gstatic/cp.cloudflare) 和 speed.cloudflare.com 测速
+#     是对出口 IP 最宽容的目标 — CF 不拦 CF 自家 IP 段, 所以"延迟好看+
+#     测速过"的节点, 用户开普通网站照样 403/转圈 (机房 IP 被 Cloudflare WAF/
+#     Google 风控拦是免费池头号假活形态)。这三个目标分别代表三类真实场景:
+#       wikipedia — 无 WAF 全球可达, 当"基线"(它都挂 = 链路真有问题)
+#       github    — Cloudflare WAF 后面, 机房 IP 常被 challenge → 403
+#       google    — Google 风控, 脏 IP 常 429/验证码
+#   判定语义 (见 _web_load_verdict):
+#       HTTP < 400                → 可达
+#       403/429/503 等            → 被 WAF/风控拦 (IP 脏, ⚠B 标记)
+#       超时/连接失败             → 链路问题
+#       **三个全不可达 → 判死** (204 全过但一个真实网页都开不了 = 对普通
+#       用户就是废节点, 选择性转发/出口全被封的典型形态)
+WEB_CHECK_PROBES = [
+    ("wikipedia", "https://www.wikipedia.org/"),
+    ("github",    "https://github.com/"),
+    ("google",    "https://www.google.com/"),
+]
+WEB_CHECK_TIMEOUT       = 6.0       # 读响应头超时 (秒) — stream 模式不拉 body
+WEB_CHECK_CONNECT_TIMEOUT = 4.0     # 建连超时 (秒)
 
 # --- DoH DNS 污染对比 (中国公共 DNS vs 全球 DNS; 全部免 key) ---
 #   DNSPod/阿里 是大陆用户最常用的公共 DNS (运营商 DNS 大同小异),
@@ -2261,6 +2286,9 @@ def test_single_node(item, keep_alive_check=True, chain_relay: dict = None,
                 "is_premium": False, "is_stalled": spd < SPEED_MIN_BYTES_PER_S,
                 "cn_exit_rtt_ms": None, "cn_exit_reachable": False,
                 "cn_exit_http_ok": 0, "retest_skipped": True, "_lite": True,
+                # v3.1 网页探测: lite 模式不跑 (链式复测只关心隧道通不通)
+                "web_reachable": 0, "web_blocked": 0, "web_timeout": 0,
+                "web_flags": [], "web_dead": False, "web_detail": "未测(lite)",
             }
 
         # --- 3) MITM 劫持检测 + WARP 套壳检测 — v3: 并发 (旧串行 4+4s) ---
@@ -2400,13 +2428,14 @@ def test_single_node(item, keep_alive_check=True, chain_relay: dict = None,
             # 未触发短路 (或无结果) → 不做交叉, 直接采用 Cloudflare 测速值
             cross_skipped = True
 
-        # --- 5) 丢包率探测 + 回国方向探测 — v3: 并发 (仅对已过吞吐门槛的节点) ---
-        #   丢包: 复用 204 探针连发 LOSS_PROBE_COUNT 次, 零额外带宽成本。
-        #     延迟测"能不能通", 丢包测"通得稳不稳" — 跨太平洋链路的核心问题是丢包,
-        #     现有判定对此完全失明。
-        #   回国方向 (v3 新增): 裸 SOCKS5 握手国内公共 DNS 量回国 RTT + 经节点
-        #     请求 baidu/bilibili/jd 验回国可达性 — 只对"已过门槛"的节点跑,
-        #     注定断流的节点不配再花 1 秒; 两个探测并发, 净增墙钟 ≈ 0。
+        # --- 5) 丢包率 + 回国方向 + 真实网页加载 — v3/v3.1: 三路并发 ---
+        #   (仅对已过吞吐门槛的节点; 注定断流的节点不配再花 1 秒)
+        #   丢包: 复用 204 探针连发, 零额外带宽成本。
+        #   回国方向 (v3): 裸 SOCKS5 握手国内公共 DNS 量回国 RTT + 经节点
+        #     请求 baidu/bilibili/jd 验回国可达性。
+        #   真实网页 (v3.1): 经节点请求 wikipedia/github/google, 只拿响应头 —
+        #     204 和 CF 测速端点是对出口 IP 最宽容的目标, "延迟好看+测速过"
+        #     的节点用户开普通网页照样 403/转圈; 三个目标全不可达 = 假活, 判死。
         #   ★ 2026-10-04 修正 (#67 事故): 旧版写 `else 1.0`, 把"没测到丢包"直接
         #     等同于"100% 丢包", 于是 speed_bps=0 的节点全被判死, 造成
         #     **真活 0** (实测 #67: 480 个节点全被填 100% 丢包后判死,
@@ -2416,18 +2445,29 @@ def test_single_node(item, keep_alive_check=True, chain_relay: dict = None,
         cn_exit = {"rtt_ms": None, "http_ok": 0,
                    "http_total": len(CN_EXIT_HTTP_PROBES),
                    "reachable": False, "detail": "未测(未过吞吐门槛)"}
+        web_load = {"reachable": 0, "blocked": 0, "timeout": 0,
+                    "total": len(WEB_CHECK_PROBES), "detail": "未测(未过吞吐门槛)"}
         speed_pass = speed_bps >= SPEED_MIN_BYTES_PER_S
         if speed_pass:
-            with ThreadPoolExecutor(max_workers=2) as grp:
+            with ThreadPoolExecutor(max_workers=3) as grp:
                 loss_fut = grp.submit(measure_packet_loss, proxies, LOSS_PROBE_COUNT)
                 cn_fut = grp.submit(probe_cn_exit, proxies, socks_port)
+                web_fut = grp.submit(probe_web_load, proxies)
                 loss_rate = loss_fut.result()
                 cn_exit = cn_fut.result()
+                web_load = web_fut.result()
         # 丢包 ≥ MAX_LOSS_RATE → 不可用; LOSS_UNSTABLE_PENALTY~MAX 之间 → 不稳
         # ★ None (未测) 不参与任何丢包判定, 绝不能当成丢包
         loss_unstable = (loss_rate is not None
                          and LOSS_UNSTABLE_PENALTY <= loss_rate < MAX_LOSS_RATE)
         if loss_rate is not None and loss_rate >= MAX_LOSS_RATE:
+            speed_bps = 0            # 判死: 走下面 is_stalled 统一出口
+
+        # --- 5b) 真实网页加载判定 (v3.1) ---
+        #   三个真实网站目标全部不可达 → 判死 (204/测速全过但网页全打不开 =
+        #   选择性转发或出口 IP 被全面封杀的假活节点, 对普通用户即废节点)
+        web_dead, web_flags = _web_load_verdict(web_load)
+        if web_dead:
             speed_bps = 0            # 判死: 走下面 is_stalled 统一出口
 
         # --- 6) 首包时间 (TTFB) 判定 ---
@@ -2498,6 +2538,13 @@ def test_single_node(item, keep_alive_check=True, chain_relay: dict = None,
             "cn_exit_reachable": cn_exit.get("reachable"),    # 回国 HTTP 可达 (baidu/bili/jd)
             "cn_exit_http_ok": cn_exit.get("http_ok", 0),
             "cn_exit_detail": cn_exit.get("detail", ""),
+            # ── v3.1 真实网页加载字段 ──
+            "web_reachable": web_load.get("reachable", 0),
+            "web_blocked": web_load.get("blocked", 0),
+            "web_timeout": web_load.get("timeout", 0),
+            "web_flags": web_flags,
+            "web_dead": web_dead,
+            "web_detail": web_load.get("detail", ""),
         }
         return result
     except Exception:
@@ -2642,6 +2689,17 @@ def run_liveness_test(candidates: list, prescore_map: dict = None) -> list:
               f"中位 {losses[len(losses)//2]:.0%} | 最差 {losses[-1]:.0%}{tail}")
     elif untested:
         print(f"[+] 丢包率: 全部未测 ({untested} 个) — 无节点通过吞吐门槛, 该维度跳过")
+    # v3.1 真实网页加载统计 (204/测速过但网页打不开的假活节点, 在此现形)
+    web_tested = [r for r in results if r.get("web_detail") and not r.get("web_detail", "").startswith("未测")]
+    if web_tested:
+        w_dead = sum(1 for r in web_tested if r.get("web_dead"))
+        w_blocked = sum(1 for r in web_tested
+                        if any("网页被拦" in f for f in (r.get("web_flags") or [])))
+        w_allok = sum(1 for r in web_tested if "网页全通" in (r.get("web_flags") or []))
+        print(f"[+] 真实网页加载 (wikipedia/github/google, v3.1): 已测 {len(web_tested)} | "
+              f"全通 {w_allok} | 有被拦⚠B {w_blocked} | 全不通判死 {w_dead}")
+        if w_dead:
+            print(f"    → {w_dead} 个节点 204/测速全过但真实网页全打不开 (选择性转发/出口IP被WAF封杀), 已判死")
     # 交叉测速生效判定 (按需触发: 仅疑似短路的节点才进交叉)
     cross_used = [r for r in results if r.get("speed_cross_bps", 0) > 0]
     cross_lowered = sum(1 for r in cross_used
@@ -3110,6 +3168,64 @@ def probe_cn_exit(proxies: dict, socks_port: int,
             "reachable": reachable, "detail": detail}
 
 
+def probe_web_load(proxies: dict,
+                   timeout: float = WEB_CHECK_TIMEOUT) -> dict:
+    """真实网页加载探测 (v3.1 新增): 经节点请求有代表性的真实网站
+
+    ★ 补的盲区: 204 端点 + speed.cloudflare.com 是对出口 IP 最宽容的目标,
+      "延迟好看+测速过"的节点用户开普通网页照样 403/转圈 — 机房 IP 被
+      Cloudflare WAF / Google 风控拦是免费池头号假活形态, 旧筛选完全看不见。
+    ★ 实现: stream=True 只拿响应头就关 (不拉 body), 三个目标并发,
+      每节点 ~1~2s, 与丢包/回国探测同组并发, 净增墙钟 ≈ 0。
+    返回 {"reachable": n, "blocked": n, "timeout": n, "total": n, "detail": str}
+    """
+    codes = {}
+
+    def _one(name, url):
+        try:
+            with PROBE_SESSION.get(url, proxies=proxies, stream=True,
+                                   allow_redirects=False,
+                                   timeout=(WEB_CHECK_CONNECT_TIMEOUT, timeout)) as r:
+                code = r.status_code
+            return name, code
+        except Exception:
+            return name, None
+
+    with ThreadPoolExecutor(max_workers=len(WEB_CHECK_PROBES)) as ex:
+        futs = [ex.submit(_one, n, u) for n, u in WEB_CHECK_PROBES]
+        for fut in as_completed(futs):
+            name, code = fut.result()
+            codes[name] = code
+    reachable = sum(1 for c in codes.values() if c is not None and c < 400)
+    blocked = sum(1 for c in codes.values() if c is not None and c >= 400)
+    timeout_n = sum(1 for c in codes.values() if c is None)
+    detail = " ".join(f"{n}:{c if c is not None else '超时'}" for n, c in codes.items())
+    return {"reachable": reachable, "blocked": blocked, "timeout": timeout_n,
+            "total": len(WEB_CHECK_PROBES), "detail": detail}
+
+
+def _web_load_verdict(web: dict) -> tuple:
+    """网页加载探测判定 → (判死: bool, flags: list)
+
+    判死条件: **三个目标全部不可达** (reachable == 0)。
+      — 204 三源全过、测速过, 却一个真实网页都开不了 = 对普通用户即废节点
+        (选择性转发只放行测试端点 / 出口 IP 被各大 WAF 全面封杀的典型形态)。
+    保守边界: 只要有一个目标真开得了就不杀 — 单个目标 403 可能是目标侧
+      临时故障, 不构成节点级死刑; 被拦的用 ⚠B 标记 + 扣分, 不判死。
+    """
+    reachable = web.get("reachable", 0) or 0
+    blocked = web.get("blocked", 0) or 0
+    total = web.get("total", len(WEB_CHECK_PROBES)) or len(WEB_CHECK_PROBES)
+    flags = []
+    if reachable <= 0:
+        return True, ["网页全不通"]
+    if blocked:
+        flags.append(f"网页被拦{blocked}/{total}")
+    if reachable >= total:
+        flags.append("网页全通")
+    return False, flags
+
+
 def _doh_resolve(url_template: str, domain: str):
     """DoH JSON 查询 → (status, [A记录]); 网络失败 (None, [])
     DNSPod/阿里 /resolve 与 Cloudflare dns-query (Accept: dns-json)
@@ -3333,6 +3449,13 @@ def compute_cn_score(n: dict) -> tuple:
         else:
             score -= 25
             flags.append(f"大陆不可达{ar:.0%}")
+
+    # v3.1 真实网页加载: 三个真实网站全通 = "隧道通且网页真能开" (+8);
+    #   有被拦 (⚠B) 不加不扣 — 单个目标 403 可能是目标侧故障, 不构成节点级惩罚,
+    #   全不通的节点已在测活阶段判死, 到不了这里。
+    if n.get("web_reachable", 0) >= 3:
+        score += 8
+        flags.append("网页全通")
 
     if 0 < (n.get("latency_ms") or 99999) <= 300:
         score += CN_SCORE_LAT_GOOD
@@ -4009,6 +4132,10 @@ def classify_and_export(test_results: list, ip_api_info: dict = None):
             "cn_exit_reachable": r.get("cn_exit_reachable", False),
             "atlas_ok_ratio": (atlas_rec or {}).get("ok_ratio"),
             "atlas_rtt_ms": (atlas_rec or {}).get("rtt_ms"),
+            # ── v3.1 真实网页加载 ──
+            "web_reachable": r.get("web_reachable", 0),
+            "web_blocked": r.get("web_blocked", 0),
+            "web_flags": r.get("web_flags") or [],
         })
 
     if country_reader:
@@ -4261,7 +4388,10 @@ def make_node_name(item, idx, force_residential=False):
     #   ⚠P = 非 443/80 端口 (GFW 周期性限流常客)
     #   ⚠U = QUIC/UDP 系 (hy2/tuic, GFW 对 UDP 有 QoS 传统)
     #   ⚠C = 回国方向不通 (只出国不回国, 国内站点/国服不可用)
+    #   ⚠B = 真实网页被 WAF 拦 (v3.1: 204/测速过但 wikipedia/github/google
+    #        有被拦 — 出口 IP 风控脏, 开普通网页可能 403/验证码)
     cn_flags = item.get("cn_flags") or []
+    web_flags = item.get("web_flags") or []
     if item.get("cn_friendly"):
         cn_tag = " 🇨🇳"
     else:
@@ -4274,6 +4404,8 @@ def make_node_name(item, idx, force_residential=False):
             marks.append("⚠U")
         if "回国不通" in cn_flags:
             marks.append("⚠C")
+        if any("网页被拦" in f for f in web_flags):
+            marks.append("⚠B")
         cn_tag = (" " + "".join(marks)) if marks else ""
     return (f"{flag} {cname} {idx:02d}{tag}{speed_tag}{loss_tag}{ttfb_tag}"
             f"{warp_tag}{cn_tag}{risk_tag} - NEKO")
@@ -4540,7 +4672,7 @@ def update_readme(total_count, res_count, cn_count=0):
 
 > 👤 **定制规范命名**: 所有订阅节点均重命名为 `国旗 地区 序号 (家宽) - xiaohe`
 > ⚡ **真实可用保障**: 所有节点由 `sing-box v{SINGBOX_VERSION}` 内核建立实际代理隧道, 完成真实 HTTPS 双向传输握手 + 出口 IP 穿透验证 + Cloudflare 限速下载断流检测 + TLS 证书校验 (MITM 劫持识别), 拒绝虚假通畅、断流节点与高危劫持节点。
-> 🇨🇳 **国内可用性导向 (v3 新增)**: 在海外视角测活之外, 增加入口侧 GFW 抗力静态评分 (端口/协议伪装/CDN 前置/域名 DNS 污染对比) + 入口精品网线路识别 (CN2 GIA/联通 4837/移动 CMI) + 回国方向实测 (经节点访问百度/B 站/京东 + 国内公共 DNS 握手 RTT), 达标节点进入独立的**国内友好订阅**, 节点名打 🇨🇳 标记; 风险项打 ⚠D(域名污染)/⚠P(非443端口)/⚠U(QUIC)/⚠C(回国不通)。
+> 🇨🇳 **国内可用性导向 (v3 新增)**: 在海外视角测活之外, 增加入口侧 GFW 抗力静态评分 (端口/协议伪装/CDN 前置/域名 DNS 污染对比) + 入口精品网线路识别 (CN2 GIA/联通 4837/移动 CMI) + 回国方向实测 (经节点访问百度/B 站/京东 + 国内公共 DNS 握手 RTT) + 真实网页加载复测 (wikipedia/GitHub/Google, 抓"延迟好看但网页打不开"的假活节点), 达标节点进入独立的**国内友好订阅**, 节点名打 🇨🇳 标记; 风险项打 ⚠D(域名污染)/⚠P(非443端口)/⚠U(QUIC)/⚠C(回国不通)/⚠B(网页被WAF拦)。
 > 🛡️ **全协议支持**: VLESS (Reality/Vision) · VMESS · Trojan · Shadowsocks · Hysteria2 · TUIC · AnyTLS
 
 ---
@@ -4701,7 +4833,8 @@ export default {{
 1. **自动更新机制**：GitHub Actions 每 6 小时全自动运行并刷新上述全部订阅与数据。
 2. **测活标准**：节点必须通过 ① 静态预筛(剔除关闭证书校验) ② 端口预检 ③ sing-box 实际隧道跨源活性探测 (Google/Cloudflare/Microsoft 至少 2 源) ④ 真实出口 IP 穿透获取 (延迟 ≤ 1500ms) ⑤ 限时下载测速 (稳态吞吐 ≥ 200KB/s, 5MB 首测 + 1MB 复测取最小值 + Hetzner 物理机房交叉测速) ⑥ 丢包率 ≤ 25% ⑦ 首包 TTFB ≤ 1800ms ⑧ TLS 证书校验非 MITM, 方可入库。
 3. **国内可用性标准 (v3)**：入库后再过五路国内向信号 — ① 入口端口/协议伪装静态评分 (443/Reality/CDN 前置优先) ② 域名经大陆公共 DNS 与全球 DNS 对比, 被污染者打 ⚠D 并排除出国内友好订阅 ③ 入口 IP rDNS/ASN 精品网线路识别 (CN2 GIA/4837/CMI) ④ 经节点实测回国方向 (百度/B 站/京东可达性 + 国内公共 DNS 握手 RTT) ⑤ (可选) RIPE Atlas 中国大陆探针实测。综合分 ≥ {CN_FRIENDLY_MIN_SCORE} 且域名干净的节点进入**国内友好订阅** (cn-friendly), 节点名打 🇨🇳。
-4. **多客户端兼容**：Clash / v2rayN / sing-box 全格式订阅。
+4. **真实网页加载标准 (v3.1)**：通过吞吐门槛的节点追加经节点请求 wikipedia/github/google (只读响应头) — 204 端点与 CF 测速是对出口 IP 最宽容的目标, "延迟好看+测速过"的节点开普通网页照样可能 403/转圈 (机房 IP 被 Cloudflare WAF/Google 风控拦)。**三个目标全部不可达 → 判死**; 有被拦的打 ⚠B 标记 (IP 风控脏); 全通的在排序中加分。
+5. **多客户端兼容**：Clash / v2rayN / sing-box 全格式订阅。
 """
     with open(os.path.join(BASEDIR, "README.md"), "w", encoding="utf-8") as f:
         f.write(readme)

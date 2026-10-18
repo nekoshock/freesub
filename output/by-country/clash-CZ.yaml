@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇿 捷克 (Czech) 01 3579K 🇨🇳 - NEKO
+- name: 🇨🇿 捷克 (Czech) 01 ⚠S5041K 🇨🇳 - NEKO
   server: 195.123.245.241
   port: 443
   udp: true
@@ -16,44 +16,27 @@ proxies:
     public-key: hlY5ce1UsVIgE46y5PlEZhUsSaXUnCtoDLLaGrhInjw
     short-id: 23d0950d60bc0d5b
   servername: gateway.icloud.com
-  client-fingerprint: chrome
-- name: 🇨🇿 捷克 (Czech) 02 1437K ⚠P - NEKO
+  client-fingerprint: firefox
+- name: 🇨🇿 捷克 (Czech) 02 5617K ⚠P - NEKO
   server: 67.159.18.34
   port: 17001
   udp: true
   type: ss
   cipher: aes-256-gcm
   password: I6o9NnialYLMEjVt28RF4dpjmr9wMvNL
-- name: 🇨🇿 捷克 (Czech) 03 7136K 🇨🇳 - NEKO
-  server: 81.28.12.12
-  port: 443
-  udp: true
-  type: vless
-  uuid: 6206cb76-491d-4237-baf1-8c29eea4eafb
-  tls: true
-  servername: node-3.wt419.site
-  skip-cert-verify: false
-  client-fingerprint: firefox
-  network: ws
-  ws-opts:
-    path: /qVnRkTxmLwBzHjYpFaDgUcSeNrKxMtVbWqZhPcLsJfGy
-    headers:
-      Host: node-3.wt419.site
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇨🇿 捷克 (Czech) 01 3579K 🇨🇳 - NEKO
-  - 🇨🇿 捷克 (Czech) 02 1437K ⚠P - NEKO
-  - 🇨🇿 捷克 (Czech) 03 7136K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 01 ⚠S5041K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 02 5617K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇿 捷克 (Czech) 01 3579K 🇨🇳 - NEKO
-  - 🇨🇿 捷克 (Czech) 02 1437K ⚠P - NEKO
-  - 🇨🇿 捷克 (Czech) 03 7136K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 01 ⚠S5041K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 02 5617K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇷🇴 罗马尼亚 (Romania) 01 6201K 🇨🇳 - NEKO
+- name: 🇷🇴 罗马尼亚 (Romania) 01 ⚠S6351K 🇨🇳 - NEKO
   server: 162.249.125.133
   port: 443
   udp: true
@@ -14,20 +14,7 @@ proxies:
   skip-cert-verify: false
   obfs: salamander
   obfs-password: c1b4086fea89914496c7e10967a419216566
-- name: 🇷🇴 罗马尼亚 (Romania) 02 3751K 🇨🇳 - NEKO
-  server: 46.28.67.55
-  port: 443
-  udp: true
-  type: vless
-  uuid: d1a6a033-fdbd-46a6-a177-3370ba042b9f
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: i2dJ1_XGDpp50qpEclh6SWSWkxt4B0t2hi2qOVQbeSU
-    short-id: d06d78e974491b6e
-  servername: www.cloudflare.com
-  client-fingerprint: chrome
-- name: 🇷🇴 罗马尼亚 (Romania) 03 3791K 🇨🇳 - NEKO
+- name: 🇷🇴 罗马尼亚 (Romania) 02 4399K 🇨🇳 - NEKO
   server: 146.70.124.85
   port: 443
   udp: true
@@ -40,29 +27,42 @@ proxies:
     short-id: fe24f8a0a560056e
   servername: www.datadoghq.com
   client-fingerprint: chrome
-- name: 🇷🇴 罗马尼亚 (Romania) 04 2439K ⚠P - NEKO
+- name: 🇷🇴 罗马尼亚 (Romania) 03 ⚠S3870K ⚠P - NEKO
   server: edge10.cyrionflare.com
   port: 2052
   udp: true
   type: vless
   uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
+- name: 🇷🇴 罗马尼亚 (Romania) 04 6924K 🇨🇳 - NEKO
+  server: 46.28.67.55
+  port: 443
+  udp: true
+  type: vless
+  uuid: d1a6a033-fdbd-46a6-a177-3370ba042b9f
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: i2dJ1_XGDpp50qpEclh6SWSWkxt4B0t2hi2qOVQbeSU
+    short-id: d06d78e974491b6e
+  servername: www.cloudflare.com
+  client-fingerprint: ''
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇷🇴 罗马尼亚 (Romania) 01 6201K 🇨🇳 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 02 3751K 🇨🇳 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 03 3791K 🇨🇳 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 04 2439K ⚠P - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 01 ⚠S6351K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 02 4399K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 03 ⚠S3870K ⚠P - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 04 6924K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇷🇴 罗马尼亚 (Romania) 01 6201K 🇨🇳 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 02 3751K 🇨🇳 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 03 3791K 🇨🇳 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 04 2439K ⚠P - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 01 ⚠S6351K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 02 4399K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 03 ⚠S3870K ⚠P - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 04 6924K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

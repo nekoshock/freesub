@@ -5,7 +5,7 @@
   "outbounds": [
     {
       "type": "vless",
-      "tag": "🇹🇷 土耳其 (Turkey) 01 3485K 🇨🇳 - NEKO",
+      "tag": "🇹🇷 土耳其 (Turkey) 01 4303K 🇨🇳 - NEKO",
       "server": "78.135.73.47",
       "server_port": 443,
       "uuid": "25e16692-d097-4e69-9e2d-8415609c1968",
@@ -15,7 +15,7 @@
         "server_name": "www.datadoghq.com",
         "utls": {
           "enabled": true,
-          "fingerprint": "firefox"
+          "fingerprint": ""
         },
         "reality": {
           "enabled": true,
@@ -26,7 +26,7 @@
     },
     {
       "type": "vless",
-      "tag": "🇹🇷 土耳其 (Turkey) 02 3996K 🇨🇳 - NEKO",
+      "tag": "🇹🇷 土耳其 (Turkey) 02 6649K 🇨🇳 - NEKO",
       "server": "62.60.233.157",
       "server_port": 8444,
       "uuid": "f55e9aba-7b14-4f6f-b59a-d5b3d45c9309",
@@ -35,7 +35,7 @@
         "server_name": "github.com",
         "utls": {
           "enabled": true,
-          "fingerprint": "chrome"
+          "fingerprint": "firefox"
         },
         "reality": {
           "enabled": true,
@@ -50,7 +50,7 @@
     },
     {
       "type": "vless",
-      "tag": "🇹🇷 土耳其 (Turkey) 03 3877K ⚠P - NEKO",
+      "tag": "🇹🇷 土耳其 (Turkey) 03 4432K 🇨🇳 - NEKO",
       "server": "151.241.226.201",
       "server_port": 2053,
       "uuid": "0eed6293-8cf1-4e77-ac10-9c3d50d0b2f8",
@@ -69,31 +69,50 @@
       }
     },
     {
-      "type": "vless",
-      "tag": "🇹🇷 土耳其 (Turkey) 04 2650K ⚠P - NEKO",
-      "server": "vpn.networkforexir.site",
+      "type": "trojan",
+      "tag": "🇹🇷 土耳其 (Turkey) 04 1937K ⚠P - NEKO",
+      "server": "104.21.48.18",
       "server_port": 2053,
-      "uuid": "9ef61079-6f7d-4911-9608-943da85d8e6f"
+      "password": "e309e031-991e-4656-9934-44d10deb8fd8",
+      "tls": {
+        "enabled": true,
+        "server_name": "nimm.mpd.cc.cd",
+        "insecure": false,
+        "alpn": [
+          "h3h2http/1.1"
+        ],
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/0962",
+        "headers": {
+          "Host": "nimm.mpd.cc.cd"
+        }
+      }
     },
     {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇹🇷 土耳其 (Turkey) 01 3485K 🇨🇳 - NEKO",
-        "🇹🇷 土耳其 (Turkey) 02 3996K 🇨🇳 - NEKO",
-        "🇹🇷 土耳其 (Turkey) 03 3877K ⚠P - NEKO",
-        "🇹🇷 土耳其 (Turkey) 04 2650K ⚠P - NEKO"
+        "🇹🇷 土耳其 (Turkey) 01 4303K 🇨🇳 - NEKO",
+        "🇹🇷 土耳其 (Turkey) 02 6649K 🇨🇳 - NEKO",
+        "🇹🇷 土耳其 (Turkey) 03 4432K 🇨🇳 - NEKO",
+        "🇹🇷 土耳其 (Turkey) 04 1937K ⚠P - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇹🇷 土耳其 (Turkey) 01 3485K 🇨🇳 - NEKO",
-        "🇹🇷 土耳其 (Turkey) 02 3996K 🇨🇳 - NEKO",
-        "🇹🇷 土耳其 (Turkey) 03 3877K ⚠P - NEKO",
-        "🇹🇷 土耳其 (Turkey) 04 2650K ⚠P - NEKO"
+        "🇹🇷 土耳其 (Turkey) 01 4303K 🇨🇳 - NEKO",
+        "🇹🇷 土耳其 (Turkey) 02 6649K 🇨🇳 - NEKO",
+        "🇹🇷 土耳其 (Turkey) 03 4432K 🇨🇳 - NEKO",
+        "🇹🇷 土耳其 (Turkey) 04 1937K ⚠P - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

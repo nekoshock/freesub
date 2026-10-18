@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇰🇷 韩国 (South Korea) 01 258K 🇨🇳 - NEKO
+- name: 🇰🇷 韩国 (South Korea) 01 3674K 🇨🇳 - NEKO
   server: 64.176.231.183
   port: 443
   udp: true
@@ -17,7 +17,7 @@ proxies:
     short-id: ca193e889d958f81
   servername: www.apple.com
   client-fingerprint: firefox
-- name: 🇰🇷 韩国 (South Korea) 02 5252K - NEKO
+- name: 🇰🇷 韩国 (South Korea) 02 3569K - NEKO
   server: 43.202.48.94
   port: 443
   udp: true
@@ -27,20 +27,7 @@ proxies:
   h2-opts:
     host: []
     path: /
-- name: 🇰🇷 韩国 (South Korea) 03 3668K - NEKO
-  server: 132.145.80.230
-  port: 80
-  udp: true
-  type: vmess
-  uuid: 5155860e-d07d-46c3-9128-3afbd84626c7
-  alterId: 0
-  cipher: auto
-  network: ws
-  ws-opts:
-    path: /cctv13.m3u8
-    headers:
-      Host: 'null'
-- name: 🇰🇷 韩国 (South Korea) 04 ⚠S462K ⚠P⚠U - NEKO
+- name: 🇰🇷 韩国 (South Korea) 03 ⚠S1286K ⚠P⚠U - NEKO
   server: 152.67.200.82
   port: 50160
   udp: true
@@ -48,33 +35,7 @@ proxies:
   password: 3d7634af8cb2c6cb4bac1c0efad8b43d
   sni: 152-67-200-82.liao.kdns.fr
   skip-cert-verify: false
-- name: 🇰🇷 韩国 (South Korea) 05 329K 🇨🇳 - NEKO
-  server: 3.39.4.109
-  port: 13672
-  udp: true
-  type: vless
-  uuid: 814bd064-544d-4255-a070-5705c03f6da9
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
-    short-id: 48050fab
-  servername: www.apple.com
-  client-fingerprint: qq
-- name: 🇰🇷 韩国 (South Korea) 06 226K 🇨🇳 - NEKO
-  server: 3.39.4.109
-  port: 18967
-  udp: true
-  type: vless
-  uuid: 814bd064-544d-4255-a070-5705c03f6da9
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
-    short-id: 48050fab
-  servername: www.apple.com
-  client-fingerprint: safari
-- name: 🇰🇷 韩国 (South Korea) 07 6736K ⚠P⚠U - NEKO
+- name: 🇰🇷 韩国 (South Korea) 04 ⚠S1558K ⚠P⚠U - NEKO
   server: 150-230-252-217.liao.kdns.fr
   port: 50160
   udp: true
@@ -82,29 +43,32 @@ proxies:
   password: 9cfc9458e48c028ec03ff86ebc71c744
   sni: 150-230-252-217.liao.kdns.fr
   skip-cert-verify: false
+- name: 🇰🇷 韩国 (South Korea) 05 2630K ⚠P - NEKO
+  server: 49.254.204.134
+  port: 1774
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: 1234!@#$
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇰🇷 韩国 (South Korea) 01 258K 🇨🇳 - NEKO
-  - 🇰🇷 韩国 (South Korea) 02 5252K - NEKO
-  - 🇰🇷 韩国 (South Korea) 03 3668K - NEKO
-  - 🇰🇷 韩国 (South Korea) 04 ⚠S462K ⚠P⚠U - NEKO
-  - 🇰🇷 韩国 (South Korea) 05 329K 🇨🇳 - NEKO
-  - 🇰🇷 韩国 (South Korea) 06 226K 🇨🇳 - NEKO
-  - 🇰🇷 韩国 (South Korea) 07 6736K ⚠P⚠U - NEKO
+  - 🇰🇷 韩国 (South Korea) 01 3674K 🇨🇳 - NEKO
+  - 🇰🇷 韩国 (South Korea) 02 3569K - NEKO
+  - 🇰🇷 韩国 (South Korea) 03 ⚠S1286K ⚠P⚠U - NEKO
+  - 🇰🇷 韩国 (South Korea) 04 ⚠S1558K ⚠P⚠U - NEKO
+  - 🇰🇷 韩国 (South Korea) 05 2630K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇰🇷 韩国 (South Korea) 01 258K 🇨🇳 - NEKO
-  - 🇰🇷 韩国 (South Korea) 02 5252K - NEKO
-  - 🇰🇷 韩国 (South Korea) 03 3668K - NEKO
-  - 🇰🇷 韩国 (South Korea) 04 ⚠S462K ⚠P⚠U - NEKO
-  - 🇰🇷 韩国 (South Korea) 05 329K 🇨🇳 - NEKO
-  - 🇰🇷 韩国 (South Korea) 06 226K 🇨🇳 - NEKO
-  - 🇰🇷 韩国 (South Korea) 07 6736K ⚠P⚠U - NEKO
+  - 🇰🇷 韩国 (South Korea) 01 3674K 🇨🇳 - NEKO
+  - 🇰🇷 韩国 (South Korea) 02 3569K - NEKO
+  - 🇰🇷 韩国 (South Korea) 03 ⚠S1286K ⚠P⚠U - NEKO
+  - 🇰🇷 韩国 (South Korea) 04 ⚠S1558K ⚠P⚠U - NEKO
+  - 🇰🇷 韩国 (South Korea) 05 2630K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

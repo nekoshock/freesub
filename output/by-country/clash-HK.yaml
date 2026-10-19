@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇭🇰 中国香港 (Hong Kong) 01 3590K 🇨🇳 - NEKO
+- name: 🇭🇰 中国香港 (Hong Kong) 01 3804K ⚠P - NEKO
   server: 156.239.13.161
   port: 51443
   udp: true
@@ -17,17 +17,44 @@ proxies:
     short-id: aa5b653590725505
   servername: www.cloudflare.com
   client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 02 ⚠S2113K ⚠P - NEKO
+  server: 13.140.91.117
+  port: 25111
+  udp: true
+  type: ss
+  cipher: 2022-blake3-aes-256-gcm
+  password: jNyPnuL1dS5CZLfr6AeO8/CtbUvT3MIOWAaSwoJlTkc=:qKqgMJPzm/OIdljS+Q1vRGcQfIgAFGVr+dWGhkzEuaY=
+- name: 🇭🇰 中国香港 (Hong Kong) 03 3723K ⚠P - NEKO
+  server: 13.140.91.117
+  port: 23808
+  udp: true
+  type: vless
+  uuid: 54327b73-3ce6-437d-9d00-3d6398d9f9f5
+- name: 🇭🇰 中国香港 (Hong Kong) 04 ⚠S1458K ⚠P - NEKO
+  server: 13.140.91.117
+  port: 36154
+  udp: true
+  type: vmess
+  uuid: 54327b73-3ce6-437d-9d00-3d6398d9f9f5
+  alterId: 0
+  cipher: auto
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇭🇰 中国香港 (Hong Kong) 01 3590K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 3804K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 ⚠S2113K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 03 3723K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 04 ⚠S1458K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇭🇰 中国香港 (Hong Kong) 01 3590K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 3804K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 ⚠S2113K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 03 3723K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 04 ⚠S1458K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

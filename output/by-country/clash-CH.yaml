@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇭 瑞士 (Switzerland) 01 4017K 🇨🇳 - NEKO
+- name: 🇨🇭 瑞士 (Switzerland) 01 3992K 🇨🇳 - NEKO
   server: 45.90.59.15
   port: 443
   udp: true
@@ -17,7 +17,7 @@ proxies:
     short-id: 19253fae84102271
   servername: www.cloudflare.com
   client-fingerprint: firefox
-- name: 🇨🇭 瑞士 (Switzerland) 02 298K ⚠P⚠U - NEKO
+- name: 🇨🇭 瑞士 (Switzerland) 02 ⚠S4271K ⚠P⚠U - NEKO
   server: 104.165.205.42
   port: 8443
   udp: true
@@ -25,7 +25,20 @@ proxies:
   password: 990c8eb6-4c4e-4277-8602-79af8402cdd0
   sni: speedtestmark.com
   skip-cert-verify: false
-- name: 🇨🇭 瑞士 (Switzerland) 03 ⚠S362K 🇨🇳 - NEKO
+- name: 🇨🇭 瑞士 (Switzerland) 03 3081K 🇨🇳 - NEKO
+  server: 45.139.24.100
+  port: 443
+  udp: true
+  type: vless
+  uuid: a11213e8-a42f-4492-beaa-14084f6ae28a
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: L4Aifg9Z38BOPDA_pr-zmfj0BweN9sM5m_oSNGsFKiE
+    short-id: ec2a6d77d897a2c3
+  servername: www.pobeda.aero
+  client-fingerprint: firefox
+- name: 🇨🇭 瑞士 (Switzerland) 04 4781K 🇨🇳 - NEKO
   server: 138.124.63.224
   port: 8444
   udp: true
@@ -45,16 +58,18 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇨🇭 瑞士 (Switzerland) 01 4017K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 02 298K ⚠P⚠U - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 03 ⚠S362K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 01 3992K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 02 ⚠S4271K ⚠P⚠U - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 03 3081K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 04 4781K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇭 瑞士 (Switzerland) 01 4017K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 02 298K ⚠P⚠U - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 03 ⚠S362K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 01 3992K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 02 ⚠S4271K ⚠P⚠U - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 03 3081K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 04 4781K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

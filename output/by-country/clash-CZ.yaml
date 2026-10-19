@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇿 捷克 (Czech) 01 3324K 🇨🇳 - NEKO
+- name: 🇨🇿 捷克 (Czech) 01 4118K 🇨🇳 - NEKO
   server: 195.123.245.241
   port: 443
   udp: true
@@ -17,7 +17,20 @@ proxies:
     short-id: 23d0950d60bc0d5b
   servername: gateway.icloud.com
   client-fingerprint: chrome
-- name: 🇨🇿 捷克 (Czech) 02 3642K ⚠P - NEKO
+- name: 🇨🇿 捷克 (Czech) 02 4148K 🇨🇳 - NEKO
+  server: 195.123.245.241
+  port: 443
+  udp: true
+  type: vless
+  uuid: 7c053ca8-38cc-45e2-930c-eda1fd66f903
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: hlY5ce1UsVIgE46y5PlEZhUsSaXUnCtoDLLaGrhInjw
+    short-id: 23d0950d60bc0d5b
+  servername: gateway.icloud.com
+  client-fingerprint: firefox
+- name: 🇨🇿 捷克 (Czech) 03 3783K ⚠P - NEKO
   server: 67.159.18.34
   port: 17001
   udp: true
@@ -29,14 +42,16 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇨🇿 捷克 (Czech) 01 3324K 🇨🇳 - NEKO
-  - 🇨🇿 捷克 (Czech) 02 3642K ⚠P - NEKO
+  - 🇨🇿 捷克 (Czech) 01 4118K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 02 4148K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 03 3783K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇿 捷克 (Czech) 01 3324K 🇨🇳 - NEKO
-  - 🇨🇿 捷克 (Czech) 02 3642K ⚠P - NEKO
+  - 🇨🇿 捷克 (Czech) 01 4118K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 02 4148K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 03 3783K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

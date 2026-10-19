@@ -4,22 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇭 瑞士 (Switzerland) 01 6703K 🇨🇳 - NEKO
-  server: 138.124.63.224
-  port: 8444
-  udp: true
-  type: vless
-  uuid: f55e9aba-7b14-4f6f-b59a-d5b3d45c9309
-  tls: true
-  reality-opts:
-    public-key: FWitre1jinQR7qz5HQ0q2Q4Gg9xA9B0SyizCziN7Ch0
-    short-id: 457fab2ac885dbe0
-  servername: github.com
-  client-fingerprint: chrome
-  network: grpc
-  grpc-opts:
-    grpc-service-name: GunService
-- name: 🇨🇭 瑞士 (Switzerland) 02 5149K 🇨🇳 - NEKO
+- name: 🇨🇭 瑞士 (Switzerland) 01 4648K 🇨🇳 - NEKO
   server: 45.90.59.15
   port: 443
   udp: true
@@ -32,19 +17,31 @@ proxies:
     short-id: 19253fae84102271
   servername: www.cloudflare.com
   client-fingerprint: firefox
+- name: 🇨🇭 瑞士 (Switzerland) 02 ⚠S410K 🇨🇳 - NEKO
+  server: 208.69.78.217
+  port: 2053
+  udp: true
+  type: vless
+  uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
+  tls: true
+  reality-opts:
+    public-key: A49ue7zXSusJZdErPAewg3jqGdUFIO1a9xOunEKJfC0
+    short-id: ad86e2d52ff40ebd
+  servername: www.apple.com
+  client-fingerprint: random
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇨🇭 瑞士 (Switzerland) 01 6703K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 02 5149K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 01 4648K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 02 ⚠S410K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇭 瑞士 (Switzerland) 01 6703K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 02 5149K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 01 4648K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 02 ⚠S410K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

@@ -4,20 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇭🇺 匈牙利 (Hungary) 01 3345K 🇨🇳 - NEKO
-  server: 85.155.242.38
-  port: 443
-  udp: true
-  type: vless
-  uuid: 6338c01a-310e-42c3-bf4f-2a20e161054b
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: mPzNFHO4pZMzFviRkIhRd7xDUz4dMHyI-flZLOrgDVg
-    short-id: f8379ce795f2e5ed
-  servername: hu1.aiage.work
-  client-fingerprint: random
-- name: 🇭🇺 匈牙利 (Hungary) 02 3646K 🇨🇳 - NEKO
+- name: 🇭🇺 匈牙利 (Hungary) 01 4307K 🇨🇳 - NEKO
   server: 85.155.242.37
   port: 443
   udp: true
@@ -29,8 +16,21 @@ proxies:
     public-key: mPzNFHO4pZMzFviRkIhRd7xDUz4dMHyI-flZLOrgDVg
     short-id: f8379ce795f2e5ed
   servername: hu1.aiage.work
-  client-fingerprint: firefox
-- name: 🇭🇺 匈牙利 (Hungary) 03 3721K 🇨🇳 - NEKO
+  client-fingerprint: chrome
+- name: 🇭🇺 匈牙利 (Hungary) 02 4004K 🇨🇳 - NEKO
+  server: 85.155.242.38
+  port: 443
+  udp: true
+  type: vless
+  uuid: 6338c01a-310e-42c3-bf4f-2a20e161054b
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: mPzNFHO4pZMzFviRkIhRd7xDUz4dMHyI-flZLOrgDVg
+    short-id: f8379ce795f2e5ed
+  servername: hu1.aiage.work
+  client-fingerprint: ''
+- name: 🇭🇺 匈牙利 (Hungary) 03 4620K 🇨🇳 - NEKO
   server: 79.139.59.46
   port: 443
   udp: true
@@ -42,22 +42,22 @@ proxies:
     public-key: mPzNFHO4pZMzFviRkIhRd7xDUz4dMHyI-flZLOrgDVg
     short-id: f8379ce795f2e5ed
   servername: hu1.aiage.work
-  client-fingerprint: firefox
+  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇭🇺 匈牙利 (Hungary) 01 3345K 🇨🇳 - NEKO
-  - 🇭🇺 匈牙利 (Hungary) 02 3646K 🇨🇳 - NEKO
-  - 🇭🇺 匈牙利 (Hungary) 03 3721K 🇨🇳 - NEKO
+  - 🇭🇺 匈牙利 (Hungary) 01 4307K 🇨🇳 - NEKO
+  - 🇭🇺 匈牙利 (Hungary) 02 4004K 🇨🇳 - NEKO
+  - 🇭🇺 匈牙利 (Hungary) 03 4620K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇭🇺 匈牙利 (Hungary) 01 3345K 🇨🇳 - NEKO
-  - 🇭🇺 匈牙利 (Hungary) 02 3646K 🇨🇳 - NEKO
-  - 🇭🇺 匈牙利 (Hungary) 03 3721K 🇨🇳 - NEKO
+  - 🇭🇺 匈牙利 (Hungary) 01 4307K 🇨🇳 - NEKO
+  - 🇭🇺 匈牙利 (Hungary) 02 4004K 🇨🇳 - NEKO
+  - 🇭🇺 匈牙利 (Hungary) 03 4620K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

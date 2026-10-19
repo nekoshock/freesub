@@ -4,15 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇫🇮 芬兰 (Finland) 01 6192K 🇨🇳 - NEKO
-  server: 2.26.3.75
-  port: 443
-  udp: true
-  type: hysteria2
-  password: d5530551-5e9a-4ac5-8539-cee87e38d9e2
-  sni: fi.67chat.ru
-  skip-cert-verify: false
-- name: 🇫🇮 芬兰 (Finland) 02 3721K 🇨🇳 - NEKO
+- name: 🇫🇮 芬兰 (Finland) 01 4746K 🇨🇳 - NEKO
   server: 95.216.27.15
   port: 2053
   udp: true
@@ -23,20 +15,8 @@ proxies:
     public-key: 4nfogj5mHqNowtSn_2sXS3xTX8vcH75rFEU2BWvyekM
     short-id: d368b94e275ab080
   servername: www.google.com
-  client-fingerprint: ''
-- name: 🇫🇮 芬兰 (Finland) 03 3317K 🇨🇳 - NEKO
-  server: 77.42.73.93
-  port: 1222
-  udp: true
-  type: vless
-  uuid: 36c3dcc2-17b6-4478-b8a7-3978e6d5afe9
-  tls: true
-  reality-opts:
-    public-key: zpLKK8HuwXJDH9D0O3t5Z_tO3ajkj7VRtXdr6UGy1zE
-    short-id: a25d0f
-  servername: play.google.com
-  client-fingerprint: firefox
-- name: 🇫🇮 芬兰 (Finland) 04 4735K 🇨🇳 - NEKO
+  client-fingerprint: random
+- name: 🇫🇮 芬兰 (Finland) 02 7097K 🇨🇳 - NEKO
   server: 109.172.54.135
   port: 8444
   udp: true
@@ -50,7 +30,19 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: GunService
-- name: 🇫🇮 芬兰 (Finland) 05 3665K 🇨🇳 - NEKO
+- name: 🇫🇮 芬兰 (Finland) 03 4962K 🇨🇳 - NEKO
+  server: 77.42.73.93
+  port: 1222
+  udp: true
+  type: vless
+  uuid: 36c3dcc2-17b6-4478-b8a7-3978e6d5afe9
+  tls: true
+  reality-opts:
+    public-key: zpLKK8HuwXJDH9D0O3t5Z_tO3ajkj7VRtXdr6UGy1zE
+    short-id: a25d0f
+  servername: play.google.com
+  client-fingerprint: firefox
+- name: 🇫🇮 芬兰 (Finland) 04 4532K 🇨🇳 - NEKO
   server: mci.amir12.ir
   port: 2112
   udp: true
@@ -62,7 +54,7 @@ proxies:
     short-id: 125ba3
   servername: play.google.com
   client-fingerprint: chrome
-- name: 🇫🇮 芬兰 (Finland) 06 2878K ⚠P - NEKO
+- name: 🇫🇮 芬兰 (Finland) 05 3567K ⚠P - NEKO
   server: 77.42.73.93
   port: 8080
   udp: true
@@ -71,7 +63,7 @@ proxies:
   network: ws
   ws-opts:
     path: /
-- name: 🇫🇮 芬兰 (Finland) 07 3787K ⚠P - NEKO
+- name: 🇫🇮 芬兰 (Finland) 06 3878K ⚠P - NEKO
   server: 45.144.234.157
   port: 14430
   udp: true
@@ -82,29 +74,36 @@ proxies:
     path: /vless
     headers:
       Host: 45.144.234.157
+- name: 🇫🇮 芬兰 (Finland) 07 4669K ⚠P - NEKO
+  server: 65.109.210.160
+  port: 1080
+  udp: true
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: q5wE5hbCc-kOUqbaZ3JaAg
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇫🇮 芬兰 (Finland) 01 6192K 🇨🇳 - NEKO
-  - 🇫🇮 芬兰 (Finland) 02 3721K 🇨🇳 - NEKO
-  - 🇫🇮 芬兰 (Finland) 03 3317K 🇨🇳 - NEKO
-  - 🇫🇮 芬兰 (Finland) 04 4735K 🇨🇳 - NEKO
-  - 🇫🇮 芬兰 (Finland) 05 3665K 🇨🇳 - NEKO
-  - 🇫🇮 芬兰 (Finland) 06 2878K ⚠P - NEKO
-  - 🇫🇮 芬兰 (Finland) 07 3787K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 01 4746K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 02 7097K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 03 4962K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 04 4532K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 05 3567K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 06 3878K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 07 4669K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇫🇮 芬兰 (Finland) 01 6192K 🇨🇳 - NEKO
-  - 🇫🇮 芬兰 (Finland) 02 3721K 🇨🇳 - NEKO
-  - 🇫🇮 芬兰 (Finland) 03 3317K 🇨🇳 - NEKO
-  - 🇫🇮 芬兰 (Finland) 04 4735K 🇨🇳 - NEKO
-  - 🇫🇮 芬兰 (Finland) 05 3665K 🇨🇳 - NEKO
-  - 🇫🇮 芬兰 (Finland) 06 2878K ⚠P - NEKO
-  - 🇫🇮 芬兰 (Finland) 07 3787K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 01 4746K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 02 7097K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 03 4962K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 04 4532K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 05 3567K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 06 3878K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 07 4669K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

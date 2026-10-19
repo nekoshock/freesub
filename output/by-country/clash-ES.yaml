@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇪🇸 西班牙 (Spain) 01 5333K 🇨🇳 - NEKO
+- name: 🇪🇸 西班牙 (Spain) 01 6588K 🇨🇳 - NEKO
   server: 212.227.235.66
   port: 2053
   udp: true
@@ -15,8 +15,8 @@ proxies:
     public-key: 7Y6Xb5Ql_03K25x8yKUSOKI2JTOMyv2nyCcFza90uxk
     short-id: 29e8dcd2b37aaa7f
   servername: www.apple.com
-  client-fingerprint: firefox
-- name: 🇪🇸 西班牙 (Spain) 02 4389K 🇨🇳 - NEKO
+  client-fingerprint: ''
+- name: 🇪🇸 西班牙 (Spain) 02 ⚠S6305K 🇨🇳 - NEKO
   server: 46.28.71.247
   port: 443
   udp: true
@@ -28,34 +28,20 @@ proxies:
     public-key: v4MuZIvFrTPT5GHMSaPryUAbIZlLstmsUTzmC1E-JTE
     short-id: 0dfc23fe80778c00
   servername: www.cloudflare.com
-  client-fingerprint: ''
-- name: 🇪🇸 西班牙 (Spain) 03 616K 🇨🇳 - NEKO
-  server: es2.h1cloud.net
-  port: 25535
-  udp: true
-  type: vless
-  uuid: c379d8e4-c67d-42ec-a3ed-ca99d1ad0546
-  tls: true
-  reality-opts:
-    public-key: Jh7CocBJSA55VZcLfXwXwoQ_Hi5pV-L1vv1SY-IrSh4
-    short-id: 7642ce57308852e7
-  servername: www.microsoft.com
-  client-fingerprint: chrome
+  client-fingerprint: random
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇪🇸 西班牙 (Spain) 01 5333K 🇨🇳 - NEKO
-  - 🇪🇸 西班牙 (Spain) 02 4389K 🇨🇳 - NEKO
-  - 🇪🇸 西班牙 (Spain) 03 616K 🇨🇳 - NEKO
+  - 🇪🇸 西班牙 (Spain) 01 6588K 🇨🇳 - NEKO
+  - 🇪🇸 西班牙 (Spain) 02 ⚠S6305K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇪🇸 西班牙 (Spain) 01 5333K 🇨🇳 - NEKO
-  - 🇪🇸 西班牙 (Spain) 02 4389K 🇨🇳 - NEKO
-  - 🇪🇸 西班牙 (Spain) 03 616K 🇨🇳 - NEKO
+  - 🇪🇸 西班牙 (Spain) 01 6588K 🇨🇳 - NEKO
+  - 🇪🇸 西班牙 (Spain) 02 ⚠S6305K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

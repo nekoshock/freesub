@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇲🇩 摩尔多瓦 (Moldova) 01 ⚠S355K 🇨🇳 - NEKO
+- name: 🇲🇩 摩尔多瓦 (Moldova) 01 ⚠S1210K 🇨🇳 - NEKO
   server: 5.252.179.15
   port: 443
   udp: true
@@ -17,7 +17,7 @@ proxies:
     short-id: 296f27de82dad7ff
   servername: www.bing.com
   client-fingerprint: random
-- name: 🇲🇩 摩尔多瓦 (Moldova) 02 3234K 🇨🇳 - NEKO
+- name: 🇲🇩 摩尔多瓦 (Moldova) 02 ⚠S4930K 🇨🇳 - NEKO
   server: md1.aiage.work
   port: 443
   udp: true
@@ -27,11 +27,11 @@ proxies:
   tls: true
   reality-opts:
     public-key: 0dtXhkhkh-_MBFoGwzdW4PdlJtVX9oswhJZHbUPGCmo
-    short-id: 5d7a45ac0ad6adff
+    short-id: e829f50f0a3f416b
   servername: md1.aiage.work
   client-fingerprint: random
-- name: 🇲🇩 摩尔多瓦 (Moldova) 03 1580K 🇨🇳 - NEKO
-  server: 85.120.144.27
+- name: 🇲🇩 摩尔多瓦 (Moldova) 03 483K 🇨🇳 - NEKO
+  server: md1.aiage.work
   port: 443
   udp: true
   type: vless
@@ -40,24 +40,24 @@ proxies:
   tls: true
   reality-opts:
     public-key: 0dtXhkhkh-_MBFoGwzdW4PdlJtVX9oswhJZHbUPGCmo
-    short-id: 5d7a45ac0ad6adff
+    short-id: e829f50f0a3f416b
   servername: md1.aiage.work
-  client-fingerprint: firefox
+  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇲🇩 摩尔多瓦 (Moldova) 01 ⚠S355K 🇨🇳 - NEKO
-  - 🇲🇩 摩尔多瓦 (Moldova) 02 3234K 🇨🇳 - NEKO
-  - 🇲🇩 摩尔多瓦 (Moldova) 03 1580K 🇨🇳 - NEKO
+  - 🇲🇩 摩尔多瓦 (Moldova) 01 ⚠S1210K 🇨🇳 - NEKO
+  - 🇲🇩 摩尔多瓦 (Moldova) 02 ⚠S4930K 🇨🇳 - NEKO
+  - 🇲🇩 摩尔多瓦 (Moldova) 03 483K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇲🇩 摩尔多瓦 (Moldova) 01 ⚠S355K 🇨🇳 - NEKO
-  - 🇲🇩 摩尔多瓦 (Moldova) 02 3234K 🇨🇳 - NEKO
-  - 🇲🇩 摩尔多瓦 (Moldova) 03 1580K 🇨🇳 - NEKO
+  - 🇲🇩 摩尔多瓦 (Moldova) 01 ⚠S1210K 🇨🇳 - NEKO
+  - 🇲🇩 摩尔多瓦 (Moldova) 02 ⚠S4930K 🇨🇳 - NEKO
+  - 🇲🇩 摩尔多瓦 (Moldova) 03 483K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

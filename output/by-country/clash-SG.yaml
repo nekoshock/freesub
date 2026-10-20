@@ -4,17 +4,28 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇸🇬 新加坡 (Singapore) 01 3204K - NEKO
-  server: 13.212.217.197
-  port: 443
+- name: 🇸🇬 新加坡 (Singapore) 01 4737K 🇨🇳 - NEKO
+  server: 128.241.25.3
+  port: 30021
   udp: true
   type: vless
-  uuid: 7060231d-b9ba-495f-a218-bf427940cf3e
-  network: h2
-  h2-opts:
-    host: []
-    path: /
-- name: 🇸🇬 新加坡 (Singapore) 02 4260K ⚠P - NEKO
+  uuid: afec813e-a5c7-432d-be48-2803c30eea4e
+  tls: true
+  servername: wkytah9k8oggj60.qzfi0skkopy875xhtc0l9pwds.workers.dev
+  skip-cert-verify: false
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /@Marisa_kristi
+    headers:
+      Host: wkytah9k8oggj60.qzfi0skkopy875xhtc0l9pwds.workers.dev
+- name: 🇸🇬 新加坡 (Singapore) 02 921K ⚠P - NEKO
+  server: 178.94.25.73
+  port: 10443
+  udp: true
+  type: vless
+  uuid: 2dacc738-5720-4824-b8bc-e3db57596ba7
+- name: 🇸🇬 新加坡 (Singapore) 03 3286K ⚠P - NEKO
   server: 149.88.23.202
   port: 18000
   udp: true
@@ -22,7 +33,7 @@ proxies:
   uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
   alterId: 0
   cipher: auto
-- name: 🇸🇬 新加坡 (Singapore) 03 4278K ⚠P - NEKO
+- name: 🇸🇬 新加坡 (Singapore) 04 3297K ⚠P - NEKO
   server: 149.88.23.207
   port: 18000
   udp: true
@@ -30,30 +41,87 @@ proxies:
   uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
   alterId: 0
   cipher: auto
-- name: 🇸🇬 新加坡 (Singapore) 04 4742K ⚠P - NEKO
+- name: 🇸🇬 新加坡 (Singapore) 05 2699K ⚠P - NEKO
+  server: 68.183.235.122
+  port: 8080
+  udp: true
+  type: ss
+  cipher: rc4-md5
+  password: 14fFPrbezE3HDZzsMOr6
+- name: 🇸🇬 新加坡 (Singapore) 06 2856K ⚠P - NEKO
+  server: 128.199.172.224
+  port: 8080
+  udp: true
+  type: ss
+  cipher: rc4-md5
+  password: 14fFPrbezE3HDZzsMOr6
+- name: 🇸🇬 新加坡 (Singapore) 07 2071K ⚠P - NEKO
   server: 68.183.235.240
   port: 8080
   udp: true
   type: ss
   cipher: rc4-md5
   password: 14fFPrbezE3HDZzsMOr6
+- name: 🇸🇬 新加坡 (Singapore) 08 2700K ⚠P - NEKO
+  server: 68.183.227.45
+  port: 8080
+  udp: true
+  type: ss
+  cipher: rc4-md5
+  password: 14fFPrbezE3HDZzsMOr6
+- name: 🇸🇬 新加坡 (Singapore) 09 3377K ⚠P - NEKO
+  server: 146.235.16.130
+  port: 19825
+  udp: true
+  type: vless
+  uuid: 2d1ad594-80a4-4bfb-87a6-038e39701f51
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: GvvkY8xYb9QjvwvzYq_uNC4tOGd0DCxRnz6770-xgkI
+    short-id: 6ba85179e30d4fc2
+  servername: sg2-8sb.6121999.dpdns.org
+  client-fingerprint: chrome
+- name: 🇸🇬 新加坡 (Singapore) 10 2108K ⚠P - NEKO
+  server: 178.94.25.73
+  port: 14430
+  udp: true
+  type: vless
+  uuid: 2dacc738-5720-4824-b8bc-e3db57596ba7
+  network: ws
+  ws-opts:
+    path: /vless
+    headers:
+      Host: 178.94.25.73
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇸🇬 新加坡 (Singapore) 01 3204K - NEKO
-  - 🇸🇬 新加坡 (Singapore) 02 4260K ⚠P - NEKO
-  - 🇸🇬 新加坡 (Singapore) 03 4278K ⚠P - NEKO
-  - 🇸🇬 新加坡 (Singapore) 04 4742K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 01 4737K 🇨🇳 - NEKO
+  - 🇸🇬 新加坡 (Singapore) 02 921K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 03 3286K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 04 3297K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 05 2699K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 06 2856K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 07 2071K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 08 2700K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 09 3377K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 10 2108K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇸🇬 新加坡 (Singapore) 01 3204K - NEKO
-  - 🇸🇬 新加坡 (Singapore) 02 4260K ⚠P - NEKO
-  - 🇸🇬 新加坡 (Singapore) 03 4278K ⚠P - NEKO
-  - 🇸🇬 新加坡 (Singapore) 04 4742K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 01 4737K 🇨🇳 - NEKO
+  - 🇸🇬 新加坡 (Singapore) 02 921K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 03 3286K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 04 3297K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 05 2699K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 06 2856K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 07 2071K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 08 2700K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 09 3377K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 10 2108K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

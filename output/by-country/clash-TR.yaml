@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇹🇷 土耳其 (Turkey) 01 ⚠S6332K 🇨🇳 - NEKO
+- name: 🇹🇷 土耳其 (Turkey) 01 3777K 🇨🇳 - NEKO
   server: 78.135.73.47
   port: 443
   udp: true
@@ -16,8 +16,8 @@ proxies:
     public-key: sZAJkAu23wp1WKY-qeaeiwR38izP5OyfhumoE9xhbB8
     short-id: f46cd3ea3d1eb72d
   servername: www.datadoghq.com
-  client-fingerprint: firefox
-- name: 🇹🇷 土耳其 (Turkey) 02 6233K 🇨🇳 - NEKO
+  client-fingerprint: ''
+- name: 🇹🇷 土耳其 (Turkey) 02 3810K ⚠P - NEKO
   server: 151.241.226.201
   port: 2053
   udp: true
@@ -29,7 +29,7 @@ proxies:
     short-id: 9e419c0759b54d6f
   servername: www.apple.com
   client-fingerprint: firefox
-- name: 🇹🇷 土耳其 (Turkey) 03 ⚠S8203K 🇨🇳 - NEKO
+- name: 🇹🇷 土耳其 (Turkey) 03 6197K 🇨🇳 - NEKO
   server: 62.60.233.157
   port: 8444
   udp: true
@@ -48,16 +48,16 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇹🇷 土耳其 (Turkey) 01 ⚠S6332K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 02 6233K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 03 ⚠S8203K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 01 3777K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 02 3810K ⚠P - NEKO
+  - 🇹🇷 土耳其 (Turkey) 03 6197K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇹🇷 土耳其 (Turkey) 01 ⚠S6332K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 02 6233K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 03 ⚠S8203K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 01 3777K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 02 3810K ⚠P - NEKO
+  - 🇹🇷 土耳其 (Turkey) 03 6197K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

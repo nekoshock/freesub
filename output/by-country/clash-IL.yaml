@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇮🇱 以色列 (Israel) 01 12435K 🇨🇳 - NEKO
+- name: 🇮🇱 以色列 (Israel) 01 32444K 🇨🇳 - NEKO
   server: 185.95.231.156
   port: 443
   udp: true
@@ -16,17 +16,8 @@ proxies:
     public-key: 8eXftARun6KH38UZhuqIfPR1VF2DLS9RMBZEnF5k6To
     short-id: a3a578ab
   servername: www.apple.com
-  client-fingerprint: firefox
-- name: 🇮🇱 以色列 (Israel) 02 ⚠S1942K - NEKO
-  server: 31.57.185.220
-  port: 443
-  udp: true
-  type: vless
-  uuid: 2e2e204a-7e61-48fb-8182-5955821e8da0
-  network: ws
-  ws-opts:
-    path: /
-- name: 🇮🇱 以色列 (Israel) 03 3755K 🇨🇳 - NEKO
+  client-fingerprint: random
+- name: 🇮🇱 以色列 (Israel) 02 4712K 🇨🇳 - NEKO
   server: 94.103.2.23
   port: 8459
   udp: true
@@ -45,16 +36,14 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇮🇱 以色列 (Israel) 01 12435K 🇨🇳 - NEKO
-  - 🇮🇱 以色列 (Israel) 02 ⚠S1942K - NEKO
-  - 🇮🇱 以色列 (Israel) 03 3755K 🇨🇳 - NEKO
+  - 🇮🇱 以色列 (Israel) 01 32444K 🇨🇳 - NEKO
+  - 🇮🇱 以色列 (Israel) 02 4712K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇮🇱 以色列 (Israel) 01 12435K 🇨🇳 - NEKO
-  - 🇮🇱 以色列 (Israel) 02 ⚠S1942K - NEKO
-  - 🇮🇱 以色列 (Israel) 03 3755K 🇨🇳 - NEKO
+  - 🇮🇱 以色列 (Israel) 01 32444K 🇨🇳 - NEKO
+  - 🇮🇱 以色列 (Israel) 02 4712K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

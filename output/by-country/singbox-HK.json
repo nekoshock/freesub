@@ -4,26 +4,41 @@
   },
   "outbounds": [
     {
-      "type": "shadowsocks",
-      "tag": "🇭🇰 中国香港 (Hong Kong) 01 2273K ⚠P - NEKO",
-      "server": "212.192.13.148",
-      "server_port": 8388,
-      "method": "aes-256-gcm",
-      "password": "5qds8o2hLNyKCUmk"
+      "type": "vless",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 01 ⚠S3475K ⚠L20% ⚠P - NEKO",
+      "server": "us.mediabox12wrr.site",
+      "server_port": 8443,
+      "uuid": "1566a6e1-8181-41ef-894c-6d6d0d482470",
+      "tls": {
+        "enabled": true,
+        "server_name": "us.mediabox12wrr.site",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/dfefc609ed724b3d8647ed29",
+        "headers": {
+          "Host": "us.mediabox12wrr.site"
+        }
+      }
     },
     {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇭🇰 中国香港 (Hong Kong) 01 2273K ⚠P - NEKO"
+        "🇭🇰 中国香港 (Hong Kong) 01 ⚠S3475K ⚠L20% ⚠P - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇭🇰 中国香港 (Hong Kong) 01 2273K ⚠P - NEKO"
+        "🇭🇰 中国香港 (Hong Kong) 01 ⚠S3475K ⚠L20% ⚠P - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

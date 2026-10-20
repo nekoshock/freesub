@@ -4,32 +4,30 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇭🇰 中国香港 (Hong Kong) 01 ⚠S3475K ⚠L20% ⚠P - NEKO
-  server: us.mediabox12wrr.site
-  port: 8443
+- name: 🇭🇰 中国香港 (Hong Kong) 01 6024K ⚠P - NEKO
+  server: 45.202.248.173
+  port: 9443
   udp: true
   type: vless
-  uuid: 1566a6e1-8181-41ef-894c-6d6d0d482470
+  uuid: 82eb8419-59f4-4d3e-9106-d05d22af615c
+  flow: xtls-rprx-vision
   tls: true
-  servername: us.mediabox12wrr.site
-  skip-cert-verify: false
+  reality-opts:
+    public-key: 0hIFPaEn4RdFib8_eP8HYxMywR5izEwM3JA2W1Zo8U4
+    short-id: b390142456517acc
+  servername: www.amazon.com
   client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /dfefc609ed724b3d8647ed29
-    headers:
-      Host: us.mediabox12wrr.site
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇭🇰 中国香港 (Hong Kong) 01 ⚠S3475K ⚠L20% ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 6024K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇭🇰 中国香港 (Hong Kong) 01 ⚠S3475K ⚠L20% ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 6024K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

@@ -4,7 +4,14 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇧🇬 保加利亚 (Bulgaria) 01 575K ⚠P - NEKO
+- name: 🇧🇬 保加利亚 (Bulgaria) 01 3385K ⚠P - NEKO
+  server: 213.183.63.60
+  port: 9061
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: 4R3hUfZ2FHhDmNcP
+- name: 🇧🇬 保加利亚 (Bulgaria) 02 3284K ⚠P - NEKO
   server: 213.183.63.60
   port: 9085
   udp: true
@@ -16,12 +23,14 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇧🇬 保加利亚 (Bulgaria) 01 575K ⚠P - NEKO
+  - 🇧🇬 保加利亚 (Bulgaria) 01 3385K ⚠P - NEKO
+  - 🇧🇬 保加利亚 (Bulgaria) 02 3284K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇧🇬 保加利亚 (Bulgaria) 01 575K ⚠P - NEKO
+  - 🇧🇬 保加利亚 (Bulgaria) 01 3385K ⚠P - NEKO
+  - 🇧🇬 保加利亚 (Bulgaria) 02 3284K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

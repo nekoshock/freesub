@@ -5,25 +5,35 @@
   "outbounds": [
     {
       "type": "shadowsocks",
-      "tag": "🇱🇹 立陶宛 (Lithuania) 01 4779K ⚠P - NEKO",
+      "tag": "🇱🇹 立陶宛 (Lithuania) 01 4072K ⚠P - NEKO",
       "server": "195.238.126.20",
       "server_port": 9078,
       "method": "aes-256-cfb",
       "password": "JCJpbRbQZNw9XFZG"
     },
     {
+      "type": "shadowsocks",
+      "tag": "🇱🇹 立陶宛 (Lithuania) 02 4205K ⚠P - NEKO",
+      "server": "195.238.126.20",
+      "server_port": 9012,
+      "method": "aes-256-cfb",
+      "password": "xaupMUvhptwxdDUg"
+    },
+    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇱🇹 立陶宛 (Lithuania) 01 4779K ⚠P - NEKO"
+        "🇱🇹 立陶宛 (Lithuania) 01 4072K ⚠P - NEKO",
+        "🇱🇹 立陶宛 (Lithuania) 02 4205K ⚠P - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇱🇹 立陶宛 (Lithuania) 01 4779K ⚠P - NEKO"
+        "🇱🇹 立陶宛 (Lithuania) 01 4072K ⚠P - NEKO",
+        "🇱🇹 立陶宛 (Lithuania) 02 4205K ⚠P - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

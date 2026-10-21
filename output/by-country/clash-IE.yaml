@@ -4,42 +4,75 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇮🇪 爱尔兰 (Ireland) 01 ⚠S6547K 🇨🇳 - NEKO
-  server: 52.16.44.28
-  port: 443
-  udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: amazonskr05
-- name: 🇮🇪 爱尔兰 (Ireland) 02 ⚠S6920K 🇨🇳 - NEKO
+- name: 🇮🇪 爱尔兰 (Ireland) 01 ⚠S6549K 🇨🇳 - NEKO
   server: 108.129.216.202
   port: 443
   udp: true
   type: ss
   cipher: aes-256-cfb
   password: amazonskr05
-- name: 🇮🇪 爱尔兰 (Ireland) 03 ⚠S2631K - NEKO
+- name: 🇮🇪 爱尔兰 (Ireland) 02 ⚠S3490K - NEKO
+  server: 52.214.157.27
+  port: 443
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: amazonskr05
+- name: 🇮🇪 爱尔兰 (Ireland) 03 ⚠S1022K - NEKO
+  server: 52.16.44.28
+  port: 443
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: amazonskr05
+- name: 🇮🇪 爱尔兰 (Ireland) 04 ⚠S1802K - NEKO
   server: 54.229.164.140
   port: 443
   udp: true
   type: ss
   cipher: aes-256-cfb
   password: amazonskr05
+- name: 🇮🇪 爱尔兰 (Ireland) 05 ⚠S5712K ⚠P - NEKO
+  server: 18.134.224.162
+  port: 22223
+  udp: true
+  type: vless
+  uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
+- name: 🇮🇪 爱尔兰 (Ireland) 06 ⚠S6794K ⚠P - NEKO
+  server: 18.134.224.162
+  port: 22222
+  udp: true
+  type: vless
+  uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
+- name: 🇮🇪 爱尔兰 (Ireland) 07 ⚠S5635K ⚠P - NEKO
+  server: 18.134.224.162
+  port: 22224
+  udp: true
+  type: vless
+  uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇮🇪 爱尔兰 (Ireland) 01 ⚠S6547K 🇨🇳 - NEKO
-  - 🇮🇪 爱尔兰 (Ireland) 02 ⚠S6920K 🇨🇳 - NEKO
-  - 🇮🇪 爱尔兰 (Ireland) 03 ⚠S2631K - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 01 ⚠S6549K 🇨🇳 - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 02 ⚠S3490K - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 03 ⚠S1022K - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 04 ⚠S1802K - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 05 ⚠S5712K ⚠P - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 06 ⚠S6794K ⚠P - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 07 ⚠S5635K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇮🇪 爱尔兰 (Ireland) 01 ⚠S6547K 🇨🇳 - NEKO
-  - 🇮🇪 爱尔兰 (Ireland) 02 ⚠S6920K 🇨🇳 - NEKO
-  - 🇮🇪 爱尔兰 (Ireland) 03 ⚠S2631K - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 01 ⚠S6549K 🇨🇳 - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 02 ⚠S3490K - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 03 ⚠S1022K - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 04 ⚠S1802K - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 05 ⚠S5712K ⚠P - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 06 ⚠S6794K ⚠P - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 07 ⚠S5635K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

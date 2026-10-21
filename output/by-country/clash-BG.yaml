@@ -4,24 +4,24 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇿🇦 南非 (South Africa) 01 3921K - NEKO
-  server: 102.37.156.224
-  port: 443
+- name: 🇧🇬 保加利亚 (Bulgaria) 01 3086K ⚠P - NEKO
+  server: 213.183.63.60
+  port: 9028
   udp: true
   type: ss
-  cipher: chacha20-ietf-poly1305
-  password: aduB9HGxQHjA2SBMRjkHX6
+  cipher: aes-256-cfb
+  password: 9eeJ2fwnZA5Fxgz8
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇿🇦 南非 (South Africa) 01 3921K - NEKO
+  - 🇧🇬 保加利亚 (Bulgaria) 01 3086K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇿🇦 南非 (South Africa) 01 3921K - NEKO
+  - 🇧🇬 保加利亚 (Bulgaria) 01 3086K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

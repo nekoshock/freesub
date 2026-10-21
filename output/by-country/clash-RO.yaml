@@ -4,7 +4,23 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇷🇴 罗马尼亚 (Romania) 01 ⚠S5742K 🇨🇳 - NEKO
+- name: 🇷🇴 罗马尼亚 (Romania) 01 6227K 🇨🇳 - NEKO
+  server: it1.dedushka.top
+  port: 443
+  udp: true
+  type: trojan
+  password: 4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA
+  sni: it1.dedushka.top
+  skip-cert-verify: false
+- name: 🇷🇴 罗马尼亚 (Romania) 02 ⚠S7495K 🇨🇳 - NEKO
+  server: de1.dedushka.top
+  port: 443
+  udp: true
+  type: trojan
+  password: 4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA
+  sni: de1.dedushka.top
+  skip-cert-verify: false
+- name: 🇷🇴 罗马尼亚 (Romania) 03 4822K 🇨🇳 - NEKO
   server: 46.28.67.55
   port: 443
   udp: true
@@ -16,16 +32,21 @@ proxies:
     public-key: i2dJ1_XGDpp50qpEclh6SWSWkxt4B0t2hi2qOVQbeSU
     short-id: d06d78e974491b6e
   servername: www.cloudflare.com
-  client-fingerprint: firefox
-- name: 🇷🇴 罗马尼亚 (Romania) 02 ⚠S4505K 🇨🇳 - NEKO
-  server: it1.dedushka.top
+  client-fingerprint: random
+- name: 🇷🇴 罗马尼亚 (Romania) 04 5672K 🇨🇳 - NEKO
+  server: 109.104.106.101
   port: 443
   udp: true
-  type: trojan
-  password: 4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA
-  sni: it1.dedushka.top
-  skip-cert-verify: false
-- name: 🇷🇴 罗马尼亚 (Romania) 03 ⚠S1971K 🇨🇳 - NEKO
+  type: vless
+  uuid: e5544327-834c-455a-9db5-2454c788fa17
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: V-6tk21giXjug4ZXwpAhT4aXHjsXYwkgznT4dQEc9Aw
+    short-id: 48d6ed723454f6db
+  servername: d1-ro.cloud-cdn.xyz
+  client-fingerprint: edge
+- name: 🇷🇴 罗马尼亚 (Romania) 05 ⚠S1199K 🇨🇳 - NEKO
   server: 162.249.125.133
   port: 443
   udp: true
@@ -40,16 +61,20 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇷🇴 罗马尼亚 (Romania) 01 ⚠S5742K 🇨🇳 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 02 ⚠S4505K 🇨🇳 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 03 ⚠S1971K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 01 6227K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 02 ⚠S7495K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 03 4822K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 04 5672K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 05 ⚠S1199K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇷🇴 罗马尼亚 (Romania) 01 ⚠S5742K 🇨🇳 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 02 ⚠S4505K 🇨🇳 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 03 ⚠S1971K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 01 6227K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 02 ⚠S7495K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 03 4822K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 04 5672K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 05 ⚠S1199K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

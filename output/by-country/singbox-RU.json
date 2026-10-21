@@ -5,7 +5,7 @@
   "outbounds": [
     {
       "type": "vless",
-      "tag": "🇷🇺 俄罗斯 (Russia) 01 10495K 🇨🇳 - NEKO",
+      "tag": "🇷🇺 俄罗斯 (Russia) 01 ⚠S5125K 🇨🇳 - NEKO",
       "server": "77.90.61.135",
       "server_port": 443,
       "uuid": "8815925b-c7b8-4f94-9c24-9dc864f63a29",
@@ -14,7 +14,7 @@
         "server_name": "www.cloudflare.com",
         "utls": {
           "enabled": true,
-          "fingerprint": "chrome"
+          "fingerprint": "qq"
         },
         "reality": {
           "enabled": true,
@@ -24,8 +24,24 @@
       }
     },
     {
+      "type": "shadowsocks",
+      "tag": "🇷🇺 俄罗斯 (Russia) 02 6737K ⚠P - NEKO",
+      "server": "130.49.189.158",
+      "server_port": 43558,
+      "method": "chacha20-ietf-poly1305",
+      "password": "nQeEoXC5Yl5PZnPLvKUpFTU9cyQcNG902zpibWkwGbo="
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇷🇺 俄罗斯 (Russia) 03 ⚠S2968K ⚠P - NEKO",
+      "server": "176.32.34.253",
+      "server_port": 18443,
+      "method": "aes-256-gcm",
+      "password": "Lpq5UPVHtQYiuB9jEUNc2WkeIYCUH9DE"
+    },
+    {
       "type": "vless",
-      "tag": "🇷🇺 俄罗斯 (Russia) 02 16360K 🇨🇳 - NEKO",
+      "tag": "🇷🇺 俄罗斯 (Russia) 04 10394K 🇨🇳 - NEKO",
       "server": "193.233.253.180",
       "server_port": 8444,
       "uuid": "f55e9aba-7b14-4f6f-b59a-d5b3d45c9309",
@@ -48,46 +64,44 @@
       }
     },
     {
-      "type": "vless",
-      "tag": "🇷🇺 俄罗斯 (Russia) 03 ⚠S1174K 🇨🇳 - NEKO",
-      "server": "31.59.210.37",
-      "server_port": 443,
-      "uuid": "5413edfb-08d6-4fba-b51c-809c04feb127",
-      "tls": {
-        "enabled": true,
-        "server_name": "www.yandex.ru",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "safari"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "5k0dtOSzmshCubdYeKppsUdHU4i2ghaB9uSJSzGjHW4",
-          "short_id": "6dbf4931096f9890"
-        }
-      },
-      "transport": {
-        "type": "grpc",
-        "service_name": "astracat"
-      }
+      "type": "shadowsocks",
+      "tag": "🇷🇺 俄罗斯 (Russia) 05 2271K ⚠P - NEKO",
+      "server": "176.32.33.254",
+      "server_port": 18443,
+      "method": "aes-256-gcm",
+      "password": "cCMJgJTA3BA489YUYrFq7XHXSiSpWlLa"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇷🇺 俄罗斯 (Russia) 06 4243K ⚠P - NEKO",
+      "server": "46.17.44.216",
+      "server_port": 18443,
+      "method": "aes-256-gcm",
+      "password": "NTiHBg64fsY8u8DbGrtypD9gPGSL386p"
     },
     {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇷🇺 俄罗斯 (Russia) 01 10495K 🇨🇳 - NEKO",
-        "🇷🇺 俄罗斯 (Russia) 02 16360K 🇨🇳 - NEKO",
-        "🇷🇺 俄罗斯 (Russia) 03 ⚠S1174K 🇨🇳 - NEKO"
+        "🇷🇺 俄罗斯 (Russia) 01 ⚠S5125K 🇨🇳 - NEKO",
+        "🇷🇺 俄罗斯 (Russia) 02 6737K ⚠P - NEKO",
+        "🇷🇺 俄罗斯 (Russia) 03 ⚠S2968K ⚠P - NEKO",
+        "🇷🇺 俄罗斯 (Russia) 04 10394K 🇨🇳 - NEKO",
+        "🇷🇺 俄罗斯 (Russia) 05 2271K ⚠P - NEKO",
+        "🇷🇺 俄罗斯 (Russia) 06 4243K ⚠P - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇷🇺 俄罗斯 (Russia) 01 10495K 🇨🇳 - NEKO",
-        "🇷🇺 俄罗斯 (Russia) 02 16360K 🇨🇳 - NEKO",
-        "🇷🇺 俄罗斯 (Russia) 03 ⚠S1174K 🇨🇳 - NEKO"
+        "🇷🇺 俄罗斯 (Russia) 01 ⚠S5125K 🇨🇳 - NEKO",
+        "🇷🇺 俄罗斯 (Russia) 02 6737K ⚠P - NEKO",
+        "🇷🇺 俄罗斯 (Russia) 03 ⚠S2968K ⚠P - NEKO",
+        "🇷🇺 俄罗斯 (Russia) 04 10394K 🇨🇳 - NEKO",
+        "🇷🇺 俄罗斯 (Russia) 05 2271K ⚠P - NEKO",
+        "🇷🇺 俄罗斯 (Russia) 06 4243K ⚠P - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

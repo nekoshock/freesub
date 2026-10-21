@@ -4,48 +4,39 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇸🇪 瑞典 (Sweden) 01 7052K 🇨🇳 - NEKO
-  server: multirouterapp.com
+- name: 🇸🇪 瑞典 (Sweden) 01 ⚠S6078K - NEKO
+  server: 13.60.198.133
   port: 443
   udp: true
   type: vless
-  uuid: af381781-3a00-4565-b1bc-4df0275eb4b9
-  tls: true
-  reality-opts:
-    public-key: C6nh6hqFTbtizgSH8vGmw2XUxsQAbAW3jPylpgGvfl4
-    short-id: a1b2c3d4e5f6a7b8
-  servername: lunarchaff.com
-  client-fingerprint: chrome
-  network: grpc
-  grpc-opts:
-    grpc-service-name: moktana.net.v1.StreamService
-- name: 🇸🇪 瑞典 (Sweden) 02 5575K 🇨🇳 - NEKO
-  server: 62.60.159.81
-  port: 2053
+  uuid: 7060231d-b9ba-495f-a218-bf427940cf3e
+  network: h2
+  h2-opts:
+    host: []
+    path: /
+- name: 🇸🇪 瑞典 (Sweden) 02 ⚠S5162K - NEKO
+  server: 51.21.247.148
+  port: 443
   udp: true
   type: vless
-  uuid: fc00adfb-232a-46ce-8b93-0c70e516aa8a
-  tls: true
-  reality-opts:
-    public-key: ygmJxS-Mc7g0buNSUTVGhazT-FoBjyYtLLfUYIQxFTw
-  servername: www.samsung.com
-  client-fingerprint: random
-  network: grpc
-  grpc-opts:
-    grpc-service-name: grpce5bb9e71
+  uuid: 7060231d-b9ba-495f-a218-bf427940cf3e
+  network: h2
+  h2-opts:
+    host: []
+    path: /
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇸🇪 瑞典 (Sweden) 01 7052K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 5575K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 ⚠S6078K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 ⚠S5162K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇸🇪 瑞典 (Sweden) 01 7052K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 5575K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 ⚠S6078K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 ⚠S5162K - NEKO
 rules:
 - MATCH,PROXIES

@@ -5,7 +5,7 @@
   "outbounds": [
     {
       "type": "vless",
-      "tag": "🇨🇭 瑞士 (Switzerland) 01 8852K 🇨🇳 - NEKO",
+      "tag": "🇨🇭 瑞士 (Switzerland) 01 6926K 🇨🇳 - NEKO",
       "server": "45.90.59.15",
       "server_port": 443,
       "uuid": "3950b45e-740d-4dca-ac95-505ec8534592",
@@ -15,7 +15,7 @@
         "server_name": "www.cloudflare.com",
         "utls": {
           "enabled": true,
-          "fingerprint": "firefox"
+          "fingerprint": "chrome"
         },
         "reality": {
           "enabled": true,
@@ -25,39 +25,18 @@
       }
     },
     {
-      "type": "vless",
-      "tag": "🇨🇭 瑞士 (Switzerland) 02 28299K ⚠P - NEKO",
-      "server": "203.137.165.164",
-      "server_port": 57554,
-      "uuid": "7fdb95f9-c758-486c-865a-7c1219823670",
-      "tls": {
-        "enabled": true,
-        "server_name": "3tmj2egtm-fno.49bnithzk8vphybv36d1z1xkzfvogt2m6.workers.dev",
-        "insecure": false
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/@Marisa_kristi",
-        "headers": {
-          "Host": "3tmj2egtm-fno.49bnithzk8vphybv36d1z1xkzfvogt2m6.workers.dev"
-        }
-      }
-    },
-    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇨🇭 瑞士 (Switzerland) 01 8852K 🇨🇳 - NEKO",
-        "🇨🇭 瑞士 (Switzerland) 02 28299K ⚠P - NEKO"
+        "🇨🇭 瑞士 (Switzerland) 01 6926K 🇨🇳 - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇨🇭 瑞士 (Switzerland) 01 8852K 🇨🇳 - NEKO",
-        "🇨🇭 瑞士 (Switzerland) 02 28299K ⚠P - NEKO"
+        "🇨🇭 瑞士 (Switzerland) 01 6926K 🇨🇳 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

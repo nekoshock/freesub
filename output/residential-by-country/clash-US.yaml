@@ -4,28 +4,31 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇺🇸 美国 (United States) 01 (移动家宽) 9358K 🇨🇳 - NEKO
-  server: 188.114.97.6
+- name: 🇺🇸 美国 (United States) 01 (家宽) 855K 🇨🇳 - NEKO
+  server: 104.18.0.1
   port: 443
   udp: true
-  type: trojan
-  password: mitivpn
-  sni: d-e.mitivpn.in.net
+  type: vless
+  uuid: 3ccba794-1c6d-48a8-acf2-f5caf0e69d86
+  tls: true
+  servername: all.speedtest03.ccwu.cc
   skip-cert-verify: false
   network: ws
   ws-opts:
-    path: /?Telegram---PLANB_NET---PLANB_NET---PLANB_NET---PLANB_NET
+    path: /fp=chrome
+    headers:
+      Host: all.speedtest03.ccwu.cc
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇺🇸 美国 (United States) 01 (移动家宽) 9358K 🇨🇳 - NEKO
+  - 🇺🇸 美国 (United States) 01 (家宽) 855K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇺🇸 美国 (United States) 01 (移动家宽) 9358K 🇨🇳 - NEKO
+  - 🇺🇸 美国 (United States) 01 (家宽) 855K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

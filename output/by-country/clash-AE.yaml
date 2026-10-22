@@ -4,7 +4,33 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇦🇪 阿联酋 (UAE) 01 ⚠S5622K 🇨🇳 - NEKO
+- name: 🇦🇪 阿联酋 (UAE) 01 6933K 🇨🇳 - NEKO
+  server: 128.241.25.127
+  port: 30036
+  udp: true
+  type: vless
+  uuid: a1b59134-6cd4-496a-8aa8-bb224e75e800
+  tls: true
+  servername: 3tmj2egtm-fno.49bnithzk8vphybv36d1z1xkzfvogt2m6.workers.dev
+  skip-cert-verify: false
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /@Marisa_kristi
+    headers:
+      Host: 3tmj2egtm-fno.49bnithzk8vphybv36d1z1xkzfvogt2m6.workers.dev
+- name: 🇦🇪 阿联酋 (UAE) 02 8650K 🇨🇳 - NEKO
+  server: 188.114.97.6
+  port: 443
+  udp: true
+  type: trojan
+  password: mitivpn
+  sni: de.mitivpn.in.net
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /?Telegram---PLANB_NET---PLANB_NET---PLANB_NET---PLANB_NET
+- name: 🇦🇪 阿联酋 (UAE) 03 8172K 🇨🇳 - NEKO
   server: 130.49.161.70
   port: 443
   udp: true
@@ -14,7 +40,35 @@ proxies:
   skip-cert-verify: false
   obfs: salamander
   obfs-password: rG07s3COMIEvdnQipRyWzx_H_2xygNC3
-- name: 🇦🇪 阿联酋 (UAE) 02 4054K ⚠P - NEKO
+- name: 🇦🇪 阿联酋 (UAE) 04 8979K 🇨🇳 - NEKO
+  server: 45.129.141.197
+  port: 443
+  udp: true
+  type: vless
+  uuid: 689a62e4-37e7-41de-9e6a-f2a56368c9e2
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: XjdhbKkou-RV3ZyRrycpH-l0QrlhClkcfaMVlQ-Vtz8
+    short-id: ef
+  servername: www.websupport.sk
+  client-fingerprint: firefox
+- name: 🇦🇪 阿联酋 (UAE) 05 22304K ⚠P - NEKO
+  server: 156.229.163.237
+  port: 10238
+  udp: true
+  type: vless
+  uuid: 05cfac59-b08a-4d35-9e6d-7924f6439f28
+  tls: true
+  servername: woc0zvrf11w2endu.dphdlc1u77bs3y4kvussbuap4p576f1ws7igthq8zbf3.workers.dev
+  skip-cert-verify: false
+  client-fingerprint: firefox
+  network: ws
+  ws-opts:
+    path: /@Marisa_kristi
+    headers:
+      Host: woc0zvrf11w2endu.dphdlc1u77bs3y4kvussbuap4p576f1ws7igthq8zbf3.workers.dev
+- name: 🇦🇪 阿联酋 (UAE) 06 9218K ⚠P - NEKO
   server: 185.253.116.33
   port: 14430
   udp: true
@@ -23,32 +77,29 @@ proxies:
   network: ws
   ws-opts:
     path: /vless
-- name: 🇦🇪 阿联酋 (UAE) 03 2427K ⚠P - NEKO
-  server: uae.unixzone.us
-  port: 22573
-  udp: true
-  type: vless
-  uuid: 39947382-3212-41c9-bc3a-589574ac8b23
-  network: ws
-  ws-opts:
-    path: /
     headers:
-      Host: uae.unixzone.us
+      Host: 185.253.116.33
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇦🇪 阿联酋 (UAE) 01 ⚠S5622K 🇨🇳 - NEKO
-  - 🇦🇪 阿联酋 (UAE) 02 4054K ⚠P - NEKO
-  - 🇦🇪 阿联酋 (UAE) 03 2427K ⚠P - NEKO
+  - 🇦🇪 阿联酋 (UAE) 01 6933K 🇨🇳 - NEKO
+  - 🇦🇪 阿联酋 (UAE) 02 8650K 🇨🇳 - NEKO
+  - 🇦🇪 阿联酋 (UAE) 03 8172K 🇨🇳 - NEKO
+  - 🇦🇪 阿联酋 (UAE) 04 8979K 🇨🇳 - NEKO
+  - 🇦🇪 阿联酋 (UAE) 05 22304K ⚠P - NEKO
+  - 🇦🇪 阿联酋 (UAE) 06 9218K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇦🇪 阿联酋 (UAE) 01 ⚠S5622K 🇨🇳 - NEKO
-  - 🇦🇪 阿联酋 (UAE) 02 4054K ⚠P - NEKO
-  - 🇦🇪 阿联酋 (UAE) 03 2427K ⚠P - NEKO
+  - 🇦🇪 阿联酋 (UAE) 01 6933K 🇨🇳 - NEKO
+  - 🇦🇪 阿联酋 (UAE) 02 8650K 🇨🇳 - NEKO
+  - 🇦🇪 阿联酋 (UAE) 03 8172K 🇨🇳 - NEKO
+  - 🇦🇪 阿联酋 (UAE) 04 8979K 🇨🇳 - NEKO
+  - 🇦🇪 阿联酋 (UAE) 05 22304K ⚠P - NEKO
+  - 🇦🇪 阿联酋 (UAE) 06 9218K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

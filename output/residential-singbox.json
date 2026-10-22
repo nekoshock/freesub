@@ -4,44 +4,91 @@
   },
   "outbounds": [
     {
-      "type": "trojan",
-      "tag": "🇺🇸 美国 (United States) 01 (移动家宽) 9358K 🇨🇳 - NEKO",
-      "server": "188.114.97.6",
+      "type": "vless",
+      "tag": "🇺🇸 美国 (United States) 01 (家宽) 855K 🇨🇳 - NEKO",
+      "server": "104.18.0.1",
       "server_port": 443,
-      "password": "mitivpn",
+      "uuid": "3ccba794-1c6d-48a8-acf2-f5caf0e69d86",
       "tls": {
         "enabled": true,
-        "server_name": "d-e.mitivpn.in.net",
-        "insecure": false,
-        "alpn": [
-          "http/1.1"
-        ],
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
+        "server_name": "all.speedtest03.ccwu.cc",
+        "insecure": false
       },
       "transport": {
         "type": "ws",
-        "path": "/?Telegram---PLANB_NET---PLANB_NET---PLANB_NET---PLANB_NET",
+        "path": "/fp=chrome",
         "headers": {
-          "Host": "d-e.mitivpn.in.net"
+          "Host": "all.speedtest03.ccwu.cc"
         }
       }
+    },
+    {
+      "type": "vless",
+      "tag": "🇹🇼 中国台湾 (Taiwan) 02 (家宽) 3700K ⚠P - NEKO",
+      "server": "61.230.160.34",
+      "server_port": 24215,
+      "uuid": "19d5a678-8396-4e3b-93da-ece618d0e83a",
+      "tls": {
+        "enabled": true,
+        "server_name": "addons.mozilla.org",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "ios"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "mdWKUPMVTtTbDqK10BPb89OcqBC2-Lx-4NOYtqc1GWE",
+          "short_id": ""
+        }
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇹🇼 中国台湾 (Taiwan) 03 (家宽) 13209K 🇨🇳 - NEKO",
+      "server": "9641684.sdf65h4.top",
+      "server_port": 443,
+      "uuid": "250c015d-bab0-4ed3-b638-b4eda48f5840",
+      "security": "auto",
+      "tls": {
+        "enabled": true,
+        "server_name": "9641684.sdf65h4.top",
+        "insecure": false
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "9641684.sdf65h4.top"
+        }
+      }
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇰🇷 韩国 (South Korea) 04 (家宽) 3539K ⚠P - NEKO",
+      "server": "49.254.204.133",
+      "server_port": 1774,
+      "method": "aes-256-cfb",
+      "password": "1234!@#$"
     },
     {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇺🇸 美国 (United States) 01 (移动家宽) 9358K 🇨🇳 - NEKO"
+        "🇺🇸 美国 (United States) 01 (家宽) 855K 🇨🇳 - NEKO",
+        "🇹🇼 中国台湾 (Taiwan) 02 (家宽) 3700K ⚠P - NEKO",
+        "🇹🇼 中国台湾 (Taiwan) 03 (家宽) 13209K 🇨🇳 - NEKO",
+        "🇰🇷 韩国 (South Korea) 04 (家宽) 3539K ⚠P - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇺🇸 美国 (United States) 01 (移动家宽) 9358K 🇨🇳 - NEKO"
+        "🇺🇸 美国 (United States) 01 (家宽) 855K 🇨🇳 - NEKO",
+        "🇹🇼 中国台湾 (Taiwan) 02 (家宽) 3700K ⚠P - NEKO",
+        "🇹🇼 中国台湾 (Taiwan) 03 (家宽) 13209K 🇨🇳 - NEKO",
+        "🇰🇷 韩国 (South Korea) 04 (家宽) 3539K ⚠P - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇮🇪 爱尔兰 (Ireland) 01 6780K 🇨🇳 - NEKO
+- name: 🇮🇪 爱尔兰 (Ireland) 01 14634K - NEKO
   server: 3.252.104.83
   port: 443
   udp: true
@@ -14,26 +14,65 @@ proxies:
   h2-opts:
     host: []
     path: /
-- name: 🇮🇪 爱尔兰 (Ireland) 02 6566K 🇨🇳 - NEKO
-  server: 34.253.145.77
-  port: 443
+- name: 🇮🇪 爱尔兰 (Ireland) 02 12681K ⚠P - NEKO
+  server: 3.11.145.4
+  port: 22222
   udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: amazonskr05
+  type: vless
+  uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
+- name: 🇮🇪 爱尔兰 (Ireland) 03 13395K ⚠P - NEKO
+  server: 18.169.214.179
+  port: 22223
+  udp: true
+  type: vless
+  uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
+- name: 🇮🇪 爱尔兰 (Ireland) 04 7229K ⚠P - NEKO
+  server: 16.60.128.74
+  port: 22224
+  udp: true
+  type: vless
+  uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
+- name: 🇮🇪 爱尔兰 (Ireland) 05 10406K ⚠P - NEKO
+  server: 3.11.145.4
+  port: 22223
+  udp: true
+  type: vless
+  uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
+- name: 🇮🇪 爱尔兰 (Ireland) 06 13550K ⚠P - NEKO
+  server: 16.60.128.74
+  port: 22222
+  udp: true
+  type: vless
+  uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
+- name: 🇮🇪 爱尔兰 (Ireland) 07 10012K ⚠P - NEKO
+  server: 16.60.128.74
+  port: 22223
+  udp: true
+  type: vless
+  uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇮🇪 爱尔兰 (Ireland) 01 6780K 🇨🇳 - NEKO
-  - 🇮🇪 爱尔兰 (Ireland) 02 6566K 🇨🇳 - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 01 14634K - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 02 12681K ⚠P - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 03 13395K ⚠P - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 04 7229K ⚠P - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 05 10406K ⚠P - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 06 13550K ⚠P - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 07 10012K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇮🇪 爱尔兰 (Ireland) 01 6780K 🇨🇳 - NEKO
-  - 🇮🇪 爱尔兰 (Ireland) 02 6566K 🇨🇳 - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 01 14634K - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 02 12681K ⚠P - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 03 13395K ⚠P - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 04 7229K ⚠P - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 05 10406K ⚠P - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 06 13550K ⚠P - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 07 10012K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

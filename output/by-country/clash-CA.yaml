@@ -4,14 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇦 加拿大 (Canada) 01 ⚠S3642K 🇨🇳 - NEKO
-  server: 149.22.95.183
-  port: 443
-  udp: true
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-- name: 🇨🇦 加拿大 (Canada) 02 13050K 🇨🇳 - NEKO
+- name: 🇨🇦 加拿大 (Canada) 01 10396K 🇨🇳 - NEKO
   server: 209.200.246.148
   port: 443
   udp: true
@@ -24,7 +17,7 @@ proxies:
     short-id: f98843107912e782
   servername: www.cloudflare.com
   client-fingerprint: chrome
-- name: 🇨🇦 加拿大 (Canada) 03 3155K 🇨🇳 - NEKO
+- name: 🇨🇦 加拿大 (Canada) 02 10843K 🇨🇳 - NEKO
   server: 66.70.179.198
   port: 2053
   udp: true
@@ -36,7 +29,22 @@ proxies:
     short-id: 83f8317a948bb769
   servername: www.cloudflare.com
   client-fingerprint: firefox
-- name: 🇨🇦 加拿大 (Canada) 04 4481K ⚠P - NEKO
+- name: 🇨🇦 加拿大 (Canada) 03 7864K ⚠P - NEKO
+  server: 134.195.196.211
+  port: 18000
+  udp: true
+  type: vmess
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+- name: 🇨🇦 加拿大 (Canada) 04 ⚠S7267K ⚠P - NEKO
+  server: 51.222.136.236
+  port: 8882
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: kDWvXYZoTBcGkC4
+- name: 🇨🇦 加拿大 (Canada) 05 5540K ⚠P - NEKO
   server: 23.162.200.198
   port: 18000
   udp: true
@@ -44,41 +52,52 @@ proxies:
   uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
   alterId: 0
   cipher: auto
-- name: 🇨🇦 加拿大 (Canada) 05 10739K ⚠P - NEKO
+- name: 🇨🇦 加拿大 (Canada) 06 51872K - NEKO
+  server: 149.22.95.183
+  port: 443
+  udp: true
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇨🇦 加拿大 (Canada) 07 8596K ⚠P - NEKO
   server: 138.197.141.58
   port: 8080
   udp: true
   type: ss
   cipher: rc4-md5
   password: 14fFPrbezE3HDZzsMOr6
-- name: 🇨🇦 加拿大 (Canada) 06 6564K ⚠P - NEKO
-  server: 51.222.136.236
-  port: 8882
+- name: 🇨🇦 加拿大 (Canada) 08 11973K ⚠P - NEKO
+  server: 137.184.174.93
+  port: 8080
   udp: true
   type: ss
-  cipher: aes-256-gcm
-  password: kDWvXYZoTBcGkC4
+  cipher: rc4-md5
+  password: 14fFPrbezE3HDZzsMOr6
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇨🇦 加拿大 (Canada) 01 ⚠S3642K 🇨🇳 - NEKO
-  - 🇨🇦 加拿大 (Canada) 02 13050K 🇨🇳 - NEKO
-  - 🇨🇦 加拿大 (Canada) 03 3155K 🇨🇳 - NEKO
-  - 🇨🇦 加拿大 (Canada) 04 4481K ⚠P - NEKO
-  - 🇨🇦 加拿大 (Canada) 05 10739K ⚠P - NEKO
-  - 🇨🇦 加拿大 (Canada) 06 6564K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 01 10396K 🇨🇳 - NEKO
+  - 🇨🇦 加拿大 (Canada) 02 10843K 🇨🇳 - NEKO
+  - 🇨🇦 加拿大 (Canada) 03 7864K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 04 ⚠S7267K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 05 5540K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 06 51872K - NEKO
+  - 🇨🇦 加拿大 (Canada) 07 8596K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 08 11973K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇦 加拿大 (Canada) 01 ⚠S3642K 🇨🇳 - NEKO
-  - 🇨🇦 加拿大 (Canada) 02 13050K 🇨🇳 - NEKO
-  - 🇨🇦 加拿大 (Canada) 03 3155K 🇨🇳 - NEKO
-  - 🇨🇦 加拿大 (Canada) 04 4481K ⚠P - NEKO
-  - 🇨🇦 加拿大 (Canada) 05 10739K ⚠P - NEKO
-  - 🇨🇦 加拿大 (Canada) 06 6564K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 01 10396K 🇨🇳 - NEKO
+  - 🇨🇦 加拿大 (Canada) 02 10843K 🇨🇳 - NEKO
+  - 🇨🇦 加拿大 (Canada) 03 7864K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 04 ⚠S7267K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 05 5540K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 06 51872K - NEKO
+  - 🇨🇦 加拿大 (Canada) 07 8596K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 08 11973K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

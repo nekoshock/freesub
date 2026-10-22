@@ -4,8 +4,8 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇸🇪 瑞典 (Sweden) 01 3769K - NEKO
-  server: 51.21.247.148
+- name: 🇸🇪 瑞典 (Sweden) 01 9453K - NEKO
+  server: 13.60.198.133
   port: 443
   udp: true
   type: vless
@@ -14,32 +14,29 @@ proxies:
   h2-opts:
     host: []
     path: /
-- name: 🇸🇪 瑞典 (Sweden) 02 6067K 🇨🇳 - NEKO
-  server: 94.143.231.146
+- name: 🇸🇪 瑞典 (Sweden) 02 5477K - NEKO
+  server: 51.21.135.136
   port: 443
   udp: true
   type: vless
-  uuid: 6e05822a-e9da-4135-a9db-71aa07a944af
-  tls: true
-  servername: sub.merky.top
-  skip-cert-verify: false
-  client-fingerprint: firefox
-  network: ws
-  ws-opts:
-    path: /merky-connect/de6/
+  uuid: 7060231d-b9ba-495f-a218-bf427940cf3e
+  network: h2
+  h2-opts:
+    host: []
+    path: /
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇸🇪 瑞典 (Sweden) 01 3769K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 6067K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 9453K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 5477K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇸🇪 瑞典 (Sweden) 01 3769K - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 6067K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 9453K - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 5477K - NEKO
 rules:
 - MATCH,PROXIES

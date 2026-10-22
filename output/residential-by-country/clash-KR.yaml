@@ -4,24 +4,24 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇿🇦 南非 (South Africa) 01 1989K - NEKO
-  server: 102.37.156.224
-  port: 443
+- name: 🇰🇷 韩国 (South Korea) 01 (家宽) 3539K ⚠P - NEKO
+  server: 49.254.204.133
+  port: 1774
   udp: true
   type: ss
-  cipher: chacha20-ietf-poly1305
-  password: aduB9HGxQHjA2SBMRjkHX6
+  cipher: aes-256-cfb
+  password: 1234!@#$
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇿🇦 南非 (South Africa) 01 1989K - NEKO
+  - 🇰🇷 韩国 (South Korea) 01 (家宽) 3539K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇿🇦 南非 (South Africa) 01 1989K - NEKO
+  - 🇰🇷 韩国 (South Korea) 01 (家宽) 3539K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

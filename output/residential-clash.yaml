@@ -4,28 +4,71 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇺🇸 美国 (United States) 01 (移动家宽) 9358K 🇨🇳 - NEKO
-  server: 188.114.97.6
+- name: 🇺🇸 美国 (United States) 01 (家宽) 855K 🇨🇳 - NEKO
+  server: 104.18.0.1
   port: 443
   udp: true
-  type: trojan
-  password: mitivpn
-  sni: d-e.mitivpn.in.net
+  type: vless
+  uuid: 3ccba794-1c6d-48a8-acf2-f5caf0e69d86
+  tls: true
+  servername: all.speedtest03.ccwu.cc
   skip-cert-verify: false
   network: ws
   ws-opts:
-    path: /?Telegram---PLANB_NET---PLANB_NET---PLANB_NET---PLANB_NET
+    path: /fp=chrome
+    headers:
+      Host: all.speedtest03.ccwu.cc
+- name: 🇹🇼 中国台湾 (Taiwan) 02 (家宽) 3700K ⚠P - NEKO
+  server: 61.230.160.34
+  port: 24215
+  udp: true
+  type: vless
+  uuid: 19d5a678-8396-4e3b-93da-ece618d0e83a
+  tls: true
+  reality-opts:
+    public-key: mdWKUPMVTtTbDqK10BPb89OcqBC2-Lx-4NOYtqc1GWE
+  servername: addons.mozilla.org
+  client-fingerprint: ios
+- name: 🇹🇼 中国台湾 (Taiwan) 03 (家宽) 13209K 🇨🇳 - NEKO
+  server: 9641684.sdf65h4.top
+  port: 443
+  udp: true
+  type: vmess
+  uuid: 250c015d-bab0-4ed3-b638-b4eda48f5840
+  alterId: 0
+  cipher: auto
+  tls: true
+  servername: 9641684.sdf65h4.top
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 9641684.sdf65h4.top
+- name: 🇰🇷 韩国 (South Korea) 04 (家宽) 3539K ⚠P - NEKO
+  server: 49.254.204.133
+  port: 1774
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: 1234!@#$
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇺🇸 美国 (United States) 01 (移动家宽) 9358K 🇨🇳 - NEKO
+  - 🇺🇸 美国 (United States) 01 (家宽) 855K 🇨🇳 - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 02 (家宽) 3700K ⚠P - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 03 (家宽) 13209K 🇨🇳 - NEKO
+  - 🇰🇷 韩国 (South Korea) 04 (家宽) 3539K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇺🇸 美国 (United States) 01 (移动家宽) 9358K 🇨🇳 - NEKO
+  - 🇺🇸 美国 (United States) 01 (家宽) 855K 🇨🇳 - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 02 (家宽) 3700K ⚠P - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 03 (家宽) 13209K 🇨🇳 - NEKO
+  - 🇰🇷 韩国 (South Korea) 04 (家宽) 3539K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

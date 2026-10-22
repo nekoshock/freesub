@@ -1,0 +1,74 @@
+{
+  "log": {
+    "level": "warn"
+  },
+  "outbounds": [
+    {
+      "type": "vless",
+      "tag": "🇪🇪 爱沙尼亚 (Estonia) 01 10268K 🇨🇳 - NEKO",
+      "server": "lalibobi.online",
+      "server_port": 443,
+      "uuid": "21ffcccd-8fbe-43fb-9dd1-24452fdfa8ad",
+      "tls": {
+        "enabled": true,
+        "server_name": "lalibobi.online",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "grpc",
+        "service_name": "lalibobi.orbit.v3.Connect"
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇪🇪 爱沙尼亚 (Estonia) 02 8522K 🇨🇳 - NEKO",
+      "server": "93.89.220.37",
+      "server_port": 443,
+      "uuid": "185e2bb3-2934-48d0-bbd5-dd20d16e83ee",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "ibm.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "random"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "lwKaUQ81wJUJRsqAPsfTPj5V_f9N50UYEwzRI_nuq2g",
+          "short_id": "e88cb983f3c97528"
+        }
+      }
+    },
+    {
+      "type": "selector",
+      "tag": "select",
+      "outbounds": [
+        "auto",
+        "🇪🇪 爱沙尼亚 (Estonia) 01 10268K 🇨🇳 - NEKO",
+        "🇪🇪 爱沙尼亚 (Estonia) 02 8522K 🇨🇳 - NEKO"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "auto",
+      "outbounds": [
+        "🇪🇪 爱沙尼亚 (Estonia) 01 10268K 🇨🇳 - NEKO",
+        "🇪🇪 爱沙尼亚 (Estonia) 02 8522K 🇨🇳 - NEKO"
+      ],
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+    {
+      "type": "block",
+      "tag": "block"
+    }
+  ]
+}

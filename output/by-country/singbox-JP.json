@@ -4,23 +4,56 @@
   },
   "outbounds": [
     {
-      "type": "hysteria2",
-      "tag": "🇯🇵 日本 (Japan) 01 11905K 🇨🇳 - NEKO",
-      "server": "45.32.10.7",
+      "type": "shadowsocks",
+      "tag": "🇯🇵 日本 (Japan) 01 19485K 🇨🇳 - NEKO",
+      "server": "149.22.87.204",
       "server_port": 443,
-      "password": "96ab5cd282733fd4c312a61f972f330a",
-      "tls": {
-        "enabled": true,
-        "server_name": "vp3.yysyy.online",
-        "insecure": false
-      }
+      "method": "aes-128-gcm",
+      "password": "shadowsocks"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇯🇵 日本 (Japan) 02 28890K 🇨🇳 - NEKO",
+      "server": "149.22.87.240",
+      "server_port": 443,
+      "method": "aes-128-gcm",
+      "password": "shadowsocks"
     },
     {
       "type": "vless",
-      "tag": "🇯🇵 日本 (Japan) 02 5671K 🇨🇳 - NEKO",
-      "server": "38.47.97.90",
+      "tag": "🇯🇵 日本 (Japan) 03 412K 🇨🇳 - NEKO",
+      "server": "142.91.108.25",
       "server_port": 443,
-      "uuid": "26e3125d-9cc3-4f8a-816f-55c7806692ee",
+      "uuid": "ee18d188-14cc-417e-beb1-70e4add6d023",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "jp3.nztvpn.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "9ZCYjybxMQ7JpE39B8u_Bo-alI1LIbt5ER0E-4yMjiM",
+          "short_id": "ea36c03d86f91287"
+        }
+      }
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇯🇵 日本 (Japan) 04 12104K 🇨🇳 - NEKO",
+      "server": "149.22.87.241",
+      "server_port": 443,
+      "method": "aes-128-gcm",
+      "password": "shadowsocks"
+    },
+    {
+      "type": "vless",
+      "tag": "🇯🇵 日本 (Japan) 05 20775K 🇨🇳 - NEKO",
+      "server": "103.75.118.228",
+      "server_port": 11452,
+      "uuid": "814bd064-544d-4255-a070-5705c03f6da9",
       "flow": "xtls-rprx-vision",
       "tls": {
         "enabled": true,
@@ -31,38 +64,38 @@
         },
         "reality": {
           "enabled": true,
-          "public_key": "oM8fSNZoxUPYolfcA-trXnlHCbeG7402OQTGOfokaVY",
-          "short_id": ""
+          "public_key": "k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0",
+          "short_id": "48050fab"
         }
       }
     },
     {
-      "type": "shadowsocks",
-      "tag": "🇯🇵 日本 (Japan) 03 3357K 🇨🇳 - NEKO",
-      "server": "149.22.87.204",
+      "type": "vless",
+      "tag": "🇯🇵 日本 (Japan) 06 22226K 🇨🇳 - NEKO",
+      "server": "45.76.98.127",
       "server_port": 443,
-      "method": "aes-128-gcm",
-      "password": "shadowsocks"
-    },
-    {
-      "type": "shadowsocks",
-      "tag": "🇯🇵 日本 (Japan) 04 4154K - NEKO",
-      "server": "149.22.87.241",
-      "server_port": 443,
-      "method": "aes-128-gcm",
-      "password": "shadowsocks"
-    },
-    {
-      "type": "shadowsocks",
-      "tag": "🇯🇵 日本 (Japan) 05 3643K - NEKO",
-      "server": "149.22.87.240",
-      "server_port": 443,
-      "method": "aes-128-gcm",
-      "password": "shadowsocks"
+      "uuid": "18ce1302-4e37-4eac-bd4f-e3e0a983e589",
+      "tls": {
+        "enabled": true,
+        "server_name": "itunes.apple.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "LZR1ZQzdHDSdooxAImvxEjFIs-gebEP3zf0J6V3qVSI",
+          "short_id": "49fa0dad"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/ws"
+      }
     },
     {
       "type": "vless",
-      "tag": "🇯🇵 日本 (Japan) 06 5513K 🇨🇳 - NEKO",
+      "tag": "🇯🇵 日本 (Japan) 07 23796K 🇨🇳 - NEKO",
       "server": "45.202.254.20",
       "server_port": 9443,
       "uuid": "82eb8419-59f4-4d3e-9106-d05d22af615c",
@@ -82,78 +115,21 @@
       }
     },
     {
-      "type": "vless",
-      "tag": "🇯🇵 日本 (Japan) 07 3879K 🇨🇳 - NEKO",
-      "server": "142.91.108.25",
+      "type": "hysteria2",
+      "tag": "🇯🇵 日本 (Japan) 08 16265K 🇨🇳 - NEKO",
+      "server": "45.32.10.7",
       "server_port": 443,
-      "uuid": "ee18d188-14cc-417e-beb1-70e4add6d023",
-      "flow": "xtls-rprx-vision",
+      "password": "96ab5cd282733fd4c312a61f972f330a",
       "tls": {
         "enabled": true,
-        "server_name": "jp3.nztvpn.com",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "edge"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "9ZCYjybxMQ7JpE39B8u_Bo-alI1LIbt5ER0E-4yMjiM",
-          "short_id": "ea36c03d86f91287"
-        }
+        "server_name": "vp3.yysyy.online",
+        "insecure": false
       }
     },
     {
       "type": "vless",
-      "tag": "🇯🇵 日本 (Japan) 08 5908K 🇨🇳 - NEKO",
-      "server": "103.75.118.228",
-      "server_port": 11452,
-      "uuid": "814bd064-544d-4255-a070-5705c03f6da9",
-      "flow": "xtls-rprx-vision",
-      "tls": {
-        "enabled": true,
-        "server_name": "www.apple.com",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "random"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0",
-          "short_id": "48050fab"
-        }
-      }
-    },
-    {
-      "type": "vless",
-      "tag": "🇯🇵 日本 (Japan) 09 5944K 🇨🇳 - NEKO",
-      "server": "45.76.98.127",
-      "server_port": 443,
-      "uuid": "18ce1302-4e37-4eac-bd4f-e3e0a983e589",
-      "tls": {
-        "enabled": true,
-        "server_name": "itunes.apple.com",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "LZR1ZQzdHDSdooxAImvxEjFIs-gebEP3zf0J6V3qVSI",
-          "short_id": "49fa0dad"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/ws",
-        "headers": {
-          "Host": "itunes.apple.com"
-        }
-      }
-    },
-    {
-      "type": "vless",
-      "tag": "🇯🇵 日本 (Japan) 10 3693K ⚠P - NEKO",
-      "server": "154.36.155.142",
+      "tag": "🇯🇵 日本 (Japan) 09 1092K 🇨🇳 - NEKO",
+      "server": "jp.yi-yi.xyz",
       "server_port": 8443,
       "uuid": "36c06e11-028b-40a1-a91f-c8f38f03e829",
       "flow": "xtls-rprx-vision",
@@ -173,9 +149,9 @@
     },
     {
       "type": "vless",
-      "tag": "🇯🇵 日本 (Japan) 11 382K 🇨🇳 - NEKO",
+      "tag": "🇯🇵 日本 (Japan) 10 436K 🇨🇳 - NEKO",
       "server": "3.114.220.22",
-      "server_port": 10583,
+      "server_port": 19645,
       "uuid": "814bd064-544d-4255-a070-5705c03f6da9",
       "flow": "xtls-rprx-vision",
       "tls": {
@@ -183,7 +159,7 @@
         "server_name": "www.apple.com",
         "utls": {
           "enabled": true,
-          "fingerprint": "chrome"
+          "fingerprint": "safari"
         },
         "reality": {
           "enabled": true,
@@ -194,7 +170,7 @@
     },
     {
       "type": "vless",
-      "tag": "🇯🇵 日本 (Japan) 12 196K ⚠P - NEKO",
+      "tag": "🇯🇵 日本 (Japan) 11 604K 🇨🇳 - NEKO",
       "server": "3.114.220.22",
       "server_port": 18007,
       "uuid": "814bd064-544d-4255-a070-5705c03f6da9",
@@ -215,9 +191,9 @@
     },
     {
       "type": "vless",
-      "tag": "🇯🇵 日本 (Japan) 13 223K ⚠P - NEKO",
+      "tag": "🇯🇵 日本 (Japan) 12 420K 🇨🇳 - NEKO",
       "server": "3.114.220.22",
-      "server_port": 19645,
+      "server_port": 10583,
       "uuid": "814bd064-544d-4255-a070-5705c03f6da9",
       "flow": "xtls-rprx-vision",
       "tls": {
@@ -225,7 +201,7 @@
         "server_name": "www.apple.com",
         "utls": {
           "enabled": true,
-          "fingerprint": "ios"
+          "fingerprint": "chrome"
         },
         "reality": {
           "enabled": true,
@@ -239,38 +215,36 @@
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇯🇵 日本 (Japan) 01 11905K 🇨🇳 - NEKO",
-        "🇯🇵 日本 (Japan) 02 5671K 🇨🇳 - NEKO",
-        "🇯🇵 日本 (Japan) 03 3357K 🇨🇳 - NEKO",
-        "🇯🇵 日本 (Japan) 04 4154K - NEKO",
-        "🇯🇵 日本 (Japan) 05 3643K - NEKO",
-        "🇯🇵 日本 (Japan) 06 5513K 🇨🇳 - NEKO",
-        "🇯🇵 日本 (Japan) 07 3879K 🇨🇳 - NEKO",
-        "🇯🇵 日本 (Japan) 08 5908K 🇨🇳 - NEKO",
-        "🇯🇵 日本 (Japan) 09 5944K 🇨🇳 - NEKO",
-        "🇯🇵 日本 (Japan) 10 3693K ⚠P - NEKO",
-        "🇯🇵 日本 (Japan) 11 382K 🇨🇳 - NEKO",
-        "🇯🇵 日本 (Japan) 12 196K ⚠P - NEKO",
-        "🇯🇵 日本 (Japan) 13 223K ⚠P - NEKO"
+        "🇯🇵 日本 (Japan) 01 19485K 🇨🇳 - NEKO",
+        "🇯🇵 日本 (Japan) 02 28890K 🇨🇳 - NEKO",
+        "🇯🇵 日本 (Japan) 03 412K 🇨🇳 - NEKO",
+        "🇯🇵 日本 (Japan) 04 12104K 🇨🇳 - NEKO",
+        "🇯🇵 日本 (Japan) 05 20775K 🇨🇳 - NEKO",
+        "🇯🇵 日本 (Japan) 06 22226K 🇨🇳 - NEKO",
+        "🇯🇵 日本 (Japan) 07 23796K 🇨🇳 - NEKO",
+        "🇯🇵 日本 (Japan) 08 16265K 🇨🇳 - NEKO",
+        "🇯🇵 日本 (Japan) 09 1092K 🇨🇳 - NEKO",
+        "🇯🇵 日本 (Japan) 10 436K 🇨🇳 - NEKO",
+        "🇯🇵 日本 (Japan) 11 604K 🇨🇳 - NEKO",
+        "🇯🇵 日本 (Japan) 12 420K 🇨🇳 - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇯🇵 日本 (Japan) 01 11905K 🇨🇳 - NEKO",
-        "🇯🇵 日本 (Japan) 02 5671K 🇨🇳 - NEKO",
-        "🇯🇵 日本 (Japan) 03 3357K 🇨🇳 - NEKO",
-        "🇯🇵 日本 (Japan) 04 4154K - NEKO",
-        "🇯🇵 日本 (Japan) 05 3643K - NEKO",
-        "🇯🇵 日本 (Japan) 06 5513K 🇨🇳 - NEKO",
-        "🇯🇵 日本 (Japan) 07 3879K 🇨🇳 - NEKO",
-        "🇯🇵 日本 (Japan) 08 5908K 🇨🇳 - NEKO",
-        "🇯🇵 日本 (Japan) 09 5944K 🇨🇳 - NEKO",
-        "🇯🇵 日本 (Japan) 10 3693K ⚠P - NEKO",
-        "🇯🇵 日本 (Japan) 11 382K 🇨🇳 - NEKO",
-        "🇯🇵 日本 (Japan) 12 196K ⚠P - NEKO",
-        "🇯🇵 日本 (Japan) 13 223K ⚠P - NEKO"
+        "🇯🇵 日本 (Japan) 01 19485K 🇨🇳 - NEKO",
+        "🇯🇵 日本 (Japan) 02 28890K 🇨🇳 - NEKO",
+        "🇯🇵 日本 (Japan) 03 412K 🇨🇳 - NEKO",
+        "🇯🇵 日本 (Japan) 04 12104K 🇨🇳 - NEKO",
+        "🇯🇵 日本 (Japan) 05 20775K 🇨🇳 - NEKO",
+        "🇯🇵 日本 (Japan) 06 22226K 🇨🇳 - NEKO",
+        "🇯🇵 日本 (Japan) 07 23796K 🇨🇳 - NEKO",
+        "🇯🇵 日本 (Japan) 08 16265K 🇨🇳 - NEKO",
+        "🇯🇵 日本 (Japan) 09 1092K 🇨🇳 - NEKO",
+        "🇯🇵 日本 (Japan) 10 436K 🇨🇳 - NEKO",
+        "🇯🇵 日本 (Japan) 11 604K 🇨🇳 - NEKO",
+        "🇯🇵 日本 (Japan) 12 420K 🇨🇳 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇷🇺 俄罗斯 (Russia) 01 537K 🇨🇳 - NEKO
+- name: 🇷🇺 俄罗斯 (Russia) 01 416K 🇨🇳 - NEKO
   server: 45.128.78.178
   port: 443
   udp: true
@@ -15,8 +15,22 @@ proxies:
   reality-opts:
     public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
   servername: ozon.ru
-  client-fingerprint: ios
-- name: 🇷🇺 俄罗斯 (Russia) 02 7636K 🇨🇳 - NEKO
+  client-fingerprint: ''
+- name: 🇷🇺 俄罗斯 (Russia) 02 11582K 🇨🇳 - NEKO
+  server: 193.233.253.180
+  port: 8444
+  udp: true
+  type: vless
+  uuid: a346c521-7a7f-452b-9356-a4893feb5982
+  tls: true
+  reality-opts:
+    public-key: FWitre1jinQR7qz5HQ0q2Q4Gg9xA9B0SyizCziN7Ch0
+  servername: github.com
+  client-fingerprint: firefox
+  network: grpc
+  grpc-opts:
+    grpc-service-name: GunService
+- name: 🇷🇺 俄罗斯 (Russia) 03 11005K 🇨🇳 - NEKO
   server: 113.30.154.239
   port: 8443
   udp: true
@@ -28,56 +42,21 @@ proxies:
     public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
   servername: apple.com
   client-fingerprint: qq
-- name: 🇷🇺 俄罗斯 (Russia) 03 2543K 🇨🇳 - NEKO
-  server: 81.177.215.156
-  port: 443
-  udp: true
-  type: vless
-  uuid: 7ab86f1f-871e-4de6-9dae-7addf6dc976c
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: VNinTQ6vwOujTkrJgK_NPV4SpSBU6B7xG2tpM7prITQ
-    short-id: fd5b0def0660cdb1
-  servername: tr-4vps.yourzloy.site
-  client-fingerprint: firefox
-- name: 🇷🇺 俄罗斯 (Russia) 04 14724K 🇨🇳 - NEKO
-  server: b2n.ir
-  port: 443
-  udp: true
-  type: trojan
-  password: mitivpn
-  sni: de.mitivpn.in.net
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /
-- name: 🇷🇺 俄罗斯 (Russia) 05 3865K ⚠P - NEKO
-  server: 130.49.189.158
-  port: 43558
-  udp: true
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: nQeEoXC5Yl5PZnPLvKUpFTU9cyQcNG902zpibWkwGbo=
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇷🇺 俄罗斯 (Russia) 01 537K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 02 7636K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 03 2543K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 04 14724K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 05 3865K ⚠P - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 01 416K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 02 11582K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 03 11005K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇷🇺 俄罗斯 (Russia) 01 537K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 02 7636K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 03 2543K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 04 14724K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 05 3865K ⚠P - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 01 416K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 02 11582K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 03 11005K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

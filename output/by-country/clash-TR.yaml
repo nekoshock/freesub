@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇹🇷 土耳其 (Turkey) 01 6268K 🇨🇳 - NEKO
+- name: 🇹🇷 土耳其 (Turkey) 01 4010K 🇨🇳 - NEKO
   server: 62.133.63.45
   port: 8444
   udp: true
@@ -15,24 +15,19 @@ proxies:
     public-key: FWitre1jinQR7qz5HQ0q2Q4Gg9xA9B0SyizCziN7Ch0
     short-id: 457fab2ac885dbe0
   servername: github.com
-  client-fingerprint: chrome
+  client-fingerprint: ios
   network: grpc
   grpc-opts:
     grpc-service-name: GunService
-- name: 🇹🇷 土耳其 (Turkey) 02 7092K 🇨🇳 - NEKO
-  server: 78.135.73.47
+- name: 🇹🇷 土耳其 (Turkey) 02 3155K 🇨🇳 - NEKO
+  server: free.ertebatgoostar.ir
   port: 443
   udp: true
-  type: vless
-  uuid: 25e16692-d097-4e69-9e2d-8415609c1968
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: sZAJkAu23wp1WKY-qeaeiwR38izP5OyfhumoE9xhbB8
-    short-id: f46cd3ea3d1eb72d
-  servername: www.datadoghq.com
-  client-fingerprint: random
-- name: 🇹🇷 土耳其 (Turkey) 03 6663K ⚠P - NEKO
+  type: vmess
+  uuid: c9eab439-53bf-46e4-ba58-fc368ae1ee8c
+  alterId: 0
+  cipher: auto
+- name: 🇹🇷 土耳其 (Turkey) 03 3832K ⚠P - NEKO
   server: 151.241.226.201
   port: 2053
   udp: true
@@ -43,22 +38,22 @@ proxies:
     public-key: bYW_MmB_CUHrsyoCAUKviI2LZdHf63yY2yOPXbih104
     short-id: 9e419c0759b54d6f
   servername: www.apple.com
-  client-fingerprint: ''
+  client-fingerprint: firefox
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇹🇷 土耳其 (Turkey) 01 6268K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 02 7092K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 03 6663K ⚠P - NEKO
+  - 🇹🇷 土耳其 (Turkey) 01 4010K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 02 3155K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 03 3832K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇹🇷 土耳其 (Turkey) 01 6268K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 02 7092K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 03 6663K ⚠P - NEKO
+  - 🇹🇷 土耳其 (Turkey) 01 4010K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 02 3155K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 03 3832K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

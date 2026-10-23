@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇭 瑞士 (Switzerland) 01 9371K 🇨🇳 - NEKO
+- name: 🇨🇭 瑞士 (Switzerland) 01 4648K 🇨🇳 - NEKO
   server: 45.90.59.15
   port: 443
   udp: true
@@ -16,18 +16,18 @@ proxies:
     public-key: P7S4UPFlQbmiBr4txyy8NZIMTrmO3UdxyH16WBU-YzY
     short-id: 19253fae84102271
   servername: www.cloudflare.com
-  client-fingerprint: chrome
+  client-fingerprint: firefox
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇨🇭 瑞士 (Switzerland) 01 9371K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 01 4648K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇭 瑞士 (Switzerland) 01 9371K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 01 4648K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

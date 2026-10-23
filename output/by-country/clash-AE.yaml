@@ -4,21 +4,8 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇦🇪 阿联酋 (UAE) 01 8861K 🇨🇳 - NEKO
-  server: 151.241.166.159
-  port: 443
-  udp: true
-  type: vless
-  uuid: 7ab86f1f-871e-4de6-9dae-7addf6dc976c
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: tPhBRGpTbyaPFF3W0wpqncSrdNsV5I-eyM3S9CZoeCQ
-    short-id: 9a26e586f8cadc07
-  servername: pl-hsts.zloygo.com
-  client-fingerprint: firefox
-- name: 🇦🇪 阿联酋 (UAE) 02 5244K 🇨🇳 - NEKO
-  server: hy2.aspidnet.xyz
+- name: 🇦🇪 阿联酋 (UAE) 01 5465K 🇨🇳 - NEKO
+  server: 130.49.161.70
   port: 443
   udp: true
   type: hysteria2
@@ -27,7 +14,7 @@ proxies:
   skip-cert-verify: false
   obfs: salamander
   obfs-password: rG07s3COMIEvdnQipRyWzx_H_2xygNC3
-- name: 🇦🇪 阿联酋 (UAE) 03 9374K ⚠P - NEKO
+- name: 🇦🇪 阿联酋 (UAE) 02 3794K ⚠P - NEKO
   server: 185.253.116.33
   port: 14430
   udp: true
@@ -38,34 +25,31 @@ proxies:
     path: /vless
     headers:
       Host: 185.253.116.33
-- name: 🇦🇪 阿联酋 (UAE) 04 821K ⚠P - NEKO
-  server: uae.unixzone.us
-  port: 22573
+- name: 🇦🇪 阿联酋 (UAE) 03 4829K ⚠P - NEKO
+  server: fastiland.beautishine.ir
+  port: 43232
   udp: true
   type: vless
-  uuid: 39947382-3212-41c9-bc3a-589574ac8b23
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: uae.unixzone.us
+  uuid: 0ceacfa0-6228-4e78-80e4-e5e29c924718
+  tls: true
+  servername: fastiland.beautishine.ir
+  skip-cert-verify: false
+  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇦🇪 阿联酋 (UAE) 01 8861K 🇨🇳 - NEKO
-  - 🇦🇪 阿联酋 (UAE) 02 5244K 🇨🇳 - NEKO
-  - 🇦🇪 阿联酋 (UAE) 03 9374K ⚠P - NEKO
-  - 🇦🇪 阿联酋 (UAE) 04 821K ⚠P - NEKO
+  - 🇦🇪 阿联酋 (UAE) 01 5465K 🇨🇳 - NEKO
+  - 🇦🇪 阿联酋 (UAE) 02 3794K ⚠P - NEKO
+  - 🇦🇪 阿联酋 (UAE) 03 4829K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇦🇪 阿联酋 (UAE) 01 8861K 🇨🇳 - NEKO
-  - 🇦🇪 阿联酋 (UAE) 02 5244K 🇨🇳 - NEKO
-  - 🇦🇪 阿联酋 (UAE) 03 9374K ⚠P - NEKO
-  - 🇦🇪 阿联酋 (UAE) 04 821K ⚠P - NEKO
+  - 🇦🇪 阿联酋 (UAE) 01 5465K 🇨🇳 - NEKO
+  - 🇦🇪 阿联酋 (UAE) 02 3794K ⚠P - NEKO
+  - 🇦🇪 阿联酋 (UAE) 03 4829K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

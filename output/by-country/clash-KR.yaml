@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇰🇷 韩国 (South Korea) 01 14672K 🇨🇳 - NEKO
+- name: 🇰🇷 韩国 (South Korea) 01 5950K 🇨🇳 - NEKO
   server: 64.176.231.183
   port: 443
   udp: true
@@ -17,33 +17,31 @@ proxies:
     short-id: ca193e889d958f81
   servername: www.apple.com
   client-fingerprint: firefox
-- name: 🇰🇷 韩国 (South Korea) 02 ⚠S1513K - NEKO
-  server: 132.145.80.230
-  port: 80
+- name: 🇰🇷 韩国 (South Korea) 02 8519K ⚠P⚠U - NEKO
+  server: 150-230-252-217.liao.kdns.fr
+  port: 50160
   udp: true
-  type: vmess
-  uuid: 5155860e-d07d-46c3-9128-3afbd84626c7
-  alterId: 0
-  cipher: auto
-  network: ws
-  ws-opts:
-    path: /cctv13.m3u8
-    headers:
-      Host: 132.145.80.230
-- name: 🇰🇷 韩国 (South Korea) 03 12485K 🇨🇳 - NEKO
-  server: 3.39.4.109
-  port: 18967
+  type: hysteria2
+  password: 9cfc9458e48c028ec03ff86ebc71c744
+  sni: 150-230-252-217.liao.kdns.fr
+  skip-cert-verify: false
+- name: 🇰🇷 韩国 (South Korea) 03 4486K ⚠P⚠U - NEKO
+  server: 152.67.200.82
+  port: 50160
   udp: true
-  type: vless
-  uuid: 814bd064-544d-4255-a070-5705c03f6da9
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
-    short-id: 48050fab
-  servername: www.apple.com
-  client-fingerprint: random
-- name: 🇰🇷 韩国 (South Korea) 04 12650K 🇨🇳 - NEKO
+  type: hysteria2
+  password: 3d7634af8cb2c6cb4bac1c0efad8b43d
+  sni: 152-67-200-82.liao.kdns.fr
+  skip-cert-verify: false
+- name: 🇰🇷 韩国 (South Korea) 04 4236K ⚠P⚠U - NEKO
+  server: 152-69-231-175.liao.kdns.fr
+  port: 50160
+  udp: true
+  type: hysteria2
+  password: 1beb216e3f60aea9555dae60d219a5ca
+  sni: 152-69-231-175.liao.kdns.fr
+  skip-cert-verify: false
+- name: 🇰🇷 韩国 (South Korea) 05 2578K 🇨🇳 - NEKO
   server: 3.39.4.109
   port: 13672
   udp: true
@@ -56,53 +54,55 @@ proxies:
     short-id: 48050fab
   servername: www.apple.com
   client-fingerprint: qq
-- name: 🇰🇷 韩国 (South Korea) 05 6670K ⚠P⚠U - NEKO
-  server: 150-230-252-217.liao.kdns.fr
-  port: 50160
+- name: 🇰🇷 韩国 (South Korea) 06 2585K ⚠P - NEKO
+  server: 3.39.4.109
+  port: 18967
   udp: true
-  type: hysteria2
-  password: 9cfc9458e48c028ec03ff86ebc71c744
-  sni: 150-230-252-217.liao.kdns.fr
-  skip-cert-verify: false
-- name: 🇰🇷 韩国 (South Korea) 06 5173K ⚠P⚠U - NEKO
-  server: 152.67.200.82
-  port: 50160
+  type: vless
+  uuid: 814bd064-544d-4255-a070-5705c03f6da9
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
+    short-id: 48050fab
+  servername: www.apple.com
+  client-fingerprint: safari
+- name: 🇰🇷 韩国 (South Korea) 07 5887K 🇨🇳 - NEKO
+  server: t11.qifei.app
+  port: 443
   udp: true
-  type: hysteria2
-  password: 3d7634af8cb2c6cb4bac1c0efad8b43d
-  sni: 152-67-200-82.liao.kdns.fr
-  skip-cert-verify: false
-- name: 🇰🇷 韩国 (South Korea) 07 7874K ⚠P⚠U - NEKO
-  server: 152-69-231-175.liao.kdns.fr
-  port: 50160
-  udp: true
-  type: hysteria2
-  password: 1beb216e3f60aea9555dae60d219a5ca
-  sni: 152-69-231-175.liao.kdns.fr
-  skip-cert-verify: false
+  type: vless
+  uuid: b98d4c6e-6770-4a31-8256-a4750cdea0e7
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: 0i_xAxYgSNx5NMpK2lOaWGS-CvAiD_LneYPO0MF0owo
+    short-id: 1a
+  servername: www.amazon.com
+  client-fingerprint: ios
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇰🇷 韩国 (South Korea) 01 14672K 🇨🇳 - NEKO
-  - 🇰🇷 韩国 (South Korea) 02 ⚠S1513K - NEKO
-  - 🇰🇷 韩国 (South Korea) 03 12485K 🇨🇳 - NEKO
-  - 🇰🇷 韩国 (South Korea) 04 12650K 🇨🇳 - NEKO
-  - 🇰🇷 韩国 (South Korea) 05 6670K ⚠P⚠U - NEKO
-  - 🇰🇷 韩国 (South Korea) 06 5173K ⚠P⚠U - NEKO
-  - 🇰🇷 韩国 (South Korea) 07 7874K ⚠P⚠U - NEKO
+  - 🇰🇷 韩国 (South Korea) 01 5950K 🇨🇳 - NEKO
+  - 🇰🇷 韩国 (South Korea) 02 8519K ⚠P⚠U - NEKO
+  - 🇰🇷 韩国 (South Korea) 03 4486K ⚠P⚠U - NEKO
+  - 🇰🇷 韩国 (South Korea) 04 4236K ⚠P⚠U - NEKO
+  - 🇰🇷 韩国 (South Korea) 05 2578K 🇨🇳 - NEKO
+  - 🇰🇷 韩国 (South Korea) 06 2585K ⚠P - NEKO
+  - 🇰🇷 韩国 (South Korea) 07 5887K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇰🇷 韩国 (South Korea) 01 14672K 🇨🇳 - NEKO
-  - 🇰🇷 韩国 (South Korea) 02 ⚠S1513K - NEKO
-  - 🇰🇷 韩国 (South Korea) 03 12485K 🇨🇳 - NEKO
-  - 🇰🇷 韩国 (South Korea) 04 12650K 🇨🇳 - NEKO
-  - 🇰🇷 韩国 (South Korea) 05 6670K ⚠P⚠U - NEKO
-  - 🇰🇷 韩国 (South Korea) 06 5173K ⚠P⚠U - NEKO
-  - 🇰🇷 韩国 (South Korea) 07 7874K ⚠P⚠U - NEKO
+  - 🇰🇷 韩国 (South Korea) 01 5950K 🇨🇳 - NEKO
+  - 🇰🇷 韩国 (South Korea) 02 8519K ⚠P⚠U - NEKO
+  - 🇰🇷 韩国 (South Korea) 03 4486K ⚠P⚠U - NEKO
+  - 🇰🇷 韩国 (South Korea) 04 4236K ⚠P⚠U - NEKO
+  - 🇰🇷 韩国 (South Korea) 05 2578K 🇨🇳 - NEKO
+  - 🇰🇷 韩国 (South Korea) 06 2585K ⚠P - NEKO
+  - 🇰🇷 韩国 (South Korea) 07 5887K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

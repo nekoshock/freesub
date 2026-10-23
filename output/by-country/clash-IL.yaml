@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇮🇱 以色列 (Israel) 01 10586K 🇨🇳 - NEKO
+- name: 🇮🇱 以色列 (Israel) 01 31577K 🇨🇳 - NEKO
   server: 185.95.231.156
   port: 443
   udp: true
@@ -16,18 +16,41 @@ proxies:
     public-key: 8eXftARun6KH38UZhuqIfPR1VF2DLS9RMBZEnF5k6To
     short-id: a3a578ab
   servername: www.apple.com
-  client-fingerprint: chrome
+  client-fingerprint: random
+- name: 🇮🇱 以色列 (Israel) 02 5021K 🇨🇳 - NEKO
+  server: ilya.itissia.shop
+  port: 443
+  udp: true
+  type: vless
+  uuid: e49547db-df7b-4a00-8a4d-0f92524805f7
+- name: 🇮🇱 以色列 (Israel) 03 3779K 🇨🇳 - NEKO
+  server: es.srv.dvzh.net
+  port: 443
+  udp: true
+  type: vless
+  uuid: 9ab3a362-1518-496d-b08d-eced45cec936
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: 9GEc6lOjnGQyyE1951OZSBMWt4uCXsOjKyj9fysxHH0
+    short-id: e0ccc8c2f487d913
+  servername: es.srv.dvzh.net
+  client-fingerprint: firefox
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇮🇱 以色列 (Israel) 01 10586K 🇨🇳 - NEKO
+  - 🇮🇱 以色列 (Israel) 01 31577K 🇨🇳 - NEKO
+  - 🇮🇱 以色列 (Israel) 02 5021K 🇨🇳 - NEKO
+  - 🇮🇱 以色列 (Israel) 03 3779K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇮🇱 以色列 (Israel) 01 10586K 🇨🇳 - NEKO
+  - 🇮🇱 以色列 (Israel) 01 31577K 🇨🇳 - NEKO
+  - 🇮🇱 以色列 (Israel) 02 5021K 🇨🇳 - NEKO
+  - 🇮🇱 以色列 (Israel) 03 3779K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

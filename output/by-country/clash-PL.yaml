@@ -4,7 +4,22 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇵🇱 波兰 (Poland) 01 12239K 🇨🇳 - NEKO
+- name: 🇵🇱 波兰 (Poland) 01 2462K 🇨🇳 - NEKO
+  server: pl2.dedushka.top
+  port: 443
+  udp: true
+  type: trojan
+  password: 4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA
+  sni: pl2.dedushka.top
+  skip-cert-verify: false
+- name: 🇵🇱 波兰 (Poland) 02 4191K ⚠P - NEKO
+  server: 217.30.10.44
+  port: 9041
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: U6qnYRhfyDmn8sgn
+- name: 🇵🇱 波兰 (Poland) 03 3777K 🇨🇳 - NEKO
   server: pl1.dedushka.top
   port: 443
   udp: true
@@ -12,15 +27,13 @@ proxies:
   password: 4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA
   sni: pl1.dedushka.top
   skip-cert-verify: false
-- name: 🇵🇱 波兰 (Poland) 02 12091K 🇨🇳 - NEKO
-  server: 31.133.0.186
-  port: 443
+- name: 🇵🇱 波兰 (Poland) 04 4349K ⚠P - NEKO
+  server: site.teslamotor.site
+  port: 20001
   udp: true
-  type: trojan
-  password: 4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA
-  sni: pl2.dedushka.top
-  skip-cert-verify: false
-- name: 🇵🇱 波兰 (Poland) 03 2179K ⚠P⚠U - NEKO
+  type: vless
+  uuid: 8e8210b7-71a4-4799-8b9b-2e69698b1eaf
+- name: 🇵🇱 波兰 (Poland) 05 7091K ⚠P⚠U - NEKO
   server: scrap.halyvanedorogo.ru
   port: 35076
   udp: true
@@ -33,16 +46,20 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇵🇱 波兰 (Poland) 01 12239K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 02 12091K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 03 2179K ⚠P⚠U - NEKO
+  - 🇵🇱 波兰 (Poland) 01 2462K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 02 4191K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 03 3777K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 04 4349K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 05 7091K ⚠P⚠U - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇵🇱 波兰 (Poland) 01 12239K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 02 12091K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 03 2179K ⚠P⚠U - NEKO
+  - 🇵🇱 波兰 (Poland) 01 2462K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 02 4191K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 03 3777K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 04 4349K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 05 7091K ⚠P⚠U - NEKO
 rules:
 - MATCH,PROXIES

@@ -5,7 +5,23 @@
   "outbounds": [
     {
       "type": "vless",
-      "tag": "🇨🇳 CN 01 9279K 🇨🇳 - NEKO",
+      "tag": "🇨🇳 CN 01 1427K 🇨🇳 - NEKO",
+      "server": "vpn.cintaku.qzz.io",
+      "server_port": 443,
+      "uuid": "fc7d2cfe-f5ef-40c8-a848-a0bdc11f6349",
+      "tls": {
+        "enabled": true,
+        "server_name": "vpn.cintaku.qzz.io",
+        "insecure": false
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/vlessws"
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇨🇳 CN 02 3850K 🇨🇳 - NEKO",
       "server": "vpn.cintaku.qzz.io",
       "server_port": 443,
       "uuid": "fc7d2cfe-f5ef-40c8-a848-a0bdc11f6349",
@@ -15,7 +31,7 @@
         "insecure": false,
         "utls": {
           "enabled": true,
-          "fingerprint": "chrome"
+          "fingerprint": "ios"
         }
       },
       "transport": {
@@ -28,7 +44,7 @@
     },
     {
       "type": "vless",
-      "tag": "🇨🇳 CN 02 7345K 🇨🇳 - NEKO",
+      "tag": "🇨🇳 CN 03 9737K 🇨🇳 - NEKO",
       "server": "vpn.cintaku.qzz.io",
       "server_port": 443,
       "uuid": "fc7d2cfe-f5ef-40c8-a848-a0bdc11f6349",
@@ -38,7 +54,7 @@
         "insecure": false,
         "utls": {
           "enabled": true,
-          "fingerprint": "safari"
+          "fingerprint": "firefox"
         }
       },
       "transport": {
@@ -54,16 +70,18 @@
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇨🇳 CN 01 9279K 🇨🇳 - NEKO",
-        "🇨🇳 CN 02 7345K 🇨🇳 - NEKO"
+        "🇨🇳 CN 01 1427K 🇨🇳 - NEKO",
+        "🇨🇳 CN 02 3850K 🇨🇳 - NEKO",
+        "🇨🇳 CN 03 9737K 🇨🇳 - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇨🇳 CN 01 9279K 🇨🇳 - NEKO",
-        "🇨🇳 CN 02 7345K 🇨🇳 - NEKO"
+        "🇨🇳 CN 01 1427K 🇨🇳 - NEKO",
+        "🇨🇳 CN 02 3850K 🇨🇳 - NEKO",
+        "🇨🇳 CN 03 9737K 🇨🇳 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

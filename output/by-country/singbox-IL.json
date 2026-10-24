@@ -5,7 +5,7 @@
   "outbounds": [
     {
       "type": "vless",
-      "tag": "🇮🇱 以色列 (Israel) 01 8465K 🇨🇳 - NEKO",
+      "tag": "🇮🇱 以色列 (Israel) 01 9585K 🇨🇳 - NEKO",
       "server": "185.95.231.156",
       "server_port": 443,
       "uuid": "1f8cf47a-b66a-4916-979f-26edfcf44eea",
@@ -15,7 +15,7 @@
         "server_name": "www.apple.com",
         "utls": {
           "enabled": true,
-          "fingerprint": "firefox"
+          "fingerprint": "chrome"
         },
         "reality": {
           "enabled": true,
@@ -25,41 +25,28 @@
       }
     },
     {
-      "type": "vless",
-      "tag": "🇮🇱 以色列 (Israel) 02 4155K 🇨🇳 - NEKO",
-      "server": "es.srv.dvzh.net",
-      "server_port": 443,
-      "uuid": "9ab3a362-1518-496d-b08d-eced45cec936",
-      "flow": "xtls-rprx-vision",
-      "tls": {
-        "enabled": true,
-        "server_name": "es.srv.dvzh.net",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "9GEc6lOjnGQyyE1951OZSBMWt4uCXsOjKyj9fysxHH0",
-          "short_id": "e0ccc8c2f487d913"
-        }
-      }
+      "type": "shadowsocks",
+      "tag": "🇮🇱 以色列 (Israel) 02 5232K ⚠P - NEKO",
+      "server": "31.57.185.124",
+      "server_port": 31940,
+      "method": "2022-blake3-aes-256-gcm",
+      "password": "u3g+BSYh+pZQUfbwRUDt5wzmnPa3LdQh3PtbsY6oUMQ=:4/9cGUeP4JzylmrqQOBw7iwdfeNwhoN8j7W+rhEonmU="
     },
     {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇮🇱 以色列 (Israel) 01 8465K 🇨🇳 - NEKO",
-        "🇮🇱 以色列 (Israel) 02 4155K 🇨🇳 - NEKO"
+        "🇮🇱 以色列 (Israel) 01 9585K 🇨🇳 - NEKO",
+        "🇮🇱 以色列 (Israel) 02 5232K ⚠P - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇮🇱 以色列 (Israel) 01 8465K 🇨🇳 - NEKO",
-        "🇮🇱 以色列 (Israel) 02 4155K 🇨🇳 - NEKO"
+        "🇮🇱 以色列 (Israel) 01 9585K 🇨🇳 - NEKO",
+        "🇮🇱 以色列 (Israel) 02 5232K ⚠P - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

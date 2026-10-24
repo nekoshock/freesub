@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇬🇷 希腊 (Greece) 01 4096K 🇨🇳 - NEKO
+- name: 🇬🇷 希腊 (Greece) 01 4442K 🇨🇳 - NEKO
   server: 85.90.197.220
   port: 443
   udp: true
@@ -16,28 +16,18 @@ proxies:
     public-key: biNcdU5mywtNw-KyPpLHindBxdEyAolT1WJ26N0b7y4
     short-id: 94acb54627612d43
   servername: www.cloudflare.com
-  client-fingerprint: random
-- name: 🇬🇷 希腊 (Greece) 02 1745K 🇨🇳 - NEKO
-  server: fl.solomon-planet.ru
-  port: 443
-  udp: true
-  type: hysteria2
-  password: 0ce6e041-b701-4dd0-a82a-96b287abc4bf
-  sni: fl.solomon-planet.ru
-  skip-cert-verify: false
+  client-fingerprint: safari
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇬🇷 希腊 (Greece) 01 4096K 🇨🇳 - NEKO
-  - 🇬🇷 希腊 (Greece) 02 1745K 🇨🇳 - NEKO
+  - 🇬🇷 希腊 (Greece) 01 4442K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇬🇷 希腊 (Greece) 01 4096K 🇨🇳 - NEKO
-  - 🇬🇷 希腊 (Greece) 02 1745K 🇨🇳 - NEKO
+  - 🇬🇷 希腊 (Greece) 01 4442K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

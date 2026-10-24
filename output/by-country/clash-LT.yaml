@@ -4,77 +4,60 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇱🇹 立陶宛 (Lithuania) 01 2466K ⚠P - NEKO
-  server: 195.238.126.20
-  port: 9008
-  udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: y9VURyNzJWNRYEGQ
-- name: 🇱🇹 立陶宛 (Lithuania) 02 4006K ⚠P - NEKO
-  server: 195.238.126.20
-  port: 9086
-  udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: 37Z4TFCYhfxcpc9Q
-- name: 🇱🇹 立陶宛 (Lithuania) 03 2454K ⚠P - NEKO
+- name: 🇱🇹 立陶宛 (Lithuania) 01 3959K ⚠P - NEKO
   server: 195.238.126.20
   port: 9068
   udp: true
   type: ss
   cipher: aes-256-cfb
   password: mwgRg9hRq3b4Qnwb
-- name: 🇱🇹 立陶宛 (Lithuania) 04 2212K ⚠P - NEKO
+- name: 🇱🇹 立陶宛 (Lithuania) 02 3651K ⚠P - NEKO
   server: 195.238.126.20
-  port: 9012
+  port: 9008
   udp: true
   type: ss
   cipher: aes-256-cfb
-  password: xaupMUvhptwxdDUg
-- name: 🇱🇹 立陶宛 (Lithuania) 05 3935K 🇨🇳 - NEKO
-  server: skelmoridianservice.com
-  port: 443
-  udp: true
-  type: vless
-  uuid: af381781-3a00-4565-b1bc-4df0275eb4b9
-  tls: true
-  reality-opts:
-    public-key: C6nh6hqFTbtizgSH8vGmw2XUxsQAbAW3jPylpgGvfl4
-    short-id: a1b2c3d4e5f6a7b8
-  servername: www.velunatrixes.com
-  client-fingerprint: chrome
-  network: grpc
-  grpc-opts:
-    grpc-service-name: moktana.net.v1.StreamService
-- name: 🇱🇹 立陶宛 (Lithuania) 06 ⚠S354K ⚠P - NEKO
+  password: y9VURyNzJWNRYEGQ
+- name: 🇱🇹 立陶宛 (Lithuania) 03 4226K ⚠P - NEKO
   server: 195.238.126.20
   port: 9078
   udp: true
   type: ss
   cipher: aes-256-cfb
   password: JCJpbRbQZNw9XFZG
+- name: 🇱🇹 立陶宛 (Lithuania) 04 4604K ⚠P - NEKO
+  server: 195.238.126.20
+  port: 9086
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: 37Z4TFCYhfxcpc9Q
+- name: 🇱🇹 立陶宛 (Lithuania) 05 3164K ⚠P - NEKO
+  server: 195.238.126.20
+  port: 9012
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: xaupMUvhptwxdDUg
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇱🇹 立陶宛 (Lithuania) 01 2466K ⚠P - NEKO
-  - 🇱🇹 立陶宛 (Lithuania) 02 4006K ⚠P - NEKO
-  - 🇱🇹 立陶宛 (Lithuania) 03 2454K ⚠P - NEKO
-  - 🇱🇹 立陶宛 (Lithuania) 04 2212K ⚠P - NEKO
-  - 🇱🇹 立陶宛 (Lithuania) 05 3935K 🇨🇳 - NEKO
-  - 🇱🇹 立陶宛 (Lithuania) 06 ⚠S354K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 01 3959K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 02 3651K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 03 4226K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 04 4604K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 05 3164K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇱🇹 立陶宛 (Lithuania) 01 2466K ⚠P - NEKO
-  - 🇱🇹 立陶宛 (Lithuania) 02 4006K ⚠P - NEKO
-  - 🇱🇹 立陶宛 (Lithuania) 03 2454K ⚠P - NEKO
-  - 🇱🇹 立陶宛 (Lithuania) 04 2212K ⚠P - NEKO
-  - 🇱🇹 立陶宛 (Lithuania) 05 3935K 🇨🇳 - NEKO
-  - 🇱🇹 立陶宛 (Lithuania) 06 ⚠S354K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 01 3959K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 02 3651K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 03 4226K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 04 4604K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 05 3164K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

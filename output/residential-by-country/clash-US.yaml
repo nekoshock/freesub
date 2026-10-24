@@ -4,19 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇺🇸 美国 (United States) 01 (移动家宽) 22123K 🇨🇳 - NEKO
-  server: 789156.xyz
-  port: 443
-  udp: true
-  type: vless
-  uuid: 5f11c240-89df-494c-9c81-8b619023bb58
-  tls: true
-  servername: 789156.xyz
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /
-- name: 🇺🇸 美国 (United States) 02 (家宽) 377K ⚠P R50 - NEKO
+- name: 🇺🇸 美国 (United States) 01 (家宽) 352K ⚠P R50 - NEKO
   server: 23.160.56.99
   port: 2087
   udp: true
@@ -27,14 +15,12 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇺🇸 美国 (United States) 01 (移动家宽) 22123K 🇨🇳 - NEKO
-  - 🇺🇸 美国 (United States) 02 (家宽) 377K ⚠P R50 - NEKO
+  - 🇺🇸 美国 (United States) 01 (家宽) 352K ⚠P R50 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇺🇸 美国 (United States) 01 (移动家宽) 22123K 🇨🇳 - NEKO
-  - 🇺🇸 美国 (United States) 02 (家宽) 377K ⚠P R50 - NEKO
+  - 🇺🇸 美国 (United States) 01 (家宽) 352K ⚠P R50 - NEKO
 rules:
 - MATCH,PROXIES

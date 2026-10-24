@@ -4,20 +4,32 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇵🇱 波兰 (Poland) 01 3899K ⚠P - NEKO
-  server: 49.12.249.167
-  port: 147
+- name: 🇵🇱 波兰 (Poland) 01 4354K ⚠P - NEKO
+  server: 217.30.10.44
+  port: 9062
   udp: true
   type: ss
-  cipher: chacha20-ietf-poly1305
-  password: 5uDrCF_iLoxCiRkKku6f7A
-- name: 🇵🇱 波兰 (Poland) 02 5143K ⚠P - NEKO
+  cipher: aes-256-cfb
+  password: tkhHVxxfM2QErBWe
+- name: 🇵🇱 波兰 (Poland) 02 4969K 🇨🇳 - NEKO
+  server: ru1.radiolumens.uk
+  port: 8445
+  udp: true
+  type: vless
+  uuid: 36cf792c-f07d-4500-97ea-a395e5178deb
+  tls: true
+  servername: ru1.radiolumens.uk
+  skip-cert-verify: false
+  network: grpc
+  grpc-opts:
+    grpc-service-name: beru-pl
+- name: 🇵🇱 波兰 (Poland) 03 575K ⚠P - NEKO
   server: site.teslamotor.site
   port: 20001
   udp: true
   type: vless
   uuid: 8e8210b7-71a4-4799-8b9b-2e69698b1eaf
-- name: 🇵🇱 波兰 (Poland) 03 8094K ⚠P⚠U - NEKO
+- name: 🇵🇱 波兰 (Poland) 04 1538K ⚠P⚠U - NEKO
   server: scrap.halyvanedorogo.ru
   port: 35076
   udp: true
@@ -25,21 +37,32 @@ proxies:
   password: b4c8ee9caa74b7ba0a61
   sni: scrap.halyvanedorogo.ru
   skip-cert-verify: false
+- name: 🇵🇱 波兰 (Poland) 05 1783K ⚠P - NEKO
+  server: 49.12.249.167
+  port: 147
+  udp: true
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: 5uDrCF_iLoxCiRkKku6f7A
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇵🇱 波兰 (Poland) 01 3899K ⚠P - NEKO
-  - 🇵🇱 波兰 (Poland) 02 5143K ⚠P - NEKO
-  - 🇵🇱 波兰 (Poland) 03 8094K ⚠P⚠U - NEKO
+  - 🇵🇱 波兰 (Poland) 01 4354K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 02 4969K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 03 575K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 04 1538K ⚠P⚠U - NEKO
+  - 🇵🇱 波兰 (Poland) 05 1783K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇵🇱 波兰 (Poland) 01 3899K ⚠P - NEKO
-  - 🇵🇱 波兰 (Poland) 02 5143K ⚠P - NEKO
-  - 🇵🇱 波兰 (Poland) 03 8094K ⚠P⚠U - NEKO
+  - 🇵🇱 波兰 (Poland) 01 4354K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 02 4969K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 03 575K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 04 1538K ⚠P⚠U - NEKO
+  - 🇵🇱 波兰 (Poland) 05 1783K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

@@ -4,21 +4,28 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇯🇵 日本 (Japan) 01 4184K 🇨🇳 - NEKO
-  server: 149.22.87.241
-  port: 443
-  udp: true
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-- name: 🇯🇵 日本 (Japan) 02 3490K 🇨🇳 - NEKO
+- name: 🇯🇵 日本 (Japan) 01 4032K 🇨🇳 - NEKO
   server: 149.22.87.204
   port: 443
   udp: true
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
-- name: 🇯🇵 日本 (Japan) 03 13856K 🇨🇳 - NEKO
+- name: 🇯🇵 日本 (Japan) 02 7961K 🇨🇳 - NEKO
+  server: 149.22.87.241
+  port: 443
+  udp: true
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇯🇵 日本 (Japan) 03 5063K 🇨🇳 - NEKO
+  server: 149.22.87.240
+  port: 443
+  udp: true
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇯🇵 日本 (Japan) 04 13368K 🇨🇳 - NEKO
   server: 45.32.10.7
   port: 443
   udp: true
@@ -26,14 +33,7 @@ proxies:
   password: 96ab5cd282733fd4c312a61f972f330a
   sni: vp3.yysyy.online
   skip-cert-verify: false
-- name: 🇯🇵 日本 (Japan) 04 3885K 🇨🇳 - NEKO
-  server: 149.22.87.240
-  port: 443
-  udp: true
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-- name: 🇯🇵 日本 (Japan) 05 4100K 🇨🇳 - NEKO
+- name: 🇯🇵 日本 (Japan) 05 354K 🇨🇳 - NEKO
   server: 142.91.108.25
   port: 443
   udp: true
@@ -45,8 +45,8 @@ proxies:
     public-key: 9ZCYjybxMQ7JpE39B8u_Bo-alI1LIbt5ER0E-4yMjiM
     short-id: ea36c03d86f91287
   servername: jp3.nztvpn.com
-  client-fingerprint: firefox
-- name: 🇯🇵 日本 (Japan) 06 6750K 🇨🇳 - NEKO
+  client-fingerprint: ios
+- name: 🇯🇵 日本 (Japan) 06 8534K 🇨🇳 - NEKO
   server: 45.76.98.127
   port: 443
   udp: true
@@ -61,9 +61,28 @@ proxies:
   network: ws
   ws-opts:
     path: /ws
-    headers:
-      Host: itunes.apple.com
-- name: 🇯🇵 日本 (Japan) 07 205K 🇨🇳 - NEKO
+- name: 🇯🇵 日本 (Japan) 07 542K ⚠P⚠U - NEKO
+  server: 185.18.222.66
+  port: 9443
+  udp: true
+  type: hysteria2
+  password: f5f0babe-aea2-4f07-a1fc-3c9820253f49
+  sni: jp1.frnhk.xyz
+  skip-cert-verify: false
+- name: 🇯🇵 日本 (Japan) 08 274K 🇨🇳 - NEKO
+  server: 3.114.220.22
+  port: 18007
+  udp: true
+  type: vless
+  uuid: 814bd064-544d-4255-a070-5705c03f6da9
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
+    short-id: 48050fab
+  servername: www.apple.com
+  client-fingerprint: edge
+- name: 🇯🇵 日本 (Japan) 09 311K ⚠P - NEKO
   server: 3.114.220.22
   port: 19645
   udp: true
@@ -75,10 +94,10 @@ proxies:
     public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
     short-id: 48050fab
   servername: www.apple.com
-  client-fingerprint: ios
-- name: 🇯🇵 日本 (Japan) 08 197K 🇨🇳 - NEKO
+  client-fingerprint: safari
+- name: 🇯🇵 日本 (Japan) 10 244K ⚠P - NEKO
   server: 3.114.220.22
-  port: 18007
+  port: 10583
   udp: true
   type: vless
   uuid: 814bd064-544d-4255-a070-5705c03f6da9
@@ -94,26 +113,30 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇯🇵 日本 (Japan) 01 4184K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 02 3490K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 03 13856K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 04 3885K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 05 4100K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 06 6750K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 07 205K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 08 197K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 01 4032K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 02 7961K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 03 5063K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 04 13368K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 05 354K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 06 8534K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 07 542K ⚠P⚠U - NEKO
+  - 🇯🇵 日本 (Japan) 08 274K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 09 311K ⚠P - NEKO
+  - 🇯🇵 日本 (Japan) 10 244K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇯🇵 日本 (Japan) 01 4184K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 02 3490K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 03 13856K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 04 3885K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 05 4100K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 06 6750K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 07 205K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 08 197K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 01 4032K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 02 7961K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 03 5063K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 04 13368K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 05 354K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 06 8534K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 07 542K ⚠P⚠U - NEKO
+  - 🇯🇵 日本 (Japan) 08 274K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 09 311K ⚠P - NEKO
+  - 🇯🇵 日本 (Japan) 10 244K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

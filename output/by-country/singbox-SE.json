@@ -5,7 +5,7 @@
   "outbounds": [
     {
       "type": "hysteria2",
-      "tag": "🇸🇪 瑞典 (Sweden) 01 13401K 🇨🇳 - NEKO",
+      "tag": "🇸🇪 瑞典 (Sweden) 01 10599K 🇨🇳 - NEKO",
       "server": "50.7.38.243",
       "server_port": 443,
       "password": "d4ca9415f0eac7897472e1e5b86d2e96",
@@ -16,18 +16,24 @@
       }
     },
     {
-      "type": "hysteria2",
-      "tag": "🇸🇪 瑞典 (Sweden) 02 2058K ⚠P⚠U - NEKO",
-      "server": "sweden.luxes.network",
-      "server_port": 2053,
-      "password": "78559873-84ef-4cab-a0b2-46d4cd20de4a",
+      "type": "vless",
+      "tag": "🇸🇪 瑞典 (Sweden) 02 4078K 🇨🇳 - NEKO",
+      "server": "se1.mycloud1.org",
+      "server_port": 443,
+      "uuid": "605dea9b-b485-45c9-af9b-cc2b0195023c",
+      "flow": "xtls-rprx-vision",
       "tls": {
         "enabled": true,
-        "server_name": "sweden.luxes.network",
-        "insecure": false,
-        "alpn": [
-          "h3"
-        ]
+        "server_name": "se1.mycloud1.org",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "Su5ULcRQKF-0DJIHZeTNEnXHBpyQtizmUrcNIYhZI0E",
+          "short_id": "afee962d"
+        }
       }
     },
     {
@@ -35,16 +41,16 @@
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇸🇪 瑞典 (Sweden) 01 13401K 🇨🇳 - NEKO",
-        "🇸🇪 瑞典 (Sweden) 02 2058K ⚠P⚠U - NEKO"
+        "🇸🇪 瑞典 (Sweden) 01 10599K 🇨🇳 - NEKO",
+        "🇸🇪 瑞典 (Sweden) 02 4078K 🇨🇳 - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇸🇪 瑞典 (Sweden) 01 13401K 🇨🇳 - NEKO",
-        "🇸🇪 瑞典 (Sweden) 02 2058K ⚠P⚠U - NEKO"
+        "🇸🇪 瑞典 (Sweden) 01 10599K 🇨🇳 - NEKO",
+        "🇸🇪 瑞典 (Sweden) 02 4078K 🇨🇳 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

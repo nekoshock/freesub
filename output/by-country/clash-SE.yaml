@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇸🇪 瑞典 (Sweden) 01 13401K 🇨🇳 - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 01 10599K 🇨🇳 - NEKO
   server: 50.7.38.243
   port: 443
   udp: true
@@ -12,27 +12,32 @@ proxies:
   password: d4ca9415f0eac7897472e1e5b86d2e96
   sni: promo.betust.net
   skip-cert-verify: false
-- name: 🇸🇪 瑞典 (Sweden) 02 2058K ⚠P⚠U - NEKO
-  server: sweden.luxes.network
-  port: 2053
+- name: 🇸🇪 瑞典 (Sweden) 02 4078K 🇨🇳 - NEKO
+  server: se1.mycloud1.org
+  port: 443
   udp: true
-  type: hysteria2
-  password: 78559873-84ef-4cab-a0b2-46d4cd20de4a
-  sni: sweden.luxes.network
-  skip-cert-verify: false
+  type: vless
+  uuid: 605dea9b-b485-45c9-af9b-cc2b0195023c
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: Su5ULcRQKF-0DJIHZeTNEnXHBpyQtizmUrcNIYhZI0E
+    short-id: afee962d
+  servername: se1.mycloud1.org
+  client-fingerprint: firefox
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇸🇪 瑞典 (Sweden) 01 13401K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 2058K ⚠P⚠U - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 10599K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 4078K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇸🇪 瑞典 (Sweden) 01 13401K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 2058K ⚠P⚠U - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 10599K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 4078K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

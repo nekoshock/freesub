@@ -4,18 +4,23 @@
   },
   "outbounds": [
     {
-      "type": "trojan",
-      "tag": "🇸🇨 塞舌尔 (Seychelles) 01 1466K ⚠P - NEKO",
-      "server": "su106.izzzzzi.com",
-      "server_port": 20008,
-      "password": "4fd2b10b6a754019",
+      "type": "vless",
+      "tag": "🇸🇨 塞舌尔 (Seychelles) 01 ⚠S836K 🇨🇳 - NEKO",
+      "server": "144.31.50.236",
+      "server_port": 443,
+      "uuid": "1c332eae-7e02-4acd-996d-4eb3e652401c",
+      "flow": "xtls-rprx-vision",
       "tls": {
         "enabled": true,
-        "server_name": "su106.izzzzzi.com",
-        "insecure": false,
+        "server_name": "yandex.ru",
         "utls": {
           "enabled": true,
-          "fingerprint": "firefox"
+          "fingerprint": ""
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "uitO4Z8t9TplwwYaqwLqh5rfxDh_X8bOBiNuPbzvaEM",
+          "short_id": "bbe46bd8f6b96839"
         }
       }
     },
@@ -24,14 +29,14 @@
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇸🇨 塞舌尔 (Seychelles) 01 1466K ⚠P - NEKO"
+        "🇸🇨 塞舌尔 (Seychelles) 01 ⚠S836K 🇨🇳 - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇸🇨 塞舌尔 (Seychelles) 01 1466K ⚠P - NEKO"
+        "🇸🇨 塞舌尔 (Seychelles) 01 ⚠S836K 🇨🇳 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

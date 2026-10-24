@@ -5,7 +5,7 @@
   "outbounds": [
     {
       "type": "vless",
-      "tag": "🇬🇷 希腊 (Greece) 01 4802K 🇨🇳 - NEKO",
+      "tag": "🇬🇷 希腊 (Greece) 01 4096K 🇨🇳 - NEKO",
       "server": "85.90.197.220",
       "server_port": 443,
       "uuid": "8f704ed6-9a1a-4d04-94dd-1bff501716de",
@@ -15,7 +15,7 @@
         "server_name": "www.cloudflare.com",
         "utls": {
           "enabled": true,
-          "fingerprint": "safari"
+          "fingerprint": "random"
         },
         "reality": {
           "enabled": true,
@@ -25,18 +25,35 @@
       }
     },
     {
+      "type": "hysteria2",
+      "tag": "🇬🇷 希腊 (Greece) 02 1745K 🇨🇳 - NEKO",
+      "server": "fl.solomon-planet.ru",
+      "server_port": 443,
+      "password": "0ce6e041-b701-4dd0-a82a-96b287abc4bf",
+      "tls": {
+        "enabled": true,
+        "server_name": "fl.solomon-planet.ru",
+        "insecure": false,
+        "alpn": [
+          "h3"
+        ]
+      }
+    },
+    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇬🇷 希腊 (Greece) 01 4802K 🇨🇳 - NEKO"
+        "🇬🇷 希腊 (Greece) 01 4096K 🇨🇳 - NEKO",
+        "🇬🇷 希腊 (Greece) 02 1745K 🇨🇳 - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇬🇷 希腊 (Greece) 01 4802K 🇨🇳 - NEKO"
+        "🇬🇷 希腊 (Greece) 01 4096K 🇨🇳 - NEKO",
+        "🇬🇷 希腊 (Greece) 02 1745K 🇨🇳 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

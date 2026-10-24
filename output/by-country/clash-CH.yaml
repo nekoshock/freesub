@@ -4,29 +4,63 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇭 瑞士 (Switzerland) 01 ⚠S296K ⚠P - NEKO
-  server: 208.69.78.217
-  port: 2053
+- name: 🇨🇭 瑞士 (Switzerland) 01 3795K 🇨🇳 - NEKO
+  server: 128.241.25.11
+  port: 30021
   udp: true
   type: vless
-  uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
+  uuid: 4070dab7-dad3-44c7-b57b-24be1b8ffe50
+  tls: true
+  servername: ruu2rx-oycdrnsrzc.9uokolpk04vmg2ecqb8oys7.workers.dev
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /@Marisa_kristi
+    headers:
+      Host: ruu2rx-oycdrnsrzc.9uokolpk04vmg2ecqb8oys7.workers.dev
+- name: 🇨🇭 瑞士 (Switzerland) 02 5399K 🇨🇳 - NEKO
+  server: 45.90.59.15
+  port: 443
+  udp: true
+  type: vless
+  uuid: 3950b45e-740d-4dca-ac95-505ec8534592
+  flow: xtls-rprx-vision
   tls: true
   reality-opts:
-    public-key: A49ue7zXSusJZdErPAewg3jqGdUFIO1a9xOunEKJfC0
-    short-id: ad86e2d52ff40ebd
-  servername: www.apple.com
-  client-fingerprint: ''
+    public-key: P7S4UPFlQbmiBr4txyy8NZIMTrmO3UdxyH16WBU-YzY
+    short-id: 19253fae84102271
+  servername: www.cloudflare.com
+  client-fingerprint: random
+- name: 🇨🇭 瑞士 (Switzerland) 03 8245K ⚠P - NEKO
+  server: 154.31.112.237
+  port: 26418
+  udp: true
+  type: vless
+  uuid: 1e61d1c5-383d-406f-9230-1edd3e9449c5
+  tls: true
+  servername: d-l28t5-65-b.pbe40wmcujaw726h7cpqernzmawz4stwtrnqve0n1s5reht.workers.dev
+  skip-cert-verify: false
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /@Marisa_kristi
+    headers:
+      Host: d-l28t5-65-b.pbe40wmcujaw726h7cpqernzmawz4stwtrnqve0n1s5reht.workers.dev
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇨🇭 瑞士 (Switzerland) 01 ⚠S296K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 01 3795K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 02 5399K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 03 8245K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇭 瑞士 (Switzerland) 01 ⚠S296K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 01 3795K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 02 5399K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 03 8245K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

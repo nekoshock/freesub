@@ -4,18 +4,8 @@
   },
   "outbounds": [
     {
-      "type": "vless",
-      "tag": "🇰🇷 韩国 (South Korea) 01 4771K - NEKO",
-      "server": "13.209.84.147",
-      "server_port": 443,
-      "uuid": "7060231d-b9ba-495f-a218-bf427940cf3e",
-      "transport": {
-        "type": "http"
-      }
-    },
-    {
       "type": "hysteria2",
-      "tag": "🇰🇷 韩国 (South Korea) 02 4515K ⚠P⚠U - NEKO",
+      "tag": "🇰🇷 韩国 (South Korea) 01 5667K ⚠P⚠U - NEKO",
       "server": "152.67.200.82",
       "server_port": 50160,
       "password": "3d7634af8cb2c6cb4bac1c0efad8b43d",
@@ -26,16 +16,41 @@
       }
     },
     {
-      "type": "vmess",
-      "tag": "🇰🇷 韩国 (South Korea) 03 3811K ⚠P - NEKO",
-      "server": "146.56.112.110",
-      "server_port": 8888,
-      "uuid": "e7c302f3-90d6-42dd-9d7d-94a3683a3707",
-      "security": "auto"
+      "type": "vless",
+      "tag": "🇰🇷 韩国 (South Korea) 02 ⚠S1458K 🇨🇳 - NEKO",
+      "server": "3.39.4.109",
+      "server_port": 13672,
+      "uuid": "814bd064-544d-4255-a070-5705c03f6da9",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.apple.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "qq"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0",
+          "short_id": "48050fab"
+        }
+      }
     },
     {
       "type": "hysteria2",
-      "tag": "🇰🇷 韩国 (South Korea) 04 6298K ⚠P⚠U - NEKO",
+      "tag": "🇰🇷 韩国 (South Korea) 03 5685K ⚠P⚠U - NEKO",
+      "server": "150-230-252-217.liao.kdns.fr",
+      "server_port": 50160,
+      "password": "9cfc9458e48c028ec03ff86ebc71c744",
+      "tls": {
+        "enabled": true,
+        "server_name": "150-230-252-217.liao.kdns.fr",
+        "insecure": false
+      }
+    },
+    {
+      "type": "hysteria2",
+      "tag": "🇰🇷 韩国 (South Korea) 04 6092K ⚠P⚠U - NEKO",
       "server": "152-69-231-175.liao.kdns.fr",
       "server_port": 50160,
       "password": "1beb216e3f60aea9555dae60d219a5ca",
@@ -47,7 +62,7 @@
     },
     {
       "type": "vless",
-      "tag": "🇰🇷 韩国 (South Korea) 05 3856K 🇨🇳 - NEKO",
+      "tag": "🇰🇷 韩国 (South Korea) 05 537K ⚠P - NEKO",
       "server": "3.39.4.109",
       "server_port": 18967,
       "uuid": "814bd064-544d-4255-a070-5705c03f6da9",
@@ -67,36 +82,30 @@
       }
     },
     {
-      "type": "vless",
-      "tag": "🇰🇷 韩国 (South Korea) 06 3988K 🇨🇳 - NEKO",
-      "server": "3.39.4.109",
-      "server_port": 13672,
-      "uuid": "814bd064-544d-4255-a070-5705c03f6da9",
-      "flow": "xtls-rprx-vision",
-      "tls": {
-        "enabled": true,
-        "server_name": "www.apple.com",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "random"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0",
-          "short_id": "48050fab"
+      "type": "vmess",
+      "tag": "🇰🇷 韩国 (South Korea) 06 5881K - NEKO",
+      "server": "132.145.80.230",
+      "server_port": 80,
+      "uuid": "5155860e-d07d-46c3-9128-3afbd84626c7",
+      "security": "auto",
+      "transport": {
+        "type": "ws",
+        "path": "/cctv13.m3u8",
+        "headers": {
+          "Host": "kr02.a0a.xyz"
         }
       }
     },
     {
-      "type": "hysteria2",
-      "tag": "🇰🇷 韩国 (South Korea) 07 5053K ⚠P⚠U - NEKO",
-      "server": "150-230-252-217.liao.kdns.fr",
-      "server_port": 50160,
-      "password": "9cfc9458e48c028ec03ff86ebc71c744",
-      "tls": {
-        "enabled": true,
-        "server_name": "150-230-252-217.liao.kdns.fr",
-        "insecure": false
+      "type": "vmess",
+      "tag": "🇰🇷 韩国 (South Korea) 07 4834K ⚠P - NEKO",
+      "server": "183.109.131.75",
+      "server_port": 20086,
+      "uuid": "b26c4803-0bca-467c-a245-c9a80bdd72ec",
+      "security": "auto",
+      "transport": {
+        "type": "ws",
+        "path": "/"
       }
     },
     {
@@ -104,26 +113,26 @@
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇰🇷 韩国 (South Korea) 01 4771K - NEKO",
-        "🇰🇷 韩国 (South Korea) 02 4515K ⚠P⚠U - NEKO",
-        "🇰🇷 韩国 (South Korea) 03 3811K ⚠P - NEKO",
-        "🇰🇷 韩国 (South Korea) 04 6298K ⚠P⚠U - NEKO",
-        "🇰🇷 韩国 (South Korea) 05 3856K 🇨🇳 - NEKO",
-        "🇰🇷 韩国 (South Korea) 06 3988K 🇨🇳 - NEKO",
-        "🇰🇷 韩国 (South Korea) 07 5053K ⚠P⚠U - NEKO"
+        "🇰🇷 韩国 (South Korea) 01 5667K ⚠P⚠U - NEKO",
+        "🇰🇷 韩国 (South Korea) 02 ⚠S1458K 🇨🇳 - NEKO",
+        "🇰🇷 韩国 (South Korea) 03 5685K ⚠P⚠U - NEKO",
+        "🇰🇷 韩国 (South Korea) 04 6092K ⚠P⚠U - NEKO",
+        "🇰🇷 韩国 (South Korea) 05 537K ⚠P - NEKO",
+        "🇰🇷 韩国 (South Korea) 06 5881K - NEKO",
+        "🇰🇷 韩国 (South Korea) 07 4834K ⚠P - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇰🇷 韩国 (South Korea) 01 4771K - NEKO",
-        "🇰🇷 韩国 (South Korea) 02 4515K ⚠P⚠U - NEKO",
-        "🇰🇷 韩国 (South Korea) 03 3811K ⚠P - NEKO",
-        "🇰🇷 韩国 (South Korea) 04 6298K ⚠P⚠U - NEKO",
-        "🇰🇷 韩国 (South Korea) 05 3856K 🇨🇳 - NEKO",
-        "🇰🇷 韩国 (South Korea) 06 3988K 🇨🇳 - NEKO",
-        "🇰🇷 韩国 (South Korea) 07 5053K ⚠P⚠U - NEKO"
+        "🇰🇷 韩国 (South Korea) 01 5667K ⚠P⚠U - NEKO",
+        "🇰🇷 韩国 (South Korea) 02 ⚠S1458K 🇨🇳 - NEKO",
+        "🇰🇷 韩国 (South Korea) 03 5685K ⚠P⚠U - NEKO",
+        "🇰🇷 韩国 (South Korea) 04 6092K ⚠P⚠U - NEKO",
+        "🇰🇷 韩国 (South Korea) 05 537K ⚠P - NEKO",
+        "🇰🇷 韩国 (South Korea) 06 5881K - NEKO",
+        "🇰🇷 韩国 (South Korea) 07 4834K ⚠P - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

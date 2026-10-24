@@ -4,26 +4,70 @@
   },
   "outbounds": [
     {
+      "type": "trojan",
+      "tag": "🇨🇿 捷克 (Czech) 01 13238K 🇨🇳 - NEKO",
+      "server": "188.114.97.6",
+      "server_port": 443,
+      "password": "mitivpn",
+      "tls": {
+        "enabled": true,
+        "server_name": "de.mitivpn.in.net",
+        "insecure": false
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/--@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN",
+        "headers": {
+          "Host": "de.mitivpn.in.net"
+        }
+      }
+    },
+    {
       "type": "shadowsocks",
-      "tag": "🇨🇿 捷克 (Czech) 01 5617K ⚠P - NEKO",
+      "tag": "🇨🇿 捷克 (Czech) 02 3307K ⚠P - NEKO",
       "server": "67.159.18.34",
       "server_port": 17001,
       "method": "aes-256-gcm",
       "password": "I6o9NnialYLMEjVt28RF4dpjmr9wMvNL"
     },
     {
+      "type": "vless",
+      "tag": "🇨🇿 捷克 (Czech) 03 4014K 🇨🇳 - NEKO",
+      "server": "edge.jagavps.ru",
+      "server_port": 443,
+      "uuid": "736d08e1-27b0-4ec2-a5e0-4575e24da6b5",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "edge.jagavps.ru",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "NiUsL7f8tuEUltpr9UC98fnZQs510PlQDCCi32WbgAA",
+          "short_id": ""
+        }
+      }
+    },
+    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇨🇿 捷克 (Czech) 01 5617K ⚠P - NEKO"
+        "🇨🇿 捷克 (Czech) 01 13238K 🇨🇳 - NEKO",
+        "🇨🇿 捷克 (Czech) 02 3307K ⚠P - NEKO",
+        "🇨🇿 捷克 (Czech) 03 4014K 🇨🇳 - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇨🇿 捷克 (Czech) 01 5617K ⚠P - NEKO"
+        "🇨🇿 捷克 (Czech) 01 13238K 🇨🇳 - NEKO",
+        "🇨🇿 捷克 (Czech) 02 3307K ⚠P - NEKO",
+        "🇨🇿 捷克 (Czech) 03 4014K 🇨🇳 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

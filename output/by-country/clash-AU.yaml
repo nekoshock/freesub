@@ -1,0 +1,31 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: info
+proxies:
+- name: 🇦🇺 澳大利亚 (Australia) 01 7093K - NEKO
+  server: 188.114.97.6
+  port: 80
+  udp: true
+  type: vless
+  uuid: 6faeb6a0-5055-4e4b-8fb1-ffd77e57aefa
+  network: ws
+  ws-opts:
+    path: /au-do
+    headers:
+      Host: somersby.pt.r3xxe.eu.cc
+proxy-groups:
+- name: PROXIES
+  type: select
+  proxies:
+  - AUTO
+  - 🇦🇺 澳大利亚 (Australia) 01 7093K - NEKO
+- name: AUTO
+  type: url-test
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  proxies:
+  - 🇦🇺 澳大利亚 (Australia) 01 7093K - NEKO
+rules:
+- MATCH,PROXIES

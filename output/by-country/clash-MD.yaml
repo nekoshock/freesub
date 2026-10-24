@@ -4,18 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇲🇩 摩尔多瓦 (Moldova) 01 16248K 🇨🇳 - NEKO
-  server: 188.114.97.6
-  port: 443
-  udp: true
-  type: trojan
-  password: mitivpn
-  sni: de.mitivpn.in.net
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /?Telegram---PLANB_NET---PLANB_NET---PLANB_NET---PLANB_NET
-- name: 🇲🇩 摩尔多瓦 (Moldova) 02 6603K 🇨🇳 - NEKO
+- name: 🇲🇩 摩尔多瓦 (Moldova) 01 4277K 🇨🇳 - NEKO
   server: 5.252.179.15
   port: 443
   udp: true
@@ -27,20 +16,18 @@ proxies:
     public-key: XQB2zIgrhD8AtxgYFM8UiiWYt1sLVBLhMg1M4-sGMAY
     short-id: 296f27de82dad7ff
   servername: www.bing.com
-  client-fingerprint: ''
+  client-fingerprint: firefox
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇲🇩 摩尔多瓦 (Moldova) 01 16248K 🇨🇳 - NEKO
-  - 🇲🇩 摩尔多瓦 (Moldova) 02 6603K 🇨🇳 - NEKO
+  - 🇲🇩 摩尔多瓦 (Moldova) 01 4277K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇲🇩 摩尔多瓦 (Moldova) 01 16248K 🇨🇳 - NEKO
-  - 🇲🇩 摩尔多瓦 (Moldova) 02 6603K 🇨🇳 - NEKO
+  - 🇲🇩 摩尔多瓦 (Moldova) 01 4277K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

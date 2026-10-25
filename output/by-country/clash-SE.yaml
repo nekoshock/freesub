@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇸🇪 瑞典 (Sweden) 01 10616K 🇨🇳 - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 01 31172K 🇨🇳 - NEKO
   server: 50.7.38.243
   port: 443
   udp: true
@@ -12,7 +12,7 @@ proxies:
   password: d4ca9415f0eac7897472e1e5b86d2e96
   sni: promo.betust.net
   skip-cert-verify: false
-- name: 🇸🇪 瑞典 (Sweden) 02 4506K 🇨🇳 - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 02 6197K 🇨🇳 - NEKO
   server: 91.242.228.29
   port: 443
   udp: true
@@ -24,20 +24,66 @@ proxies:
     public-key: Su5ULcRQKF-0DJIHZeTNEnXHBpyQtizmUrcNIYhZI0E
     short-id: afee962d
   servername: se1.mycloud1.org
-  client-fingerprint: edge
+  client-fingerprint: firefox
+- name: 🇸🇪 瑞典 (Sweden) 03 1068K 🇨🇳 - NEKO
+  server: swidenafterlanzerotte.space
+  port: 443
+  udp: true
+  type: vless
+  uuid: 50a87e21-f0e2-4b53-a787-91adfe748f63
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: MQrvfivvEfLGzDee7h0j5uC-DwaD_38_NXOY9-NhqxM
+  servername: swidenafterlanzerotte.space
+  client-fingerprint: chrome
+- name: 🇸🇪 瑞典 (Sweden) 04 7656K ⚠P - NEKO
+  server: se13-node.rumedia-cdn.com
+  port: 2096
+  udp: true
+  type: vless
+  uuid: d1641bc6-3757-43db-815a-9b3f4d9b0d7e
+  tls: true
+  servername: st5ff8a.rumedia-cdn.com
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /cdn/v3/live
+    headers:
+      Host: st5ff8a.rumedia-cdn.com
+- name: 🇸🇪 瑞典 (Sweden) 05 7458K ⚠P - NEKO
+  server: 191.44.114.179
+  port: 2096
+  udp: true
+  type: vless
+  uuid: d1641bc6-3757-43db-815a-9b3f4d9b0d7e
+  tls: true
+  servername: st33614.rumedia-cdn.com
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /cdn/v3/live
+    headers:
+      Host: st33614.rumedia-cdn.com
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇸🇪 瑞典 (Sweden) 01 10616K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 4506K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 31172K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 6197K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 03 1068K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 04 7656K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 05 7458K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇸🇪 瑞典 (Sweden) 01 10616K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 4506K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 31172K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 6197K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 03 1068K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 04 7656K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 05 7458K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

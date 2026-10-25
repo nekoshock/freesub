@@ -5,7 +5,30 @@
   "outbounds": [
     {
       "type": "vless",
-      "tag": "🇨🇭 瑞士 (Switzerland) 01 255K 🇨🇳 - NEKO",
+      "tag": "🇨🇭 瑞士 (Switzerland) 01 4824K 🇨🇳 - NEKO",
+      "server": "128.241.25.3",
+      "server_port": 30021,
+      "uuid": "e18901aa-2836-44ce-a1d7-af6b174ccae7",
+      "tls": {
+        "enabled": true,
+        "server_name": "wjwkhoaftdgrt8qus.mp8pmwdgwf3sdapasouszjobjr57nrxxgtx9n.workers.dev",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/@Marisa_kristi",
+        "headers": {
+          "Host": "wjwkhoaftdgrt8qus.mp8pmwdgwf3sdapasouszjobjr57nrxxgtx9n.workers.dev"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇨🇭 瑞士 (Switzerland) 02 4715K 🇨🇳 - NEKO",
       "server": "45.90.59.15",
       "server_port": 443,
       "uuid": "3950b45e-740d-4dca-ac95-505ec8534592",
@@ -25,18 +48,63 @@
       }
     },
     {
+      "type": "vless",
+      "tag": "🇨🇭 瑞士 (Switzerland) 03 651K 🇨🇳 - NEKO",
+      "server": "208.69.78.217",
+      "server_port": 2053,
+      "uuid": "c0dd6d59-1573-43af-8b70-1470b2632a6d",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.apple.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "A49ue7zXSusJZdErPAewg3jqGdUFIO1a9xOunEKJfC0",
+          "short_id": "ad86e2d52ff40ebd"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇨🇭 瑞士 (Switzerland) 04 7531K ⚠P - NEKO",
+      "server": "203.137.165.164",
+      "server_port": 57554,
+      "uuid": "45b4cd4c-3bd3-4838-b61e-031f75551dd5",
+      "tls": {
+        "enabled": true,
+        "server_name": "3tmj2egtm-fno.49bnithzk8vphybv36d1z1xkzfvogt2m6.workers.dev",
+        "insecure": false
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/@Marisa_kristifp=chrome",
+        "headers": {
+          "Host": "3tmj2egtm-fno.49bnithzk8vphybv36d1z1xkzfvogt2m6.workers.dev"
+        }
+      }
+    },
+    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇨🇭 瑞士 (Switzerland) 01 255K 🇨🇳 - NEKO"
+        "🇨🇭 瑞士 (Switzerland) 01 4824K 🇨🇳 - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 02 4715K 🇨🇳 - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 03 651K 🇨🇳 - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 04 7531K ⚠P - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇨🇭 瑞士 (Switzerland) 01 255K 🇨🇳 - NEKO"
+        "🇨🇭 瑞士 (Switzerland) 01 4824K 🇨🇳 - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 02 4715K 🇨🇳 - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 03 651K 🇨🇳 - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 04 7531K ⚠P - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

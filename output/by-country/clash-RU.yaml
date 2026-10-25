@@ -4,7 +4,45 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇷🇺 俄罗斯 (Russia) 01 5453K 🇨🇳 - NEKO
+- name: 🇷🇺 俄罗斯 (Russia) 01 5609K 🇨🇳 - NEKO
+  server: 5.83.129.236
+  port: 443
+  udp: true
+  type: vless
+  uuid: d86e6fda-e519-46ab-98eb-9ff9a9da5984
+  tls: true
+  servername: host-de-upscale.cdn.cachefleet.com
+  skip-cert-verify: false
+  client-fingerprint: firefox
+  network: grpc
+  grpc-opts:
+    grpc-service-name: a9w9wmko0k2od14hv8v
+- name: 🇷🇺 俄罗斯 (Russia) 02 3402K 🇨🇳 - NEKO
+  server: 147.45.47.98
+  port: 443
+  udp: true
+  type: vless
+  uuid: fd0a5c32-afc0-4d57-b95a-ca6ec8f93e87
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
+  servername: ozon.ru
+  client-fingerprint: firefox
+- name: 🇷🇺 俄罗斯 (Russia) 03 4781K 🇨🇳 - NEKO
+  server: 130.49.218.36
+  port: 443
+  udp: true
+  type: vless
+  uuid: 6ob0A9wRCRJH5h
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: A95WNfoLr0YCFjI1QRGf_G-7eQmITHGprEqCEry1pmU
+    short-id: 08170b96
+  servername: www.bouyguestelecom.fr
+  client-fingerprint: chrome
+- name: 🇷🇺 俄罗斯 (Russia) 04 5481K 🇨🇳 - NEKO
   server: 147.45.47.83
   port: 443
   udp: true
@@ -15,21 +53,9 @@ proxies:
   reality-opts:
     public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
   servername: ozon.ru
-  client-fingerprint: firefox
-- name: 🇷🇺 俄罗斯 (Russia) 02 4930K 🇨🇳 - NEKO
-  server: 113.30.154.246
-  port: 443
-  udp: true
-  type: vless
-  uuid: 0b6a937e-5b0e-49ca-b31e-f03f290e97cf
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
-  servername: ozon.ru
-  client-fingerprint: firefox
-- name: 🇷🇺 俄罗斯 (Russia) 03 5020K 🇨🇳 - NEKO
-  server: 193.223.104.120
+  client-fingerprint: chrome
+- name: 🇷🇺 俄罗斯 (Russia) 05 5222K 🇨🇳 - NEKO
+  server: 45.128.78.176
   port: 443
   udp: true
   type: vless
@@ -40,7 +66,79 @@ proxies:
     public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
   servername: ozon.ru
   client-fingerprint: firefox
-- name: 🇷🇺 俄罗斯 (Russia) 04 5717K 🇨🇳 - NEKO
+- name: 🇷🇺 俄罗斯 (Russia) 06 5278K 🇨🇳 - NEKO
+  server: 193.223.104.140
+  port: 443
+  udp: true
+  type: vless
+  uuid: 680e92ac-1688-49e0-af96-7327fbc30ce8
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
+  servername: abuse.ozon.ru
+  client-fingerprint: edge
+- name: 🇷🇺 俄罗斯 (Russia) 07 1579K 🇨🇳 - NEKO
+  server: 77.90.61.135
+  port: 443
+  udp: true
+  type: vless
+  uuid: 8815925b-c7b8-4f94-9c24-9dc864f63a29
+  tls: true
+  reality-opts:
+    public-key: XlEzAhUOUC-hZA2Uk2sctG5WR9lPeAUAHGNQVu9oAVg
+    short-id: ce1dc482
+  servername: www.cloudflare.com
+  client-fingerprint: random
+- name: 🇷🇺 俄罗斯 (Russia) 08 5133K 🇨🇳 - NEKO
+  server: 193.160.141.8
+  port: 443
+  udp: true
+  type: vless
+  uuid: 680e92ac-1688-49e0-af96-7327fbc30ce8
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
+  servername: ozon.ru
+  client-fingerprint: firefox
+- name: 🇷🇺 俄罗斯 (Russia) 09 4824K 🇨🇳 - NEKO
+  server: 45.151.71.147
+  port: 443
+  udp: true
+  type: vless
+  uuid: 8a1f8853-9a71-4ef2-a64c-4f0a94c2e14b
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
+  servername: abuse.ozon.ru
+  client-fingerprint: firefox
+- name: 🇷🇺 俄罗斯 (Russia) 10 3679K 🇨🇳 - NEKO
+  server: 45.151.71.164
+  port: 443
+  udp: true
+  type: vless
+  uuid: 8a1f8853-9a71-4ef2-a64c-4f0a94c2e14b
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
+  servername: abuse.ozon.ru
+  client-fingerprint: chrome
+- name: 🇷🇺 俄罗斯 (Russia) 11 4618K 🇨🇳 - NEKO
+  server: 45.151.71.164
+  port: 443
+  udp: true
+  type: vless
+  uuid: 8a1f8853-9a71-4ef2-a64c-4f0a94c2e14b
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
+  servername: abuse.ozon.ru
+  client-fingerprint: firefox
+- name: 🇷🇺 俄罗斯 (Russia) 12 5731K 🇨🇳 - NEKO
   server: 194.113.235.121
   port: 443
   udp: true
@@ -53,20 +151,8 @@ proxies:
     short-id: 12f319370b60ec2f
   servername: fr1-4v.zvcorp24.com
   client-fingerprint: firefox
-- name: 🇷🇺 俄罗斯 (Russia) 05 5234K 🇨🇳 - NEKO
-  server: 45.9.118.207
-  port: 443
-  udp: true
-  type: vless
-  uuid: 680e92ac-1688-49e0-af96-7327fbc30ce8
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
-  servername: ozon.ru
-  client-fingerprint: firefox
-- name: 🇷🇺 俄罗斯 (Russia) 06 5248K 🇨🇳 - NEKO
-  server: 103.91.147.247
+- name: 🇷🇺 俄罗斯 (Russia) 13 5024K 🇨🇳 - NEKO
+  server: 45.151.71.152
   port: 443
   udp: true
   type: vless
@@ -75,34 +161,10 @@ proxies:
   tls: true
   reality-opts:
     public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
-  servername: ozon.ru
-  client-fingerprint: firefox
-- name: 🇷🇺 俄罗斯 (Russia) 07 4571K 🇨🇳 - NEKO
-  server: 193.223.104.124
-  port: 443
-  udp: true
-  type: vless
-  uuid: 8a1f8853-9a71-4ef2-a64c-4f0a94c2e14b
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
-  servername: ozon.ru
-  client-fingerprint: firefox
-- name: 🇷🇺 俄罗斯 (Russia) 08 5039K 🇨🇳 - NEKO
-  server: 193.223.104.127
-  port: 443
-  udp: true
-  type: vless
-  uuid: 8a1f8853-9a71-4ef2-a64c-4f0a94c2e14b
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
-  servername: ozon.ru
-  client-fingerprint: chrome
-- name: 🇷🇺 俄罗斯 (Russia) 09 5155K 🇨🇳 - NEKO
-  server: 45.151.71.147
+  servername: abuse.ozon.ru
+  client-fingerprint: ''
+- name: 🇷🇺 俄罗斯 (Russia) 14 5385K 🇨🇳 - NEKO
+  server: 45.151.71.152
   port: 443
   udp: true
   type: vless
@@ -113,7 +175,7 @@ proxies:
     public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
   servername: abuse.ozon.ru
   client-fingerprint: firefox
-- name: 🇷🇺 俄罗斯 (Russia) 10 5142K 🇨🇳 - NEKO
+- name: 🇷🇺 俄罗斯 (Russia) 15 5188K 🇨🇳 - NEKO
   server: 45.151.71.147
   port: 443
   udp: true
@@ -125,7 +187,19 @@ proxies:
     public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
   servername: abuse.ozon.ru
   client-fingerprint: ''
-- name: 🇷🇺 俄罗斯 (Russia) 11 4703K 🇨🇳 - NEKO
+- name: 🇷🇺 俄罗斯 (Russia) 16 5520K 🇨🇳 - NEKO
+  server: 45.9.118.177
+  port: 8443
+  udp: true
+  type: vless
+  uuid: 88c4ce99-31f1-4329-912d-2a3564b3d58b
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
+  servername: apple.com
+  client-fingerprint: firefox
+- name: 🇷🇺 俄罗斯 (Russia) 17 3475K 🇨🇳 - NEKO
   server: 193.160.141.2
   port: 8443
   udp: true
@@ -137,7 +211,31 @@ proxies:
     public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
   servername: apple.com
   client-fingerprint: chrome
-- name: 🇷🇺 俄罗斯 (Russia) 12 5882K 🇨🇳 - NEKO
+- name: 🇷🇺 俄罗斯 (Russia) 18 5091K 🇨🇳 - NEKO
+  server: 103.91.147.203
+  port: 8443
+  udp: true
+  type: vless
+  uuid: a756c39b-da0c-4195-94fd-f2a35e37622a
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
+  servername: apple.com
+  client-fingerprint: firefox
+- name: 🇷🇺 俄罗斯 (Russia) 19 4765K 🇨🇳 - NEKO
+  server: 193.160.140.117
+  port: 8443
+  udp: true
+  type: vless
+  uuid: 57c87188-1056-4bd5-92f8-c7ca1fd19147
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
+  servername: apple.com
+  client-fingerprint: chrome
+- name: 🇷🇺 俄罗斯 (Russia) 20 5920K 🇨🇳 - NEKO
   server: 193.233.253.180
   port: 8444
   udp: true
@@ -151,127 +249,87 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: GunService
-- name: 🇷🇺 俄罗斯 (Russia) 13 5181K 🇨🇳 - NEKO
-  server: 45.9.118.177
-  port: 8443
-  udp: true
-  type: vless
-  uuid: 88c4ce99-31f1-4329-912d-2a3564b3d58b
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
-  servername: apple.com
-  client-fingerprint: firefox
-- name: 🇷🇺 俄罗斯 (Russia) 14 4777K 🇨🇳 - NEKO
-  server: 45.151.71.152
-  port: 443
-  udp: true
-  type: vless
-  uuid: 8a1f8853-9a71-4ef2-a64c-4f0a94c2e14b
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
-  servername: abuse.ozon.ru
-  client-fingerprint: chrome
-- name: 🇷🇺 俄罗斯 (Russia) 15 4933K 🇨🇳 - NEKO
-  server: 45.151.71.152
-  port: 443
-  udp: true
-  type: vless
-  uuid: 8a1f8853-9a71-4ef2-a64c-4f0a94c2e14b
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
-  servername: abuse.ozon.ru
-  client-fingerprint: firefox
-- name: 🇷🇺 俄罗斯 (Russia) 16 5600K 🇨🇳 - NEKO
-  server: 103.91.147.203
-  port: 8443
-  udp: true
-  type: vless
-  uuid: a756c39b-da0c-4195-94fd-f2a35e37622a
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
-  servername: apple.com
-  client-fingerprint: firefox
-- name: 🇷🇺 俄罗斯 (Russia) 17 3587K ⚠P - NEKO
+- name: 🇷🇺 俄罗斯 (Russia) 21 2887K ⚠P - NEKO
   server: 195.133.23.50
   port: 18443
   udp: true
   type: ss
   cipher: aes-256-gcm
   password: Lpq5UPVHtQYiuB9jEUNc2WkeIYCUH9DE
-- name: 🇷🇺 俄罗斯 (Russia) 18 3260K ⚠P - NEKO
+- name: 🇷🇺 俄罗斯 (Russia) 22 1521K ⚠P - NEKO
   server: 46.17.43.227
   port: 18443
   udp: true
   type: ss
   cipher: aes-256-gcm
   password: NTiHBg64fsY8u8DbGrtypD9gPGSL386p
-- name: 🇷🇺 俄罗斯 (Russia) 19 4686K 🇨🇳 - NEKO
-  server: 45.151.71.147
-  port: 443
+- name: 🇷🇺 俄罗斯 (Russia) 23 3197K ⚠P - NEKO
+  server: 45.151.102.148
+  port: 8433
   udp: true
   type: vless
-  uuid: 8a1f8853-9a71-4ef2-a64c-4f0a94c2e14b
-  flow: xtls-rprx-vision
+  uuid: 867588d0-2245-4d04-a89a-c8d7547244a7
   tls: true
   reality-opts:
-    public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
-  servername: abuse.ozon.ru
+    public-key: nWBtSYqMPtaWSA32mI5a79EoVolTModESoBb2tnvFik
+    short-id: 6dd3d9f85c71
+  servername: sberbank.ru
   client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇷🇺 俄罗斯 (Russia) 01 5453K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 02 4930K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 03 5020K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 04 5717K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 05 5234K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 06 5248K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 07 4571K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 08 5039K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 09 5155K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 10 5142K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 11 4703K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 12 5882K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 13 5181K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 14 4777K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 15 4933K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 16 5600K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 17 3587K ⚠P - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 18 3260K ⚠P - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 19 4686K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 01 5609K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 02 3402K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 03 4781K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 04 5481K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 05 5222K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 06 5278K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 07 1579K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 08 5133K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 09 4824K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 10 3679K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 11 4618K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 12 5731K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 13 5024K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 14 5385K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 15 5188K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 16 5520K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 17 3475K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 18 5091K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 19 4765K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 20 5920K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 21 2887K ⚠P - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 22 1521K ⚠P - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 23 3197K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇷🇺 俄罗斯 (Russia) 01 5453K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 02 4930K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 03 5020K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 04 5717K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 05 5234K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 06 5248K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 07 4571K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 08 5039K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 09 5155K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 10 5142K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 11 4703K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 12 5882K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 13 5181K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 14 4777K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 15 4933K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 16 5600K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 17 3587K ⚠P - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 18 3260K ⚠P - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 19 4686K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 01 5609K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 02 3402K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 03 4781K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 04 5481K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 05 5222K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 06 5278K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 07 1579K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 08 5133K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 09 4824K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 10 3679K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 11 4618K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 12 5731K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 13 5024K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 14 5385K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 15 5188K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 16 5520K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 17 3475K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 18 5091K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 19 4765K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 20 5920K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 21 2887K ⚠P - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 22 1521K ⚠P - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 23 3197K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

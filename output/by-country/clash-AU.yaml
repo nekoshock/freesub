@@ -4,7 +4,18 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇦🇺 澳大利亚 (Australia) 01 4830K 🇨🇳 - NEKO
+- name: 🇦🇺 澳大利亚 (Australia) 01 10202K - NEKO
+  server: 188.114.97.6
+  port: 80
+  udp: true
+  type: vless
+  uuid: 6faeb6a0-5055-4e4b-8fb1-ffd77e57aefa
+  network: ws
+  ws-opts:
+    path: /au-do
+    headers:
+      Host: somersby.pt.r3xxe.eu.cc
+- name: 🇦🇺 澳大利亚 (Australia) 02 5965K 🇨🇳 - NEKO
   server: 51.161.204.242
   port: 443
   udp: true
@@ -17,17 +28,34 @@ proxies:
     short-id: d15c17cef9b2e456
   servername: www.cloudflare.com
   client-fingerprint: chrome
+- name: 🇦🇺 澳大利亚 (Australia) 03 4729K 🇨🇳 - NEKO
+  server: 51.161.204.244
+  port: 443
+  udp: true
+  type: vless
+  uuid: 36e89875-9c53-482b-bc41-d3890e9da176
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: gCAazs5uxNuMZIxfDdw8wPE0nwKY4QfBfBkQveKAkEk
+    short-id: 0ad08b47f498efd2
+  servername: www.cloudflare.com
+  client-fingerprint: firefox
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇦🇺 澳大利亚 (Australia) 01 4830K 🇨🇳 - NEKO
+  - 🇦🇺 澳大利亚 (Australia) 01 10202K - NEKO
+  - 🇦🇺 澳大利亚 (Australia) 02 5965K 🇨🇳 - NEKO
+  - 🇦🇺 澳大利亚 (Australia) 03 4729K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇦🇺 澳大利亚 (Australia) 01 4830K 🇨🇳 - NEKO
+  - 🇦🇺 澳大利亚 (Australia) 01 10202K - NEKO
+  - 🇦🇺 澳大利亚 (Australia) 02 5965K 🇨🇳 - NEKO
+  - 🇦🇺 澳大利亚 (Australia) 03 4729K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

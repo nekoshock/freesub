@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇳 CN 01 576K 🇨🇳 - NEKO
+- name: 🇨🇳 CN 01 1077K 🇨🇳 - NEKO
   server: vpn.cintaku.qzz.io
   port: 443
   udp: true
@@ -16,8 +16,8 @@ proxies:
   network: ws
   ws-opts:
     path: /vlessws
-- name: 🇨🇳 CN 02 477K 🇨🇳 - NEKO
-  server: 8.35.211.242
+- name: 🇨🇳 CN 02 3517K 🇨🇳 - NEKO
+  server: vpn.cintaku.qzz.io
   port: 443
   udp: true
   type: vless
@@ -25,7 +25,7 @@ proxies:
   tls: true
   servername: vpn.cintaku.qzz.io
   skip-cert-verify: false
-  client-fingerprint: chrome
+  client-fingerprint: safari
   network: ws
   ws-opts:
     path: /vlessws
@@ -36,14 +36,14 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇨🇳 CN 01 576K 🇨🇳 - NEKO
-  - 🇨🇳 CN 02 477K 🇨🇳 - NEKO
+  - 🇨🇳 CN 01 1077K 🇨🇳 - NEKO
+  - 🇨🇳 CN 02 3517K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇳 CN 01 576K 🇨🇳 - NEKO
-  - 🇨🇳 CN 02 477K 🇨🇳 - NEKO
+  - 🇨🇳 CN 01 1077K 🇨🇳 - NEKO
+  - 🇨🇳 CN 02 3517K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

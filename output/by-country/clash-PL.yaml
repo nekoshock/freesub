@@ -4,14 +4,32 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇵🇱 波兰 (Poland) 01 4354K ⚠P - NEKO
-  server: 217.30.10.44
-  port: 9062
+- name: 🇵🇱 波兰 (Poland) 01 4924K 🇨🇳 - NEKO
+  server: 80.47.13.138
+  port: 443
   udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: tkhHVxxfM2QErBWe
-- name: 🇵🇱 波兰 (Poland) 02 4969K 🇨🇳 - NEKO
+  type: vless
+  uuid: 605dea9b-b485-45c9-af9b-cc2b0195023c
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: Su5ULcRQKF-0DJIHZeTNEnXHBpyQtizmUrcNIYhZI0E
+    short-id: afee962d
+  servername: pl1.mycloud1.org
+  client-fingerprint: firefox
+- name: 🇵🇱 波兰 (Poland) 02 5275K - NEKO
+  server: 5.22.221.127
+  port: 443
+  udp: true
+  type: vless
+  uuid: 44dfa3a7-f648-4587-819b-e653c0823f28
+- name: 🇵🇱 波兰 (Poland) 03 6244K ⚠P - NEKO
+  server: site.teslamotor.site
+  port: 20001
+  udp: true
+  type: vless
+  uuid: 8e8210b7-71a4-4799-8b9b-2e69698b1eaf
+- name: 🇵🇱 波兰 (Poland) 04 4464K 🇨🇳 - NEKO
   server: ru1.radiolumens.uk
   port: 8445
   udp: true
@@ -23,13 +41,7 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: beru-pl
-- name: 🇵🇱 波兰 (Poland) 03 575K ⚠P - NEKO
-  server: site.teslamotor.site
-  port: 20001
-  udp: true
-  type: vless
-  uuid: 8e8210b7-71a4-4799-8b9b-2e69698b1eaf
-- name: 🇵🇱 波兰 (Poland) 04 1538K ⚠P⚠U - NEKO
+- name: 🇵🇱 波兰 (Poland) 05 16779K ⚠P⚠U - NEKO
   server: scrap.halyvanedorogo.ru
   port: 35076
   udp: true
@@ -37,32 +49,25 @@ proxies:
   password: b4c8ee9caa74b7ba0a61
   sni: scrap.halyvanedorogo.ru
   skip-cert-verify: false
-- name: 🇵🇱 波兰 (Poland) 05 1783K ⚠P - NEKO
-  server: 49.12.249.167
-  port: 147
-  udp: true
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: 5uDrCF_iLoxCiRkKku6f7A
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇵🇱 波兰 (Poland) 01 4354K ⚠P - NEKO
-  - 🇵🇱 波兰 (Poland) 02 4969K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 03 575K ⚠P - NEKO
-  - 🇵🇱 波兰 (Poland) 04 1538K ⚠P⚠U - NEKO
-  - 🇵🇱 波兰 (Poland) 05 1783K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 01 4924K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 02 5275K - NEKO
+  - 🇵🇱 波兰 (Poland) 03 6244K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 04 4464K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 05 16779K ⚠P⚠U - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇵🇱 波兰 (Poland) 01 4354K ⚠P - NEKO
-  - 🇵🇱 波兰 (Poland) 02 4969K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 03 575K ⚠P - NEKO
-  - 🇵🇱 波兰 (Poland) 04 1538K ⚠P⚠U - NEKO
-  - 🇵🇱 波兰 (Poland) 05 1783K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 01 4924K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 02 5275K - NEKO
+  - 🇵🇱 波兰 (Poland) 03 6244K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 04 4464K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 05 16779K ⚠P⚠U - NEKO
 rules:
 - MATCH,PROXIES

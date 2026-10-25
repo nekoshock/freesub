@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇭🇰 中国香港 (Hong Kong) 01 3935K 🇨🇳 - NEKO
+- name: 🇭🇰 中国香港 (Hong Kong) 01 3386K 🇨🇳 - NEKO
   server: 151.242.85.236
   port: 443
   udp: true
@@ -16,18 +16,33 @@ proxies:
     public-key: gUu1n11Ef_GEoatNQzJJucvIjGTt4qxOWdxMzjoHwDM
     short-id: 9b6fa4047c24629f
   servername: addons.mozilla.org
-  client-fingerprint: safari
+  client-fingerprint: qq
+- name: 🇭🇰 中国香港 (Hong Kong) 02 2938K ⚠P - NEKO
+  server: 50.7.44.28
+  port: 2091
+  udp: true
+  type: vless
+  uuid: 76b6a658-ce80-4500-b24d-404c94639ac6
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: 1N6AW5YuEwBoYcZK5KuugDzBHsa0NKZMT8QI-EmyL0k
+    short-id: 08a4b1f473932632
+  servername: www.apple.com
+  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇭🇰 中国香港 (Hong Kong) 01 3935K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 3386K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 2938K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇭🇰 中国香港 (Hong Kong) 01 3935K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 3386K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 2938K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

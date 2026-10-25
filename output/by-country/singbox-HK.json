@@ -5,7 +5,7 @@
   "outbounds": [
     {
       "type": "vless",
-      "tag": "🇭🇰 中国香港 (Hong Kong) 01 3935K 🇨🇳 - NEKO",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 01 3386K 🇨🇳 - NEKO",
       "server": "151.242.85.236",
       "server_port": 443,
       "uuid": "7aec627e-a258-4ded-9fd9-fbd7c024f950",
@@ -15,7 +15,7 @@
         "server_name": "addons.mozilla.org",
         "utls": {
           "enabled": true,
-          "fingerprint": "safari"
+          "fingerprint": "qq"
         },
         "reality": {
           "enabled": true,
@@ -25,18 +25,41 @@
       }
     },
     {
+      "type": "vless",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 02 2938K ⚠P - NEKO",
+      "server": "50.7.44.28",
+      "server_port": 2091,
+      "uuid": "76b6a658-ce80-4500-b24d-404c94639ac6",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.apple.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "1N6AW5YuEwBoYcZK5KuugDzBHsa0NKZMT8QI-EmyL0k",
+          "short_id": "08a4b1f473932632"
+        }
+      }
+    },
+    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇭🇰 中国香港 (Hong Kong) 01 3935K 🇨🇳 - NEKO"
+        "🇭🇰 中国香港 (Hong Kong) 01 3386K 🇨🇳 - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 02 2938K ⚠P - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇭🇰 中国香港 (Hong Kong) 01 3935K 🇨🇳 - NEKO"
+        "🇭🇰 中国香港 (Hong Kong) 01 3386K 🇨🇳 - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 02 2938K ⚠P - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

@@ -4,7 +4,30 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇸🇪 瑞典 (Sweden) 01 8552K 🇨🇳 - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 01 8606K 🇨🇳 - NEKO
+  server: 50.7.38.243
+  port: 443
+  udp: true
+  type: hysteria2
+  password: d4ca9415f0eac7897472e1e5b86d2e96
+  sni: promo.betust.net
+  skip-cert-verify: false
+- name: 🇸🇪 瑞典 (Sweden) 02 8721K 🇨🇳 - NEKO
+  server: se1-cl3.vless-fiberstasis.top
+  port: 443
+  udp: true
+  type: vless
+  uuid: 4b1be712-774c-4b65-8491-a3339e124a70
+  tls: true
+  reality-opts:
+    public-key: qJja_3vaCxm3As6alnqjpIIThwGm4e4m_MOluQBNFgo
+    short-id: 11d37dd92940329e
+  servername: se1-cl3.vless-fiberstasis.top
+  client-fingerprint: firefox
+  network: grpc
+  grpc-opts:
+    grpc-service-name: grpc-se-3
+- name: 🇸🇪 瑞典 (Sweden) 03 9448K 🇨🇳 - NEKO
   server: 191.44.114.154
   port: 8443
   udp: true
@@ -17,19 +40,7 @@ proxies:
     short-id: c4359f3827231250
   servername: www.wikipedia.org
   client-fingerprint: firefox
-- name: 🇸🇪 瑞典 (Sweden) 02 8624K 🇨🇳 - NEKO
-  server: 191.44.114.179
-  port: 8443
-  udp: true
-  type: vless
-  uuid: d1641bc6-3757-43db-815a-9b3f4d9b0d7e
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: WEHGKyXsOD5i2kNCJ3GrjeNZQBsrzH76OrPDJ7x2YwY
-  servername: www.wikipedia.org
-  client-fingerprint: firefox
-- name: 🇸🇪 瑞典 (Sweden) 03 8303K ⚠P - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 04 8542K ⚠P - NEKO
   server: 191.44.114.154
   port: 2096
   udp: true
@@ -44,7 +55,34 @@ proxies:
     path: /cdn/v3/live
     headers:
       Host: st5ff8a.rumedia-cdn.com
-- name: 🇸🇪 瑞典 (Sweden) 04 5567K ⚠P⚠U - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 05 9431K ⚠P - NEKO
+  server: 191.44.114.179
+  port: 2096
+  udp: true
+  type: vless
+  uuid: d1641bc6-3757-43db-815a-9b3f4d9b0d7e
+  tls: true
+  servername: st33614.rumedia-cdn.com
+  skip-cert-verify: false
+  client-fingerprint: firefox
+  network: ws
+  ws-opts:
+    path: /cdn/v3/live
+    headers:
+      Host: st33614.rumedia-cdn.com
+- name: 🇸🇪 瑞典 (Sweden) 06 8463K 🇨🇳 - NEKO
+  server: 191.44.114.179
+  port: 8443
+  udp: true
+  type: vless
+  uuid: d1641bc6-3757-43db-815a-9b3f4d9b0d7e
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: WEHGKyXsOD5i2kNCJ3GrjeNZQBsrzH76OrPDJ7x2YwY
+  servername: www.wikipedia.org
+  client-fingerprint: firefox
+- name: 🇸🇪 瑞典 (Sweden) 07 6212K ⚠P⚠U - NEKO
   server: se3.shvpn.ru
   port: 4443
   udp: true
@@ -57,18 +95,24 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇸🇪 瑞典 (Sweden) 01 8552K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 8624K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 03 8303K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 04 5567K ⚠P⚠U - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 8606K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 8721K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 03 9448K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 04 8542K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 05 9431K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 06 8463K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 07 6212K ⚠P⚠U - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇸🇪 瑞典 (Sweden) 01 8552K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 8624K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 03 8303K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 04 5567K ⚠P⚠U - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 8606K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 8721K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 03 9448K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 04 8542K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 05 9431K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 06 8463K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 07 6212K ⚠P⚠U - NEKO
 rules:
 - MATCH,PROXIES

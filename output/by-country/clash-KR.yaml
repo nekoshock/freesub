@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇰🇷 韩国 (South Korea) 01 4848K - NEKO
+- name: 🇰🇷 韩国 (South Korea) 01 4175K - NEKO
   server: 13.125.179.47
   port: 443
   udp: true
@@ -14,7 +14,15 @@ proxies:
   h2-opts:
     host: []
     path: /
-- name: 🇰🇷 韩国 (South Korea) 02 2978K ⚠P⚠U - NEKO
+- name: 🇰🇷 韩国 (South Korea) 02 2338K ⚠P⚠U - NEKO
+  server: 152.67.200.82
+  port: 50160
+  udp: true
+  type: hysteria2
+  password: 3d7634af8cb2c6cb4bac1c0efad8b43d
+  sni: 152-67-200-82.liao.kdns.fr
+  skip-cert-verify: false
+- name: 🇰🇷 韩国 (South Korea) 03 3670K ⚠P⚠U - NEKO
   server: 150-230-252-217.liao.kdns.fr
   port: 50160
   udp: true
@@ -22,28 +30,36 @@ proxies:
   password: 9cfc9458e48c028ec03ff86ebc71c744
   sni: 150-230-252-217.liao.kdns.fr
   skip-cert-verify: false
-- name: 🇰🇷 韩国 (South Korea) 03 2353K ⚠P - NEKO
-  server: 49.254.204.133
-  port: 1774
+- name: 🇰🇷 韩国 (South Korea) 04 3377K ⚠P - NEKO
+  server: 3.39.4.109
+  port: 18967
   udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: 1234!@#$
+  type: vless
+  uuid: 814bd064-544d-4255-a070-5705c03f6da9
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
+    short-id: 48050fab
+  servername: www.apple.com
+  client-fingerprint: random
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇰🇷 韩国 (South Korea) 01 4848K - NEKO
-  - 🇰🇷 韩国 (South Korea) 02 2978K ⚠P⚠U - NEKO
-  - 🇰🇷 韩国 (South Korea) 03 2353K ⚠P - NEKO
+  - 🇰🇷 韩国 (South Korea) 01 4175K - NEKO
+  - 🇰🇷 韩国 (South Korea) 02 2338K ⚠P⚠U - NEKO
+  - 🇰🇷 韩国 (South Korea) 03 3670K ⚠P⚠U - NEKO
+  - 🇰🇷 韩国 (South Korea) 04 3377K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇰🇷 韩国 (South Korea) 01 4848K - NEKO
-  - 🇰🇷 韩国 (South Korea) 02 2978K ⚠P⚠U - NEKO
-  - 🇰🇷 韩国 (South Korea) 03 2353K ⚠P - NEKO
+  - 🇰🇷 韩国 (South Korea) 01 4175K - NEKO
+  - 🇰🇷 韩国 (South Korea) 02 2338K ⚠P⚠U - NEKO
+  - 🇰🇷 韩国 (South Korea) 03 3670K ⚠P⚠U - NEKO
+  - 🇰🇷 韩国 (South Korea) 04 3377K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

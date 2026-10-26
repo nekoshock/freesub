@@ -4,19 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇹🇷 土耳其 (Turkey) 01 11010K 🇨🇳 - NEKO
-  server: 45.151.71.167
-  port: 443
-  udp: true
-  type: vless
-  uuid: 680e92ac-1688-49e0-af96-7327fbc30ce8
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
-  servername: abuse.ozon.ru
-  client-fingerprint: chrome
-- name: 🇹🇷 土耳其 (Turkey) 02 11010K 🇨🇳 - NEKO
+- name: 🇹🇷 土耳其 (Turkey) 01 13912K 🇨🇳 - NEKO
   server: 185.98.63.6
   port: 8443
   udp: true
@@ -28,7 +16,7 @@ proxies:
     public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
   servername: apple.com
   client-fingerprint: chrome
-- name: 🇹🇷 土耳其 (Turkey) 03 7068K 🇨🇳 - NEKO
+- name: 🇹🇷 土耳其 (Turkey) 02 6641K 🇨🇳 - NEKO
   server: 62.133.63.45
   port: 8444
   udp: true
@@ -42,32 +30,7 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: GunService
-- name: 🇹🇷 土耳其 (Turkey) 04 5981K 🇨🇳 - NEKO
-  server: 78.135.73.47
-  port: 443
-  udp: true
-  type: vless
-  uuid: 25e16692-d097-4e69-9e2d-8415609c1968
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: sZAJkAu23wp1WKY-qeaeiwR38izP5OyfhumoE9xhbB8
-    short-id: f46cd3ea3d1eb72d
-  servername: www.datadoghq.com
-  client-fingerprint: firefox
-- name: 🇹🇷 土耳其 (Turkey) 05 6580K 🇨🇳 - NEKO
-  server: 151.241.226.201
-  port: 2053
-  udp: true
-  type: vless
-  uuid: 0eed6293-8cf1-4e77-ac10-9c3d50d0b2f8
-  tls: true
-  reality-opts:
-    public-key: bYW_MmB_CUHrsyoCAUKviI2LZdHf63yY2yOPXbih104
-    short-id: 9e419c0759b54d6f
-  servername: www.apple.com
-  client-fingerprint: firefox
-- name: 🇹🇷 土耳其 (Turkey) 06 8063K 🇨🇳 - NEKO
+- name: 🇹🇷 土耳其 (Turkey) 03 9385K 🇨🇳 - NEKO
   server: 177.3.208.65
   port: 443
   udp: true
@@ -82,14 +45,32 @@ proxies:
     path: /vless-tr
     headers:
       Host: tgmansion.site
-- name: 🇹🇷 土耳其 (Turkey) 07 1823K ⚠P - NEKO
-  server: 87.236.166.134
-  port: 56134
+- name: 🇹🇷 土耳其 (Turkey) 04 6419K 🇨🇳 - NEKO
+  server: 78.135.73.47
+  port: 443
   udp: true
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: uvKNudV-N8AUCrykPiyznA
-- name: 🇹🇷 土耳其 (Turkey) 08 5064K ⚠P - NEKO
+  type: vless
+  uuid: 25e16692-d097-4e69-9e2d-8415609c1968
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: sZAJkAu23wp1WKY-qeaeiwR38izP5OyfhumoE9xhbB8
+    short-id: f46cd3ea3d1eb72d
+  servername: www.datadoghq.com
+  client-fingerprint: firefox
+- name: 🇹🇷 土耳其 (Turkey) 05 6443K 🇨🇳 - NEKO
+  server: 151.241.226.201
+  port: 2053
+  udp: true
+  type: vless
+  uuid: 0eed6293-8cf1-4e77-ac10-9c3d50d0b2f8
+  tls: true
+  reality-opts:
+    public-key: bYW_MmB_CUHrsyoCAUKviI2LZdHf63yY2yOPXbih104
+    short-id: 9e419c0759b54d6f
+  servername: www.apple.com
+  client-fingerprint: firefox
+- name: 🇹🇷 土耳其 (Turkey) 06 4569K ⚠P - NEKO
   server: trdatair.egekaradecojistik.net.tr
   port: 35577
   udp: true
@@ -100,31 +81,36 @@ proxies:
     path: /
     headers:
       Host: play.google.com
+- name: 🇹🇷 土耳其 (Turkey) 07 ⚠S1585K ⚠P - NEKO
+  server: 87.236.166.215
+  port: 56134
+  udp: true
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: uvKNudV-N8AUCrykPiyznA
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇹🇷 土耳其 (Turkey) 01 11010K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 02 11010K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 03 7068K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 04 5981K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 05 6580K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 06 8063K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 07 1823K ⚠P - NEKO
-  - 🇹🇷 土耳其 (Turkey) 08 5064K ⚠P - NEKO
+  - 🇹🇷 土耳其 (Turkey) 01 13912K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 02 6641K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 03 9385K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 04 6419K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 05 6443K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 06 4569K ⚠P - NEKO
+  - 🇹🇷 土耳其 (Turkey) 07 ⚠S1585K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇹🇷 土耳其 (Turkey) 01 11010K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 02 11010K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 03 7068K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 04 5981K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 05 6580K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 06 8063K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 07 1823K ⚠P - NEKO
-  - 🇹🇷 土耳其 (Turkey) 08 5064K ⚠P - NEKO
+  - 🇹🇷 土耳其 (Turkey) 01 13912K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 02 6641K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 03 9385K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 04 6419K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 05 6443K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 06 4569K ⚠P - NEKO
+  - 🇹🇷 土耳其 (Turkey) 07 ⚠S1585K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

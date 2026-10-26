@@ -4,8 +4,37 @@
   },
   "outbounds": [
     {
+      "type": "vmess",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 01 3651K ⚠P - NEKO",
+      "server": "dog-hk.kunlun01dns.com",
+      "server_port": 21018,
+      "uuid": "9464ca40-dd75-3742-a628-d931a9f413b2",
+      "security": "auto"
+    },
+    {
       "type": "vless",
-      "tag": "🇭🇰 中国香港 (Hong Kong) 01 3386K 🇨🇳 - NEKO",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 02 3836K 🇨🇳 - NEKO",
+      "server": "165.154.63.139",
+      "server_port": 443,
+      "uuid": "91ad30e9-ab06-4b4c-9fb9-1c2aa97d8b3a",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.amazon.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "AE81BrwMc8-kwGEIA1LhzaL03er0Qwt2V-fFy76F5jQ",
+          "short_id": "ca4aedd4"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 03 3880K 🇨🇳 - NEKO",
       "server": "151.242.85.236",
       "server_port": 443,
       "uuid": "7aec627e-a258-4ded-9fd9-fbd7c024f950",
@@ -15,7 +44,7 @@
         "server_name": "addons.mozilla.org",
         "utls": {
           "enabled": true,
-          "fingerprint": "qq"
+          "fingerprint": "safari"
         },
         "reality": {
           "enabled": true,
@@ -26,7 +55,7 @@
     },
     {
       "type": "vless",
-      "tag": "🇭🇰 中国香港 (Hong Kong) 02 2938K ⚠P - NEKO",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 04 3576K ⚠P - NEKO",
       "server": "50.7.44.28",
       "server_port": 2091,
       "uuid": "76b6a658-ce80-4500-b24d-404c94639ac6",
@@ -46,20 +75,40 @@
       }
     },
     {
+      "type": "vless",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 05 9359K ⚠P - NEKO",
+      "server": "104.17.0.1",
+      "server_port": 8080,
+      "uuid": "a8b1d666-d3ba-4b17-90c4-ba7514c74f78",
+      "transport": {
+        "type": "ws",
+        "path": "/xiron",
+        "headers": {
+          "Host": "xstack.mahanfixe.workers.dev"
+        }
+      }
+    },
+    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇭🇰 中国香港 (Hong Kong) 01 3386K 🇨🇳 - NEKO",
-        "🇭🇰 中国香港 (Hong Kong) 02 2938K ⚠P - NEKO"
+        "🇭🇰 中国香港 (Hong Kong) 01 3651K ⚠P - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 02 3836K 🇨🇳 - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 03 3880K 🇨🇳 - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 04 3576K ⚠P - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 05 9359K ⚠P - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇭🇰 中国香港 (Hong Kong) 01 3386K 🇨🇳 - NEKO",
-        "🇭🇰 中国香港 (Hong Kong) 02 2938K ⚠P - NEKO"
+        "🇭🇰 中国香港 (Hong Kong) 01 3651K ⚠P - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 02 3836K 🇨🇳 - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 03 3880K 🇨🇳 - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 04 3576K ⚠P - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 05 9359K ⚠P - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

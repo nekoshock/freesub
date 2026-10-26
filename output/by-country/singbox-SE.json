@@ -5,7 +5,7 @@
   "outbounds": [
     {
       "type": "hysteria2",
-      "tag": "🇸🇪 瑞典 (Sweden) 01 8520K 🇨🇳 - NEKO",
+      "tag": "🇸🇪 瑞典 (Sweden) 01 19809K 🇨🇳 - NEKO",
       "server": "50.7.38.243",
       "server_port": 443,
       "password": "d4ca9415f0eac7897472e1e5b86d2e96",
@@ -17,7 +17,7 @@
     },
     {
       "type": "vless",
-      "tag": "🇸🇪 瑞典 (Sweden) 02 9532K 🇨🇳 - NEKO",
+      "tag": "🇸🇪 瑞典 (Sweden) 02 5153K 🇨🇳 - NEKO",
       "server": "se14-node.rumedia-cdn.com",
       "server_port": 8443,
       "uuid": "d1641bc6-3757-43db-815a-9b3f4d9b0d7e",
@@ -38,7 +38,28 @@
     },
     {
       "type": "vless",
-      "tag": "🇸🇪 瑞典 (Sweden) 03 8173K ⚠P - NEKO",
+      "tag": "🇸🇪 瑞典 (Sweden) 03 5099K 🇨🇳 - NEKO",
+      "server": "se13-node.rumedia-cdn.com",
+      "server_port": 8443,
+      "uuid": "d1641bc6-3757-43db-815a-9b3f4d9b0d7e",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.wikipedia.org",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "ndQzAcG4g-2OhvFb8EjFnZyxJ2lhawiulTLJOZrK8lY",
+          "short_id": ""
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇸🇪 瑞典 (Sweden) 04 6216K ⚠P - NEKO",
       "server": "191.44.114.179",
       "server_port": 2096,
       "uuid": "d1641bc6-3757-43db-815a-9b3f4d9b0d7e",
@@ -60,22 +81,49 @@
       }
     },
     {
+      "type": "vless",
+      "tag": "🇸🇪 瑞典 (Sweden) 05 6006K ⚠P - NEKO",
+      "server": "191.44.114.154",
+      "server_port": 2096,
+      "uuid": "d1641bc6-3757-43db-815a-9b3f4d9b0d7e",
+      "tls": {
+        "enabled": true,
+        "server_name": "st5ff8a.rumedia-cdn.com",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/cdn/v3/live",
+        "headers": {
+          "Host": "st5ff8a.rumedia-cdn.com"
+        }
+      }
+    },
+    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇸🇪 瑞典 (Sweden) 01 8520K 🇨🇳 - NEKO",
-        "🇸🇪 瑞典 (Sweden) 02 9532K 🇨🇳 - NEKO",
-        "🇸🇪 瑞典 (Sweden) 03 8173K ⚠P - NEKO"
+        "🇸🇪 瑞典 (Sweden) 01 19809K 🇨🇳 - NEKO",
+        "🇸🇪 瑞典 (Sweden) 02 5153K 🇨🇳 - NEKO",
+        "🇸🇪 瑞典 (Sweden) 03 5099K 🇨🇳 - NEKO",
+        "🇸🇪 瑞典 (Sweden) 04 6216K ⚠P - NEKO",
+        "🇸🇪 瑞典 (Sweden) 05 6006K ⚠P - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇸🇪 瑞典 (Sweden) 01 8520K 🇨🇳 - NEKO",
-        "🇸🇪 瑞典 (Sweden) 02 9532K 🇨🇳 - NEKO",
-        "🇸🇪 瑞典 (Sweden) 03 8173K ⚠P - NEKO"
+        "🇸🇪 瑞典 (Sweden) 01 19809K 🇨🇳 - NEKO",
+        "🇸🇪 瑞典 (Sweden) 02 5153K 🇨🇳 - NEKO",
+        "🇸🇪 瑞典 (Sweden) 03 5099K 🇨🇳 - NEKO",
+        "🇸🇪 瑞典 (Sweden) 04 6216K ⚠P - NEKO",
+        "🇸🇪 瑞典 (Sweden) 05 6006K ⚠P - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

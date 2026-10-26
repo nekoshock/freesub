@@ -5,7 +5,7 @@
   "outbounds": [
     {
       "type": "shadowsocks",
-      "tag": "🇦🇹 奥地利 (Austria) 01 5496K ⚠P - NEKO",
+      "tag": "🇦🇹 奥地利 (Austria) 01 7721K ⚠P - NEKO",
       "server": "82.110.60.9",
       "server_port": 19999,
       "method": "aes-256-gcm",
@@ -13,7 +13,30 @@
     },
     {
       "type": "vless",
-      "tag": "🇦🇹 奥地利 (Austria) 02 5583K ⚠P - NEKO",
+      "tag": "🇦🇹 奥地利 (Austria) 02 6551K ⚠P - NEKO",
+      "server": "62.83.19.186",
+      "server_port": 8443,
+      "uuid": "2b0e5676-fb62-4bf0-9607-6e7818421e8e",
+      "tls": {
+        "enabled": true,
+        "server_name": "au7.pad-sservice.lat",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/AU7W",
+        "headers": {
+          "Host": "au7.pad-sservice.lat"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇦🇹 奥地利 (Austria) 03 558K ⚠P - NEKO",
       "server": "62.83.41.69",
       "server_port": 8443,
       "uuid": "2b0e5676-fb62-4bf0-9607-6e7818421e8e",
@@ -36,7 +59,30 @@
     },
     {
       "type": "vless",
-      "tag": "🇦🇹 奥地利 (Austria) 03 5775K ⚠P - NEKO",
+      "tag": "🇦🇹 奥地利 (Austria) 04 5508K ⚠P - NEKO",
+      "server": "159.195.253.15",
+      "server_port": 8443,
+      "uuid": "2b0e5676-fb62-4bf0-9607-6e7818421e8e",
+      "tls": {
+        "enabled": true,
+        "server_name": "au1.pad-sservice.lat",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/au1",
+        "headers": {
+          "Host": "au1.pad-service.com"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇦🇹 奥地利 (Austria) 05 615K ⚠P - NEKO",
       "server": "62.83.19.127",
       "server_port": 8443,
       "uuid": "2b0e5676-fb62-4bf0-9607-6e7818421e8e",
@@ -59,7 +105,7 @@
     },
     {
       "type": "vless",
-      "tag": "🇦🇹 奥地利 (Austria) 04 3533K ⚠P - NEKO",
+      "tag": "🇦🇹 奥地利 (Austria) 06 6694K ⚠P - NEKO",
       "server": "152.53.1.40",
       "server_port": 8443,
       "uuid": "2b0e5676-fb62-4bf0-9607-6e7818421e8e",
@@ -81,49 +127,28 @@
       }
     },
     {
-      "type": "vless",
-      "tag": "🇦🇹 奥地利 (Austria) 05 3119K ⚠P - NEKO",
-      "server": "89.58.20.210",
-      "server_port": 8443,
-      "uuid": "2b0e5676-fb62-4bf0-9607-6e7818421e8e",
-      "tls": {
-        "enabled": true,
-        "server_name": "au2.pad-sservice.lat",
-        "insecure": false,
-        "utls": {
-          "enabled": true,
-          "fingerprint": "firefox"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/A11U",
-        "headers": {
-          "Host": "au2.pad-service.com"
-        }
-      }
-    },
-    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇦🇹 奥地利 (Austria) 01 5496K ⚠P - NEKO",
-        "🇦🇹 奥地利 (Austria) 02 5583K ⚠P - NEKO",
-        "🇦🇹 奥地利 (Austria) 03 5775K ⚠P - NEKO",
-        "🇦🇹 奥地利 (Austria) 04 3533K ⚠P - NEKO",
-        "🇦🇹 奥地利 (Austria) 05 3119K ⚠P - NEKO"
+        "🇦🇹 奥地利 (Austria) 01 7721K ⚠P - NEKO",
+        "🇦🇹 奥地利 (Austria) 02 6551K ⚠P - NEKO",
+        "🇦🇹 奥地利 (Austria) 03 558K ⚠P - NEKO",
+        "🇦🇹 奥地利 (Austria) 04 5508K ⚠P - NEKO",
+        "🇦🇹 奥地利 (Austria) 05 615K ⚠P - NEKO",
+        "🇦🇹 奥地利 (Austria) 06 6694K ⚠P - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇦🇹 奥地利 (Austria) 01 5496K ⚠P - NEKO",
-        "🇦🇹 奥地利 (Austria) 02 5583K ⚠P - NEKO",
-        "🇦🇹 奥地利 (Austria) 03 5775K ⚠P - NEKO",
-        "🇦🇹 奥地利 (Austria) 04 3533K ⚠P - NEKO",
-        "🇦🇹 奥地利 (Austria) 05 3119K ⚠P - NEKO"
+        "🇦🇹 奥地利 (Austria) 01 7721K ⚠P - NEKO",
+        "🇦🇹 奥地利 (Austria) 02 6551K ⚠P - NEKO",
+        "🇦🇹 奥地利 (Austria) 03 558K ⚠P - NEKO",
+        "🇦🇹 奥地利 (Austria) 04 5508K ⚠P - NEKO",
+        "🇦🇹 奥地利 (Austria) 05 615K ⚠P - NEKO",
+        "🇦🇹 奥地利 (Austria) 06 6694K ⚠P - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

@@ -4,8 +4,16 @@
   },
   "outbounds": [
     {
+      "type": "shadowsocks",
+      "tag": "🇯🇵 日本 (Japan) 01 9075K - NEKO",
+      "server": "149.22.87.241",
+      "server_port": 443,
+      "method": "aes-128-gcm",
+      "password": "shadowsocks"
+    },
+    {
       "type": "hysteria2",
-      "tag": "🇯🇵 日本 (Japan) 01 15046K 🇨🇳 - NEKO",
+      "tag": "🇯🇵 日本 (Japan) 02 8401K 🇨🇳 - NEKO",
       "server": "45.32.10.7",
       "server_port": 443,
       "password": "96ab5cd282733fd4c312a61f972f330a",
@@ -17,24 +25,28 @@
     },
     {
       "type": "shadowsocks",
-      "tag": "🇯🇵 日本 (Japan) 02 5671K 🇨🇳 - NEKO",
-      "server": "149.22.87.241",
+      "tag": "🇯🇵 日本 (Japan) 03 9628K - NEKO",
+      "server": "149.22.87.204",
       "server_port": 443,
       "method": "aes-128-gcm",
       "password": "shadowsocks"
     },
     {
-      "type": "shadowsocks",
-      "tag": "🇯🇵 日本 (Japan) 03 17451K - NEKO",
-      "server": "149.22.87.240",
-      "server_port": 443,
-      "method": "aes-128-gcm",
-      "password": "shadowsocks"
+      "type": "hysteria2",
+      "tag": "🇯🇵 日本 (Japan) 04 8031K ⚠P⚠U - NEKO",
+      "server": "jap2.nexfile.net",
+      "server_port": 4444,
+      "password": "10be1dad-9952-4c5e-aa30-db435f69b727",
+      "tls": {
+        "enabled": true,
+        "server_name": "jap2.nexfile.net",
+        "insecure": false
+      }
     },
     {
       "type": "vless",
-      "tag": "🇯🇵 日本 (Japan) 04 13619K 🇨🇳 - NEKO",
-      "server": "31.76.91.98",
+      "tag": "🇯🇵 日本 (Japan) 05 4993K 🇨🇳 - NEKO",
+      "server": "fuji.etherhub.cc",
       "server_port": 443,
       "uuid": "7072eeba-94fd-4fb3-92f2-a4506dd84cd8",
       "flow": "xtls-rprx-vision",
@@ -53,16 +65,8 @@
       }
     },
     {
-      "type": "shadowsocks",
-      "tag": "🇯🇵 日本 (Japan) 05 10762K - NEKO",
-      "server": "149.22.87.204",
-      "server_port": 443,
-      "method": "aes-128-gcm",
-      "password": "shadowsocks"
-    },
-    {
       "type": "vless",
-      "tag": "🇯🇵 日本 (Japan) 06 10184K 🇨🇳 - NEKO",
+      "tag": "🇯🇵 日本 (Japan) 06 4975K 🇨🇳 - NEKO",
       "server": "103.75.118.228",
       "server_port": 11452,
       "uuid": "814bd064-544d-4255-a070-5705c03f6da9",
@@ -82,8 +86,16 @@
       }
     },
     {
+      "type": "shadowsocks",
+      "tag": "🇯🇵 日本 (Japan) 07 8959K - NEKO",
+      "server": "149.22.87.240",
+      "server_port": 443,
+      "method": "aes-128-gcm",
+      "password": "shadowsocks"
+    },
+    {
       "type": "vless",
-      "tag": "🇯🇵 日本 (Japan) 07 16196K 🇨🇳 - NEKO",
+      "tag": "🇯🇵 日本 (Japan) 08 9544K 🇨🇳 - NEKO",
       "server": "45.76.98.127",
       "server_port": 443,
       "uuid": "18ce1302-4e37-4eac-bd4f-e3e0a983e589",
@@ -102,24 +114,15 @@
       },
       "transport": {
         "type": "ws",
-        "path": "/ws"
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "🇯🇵 日本 (Japan) 08 8722K ⚠P⚠U - NEKO",
-      "server": "jap2.nexfile.net",
-      "server_port": 4444,
-      "password": "10be1dad-9952-4c5e-aa30-db435f69b727",
-      "tls": {
-        "enabled": true,
-        "server_name": "jap2.nexfile.net",
-        "insecure": false
+        "path": "/ws",
+        "headers": {
+          "Host": "itunes.apple.com"
+        }
       }
     },
     {
       "type": "vless",
-      "tag": "🇯🇵 日本 (Japan) 09 216K 🇨🇳 - NEKO",
+      "tag": "🇯🇵 日本 (Japan) 09 207K ⚠P - NEKO",
       "server": "3.114.220.22",
       "server_port": 19645,
       "uuid": "814bd064-544d-4255-a070-5705c03f6da9",
@@ -140,7 +143,7 @@
     },
     {
       "type": "vless",
-      "tag": "🇯🇵 日本 (Japan) 10 302K ⚠P - NEKO",
+      "tag": "🇯🇵 日本 (Japan) 10 232K ⚠P - NEKO",
       "server": "3.114.220.22",
       "server_port": 10583,
       "uuid": "814bd064-544d-4255-a070-5705c03f6da9",
@@ -160,59 +163,36 @@
       }
     },
     {
-      "type": "vless",
-      "tag": "🇯🇵 日本 (Japan) 11 246K 🇨🇳 - NEKO",
-      "server": "3.114.220.22",
-      "server_port": 18007,
-      "uuid": "814bd064-544d-4255-a070-5705c03f6da9",
-      "flow": "xtls-rprx-vision",
-      "tls": {
-        "enabled": true,
-        "server_name": "www.apple.com",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "safari"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0",
-          "short_id": "48050fab"
-        }
-      }
-    },
-    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇯🇵 日本 (Japan) 01 15046K 🇨🇳 - NEKO",
-        "🇯🇵 日本 (Japan) 02 5671K 🇨🇳 - NEKO",
-        "🇯🇵 日本 (Japan) 03 17451K - NEKO",
-        "🇯🇵 日本 (Japan) 04 13619K 🇨🇳 - NEKO",
-        "🇯🇵 日本 (Japan) 05 10762K - NEKO",
-        "🇯🇵 日本 (Japan) 06 10184K 🇨🇳 - NEKO",
-        "🇯🇵 日本 (Japan) 07 16196K 🇨🇳 - NEKO",
-        "🇯🇵 日本 (Japan) 08 8722K ⚠P⚠U - NEKO",
-        "🇯🇵 日本 (Japan) 09 216K 🇨🇳 - NEKO",
-        "🇯🇵 日本 (Japan) 10 302K ⚠P - NEKO",
-        "🇯🇵 日本 (Japan) 11 246K 🇨🇳 - NEKO"
+        "🇯🇵 日本 (Japan) 01 9075K - NEKO",
+        "🇯🇵 日本 (Japan) 02 8401K 🇨🇳 - NEKO",
+        "🇯🇵 日本 (Japan) 03 9628K - NEKO",
+        "🇯🇵 日本 (Japan) 04 8031K ⚠P⚠U - NEKO",
+        "🇯🇵 日本 (Japan) 05 4993K 🇨🇳 - NEKO",
+        "🇯🇵 日本 (Japan) 06 4975K 🇨🇳 - NEKO",
+        "🇯🇵 日本 (Japan) 07 8959K - NEKO",
+        "🇯🇵 日本 (Japan) 08 9544K 🇨🇳 - NEKO",
+        "🇯🇵 日本 (Japan) 09 207K ⚠P - NEKO",
+        "🇯🇵 日本 (Japan) 10 232K ⚠P - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇯🇵 日本 (Japan) 01 15046K 🇨🇳 - NEKO",
-        "🇯🇵 日本 (Japan) 02 5671K 🇨🇳 - NEKO",
-        "🇯🇵 日本 (Japan) 03 17451K - NEKO",
-        "🇯🇵 日本 (Japan) 04 13619K 🇨🇳 - NEKO",
-        "🇯🇵 日本 (Japan) 05 10762K - NEKO",
-        "🇯🇵 日本 (Japan) 06 10184K 🇨🇳 - NEKO",
-        "🇯🇵 日本 (Japan) 07 16196K 🇨🇳 - NEKO",
-        "🇯🇵 日本 (Japan) 08 8722K ⚠P⚠U - NEKO",
-        "🇯🇵 日本 (Japan) 09 216K 🇨🇳 - NEKO",
-        "🇯🇵 日本 (Japan) 10 302K ⚠P - NEKO",
-        "🇯🇵 日本 (Japan) 11 246K 🇨🇳 - NEKO"
+        "🇯🇵 日本 (Japan) 01 9075K - NEKO",
+        "🇯🇵 日本 (Japan) 02 8401K 🇨🇳 - NEKO",
+        "🇯🇵 日本 (Japan) 03 9628K - NEKO",
+        "🇯🇵 日本 (Japan) 04 8031K ⚠P⚠U - NEKO",
+        "🇯🇵 日本 (Japan) 05 4993K 🇨🇳 - NEKO",
+        "🇯🇵 日本 (Japan) 06 4975K 🇨🇳 - NEKO",
+        "🇯🇵 日本 (Japan) 07 8959K - NEKO",
+        "🇯🇵 日本 (Japan) 08 9544K 🇨🇳 - NEKO",
+        "🇯🇵 日本 (Japan) 09 207K ⚠P - NEKO",
+        "🇯🇵 日本 (Japan) 10 232K ⚠P - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

@@ -4,29 +4,30 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇿 捷克 (Czech) 01 19140K 🇨🇳 - NEKO
-  server: cz-prg.dontblockmepls.com
-  port: 2063
+- name: 🇲🇰 MK 01 8062K 🇨🇳 - NEKO
+  server: 89.185.82.151
+  port: 10443
   udp: true
   type: vless
-  uuid: b18d5990-96eb-4587-a386-7f8ef7591e6a
+  uuid: 0869a7d7-b8e8-42be-8bca-84b0ab07744a
   flow: xtls-rprx-vision
   tls: true
   reality-opts:
-    public-key: MMpt_jWc4J3oySBdf5sPDVRkiWlZmOObth6A1scM9BM
-  servername: rusbid.de
+    public-key: XNfikFybWtjJjWU7-QBGrr-D9YUW0uSK_sR7mDDUmRU
+    short-id: 6ba85179
+  servername: stackoverflow.com
   client-fingerprint: firefox
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇨🇿 捷克 (Czech) 01 19140K 🇨🇳 - NEKO
+  - 🇲🇰 MK 01 8062K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇿 捷克 (Czech) 01 19140K 🇨🇳 - NEKO
+  - 🇲🇰 MK 01 8062K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

@@ -4,7 +4,43 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇷🇺 俄罗斯 (Russia) 01 12347K 🇨🇳 - NEKO
+- name: 🇷🇺 俄罗斯 (Russia) 01 26695K 🇨🇳 - NEKO
+  server: 193.160.140.159
+  port: 8443
+  udp: true
+  type: vless
+  uuid: d4353076-3ec7-47dc-88b0-f21eb59fbfb8
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
+  servername: apple.com
+  client-fingerprint: firefox
+- name: 🇷🇺 俄罗斯 (Russia) 02 8717K 🇨🇳 - NEKO
+  server: 147.45.46.157
+  port: 8443
+  udp: true
+  type: vless
+  uuid: 75985152-e16e-4a48-87ff-35c2615e0ab5
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
+  servername: apple.com
+  client-fingerprint: chrome
+- name: 🇷🇺 俄罗斯 (Russia) 03 42553K 🇨🇳 - NEKO
+  server: 193.160.140.168
+  port: 8443
+  udp: true
+  type: vless
+  uuid: 5ce803ae-a81c-4276-b1f8-ee3b845c5c4b
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
+  servername: apple.com
+  client-fingerprint: firefox
+- name: 🇷🇺 俄罗斯 (Russia) 04 71103K 🇨🇳 - NEKO
   server: 193.233.253.180
   port: 8444
   udp: true
@@ -18,19 +54,7 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: GunService
-- name: 🇷🇺 俄罗斯 (Russia) 02 13432K 🇨🇳 - NEKO
-  server: 147.45.46.157
-  port: 8443
-  udp: true
-  type: vless
-  uuid: 75985152-e16e-4a48-87ff-35c2615e0ab5
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
-  servername: apple.com
-  client-fingerprint: chrome
-- name: 🇷🇺 俄罗斯 (Russia) 03 13755K 🇨🇳 - NEKO
+- name: 🇷🇺 俄罗斯 (Russia) 05 7518K 🇨🇳 - NEKO
   server: 193.160.141.81
   port: 8443
   udp: true
@@ -41,45 +65,15 @@ proxies:
   reality-opts:
     public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
   servername: apple.com
-  client-fingerprint: firefox
-- name: 🇷🇺 俄罗斯 (Russia) 04 12132K 🇨🇳 - NEKO
-  server: 193.160.140.168
-  port: 8443
+  client-fingerprint: ''
+- name: 🇷🇺 俄罗斯 (Russia) 06 8360K ⚠P - NEKO
+  server: 130.49.189.158
+  port: 43558
   udp: true
-  type: vless
-  uuid: 5ce803ae-a81c-4276-b1f8-ee3b845c5c4b
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
-  servername: apple.com
-  client-fingerprint: firefox
-- name: 🇷🇺 俄罗斯 (Russia) 05 9141K ⚠P - NEKO
-  server: 193.160.140.159
-  port: 8443
-  udp: true
-  type: vless
-  uuid: d4353076-3ec7-47dc-88b0-f21eb59fbfb8
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
-  servername: apple.com
-  client-fingerprint: firefox
-- name: 🇷🇺 俄罗斯 (Russia) 06 9116K 🇨🇳 - NEKO
-  server: xssite.webredirect.org
-  port: 443
-  udp: true
-  type: vless
-  uuid: c90395e6-2140-47ad-a54d-9b166729d3ef
-  tls: true
-  servername: xssite.webredirect.org
-  skip-cert-verify: false
-  client-fingerprint: random
-  network: grpc
-  grpc-opts:
-    grpc-service-name: grpc-ru
-- name: 🇷🇺 俄罗斯 (Russia) 07 1199K ⚠P - NEKO
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: cZGr8nLHdf+FE5ZAw0Y/Rzsml4AyikGL481Pg7eBpsI=
+- name: 🇷🇺 俄罗斯 (Russia) 07 2112K ⚠P - NEKO
   server: 91.206.92.238
   port: 18443
   udp: true
@@ -91,24 +85,24 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇷🇺 俄罗斯 (Russia) 01 12347K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 02 13432K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 03 13755K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 04 12132K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 05 9141K ⚠P - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 06 9116K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 07 1199K ⚠P - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 01 26695K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 02 8717K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 03 42553K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 04 71103K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 05 7518K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 06 8360K ⚠P - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 07 2112K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇷🇺 俄罗斯 (Russia) 01 12347K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 02 13432K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 03 13755K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 04 12132K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 05 9141K ⚠P - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 06 9116K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 07 1199K ⚠P - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 01 26695K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 02 8717K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 03 42553K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 04 71103K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 05 7518K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 06 8360K ⚠P - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 07 2112K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

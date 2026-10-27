@@ -4,8 +4,16 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇦🇪 阿联酋 (UAE) 01 18588K 🇨🇳 - NEKO
-  server: 130.49.161.70
+- name: 🇦🇪 阿联酋 (UAE) 01 1126K 🇨🇳 - NEKO
+  server: 217.60.72.225
+  port: 443
+  udp: true
+  type: hysteria2
+  password: 329e13e4-ee7c-4802-ac72-5fcab79c2402
+  sni: forshynewh.duckdns.org
+  skip-cert-verify: false
+- name: 🇦🇪 阿联酋 (UAE) 02 9432K 🇨🇳 - NEKO
+  server: hy2.aspidnet.xyz
   port: 443
   udp: true
   type: hysteria2
@@ -14,15 +22,7 @@ proxies:
   skip-cert-verify: false
   obfs: salamander
   obfs-password: rG07s3COMIEvdnQipRyWzx_H_2xygNC3
-- name: 🇦🇪 阿联酋 (UAE) 02 229K 🇨🇳 - NEKO
-  server: 217.60.72.225
-  port: 443
-  udp: true
-  type: hysteria2
-  password: 329e13e4-ee7c-4802-ac72-5fcab79c2402
-  sni: forshynewh.duckdns.org
-  skip-cert-verify: false
-- name: 🇦🇪 阿联酋 (UAE) 03 5391K ⚠P - NEKO
+- name: 🇦🇪 阿联酋 (UAE) 03 4620K ⚠P - NEKO
   server: 185.253.116.33
   port: 14430
   udp: true
@@ -38,16 +38,16 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇦🇪 阿联酋 (UAE) 01 18588K 🇨🇳 - NEKO
-  - 🇦🇪 阿联酋 (UAE) 02 229K 🇨🇳 - NEKO
-  - 🇦🇪 阿联酋 (UAE) 03 5391K ⚠P - NEKO
+  - 🇦🇪 阿联酋 (UAE) 01 1126K 🇨🇳 - NEKO
+  - 🇦🇪 阿联酋 (UAE) 02 9432K 🇨🇳 - NEKO
+  - 🇦🇪 阿联酋 (UAE) 03 4620K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇦🇪 阿联酋 (UAE) 01 18588K 🇨🇳 - NEKO
-  - 🇦🇪 阿联酋 (UAE) 02 229K 🇨🇳 - NEKO
-  - 🇦🇪 阿联酋 (UAE) 03 5391K ⚠P - NEKO
+  - 🇦🇪 阿联酋 (UAE) 01 1126K 🇨🇳 - NEKO
+  - 🇦🇪 阿联酋 (UAE) 02 9432K 🇨🇳 - NEKO
+  - 🇦🇪 阿联酋 (UAE) 03 4620K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

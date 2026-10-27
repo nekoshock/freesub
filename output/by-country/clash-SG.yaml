@@ -4,28 +4,27 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇸🇬 新加坡 (Singapore) 01 429K ⚠P⚠U - NEKO
-  server: 146.235.16.130
-  port: 33738
+- name: 🇸🇬 新加坡 (Singapore) 01 4293K ⚠P - NEKO
+  server: 68.183.235.122
+  port: 8080
   udp: true
-  type: tuic
-  uuid: 2d1ad594-80a4-4bfb-87a6-038e39701f51
-  password: 2d1ad594-80a4-4bfb-87a6-038e39701f51
-  sni: sg2-8sb.6121999.dpdns.org
-  skip-cert-verify: false
-  congestion-controller: bbr
-  udp-relay-mode: quic
-  alpn:
-  - h3
-- name: 🇸🇬 新加坡 (Singapore) 02 2929K ⚠P - NEKO
-  server: 149.88.23.207
-  port: 18000
+  type: ss
+  cipher: rc4-md5
+  password: 14fFPrbezE3HDZzsMOr6
+- name: 🇸🇬 新加坡 (Singapore) 02 3708K 🇨🇳 - NEKO
+  server: sg.fasti.win
+  port: 443
   udp: true
-  type: vmess
-  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-  alterId: 0
-  cipher: auto
-- name: 🇸🇬 新加坡 (Singapore) 03 2834K ⚠P - NEKO
+  type: vless
+  uuid: a16bd0e2-ff2e-4e4c-a955-0c684255a065
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: -YTGWg5DjsLDyaDfr1D83kiUK22LVcrK3yC53lqqigs
+    short-id: feedbacc
+  servername: sg.fasti.win
+  client-fingerprint: chrome
+- name: 🇸🇬 新加坡 (Singapore) 03 3806K ⚠P - NEKO
   server: 149.88.23.202
   port: 18000
   udp: true
@@ -33,48 +32,155 @@ proxies:
   uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
   alterId: 0
   cipher: auto
-- name: 🇸🇬 新加坡 (Singapore) 04 2286K ⚠P - NEKO
-  server: 68.183.235.122
-  port: 8080
-  udp: true
-  type: ss
-  cipher: rc4-md5
-  password: 14fFPrbezE3HDZzsMOr6
-- name: 🇸🇬 新加坡 (Singapore) 05 2261K ⚠P - NEKO
-  server: 68.183.227.45
-  port: 8080
-  udp: true
-  type: ss
-  cipher: rc4-md5
-  password: 14fFPrbezE3HDZzsMOr6
-- name: 🇸🇬 新加坡 (Singapore) 06 1015K ⚠P - NEKO
+- name: 🇸🇬 新加坡 (Singapore) 04 3575K ⚠P - NEKO
   server: 128.199.172.224
   port: 8080
   udp: true
   type: ss
   cipher: rc4-md5
   password: 14fFPrbezE3HDZzsMOr6
+- name: 🇸🇬 新加坡 (Singapore) 05 3755K ⚠P - NEKO
+  server: ww11.levikogjgfdd.ir
+  port: 18000
+  udp: true
+  type: vmess
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+- name: 🇸🇬 新加坡 (Singapore) 06 1768K 🇨🇳 - NEKO
+  server: 43.156.89.197
+  port: 61000
+  udp: true
+  type: vless
+  uuid: f5b93de5-b756-4f87-bb1c-7e5b622688fa
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: FivAz9qw86uYacvLo5qIMnw9gQ9uKT9KIdGzhxROTSE
+    short-id: 63dac514fdfdd11c
+  servername: www.amd.com
+  client-fingerprint: random
+- name: 🇸🇬 新加坡 (Singapore) 07 3825K ⚠P - NEKO
+  server: 134.185.81.5
+  port: 47881
+  udp: true
+  type: vless
+  uuid: 59b203b2-b1bc-4e9c-a9e5-ccb8f691bf72
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: 6XmXX1QXGodmtqU37Zx9CDHnCnPtonRdq8ieLmt__g4
+    short-id: 38d72071
+  servername: www.tesla.com
+  client-fingerprint: random
+- name: 🇸🇬 新加坡 (Singapore) 08 3183K ⚠P - NEKO
+  server: 128.1.186.73
+  port: 8080
+  udp: true
+  type: ss
+  cipher: rc4-md5
+  password: 14fFPrbezE3HDZzsMOr6
+- name: 🇸🇬 新加坡 (Singapore) 09 2757K - NEKO
+  server: v2.drsachi.com
+  port: 443
+  udp: true
+  type: vless
+  uuid: 270c3fa5-0293-4d68-875c-6cdc3bdc5b84
+  network: ws
+  ws-opts:
+    path: /
+- name: 🇸🇬 新加坡 (Singapore) 10 3929K 🇨🇳 - NEKO
+  server: 206.206.76.75
+  port: 443
+  udp: true
+  type: vless
+  uuid: 1e3d3634-36ac-43ac-a439-9665d885238f
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: TqIFzUEEI1pIOR8BEpkNKEXcJ6cPfE5EzHb5joIivig
+    short-id: 9930177816ab09da
+  servername: www.cloudflare.com
+  client-fingerprint: firefox
+- name: 🇸🇬 新加坡 (Singapore) 11 5581K ⚠P - NEKO
+  server: 68.183.227.45
+  port: 8080
+  udp: true
+  type: ss
+  cipher: rc4-md5
+  password: 14fFPrbezE3HDZzsMOr6
+- name: 🇸🇬 新加坡 (Singapore) 12 3891K 🇨🇳 - NEKO
+  server: 45.77.40.28
+  port: 443
+  udp: true
+  type: vless
+  uuid: e9a8144e-5237-488a-afb1-9ca3d8d54c80
+  tls: true
+  servername: sg003.zestapp778.com
+  skip-cert-verify: false
+- name: 🇸🇬 新加坡 (Singapore) 13 3886K ⚠L20% 🇨🇳 - NEKO
+  server: 172.237.88.103
+  port: 443
+  udp: true
+  type: vless
+  uuid: efd11a89-7506-44ce-95b6-6654859f155b
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: EeLAX-BAjzSdRes-zpUFzVOYsBedmP8lUOHhXXJFXyI
+    short-id: 5a42dbd7e26a0415
+  servername: zoom.us
+  client-fingerprint: random
+- name: 🇸🇬 新加坡 (Singapore) 14 3979K ⚠L20% ⚠P - NEKO
+  server: 172.237.88.103
+  port: 447
+  udp: true
+  type: vless
+  uuid: efd11a89-7506-44ce-95b6-6654859f155b
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: EeLAX-BAjzSdRes-zpUFzVOYsBedmP8lUOHhXXJFXyI
+    short-id: 5a42dbd7e26a0415
+  servername: netflix.com
+  client-fingerprint: random
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇸🇬 新加坡 (Singapore) 01 429K ⚠P⚠U - NEKO
-  - 🇸🇬 新加坡 (Singapore) 02 2929K ⚠P - NEKO
-  - 🇸🇬 新加坡 (Singapore) 03 2834K ⚠P - NEKO
-  - 🇸🇬 新加坡 (Singapore) 04 2286K ⚠P - NEKO
-  - 🇸🇬 新加坡 (Singapore) 05 2261K ⚠P - NEKO
-  - 🇸🇬 新加坡 (Singapore) 06 1015K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 01 4293K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 02 3708K 🇨🇳 - NEKO
+  - 🇸🇬 新加坡 (Singapore) 03 3806K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 04 3575K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 05 3755K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 06 1768K 🇨🇳 - NEKO
+  - 🇸🇬 新加坡 (Singapore) 07 3825K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 08 3183K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 09 2757K - NEKO
+  - 🇸🇬 新加坡 (Singapore) 10 3929K 🇨🇳 - NEKO
+  - 🇸🇬 新加坡 (Singapore) 11 5581K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 12 3891K 🇨🇳 - NEKO
+  - 🇸🇬 新加坡 (Singapore) 13 3886K ⚠L20% 🇨🇳 - NEKO
+  - 🇸🇬 新加坡 (Singapore) 14 3979K ⚠L20% ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇸🇬 新加坡 (Singapore) 01 429K ⚠P⚠U - NEKO
-  - 🇸🇬 新加坡 (Singapore) 02 2929K ⚠P - NEKO
-  - 🇸🇬 新加坡 (Singapore) 03 2834K ⚠P - NEKO
-  - 🇸🇬 新加坡 (Singapore) 04 2286K ⚠P - NEKO
-  - 🇸🇬 新加坡 (Singapore) 05 2261K ⚠P - NEKO
-  - 🇸🇬 新加坡 (Singapore) 06 1015K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 01 4293K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 02 3708K 🇨🇳 - NEKO
+  - 🇸🇬 新加坡 (Singapore) 03 3806K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 04 3575K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 05 3755K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 06 1768K 🇨🇳 - NEKO
+  - 🇸🇬 新加坡 (Singapore) 07 3825K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 08 3183K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 09 2757K - NEKO
+  - 🇸🇬 新加坡 (Singapore) 10 3929K 🇨🇳 - NEKO
+  - 🇸🇬 新加坡 (Singapore) 11 5581K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 12 3891K 🇨🇳 - NEKO
+  - 🇸🇬 新加坡 (Singapore) 13 3886K ⚠L20% 🇨🇳 - NEKO
+  - 🇸🇬 新加坡 (Singapore) 14 3979K ⚠L20% ⚠P - NEKO
 rules:
 - MATCH,PROXIES

@@ -5,7 +5,7 @@
   "outbounds": [
     {
       "type": "vless",
-      "tag": "🇹🇷 土耳其 (Turkey) 01 13912K 🇨🇳 - NEKO",
+      "tag": "🇹🇷 土耳其 (Turkey) 01 4820K 🇨🇳 - NEKO",
       "server": "185.98.63.6",
       "server_port": 8443,
       "uuid": "6845a59f-970b-4e1e-8e26-06a34ee663d6",
@@ -26,7 +26,28 @@
     },
     {
       "type": "vless",
-      "tag": "🇹🇷 土耳其 (Turkey) 02 6641K 🇨🇳 - NEKO",
+      "tag": "🇹🇷 土耳其 (Turkey) 02 4245K 🇨🇳 - NEKO",
+      "server": "78.135.73.168",
+      "server_port": 443,
+      "uuid": "4b1be712-774c-4b65-8491-a3339e124a70",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "tr2.tv-quoralyx.top",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "w0yEuw7sPMCEwk9_vDVoqjBhJsGoPvR7TsxIZVJy3iw",
+          "short_id": "f4b2a12c"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇹🇷 土耳其 (Turkey) 03 4379K 🇨🇳 - NEKO",
       "server": "62.133.63.45",
       "server_port": 8444,
       "uuid": "a346c521-7a7f-452b-9356-a4893feb5982",
@@ -35,12 +56,12 @@
         "server_name": "github.com",
         "utls": {
           "enabled": true,
-          "fingerprint": "firefox"
+          "fingerprint": "ios"
         },
         "reality": {
           "enabled": true,
           "public_key": "FWitre1jinQR7qz5HQ0q2Q4Gg9xA9B0SyizCziN7Ch0",
-          "short_id": ""
+          "short_id": "457fab2ac885dbe0"
         }
       },
       "transport": {
@@ -50,30 +71,7 @@
     },
     {
       "type": "vless",
-      "tag": "🇹🇷 土耳其 (Turkey) 03 9385K 🇨🇳 - NEKO",
-      "server": "177.3.208.65",
-      "server_port": 443,
-      "uuid": "4f34bc04-479c-49ba-91a8-6bb9ed15031c",
-      "tls": {
-        "enabled": true,
-        "server_name": "tgmansion.site",
-        "insecure": false,
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/vless-tr",
-        "headers": {
-          "Host": "tgmansion.site"
-        }
-      }
-    },
-    {
-      "type": "vless",
-      "tag": "🇹🇷 土耳其 (Turkey) 04 6419K 🇨🇳 - NEKO",
+      "tag": "🇹🇷 土耳其 (Turkey) 04 4174K 🇨🇳 - NEKO",
       "server": "78.135.73.47",
       "server_port": 443,
       "uuid": "25e16692-d097-4e69-9e2d-8415609c1968",
@@ -83,7 +81,7 @@
         "server_name": "www.datadoghq.com",
         "utls": {
           "enabled": true,
-          "fingerprint": "firefox"
+          "fingerprint": "random"
         },
         "reality": {
           "enabled": true,
@@ -94,7 +92,7 @@
     },
     {
       "type": "vless",
-      "tag": "🇹🇷 土耳其 (Turkey) 05 6443K 🇨🇳 - NEKO",
+      "tag": "🇹🇷 土耳其 (Turkey) 05 4071K ⚠P - NEKO",
       "server": "151.241.226.201",
       "server_port": 2053,
       "uuid": "0eed6293-8cf1-4e77-ac10-9c3d50d0b2f8",
@@ -114,10 +112,10 @@
     },
     {
       "type": "vless",
-      "tag": "🇹🇷 土耳其 (Turkey) 06 4569K ⚠P - NEKO",
-      "server": "trdatair.egekaradecojistik.net.tr",
-      "server_port": 35577,
-      "uuid": "b7d3a581-74d6-4ead-9235-ce9dedf08152",
+      "tag": "🇹🇷 土耳其 (Turkey) 06 3881K - NEKO",
+      "server": "helixgaming.ir",
+      "server_port": 80,
+      "uuid": "fdaedc78-af7c-4b75-abf9-ba162321ddd9",
       "transport": {
         "type": "ws",
         "path": "/",
@@ -127,38 +125,28 @@
       }
     },
     {
-      "type": "shadowsocks",
-      "tag": "🇹🇷 土耳其 (Turkey) 07 ⚠S1585K ⚠P - NEKO",
-      "server": "87.236.166.215",
-      "server_port": 56134,
-      "method": "chacha20-ietf-poly1305",
-      "password": "uvKNudV-N8AUCrykPiyznA"
-    },
-    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇹🇷 土耳其 (Turkey) 01 13912K 🇨🇳 - NEKO",
-        "🇹🇷 土耳其 (Turkey) 02 6641K 🇨🇳 - NEKO",
-        "🇹🇷 土耳其 (Turkey) 03 9385K 🇨🇳 - NEKO",
-        "🇹🇷 土耳其 (Turkey) 04 6419K 🇨🇳 - NEKO",
-        "🇹🇷 土耳其 (Turkey) 05 6443K 🇨🇳 - NEKO",
-        "🇹🇷 土耳其 (Turkey) 06 4569K ⚠P - NEKO",
-        "🇹🇷 土耳其 (Turkey) 07 ⚠S1585K ⚠P - NEKO"
+        "🇹🇷 土耳其 (Turkey) 01 4820K 🇨🇳 - NEKO",
+        "🇹🇷 土耳其 (Turkey) 02 4245K 🇨🇳 - NEKO",
+        "🇹🇷 土耳其 (Turkey) 03 4379K 🇨🇳 - NEKO",
+        "🇹🇷 土耳其 (Turkey) 04 4174K 🇨🇳 - NEKO",
+        "🇹🇷 土耳其 (Turkey) 05 4071K ⚠P - NEKO",
+        "🇹🇷 土耳其 (Turkey) 06 3881K - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇹🇷 土耳其 (Turkey) 01 13912K 🇨🇳 - NEKO",
-        "🇹🇷 土耳其 (Turkey) 02 6641K 🇨🇳 - NEKO",
-        "🇹🇷 土耳其 (Turkey) 03 9385K 🇨🇳 - NEKO",
-        "🇹🇷 土耳其 (Turkey) 04 6419K 🇨🇳 - NEKO",
-        "🇹🇷 土耳其 (Turkey) 05 6443K 🇨🇳 - NEKO",
-        "🇹🇷 土耳其 (Turkey) 06 4569K ⚠P - NEKO",
-        "🇹🇷 土耳其 (Turkey) 07 ⚠S1585K ⚠P - NEKO"
+        "🇹🇷 土耳其 (Turkey) 01 4820K 🇨🇳 - NEKO",
+        "🇹🇷 土耳其 (Turkey) 02 4245K 🇨🇳 - NEKO",
+        "🇹🇷 土耳其 (Turkey) 03 4379K 🇨🇳 - NEKO",
+        "🇹🇷 土耳其 (Turkey) 04 4174K 🇨🇳 - NEKO",
+        "🇹🇷 土耳其 (Turkey) 05 4071K ⚠P - NEKO",
+        "🇹🇷 土耳其 (Turkey) 06 3881K - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

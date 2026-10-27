@@ -5,25 +5,26 @@
   "outbounds": [
     {
       "type": "vless",
-      "tag": "🇸🇦 沙特 (Saudi Arabia) 01 4227K 🇨🇳 - NEKO",
-      "server": "81.208.170.142",
-      "server_port": 1500,
-      "uuid": "e332f028-d343-5b44-8016-b3130f39e133",
+      "tag": "🇨🇳 CN 01 5126K 🇨🇳 - NEKO",
+      "server": "122.8.45.7",
+      "server_port": 8443,
+      "uuid": "362a0364-2b0f-cd11-9c20-ab9dfbeb8b11",
       "tls": {
         "enabled": true,
-        "server_name": "www.ebay.com",
+        "server_name": "download.nvidia.com",
         "utls": {
           "enabled": true,
-          "fingerprint": "random"
+          "fingerprint": "chrome"
         },
         "reality": {
           "enabled": true,
-          "public_key": "VQxVgczORkbSNdDrkNOYs6zMBINpViztTKDuWCeQsVE",
-          "short_id": "775eb6408888248e"
+          "public_key": "wcOBPSgoOKptWa9ZHpFpmbrPfLqobBNpCgLH88Ptjhk",
+          "short_id": ""
         }
       },
       "transport": {
-        "type": "grpc"
+        "type": "grpc",
+        "service_name": "TunService"
       }
     },
     {
@@ -31,14 +32,14 @@
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇸🇦 沙特 (Saudi Arabia) 01 4227K 🇨🇳 - NEKO"
+        "🇨🇳 CN 01 5126K 🇨🇳 - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇸🇦 沙特 (Saudi Arabia) 01 4227K 🇨🇳 - NEKO"
+        "🇨🇳 CN 01 5126K 🇨🇳 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

@@ -4,7 +4,19 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇭 瑞士 (Switzerland) 01 10338K 🇨🇳 - NEKO
+- name: 🇨🇭 瑞士 (Switzerland) 01 5086K 🇨🇳 - NEKO
+  server: 83.228.211.104
+  port: 443
+  udp: true
+  type: vless
+  uuid: c9c219dc-50da-4135-8e5b-67020291f0ec
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: fJnm6-PhJGSwHaAdJOzXkYOfCPPCWSlaZrtfm1XsqhA
+  servername: rodlj4pximv.edgestack.best
+  client-fingerprint: random
+- name: 🇨🇭 瑞士 (Switzerland) 02 4751K 🇨🇳 - NEKO
   server: 45.90.59.15
   port: 443
   udp: true
@@ -17,32 +29,46 @@ proxies:
     short-id: 19253fae84102271
   servername: www.cloudflare.com
   client-fingerprint: firefox
-- name: 🇨🇭 瑞士 (Switzerland) 02 9458K 🇨🇳 - NEKO
-  server: 45.90.59.15
+- name: 🇨🇭 瑞士 (Switzerland) 03 4931K 🇨🇳 - NEKO
+  server: 179.237.85.97
   port: 443
   udp: true
   type: vless
-  uuid: 3950b45e-740d-4dca-ac95-505ec8534592
+  uuid: c9c219dc-50da-4135-8e5b-67020291f0ec
   flow: xtls-rprx-vision
   tls: true
   reality-opts:
-    public-key: P7S4UPFlQbmiBr4txyy8NZIMTrmO3UdxyH16WBU-YzY
-    short-id: 19253fae84102271
-  servername: www.cloudflare.com
-  client-fingerprint: chrome
+    public-key: fJnm6-PhJGSwHaAdJOzXkYOfCPPCWSlaZrtfm1XsqhA
+    short-id: 6ba85179e30d4fc2
+  servername: yloyqo0gfsqm.edgepop.lol
+  client-fingerprint: firefox
+- name: 🇨🇭 瑞士 (Switzerland) 04 509K 🇨🇳 - NEKO
+  server: swz.proxyplankton.ru
+  port: 443
+  udp: true
+  type: vless
+  uuid: 054362fb-e485-4a3f-9568-4c5b0f60e074
+  tls: true
+  servername: swz.proxyplankton.ru
+  skip-cert-verify: false
+  client-fingerprint: firefox
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇨🇭 瑞士 (Switzerland) 01 10338K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 02 9458K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 01 5086K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 02 4751K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 03 4931K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 04 509K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇭 瑞士 (Switzerland) 01 10338K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 02 9458K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 01 5086K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 02 4751K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 03 4931K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 04 509K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

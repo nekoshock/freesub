@@ -4,40 +4,30 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇹🇼 中国台湾 (Taiwan) 01 4110K 🇨🇳 - NEKO
-  server: 152.32.167.33
-  port: 443
+- name: 🇹🇼 中国台湾 (Taiwan) 01 9840K 🇨🇳 - NEKO
+  server: 83.147.14.168
+  port: 9443
   udp: true
   type: vless
-  uuid: 91ad30e9-ab06-4b4c-9fb9-1c2aa97d8b3a
+  uuid: 4a270d3e-27b4-497d-8c8c-28f1f54958d9
   flow: xtls-rprx-vision
   tls: true
   reality-opts:
-    public-key: Q8QwBSGN6J-FqgDV1pYNm0VThS_xNRyQ3DPPa9YZ3j4
-    short-id: cff998a4
+    public-key: 0hIFPaEn4RdFib8_eP8HYxMywR5izEwM3JA2W1Zo8U4
+    short-id: b390142456517acc
   servername: www.amazon.com
-  client-fingerprint: firefox
-- name: 🇹🇼 中国台湾 (Taiwan) 02 5035K ⚠P - NEKO
-  server: 188.253.7.44
-  port: 24999
-  udp: true
-  type: trojan
-  password: 29086912-33e4-4e06-ba2b-60f1a195864f
-  sni: tjtw.m2k699.com
-  skip-cert-verify: false
+  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇹🇼 中国台湾 (Taiwan) 01 4110K 🇨🇳 - NEKO
-  - 🇹🇼 中国台湾 (Taiwan) 02 5035K ⚠P - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 01 9840K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇹🇼 中国台湾 (Taiwan) 01 4110K 🇨🇳 - NEKO
-  - 🇹🇼 中国台湾 (Taiwan) 02 5035K ⚠P - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 01 9840K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

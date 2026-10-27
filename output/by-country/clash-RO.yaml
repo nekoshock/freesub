@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇷🇴 罗马尼亚 (Romania) 01 4530K 🇨🇳 - NEKO
+- name: 🇷🇴 罗马尼亚 (Romania) 01 ⚠S4638K 🇨🇳 - NEKO
   server: 46.28.67.55
   port: 443
   udp: true
@@ -17,7 +17,13 @@ proxies:
     short-id: d06d78e974491b6e
   servername: www.cloudflare.com
   client-fingerprint: random
-- name: 🇷🇴 罗马尼亚 (Romania) 02 6119K 🇨🇳 - NEKO
+- name: 🇷🇴 罗马尼亚 (Romania) 02 13965K ⚠P - NEKO
+  server: 155.117.5.208
+  port: 2052
+  udp: true
+  type: vless
+  uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
+- name: 🇷🇴 罗马尼亚 (Romania) 03 7997K 🇨🇳 - NEKO
   server: 162.249.125.133
   port: 443
   udp: true
@@ -27,29 +33,21 @@ proxies:
   skip-cert-verify: false
   obfs: salamander
   obfs-password: c1b4086fea89914496c7e10967a419216566
-- name: 🇷🇴 罗马尼亚 (Romania) 03 4493K ⚠P⚠U - NEKO
-  server: 81.180.93.171
-  port: 4443
-  udp: true
-  type: hysteria2
-  password: b3d079ff-b775-4ffe-bac9-41228b08b15b
-  sni: ro.gorobsub.com
-  skip-cert-verify: false
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇷🇴 罗马尼亚 (Romania) 01 4530K 🇨🇳 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 02 6119K 🇨🇳 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 03 4493K ⚠P⚠U - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 01 ⚠S4638K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 02 13965K ⚠P - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 03 7997K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇷🇴 罗马尼亚 (Romania) 01 4530K 🇨🇳 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 02 6119K 🇨🇳 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 03 4493K ⚠P⚠U - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 01 ⚠S4638K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 02 13965K ⚠P - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 03 7997K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

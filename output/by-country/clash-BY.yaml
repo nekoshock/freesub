@@ -4,13 +4,13 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇧🇾 白俄罗斯 (Belarus) 01 4778K ⚠P - NEKO
+- name: 🇧🇾 白俄罗斯 (Belarus) 01 8960K ⚠P - NEKO
   server: 178.172.227.124
   port: 10443
   udp: true
   type: vless
   uuid: 1af36694-b548-4b18-89a0-bc076eab4ed7
-- name: 🇧🇾 白俄罗斯 (Belarus) 02 4207K ⚠P - NEKO
+- name: 🇧🇾 白俄罗斯 (Belarus) 02 6867K ⚠P - NEKO
   server: 178.172.227.124
   port: 14430
   udp: true
@@ -19,7 +19,9 @@ proxies:
   network: ws
   ws-opts:
     path: /vless
-- name: 🇧🇾 白俄罗斯 (Belarus) 03 3593K ⚠P - NEKO
+    headers:
+      Host: 178.172.227.124
+- name: 🇧🇾 白俄罗斯 (Belarus) 03 4051K ⚠P - NEKO
   server: 95.128.71.79
   port: 14430
   udp: true
@@ -33,16 +35,16 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇧🇾 白俄罗斯 (Belarus) 01 4778K ⚠P - NEKO
-  - 🇧🇾 白俄罗斯 (Belarus) 02 4207K ⚠P - NEKO
-  - 🇧🇾 白俄罗斯 (Belarus) 03 3593K ⚠P - NEKO
+  - 🇧🇾 白俄罗斯 (Belarus) 01 8960K ⚠P - NEKO
+  - 🇧🇾 白俄罗斯 (Belarus) 02 6867K ⚠P - NEKO
+  - 🇧🇾 白俄罗斯 (Belarus) 03 4051K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇧🇾 白俄罗斯 (Belarus) 01 4778K ⚠P - NEKO
-  - 🇧🇾 白俄罗斯 (Belarus) 02 4207K ⚠P - NEKO
-  - 🇧🇾 白俄罗斯 (Belarus) 03 3593K ⚠P - NEKO
+  - 🇧🇾 白俄罗斯 (Belarus) 01 8960K ⚠P - NEKO
+  - 🇧🇾 白俄罗斯 (Belarus) 02 6867K ⚠P - NEKO
+  - 🇧🇾 白俄罗斯 (Belarus) 03 4051K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

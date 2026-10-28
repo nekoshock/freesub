@@ -4,7 +4,55 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇫🇮 芬兰 (Finland) 01 3823K ⚠P - NEKO
+- name: 🇫🇮 芬兰 (Finland) 01 13653K 🇨🇳 - NEKO
+  server: 185.119.81.20
+  port: 443
+  udp: true
+  type: vless
+  uuid: d5816c36-6359-5eff-bbfd-14e0cbab087d
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: 9BUlinkTIxNgD2Em4KShtEbXOjBKvz2mDwT1VqoeR1k
+    short-id: 80c4e0bda641d6c9
+  servername: mtalk.google.com
+  client-fingerprint: qq
+- name: 🇫🇮 芬兰 (Finland) 02 8304K ⚠P⚠U - NEKO
+  server: 94.156.180.111
+  port: 4444
+  udp: true
+  type: hysteria2
+  password: 10be1dad-9952-4c5e-aa30-db435f69b727
+  sni: fl1.nexfile.net
+  skip-cert-verify: false
+- name: 🇫🇮 芬兰 (Finland) 03 11638K 🇨🇳 - NEKO
+  server: p2real22.greewebservices.ir
+  port: 1320
+  udp: true
+  type: vless
+  uuid: a7e9fc98-25a2-4801-961c-7a6ed9d69328
+  tls: true
+  reality-opts:
+    public-key: xQnXh5EfPDhcEBB7rRiLca33GYrMEeUa35domLL_yA8
+    short-id: 9b60d3
+  servername: play.googleapis.com
+  client-fingerprint: ios
+- name: 🇫🇮 芬兰 (Finland) 04 814K ⚠P - NEKO
+  server: hw6.divarkhaghazi.com
+  port: 465
+  udp: true
+  type: vless
+  uuid: 09f30c46-3964-41ce-882a-72aee83ddd42
+  tls: true
+  servername: hw6.divarkhaghazi.com.
+  skip-cert-verify: false
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hw6.divarkhaghazi.com.
+- name: 🇫🇮 芬兰 (Finland) 05 10696K ⚠P - NEKO
   server: 45.144.234.157
   port: 14430
   udp: true
@@ -15,33 +63,62 @@ proxies:
     path: /vless
     headers:
       Host: 45.144.234.157
-- name: 🇫🇮 芬兰 (Finland) 02 453K ⚠P - NEKO
-  server: 65.109.212.193
-  port: 465
+- name: 🇫🇮 芬兰 (Finland) 06 9312K 🇨🇳 - NEKO
+  server: p2real33.greewebservices.ir
+  port: 1330
   udp: true
   type: vless
-  uuid: 924e20da-fcad-4e7e-8113-c62d27a0d01e
+  uuid: a7e9fc98-25a2-4801-961c-7a6ed9d69328
   tls: true
-  servername: hw3.divarkhaghazi.com.
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hw3.divarkhaghazi.com.
+  reality-opts:
+    public-key: xQnXh5EfPDhcEBB7rRiLca33GYrMEeUa35domLL_yA8
+    short-id: 9b60d3
+  servername: play.googleapis.com
+  client-fingerprint: ios
+- name: 🇫🇮 芬兰 (Finland) 07 676K ⚠P - NEKO
+  server: fn1s.sublinkplas.ir
+  port: 53731
+  udp: true
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: 1Pey1iumq-W30iHVnTEERD2n1RFUS_pS
+- name: 🇫🇮 芬兰 (Finland) 08 11823K 🇨🇳 - NEKO
+  server: areal1.greewebservices.ir
+  port: 2425
+  udp: true
+  type: vless
+  uuid: a7e9fc98-25a2-4801-961c-7a6ed9d69328
+  tls: true
+  reality-opts:
+    public-key: MnPGY1Vo4ZbYdpLRTYHoolv5s_pwO41karyJfnQ0F3o
+    short-id: 9b60d3
+  servername: play.googleapis.com
+  client-fingerprint: ios
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇫🇮 芬兰 (Finland) 01 3823K ⚠P - NEKO
-  - 🇫🇮 芬兰 (Finland) 02 453K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 01 13653K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 02 8304K ⚠P⚠U - NEKO
+  - 🇫🇮 芬兰 (Finland) 03 11638K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 04 814K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 05 10696K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 06 9312K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 07 676K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 08 11823K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇫🇮 芬兰 (Finland) 01 3823K ⚠P - NEKO
-  - 🇫🇮 芬兰 (Finland) 02 453K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 01 13653K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 02 8304K ⚠P⚠U - NEKO
+  - 🇫🇮 芬兰 (Finland) 03 11638K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 04 814K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 05 10696K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 06 9312K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 07 676K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 08 11823K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

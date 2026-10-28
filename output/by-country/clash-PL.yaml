@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇵🇱 波兰 (Poland) 01 4682K 🇨🇳 - NEKO
+- name: 🇵🇱 波兰 (Poland) 01 3256K 🇨🇳 - NEKO
   server: 45.148.119.127
   port: 443
   udp: true
@@ -17,30 +17,19 @@ proxies:
     short-id: '50'
   servername: cloudflare.com
   client-fingerprint: firefox
-- name: 🇵🇱 波兰 (Poland) 02 5033K ⚠P - NEKO
+- name: 🇵🇱 波兰 (Poland) 02 14692K ⚠P - NEKO
   server: 155.117.5.208
   port: 20001
   udp: true
   type: vless
   uuid: 8e8210b7-71a4-4799-8b9b-2e69698b1eaf
-- name: 🇵🇱 波兰 (Poland) 03 4359K ⚠P - NEKO
+- name: 🇵🇱 波兰 (Poland) 03 16275K ⚠P - NEKO
   server: 168.222.43.53
   port: 2052
   udp: true
   type: vless
   uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
-- name: 🇵🇱 波兰 (Poland) 04 4410K 🇨🇳 - NEKO
-  server: poland-new-new.failspace.top
-  port: 443
-  udp: true
-  type: vless
-  uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
-  flow: xtls-rprx-vision
-  tls: true
-  servername: poland-new-new.failspace.top
-  skip-cert-verify: false
-  client-fingerprint: firefox
-- name: 🇵🇱 波兰 (Poland) 05 6338K ⚠P⚠U - NEKO
+- name: 🇵🇱 波兰 (Poland) 04 5931K ⚠P⚠U - NEKO
   server: scrap.halyvanedorogo.ru
   port: 35076
   udp: true
@@ -53,20 +42,18 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇵🇱 波兰 (Poland) 01 4682K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 02 5033K ⚠P - NEKO
-  - 🇵🇱 波兰 (Poland) 03 4359K ⚠P - NEKO
-  - 🇵🇱 波兰 (Poland) 04 4410K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 05 6338K ⚠P⚠U - NEKO
+  - 🇵🇱 波兰 (Poland) 01 3256K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 02 14692K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 03 16275K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 04 5931K ⚠P⚠U - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇵🇱 波兰 (Poland) 01 4682K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 02 5033K ⚠P - NEKO
-  - 🇵🇱 波兰 (Poland) 03 4359K ⚠P - NEKO
-  - 🇵🇱 波兰 (Poland) 04 4410K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 05 6338K ⚠P⚠U - NEKO
+  - 🇵🇱 波兰 (Poland) 01 3256K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 02 14692K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 03 16275K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 04 5931K ⚠P⚠U - NEKO
 rules:
 - MATCH,PROXIES

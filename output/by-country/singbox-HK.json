@@ -5,8 +5,8 @@
   "outbounds": [
     {
       "type": "vless",
-      "tag": "🇭🇰 中国香港 (Hong Kong) 01 5047K 🇨🇳 - NEKO",
-      "server": "45.39.198.144",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 01 7734K ⚠P - NEKO",
+      "server": "156.224.79.61",
       "server_port": 9443,
       "uuid": "4a270d3e-27b4-497d-8c8c-28f1f54958d9",
       "flow": "xtls-rprx-vision",
@@ -25,23 +25,42 @@
       }
     },
     {
-      "type": "vless",
-      "tag": "🇭🇰 中国香港 (Hong Kong) 02 4165K 🇨🇳 - NEKO",
-      "server": "50.7.44.28",
-      "server_port": 2091,
-      "uuid": "76b6a658-ce80-4500-b24d-404c94639ac6",
-      "flow": "xtls-rprx-vision",
+      "type": "vmess",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 02 7103K 🇨🇳 - NEKO",
+      "server": "euu1yAlfmcqvLJEx.v.3dns.vip",
+      "server_port": 443,
+      "uuid": "d237ab38-1974-4b36-94a3-0665ce8587b9",
+      "security": "auto",
       "tls": {
         "enabled": true,
-        "server_name": "www.apple.com",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "1N6AW5YuEwBoYcZK5KuugDzBHsa0NKZMT8QI-EmyL0k",
-          "short_id": "08a4b1f473932632"
+        "server_name": "euu1yAlfmcqvLJEx.v.3dns.vip",
+        "insecure": false
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/ws-vmess",
+        "headers": {
+          "Host": "euu1yAlfmcqvLJEx.v.3dns.vip"
+        }
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 03 ⚠S3930K 🇨🇳 - NEKO",
+      "server": "8.218.195.61",
+      "server_port": 443,
+      "uuid": "f23bb427-c1f9-4373-876c-2f43e9f790f3",
+      "security": "auto",
+      "tls": {
+        "enabled": true,
+        "server_name": "ex1ogt73nzpqkac2.v.3dns.vip",
+        "insecure": false
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/ws-vmess",
+        "headers": {
+          "Host": "ex1ogt73nzpqkac2.v.3dns.vip"
         }
       }
     },
@@ -50,16 +69,18 @@
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇭🇰 中国香港 (Hong Kong) 01 5047K 🇨🇳 - NEKO",
-        "🇭🇰 中国香港 (Hong Kong) 02 4165K 🇨🇳 - NEKO"
+        "🇭🇰 中国香港 (Hong Kong) 01 7734K ⚠P - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 02 7103K 🇨🇳 - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 03 ⚠S3930K 🇨🇳 - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇭🇰 中国香港 (Hong Kong) 01 5047K 🇨🇳 - NEKO",
-        "🇭🇰 中国香港 (Hong Kong) 02 4165K 🇨🇳 - NEKO"
+        "🇭🇰 中国香港 (Hong Kong) 01 7734K ⚠P - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 02 7103K 🇨🇳 - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 03 ⚠S3930K 🇨🇳 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

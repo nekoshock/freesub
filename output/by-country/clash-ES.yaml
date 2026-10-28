@@ -4,14 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇪🇸 西班牙 (Spain) 01 3266K ⚠P - NEKO
-  server: 5.188.181.201
-  port: 9003
-  udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: JdmRK9gMEqFgs8nP
-- name: 🇪🇸 西班牙 (Spain) 02 5648K 🇨🇳 - NEKO
+- name: 🇪🇸 西班牙 (Spain) 01 17519K 🇨🇳 - NEKO
   server: 212.227.235.66
   port: 2053
   udp: true
@@ -23,7 +16,19 @@ proxies:
     short-id: 29e8dcd2b37aaa7f
   servername: www.apple.com
   client-fingerprint: chrome
-- name: 🇪🇸 西班牙 (Spain) 03 4875K ⚠P - NEKO
+- name: 🇪🇸 西班牙 (Spain) 02 21322K 🇨🇳 - NEKO
+  server: 156.252.229.136
+  port: 8443
+  udp: true
+  type: vless
+  uuid: 3e21e3d3-6d26-4155-b851-764dd8e8c6b5
+  tls: true
+  reality-opts:
+    public-key: 7jPluypHwPilf_Mq7JOY96SwKkbK35WuIlN1HwGQ_0A
+    short-id: 974f7f8f
+  servername: play.googleapis.com
+  client-fingerprint: chrome
+- name: 🇪🇸 西班牙 (Spain) 03 19139K 🇨🇳 - NEKO
   server: 156.252.229.11
   port: 8443
   udp: true
@@ -34,8 +39,8 @@ proxies:
     public-key: 7jPluypHwPilf_Mq7JOY96SwKkbK35WuIlN1HwGQ_0A
     short-id: 974f7f8f
   servername: play.googleapis.com
-  client-fingerprint: firefox
-- name: 🇪🇸 西班牙 (Spain) 04 4753K ⚠P - NEKO
+  client-fingerprint: random
+- name: 🇪🇸 西班牙 (Spain) 04 14299K 🇨🇳 - NEKO
   server: 156.252.229.11
   port: 8443
   udp: true
@@ -47,7 +52,19 @@ proxies:
     short-id: 974f7f8f
   servername: play.googleapis.com
   client-fingerprint: chrome
-- name: 🇪🇸 西班牙 (Spain) 05 3935K 🇨🇳 - NEKO
+- name: 🇪🇸 西班牙 (Spain) 05 14890K 🇨🇳 - NEKO
+  server: 156.252.229.11
+  port: 8443
+  udp: true
+  type: vless
+  uuid: 3e21e3d3-6d26-4155-b851-764dd8e8c6b5
+  tls: true
+  reality-opts:
+    public-key: 7jPluypHwPilf_Mq7JOY96SwKkbK35WuIlN1HwGQ_0A
+    short-id: 974f7f8f
+  servername: play.googleapis.com
+  client-fingerprint: firefox
+- name: 🇪🇸 西班牙 (Spain) 06 11765K 🇨🇳 - NEKO
   server: 46.28.71.247
   port: 443
   udp: true
@@ -65,20 +82,22 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇪🇸 西班牙 (Spain) 01 3266K ⚠P - NEKO
-  - 🇪🇸 西班牙 (Spain) 02 5648K 🇨🇳 - NEKO
-  - 🇪🇸 西班牙 (Spain) 03 4875K ⚠P - NEKO
-  - 🇪🇸 西班牙 (Spain) 04 4753K ⚠P - NEKO
-  - 🇪🇸 西班牙 (Spain) 05 3935K 🇨🇳 - NEKO
+  - 🇪🇸 西班牙 (Spain) 01 17519K 🇨🇳 - NEKO
+  - 🇪🇸 西班牙 (Spain) 02 21322K 🇨🇳 - NEKO
+  - 🇪🇸 西班牙 (Spain) 03 19139K 🇨🇳 - NEKO
+  - 🇪🇸 西班牙 (Spain) 04 14299K 🇨🇳 - NEKO
+  - 🇪🇸 西班牙 (Spain) 05 14890K 🇨🇳 - NEKO
+  - 🇪🇸 西班牙 (Spain) 06 11765K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇪🇸 西班牙 (Spain) 01 3266K ⚠P - NEKO
-  - 🇪🇸 西班牙 (Spain) 02 5648K 🇨🇳 - NEKO
-  - 🇪🇸 西班牙 (Spain) 03 4875K ⚠P - NEKO
-  - 🇪🇸 西班牙 (Spain) 04 4753K ⚠P - NEKO
-  - 🇪🇸 西班牙 (Spain) 05 3935K 🇨🇳 - NEKO
+  - 🇪🇸 西班牙 (Spain) 01 17519K 🇨🇳 - NEKO
+  - 🇪🇸 西班牙 (Spain) 02 21322K 🇨🇳 - NEKO
+  - 🇪🇸 西班牙 (Spain) 03 19139K 🇨🇳 - NEKO
+  - 🇪🇸 西班牙 (Spain) 04 14299K 🇨🇳 - NEKO
+  - 🇪🇸 西班牙 (Spain) 05 14890K 🇨🇳 - NEKO
+  - 🇪🇸 西班牙 (Spain) 06 11765K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

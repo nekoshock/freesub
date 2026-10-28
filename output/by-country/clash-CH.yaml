@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇭 瑞士 (Switzerland) 01 4036K 🇨🇳 - NEKO
+- name: 🇨🇭 瑞士 (Switzerland) 01 17381K 🇨🇳 - NEKO
   server: 45.90.57.119
   port: 8443
   udp: true
@@ -16,8 +16,8 @@ proxies:
     public-key: L6DeK_a25_ZjPKFOrQLoCPWuXi5KCIH_EcRpARmCwkI
     short-id: 16036bbef04d0509
   servername: twitch.tv
-  client-fingerprint: firefox
-- name: 🇨🇭 瑞士 (Switzerland) 02 4528K ⚠P - NEKO
+  client-fingerprint: safari
+- name: 🇨🇭 瑞士 (Switzerland) 02 5210K 🇨🇳 - NEKO
   server: 208.69.78.217
   port: 2053
   udp: true
@@ -29,19 +29,36 @@ proxies:
     short-id: ad86e2d52ff40ebd
   servername: www.apple.com
   client-fingerprint: chrome
+- name: 🇨🇭 瑞士 (Switzerland) 03 12141K ⚠P - NEKO
+  server: 8.6.112.0
+  port: 2087
+  udp: true
+  type: vless
+  uuid: 77290716-1ecb-5e6c-985b-8e2de8bbb434
+  tls: true
+  servername: pl1.vlnet.site
+  skip-cert-verify: false
+  client-fingerprint: firefox
+  network: ws
+  ws-opts:
+    path: /vless
+    headers:
+      Host: pl1.vlnet.site
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇨🇭 瑞士 (Switzerland) 01 4036K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 02 4528K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 01 17381K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 02 5210K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 03 12141K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇭 瑞士 (Switzerland) 01 4036K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 02 4528K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 01 17381K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 02 5210K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 03 12141K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

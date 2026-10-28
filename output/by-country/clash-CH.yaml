@@ -4,20 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇭 瑞士 (Switzerland) 01 4817K 🇨🇳 - NEKO
-  server: 45.90.59.15
-  port: 443
-  udp: true
-  type: vless
-  uuid: 3950b45e-740d-4dca-ac95-505ec8534592
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: P7S4UPFlQbmiBr4txyy8NZIMTrmO3UdxyH16WBU-YzY
-    short-id: 19253fae84102271
-  servername: www.cloudflare.com
-  client-fingerprint: chrome
-- name: 🇨🇭 瑞士 (Switzerland) 02 4099K 🇨🇳 - NEKO
+- name: 🇨🇭 瑞士 (Switzerland) 01 4036K 🇨🇳 - NEKO
   server: 45.90.57.119
   port: 8443
   udp: true
@@ -29,20 +16,32 @@ proxies:
     public-key: L6DeK_a25_ZjPKFOrQLoCPWuXi5KCIH_EcRpARmCwkI
     short-id: 16036bbef04d0509
   servername: twitch.tv
-  client-fingerprint: ''
+  client-fingerprint: firefox
+- name: 🇨🇭 瑞士 (Switzerland) 02 4528K ⚠P - NEKO
+  server: 208.69.78.217
+  port: 2053
+  udp: true
+  type: vless
+  uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
+  tls: true
+  reality-opts:
+    public-key: A49ue7zXSusJZdErPAewg3jqGdUFIO1a9xOunEKJfC0
+    short-id: ad86e2d52ff40ebd
+  servername: www.apple.com
+  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇨🇭 瑞士 (Switzerland) 01 4817K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 02 4099K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 01 4036K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 02 4528K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇭 瑞士 (Switzerland) 01 4817K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 02 4099K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 01 4036K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 02 4528K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

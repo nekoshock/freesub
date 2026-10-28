@@ -4,7 +4,14 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇪🇸 西班牙 (Spain) 01 6268K 🇨🇳 - NEKO
+- name: 🇪🇸 西班牙 (Spain) 01 3266K ⚠P - NEKO
+  server: 5.188.181.201
+  port: 9003
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: JdmRK9gMEqFgs8nP
+- name: 🇪🇸 西班牙 (Spain) 02 5648K 🇨🇳 - NEKO
   server: 212.227.235.66
   port: 2053
   udp: true
@@ -16,43 +23,19 @@ proxies:
     short-id: 29e8dcd2b37aaa7f
   servername: www.apple.com
   client-fingerprint: chrome
-- name: 🇪🇸 西班牙 (Spain) 02 284K 🇨🇳 - NEKO
-  server: 83.147.18.3
-  port: 443
+- name: 🇪🇸 西班牙 (Spain) 03 4875K ⚠P - NEKO
+  server: 156.252.229.11
+  port: 8443
   udp: true
   type: vless
-  uuid: 9f61cdf4-810d-4052-bbc7-2da0c8e20104
-  flow: xtls-rprx-vision
+  uuid: 3e21e3d3-6d26-4155-b851-764dd8e8c6b5
   tls: true
   reality-opts:
-    public-key: 3iVJAIGPx6JMlhlRmfpGrHkSmLpHJ4CPvBBH7KsFrFA
-    short-id: fd8cf7e1173f0edb
-  servername: www.cloudflare.com
-  client-fingerprint: random
-- name: 🇪🇸 西班牙 (Spain) 03 3183K ⚠P - NEKO
-  server: 5.188.181.201
-  port: 9027
-  udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: EXN3S3eQpjE7EJu8
-- name: 🇪🇸 西班牙 (Spain) 04 5442K 🇨🇳 - NEKO
-  server: 66.163.118.62
-  port: 443
-  udp: true
-  type: trojan
-  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  sni: courses.discovergreatjobsandadvanceyourcareer.com
-  skip-cert-verify: false
-- name: 🇪🇸 西班牙 (Spain) 05 5133K 🇨🇳 - NEKO
-  server: 66.163.118.244
-  port: 443
-  udp: true
-  type: trojan
-  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  sni: api.discovergreatjobsandadvanceyourcareer.com
-  skip-cert-verify: false
-- name: 🇪🇸 西班牙 (Spain) 06 4618K ⚠P - NEKO
+    public-key: 7jPluypHwPilf_Mq7JOY96SwKkbK35WuIlN1HwGQ_0A
+    short-id: 974f7f8f
+  servername: play.googleapis.com
+  client-fingerprint: firefox
+- name: 🇪🇸 西班牙 (Spain) 04 4753K ⚠P - NEKO
   server: 156.252.229.11
   port: 8443
   udp: true
@@ -64,56 +47,38 @@ proxies:
     short-id: 974f7f8f
   servername: play.googleapis.com
   client-fingerprint: chrome
-- name: 🇪🇸 西班牙 (Spain) 07 5000K 🇨🇳 - NEKO
-  server: 66.163.118.166
+- name: 🇪🇸 西班牙 (Spain) 05 3935K 🇨🇳 - NEKO
+  server: 46.28.71.247
   port: 443
   udp: true
-  type: trojan
-  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  sni: learn.discovergreatjobsandadvanceyourcareer.com
-  skip-cert-verify: false
-- name: 🇪🇸 西班牙 (Spain) 08 5001K 🇨🇳 - NEKO
-  server: 66.163.118.131
-  port: 443
-  udp: true
-  type: trojan
-  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  sni: www.discovergreatjobsandadvanceyourcareer.com
-  skip-cert-verify: false
-- name: 🇪🇸 西班牙 (Spain) 09 1039K ⚠P⚠C - NEKO
-  server: dns22.m3hrzd.ir
-  port: 1354
-  udp: true
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: LzEeLj2OP0DQmpPDtVTazdGC0cHcT0Kn
+  type: vless
+  uuid: 12c53e32-e589-47d6-b857-e4132294f767
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: v4MuZIvFrTPT5GHMSaPryUAbIZlLstmsUTzmC1E-JTE
+    short-id: 0dfc23fe80778c00
+  servername: www.cloudflare.com
+  client-fingerprint: ''
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇪🇸 西班牙 (Spain) 01 6268K 🇨🇳 - NEKO
-  - 🇪🇸 西班牙 (Spain) 02 284K 🇨🇳 - NEKO
-  - 🇪🇸 西班牙 (Spain) 03 3183K ⚠P - NEKO
-  - 🇪🇸 西班牙 (Spain) 04 5442K 🇨🇳 - NEKO
-  - 🇪🇸 西班牙 (Spain) 05 5133K 🇨🇳 - NEKO
-  - 🇪🇸 西班牙 (Spain) 06 4618K ⚠P - NEKO
-  - 🇪🇸 西班牙 (Spain) 07 5000K 🇨🇳 - NEKO
-  - 🇪🇸 西班牙 (Spain) 08 5001K 🇨🇳 - NEKO
-  - 🇪🇸 西班牙 (Spain) 09 1039K ⚠P⚠C - NEKO
+  - 🇪🇸 西班牙 (Spain) 01 3266K ⚠P - NEKO
+  - 🇪🇸 西班牙 (Spain) 02 5648K 🇨🇳 - NEKO
+  - 🇪🇸 西班牙 (Spain) 03 4875K ⚠P - NEKO
+  - 🇪🇸 西班牙 (Spain) 04 4753K ⚠P - NEKO
+  - 🇪🇸 西班牙 (Spain) 05 3935K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇪🇸 西班牙 (Spain) 01 6268K 🇨🇳 - NEKO
-  - 🇪🇸 西班牙 (Spain) 02 284K 🇨🇳 - NEKO
-  - 🇪🇸 西班牙 (Spain) 03 3183K ⚠P - NEKO
-  - 🇪🇸 西班牙 (Spain) 04 5442K 🇨🇳 - NEKO
-  - 🇪🇸 西班牙 (Spain) 05 5133K 🇨🇳 - NEKO
-  - 🇪🇸 西班牙 (Spain) 06 4618K ⚠P - NEKO
-  - 🇪🇸 西班牙 (Spain) 07 5000K 🇨🇳 - NEKO
-  - 🇪🇸 西班牙 (Spain) 08 5001K 🇨🇳 - NEKO
-  - 🇪🇸 西班牙 (Spain) 09 1039K ⚠P⚠C - NEKO
+  - 🇪🇸 西班牙 (Spain) 01 3266K ⚠P - NEKO
+  - 🇪🇸 西班牙 (Spain) 02 5648K 🇨🇳 - NEKO
+  - 🇪🇸 西班牙 (Spain) 03 4875K ⚠P - NEKO
+  - 🇪🇸 西班牙 (Spain) 04 4753K ⚠P - NEKO
+  - 🇪🇸 西班牙 (Spain) 05 3935K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

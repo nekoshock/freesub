@@ -5,7 +5,7 @@
   "outbounds": [
     {
       "type": "vless",
-      "tag": "🇬🇷 希腊 (Greece) 01 4153K 🇨🇳 - NEKO",
+      "tag": "🇬🇷 希腊 (Greece) 01 ⚠S1130K 🇨🇳 - NEKO",
       "server": "85.90.197.220",
       "server_port": 443,
       "uuid": "8f704ed6-9a1a-4d04-94dd-1bff501716de",
@@ -15,7 +15,7 @@
         "server_name": "www.cloudflare.com",
         "utls": {
           "enabled": true,
-          "fingerprint": "safari"
+          "fingerprint": "random"
         },
         "reality": {
           "enabled": true,
@@ -25,18 +25,28 @@
       }
     },
     {
+      "type": "shadowsocks",
+      "tag": "🇬🇷 希腊 (Greece) 02 3253K ⚠P - NEKO",
+      "server": "ams1.rvpn.app",
+      "server_port": 8388,
+      "method": "chacha20-ietf-poly1305",
+      "password": "x2A6AsyZ-rAllz0wbKHzWA"
+    },
+    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇬🇷 希腊 (Greece) 01 4153K 🇨🇳 - NEKO"
+        "🇬🇷 希腊 (Greece) 01 ⚠S1130K 🇨🇳 - NEKO",
+        "🇬🇷 希腊 (Greece) 02 3253K ⚠P - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇬🇷 希腊 (Greece) 01 4153K 🇨🇳 - NEKO"
+        "🇬🇷 希腊 (Greece) 01 ⚠S1130K 🇨🇳 - NEKO",
+        "🇬🇷 希腊 (Greece) 02 3253K ⚠P - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

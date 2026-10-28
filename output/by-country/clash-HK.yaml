@@ -4,33 +4,20 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇭🇰 中国香港 (Hong Kong) 01 844K 🇨🇳 - NEKO
-  server: 165.154.63.139
-  port: 443
+- name: 🇭🇰 中国香港 (Hong Kong) 01 5047K 🇨🇳 - NEKO
+  server: 45.39.198.144
+  port: 9443
   udp: true
   type: vless
-  uuid: 91ad30e9-ab06-4b4c-9fb9-1c2aa97d8b3a
+  uuid: 4a270d3e-27b4-497d-8c8c-28f1f54958d9
   flow: xtls-rprx-vision
   tls: true
   reality-opts:
-    public-key: AE81BrwMc8-kwGEIA1LhzaL03er0Qwt2V-fFy76F5jQ
-    short-id: ca4aedd4
+    public-key: 0hIFPaEn4RdFib8_eP8HYxMywR5izEwM3JA2W1Zo8U4
+    short-id: b390142456517acc
   servername: www.amazon.com
-  client-fingerprint: firefox
-- name: 🇭🇰 中国香港 (Hong Kong) 02 3380K 🇨🇳 - NEKO
-  server: hk2.open-bridonyx.top
-  port: 443
-  udp: true
-  type: vless
-  uuid: 4b1be712-774c-4b65-8491-a3339e124a70
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: 4ubYp4HaBJgn1qXwfo0hiejncurXCckII-O_FMDXTgI
-    short-id: 3b74d85e
-  servername: hk2.open-bridonyx.top
-  client-fingerprint: qq
-- name: 🇭🇰 中国香港 (Hong Kong) 03 4285K 🇨🇳 - NEKO
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 02 4165K 🇨🇳 - NEKO
   server: 50.7.44.28
   port: 2091
   udp: true
@@ -48,16 +35,14 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇭🇰 中国香港 (Hong Kong) 01 844K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 3380K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 03 4285K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 5047K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 4165K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇭🇰 中国香港 (Hong Kong) 01 844K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 3380K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 03 4285K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 5047K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 4165K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

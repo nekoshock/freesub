@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇭🇰 中国香港 (Hong Kong) 01 838K 🇨🇳 - NEKO
+- name: 🇭🇰 中国香港 (Hong Kong) 01 844K 🇨🇳 - NEKO
   server: 165.154.63.139
   port: 443
   udp: true
@@ -16,18 +16,48 @@ proxies:
     public-key: AE81BrwMc8-kwGEIA1LhzaL03er0Qwt2V-fFy76F5jQ
     short-id: ca4aedd4
   servername: www.amazon.com
-  client-fingerprint: random
+  client-fingerprint: firefox
+- name: 🇭🇰 中国香港 (Hong Kong) 02 3380K 🇨🇳 - NEKO
+  server: hk2.open-bridonyx.top
+  port: 443
+  udp: true
+  type: vless
+  uuid: 4b1be712-774c-4b65-8491-a3339e124a70
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: 4ubYp4HaBJgn1qXwfo0hiejncurXCckII-O_FMDXTgI
+    short-id: 3b74d85e
+  servername: hk2.open-bridonyx.top
+  client-fingerprint: qq
+- name: 🇭🇰 中国香港 (Hong Kong) 03 4285K 🇨🇳 - NEKO
+  server: 50.7.44.28
+  port: 2091
+  udp: true
+  type: vless
+  uuid: 76b6a658-ce80-4500-b24d-404c94639ac6
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: 1N6AW5YuEwBoYcZK5KuugDzBHsa0NKZMT8QI-EmyL0k
+    short-id: 08a4b1f473932632
+  servername: www.apple.com
+  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇭🇰 中国香港 (Hong Kong) 01 838K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 844K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 3380K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 03 4285K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇭🇰 中国香港 (Hong Kong) 01 838K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 844K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 3380K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 03 4285K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

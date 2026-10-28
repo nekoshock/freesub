@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇧🇷 巴西 (Brazil) 01 19828K 🇨🇳 - NEKO
+- name: 🇧🇷 巴西 (Brazil) 01 4023K 🇨🇳 - NEKO
   server: 216.238.104.154
   port: 443
   udp: true
@@ -12,17 +12,29 @@ proxies:
   password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
   sni: findtemporaryworkandfreelancerprojectsonlineplatform.com
   skip-cert-verify: false
+- name: 🇧🇷 巴西 (Brazil) 02 4815K ⚠P - NEKO
+  server: 216.128.169.78
+  port: 15040
+  udp: true
+  type: vless
+  uuid: e9a8144e-5237-488a-afb1-9ca3d8d54c80
+  tls: true
+  servername: br.zestapp778.com
+  skip-cert-verify: false
+  client-fingerprint: firefox
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇧🇷 巴西 (Brazil) 01 19828K 🇨🇳 - NEKO
+  - 🇧🇷 巴西 (Brazil) 01 4023K 🇨🇳 - NEKO
+  - 🇧🇷 巴西 (Brazil) 02 4815K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇧🇷 巴西 (Brazil) 01 19828K 🇨🇳 - NEKO
+  - 🇧🇷 巴西 (Brazil) 01 4023K 🇨🇳 - NEKO
+  - 🇧🇷 巴西 (Brazil) 02 4815K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

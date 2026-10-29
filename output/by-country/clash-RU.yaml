@@ -4,31 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇷🇺 俄罗斯 (Russia) 01 18645K 🇨🇳 - NEKO
-  server: 193.160.140.98
-  port: 8443
-  udp: true
-  type: vless
-  uuid: 6a33e818-0df7-4795-a978-54d1c24cc9c0
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
-  servername: apple.com
-  client-fingerprint: firefox
-- name: 🇷🇺 俄罗斯 (Russia) 02 17011K 🇨🇳 - NEKO
-  server: 147.45.46.157
-  port: 8443
-  udp: true
-  type: vless
-  uuid: 75985152-e16e-4a48-87ff-35c2615e0ab5
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
-  servername: apple.com
-  client-fingerprint: firefox
-- name: 🇷🇺 俄罗斯 (Russia) 03 19110K 🇨🇳 - NEKO
+- name: 🇷🇺 俄罗斯 (Russia) 01 20570K 🇨🇳 - NEKO
   server: 193.233.253.180
   port: 8444
   udp: true
@@ -42,7 +18,55 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: GunService
-- name: 🇷🇺 俄罗斯 (Russia) 04 15998K 🇨🇳 - NEKO
+- name: 🇷🇺 俄罗斯 (Russia) 02 20934K 🇨🇳 - NEKO
+  server: 193.160.141.81
+  port: 8443
+  udp: true
+  type: vless
+  uuid: ee82f319-ab92-425d-8e04-28a29f33f670
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
+  servername: apple.com
+  client-fingerprint: firefox
+- name: 🇷🇺 俄罗斯 (Russia) 03 15210K 🇨🇳 - NEKO
+  server: 193.160.140.98
+  port: 8443
+  udp: true
+  type: vless
+  uuid: 6a33e818-0df7-4795-a978-54d1c24cc9c0
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
+  servername: apple.com
+  client-fingerprint: firefox
+- name: 🇷🇺 俄罗斯 (Russia) 04 15556K 🇨🇳 - NEKO
+  server: 193.160.140.168
+  port: 8443
+  udp: true
+  type: vless
+  uuid: 5ce803ae-a81c-4276-b1f8-ee3b845c5c4b
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
+  servername: apple.com
+  client-fingerprint: firefox
+- name: 🇷🇺 俄罗斯 (Russia) 05 13003K 🇨🇳 - NEKO
+  server: 147.45.46.157
+  port: 8443
+  udp: true
+  type: vless
+  uuid: 75985152-e16e-4a48-87ff-35c2615e0ab5
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
+  servername: apple.com
+  client-fingerprint: firefox
+- name: 🇷🇺 俄罗斯 (Russia) 06 17230K 🇨🇳 - NEKO
   server: 193.160.141.138
   port: 8443
   udp: true
@@ -54,7 +78,7 @@ proxies:
     public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
   servername: apple.com
   client-fingerprint: chrome
-- name: 🇷🇺 俄罗斯 (Russia) 05 10933K 🇨🇳 - NEKO
+- name: 🇷🇺 俄罗斯 (Russia) 07 13454K 🇨🇳 - NEKO
   server: 193.160.140.159
   port: 8443
   udp: true
@@ -65,8 +89,22 @@ proxies:
   reality-opts:
     public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
   servername: apple.com
-  client-fingerprint: chrome
-- name: 🇷🇺 俄罗斯 (Russia) 06 ⚠S6257K ⚠P - NEKO
+  client-fingerprint: firefox
+- name: 🇷🇺 俄罗斯 (Russia) 08 9086K 🇨🇳 - NEKO
+  server: 185.229.9.135
+  port: 443
+  udp: true
+  type: vless
+  uuid: d9833bab-0a4d-4ebf-9d80-1f6ab04f3964
+  tls: true
+  servername: app.lesotorg-kirov.ru
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /chws
+    headers:
+      Host: app.lesotorg-kirov.ru
+- name: 🇷🇺 俄罗斯 (Russia) 09 ⚠S6418K ⚠P - NEKO
   server: 46.17.41.61
   port: 18443
   udp: true
@@ -78,22 +116,28 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇷🇺 俄罗斯 (Russia) 01 18645K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 02 17011K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 03 19110K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 04 15998K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 05 10933K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 06 ⚠S6257K ⚠P - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 01 20570K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 02 20934K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 03 15210K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 04 15556K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 05 13003K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 06 17230K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 07 13454K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 08 9086K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 09 ⚠S6418K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇷🇺 俄罗斯 (Russia) 01 18645K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 02 17011K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 03 19110K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 04 15998K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 05 10933K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 06 ⚠S6257K ⚠P - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 01 20570K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 02 20934K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 03 15210K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 04 15556K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 05 13003K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 06 17230K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 07 13454K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 08 9086K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 09 ⚠S6418K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

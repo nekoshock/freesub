@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇸🇪 瑞典 (Sweden) 01 15649K 🇨🇳 - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 01 16087K 🇨🇳 - NEKO
   server: 50.7.38.243
   port: 443
   udp: true
@@ -12,14 +12,7 @@ proxies:
   password: d4ca9415f0eac7897472e1e5b86d2e96
   sni: promo.betust.net
   skip-cert-verify: false
-- name: 🇸🇪 瑞典 (Sweden) 02 11204K ⚠P - NEKO
-  server: stockholm01.npvnot.com
-  port: 995
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: YzYxZGFlNTY0ZTdmYzQ1ODBmMDgxYWVlMDkyYTBl
-- name: 🇸🇪 瑞典 (Sweden) 03 11663K ⚠P - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 02 14274K ⚠P - NEKO
   server: 191.44.114.154
   port: 8443
   udp: true
@@ -29,10 +22,9 @@ proxies:
   tls: true
   reality-opts:
     public-key: ndQzAcG4g-2OhvFb8EjFnZyxJ2lhawiulTLJOZrK8lY
-    short-id: c4359f3827231250
   servername: www.wikipedia.org
   client-fingerprint: firefox
-- name: 🇸🇪 瑞典 (Sweden) 04 10734K ⚠P - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 03 10819K ⚠P - NEKO
   server: 191.44.114.154
   port: 2096
   udp: true
@@ -41,26 +33,27 @@ proxies:
   tls: true
   servername: st5ff8a.rumedia-cdn.com
   skip-cert-verify: false
+  client-fingerprint: firefox
   network: ws
   ws-opts:
     path: /cdn/v3/live
+    headers:
+      Host: st5ff8a.rumedia-cdn.com
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇸🇪 瑞典 (Sweden) 01 15649K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 11204K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 03 11663K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 04 10734K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 16087K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 14274K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 03 10819K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇸🇪 瑞典 (Sweden) 01 15649K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 11204K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 03 11663K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 04 10734K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 16087K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 14274K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 03 10819K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

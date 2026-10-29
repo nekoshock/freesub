@@ -4,7 +4,43 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇪🇸 西班牙 (Spain) 01 17519K 🇨🇳 - NEKO
+- name: 🇪🇸 西班牙 (Spain) 01 18761K 🇨🇳 - NEKO
+  server: 83.147.18.3
+  port: 443
+  udp: true
+  type: vless
+  uuid: 9f61cdf4-810d-4052-bbc7-2da0c8e20104
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: 3iVJAIGPx6JMlhlRmfpGrHkSmLpHJ4CPvBBH7KsFrFA
+    short-id: fd8cf7e1173f0edb
+  servername: www.cloudflare.com
+  client-fingerprint: random
+- name: 🇪🇸 西班牙 (Spain) 02 2988K ⚠P - NEKO
+  server: 5.188.181.201
+  port: 9001
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: UkXRsXvR6buDMG2Y
+- name: 🇪🇸 西班牙 (Spain) 03 13454K 🇨🇳 - NEKO
+  server: 66.163.118.62
+  port: 443
+  udp: true
+  type: trojan
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: courses.discovergreatjobsandadvanceyourcareer.com
+  skip-cert-verify: false
+- name: 🇪🇸 西班牙 (Spain) 04 14800K 🇨🇳 - NEKO
+  server: 66.163.118.244
+  port: 443
+  udp: true
+  type: trojan
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: api.discovergreatjobsandadvanceyourcareer.com
+  skip-cert-verify: false
+- name: 🇪🇸 西班牙 (Spain) 05 17768K 🇨🇳 - NEKO
   server: 212.227.235.66
   port: 2053
   udp: true
@@ -15,56 +51,24 @@ proxies:
     public-key: 7Y6Xb5Ql_03K25x8yKUSOKI2JTOMyv2nyCcFza90uxk
     short-id: 29e8dcd2b37aaa7f
   servername: www.apple.com
-  client-fingerprint: chrome
-- name: 🇪🇸 西班牙 (Spain) 02 21322K 🇨🇳 - NEKO
-  server: 156.252.229.136
-  port: 8443
-  udp: true
-  type: vless
-  uuid: 3e21e3d3-6d26-4155-b851-764dd8e8c6b5
-  tls: true
-  reality-opts:
-    public-key: 7jPluypHwPilf_Mq7JOY96SwKkbK35WuIlN1HwGQ_0A
-    short-id: 974f7f8f
-  servername: play.googleapis.com
-  client-fingerprint: chrome
-- name: 🇪🇸 西班牙 (Spain) 03 19139K 🇨🇳 - NEKO
-  server: 156.252.229.11
-  port: 8443
-  udp: true
-  type: vless
-  uuid: 3e21e3d3-6d26-4155-b851-764dd8e8c6b5
-  tls: true
-  reality-opts:
-    public-key: 7jPluypHwPilf_Mq7JOY96SwKkbK35WuIlN1HwGQ_0A
-    short-id: 974f7f8f
-  servername: play.googleapis.com
-  client-fingerprint: random
-- name: 🇪🇸 西班牙 (Spain) 04 14299K 🇨🇳 - NEKO
-  server: 156.252.229.11
-  port: 8443
-  udp: true
-  type: vless
-  uuid: 3e21e3d3-6d26-4155-b851-764dd8e8c6b5
-  tls: true
-  reality-opts:
-    public-key: 7jPluypHwPilf_Mq7JOY96SwKkbK35WuIlN1HwGQ_0A
-    short-id: 974f7f8f
-  servername: play.googleapis.com
-  client-fingerprint: chrome
-- name: 🇪🇸 西班牙 (Spain) 05 14890K 🇨🇳 - NEKO
-  server: 156.252.229.11
-  port: 8443
-  udp: true
-  type: vless
-  uuid: 3e21e3d3-6d26-4155-b851-764dd8e8c6b5
-  tls: true
-  reality-opts:
-    public-key: 7jPluypHwPilf_Mq7JOY96SwKkbK35WuIlN1HwGQ_0A
-    short-id: 974f7f8f
-  servername: play.googleapis.com
   client-fingerprint: firefox
-- name: 🇪🇸 西班牙 (Spain) 06 11765K 🇨🇳 - NEKO
+- name: 🇪🇸 西班牙 (Spain) 06 14853K 🇨🇳 - NEKO
+  server: 66.163.118.251
+  port: 443
+  udp: true
+  type: trojan
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: resources.discovergreatjobsandadvanceyourcareer.com
+  skip-cert-verify: false
+- name: 🇪🇸 西班牙 (Spain) 07 15123K 🇨🇳 - NEKO
+  server: 66.163.118.131
+  port: 443
+  udp: true
+  type: trojan
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: www.discovergreatjobsandadvanceyourcareer.com
+  skip-cert-verify: false
+- name: 🇪🇸 西班牙 (Spain) 08 10631K 🇨🇳 - NEKO
   server: 46.28.71.247
   port: 443
   udp: true
@@ -77,27 +81,101 @@ proxies:
     short-id: 0dfc23fe80778c00
   servername: www.cloudflare.com
   client-fingerprint: ''
+- name: 🇪🇸 西班牙 (Spain) 09 16426K 🇨🇳 - NEKO
+  server: 156.252.229.30
+  port: 8443
+  udp: true
+  type: vless
+  uuid: 3e21e3d3-6d26-4155-b851-764dd8e8c6b5
+  tls: true
+  reality-opts:
+    public-key: 7jPluypHwPilf_Mq7JOY96SwKkbK35WuIlN1HwGQ_0A
+    short-id: 974f7f8f
+  servername: play.googleapis.com
+  client-fingerprint: chrome
+- name: 🇪🇸 西班牙 (Spain) 10 12569K 🇨🇳 - NEKO
+  server: 156.252.229.11
+  port: 8443
+  udp: true
+  type: vless
+  uuid: 3e21e3d3-6d26-4155-b851-764dd8e8c6b5
+  tls: true
+  reality-opts:
+    public-key: 7jPluypHwPilf_Mq7JOY96SwKkbK35WuIlN1HwGQ_0A
+    short-id: 974f7f8f
+  servername: play.googleapis.com
+  client-fingerprint: chrome
+- name: 🇪🇸 西班牙 (Spain) 11 12664K ⚠P - NEKO
+  server: 156.252.229.11
+  port: 8443
+  udp: true
+  type: vless
+  uuid: 3e21e3d3-6d26-4155-b851-764dd8e8c6b5
+  tls: true
+  reality-opts:
+    public-key: 7jPluypHwPilf_Mq7JOY96SwKkbK35WuIlN1HwGQ_0A
+    short-id: 974f7f8f
+  servername: play.googleapis.com
+  client-fingerprint: random
+- name: 🇪🇸 西班牙 (Spain) 12 12318K ⚠P - NEKO
+  server: 156.252.229.11
+  port: 8443
+  udp: true
+  type: vless
+  uuid: 3e21e3d3-6d26-4155-b851-764dd8e8c6b5
+  tls: true
+  reality-opts:
+    public-key: 7jPluypHwPilf_Mq7JOY96SwKkbK35WuIlN1HwGQ_0A
+    short-id: 974f7f8f
+  servername: play.googleapis.com
+  client-fingerprint: firefox
+- name: 🇪🇸 西班牙 (Spain) 13 19714K ⚠P - NEKO
+  server: 156.252.229.136
+  port: 8443
+  udp: true
+  type: vless
+  uuid: 3e21e3d3-6d26-4155-b851-764dd8e8c6b5
+  tls: true
+  reality-opts:
+    public-key: 7jPluypHwPilf_Mq7JOY96SwKkbK35WuIlN1HwGQ_0A
+    short-id: 974f7f8f
+  servername: play.googleapis.com
+  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇪🇸 西班牙 (Spain) 01 17519K 🇨🇳 - NEKO
-  - 🇪🇸 西班牙 (Spain) 02 21322K 🇨🇳 - NEKO
-  - 🇪🇸 西班牙 (Spain) 03 19139K 🇨🇳 - NEKO
-  - 🇪🇸 西班牙 (Spain) 04 14299K 🇨🇳 - NEKO
-  - 🇪🇸 西班牙 (Spain) 05 14890K 🇨🇳 - NEKO
-  - 🇪🇸 西班牙 (Spain) 06 11765K 🇨🇳 - NEKO
+  - 🇪🇸 西班牙 (Spain) 01 18761K 🇨🇳 - NEKO
+  - 🇪🇸 西班牙 (Spain) 02 2988K ⚠P - NEKO
+  - 🇪🇸 西班牙 (Spain) 03 13454K 🇨🇳 - NEKO
+  - 🇪🇸 西班牙 (Spain) 04 14800K 🇨🇳 - NEKO
+  - 🇪🇸 西班牙 (Spain) 05 17768K 🇨🇳 - NEKO
+  - 🇪🇸 西班牙 (Spain) 06 14853K 🇨🇳 - NEKO
+  - 🇪🇸 西班牙 (Spain) 07 15123K 🇨🇳 - NEKO
+  - 🇪🇸 西班牙 (Spain) 08 10631K 🇨🇳 - NEKO
+  - 🇪🇸 西班牙 (Spain) 09 16426K 🇨🇳 - NEKO
+  - 🇪🇸 西班牙 (Spain) 10 12569K 🇨🇳 - NEKO
+  - 🇪🇸 西班牙 (Spain) 11 12664K ⚠P - NEKO
+  - 🇪🇸 西班牙 (Spain) 12 12318K ⚠P - NEKO
+  - 🇪🇸 西班牙 (Spain) 13 19714K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇪🇸 西班牙 (Spain) 01 17519K 🇨🇳 - NEKO
-  - 🇪🇸 西班牙 (Spain) 02 21322K 🇨🇳 - NEKO
-  - 🇪🇸 西班牙 (Spain) 03 19139K 🇨🇳 - NEKO
-  - 🇪🇸 西班牙 (Spain) 04 14299K 🇨🇳 - NEKO
-  - 🇪🇸 西班牙 (Spain) 05 14890K 🇨🇳 - NEKO
-  - 🇪🇸 西班牙 (Spain) 06 11765K 🇨🇳 - NEKO
+  - 🇪🇸 西班牙 (Spain) 01 18761K 🇨🇳 - NEKO
+  - 🇪🇸 西班牙 (Spain) 02 2988K ⚠P - NEKO
+  - 🇪🇸 西班牙 (Spain) 03 13454K 🇨🇳 - NEKO
+  - 🇪🇸 西班牙 (Spain) 04 14800K 🇨🇳 - NEKO
+  - 🇪🇸 西班牙 (Spain) 05 17768K 🇨🇳 - NEKO
+  - 🇪🇸 西班牙 (Spain) 06 14853K 🇨🇳 - NEKO
+  - 🇪🇸 西班牙 (Spain) 07 15123K 🇨🇳 - NEKO
+  - 🇪🇸 西班牙 (Spain) 08 10631K 🇨🇳 - NEKO
+  - 🇪🇸 西班牙 (Spain) 09 16426K 🇨🇳 - NEKO
+  - 🇪🇸 西班牙 (Spain) 10 12569K 🇨🇳 - NEKO
+  - 🇪🇸 西班牙 (Spain) 11 12664K ⚠P - NEKO
+  - 🇪🇸 西班牙 (Spain) 12 12318K ⚠P - NEKO
+  - 🇪🇸 西班牙 (Spain) 13 19714K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

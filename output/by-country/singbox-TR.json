@@ -5,7 +5,28 @@
   "outbounds": [
     {
       "type": "vless",
-      "tag": "🇹🇷 土耳其 (Turkey) 01 9543K 🇨🇳 - NEKO",
+      "tag": "🇹🇷 土耳其 (Turkey) 01 11439K 🇨🇳 - NEKO",
+      "server": "78.135.73.47",
+      "server_port": 443,
+      "uuid": "25e16692-d097-4e69-9e2d-8415609c1968",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.datadoghq.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "sZAJkAu23wp1WKY-qeaeiwR38izP5OyfhumoE9xhbB8",
+          "short_id": "f46cd3ea3d1eb72d"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇹🇷 土耳其 (Turkey) 02 12859K 🇨🇳 - NEKO",
       "server": "62.133.63.45",
       "server_port": 8444,
       "uuid": "a346c521-7a7f-452b-9356-a4893feb5982",
@@ -14,7 +35,7 @@
         "server_name": "github.com",
         "utls": {
           "enabled": true,
-          "fingerprint": "chrome"
+          "fingerprint": "ios"
         },
         "reality": {
           "enabled": true,
@@ -29,28 +50,7 @@
     },
     {
       "type": "vless",
-      "tag": "🇹🇷 土耳其 (Turkey) 02 10826K 🇨🇳 - NEKO",
-      "server": "78.135.73.47",
-      "server_port": 443,
-      "uuid": "25e16692-d097-4e69-9e2d-8415609c1968",
-      "flow": "xtls-rprx-vision",
-      "tls": {
-        "enabled": true,
-        "server_name": "www.datadoghq.com",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "random"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "sZAJkAu23wp1WKY-qeaeiwR38izP5OyfhumoE9xhbB8",
-          "short_id": "f46cd3ea3d1eb72d"
-        }
-      }
-    },
-    {
-      "type": "vless",
-      "tag": "🇹🇷 土耳其 (Turkey) 03 9021K ⚠P - NEKO",
+      "tag": "🇹🇷 土耳其 (Turkey) 03 7631K ⚠P - NEKO",
       "server": "151.241.226.201",
       "server_port": 2053,
       "uuid": "0eed6293-8cf1-4e77-ac10-9c3d50d0b2f8",
@@ -59,7 +59,7 @@
         "server_name": "www.apple.com",
         "utls": {
           "enabled": true,
-          "fingerprint": ""
+          "fingerprint": "firefox"
         },
         "reality": {
           "enabled": true,
@@ -69,22 +69,43 @@
       }
     },
     {
+      "type": "vless",
+      "tag": "🇹🇷 土耳其 (Turkey) 04 1298K ⚠P - NEKO",
+      "server": "206.1.101.85",
+      "server_port": 42654,
+      "uuid": "16e9ae65-c42d-49b9-9e86-524956e4ef19",
+      "tls": {
+        "enabled": true,
+        "server_name": "206.1.101.85",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws"
+      }
+    },
+    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇹🇷 土耳其 (Turkey) 01 9543K 🇨🇳 - NEKO",
-        "🇹🇷 土耳其 (Turkey) 02 10826K 🇨🇳 - NEKO",
-        "🇹🇷 土耳其 (Turkey) 03 9021K ⚠P - NEKO"
+        "🇹🇷 土耳其 (Turkey) 01 11439K 🇨🇳 - NEKO",
+        "🇹🇷 土耳其 (Turkey) 02 12859K 🇨🇳 - NEKO",
+        "🇹🇷 土耳其 (Turkey) 03 7631K ⚠P - NEKO",
+        "🇹🇷 土耳其 (Turkey) 04 1298K ⚠P - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇹🇷 土耳其 (Turkey) 01 9543K 🇨🇳 - NEKO",
-        "🇹🇷 土耳其 (Turkey) 02 10826K 🇨🇳 - NEKO",
-        "🇹🇷 土耳其 (Turkey) 03 9021K ⚠P - NEKO"
+        "🇹🇷 土耳其 (Turkey) 01 11439K 🇨🇳 - NEKO",
+        "🇹🇷 土耳其 (Turkey) 02 12859K 🇨🇳 - NEKO",
+        "🇹🇷 土耳其 (Turkey) 03 7631K ⚠P - NEKO",
+        "🇹🇷 土耳其 (Turkey) 04 1298K ⚠P - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

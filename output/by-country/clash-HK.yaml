@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇭🇰 中国香港 (Hong Kong) 01 354K 🇨🇳 - NEKO
+- name: 🇭🇰 中国香港 (Hong Kong) 01 788K 🇨🇳 - NEKO
   server: 165.154.63.139
   port: 443
   udp: true
@@ -17,32 +17,17 @@ proxies:
     short-id: ca4aedd4
   servername: www.amazon.com
   client-fingerprint: chrome
-- name: 🇭🇰 中国香港 (Hong Kong) 02 7826K ⚠P - NEKO
-  server: 45.39.198.144
-  port: 9443
-  udp: true
-  type: vless
-  uuid: 4a270d3e-27b4-497d-8c8c-28f1f54958d9
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: 0hIFPaEn4RdFib8_eP8HYxMywR5izEwM3JA2W1Zo8U4
-    short-id: b390142456517acc
-  servername: www.amazon.com
-  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇭🇰 中国香港 (Hong Kong) 01 354K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 7826K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 788K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇭🇰 中国香港 (Hong Kong) 01 354K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 7826K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 788K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

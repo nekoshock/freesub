@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇧🇬 保加利亚 (Bulgaria) 01 2950K 🇨🇳 - NEKO
+- name: 🇧🇬 保加利亚 (Bulgaria) 01 33446K 🇨🇳 - NEKO
   server: 93.152.223.244
   port: 443
   udp: true
@@ -16,48 +16,35 @@ proxies:
     public-key: yKwDGqOdkC_nEPOQHMvAQLPcPK8YHskv_opYoY66Yk8
   servername: ddk5-ger.newagetechnologies.live
   client-fingerprint: firefox
-- name: 🇧🇬 保加利亚 (Bulgaria) 02 6853K ⚠P - NEKO
+- name: 🇧🇬 保加利亚 (Bulgaria) 02 8176K ⚠P - NEKO
   server: 213.183.63.60
-  port: 9028
+  port: 9085
   udp: true
   type: ss
   cipher: aes-256-cfb
-  password: 9eeJ2fwnZA5Fxgz8
-- name: 🇧🇬 保加利亚 (Bulgaria) 03 5820K ⚠P - NEKO
+  password: 9ej82EKe2gq7gLAM
+- name: 🇧🇬 保加利亚 (Bulgaria) 03 8479K ⚠P - NEKO
   server: 213.183.63.60
   port: 9064
   udp: true
   type: ss
   cipher: aes-256-cfb
   password: cp8pRSUAyLhTfVWH
-- name: 🇧🇬 保加利亚 (Bulgaria) 04 11464K ⚠P - NEKO
-  server: gb.privatevip.ir
-  port: 449
-  udp: true
-  type: vless
-  uuid: 7c730089-1791-4828-89b2-86e7e1663063
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: gb.privatevip.ir
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇧🇬 保加利亚 (Bulgaria) 01 2950K 🇨🇳 - NEKO
-  - 🇧🇬 保加利亚 (Bulgaria) 02 6853K ⚠P - NEKO
-  - 🇧🇬 保加利亚 (Bulgaria) 03 5820K ⚠P - NEKO
-  - 🇧🇬 保加利亚 (Bulgaria) 04 11464K ⚠P - NEKO
+  - 🇧🇬 保加利亚 (Bulgaria) 01 33446K 🇨🇳 - NEKO
+  - 🇧🇬 保加利亚 (Bulgaria) 02 8176K ⚠P - NEKO
+  - 🇧🇬 保加利亚 (Bulgaria) 03 8479K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇧🇬 保加利亚 (Bulgaria) 01 2950K 🇨🇳 - NEKO
-  - 🇧🇬 保加利亚 (Bulgaria) 02 6853K ⚠P - NEKO
-  - 🇧🇬 保加利亚 (Bulgaria) 03 5820K ⚠P - NEKO
-  - 🇧🇬 保加利亚 (Bulgaria) 04 11464K ⚠P - NEKO
+  - 🇧🇬 保加利亚 (Bulgaria) 01 33446K 🇨🇳 - NEKO
+  - 🇧🇬 保加利亚 (Bulgaria) 02 8176K ⚠P - NEKO
+  - 🇧🇬 保加利亚 (Bulgaria) 03 8479K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

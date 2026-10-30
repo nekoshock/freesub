@@ -4,19 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇿 捷克 (Czech) 01 21908K 🇨🇳 - NEKO
-  server: 46.8.113.64
-  port: 443
-  udp: true
-  type: vless
-  uuid: 55ad002b-6cdf-4d76-81bb-91f3f605afc5
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: _SukRXeT9BnvrE3eQTrw8vwsrhu7w3hNTMTEK2xzHEw
-  servername: www.zabbix.com
-  client-fingerprint: firefox
-- name: 🇨🇿 捷克 (Czech) 02 14228K 🇨🇳 - NEKO
+- name: 🇨🇿 捷克 (Czech) 01 27430K 🇨🇳 - NEKO
   server: 195.123.245.241
   port: 443
   udp: true
@@ -29,7 +17,35 @@ proxies:
     short-id: 23d0950d60bc0d5b
   servername: gateway.icloud.com
   client-fingerprint: random
-- name: 🇨🇿 捷克 (Czech) 03 19288K 🇨🇳 - NEKO
+- name: 🇨🇿 捷克 (Czech) 02 8139K 🇨🇳 - NEKO
+  server: 212.102.38.25
+  port: 443
+  udp: true
+  type: vless
+  uuid: b34a52cb-cd52-49a8-9362-b8e97c151d49
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: 23cb4W9THzBKsrECsLh-A_FcKZfkAtUONoDze8-GnQE
+    short-id: e90360ec7cc61b20
+  servername: udemy.com
+  client-fingerprint: chrome
+- name: 🇨🇿 捷克 (Czech) 03 18837K 🇨🇳 - NEKO
+  server: 155.212.240.10
+  port: 443
+  udp: true
+  type: vless
+  uuid: f27b6f65-6e59-4f89-b929-afa397ca587f
+  tls: true
+  servername: n.bitpulse.me
+  skip-cert-verify: false
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /019bcbad-3813-7cce-8786-3ac0e418f128
+    headers:
+      Host: n.bitpulse.me
+- name: 🇨🇿 捷克 (Czech) 04 8139K 🇨🇳 - NEKO
   server: 31.77.13.22
   port: 2063
   udp: true
@@ -46,16 +62,18 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇨🇿 捷克 (Czech) 01 21908K 🇨🇳 - NEKO
-  - 🇨🇿 捷克 (Czech) 02 14228K 🇨🇳 - NEKO
-  - 🇨🇿 捷克 (Czech) 03 19288K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 01 27430K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 02 8139K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 03 18837K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 04 8139K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇿 捷克 (Czech) 01 21908K 🇨🇳 - NEKO
-  - 🇨🇿 捷克 (Czech) 02 14228K 🇨🇳 - NEKO
-  - 🇨🇿 捷克 (Czech) 03 19288K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 01 27430K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 02 8139K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 03 18837K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 04 8139K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

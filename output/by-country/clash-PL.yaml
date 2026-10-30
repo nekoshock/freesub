@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇵🇱 波兰 (Poland) 01 30639K 🇨🇳 - NEKO
+- name: 🇵🇱 波兰 (Poland) 01 16152K 🇨🇳 - NEKO
   server: 70.34.252.255
   port: 443
   udp: true
@@ -12,67 +12,33 @@ proxies:
   password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
   sni: browseexecutivejobopeningsandenhanceleadershipcareer.com
   skip-cert-verify: false
-- name: 🇵🇱 波兰 (Poland) 02 ⚠S13891K ⚠P - NEKO
+- name: 🇵🇱 波兰 (Poland) 02 ⚠S16801K ⚠P - NEKO
   server: 155.117.5.208
   port: 20001
   udp: true
   type: vless
   uuid: 8e8210b7-71a4-4799-8b9b-2e69698b1eaf
-- name: 🇵🇱 波兰 (Poland) 03 6332K ⚠P - NEKO
-  server: 217.30.10.44
-  port: 9062
-  udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: tkhHVxxfM2QErBWe
-- name: 🇵🇱 波兰 (Poland) 04 25532K 🇨🇳 - NEKO
-  server: ru1.radiolumens.uk
-  port: 8445
-  udp: true
-  type: vless
-  uuid: 36cf792c-f07d-4500-97ea-a395e5178deb
-  tls: true
-  servername: ru1.radiolumens.uk
-  skip-cert-verify: false
-  client-fingerprint: firefox
-  network: grpc
-  grpc-opts:
-    grpc-service-name: beru-pl
-- name: 🇵🇱 波兰 (Poland) 05 ⚠S60150K ⚠P - NEKO
+- name: 🇵🇱 波兰 (Poland) 03 13017K ⚠P - NEKO
   server: 168.222.43.53
   port: 2052
   udp: true
   type: vless
   uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
-- name: 🇵🇱 波兰 (Poland) 06 2384K ⚠P⚠U - NEKO
-  server: scrap.halyvanedorogo.ru
-  port: 35076
-  udp: true
-  type: hysteria2
-  password: b4c8ee9caa74b7ba0a61
-  sni: scrap.halyvanedorogo.ru
-  skip-cert-verify: false
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇵🇱 波兰 (Poland) 01 30639K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 02 ⚠S13891K ⚠P - NEKO
-  - 🇵🇱 波兰 (Poland) 03 6332K ⚠P - NEKO
-  - 🇵🇱 波兰 (Poland) 04 25532K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 05 ⚠S60150K ⚠P - NEKO
-  - 🇵🇱 波兰 (Poland) 06 2384K ⚠P⚠U - NEKO
+  - 🇵🇱 波兰 (Poland) 01 16152K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 02 ⚠S16801K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 03 13017K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇵🇱 波兰 (Poland) 01 30639K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 02 ⚠S13891K ⚠P - NEKO
-  - 🇵🇱 波兰 (Poland) 03 6332K ⚠P - NEKO
-  - 🇵🇱 波兰 (Poland) 04 25532K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 05 ⚠S60150K ⚠P - NEKO
-  - 🇵🇱 波兰 (Poland) 06 2384K ⚠P⚠U - NEKO
+  - 🇵🇱 波兰 (Poland) 01 16152K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 02 ⚠S16801K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 03 13017K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

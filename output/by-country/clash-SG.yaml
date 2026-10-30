@@ -4,7 +4,20 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇸🇬 新加坡 (Singapore) 01 5032K ⚠P - NEKO
+- name: 🇸🇬 新加坡 (Singapore) 01 15453K 🇨🇳 - NEKO
+  server: 789156.xyz
+  port: 443
+  udp: true
+  type: vless
+  uuid: 5f11c240-89df-494c-9c81-8b619023bb58
+  tls: true
+  servername: 789156.xyz
+  skip-cert-verify: false
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /
+- name: 🇸🇬 新加坡 (Singapore) 02 5635K ⚠P - NEKO
   server: 149.88.23.202
   port: 18000
   udp: true
@@ -12,21 +25,35 @@ proxies:
   uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
   alterId: 0
   cipher: auto
-- name: 🇸🇬 新加坡 (Singapore) 02 4570K ⚠P - NEKO
-  server: 68.183.227.45
-  port: 8080
+- name: 🇸🇬 新加坡 (Singapore) 03 6065K 🇨🇳 - NEKO
+  server: 206.206.76.75
+  port: 443
   udp: true
-  type: ss
-  cipher: rc4-md5
-  password: 14fFPrbezE3HDZzsMOr6
-- name: 🇸🇬 新加坡 (Singapore) 03 4294K ⚠P - NEKO
+  type: vless
+  uuid: 32cf52f4-b8d2-4ed5-a37c-0d0a8e743309
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: gSHylaTvEzWj19Bk-zLHXKYUINGWVmo_ybCiD2CRinE
+    short-id: a775360a48ef5cfb
+  servername: www.cloudflare.com
+  client-fingerprint: firefox
+- name: 🇸🇬 新加坡 (Singapore) 04 4468K ⚠P - NEKO
   server: 128.199.172.224
   port: 8080
   udp: true
   type: ss
   cipher: rc4-md5
   password: 14fFPrbezE3HDZzsMOr6
-- name: 🇸🇬 新加坡 (Singapore) 04 4685K ⚠P - NEKO
+- name: 🇸🇬 新加坡 (Singapore) 05 6420K 🇨🇳 - NEKO
+  server: 149.28.130.108
+  port: 443
+  udp: true
+  type: trojan
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: searchcreativejobsandshowcaseyourartistictalents.com
+  skip-cert-verify: false
+- name: 🇸🇬 新加坡 (Singapore) 06 5664K ⚠P - NEKO
   server: ww11.levikogjgfdd.ir
   port: 18000
   udp: true
@@ -34,23 +61,54 @@ proxies:
   uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
   alterId: 0
   cipher: auto
+- name: 🇸🇬 新加坡 (Singapore) 07 5021K ⚠P - NEKO
+  server: 68.183.235.122
+  port: 8080
+  udp: true
+  type: ss
+  cipher: rc4-md5
+  password: 14fFPrbezE3HDZzsMOr6
+- name: 🇸🇬 新加坡 (Singapore) 08 5348K ⚠P - NEKO
+  server: 68.183.227.45
+  port: 8080
+  udp: true
+  type: ss
+  cipher: rc4-md5
+  password: 14fFPrbezE3HDZzsMOr6
+- name: 🇸🇬 新加坡 (Singapore) 09 4799K ⚠P - NEKO
+  server: 128.1.186.73
+  port: 8080
+  udp: true
+  type: ss
+  cipher: rc4-md5
+  password: 14fFPrbezE3HDZzsMOr6
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇸🇬 新加坡 (Singapore) 01 5032K ⚠P - NEKO
-  - 🇸🇬 新加坡 (Singapore) 02 4570K ⚠P - NEKO
-  - 🇸🇬 新加坡 (Singapore) 03 4294K ⚠P - NEKO
-  - 🇸🇬 新加坡 (Singapore) 04 4685K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 01 15453K 🇨🇳 - NEKO
+  - 🇸🇬 新加坡 (Singapore) 02 5635K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 03 6065K 🇨🇳 - NEKO
+  - 🇸🇬 新加坡 (Singapore) 04 4468K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 05 6420K 🇨🇳 - NEKO
+  - 🇸🇬 新加坡 (Singapore) 06 5664K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 07 5021K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 08 5348K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 09 4799K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇸🇬 新加坡 (Singapore) 01 5032K ⚠P - NEKO
-  - 🇸🇬 新加坡 (Singapore) 02 4570K ⚠P - NEKO
-  - 🇸🇬 新加坡 (Singapore) 03 4294K ⚠P - NEKO
-  - 🇸🇬 新加坡 (Singapore) 04 4685K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 01 15453K 🇨🇳 - NEKO
+  - 🇸🇬 新加坡 (Singapore) 02 5635K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 03 6065K 🇨🇳 - NEKO
+  - 🇸🇬 新加坡 (Singapore) 04 4468K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 05 6420K 🇨🇳 - NEKO
+  - 🇸🇬 新加坡 (Singapore) 06 5664K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 07 5021K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 08 5348K ⚠P - NEKO
+  - 🇸🇬 新加坡 (Singapore) 09 4799K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

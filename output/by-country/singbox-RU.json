@@ -5,7 +5,48 @@
   "outbounds": [
     {
       "type": "vless",
-      "tag": "🇷🇺 俄罗斯 (Russia) 01 33310K 🇨🇳 - NEKO",
+      "tag": "🇷🇺 俄罗斯 (Russia) 01 18821K 🇨🇳 - NEKO",
+      "server": "82.22.2.225",
+      "server_port": 443,
+      "uuid": "7b22dce8-7ebd-425b-8ca4-7b6190321985",
+      "tls": {
+        "enabled": true,
+        "server_name": "b-wl.fr-2.bnc-gt.co.uk",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "qq"
+        }
+      },
+      "transport": {
+        "type": "grpc",
+        "service_name": "grpc"
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇷🇺 俄罗斯 (Russia) 02 12194K 🇨🇳 - NEKO",
+      "server": "130.49.177.193",
+      "server_port": 443,
+      "uuid": "727a9178-d7f0-4142-8205-b0d19959ded0",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "de-2.ffpn.pro",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "DCpi9-1rSXxBnEIAQ9U3mTqHivk7vHJRV_T2pWw5vCc",
+          "short_id": "681fc2dd643bc2f3"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇷🇺 俄罗斯 (Russia) 03 16048K 🇨🇳 - NEKO",
       "server": "193.233.253.180",
       "server_port": 8444,
       "uuid": "a346c521-7a7f-452b-9356-a4893feb5982",
@@ -29,59 +70,51 @@
     },
     {
       "type": "shadowsocks",
-      "tag": "🇷🇺 俄罗斯 (Russia) 02 9257K ⚠P - NEKO",
-      "server": "46.17.41.61",
-      "server_port": 18443,
-      "method": "aes-256-gcm",
-      "password": "NTiHBg64fsY8u8DbGrtypD9gPGSL386p"
-    },
-    {
-      "type": "shadowsocks",
-      "tag": "🇷🇺 俄罗斯 (Russia) 03 7540K ⚠P - NEKO",
+      "tag": "🇷🇺 俄罗斯 (Russia) 04 8713K ⚠P - NEKO",
       "server": "130.49.189.54",
       "server_port": 8388,
       "method": "chacha20-ietf-poly1305",
       "password": "hTTg7lwQMzpaF7KXpY3A8w"
     },
     {
-      "type": "vless",
-      "tag": "🇷🇺 俄罗斯 (Russia) 04 460K 🇨🇳 - NEKO",
-      "server": "193.233.252.100",
-      "server_port": 443,
-      "uuid": "76ef5ab3-7075-4e23-b445-f3b1bd05d431",
-      "tls": {
-        "enabled": true,
-        "server_name": "swe.qik-fin.uk",
-        "insecure": false,
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "grpc",
-        "service_name": "assets"
-      }
+      "type": "shadowsocks",
+      "tag": "🇷🇺 俄罗斯 (Russia) 05 5393K ⚠P - NEKO",
+      "server": "130.49.189.158",
+      "server_port": 43558,
+      "method": "chacha20-ietf-poly1305",
+      "password": "lsu1v/3iNERwDDVwxCu5033KCUqQOoElYQul63kmqJ8="
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇷🇺 俄罗斯 (Russia) 06 ⚠S6616K ⚠P - NEKO",
+      "server": "185.22.155.121",
+      "server_port": 18443,
+      "method": "aes-256-gcm",
+      "password": "NTiHBg64fsY8u8DbGrtypD9gPGSL386p"
     },
     {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇷🇺 俄罗斯 (Russia) 01 33310K 🇨🇳 - NEKO",
-        "🇷🇺 俄罗斯 (Russia) 02 9257K ⚠P - NEKO",
-        "🇷🇺 俄罗斯 (Russia) 03 7540K ⚠P - NEKO",
-        "🇷🇺 俄罗斯 (Russia) 04 460K 🇨🇳 - NEKO"
+        "🇷🇺 俄罗斯 (Russia) 01 18821K 🇨🇳 - NEKO",
+        "🇷🇺 俄罗斯 (Russia) 02 12194K 🇨🇳 - NEKO",
+        "🇷🇺 俄罗斯 (Russia) 03 16048K 🇨🇳 - NEKO",
+        "🇷🇺 俄罗斯 (Russia) 04 8713K ⚠P - NEKO",
+        "🇷🇺 俄罗斯 (Russia) 05 5393K ⚠P - NEKO",
+        "🇷🇺 俄罗斯 (Russia) 06 ⚠S6616K ⚠P - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇷🇺 俄罗斯 (Russia) 01 33310K 🇨🇳 - NEKO",
-        "🇷🇺 俄罗斯 (Russia) 02 9257K ⚠P - NEKO",
-        "🇷🇺 俄罗斯 (Russia) 03 7540K ⚠P - NEKO",
-        "🇷🇺 俄罗斯 (Russia) 04 460K 🇨🇳 - NEKO"
+        "🇷🇺 俄罗斯 (Russia) 01 18821K 🇨🇳 - NEKO",
+        "🇷🇺 俄罗斯 (Russia) 02 12194K 🇨🇳 - NEKO",
+        "🇷🇺 俄罗斯 (Russia) 03 16048K 🇨🇳 - NEKO",
+        "🇷🇺 俄罗斯 (Russia) 04 8713K ⚠P - NEKO",
+        "🇷🇺 俄罗斯 (Russia) 05 5393K ⚠P - NEKO",
+        "🇷🇺 俄罗斯 (Russia) 06 ⚠S6616K ⚠P - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

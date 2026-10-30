@@ -4,7 +4,19 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇿 捷克 (Czech) 01 26668K 🇨🇳 - NEKO
+- name: 🇨🇿 捷克 (Czech) 01 21908K 🇨🇳 - NEKO
+  server: 46.8.113.64
+  port: 443
+  udp: true
+  type: vless
+  uuid: 55ad002b-6cdf-4d76-81bb-91f3f605afc5
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: _SukRXeT9BnvrE3eQTrw8vwsrhu7w3hNTMTEK2xzHEw
+  servername: www.zabbix.com
+  client-fingerprint: firefox
+- name: 🇨🇿 捷克 (Czech) 02 14228K 🇨🇳 - NEKO
   server: 195.123.245.241
   port: 443
   udp: true
@@ -17,17 +29,33 @@ proxies:
     short-id: 23d0950d60bc0d5b
   servername: gateway.icloud.com
   client-fingerprint: random
+- name: 🇨🇿 捷克 (Czech) 03 19288K 🇨🇳 - NEKO
+  server: 31.77.13.22
+  port: 2063
+  udp: true
+  type: vless
+  uuid: b18d5990-96eb-4587-a386-7f8ef7591e6a
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: MMpt_jWc4J3oySBdf5sPDVRkiWlZmOObth6A1scM9BM
+  servername: rusbid.de
+  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇨🇿 捷克 (Czech) 01 26668K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 01 21908K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 02 14228K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 03 19288K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇿 捷克 (Czech) 01 26668K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 01 21908K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 02 14228K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 03 19288K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

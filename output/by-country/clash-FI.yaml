@@ -4,17 +4,37 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇫🇮 芬兰 (Finland) 01 15440K - NEKO
-  server: cd0.bmi.ir.kolman.com.de
-  port: 80
+- name: 🇫🇮 芬兰 (Finland) 01 2778K ⚠P⚠U - NEKO
+  server: 153.76.194.118
+  port: 8443
   udp: true
-  type: vmess
-  uuid: 2da85937-93d9-4509-8491-63b1921cf447
-  alterId: 0
-  cipher: auto
-  network: httpupgrade
-- name: 🇫🇮 芬兰 (Finland) 02 15896K ⚠P - NEKO
-  server: 65.109.210.221
+  type: hysteria2
+  password: 7d43670b-6b08-45b9-8a24-8f3971abc132
+  sni: finland.biznes.lol
+  skip-cert-verify: false
+- name: 🇫🇮 芬兰 (Finland) 02 14899K ⚠P - NEKO
+  server: 65.21.52.113
+  port: 53731
+  udp: true
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: QoYjvkIZ7-bMIYfVI9IzRXUx5A1o3kj7
+- name: 🇫🇮 芬兰 (Finland) 03 872K ⚠P - NEKO
+  server: 65.109.211.81
+  port: 465
+  udp: true
+  type: vless
+  uuid: 09f30c46-3964-41ce-882a-72aee83ddd42
+  tls: true
+  servername: hw6.divarkhaghazi.com
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hw6.divarkhaghazi.com.
+- name: 🇫🇮 芬兰 (Finland) 04 14180K ⚠P - NEKO
+  server: hw3.divarkhaghazi.com
   port: 465
   udp: true
   type: vless
@@ -28,72 +48,58 @@ proxies:
     path: /
     headers:
       Host: hw3.divarkhaghazi.com.
-- name: 🇫🇮 芬兰 (Finland) 03 18150K ⚠P - NEKO
-  server: 65.109.211.81
-  port: 465
+- name: 🇫🇮 芬兰 (Finland) 05 10982K - NEKO
+  server: cd0.bmi.ir.kolman.com.de
+  port: 80
   udp: true
-  type: vless
-  uuid: 09f30c46-3964-41ce-882a-72aee83ddd42
-  tls: true
-  servername: hw6.divarkhaghazi.com
-  skip-cert-verify: false
-  client-fingerprint: firefox
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hw6.divarkhaghazi.com.
-- name: 🇫🇮 芬兰 (Finland) 04 4139K ⚠P - NEKO
+  type: vmess
+  uuid: 2da85937-93d9-4509-8491-63b1921cf447
+  alterId: 0
+  cipher: auto
+  network: httpupgrade
+- name: 🇫🇮 芬兰 (Finland) 06 6042K ⚠P - NEKO
   server: 6.bmi.ir.asopardaz.ir
   port: 35176
   udp: true
   type: ss
   cipher: 2022-blake3-aes-256-gcm
   password: NjcyNmVjMTU1ZWU5NDA5ZDk0ODg1NWM1MzJjZTE3NDk=:MmRhODU5Mzc5M2Q5NDUwOTg0OTE2M2IxOTIxY2Y0NDc=
-- name: 🇫🇮 芬兰 (Finland) 05 3960K 🇨🇳 - NEKO
-  server: finlandlanzarotte.live
-  port: 443
+- name: 🇫🇮 芬兰 (Finland) 07 6174K 🇨🇳 - NEKO
+  server: 6.bmi.ir.asopardaz.ir
+  port: 8443
   udp: true
   type: vless
-  uuid: 50a87e21-f0e2-4b53-a787-91adfe748f63
+  uuid: 4d90810c-8eb1-479a-83f0-b0467c783456
   flow: xtls-rprx-vision
   tls: true
   reality-opts:
-    public-key: 6lZ5dkQN2sH9tYca374W4N1n9eCanD_F2FfghcksKSo
-  servername: finlandlanzarotte.live
+    public-key: JtA0d5K6Jnmg35oWP9SDOsc1ceuqaxOsNg33fiPHJQs
+    short-id: e915
+  servername: timeline.www.cloudflare.com
   client-fingerprint: chrome
-- name: 🇫🇮 芬兰 (Finland) 06 17845K 🇨🇳 - NEKO
-  server: 46.62.204.134
-  port: 443
-  udp: true
-  type: trojan
-  password: humanity
-  sni: www.pleadcourt.org
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /assignment
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇫🇮 芬兰 (Finland) 01 15440K - NEKO
-  - 🇫🇮 芬兰 (Finland) 02 15896K ⚠P - NEKO
-  - 🇫🇮 芬兰 (Finland) 03 18150K ⚠P - NEKO
-  - 🇫🇮 芬兰 (Finland) 04 4139K ⚠P - NEKO
-  - 🇫🇮 芬兰 (Finland) 05 3960K 🇨🇳 - NEKO
-  - 🇫🇮 芬兰 (Finland) 06 17845K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 01 2778K ⚠P⚠U - NEKO
+  - 🇫🇮 芬兰 (Finland) 02 14899K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 03 872K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 04 14180K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 05 10982K - NEKO
+  - 🇫🇮 芬兰 (Finland) 06 6042K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 07 6174K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇫🇮 芬兰 (Finland) 01 15440K - NEKO
-  - 🇫🇮 芬兰 (Finland) 02 15896K ⚠P - NEKO
-  - 🇫🇮 芬兰 (Finland) 03 18150K ⚠P - NEKO
-  - 🇫🇮 芬兰 (Finland) 04 4139K ⚠P - NEKO
-  - 🇫🇮 芬兰 (Finland) 05 3960K 🇨🇳 - NEKO
-  - 🇫🇮 芬兰 (Finland) 06 17845K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 01 2778K ⚠P⚠U - NEKO
+  - 🇫🇮 芬兰 (Finland) 02 14899K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 03 872K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 04 14180K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 05 10982K - NEKO
+  - 🇫🇮 芬兰 (Finland) 06 6042K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 07 6174K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

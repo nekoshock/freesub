@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇺🇦 乌克兰 (Ukraine) 01 8490K 🇨🇳 - NEKO
+- name: 🇺🇦 乌克兰 (Ukraine) 01 18220K 🇨🇳 - NEKO
   server: 83.147.18.75
   port: 443
   udp: true
@@ -17,34 +17,17 @@ proxies:
     short-id: 7f1e29593aa94ad1
   servername: www.bing.com
   client-fingerprint: qq
-- name: 🇺🇦 乌克兰 (Ukraine) 02 ⚠S515K ⚠P - NEKO
-  server: 216.24.57.225
-  port: 2083
-  udp: true
-  type: vless
-  uuid: 3bcbd7ef-e05b-4745-a1de-5ecf98dd2fb6
-  tls: true
-  servername: pol.netvia.ir
-  skip-cert-verify: false
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /wss
-    headers:
-      Host: pol.netvia.ir
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇺🇦 乌克兰 (Ukraine) 01 8490K 🇨🇳 - NEKO
-  - 🇺🇦 乌克兰 (Ukraine) 02 ⚠S515K ⚠P - NEKO
+  - 🇺🇦 乌克兰 (Ukraine) 01 18220K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇺🇦 乌克兰 (Ukraine) 01 8490K 🇨🇳 - NEKO
-  - 🇺🇦 乌克兰 (Ukraine) 02 ⚠S515K ⚠P - NEKO
+  - 🇺🇦 乌克兰 (Ukraine) 01 18220K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

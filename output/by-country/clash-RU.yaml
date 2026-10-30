@@ -4,7 +4,33 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇷🇺 俄罗斯 (Russia) 01 33310K 🇨🇳 - NEKO
+- name: 🇷🇺 俄罗斯 (Russia) 01 18821K 🇨🇳 - NEKO
+  server: 82.22.2.225
+  port: 443
+  udp: true
+  type: vless
+  uuid: 7b22dce8-7ebd-425b-8ca4-7b6190321985
+  tls: true
+  servername: b-wl.fr-2.bnc-gt.co.uk
+  skip-cert-verify: false
+  client-fingerprint: qq
+  network: grpc
+  grpc-opts:
+    grpc-service-name: grpc
+- name: 🇷🇺 俄罗斯 (Russia) 02 12194K 🇨🇳 - NEKO
+  server: 130.49.177.193
+  port: 443
+  udp: true
+  type: vless
+  uuid: 727a9178-d7f0-4142-8205-b0d19959ded0
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: DCpi9-1rSXxBnEIAQ9U3mTqHivk7vHJRV_T2pWw5vCc
+    short-id: 681fc2dd643bc2f3
+  servername: de-2.ffpn.pro
+  client-fingerprint: firefox
+- name: 🇷🇺 俄罗斯 (Russia) 03 16048K 🇨🇳 - NEKO
   server: 193.233.253.180
   port: 8444
   udp: true
@@ -18,50 +44,48 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: GunService
-- name: 🇷🇺 俄罗斯 (Russia) 02 9257K ⚠P - NEKO
-  server: 46.17.41.61
-  port: 18443
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: NTiHBg64fsY8u8DbGrtypD9gPGSL386p
-- name: 🇷🇺 俄罗斯 (Russia) 03 7540K ⚠P - NEKO
+- name: 🇷🇺 俄罗斯 (Russia) 04 8713K ⚠P - NEKO
   server: 130.49.189.54
   port: 8388
   udp: true
   type: ss
   cipher: chacha20-ietf-poly1305
   password: hTTg7lwQMzpaF7KXpY3A8w
-- name: 🇷🇺 俄罗斯 (Russia) 04 460K 🇨🇳 - NEKO
-  server: 193.233.252.100
-  port: 443
+- name: 🇷🇺 俄罗斯 (Russia) 05 5393K ⚠P - NEKO
+  server: 130.49.189.158
+  port: 43558
   udp: true
-  type: vless
-  uuid: 76ef5ab3-7075-4e23-b445-f3b1bd05d431
-  tls: true
-  servername: swe.qik-fin.uk
-  skip-cert-verify: false
-  client-fingerprint: chrome
-  network: grpc
-  grpc-opts:
-    grpc-service-name: assets
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: lsu1v/3iNERwDDVwxCu5033KCUqQOoElYQul63kmqJ8=
+- name: 🇷🇺 俄罗斯 (Russia) 06 ⚠S6616K ⚠P - NEKO
+  server: 185.22.155.121
+  port: 18443
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: NTiHBg64fsY8u8DbGrtypD9gPGSL386p
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇷🇺 俄罗斯 (Russia) 01 33310K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 02 9257K ⚠P - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 03 7540K ⚠P - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 04 460K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 01 18821K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 02 12194K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 03 16048K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 04 8713K ⚠P - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 05 5393K ⚠P - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 06 ⚠S6616K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇷🇺 俄罗斯 (Russia) 01 33310K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 02 9257K ⚠P - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 03 7540K ⚠P - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 04 460K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 01 18821K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 02 12194K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 03 16048K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 04 8713K ⚠P - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 05 5393K ⚠P - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 06 ⚠S6616K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

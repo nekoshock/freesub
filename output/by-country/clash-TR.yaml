@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇹🇷 土耳其 (Turkey) 01 13306K 🇨🇳 - NEKO
+- name: 🇹🇷 土耳其 (Turkey) 01 10883K 🇨🇳 - NEKO
   server: 62.133.63.45
   port: 8444
   udp: true
@@ -19,7 +19,7 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: GunService
-- name: 🇹🇷 土耳其 (Turkey) 02 16220K 🇨🇳 - NEKO
+- name: 🇹🇷 土耳其 (Turkey) 02 9837K 🇨🇳 - NEKO
   server: 78.135.73.47
   port: 443
   udp: true
@@ -32,7 +32,7 @@ proxies:
     short-id: f46cd3ea3d1eb72d
   servername: www.datadoghq.com
   client-fingerprint: firefox
-- name: 🇹🇷 土耳其 (Turkey) 03 8311K 🇨🇳 - NEKO
+- name: 🇹🇷 土耳其 (Turkey) 03 8770K ⚠P - NEKO
   server: 151.241.226.201
   port: 2053
   udp: true
@@ -44,38 +44,34 @@ proxies:
     short-id: 9e419c0759b54d6f
   servername: www.apple.com
   client-fingerprint: firefox
-- name: 🇹🇷 土耳其 (Turkey) 04 ⚠S5926K 🇨🇳 - NEKO
-  server: 177.3.208.65
-  port: 443
+- name: 🇹🇷 土耳其 (Turkey) 04 3118K ⚠P - NEKO
+  server: game.celvixo.ir
+  port: 2087
   udp: true
   type: vless
-  uuid: 4f34bc04-479c-49ba-91a8-6bb9ed15031c
-  tls: true
-  servername: tgmansion.site
-  skip-cert-verify: false
-  client-fingerprint: chrome
+  uuid: 180fb21f-968d-47da-4dad-552f2793954e
   network: ws
   ws-opts:
-    path: /vless-tr
+    path: /
     headers:
-      Host: tgmansion.site
+      Host: cp.xelzano.ir
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇹🇷 土耳其 (Turkey) 01 13306K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 02 16220K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 03 8311K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 04 ⚠S5926K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 01 10883K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 02 9837K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 03 8770K ⚠P - NEKO
+  - 🇹🇷 土耳其 (Turkey) 04 3118K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇹🇷 土耳其 (Turkey) 01 13306K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 02 16220K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 03 8311K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 04 ⚠S5926K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 01 10883K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 02 9837K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 03 8770K ⚠P - NEKO
+  - 🇹🇷 土耳其 (Turkey) 04 3118K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

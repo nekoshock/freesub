@@ -1,0 +1,74 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: info
+proxies:
+- name: 🇭🇰 中国香港 (Hong Kong) 01 231K 🇨🇳 - NEKO
+  server: 165.154.63.139
+  port: 443
+  udp: true
+  type: vless
+  uuid: 91ad30e9-ab06-4b4c-9fb9-1c2aa97d8b3a
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: AE81BrwMc8-kwGEIA1LhzaL03er0Qwt2V-fFy76F5jQ
+    short-id: ca4aedd4
+  servername: www.amazon.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 02 634K 🇨🇳 - NEKO
+  server: 189.24.79.229
+  port: 443
+  udp: true
+  type: vless
+  uuid: ee29ce31-ee5e-479b-900c-97c50e0f1218
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: Di20k-Yrc4tfKGcSYCLp88xDaYMsIrIa_6go-QvAVCw
+    short-id: 6717a9ae
+  servername: www.microsoft.com
+  client-fingerprint: firefox
+- name: 🇭🇰 中国香港 (Hong Kong) 03 7964K 🇨🇳 - NEKO
+  server: 141.11.91.35
+  port: 443
+  udp: true
+  type: vless
+  uuid: 4a270d3e-27b4-497d-8c8c-28f1f54958d9
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: 0hIFPaEn4RdFib8_eP8HYxMywR5izEwM3JA2W1Zo8U4
+    short-id: b390142456517acc
+  servername: www.amazon.com
+  client-fingerprint: firefox
+- name: 🇭🇰 中国香港 (Hong Kong) 04 566K ⚠P - NEKO
+  server: 38.76.180.144
+  port: 1443
+  udp: true
+  type: vless
+  uuid: d98b67d4-024a-4bba-91e2-e6ebece6df11
+  network: ws
+  ws-opts:
+    path: /vless-ws
+proxy-groups:
+- name: PROXIES
+  type: select
+  proxies:
+  - AUTO
+  - 🇭🇰 中国香港 (Hong Kong) 01 231K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 634K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 03 7964K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 04 566K ⚠P - NEKO
+- name: AUTO
+  type: url-test
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  proxies:
+  - 🇭🇰 中国香港 (Hong Kong) 01 231K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 634K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 03 7964K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 04 566K ⚠P - NEKO
+rules:
+- MATCH,PROXIES

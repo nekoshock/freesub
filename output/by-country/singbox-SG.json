@@ -5,15 +5,47 @@
   "outbounds": [
     {
       "type": "vmess",
-      "tag": "🇸🇬 新加坡 (Singapore) 01 5921K ⚠P - NEKO",
+      "tag": "🇸🇬 新加坡 (Singapore) 01 5902K ⚠P - NEKO",
       "server": "149.88.23.202",
       "server_port": 18000,
       "uuid": "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe",
       "security": "auto"
     },
     {
+      "type": "shadowsocks",
+      "tag": "🇸🇬 新加坡 (Singapore) 02 4910K ⚠P - NEKO",
+      "server": "128.199.172.224",
+      "server_port": 8080,
+      "method": "rc4-md5",
+      "password": "14fFPrbezE3HDZzsMOr6"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇸🇬 新加坡 (Singapore) 03 5000K ⚠P - NEKO",
+      "server": "68.183.235.122",
+      "server_port": 8080,
+      "method": "rc4-md5",
+      "password": "14fFPrbezE3HDZzsMOr6"
+    },
+    {
+      "type": "trojan",
+      "tag": "🇸🇬 新加坡 (Singapore) 04 6211K 🇨🇳 - NEKO",
+      "server": "149.28.130.108",
+      "server_port": 443,
+      "password": "0ab6c98dae3b48e8b9c4a776b6c9c19a",
+      "tls": {
+        "enabled": true,
+        "server_name": "searchcreativejobsandshowcaseyourartistictalents.com",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
       "type": "vless",
-      "tag": "🇸🇬 新加坡 (Singapore) 02 6227K 🇨🇳 - NEKO",
+      "tag": "🇸🇬 新加坡 (Singapore) 05 6314K 🇨🇳 - NEKO",
       "server": "206.206.76.75",
       "server_port": 443,
       "uuid": "32cf52f4-b8d2-4ed5-a37c-0d0a8e743309",
@@ -34,7 +66,7 @@
     },
     {
       "type": "vmess",
-      "tag": "🇸🇬 新加坡 (Singapore) 03 5849K ⚠P - NEKO",
+      "tag": "🇸🇬 新加坡 (Singapore) 06 5894K ⚠P - NEKO",
       "server": "149.88.23.207",
       "server_port": 18000,
       "uuid": "f8c8dc3d-0d37-46b0-8b34-a7232882fcfe",
@@ -42,85 +74,37 @@
     },
     {
       "type": "shadowsocks",
-      "tag": "🇸🇬 新加坡 (Singapore) 04 4871K ⚠P - NEKO",
-      "server": "128.199.172.224",
+      "tag": "🇸🇬 新加坡 (Singapore) 07 5020K ⚠P - NEKO",
+      "server": "68.183.227.45",
       "server_port": 8080,
       "method": "rc4-md5",
       "password": "14fFPrbezE3HDZzsMOr6"
-    },
-    {
-      "type": "trojan",
-      "tag": "🇸🇬 新加坡 (Singapore) 05 6592K 🇨🇳 - NEKO",
-      "server": "149.28.130.108",
-      "server_port": 443,
-      "password": "0ab6c98dae3b48e8b9c4a776b6c9c19a",
-      "tls": {
-        "enabled": true,
-        "server_name": "searchcreativejobsandshowcaseyourartistictalents.com",
-        "insecure": false
-      }
-    },
-    {
-      "type": "shadowsocks",
-      "tag": "🇸🇬 新加坡 (Singapore) 06 4993K ⚠P - NEKO",
-      "server": "68.183.235.122",
-      "server_port": 8080,
-      "method": "rc4-md5",
-      "password": "14fFPrbezE3HDZzsMOr6"
-    },
-    {
-      "type": "vless",
-      "tag": "🇸🇬 新加坡 (Singapore) 07 4640K ⚠P - NEKO",
-      "server": "178.94.25.73",
-      "server_port": 14430,
-      "uuid": "2dacc738-5720-4824-b8bc-e3db57596ba7",
-      "transport": {
-        "type": "ws",
-        "path": "/vless",
-        "headers": {
-          "Host": "178.94.25.73"
-        }
-      }
-    },
-    {
-      "type": "vless",
-      "tag": "🇸🇬 新加坡 (Singapore) 08 6452K 🇨🇳 - NEKO",
-      "server": "45.77.243.143",
-      "server_port": 443,
-      "uuid": "e9a8144e-5237-488a-afb1-9ca3d8d54c80",
-      "tls": {
-        "enabled": true,
-        "server_name": "sg003.zestapp778.com",
-        "insecure": false
-      }
     },
     {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇸🇬 新加坡 (Singapore) 01 5921K ⚠P - NEKO",
-        "🇸🇬 新加坡 (Singapore) 02 6227K 🇨🇳 - NEKO",
-        "🇸🇬 新加坡 (Singapore) 03 5849K ⚠P - NEKO",
-        "🇸🇬 新加坡 (Singapore) 04 4871K ⚠P - NEKO",
-        "🇸🇬 新加坡 (Singapore) 05 6592K 🇨🇳 - NEKO",
-        "🇸🇬 新加坡 (Singapore) 06 4993K ⚠P - NEKO",
-        "🇸🇬 新加坡 (Singapore) 07 4640K ⚠P - NEKO",
-        "🇸🇬 新加坡 (Singapore) 08 6452K 🇨🇳 - NEKO"
+        "🇸🇬 新加坡 (Singapore) 01 5902K ⚠P - NEKO",
+        "🇸🇬 新加坡 (Singapore) 02 4910K ⚠P - NEKO",
+        "🇸🇬 新加坡 (Singapore) 03 5000K ⚠P - NEKO",
+        "🇸🇬 新加坡 (Singapore) 04 6211K 🇨🇳 - NEKO",
+        "🇸🇬 新加坡 (Singapore) 05 6314K 🇨🇳 - NEKO",
+        "🇸🇬 新加坡 (Singapore) 06 5894K ⚠P - NEKO",
+        "🇸🇬 新加坡 (Singapore) 07 5020K ⚠P - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇸🇬 新加坡 (Singapore) 01 5921K ⚠P - NEKO",
-        "🇸🇬 新加坡 (Singapore) 02 6227K 🇨🇳 - NEKO",
-        "🇸🇬 新加坡 (Singapore) 03 5849K ⚠P - NEKO",
-        "🇸🇬 新加坡 (Singapore) 04 4871K ⚠P - NEKO",
-        "🇸🇬 新加坡 (Singapore) 05 6592K 🇨🇳 - NEKO",
-        "🇸🇬 新加坡 (Singapore) 06 4993K ⚠P - NEKO",
-        "🇸🇬 新加坡 (Singapore) 07 4640K ⚠P - NEKO",
-        "🇸🇬 新加坡 (Singapore) 08 6452K 🇨🇳 - NEKO"
+        "🇸🇬 新加坡 (Singapore) 01 5902K ⚠P - NEKO",
+        "🇸🇬 新加坡 (Singapore) 02 4910K ⚠P - NEKO",
+        "🇸🇬 新加坡 (Singapore) 03 5000K ⚠P - NEKO",
+        "🇸🇬 新加坡 (Singapore) 04 6211K 🇨🇳 - NEKO",
+        "🇸🇬 新加坡 (Singapore) 05 6314K 🇨🇳 - NEKO",
+        "🇸🇬 新加坡 (Singapore) 06 5894K ⚠P - NEKO",
+        "🇸🇬 新加坡 (Singapore) 07 5020K ⚠P - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

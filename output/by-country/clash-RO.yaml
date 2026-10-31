@@ -4,13 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇷🇴 罗马尼亚 (Romania) 01 17259K ⚠P - NEKO
-  server: 155.117.5.208
-  port: 2052
-  udp: true
-  type: vless
-  uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
-- name: 🇷🇴 罗马尼亚 (Romania) 02 10553K 🇨🇳 - NEKO
+- name: 🇷🇴 罗马尼亚 (Romania) 01 10627K 🇨🇳 - NEKO
   server: 46.28.67.55
   port: 443
   udp: true
@@ -23,8 +17,24 @@ proxies:
     short-id: d06d78e974491b6e
   servername: www.cloudflare.com
   client-fingerprint: chrome
-- name: 🇷🇴 罗马尼亚 (Romania) 03 9233K 🇨🇳 - NEKO
-  server: app-ms-90.next-gen-shopping.com
+- name: 🇷🇴 罗马尼亚 (Romania) 02 8555K 🇨🇳 - NEKO
+  server: 162.249.125.133
+  port: 443
+  udp: true
+  type: hysteria2
+  password: QCgqi_I4EkV8UR-OgQ_tG4EnVTEVvIyR2GgRBzrIn2s
+  sni: hy2-new.aspidnet.xyz
+  skip-cert-verify: false
+  obfs: salamander
+  obfs-password: c1b4086fea89914496c7e10967a419216566
+- name: 🇷🇴 罗马尼亚 (Romania) 03 ⚠S14464K ⚠P - NEKO
+  server: 155.117.5.208
+  port: 2052
+  udp: true
+  type: vless
+  uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
+- name: 🇷🇴 罗马尼亚 (Romania) 04 10212K 🇨🇳 - NEKO
+  server: 2.26.89.192
   port: 443
   udp: true
   type: vless
@@ -41,16 +51,18 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇷🇴 罗马尼亚 (Romania) 01 17259K ⚠P - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 02 10553K 🇨🇳 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 03 9233K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 01 10627K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 02 8555K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 03 ⚠S14464K ⚠P - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 04 10212K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇷🇴 罗马尼亚 (Romania) 01 17259K ⚠P - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 02 10553K 🇨🇳 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 03 9233K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 01 10627K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 02 8555K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 03 ⚠S14464K ⚠P - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 04 10212K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

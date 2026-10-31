@@ -4,15 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇦🇪 阿联酋 (UAE) 01 6199K 🇨🇳 - NEKO
-  server: forshynewh.duckdns.org
-  port: 443
-  udp: true
-  type: hysteria2
-  password: 69e41e64-a832-471a-b740-94577ca85520
-  sni: forshynewh.duckdns.org
-  skip-cert-verify: false
-- name: 🇦🇪 阿联酋 (UAE) 02 11021K 🇨🇳 - NEKO
+- name: 🇦🇪 阿联酋 (UAE) 01 11844K 🇨🇳 - NEKO
   server: 130.49.161.70
   port: 443
   udp: true
@@ -22,29 +14,15 @@ proxies:
   skip-cert-verify: false
   obfs: salamander
   obfs-password: rG07s3COMIEvdnQipRyWzx_H_2xygNC3
-- name: 🇦🇪 阿联酋 (UAE) 03 540K 🇨🇳 - NEKO
-  server: 130.49.162.137
+- name: 🇦🇪 阿联酋 (UAE) 02 8143K 🇨🇳 - NEKO
+  server: forshynewh.duckdns.org
   port: 443
   udp: true
-  type: vless
-  uuid: 689a62e4-37e7-41de-9e6a-f2a56368c9e2
-  flow: xtls-rprx-vision
-  tls: true
-  servername: sk3.speedtestinternet.link
+  type: hysteria2
+  password: 69e41e64-a832-471a-b740-94577ca85520
+  sni: forshynewh.duckdns.org
   skip-cert-verify: false
-  client-fingerprint: firefox
-- name: 🇦🇪 阿联酋 (UAE) 04 581K 🇨🇳 - NEKO
-  server: 130.49.162.137
-  port: 443
-  udp: true
-  type: vless
-  uuid: 689a62e4-37e7-41de-9e6a-f2a56368c9e2
-  flow: xtls-rprx-vision
-  tls: true
-  servername: sk3.speedtestinternet.link
-  skip-cert-verify: false
-  client-fingerprint: firefox
-- name: 🇦🇪 阿联酋 (UAE) 05 26446K ⚠P - NEKO
+- name: 🇦🇪 阿联酋 (UAE) 03 16857K ⚠P - NEKO
   server: 185.253.116.33
   port: 14430
   udp: true
@@ -53,49 +31,30 @@ proxies:
   network: ws
   ws-opts:
     path: /vless
-- name: 🇦🇪 阿联酋 (UAE) 06 12618K ⚠P - NEKO
-  server: 178.253.16.185
+- name: 🇦🇪 阿联酋 (UAE) 04 293K ⚠P - NEKO
+  server: ams1.rvpn.app
   port: 8388
   udp: true
   type: ss
   cipher: chacha20-ietf-poly1305
   password: x2A6AsyZ-rAllz0wbKHzWA
-- name: 🇦🇪 阿联酋 (UAE) 07 ⚠S2545K 🇨🇳 - NEKO
-  server: app-mi-26.spbstudentlife.com
-  port: 443
-  udp: true
-  type: vless
-  uuid: 07680ffb-0666-4836-b6ad-ec0de62bc38f
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: cYtAkO6yUCuRTxHvF8EH76bybk1yfS005KLls-at2yc
-    short-id: a7856800c2deb7b2
-  servername: assets-mi-26.spbstudentlife.com
-  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇦🇪 阿联酋 (UAE) 01 6199K 🇨🇳 - NEKO
-  - 🇦🇪 阿联酋 (UAE) 02 11021K 🇨🇳 - NEKO
-  - 🇦🇪 阿联酋 (UAE) 03 540K 🇨🇳 - NEKO
-  - 🇦🇪 阿联酋 (UAE) 04 581K 🇨🇳 - NEKO
-  - 🇦🇪 阿联酋 (UAE) 05 26446K ⚠P - NEKO
-  - 🇦🇪 阿联酋 (UAE) 06 12618K ⚠P - NEKO
-  - 🇦🇪 阿联酋 (UAE) 07 ⚠S2545K 🇨🇳 - NEKO
+  - 🇦🇪 阿联酋 (UAE) 01 11844K 🇨🇳 - NEKO
+  - 🇦🇪 阿联酋 (UAE) 02 8143K 🇨🇳 - NEKO
+  - 🇦🇪 阿联酋 (UAE) 03 16857K ⚠P - NEKO
+  - 🇦🇪 阿联酋 (UAE) 04 293K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇦🇪 阿联酋 (UAE) 01 6199K 🇨🇳 - NEKO
-  - 🇦🇪 阿联酋 (UAE) 02 11021K 🇨🇳 - NEKO
-  - 🇦🇪 阿联酋 (UAE) 03 540K 🇨🇳 - NEKO
-  - 🇦🇪 阿联酋 (UAE) 04 581K 🇨🇳 - NEKO
-  - 🇦🇪 阿联酋 (UAE) 05 26446K ⚠P - NEKO
-  - 🇦🇪 阿联酋 (UAE) 06 12618K ⚠P - NEKO
-  - 🇦🇪 阿联酋 (UAE) 07 ⚠S2545K 🇨🇳 - NEKO
+  - 🇦🇪 阿联酋 (UAE) 01 11844K 🇨🇳 - NEKO
+  - 🇦🇪 阿联酋 (UAE) 02 8143K 🇨🇳 - NEKO
+  - 🇦🇪 阿联酋 (UAE) 03 16857K ⚠P - NEKO
+  - 🇦🇪 阿联酋 (UAE) 04 293K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

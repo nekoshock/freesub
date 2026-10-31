@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇫🇮 芬兰 (Finland) 01 10962K 🇨🇳 - NEKO
+- name: 🇫🇮 芬兰 (Finland) 01 10527K 🇨🇳 - NEKO
   server: fi1.obxodvpn.us
   port: 443
   udp: true
@@ -12,7 +12,7 @@ proxies:
   password: 2a0fc918-9c61-451b-a9ad-e8f796e70f52
   sni: nl1.obxodvpn.us
   skip-cert-verify: false
-- name: 🇫🇮 芬兰 (Finland) 02 11905K ⚠P⚠U - NEKO
+- name: 🇫🇮 芬兰 (Finland) 02 485K ⚠P⚠U - NEKO
   server: 153.76.194.118
   port: 8443
   udp: true
@@ -20,25 +20,14 @@ proxies:
   password: 7d43670b-6b08-45b9-8a24-8f3971abc132
   sni: finland.biznes.lol
   skip-cert-verify: false
-- name: 🇫🇮 芬兰 (Finland) 03 9939K 🇨🇳 - NEKO
-  server: 78.17.27.137
-  port: 8443
-  udp: true
-  type: vless
-  uuid: 48d9a277-776b-4ab8-a357-88a1958beed8
-  tls: true
-  reality-opts:
-    public-key: DZ0BYEIHEe9KmJzM_j5EAN0t3_BTcfO63P7x6SRCeQM
-  servername: www.aalto.fi
-  client-fingerprint: firefox
-- name: 🇫🇮 芬兰 (Finland) 04 14479K ⚠P - NEKO
+- name: 🇫🇮 芬兰 (Finland) 03 864K ⚠P - NEKO
   server: 65.109.211.81
   port: 465
   udp: true
   type: vless
   uuid: 09f30c46-3964-41ce-882a-72aee83ddd42
   tls: true
-  servername: hw6.divarkhaghazi.com.
+  servername: hw6.divarkhaghazi.com
   skip-cert-verify: false
   client-fingerprint: chrome
   network: ws
@@ -46,7 +35,7 @@ proxies:
     path: /
     headers:
       Host: hw6.divarkhaghazi.com.
-- name: 🇫🇮 芬兰 (Finland) 05 9954K ⚠P - NEKO
+- name: 🇫🇮 芬兰 (Finland) 04 9496K ⚠P - NEKO
   server: 65.109.210.221
   port: 465
   udp: true
@@ -61,40 +50,23 @@ proxies:
     path: /
     headers:
       Host: hw3.divarkhaghazi.com.
-- name: 🇫🇮 芬兰 (Finland) 06 6067K 🇨🇳 - NEKO
-  server: 6.bmi.ir.asopardaz.ir
-  port: 8443
-  udp: true
-  type: vless
-  uuid: ee3be052-8950-44db-a765-9b688f1128ae
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: JtA0d5K6Jnmg35oWP9SDOsc1ceuqaxOsNg33fiPHJQs
-    short-id: e915
-  servername: timeline.www.cloudflare.com
-  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇫🇮 芬兰 (Finland) 01 10962K 🇨🇳 - NEKO
-  - 🇫🇮 芬兰 (Finland) 02 11905K ⚠P⚠U - NEKO
-  - 🇫🇮 芬兰 (Finland) 03 9939K 🇨🇳 - NEKO
-  - 🇫🇮 芬兰 (Finland) 04 14479K ⚠P - NEKO
-  - 🇫🇮 芬兰 (Finland) 05 9954K ⚠P - NEKO
-  - 🇫🇮 芬兰 (Finland) 06 6067K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 01 10527K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 02 485K ⚠P⚠U - NEKO
+  - 🇫🇮 芬兰 (Finland) 03 864K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 04 9496K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇫🇮 芬兰 (Finland) 01 10962K 🇨🇳 - NEKO
-  - 🇫🇮 芬兰 (Finland) 02 11905K ⚠P⚠U - NEKO
-  - 🇫🇮 芬兰 (Finland) 03 9939K 🇨🇳 - NEKO
-  - 🇫🇮 芬兰 (Finland) 04 14479K ⚠P - NEKO
-  - 🇫🇮 芬兰 (Finland) 05 9954K ⚠P - NEKO
-  - 🇫🇮 芬兰 (Finland) 06 6067K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 01 10527K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 02 485K ⚠P⚠U - NEKO
+  - 🇫🇮 芬兰 (Finland) 03 864K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 04 9496K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

@@ -4,20 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇿 捷克 (Czech) 01 15289K 🇨🇳 - NEKO
-  server: 212.102.38.25
-  port: 443
-  udp: true
-  type: vless
-  uuid: b34a52cb-cd52-49a8-9362-b8e97c151d49
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: 23cb4W9THzBKsrECsLh-A_FcKZfkAtUONoDze8-GnQE
-    short-id: e90360ec7cc61b20
-  servername: udemy.com
-  client-fingerprint: chrome
-- name: 🇨🇿 捷克 (Czech) 02 16451K 🇨🇳 - NEKO
+- name: 🇨🇿 捷克 (Czech) 01 14595K 🇨🇳 - NEKO
   server: 195.123.245.241
   port: 443
   udp: true
@@ -30,20 +17,21 @@ proxies:
     short-id: 23d0950d60bc0d5b
   servername: gateway.icloud.com
   client-fingerprint: random
-- name: 🇨🇿 捷克 (Czech) 03 16232K 🇨🇳 - NEKO
-  server: 31.77.13.22
-  port: 2063
+- name: 🇨🇿 捷克 (Czech) 02 24393K 🇨🇳 - NEKO
+  server: 212.102.38.25
+  port: 443
   udp: true
   type: vless
-  uuid: b18d5990-96eb-4587-a386-7f8ef7591e6a
+  uuid: b34a52cb-cd52-49a8-9362-b8e97c151d49
   flow: xtls-rprx-vision
   tls: true
   reality-opts:
-    public-key: MMpt_jWc4J3oySBdf5sPDVRkiWlZmOObth6A1scM9BM
-  servername: rusbid.de
+    public-key: 23cb4W9THzBKsrECsLh-A_FcKZfkAtUONoDze8-GnQE
+    short-id: e90360ec7cc61b20
+  servername: udemy.com
   client-fingerprint: chrome
-- name: 🇨🇿 捷克 (Czech) 04 12340K 🇨🇳 - NEKO
-  server: 185.78.76.166
+- name: 🇨🇿 捷克 (Czech) 03 607K 🇨🇳 - NEKO
+  server: 104.19.235.15
   port: 443
   udp: true
   type: vless
@@ -51,7 +39,6 @@ proxies:
   tls: true
   servername: n.bitpulse.me
   skip-cert-verify: false
-  client-fingerprint: firefox
   network: ws
   ws-opts:
     path: /019bcbad-3813-7cce-8786-3ac0e418f128
@@ -62,18 +49,16 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇨🇿 捷克 (Czech) 01 15289K 🇨🇳 - NEKO
-  - 🇨🇿 捷克 (Czech) 02 16451K 🇨🇳 - NEKO
-  - 🇨🇿 捷克 (Czech) 03 16232K 🇨🇳 - NEKO
-  - 🇨🇿 捷克 (Czech) 04 12340K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 01 14595K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 02 24393K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 03 607K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇿 捷克 (Czech) 01 15289K 🇨🇳 - NEKO
-  - 🇨🇿 捷克 (Czech) 02 16451K 🇨🇳 - NEKO
-  - 🇨🇿 捷克 (Czech) 03 16232K 🇨🇳 - NEKO
-  - 🇨🇿 捷克 (Czech) 04 12340K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 01 14595K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 02 24393K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 03 607K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

@@ -4,41 +4,15 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇯🇵 日本 (Japan) 01 9572K 🇨🇳 - NEKO
-  server: 149.22.87.204
+- name: 🇯🇵 日本 (Japan) 01 11412K 🇨🇳 - NEKO
+  server: vp3.yysyy.online
   port: 443
   udp: true
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-- name: 🇯🇵 日本 (Japan) 02 13893K 🇨🇳 - NEKO
-  server: 149.22.87.240
-  port: 443
-  udp: true
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-- name: 🇯🇵 日本 (Japan) 03 12942K 🇨🇳 - NEKO
-  server: 176.97.71.90
-  port: 443
-  udp: true
-  type: vless
-  uuid: 4a270d3e-27b4-497d-8c8c-28f1f54958d9
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: 0hIFPaEn4RdFib8_eP8HYxMywR5izEwM3JA2W1Zo8U4
-    short-id: b390142456517acc
-  servername: www.amazon.com
-  client-fingerprint: chrome
-- name: 🇯🇵 日本 (Japan) 04 10324K 🇨🇳 - NEKO
-  server: 149.22.87.241
-  port: 443
-  udp: true
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-- name: 🇯🇵 日本 (Japan) 05 13055K 🇨🇳 - NEKO
+  type: hysteria2
+  password: 96ab5cd282733fd4c312a61f972f330a
+  sni: vp3.yysyy.online
+  skip-cert-verify: false
+- name: 🇯🇵 日本 (Japan) 02 12777K 🇨🇳 - NEKO
   server: ga1data.xyy123.bid
   port: 443
   udp: true
@@ -51,28 +25,28 @@ proxies:
     short-id: 00b0389a
   servername: www.amzn.com
   client-fingerprint: chrome
-- name: 🇯🇵 日本 (Japan) 06 11619K 🇨🇳 - NEKO
-  server: 45.32.10.7
+- name: 🇯🇵 日本 (Japan) 03 14062K 🇨🇳 - NEKO
+  server: 149.22.87.241
   port: 443
   udp: true
-  type: hysteria2
-  password: 96ab5cd282733fd4c312a61f972f330a
-  sni: vp3.yysyy.online
-  skip-cert-verify: false
-- name: 🇯🇵 日本 (Japan) 07 12973K 🇨🇳 - NEKO
-  server: 31.76.91.98
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇯🇵 日本 (Japan) 04 14350K - NEKO
+  server: 149.22.87.240
   port: 443
   udp: true
-  type: vless
-  uuid: 7072eeba-94fd-4fb3-92f2-a4506dd84cd8
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: ejx56dFtS4LK_Th6HSLFFdm7v7zqRpv8KfjrWAw4Sjg
-    short-id: bd6f67b6b2152b45
-  servername: fuji.etherhub.cc
-  client-fingerprint: chrome
-- name: 🇯🇵 日本 (Japan) 08 13113K 🇨🇳 - NEKO
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇯🇵 日本 (Japan) 05 13246K - NEKO
+  server: 149.22.87.204
+  port: 443
+  udp: true
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇯🇵 日本 (Japan) 06 13814K 🇨🇳 - NEKO
   server: 167.179.108.225
   port: 443
   udp: true
@@ -80,47 +54,7 @@ proxies:
   password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
   sni: discoverparttimepositionsandsupplementyourincomeguide.com
   skip-cert-verify: false
-- name: 🇯🇵 日本 (Japan) 09 5417K 🇨🇳 - NEKO
-  server: 103.75.118.228
-  port: 11452
-  udp: true
-  type: vless
-  uuid: 814bd064-544d-4255-a070-5705c03f6da9
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
-    short-id: 48050fab
-  servername: www.apple.com
-  client-fingerprint: chrome
-- name: 🇯🇵 日本 (Japan) 10 21161K 🇨🇳 - NEKO
-  server: panel.frojbrpibj124.workers.dev
-  port: 443
-  udp: true
-  type: vless
-  uuid: 230ca1c7-75ab-4837-8bdd-c8d935b31753
-  tls: true
-  servername: panel.frojbrpibj124.workers.dev
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: panel.frojbrpibj124.workers.dev
-- name: 🇯🇵 日本 (Japan) 11 ⚠S597K 🇨🇳 - NEKO
-  server: 3.114.220.22
-  port: 19645
-  udp: true
-  type: vless
-  uuid: 814bd064-544d-4255-a070-5705c03f6da9
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
-    short-id: 48050fab
-  servername: www.apple.com
-  client-fingerprint: ios
-- name: 🇯🇵 日本 (Japan) 12 12505K 🇨🇳 - NEKO
+- name: 🇯🇵 日本 (Japan) 07 12282K 🇨🇳 - NEKO
   server: 45.76.98.127
   port: 443
   udp: true
@@ -135,7 +69,7 @@ proxies:
   network: ws
   ws-opts:
     path: /ws
-- name: 🇯🇵 日本 (Japan) 13 7858K ⚠P⚠U - NEKO
+- name: 🇯🇵 日本 (Japan) 08 11620K ⚠P⚠U - NEKO
   server: freedom.chenlan.top
   port: 12765
   udp: true
@@ -148,36 +82,26 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇯🇵 日本 (Japan) 01 9572K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 02 13893K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 03 12942K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 04 10324K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 05 13055K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 06 11619K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 07 12973K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 08 13113K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 09 5417K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 10 21161K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 11 ⚠S597K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 12 12505K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 13 7858K ⚠P⚠U - NEKO
+  - 🇯🇵 日本 (Japan) 01 11412K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 02 12777K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 03 14062K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 04 14350K - NEKO
+  - 🇯🇵 日本 (Japan) 05 13246K - NEKO
+  - 🇯🇵 日本 (Japan) 06 13814K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 07 12282K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 08 11620K ⚠P⚠U - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇯🇵 日本 (Japan) 01 9572K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 02 13893K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 03 12942K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 04 10324K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 05 13055K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 06 11619K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 07 12973K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 08 13113K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 09 5417K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 10 21161K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 11 ⚠S597K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 12 12505K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 13 7858K ⚠P⚠U - NEKO
+  - 🇯🇵 日本 (Japan) 01 11412K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 02 12777K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 03 14062K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 04 14350K - NEKO
+  - 🇯🇵 日本 (Japan) 05 13246K - NEKO
+  - 🇯🇵 日本 (Japan) 06 13814K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 07 12282K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 08 11620K ⚠P⚠U - NEKO
 rules:
 - MATCH,PROXIES

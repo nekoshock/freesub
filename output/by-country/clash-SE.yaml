@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇸🇪 瑞典 (Sweden) 01 18095K 🇨🇳 - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 01 16251K 🇨🇳 - NEKO
   server: 50.7.38.243
   port: 443
   udp: true
@@ -12,7 +12,7 @@ proxies:
   password: d4ca9415f0eac7897472e1e5b86d2e96
   sni: promo.betust.net
   skip-cert-verify: false
-- name: 🇸🇪 瑞典 (Sweden) 02 11801K 🇨🇳 - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 02 10801K 🇨🇳 - NEKO
   server: 192.142.23.46
   port: 443
   udp: true
@@ -20,7 +20,28 @@ proxies:
   password: a0052f4f-4c63-0002-a16f-ab2d5d718cd3
   sni: diffoscope.com
   skip-cert-verify: false
-- name: 🇸🇪 瑞典 (Sweden) 03 6723K 🇨🇳 - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 03 15818K 🇨🇳 - NEKO
+  server: 70.34.207.14
+  port: 443
+  udp: true
+  type: trojan
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: searchhealthcarejobsandbuildmedicalcareerpathway.com
+  skip-cert-verify: false
+- name: 🇸🇪 瑞典 (Sweden) 04 12916K 🇨🇳 - NEKO
+  server: 31.172.65.4
+  port: 8443
+  udp: true
+  type: vless
+  uuid: 9c6e83fc-b755-4ad4-9b0a-14b610153d8f
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: wRvUAKwcHc4pBNVouIcVjQkVD9aCRR-AmtcFyBV36lU
+    short-id: 0e7741edc378622f
+  servername: www.bing.com
+  client-fingerprint: qq
+- name: 🇸🇪 瑞典 (Sweden) 05 10567K 🇨🇳 - NEKO
   server: 171.25.158.163
   port: 443
   udp: true
@@ -33,46 +54,25 @@ proxies:
     short-id: ecb6f8fb31668176
   servername: s9se1.newagetechnologies.live
   client-fingerprint: firefox
-- name: 🇸🇪 瑞典 (Sweden) 04 15602K 🇨🇳 - NEKO
-  server: 31.172.65.4
-  port: 8443
-  udp: true
-  type: vless
-  uuid: 9c6e83fc-b755-4ad4-9b0a-14b610153d8f
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: wRvUAKwcHc4pBNVouIcVjQkVD9aCRR-AmtcFyBV36lU
-    short-id: 0e7741edc378622f
-  servername: www.bing.com
-  client-fingerprint: chrome
-- name: 🇸🇪 瑞典 (Sweden) 05 13542K 🇨🇳 - NEKO
-  server: 70.34.207.14
-  port: 443
-  udp: true
-  type: trojan
-  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  sni: searchhealthcarejobsandbuildmedicalcareerpathway.com
-  skip-cert-verify: false
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇸🇪 瑞典 (Sweden) 01 18095K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 11801K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 03 6723K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 04 15602K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 05 13542K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 16251K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 10801K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 03 15818K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 04 12916K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 05 10567K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇸🇪 瑞典 (Sweden) 01 18095K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 11801K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 03 6723K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 04 15602K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 05 13542K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 16251K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 10801K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 03 15818K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 04 12916K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 05 10567K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

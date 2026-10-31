@@ -4,21 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇰🇷 韩国 (South Korea) 01 6358K ⚠P - NEKO
-  server: 141.164.45.187
-  port: 8888
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: Y6R9pAtvxxzmGC
-- name: 🇰🇷 韩国 (South Korea) 02 2067K ⚠P - NEKO
-  server: 49.254.204.133
-  port: 1774
-  udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: 1234!@#$
-- name: 🇰🇷 韩国 (South Korea) 03 3144K ⚠P - NEKO
+- name: 🇰🇷 韩国 (South Korea) 01 9583K ⚠P - NEKO
   server: kr002.zestapp778.com
   port: 48851
   udp: true
@@ -26,15 +12,7 @@ proxies:
   password: 5t6i121em5lkmsmk
   sni: kr002.zestapp778.com
   skip-cert-verify: false
-- name: 🇰🇷 韩国 (South Korea) 04 929K ⚠P⚠U - NEKO
-  server: 152.67.200.82
-  port: 50160
-  udp: true
-  type: hysteria2
-  password: 3d7634af8cb2c6cb4bac1c0efad8b43d
-  sni: 152-67-200-82.liao.kdns.fr
-  skip-cert-verify: false
-- name: 🇰🇷 韩国 (South Korea) 05 5777K ⚠P - NEKO
+- name: 🇰🇷 韩国 (South Korea) 02 242K ⚠P - NEKO
   server: 146.56.112.110
   port: 8888
   udp: true
@@ -42,7 +20,7 @@ proxies:
   uuid: e7c302f3-90d6-42dd-9d7d-94a3683a3707
   alterId: 0
   cipher: auto
-- name: 🇰🇷 韩国 (South Korea) 06 ⚠S3861K ⚠P - NEKO
+- name: 🇰🇷 韩国 (South Korea) 03 3307K ⚠P - NEKO
   server: 152.69.226.63
   port: 25555
   udp: true
@@ -51,42 +29,21 @@ proxies:
   network: ws
   ws-opts:
     path: /
-- name: 🇰🇷 韩国 (South Korea) 07 2617K 🇨🇳 - NEKO
-  server: 3.39.4.109
-  port: 18967
-  udp: true
-  type: vless
-  uuid: 814bd064-544d-4255-a070-5705c03f6da9
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
-    short-id: 48050fab
-  servername: www.apple.com
-  client-fingerprint: random
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇰🇷 韩国 (South Korea) 01 6358K ⚠P - NEKO
-  - 🇰🇷 韩国 (South Korea) 02 2067K ⚠P - NEKO
-  - 🇰🇷 韩国 (South Korea) 03 3144K ⚠P - NEKO
-  - 🇰🇷 韩国 (South Korea) 04 929K ⚠P⚠U - NEKO
-  - 🇰🇷 韩国 (South Korea) 05 5777K ⚠P - NEKO
-  - 🇰🇷 韩国 (South Korea) 06 ⚠S3861K ⚠P - NEKO
-  - 🇰🇷 韩国 (South Korea) 07 2617K 🇨🇳 - NEKO
+  - 🇰🇷 韩国 (South Korea) 01 9583K ⚠P - NEKO
+  - 🇰🇷 韩国 (South Korea) 02 242K ⚠P - NEKO
+  - 🇰🇷 韩国 (South Korea) 03 3307K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇰🇷 韩国 (South Korea) 01 6358K ⚠P - NEKO
-  - 🇰🇷 韩国 (South Korea) 02 2067K ⚠P - NEKO
-  - 🇰🇷 韩国 (South Korea) 03 3144K ⚠P - NEKO
-  - 🇰🇷 韩国 (South Korea) 04 929K ⚠P⚠U - NEKO
-  - 🇰🇷 韩国 (South Korea) 05 5777K ⚠P - NEKO
-  - 🇰🇷 韩国 (South Korea) 06 ⚠S3861K ⚠P - NEKO
-  - 🇰🇷 韩国 (South Korea) 07 2617K 🇨🇳 - NEKO
+  - 🇰🇷 韩国 (South Korea) 01 9583K ⚠P - NEKO
+  - 🇰🇷 韩国 (South Korea) 02 242K ⚠P - NEKO
+  - 🇰🇷 韩国 (South Korea) 03 3307K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

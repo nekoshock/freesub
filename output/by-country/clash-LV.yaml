@@ -4,36 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇱🇻 拉脱维亚 (Latvia) 01 12406K ⚠P⚠U - NEKO
-  server: 104.165.205.23
-  port: 9443
-  udp: true
-  type: hysteria2
-  password: e3c3b722-1264-4cdc-a97c-b0a1bb73cd67
-  sni: onecloudstream.com
-  skip-cert-verify: false
-- name: 🇱🇻 拉脱维亚 (Latvia) 02 10959K ⚠P⚠U - NEKO
-  server: 104.165.205.22
-  port: 9443
-  udp: true
-  type: hysteria2
-  password: e3c3b722-1264-4cdc-a97c-b0a1bb73cd67
-  sni: onecloudstream.com
-  skip-cert-verify: false
-- name: 🇱🇻 拉脱维亚 (Latvia) 03 11701K 🇨🇳 - NEKO
-  server: 195.123.213.28
-  port: 443
-  udp: true
-  type: vless
-  uuid: 02fcc1a4-ee90-4970-8bbb-4ffaa8109d24
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: NMgy1XgCSXExOg6Tg8xG9lCWttMF6sjdpB41lZy6FWo
-    short-id: 5c256336e3b673fa
-  servername: www.cloudflare.com
-  client-fingerprint: firefox
-- name: 🇱🇻 拉脱维亚 (Latvia) 04 319K 🇨🇳 - NEKO
+- name: 🇱🇻 拉脱维亚 (Latvia) 01 240K 🇨🇳 - NEKO
   server: 45.43.79.92
   port: 443
   udp: true
@@ -46,37 +17,101 @@ proxies:
     short-id: af4ca5d16438c938
   servername: vikt659.isgood.host
   client-fingerprint: chrome
-- name: 🇱🇻 拉脱维亚 (Latvia) 05 5191K 🇨🇳 - NEKO
-  server: 45.38.143.210
-  port: 30584
+- name: 🇱🇻 拉脱维亚 (Latvia) 02 11731K 🇨🇳 - NEKO
+  server: 138.124.180.137
+  port: 443
   udp: true
   type: vless
-  uuid: cebc5f19-18d9-48e6-9029-fb4b04caf393
+  uuid: 5234b2b7-5e07-422c-8159-d62a676c00c6
+  flow: xtls-rprx-vision
   tls: true
   reality-opts:
-    public-key: 2hV4TY2ygvQ7ISa5o4u_FUKXzlIhLgbsScE8M1h0m3Y
-    short-id: 67ece882d65d0f1a
-  servername: m.vk.com
-  client-fingerprint: edge
+    public-key: GBdkyDLfr0LIZo_94Xv8ycAKOmkjArYzwJAEMhuXX2c
+    short-id: 33acba1b
+  servername: www.apple.com
+  client-fingerprint: firefox
+- name: 🇱🇻 拉脱维亚 (Latvia) 03 11672K ⚠P⚠U - NEKO
+  server: 104.165.205.22
+  port: 9443
+  udp: true
+  type: hysteria2
+  password: e3c3b722-1264-4cdc-a97c-b0a1bb73cd67
+  sni: onecloudstream.com
+  skip-cert-verify: false
+- name: 🇱🇻 拉脱维亚 (Latvia) 04 12017K ⚠P⚠U - NEKO
+  server: 104.165.205.21
+  port: 9443
+  udp: true
+  type: hysteria2
+  password: e3c3b722-1264-4cdc-a97c-b0a1bb73cd67
+  sni: onecloudstream.com
+  skip-cert-verify: false
+- name: 🇱🇻 拉脱维亚 (Latvia) 05 12888K 🇨🇳 - NEKO
+  server: 195.123.213.28
+  port: 443
+  udp: true
+  type: vless
+  uuid: 02fcc1a4-ee90-4970-8bbb-4ffaa8109d24
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: NMgy1XgCSXExOg6Tg8xG9lCWttMF6sjdpB41lZy6FWo
+    short-id: 5c256336e3b673fa
+  servername: www.cloudflare.com
+  client-fingerprint: firefox
+- name: 🇱🇻 拉脱维亚 (Latvia) 06 13854K 🇨🇳 - NEKO
+  server: 109.248.148.140
+  port: 443
+  udp: true
+  type: vless
+  uuid: 28e7f9e1-006c-4c38-822d-2d2903477444
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: RFZXfsd3WfxOKRcdO4Q7RoElfE8JbMpR6bG3jYLV_Uc
+  servername: www.apple.com
+  client-fingerprint: chrome
+- name: 🇱🇻 拉脱维亚 (Latvia) 07 5523K ⚠P⚠U - NEKO
+  server: 104.165.205.142
+  port: 9443
+  udp: true
+  type: hysteria2
+  password: e3c3b722-1264-4cdc-a97c-b0a1bb73cd67
+  sni: onecloudstream.com
+  skip-cert-verify: false
+- name: 🇱🇻 拉脱维亚 (Latvia) 08 9811K ⚠P⚠U - NEKO
+  server: 104.165.205.23
+  port: 9443
+  udp: true
+  type: hysteria2
+  password: e3c3b722-1264-4cdc-a97c-b0a1bb73cd67
+  sni: onecloudstream.com
+  skip-cert-verify: false
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇱🇻 拉脱维亚 (Latvia) 01 12406K ⚠P⚠U - NEKO
-  - 🇱🇻 拉脱维亚 (Latvia) 02 10959K ⚠P⚠U - NEKO
-  - 🇱🇻 拉脱维亚 (Latvia) 03 11701K 🇨🇳 - NEKO
-  - 🇱🇻 拉脱维亚 (Latvia) 04 319K 🇨🇳 - NEKO
-  - 🇱🇻 拉脱维亚 (Latvia) 05 5191K 🇨🇳 - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 01 240K 🇨🇳 - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 02 11731K 🇨🇳 - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 03 11672K ⚠P⚠U - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 04 12017K ⚠P⚠U - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 05 12888K 🇨🇳 - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 06 13854K 🇨🇳 - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 07 5523K ⚠P⚠U - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 08 9811K ⚠P⚠U - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇱🇻 拉脱维亚 (Latvia) 01 12406K ⚠P⚠U - NEKO
-  - 🇱🇻 拉脱维亚 (Latvia) 02 10959K ⚠P⚠U - NEKO
-  - 🇱🇻 拉脱维亚 (Latvia) 03 11701K 🇨🇳 - NEKO
-  - 🇱🇻 拉脱维亚 (Latvia) 04 319K 🇨🇳 - NEKO
-  - 🇱🇻 拉脱维亚 (Latvia) 05 5191K 🇨🇳 - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 01 240K 🇨🇳 - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 02 11731K 🇨🇳 - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 03 11672K ⚠P⚠U - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 04 12017K ⚠P⚠U - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 05 12888K 🇨🇳 - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 06 13854K 🇨🇳 - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 07 5523K ⚠P⚠U - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 08 9811K ⚠P⚠U - NEKO
 rules:
 - MATCH,PROXIES

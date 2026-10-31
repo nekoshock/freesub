@@ -4,7 +4,51 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇭 瑞士 (Switzerland) 01 15524K 🇨🇳 - NEKO
+- name: 🇨🇭 瑞士 (Switzerland) 01 20762K 🇨🇳 - NEKO
+  server: 208.69.78.60
+  port: 443
+  udp: true
+  type: trojan
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: cdn.yourultimateprofessionalcareerhub.com
+  skip-cert-verify: false
+- name: 🇨🇭 瑞士 (Switzerland) 02 11395K 🇨🇳 - NEKO
+  server: 208.69.78.33
+  port: 443
+  udp: true
+  type: trojan
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: courses.yourultimateprofessionalcareerhub.com
+  skip-cert-verify: false
+- name: 🇨🇭 瑞士 (Switzerland) 03 12910K 🇨🇳 - NEKO
+  server: 208.69.78.158
+  port: 443
+  udp: true
+  type: trojan
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: api.yourultimateprofessionalcareerhub.com
+  skip-cert-verify: false
+- name: 🇨🇭 瑞士 (Switzerland) 04 13277K 🇨🇳 - NEKO
+  server: 208.69.78.217
+  port: 2053
+  udp: true
+  type: vless
+  uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
+  tls: true
+  reality-opts:
+    public-key: A49ue7zXSusJZdErPAewg3jqGdUFIO1a9xOunEKJfC0
+    short-id: ad86e2d52ff40ebd
+  servername: www.apple.com
+  client-fingerprint: chrome
+- name: 🇨🇭 瑞士 (Switzerland) 05 41424K 🇨🇳 - NEKO
+  server: 208.69.78.29
+  port: 443
+  udp: true
+  type: trojan
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: learn.yourultimateprofessionalcareerhub.com
+  skip-cert-verify: false
+- name: 🇨🇭 瑞士 (Switzerland) 06 16706K 🇨🇳 - NEKO
   server: 45.90.57.119
   port: 8443
   udp: true
@@ -16,50 +60,43 @@ proxies:
     public-key: L6DeK_a25_ZjPKFOrQLoCPWuXi5KCIH_EcRpARmCwkI
     short-id: 16036bbef04d0509
   servername: twitch.tv
-  client-fingerprint: ''
-- name: 🇨🇭 瑞士 (Switzerland) 02 12366K 🇨🇳 - NEKO
-  server: 149.33.15.213
-  port: 443
+  client-fingerprint: safari
+- name: 🇨🇭 瑞士 (Switzerland) 07 4682K ⚠P - NEKO
+  server: 5.181.158.193
+  port: 8461
   udp: true
   type: vless
-  uuid: 054362fb-e485-4a3f-9568-4c5b0f60e074
+  uuid: 1c8f7130-8c1a-4949-831d-1d45b39c795b
+  flow: xtls-rprx-vision
   tls: true
-  servername: swz.proxyplankton.ru
-  skip-cert-verify: false
-  client-fingerprint: chrome
-- name: 🇨🇭 瑞士 (Switzerland) 03 2832K 🇨🇳 - NEKO
-  server: 208.69.78.29
-  port: 443
-  udp: true
-  type: trojan
-  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  sni: learn.yourultimateprofessionalcareerhub.com
-  skip-cert-verify: false
-- name: 🇨🇭 瑞士 (Switzerland) 04 1778K 🇨🇳 - NEKO
-  server: 208.69.78.33
-  port: 443
-  udp: true
-  type: trojan
-  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  sni: courses.yourultimateprofessionalcareerhub.com
-  skip-cert-verify: false
+  reality-opts:
+    public-key: Yc75IKp6PRsGSw82GhGepMrRpJweW7WXUp9azkGuMAk
+    short-id: 735f09fb3fedb191
+  servername: svoboda.bystriynet.online
+  client-fingerprint: firefox
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇨🇭 瑞士 (Switzerland) 01 15524K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 02 12366K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 03 2832K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 04 1778K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 01 20762K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 02 11395K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 03 12910K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 04 13277K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 05 41424K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 06 16706K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 07 4682K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇭 瑞士 (Switzerland) 01 15524K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 02 12366K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 03 2832K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 04 1778K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 01 20762K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 02 11395K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 03 12910K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 04 13277K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 05 41424K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 06 16706K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 07 4682K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

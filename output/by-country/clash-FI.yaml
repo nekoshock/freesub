@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇫🇮 芬兰 (Finland) 01 10527K 🇨🇳 - NEKO
+- name: 🇫🇮 芬兰 (Finland) 01 8044K 🇨🇳 - NEKO
   server: fi1.obxodvpn.us
   port: 443
   udp: true
@@ -12,7 +12,7 @@ proxies:
   password: 2a0fc918-9c61-451b-a9ad-e8f796e70f52
   sni: nl1.obxodvpn.us
   skip-cert-verify: false
-- name: 🇫🇮 芬兰 (Finland) 02 485K ⚠P⚠U - NEKO
+- name: 🇫🇮 芬兰 (Finland) 02 1415K ⚠P⚠U - NEKO
   server: 153.76.194.118
   port: 8443
   udp: true
@@ -20,31 +20,15 @@ proxies:
   password: 7d43670b-6b08-45b9-8a24-8f3971abc132
   sni: finland.biznes.lol
   skip-cert-verify: false
-- name: 🇫🇮 芬兰 (Finland) 03 864K ⚠P - NEKO
-  server: 65.109.211.81
-  port: 465
-  udp: true
-  type: vless
-  uuid: 09f30c46-3964-41ce-882a-72aee83ddd42
-  tls: true
-  servername: hw6.divarkhaghazi.com
-  skip-cert-verify: false
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hw6.divarkhaghazi.com.
-- name: 🇫🇮 芬兰 (Finland) 04 9496K ⚠P - NEKO
-  server: 65.109.210.221
+- name: 🇫🇮 芬兰 (Finland) 03 8763K ⚠L20% ⚠P - NEKO
+  server: hw3.divarkhaghazi.com
   port: 465
   udp: true
   type: vless
   uuid: 924e20da-fcad-4e7e-8113-c62d27a0d01e
   tls: true
-  servername: hw3.divarkhaghazi.com.
+  servername: hw3.divarkhaghazi.com
   skip-cert-verify: false
-  client-fingerprint: chrome
   network: ws
   ws-opts:
     path: /
@@ -55,18 +39,16 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇫🇮 芬兰 (Finland) 01 10527K 🇨🇳 - NEKO
-  - 🇫🇮 芬兰 (Finland) 02 485K ⚠P⚠U - NEKO
-  - 🇫🇮 芬兰 (Finland) 03 864K ⚠P - NEKO
-  - 🇫🇮 芬兰 (Finland) 04 9496K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 01 8044K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 02 1415K ⚠P⚠U - NEKO
+  - 🇫🇮 芬兰 (Finland) 03 8763K ⚠L20% ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇫🇮 芬兰 (Finland) 01 10527K 🇨🇳 - NEKO
-  - 🇫🇮 芬兰 (Finland) 02 485K ⚠P⚠U - NEKO
-  - 🇫🇮 芬兰 (Finland) 03 864K ⚠P - NEKO
-  - 🇫🇮 芬兰 (Finland) 04 9496K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 01 8044K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 02 1415K ⚠P⚠U - NEKO
+  - 🇫🇮 芬兰 (Finland) 03 8763K ⚠L20% ⚠P - NEKO
 rules:
 - MATCH,PROXIES

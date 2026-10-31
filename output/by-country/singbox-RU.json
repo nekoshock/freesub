@@ -5,7 +5,7 @@
   "outbounds": [
     {
       "type": "vless",
-      "tag": "🇷🇺 俄罗斯 (Russia) 01 10962K 🇨🇳 - NEKO",
+      "tag": "🇷🇺 俄罗斯 (Russia) 01 16079K 🇨🇳 - NEKO",
       "server": "193.233.253.180",
       "server_port": 8444,
       "uuid": "a346c521-7a7f-452b-9356-a4893feb5982",
@@ -14,7 +14,7 @@
         "server_name": "github.com",
         "utls": {
           "enabled": true,
-          "fingerprint": "chrome"
+          "fingerprint": "firefox"
         },
         "reality": {
           "enabled": true,
@@ -29,14 +29,18 @@
     },
     {
       "type": "vless",
-      "tag": "🇷🇺 俄罗斯 (Russia) 02 ⚠S3818K 🇨🇳 - NEKO",
+      "tag": "🇷🇺 俄罗斯 (Russia) 02 8359K 🇨🇳 - NEKO",
       "server": "147.45.126.220",
       "server_port": 443,
       "uuid": "452a5bbc-d938-4904-99d3-7db2075d0f3e",
       "tls": {
         "enabled": true,
         "server_name": "pol.qikbro.com",
-        "insecure": false
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
       },
       "transport": {
         "type": "grpc",
@@ -45,8 +49,28 @@
     },
     {
       "type": "vless",
-      "tag": "🇷🇺 俄罗斯 (Russia) 03 2426K 🇨🇳 - NEKO",
-      "server": "185.84.162.254",
+      "tag": "🇷🇺 俄罗斯 (Russia) 03 7783K 🇨🇳 - NEKO",
+      "server": "5.129.249.65",
+      "server_port": 443,
+      "uuid": "a5212bcb-ab85-459a-bec6-9f259eeeebfa",
+      "tls": {
+        "enabled": true,
+        "server_name": "rue.tems.bet",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "iT-HgkPRUHl7Tm-LUWAGD-zoNoZSkVc-M9sscIIomHY",
+          "short_id": "a62228a1c8b3378f"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇷🇺 俄罗斯 (Russia) 04 10433K ⚠L20% 🇨🇳 - NEKO",
+      "server": "app-tw-113.statsmarket-wb.com",
       "server_port": 443,
       "uuid": "07680ffb-0666-4836-b6ad-ec0de62bc38f",
       "flow": "xtls-rprx-vision",
@@ -55,7 +79,7 @@
         "server_name": "assets-tw-113.statsmarket-wb.com",
         "utls": {
           "enabled": true,
-          "fingerprint": "firefox"
+          "fingerprint": "randomized"
         },
         "reality": {
           "enabled": true,
@@ -65,42 +89,24 @@
       }
     },
     {
-      "type": "shadowsocks",
-      "tag": "🇷🇺 俄罗斯 (Russia) 04 9303K ⚠P - NEKO",
-      "server": "130.49.189.54",
-      "server_port": 8388,
-      "method": "chacha20-ietf-poly1305",
-      "password": "hTTg7lwQMzpaF7KXpY3A8w"
-    },
-    {
-      "type": "shadowsocks",
-      "tag": "🇷🇺 俄罗斯 (Russia) 05 668K ⚠L20% ⚠P⚠C - NEKO",
-      "server": "46.17.46.27",
-      "server_port": 18443,
-      "method": "aes-256-gcm",
-      "password": "cCMJgJTA3BA489YUYrFq7XHXSiSpWlLa"
-    },
-    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇷🇺 俄罗斯 (Russia) 01 10962K 🇨🇳 - NEKO",
-        "🇷🇺 俄罗斯 (Russia) 02 ⚠S3818K 🇨🇳 - NEKO",
-        "🇷🇺 俄罗斯 (Russia) 03 2426K 🇨🇳 - NEKO",
-        "🇷🇺 俄罗斯 (Russia) 04 9303K ⚠P - NEKO",
-        "🇷🇺 俄罗斯 (Russia) 05 668K ⚠L20% ⚠P⚠C - NEKO"
+        "🇷🇺 俄罗斯 (Russia) 01 16079K 🇨🇳 - NEKO",
+        "🇷🇺 俄罗斯 (Russia) 02 8359K 🇨🇳 - NEKO",
+        "🇷🇺 俄罗斯 (Russia) 03 7783K 🇨🇳 - NEKO",
+        "🇷🇺 俄罗斯 (Russia) 04 10433K ⚠L20% 🇨🇳 - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇷🇺 俄罗斯 (Russia) 01 10962K 🇨🇳 - NEKO",
-        "🇷🇺 俄罗斯 (Russia) 02 ⚠S3818K 🇨🇳 - NEKO",
-        "🇷🇺 俄罗斯 (Russia) 03 2426K 🇨🇳 - NEKO",
-        "🇷🇺 俄罗斯 (Russia) 04 9303K ⚠P - NEKO",
-        "🇷🇺 俄罗斯 (Russia) 05 668K ⚠L20% ⚠P⚠C - NEKO"
+        "🇷🇺 俄罗斯 (Russia) 01 16079K 🇨🇳 - NEKO",
+        "🇷🇺 俄罗斯 (Russia) 02 8359K 🇨🇳 - NEKO",
+        "🇷🇺 俄罗斯 (Russia) 03 7783K 🇨🇳 - NEKO",
+        "🇷🇺 俄罗斯 (Russia) 04 10433K ⚠L20% 🇨🇳 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

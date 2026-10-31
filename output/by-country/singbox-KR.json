@@ -5,7 +5,7 @@
   "outbounds": [
     {
       "type": "trojan",
-      "tag": "🇰🇷 韩国 (South Korea) 01 462K ⚠P - NEKO",
+      "tag": "🇰🇷 韩国 (South Korea) 01 11026K ⚠P - NEKO",
       "server": "158.247.255.150",
       "server_port": 48851,
       "password": "5t6i121em5lkmsmk",
@@ -20,23 +20,33 @@
       }
     },
     {
-      "type": "shadowsocks",
-      "tag": "🇰🇷 韩国 (South Korea) 02 3388K ⚠P - NEKO",
-      "server": "49.254.204.133",
-      "server_port": 1774,
-      "method": "aes-256-cfb",
-      "password": "1234!@#$"
-    },
-    {
       "type": "trojan",
-      "tag": "🇰🇷 韩国 (South Korea) 03 8254K ⚠P - NEKO",
+      "tag": "🇰🇷 韩国 (South Korea) 02 344K ⚠P - NEKO",
       "server": "168.110.119.243",
       "server_port": 20039,
       "password": "dc9e33c7a6df4164",
       "tls": {
         "enabled": true,
         "server_name": "ikr100a.zxom.eu.org",
-        "insecure": false
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇰🇷 韩国 (South Korea) 03 2917K ⚠P - NEKO",
+      "server": "152.69.226.63",
+      "server_port": 25555,
+      "uuid": "27c5483f-17f4-48ae-9a04-def53d88440d",
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "152.69.226.63"
+        }
       }
     },
     {
@@ -44,18 +54,18 @@
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇰🇷 韩国 (South Korea) 01 462K ⚠P - NEKO",
-        "🇰🇷 韩国 (South Korea) 02 3388K ⚠P - NEKO",
-        "🇰🇷 韩国 (South Korea) 03 8254K ⚠P - NEKO"
+        "🇰🇷 韩国 (South Korea) 01 11026K ⚠P - NEKO",
+        "🇰🇷 韩国 (South Korea) 02 344K ⚠P - NEKO",
+        "🇰🇷 韩国 (South Korea) 03 2917K ⚠P - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇰🇷 韩国 (South Korea) 01 462K ⚠P - NEKO",
-        "🇰🇷 韩国 (South Korea) 02 3388K ⚠P - NEKO",
-        "🇰🇷 韩国 (South Korea) 03 8254K ⚠P - NEKO"
+        "🇰🇷 韩国 (South Korea) 01 11026K ⚠P - NEKO",
+        "🇰🇷 韩国 (South Korea) 02 344K ⚠P - NEKO",
+        "🇰🇷 韩国 (South Korea) 03 2917K ⚠P - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

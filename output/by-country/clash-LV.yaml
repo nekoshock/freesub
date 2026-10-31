@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇱🇻 拉脱维亚 (Latvia) 01 13247K 🇨🇳 - NEKO
+- name: 🇱🇻 拉脱维亚 (Latvia) 01 11661K 🇨🇳 - NEKO
   server: 138.124.180.137
   port: 443
   udp: true
@@ -16,8 +16,8 @@ proxies:
     public-key: GBdkyDLfr0LIZo_94Xv8ycAKOmkjArYzwJAEMhuXX2c
     short-id: 33acba1b
   servername: www.apple.com
-  client-fingerprint: ''
-- name: 🇱🇻 拉脱维亚 (Latvia) 02 12624K 🇨🇳 - NEKO
+  client-fingerprint: firefox
+- name: 🇱🇻 拉脱维亚 (Latvia) 02 11370K 🇨🇳 - NEKO
   server: 195.123.213.28
   port: 443
   udp: true
@@ -29,34 +29,20 @@ proxies:
     public-key: NMgy1XgCSXExOg6Tg8xG9lCWttMF6sjdpB41lZy6FWo
     short-id: 5c256336e3b673fa
   servername: www.cloudflare.com
-  client-fingerprint: firefox
-- name: 🇱🇻 拉脱维亚 (Latvia) 03 ⚠S3790K 🇨🇳 - NEKO
-  server: 109.248.148.140
-  port: 443
-  udp: true
-  type: vless
-  uuid: 28e7f9e1-006c-4c38-822d-2d2903477444
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: RFZXfsd3WfxOKRcdO4Q7RoElfE8JbMpR6bG3jYLV_Uc
-  servername: www.apple.com
-  client-fingerprint: chrome
+  client-fingerprint: ''
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇱🇻 拉脱维亚 (Latvia) 01 13247K 🇨🇳 - NEKO
-  - 🇱🇻 拉脱维亚 (Latvia) 02 12624K 🇨🇳 - NEKO
-  - 🇱🇻 拉脱维亚 (Latvia) 03 ⚠S3790K 🇨🇳 - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 01 11661K 🇨🇳 - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 02 11370K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇱🇻 拉脱维亚 (Latvia) 01 13247K 🇨🇳 - NEKO
-  - 🇱🇻 拉脱维亚 (Latvia) 02 12624K 🇨🇳 - NEKO
-  - 🇱🇻 拉脱维亚 (Latvia) 03 ⚠S3790K 🇨🇳 - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 01 11661K 🇨🇳 - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 02 11370K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

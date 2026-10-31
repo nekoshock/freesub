@@ -4,26 +4,80 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇭🇰 中国香港 (Hong Kong) 01 322K ⚠P - NEKO
-  server: 38.76.180.144
-  port: 1443
+- name: 🇭🇰 中国香港 (Hong Kong) 01 253K 🇨🇳 - NEKO
+  server: 165.154.63.139
+  port: 443
   udp: true
   type: vless
-  uuid: d98b67d4-024a-4bba-91e2-e6ebece6df11
+  uuid: 91ad30e9-ab06-4b4c-9fb9-1c2aa97d8b3a
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: AE81BrwMc8-kwGEIA1LhzaL03er0Qwt2V-fFy76F5jQ
+    short-id: ca4aedd4
+  servername: www.amazon.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 02 8487K 🇨🇳 - NEKO
+  server: 8.218.195.61
+  port: 443
+  udp: true
+  type: vmess
+  uuid: f23bb427-c1f9-4373-876c-2f43e9f790f3
+  alterId: 0
+  cipher: auto
+  tls: true
+  servername: ex1ogt73nzpqkac2.v.3dns.vip
+  skip-cert-verify: false
   network: ws
   ws-opts:
-    path: /vless-ws
+    path: /ws-vmess
+    headers:
+      Host: ex1ogt73nzpqkac2.v.3dns.vip
+- name: 🇭🇰 中国香港 (Hong Kong) 03 8376K 🇨🇳 - NEKO
+  server: 2b9hwy8ocx7q74nm.v.3dns.vip
+  port: 443
+  udp: true
+  type: vmess
+  uuid: f23bb427c1f94373876c2f43e9f790f3
+  alterId: 0
+  cipher: auto
+  tls: true
+  servername: 2b9hwy8ocx7q74nm.v.3dns.vip
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /ws-vmess
+- name: 🇭🇰 中国香港 (Hong Kong) 04 8427K 🇨🇳 - NEKO
+  server: euu1yAlfmcqvLJEx.v.3dns.vip
+  port: 443
+  udp: true
+  type: vmess
+  uuid: d237ab38-1974-4b36-94a3-0665ce8587b9
+  alterId: 0
+  cipher: auto
+  tls: true
+  servername: euu1yAlfmcqvLJEx.v.3dns.vip
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /ws-vmess
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇭🇰 中国香港 (Hong Kong) 01 322K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 253K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 8487K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 03 8376K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 04 8427K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇭🇰 中国香港 (Hong Kong) 01 322K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 253K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 8487K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 03 8376K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 04 8427K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

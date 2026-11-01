@@ -4,9 +4,53 @@
   },
   "outbounds": [
     {
+      "type": "hysteria2",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 01 (家宽) 11390K 🇨🇳 - NEKO",
+      "server": "a91af2af-tmm5c0-twnp5a-ahsb.hk3.hyhuawei.com",
+      "server_port": 443,
+      "password": "2e42c1ee-aaaa-11ec-bb74-f23c9164ca5d",
+      "tls": {
+        "enabled": true,
+        "server_name": "a91af2af-tmm5c0-twnp5a-ahsb.hk3.hyhuawei.com",
+        "insecure": false
+      }
+    },
+    {
+      "type": "hysteria2",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 02 (家宽) 8909K 🇨🇳 - NEKO",
+      "server": "75a08777-tmm5c0-ttxkqc-e06r.nw4.hyhuawei.com",
+      "server_port": 443,
+      "password": "861726bb-c61a-b0e0-99fa-5ddfdcf21902",
+      "tls": {
+        "enabled": true,
+        "server_name": "75a08777-tmm5c0-ttxkqc-e06r.nw4.hyhuawei.com",
+        "insecure": false
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 03 (家宽) 11622K 🇨🇳 - NEKO",
+      "server": "0e05f970-tki800-traezq-1t5n1.hk2.hyhuawei.com",
+      "server_port": 443,
+      "uuid": "ea800f9e-ca6c-11ef-8e74-f23c913c8d2b",
+      "tls": {
+        "enabled": true,
+        "server_name": "download.windowsupdate.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "c9DdggKaJGSH7FN3JgGbi9ZvsUqOGGpIr7BhzTWeTCo",
+          "short_id": ""
+        }
+      }
+    },
+    {
       "type": "trojan",
-      "tag": "🇺🇸 美国 (United States) 01 (移动家宽) 5140K ⚠P - NEKO",
-      "server": "us001.zestapp778.com",
+      "tag": "🇺🇸 美国 (United States) 04 (移动家宽) 958K ⚠P - NEKO",
+      "server": "130.94.19.95",
       "server_port": 57277,
       "password": "5t6i121em5lkmsmk",
       "tls": {
@@ -15,8 +59,26 @@
         "insecure": false,
         "utls": {
           "enabled": true,
-          "fingerprint": "chrome"
+          "fingerprint": "firefox"
         }
+      }
+    },
+    {
+      "type": "tuic",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 05 (家宽) 19957K 🇨🇳 - NEKO",
+      "server": "46b61821-tki800-tlwmty-1gevg.pccw3.hyhuawei.com",
+      "server_port": 443,
+      "uuid": "f02ee2b4-d760-11ec-bd7c-f23c913c8d2b",
+      "password": "f02ee2b4-d760-11ec-bd7c-f23c913c8d2b",
+      "congestion_control": "bbr",
+      "udp_relay_mode": "native",
+      "tls": {
+        "enabled": true,
+        "server_name": "46b61821-tki800-tlwmty-1gevg.pccw3.hyhuawei.com",
+        "insecure": false,
+        "alpn": [
+          "h3"
+        ]
       }
     },
     {
@@ -24,14 +86,22 @@
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇺🇸 美国 (United States) 01 (移动家宽) 5140K ⚠P - NEKO"
+        "🇭🇰 中国香港 (Hong Kong) 01 (家宽) 11390K 🇨🇳 - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 02 (家宽) 8909K 🇨🇳 - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 03 (家宽) 11622K 🇨🇳 - NEKO",
+        "🇺🇸 美国 (United States) 04 (移动家宽) 958K ⚠P - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 05 (家宽) 19957K 🇨🇳 - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇺🇸 美国 (United States) 01 (移动家宽) 5140K ⚠P - NEKO"
+        "🇭🇰 中国香港 (Hong Kong) 01 (家宽) 11390K 🇨🇳 - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 02 (家宽) 8909K 🇨🇳 - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 03 (家宽) 11622K 🇨🇳 - NEKO",
+        "🇺🇸 美国 (United States) 04 (移动家宽) 958K ⚠P - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 05 (家宽) 19957K 🇨🇳 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

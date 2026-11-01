@@ -4,26 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇷🇴 罗马尼亚 (Romania) 01 7725K 🇨🇳 - NEKO
-  server: 46.28.67.55
-  port: 443
-  udp: true
-  type: vless
-  uuid: d1a6a033-fdbd-46a6-a177-3370ba042b9f
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: i2dJ1_XGDpp50qpEclh6SWSWkxt4B0t2hi2qOVQbeSU
-    short-id: d06d78e974491b6e
-  servername: www.cloudflare.com
-  client-fingerprint: chrome
-- name: 🇷🇴 罗马尼亚 (Romania) 02 13590K ⚠P - NEKO
-  server: 155.117.5.208
-  port: 2052
-  udp: true
-  type: vless
-  uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
-- name: 🇷🇴 罗马尼亚 (Romania) 03 5953K 🇨🇳 - NEKO
+- name: 🇷🇴 罗马尼亚 (Romania) 01 5627K 🇨🇳 - NEKO
   server: 162.249.125.133
   port: 443
   udp: true
@@ -33,34 +14,25 @@ proxies:
   skip-cert-verify: false
   obfs: salamander
   obfs-password: c1b4086fea89914496c7e10967a419216566
-- name: 🇷🇴 罗马尼亚 (Romania) 04 8643K ⚠P - NEKO
-  server: 88.80.135.65
-  port: 4127
+- name: 🇷🇴 罗马尼亚 (Romania) 02 9960K ⚠P - NEKO
+  server: 155.117.5.208
+  port: 2052
   udp: true
   type: vless
-  uuid: 33972eb3-3f57-4558-80ff-b6926480ff69
-  network: httpupgrade
-  httpupgrade-opts:
-    path: /Telegram=@AmyraxVPN
-    headers:
-      Host: 88.80.135.65
+  uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇷🇴 罗马尼亚 (Romania) 01 7725K 🇨🇳 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 02 13590K ⚠P - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 03 5953K 🇨🇳 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 04 8643K ⚠P - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 01 5627K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 02 9960K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇷🇴 罗马尼亚 (Romania) 01 7725K 🇨🇳 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 02 13590K ⚠P - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 03 5953K 🇨🇳 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 04 8643K ⚠P - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 01 5627K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 02 9960K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

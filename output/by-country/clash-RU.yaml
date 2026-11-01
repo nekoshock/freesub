@@ -18,75 +18,17 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: GunService
-- name: 🇷🇺 俄罗斯 (Russia) 02 6648K 🇨🇳 - NEKO
-  server: 5.129.249.65
-  port: 443
-  udp: true
-  type: vless
-  uuid: a5212bcb-ab85-459a-bec6-9f259eeeebfa
-  tls: true
-  reality-opts:
-    public-key: iT-HgkPRUHl7Tm-LUWAGD-zoNoZSkVc-M9sscIIomHY
-    short-id: a62228a1c8b3378f
-  servername: rue.tems.bet
-  client-fingerprint: firefox
-- name: 🇷🇺 俄罗斯 (Russia) 03 6321K 🇨🇳 - NEKO
-  server: 147.45.184.91
-  port: 443
-  udp: true
-  type: vless
-  uuid: a5212bcb-ab85-459a-bec6-9f259eeeebfa
-  tls: true
-  reality-opts:
-    public-key: peH7x6tLruYCP094XuFaTxGsvy6YYH33OUI0M8CbbzU
-    short-id: 03ae403f6e389722
-  servername: ruc.tems.bet
-  client-fingerprint: firefox
-- name: 🇷🇺 俄罗斯 (Russia) 04 7476K 🇨🇳 - NEKO
-  server: app-tw-113.statsmarket-wb.com
-  port: 443
-  udp: true
-  type: vless
-  uuid: 07680ffb-0666-4836-b6ad-ec0de62bc38f
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: D_-aOnqEEAyi1i95e9mBjGpbT3kbTuQsWYBGW2s-iTg
-    short-id: 8998b032d5c33de9
-  servername: assets-tw-113.statsmarket-wb.com
-  client-fingerprint: randomized
-- name: 🇷🇺 俄罗斯 (Russia) 05 7990K ⚠L20% 🇨🇳 - NEKO
-  server: 185.84.162.254
-  port: 443
-  udp: true
-  type: vless
-  uuid: 07680ffb-0666-4836-b6ad-ec0de62bc38f
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: D_-aOnqEEAyi1i95e9mBjGpbT3kbTuQsWYBGW2s-iTg
-    short-id: 8998b032d5c33de9
-  servername: assets-tw-113.statsmarket-wb.com
-  client-fingerprint: firefox
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
   - 🇷🇺 俄罗斯 (Russia) 01 7490K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 02 6648K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 03 6321K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 04 7476K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 05 7990K ⚠L20% 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
   - 🇷🇺 俄罗斯 (Russia) 01 7490K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 02 6648K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 03 6321K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 04 7476K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 05 7990K ⚠L20% 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

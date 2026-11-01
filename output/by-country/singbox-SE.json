@@ -4,36 +4,8 @@
   },
   "outbounds": [
     {
-      "type": "vmess",
-      "tag": "🇸🇪 瑞典 (Sweden) 01 14061K ⚠P - NEKO",
-      "server": "31.76.81.137",
-      "server_port": 1114,
-      "uuid": "78c8ab17-814e-4c10-a642-f616c9be979d",
-      "security": "auto"
-    },
-    {
-      "type": "trojan",
-      "tag": "🇸🇪 瑞典 (Sweden) 02 14239K 🇨🇳 - NEKO",
-      "server": "70.34.207.14",
-      "server_port": 443,
-      "password": "0ab6c98dae3b48e8b9c4a776b6c9c19a",
-      "tls": {
-        "enabled": true,
-        "server_name": "searchhealthcarejobsandbuildmedicalcareerpathway.com",
-        "insecure": false
-      }
-    },
-    {
-      "type": "vmess",
-      "tag": "🇸🇪 瑞典 (Sweden) 03 14849K ⚠P - NEKO",
-      "server": "177.3.215.199",
-      "server_port": 1125,
-      "uuid": "78c8ab17-814e-4c10-a642-f616c9be979d",
-      "security": "auto"
-    },
-    {
       "type": "hysteria2",
-      "tag": "🇸🇪 瑞典 (Sweden) 04 10802K ⚠L20% 🇨🇳 - NEKO",
+      "tag": "🇸🇪 瑞典 (Sweden) 01 13141K 🇨🇳 - NEKO",
       "server": "192.142.23.46",
       "server_port": 443,
       "password": "a0052f4f-4c63-0002-a16f-ab2d5d718cd3",
@@ -44,24 +16,77 @@
       }
     },
     {
+      "type": "trojan",
+      "tag": "🇸🇪 瑞典 (Sweden) 02 17453K 🇨🇳 - NEKO",
+      "server": "70.34.207.14",
+      "server_port": 443,
+      "password": "0ab6c98dae3b48e8b9c4a776b6c9c19a",
+      "tls": {
+        "enabled": true,
+        "server_name": "searchhealthcarejobsandbuildmedicalcareerpathway.com",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇸🇪 瑞典 (Sweden) 03 13119K 🇨🇳 - NEKO",
+      "server": "89.125.37.41",
+      "server_port": 443,
+      "uuid": "b310e287-79fa-45e3-887f-9564c0e390f7",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "se.frgcdn.xyz",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "nF_kEdHan2dgl2tlQ_dtNaKZ4oORhuiFrXHbtEDcT2Q",
+          "short_id": "2d6d073dc88f22a8"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇸🇪 瑞典 (Sweden) 04 323K ⚠P - NEKO",
+      "server": "179.253.179.109",
+      "server_port": 54083,
+      "uuid": "0ef03752-c8bf-4482-8710-e563ca4808f9",
+      "tls": {
+        "enabled": true,
+        "server_name": "177.3.215.54",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇸🇪 瑞典 (Sweden) 01 14061K ⚠P - NEKO",
-        "🇸🇪 瑞典 (Sweden) 02 14239K 🇨🇳 - NEKO",
-        "🇸🇪 瑞典 (Sweden) 03 14849K ⚠P - NEKO",
-        "🇸🇪 瑞典 (Sweden) 04 10802K ⚠L20% 🇨🇳 - NEKO"
+        "🇸🇪 瑞典 (Sweden) 01 13141K 🇨🇳 - NEKO",
+        "🇸🇪 瑞典 (Sweden) 02 17453K 🇨🇳 - NEKO",
+        "🇸🇪 瑞典 (Sweden) 03 13119K 🇨🇳 - NEKO",
+        "🇸🇪 瑞典 (Sweden) 04 323K ⚠P - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇸🇪 瑞典 (Sweden) 01 14061K ⚠P - NEKO",
-        "🇸🇪 瑞典 (Sweden) 02 14239K 🇨🇳 - NEKO",
-        "🇸🇪 瑞典 (Sweden) 03 14849K ⚠P - NEKO",
-        "🇸🇪 瑞典 (Sweden) 04 10802K ⚠L20% 🇨🇳 - NEKO"
+        "🇸🇪 瑞典 (Sweden) 01 13141K 🇨🇳 - NEKO",
+        "🇸🇪 瑞典 (Sweden) 02 17453K 🇨🇳 - NEKO",
+        "🇸🇪 瑞典 (Sweden) 03 13119K 🇨🇳 - NEKO",
+        "🇸🇪 瑞典 (Sweden) 04 323K ⚠P - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

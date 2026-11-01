@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇫🇮 芬兰 (Finland) 01 8044K 🇨🇳 - NEKO
+- name: 🇫🇮 芬兰 (Finland) 01 14501K 🇨🇳 - NEKO
   server: fi1.obxodvpn.us
   port: 443
   udp: true
@@ -12,7 +12,7 @@ proxies:
   password: 2a0fc918-9c61-451b-a9ad-e8f796e70f52
   sni: nl1.obxodvpn.us
   skip-cert-verify: false
-- name: 🇫🇮 芬兰 (Finland) 02 1415K ⚠P⚠U - NEKO
+- name: 🇫🇮 芬兰 (Finland) 02 12824K ⚠P⚠U - NEKO
   server: 153.76.194.118
   port: 8443
   udp: true
@@ -20,8 +20,21 @@ proxies:
   password: 7d43670b-6b08-45b9-8a24-8f3971abc132
   sni: finland.biznes.lol
   skip-cert-verify: false
-- name: 🇫🇮 芬兰 (Finland) 03 8763K ⚠L20% ⚠P - NEKO
-  server: hw3.divarkhaghazi.com
+- name: 🇫🇮 芬兰 (Finland) 03 10798K ⚠P - NEKO
+  server: 92.242.165.20
+  port: 2083
+  udp: true
+  type: vless
+  uuid: e3c3b722-1264-4cdc-a97c-b0a1bb73cd67
+  tls: true
+  servername: speedtestmark.com
+  skip-cert-verify: false
+  client-fingerprint: firefox
+  network: ws
+  ws-opts:
+    path: /vless-ws
+- name: 🇫🇮 芬兰 (Finland) 04 10780K ⚠P - NEKO
+  server: 65.109.210.221
   port: 465
   udp: true
   type: vless
@@ -34,21 +47,65 @@ proxies:
     path: /
     headers:
       Host: hw3.divarkhaghazi.com.
+- name: 🇫🇮 芬兰 (Finland) 05 6055K ⚠P - NEKO
+  server: 217.16.31.193
+  port: 8443
+  udp: true
+  type: vless
+  uuid: 902e7be9-d0a8-42a6-994f-8320916a9d9e
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: ejbzKnJoNSYWWIcDgo9Ghy-lQvjsp3QQFAGKDaFQbUo
+    short-id: 624ed7c00c61576b
+  servername: hel.mtmajestic.space
+  client-fingerprint: firefox
+- name: 🇫🇮 芬兰 (Finland) 06 289K ⚠P - NEKO
+  server: 179.253.179.109
+  port: 62083
+  udp: true
+  type: vless
+  uuid: ef988d56-9c18-408e-ae1f-a144a332ebce
+  tls: true
+  servername: 177.3.220.159
+  skip-cert-verify: false
+  client-fingerprint: firefox
+- name: 🇫🇮 芬兰 (Finland) 07 12321K 🇨🇳 - NEKO
+  server: fin2.vpngold.ru
+  port: 8443
+  udp: true
+  type: vless
+  uuid: a52fd54b-ba4d-4d11-8e00-301e2646cd66
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: 1H1DiBCBB7fpALV71pH1q66ePybBFlVOcxftdlQimQ8
+    short-id: 385cb18df0892069
+  servername: fin2.vpngold.ru
+  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇫🇮 芬兰 (Finland) 01 8044K 🇨🇳 - NEKO
-  - 🇫🇮 芬兰 (Finland) 02 1415K ⚠P⚠U - NEKO
-  - 🇫🇮 芬兰 (Finland) 03 8763K ⚠L20% ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 01 14501K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 02 12824K ⚠P⚠U - NEKO
+  - 🇫🇮 芬兰 (Finland) 03 10798K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 04 10780K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 05 6055K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 06 289K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 07 12321K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇫🇮 芬兰 (Finland) 01 8044K 🇨🇳 - NEKO
-  - 🇫🇮 芬兰 (Finland) 02 1415K ⚠P⚠U - NEKO
-  - 🇫🇮 芬兰 (Finland) 03 8763K ⚠L20% ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 01 14501K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 02 12824K ⚠P⚠U - NEKO
+  - 🇫🇮 芬兰 (Finland) 03 10798K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 04 10780K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 05 6055K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 06 289K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 07 12321K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

@@ -4,7 +4,100 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇯🇵 日本 (Japan) 01 14924K 🇨🇳 - NEKO
+- name: 🇯🇵 日本 (Japan) 01 8967K 🇨🇳 - NEKO
+  server: de0bc027-teisg0-thtg7i-1lkt0.jp5.hyhuawei.com
+  port: 443
+  udp: true
+  type: tuic
+  uuid: cd1b0ae0-4010-11ee-953a-f23c9164ca5d
+  password: cd1b0ae0-4010-11ee-953a-f23c9164ca5d
+  sni: de0bc027-teisg0-thtg7i-1lkt0.jp5.hyhuawei.com
+  skip-cert-verify: false
+  congestion-controller: bbr
+  udp-relay-mode: native
+  alpn:
+  - h3
+- name: 🇯🇵 日本 (Japan) 02 8141K 🇨🇳 - NEKO
+  server: 149.22.87.204
+  port: 443
+  udp: true
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇯🇵 日本 (Japan) 03 10563K 🇨🇳 - NEKO
+  server: 149.22.87.240
+  port: 443
+  udp: true
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇯🇵 日本 (Japan) 04 ⚠S6361K 🇨🇳 - NEKO
+  server: 45.32.10.7
+  port: 443
+  udp: true
+  type: hysteria2
+  password: 96ab5cd282733fd4c312a61f972f330a
+  sni: vp3.yysyy.online
+  skip-cert-verify: false
+- name: 🇯🇵 日本 (Japan) 05 13193K 🇨🇳 - NEKO
+  server: 167.179.108.225
+  port: 443
+  udp: true
+  type: trojan
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: discoverparttimepositionsandsupplementyourincomeguide.com
+  skip-cert-verify: false
+- name: 🇯🇵 日本 (Japan) 06 3827K 🇨🇳 - NEKO
+  server: 128.241.25.127
+  port: 30036
+  udp: true
+  type: vless
+  uuid: bc3710e4-f0c3-41a8-8624-9977c1864ee1
+  tls: true
+  servername: d-l28t5-65-b.pbe40wmcujaw726h7cpqernzmawz4stwtrnqve0n1s5reht.workers.dev
+  skip-cert-verify: false
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /@Marisa_kristi
+    headers:
+      Host: d-l28t5-65-b.pbe40wmcujaw726h7cpqernzmawz4stwtrnqve0n1s5reht.workers.dev
+- name: 🇯🇵 日本 (Japan) 07 6569K 🇨🇳 - NEKO
+  server: 149.22.87.241
+  port: 443
+  udp: true
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇯🇵 日本 (Japan) 08 ⚠S1457K 🇨🇳 - NEKO
+  server: 128.241.25.11
+  port: 30021
+  udp: true
+  type: vless
+  uuid: a6b7c8ec-3822-4ada-90b2-d69cbe8d3067
+  tls: true
+  servername: d-l28t5-65-b.pbe40wmcujaw726h7cpqernzmawz4stwtrnqve0n1s5reht.workers.dev
+  skip-cert-verify: false
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /@Marisa_kristi
+    headers:
+      Host: d-l28t5-65-b.pbe40wmcujaw726h7cpqernzmawz4stwtrnqve0n1s5reht.workers.dev
+- name: 🇯🇵 日本 (Japan) 09 292K 🇨🇳 - NEKO
+  server: 3.114.220.22
+  port: 19645
+  udp: true
+  type: vless
+  uuid: 814bd064-544d-4255-a070-5705c03f6da9
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
+    short-id: 48050fab
+  servername: www.apple.com
+  client-fingerprint: ios
+- name: 🇯🇵 日本 (Japan) 10 12993K 🇨🇳 - NEKO
   server: ga1data.xyy123.bid
   port: 443
   udp: true
@@ -17,44 +110,7 @@ proxies:
     short-id: 00b0389a
   servername: www.amzn.com
   client-fingerprint: chrome
-- name: 🇯🇵 日本 (Japan) 02 22640K 🇨🇳 - NEKO
-  server: 149.22.87.204
-  port: 443
-  udp: true
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-- name: 🇯🇵 日本 (Japan) 03 13055K 🇨🇳 - NEKO
-  server: 45.32.10.7
-  port: 443
-  udp: true
-  type: hysteria2
-  password: 96ab5cd282733fd4c312a61f972f330a
-  sni: vp3.yysyy.online
-  skip-cert-verify: false
-- name: 🇯🇵 日本 (Japan) 04 7245K - NEKO
-  server: 149.22.87.240
-  port: 443
-  udp: true
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-- name: 🇯🇵 日本 (Japan) 05 15174K 🇨🇳 - NEKO
-  server: 167.179.108.225
-  port: 443
-  udp: true
-  type: trojan
-  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  sni: discoverparttimepositionsandsupplementyourincomeguide.com
-  skip-cert-verify: false
-- name: 🇯🇵 日本 (Japan) 06 8630K 🇨🇳 - NEKO
-  server: 149.22.87.241
-  port: 443
-  udp: true
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-- name: 🇯🇵 日本 (Japan) 07 14880K 🇨🇳 - NEKO
+- name: 🇯🇵 日本 (Japan) 11 12776K 🇨🇳 - NEKO
   server: 45.76.98.127
   port: 443
   udp: true
@@ -69,22 +125,7 @@ proxies:
   network: ws
   ws-opts:
     path: /ws
-    headers:
-      Host: itunes.apple.com
-- name: 🇯🇵 日本 (Japan) 08 405K ⚠P - NEKO
-  server: 3.114.220.22
-  port: 19645
-  udp: true
-  type: vless
-  uuid: 814bd064-544d-4255-a070-5705c03f6da9
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
-    short-id: 48050fab
-  servername: www.apple.com
-  client-fingerprint: ios
-- name: 🇯🇵 日本 (Japan) 09 12328K ⚠P⚠U - NEKO
+- name: 🇯🇵 日本 (Japan) 12 11366K ⚠P⚠U - NEKO
   server: freedom.chenlan.top
   port: 12765
   udp: true
@@ -92,33 +133,55 @@ proxies:
   password: STYyftThFn
   sni: freedom.chenlan.top
   skip-cert-verify: false
+- name: 🇯🇵 日本 (Japan) 13 ⚠S2597K ⚠P - NEKO
+  server: 203.137.165.164
+  port: 57554
+  udp: true
+  type: vless
+  uuid: fb4c1c39-2204-43bb-853c-f8579a77feb4
+  tls: true
+  servername: mw5qisav.wjwqvie0wb1eqhb8e83clqdoq3m5p9a4on.workers.dev
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /@Marisa_kristi
+    headers:
+      Host: mw5qisav.wjwqvie0wb1eqhb8e83clqdoq3m5p9a4on.workers.dev
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇯🇵 日本 (Japan) 01 14924K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 02 22640K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 03 13055K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 04 7245K - NEKO
-  - 🇯🇵 日本 (Japan) 05 15174K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 06 8630K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 07 14880K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 08 405K ⚠P - NEKO
-  - 🇯🇵 日本 (Japan) 09 12328K ⚠P⚠U - NEKO
+  - 🇯🇵 日本 (Japan) 01 8967K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 02 8141K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 03 10563K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 04 ⚠S6361K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 05 13193K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 06 3827K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 07 6569K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 08 ⚠S1457K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 09 292K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 10 12993K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 11 12776K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 12 11366K ⚠P⚠U - NEKO
+  - 🇯🇵 日本 (Japan) 13 ⚠S2597K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇯🇵 日本 (Japan) 01 14924K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 02 22640K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 03 13055K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 04 7245K - NEKO
-  - 🇯🇵 日本 (Japan) 05 15174K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 06 8630K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 07 14880K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 08 405K ⚠P - NEKO
-  - 🇯🇵 日本 (Japan) 09 12328K ⚠P⚠U - NEKO
+  - 🇯🇵 日本 (Japan) 01 8967K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 02 8141K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 03 10563K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 04 ⚠S6361K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 05 13193K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 06 3827K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 07 6569K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 08 ⚠S1457K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 09 292K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 10 12993K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 11 12776K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 12 11366K ⚠P⚠U - NEKO
+  - 🇯🇵 日本 (Japan) 13 ⚠S2597K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

@@ -4,19 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇲🇽 墨西哥 (Mexico) 01 4619K 🇨🇳 - NEKO
-  server: 147.78.1.253
-  port: 443
-  udp: true
-  type: vless
-  uuid: 39a390af-1f90-4c0e-89e4-4e2023732e4b
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: TefL2KtNcNLPmUY8TKlu5pA7ffipqgmbBN6gpyzyklk
-  servername: www.apple.com
-  client-fingerprint: chrome
-- name: 🇲🇽 墨西哥 (Mexico) 02 14120K 🇨🇳 - NEKO
+- name: 🇲🇽 墨西哥 (Mexico) 01 10196K 🇨🇳 - NEKO
   server: 216.238.80.100
   port: 443
   udp: true
@@ -24,7 +12,7 @@ proxies:
   password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
   sni: connectwithtopemployersandfindidealjobs.com
   skip-cert-verify: false
-- name: 🇲🇽 墨西哥 (Mexico) 03 11164K ⚠P - NEKO
+- name: 🇲🇽 墨西哥 (Mexico) 02 5271K ⚠P - NEKO
   server: 149.104.87.33
   port: 15083
   udp: true
@@ -37,16 +25,14 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇲🇽 墨西哥 (Mexico) 01 4619K 🇨🇳 - NEKO
-  - 🇲🇽 墨西哥 (Mexico) 02 14120K 🇨🇳 - NEKO
-  - 🇲🇽 墨西哥 (Mexico) 03 11164K ⚠P - NEKO
+  - 🇲🇽 墨西哥 (Mexico) 01 10196K 🇨🇳 - NEKO
+  - 🇲🇽 墨西哥 (Mexico) 02 5271K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇲🇽 墨西哥 (Mexico) 01 4619K 🇨🇳 - NEKO
-  - 🇲🇽 墨西哥 (Mexico) 02 14120K 🇨🇳 - NEKO
-  - 🇲🇽 墨西哥 (Mexico) 03 11164K ⚠P - NEKO
+  - 🇲🇽 墨西哥 (Mexico) 01 10196K 🇨🇳 - NEKO
+  - 🇲🇽 墨西哥 (Mexico) 02 5271K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

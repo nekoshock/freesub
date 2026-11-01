@@ -4,28 +4,25 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇭🇰 中国香港 (Hong Kong) 01 (家宽) 7985K 🇨🇳 - NEKO
-  server: a736eb68-tmb1c0-tpkh0c-1r7od.hk2.hyhuawei.com
-  port: 443
+- name: 🇺🇸 美国 (United States) 01 (移动家宽) 5140K ⚠P - NEKO
+  server: us001.zestapp778.com
+  port: 57277
   udp: true
-  type: vless
-  uuid: 6d56436c-150d-11f0-b0c8-f23c913c8d2b
-  tls: true
-  reality-opts:
-    public-key: c9DdggKaJGSH7FN3JgGbi9ZvsUqOGGpIr7BhzTWeTCo
-  servername: download.windowsupdate.com
-  client-fingerprint: chrome
+  type: trojan
+  password: 5t6i121em5lkmsmk
+  sni: us001.zestapp778.com
+  skip-cert-verify: false
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇭🇰 中国香港 (Hong Kong) 01 (家宽) 7985K 🇨🇳 - NEKO
+  - 🇺🇸 美国 (United States) 01 (移动家宽) 5140K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇭🇰 中国香港 (Hong Kong) 01 (家宽) 7985K 🇨🇳 - NEKO
+  - 🇺🇸 美国 (United States) 01 (移动家宽) 5140K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

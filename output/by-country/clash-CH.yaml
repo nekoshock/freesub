@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇭 瑞士 (Switzerland) 01 10471K 🇨🇳 - NEKO
+- name: 🇨🇭 瑞士 (Switzerland) 01 8519K 🇨🇳 - NEKO
   server: 45.90.57.119
   port: 8443
   udp: true
@@ -16,24 +16,8 @@ proxies:
     public-key: L6DeK_a25_ZjPKFOrQLoCPWuXi5KCIH_EcRpARmCwkI
     short-id: 16036bbef04d0509
   servername: twitch.tv
-  client-fingerprint: firefox
-- name: 🇨🇭 瑞士 (Switzerland) 02 10761K 🇨🇳 - NEKO
-  server: 208.69.78.29
-  port: 443
-  udp: true
-  type: trojan
-  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  sni: learn.yourultimateprofessionalcareerhub.com
-  skip-cert-verify: false
-- name: 🇨🇭 瑞士 (Switzerland) 03 15269K 🇨🇳 - NEKO
-  server: 208.69.78.33
-  port: 443
-  udp: true
-  type: trojan
-  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  sni: courses.yourultimateprofessionalcareerhub.com
-  skip-cert-verify: false
-- name: 🇨🇭 瑞士 (Switzerland) 04 12191K 🇨🇳 - NEKO
+  client-fingerprint: safari
+- name: 🇨🇭 瑞士 (Switzerland) 02 8676K ⚠P - NEKO
   server: 208.69.78.217
   port: 2053
   udp: true
@@ -44,44 +28,35 @@ proxies:
     public-key: A49ue7zXSusJZdErPAewg3jqGdUFIO1a9xOunEKJfC0
     short-id: ad86e2d52ff40ebd
   servername: www.apple.com
+  client-fingerprint: chrome
+- name: 🇨🇭 瑞士 (Switzerland) 03 7849K ⚠P - NEKO
+  server: 104.165.205.54
+  port: 2083
+  udp: true
+  type: vless
+  uuid: a0bce4ce-514e-4837-8753-0c458484b538
+  tls: true
+  servername: speedtestmark.com
+  skip-cert-verify: false
   client-fingerprint: firefox
-- name: 🇨🇭 瑞士 (Switzerland) 05 12648K 🇨🇳 - NEKO
-  server: 208.69.78.33
-  port: 443
-  udp: true
-  type: trojan
-  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  sni: courses.yourultimateprofessionalcareerhub.com
-  skip-cert-verify: false
-- name: 🇨🇭 瑞士 (Switzerland) 06 12722K 🇨🇳 - NEKO
-  server: 208.69.78.222
-  port: 443
-  udp: true
-  type: trojan
-  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  sni: yourultimateprofessionalcareerhub.com
-  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /vless-ws
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇨🇭 瑞士 (Switzerland) 01 10471K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 02 10761K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 03 15269K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 04 12191K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 05 12648K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 06 12722K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 01 8519K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 02 8676K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 03 7849K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇭 瑞士 (Switzerland) 01 10471K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 02 10761K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 03 15269K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 04 12191K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 05 12648K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 06 12722K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 01 8519K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 02 8676K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 03 7849K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

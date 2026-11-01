@@ -4,7 +4,20 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇭🇰 中国香港 (Hong Kong) 01 5908K 🇨🇳 - NEKO
+- name: 🇭🇰 中国香港 (Hong Kong) 01 17217K 🇨🇳 - NEKO
+  server: 46b61821-tki800-tlwmty-1gevg.pccw3.hyhuawei.com
+  port: 443
+  udp: true
+  type: tuic
+  uuid: f02ee2b4-d760-11ec-bd7c-f23c913c8d2b
+  password: f02ee2b4-d760-11ec-bd7c-f23c913c8d2b
+  sni: 46b61821-tki800-tlwmty-1gevg.pccw3.hyhuawei.com
+  skip-cert-verify: false
+  congestion-controller: bbr
+  udp-relay-mode: native
+  alpn:
+  - h3
+- name: 🇭🇰 中国香港 (Hong Kong) 02 9182K 🇨🇳 - NEKO
   server: 39c981a4-tmm5c0-u093mf-1mina.hk3.hyhuawei.com
   port: 443
   udp: true
@@ -12,7 +25,39 @@ proxies:
   password: 367e233c-2f54-11ee-9ae1-f23c9164ca5d
   sni: 39c981a4-tmm5c0-u093mf-1mina.hk3.hyhuawei.com
   skip-cert-verify: false
-- name: 🇭🇰 中国香港 (Hong Kong) 02 712K ⚠P - NEKO
+- name: 🇭🇰 中国香港 (Hong Kong) 03 8097K 🇨🇳 - NEKO
+  server: 75a08777-tmm5c0-ttxkqc-e06r.nw4.hyhuawei.com
+  port: 443
+  udp: true
+  type: hysteria2
+  password: 861726bb-c61a-b0e0-99fa-5ddfdcf21902
+  sni: 75a08777-tmm5c0-ttxkqc-e06r.nw4.hyhuawei.com
+  skip-cert-verify: false
+- name: 🇭🇰 中国香港 (Hong Kong) 04 200K 🇨🇳 - NEKO
+  server: 165.154.63.139
+  port: 443
+  udp: true
+  type: vless
+  uuid: 91ad30e9-ab06-4b4c-9fb9-1c2aa97d8b3a
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: AE81BrwMc8-kwGEIA1LhzaL03er0Qwt2V-fFy76F5jQ
+    short-id: ca4aedd4
+  servername: www.amazon.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 05 11977K 🇨🇳 - NEKO
+  server: 0e05f970-tki800-traezq-1t5n1.hk2.hyhuawei.com
+  port: 443
+  udp: true
+  type: vless
+  uuid: ea800f9e-ca6c-11ef-8e74-f23c913c8d2b
+  tls: true
+  reality-opts:
+    public-key: c9DdggKaJGSH7FN3JgGbi9ZvsUqOGGpIr7BhzTWeTCo
+  servername: download.windowsupdate.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 06 563K ⚠P - NEKO
   server: 38.76.180.144
   port: 1443
   udp: true
@@ -26,14 +71,22 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇭🇰 中国香港 (Hong Kong) 01 5908K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 712K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 17217K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 9182K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 03 8097K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 04 200K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 05 11977K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 06 563K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇭🇰 中国香港 (Hong Kong) 01 5908K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 712K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 17217K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 9182K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 03 8097K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 04 200K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 05 11977K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 06 563K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

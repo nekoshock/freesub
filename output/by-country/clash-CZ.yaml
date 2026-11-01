@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇿 捷克 (Czech) 01 10504K 🇨🇳 - NEKO
+- name: 🇨🇿 捷克 (Czech) 01 9148K 🇨🇳 - NEKO
   server: 195.123.245.241
   port: 443
   udp: true
@@ -17,7 +17,7 @@ proxies:
     short-id: 23d0950d60bc0d5b
   servername: gateway.icloud.com
   client-fingerprint: random
-- name: 🇨🇿 捷克 (Czech) 02 14436K 🇨🇳 - NEKO
+- name: 🇨🇿 捷克 (Czech) 02 11581K 🇨🇳 - NEKO
   server: 212.102.38.25
   port: 443
   udp: true
@@ -29,8 +29,30 @@ proxies:
     public-key: 23cb4W9THzBKsrECsLh-A_FcKZfkAtUONoDze8-GnQE
     short-id: e90360ec7cc61b20
   servername: udemy.com
-  client-fingerprint: chrome
-- name: 🇨🇿 捷克 (Czech) 03 19094K 🇨🇳 - NEKO
+  client-fingerprint: ''
+- name: 🇨🇿 捷克 (Czech) 03 7635K 🇨🇳 - NEKO
+  server: 178.208.89.190
+  port: 443
+  udp: true
+  type: vless
+  uuid: 689a62e4-37e7-41de-9e6a-f2a56368c9e2
+  flow: xtls-rprx-vision
+  tls: true
+  servername: prod-eu-east-cz6.api-gateway.service-mesh.ingress-observability.speedtestinternet.link
+  skip-cert-verify: false
+  client-fingerprint: firefox
+- name: 🇨🇿 捷克 (Czech) 04 8015K 🇨🇳 - NEKO
+  server: 178.208.89.190
+  port: 443
+  udp: true
+  type: vless
+  uuid: 689a62e4-37e7-41de-9e6a-f2a56368c9e2
+  flow: xtls-rprx-vision
+  tls: true
+  servername: prod-eu-east-cz6.api-gateway.service-mesh.ingress-observability.speedtestinternet.link
+  skip-cert-verify: false
+  client-fingerprint: firefox
+- name: 🇨🇿 捷克 (Czech) 05 8660K ⚠P - NEKO
   server: 31.77.13.22
   port: 2063
   udp: true
@@ -42,38 +64,25 @@ proxies:
     public-key: MMpt_jWc4J3oySBdf5sPDVRkiWlZmOObth6A1scM9BM
   servername: rusbid.de
   client-fingerprint: chrome
-- name: 🇨🇿 捷克 (Czech) 04 10262K 🇨🇳 - NEKO
-  server: 185.78.76.166
-  port: 443
-  udp: true
-  type: vless
-  uuid: f27b6f65-6e59-4f89-b929-afa397ca587f
-  tls: true
-  servername: n.bitpulse.me
-  skip-cert-verify: false
-  client-fingerprint: firefox
-  network: ws
-  ws-opts:
-    path: /019bcbad-3813-7cce-8786-3ac0e418f128
-    headers:
-      Host: n.bitpulse.me
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇨🇿 捷克 (Czech) 01 10504K 🇨🇳 - NEKO
-  - 🇨🇿 捷克 (Czech) 02 14436K 🇨🇳 - NEKO
-  - 🇨🇿 捷克 (Czech) 03 19094K 🇨🇳 - NEKO
-  - 🇨🇿 捷克 (Czech) 04 10262K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 01 9148K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 02 11581K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 03 7635K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 04 8015K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 05 8660K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇿 捷克 (Czech) 01 10504K 🇨🇳 - NEKO
-  - 🇨🇿 捷克 (Czech) 02 14436K 🇨🇳 - NEKO
-  - 🇨🇿 捷克 (Czech) 03 19094K 🇨🇳 - NEKO
-  - 🇨🇿 捷克 (Czech) 04 10262K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 01 9148K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 02 11581K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 03 7635K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 04 8015K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 05 8660K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

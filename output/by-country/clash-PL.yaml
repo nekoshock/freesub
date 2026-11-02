@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇵🇱 波兰 (Poland) 01 9715K 🇨🇳 - NEKO
+- name: 🇵🇱 波兰 (Poland) 01 2309K 🇨🇳 - NEKO
   server: 2.26.255.215
   port: 443
   udp: true
@@ -17,7 +17,7 @@ proxies:
     short-id: '50'
   servername: cloudflare.com
   client-fingerprint: chrome
-- name: 🇵🇱 波兰 (Poland) 02 428K 🇨🇳 - NEKO
+- name: 🇵🇱 波兰 (Poland) 02 11288K 🇨🇳 - NEKO
   server: 191.217.245.227
   port: 443
   udp: true
@@ -29,7 +29,7 @@ proxies:
     public-key: OFmJtVi6OB9E6KIc5QV5YmoouimRFc-Se9hICjtV8hQ
   servername: pl.lenvex.cc
   client-fingerprint: firefox
-- name: 🇵🇱 波兰 (Poland) 03 8911K 🇨🇳 - NEKO
+- name: 🇵🇱 波兰 (Poland) 03 9076K 🇨🇳 - NEKO
   server: 191.217.245.10
   port: 443
   udp: true
@@ -40,8 +40,21 @@ proxies:
   reality-opts:
     public-key: OFmJtVi6OB9E6KIc5QV5YmoouimRFc-Se9hICjtV8hQ
   servername: pl.lenvex.cc
-  client-fingerprint: ios
-- name: 🇵🇱 波兰 (Poland) 04 9818K 🇨🇳 - NEKO
+  client-fingerprint: firefox
+- name: 🇵🇱 波兰 (Poland) 04 3162K 🇨🇳 - NEKO
+  server: 94.249.180.86
+  port: 443
+  udp: true
+  type: vless
+  uuid: 0de1d303-d7de-0001-8679-c4cb67e2e2cc
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: WWeAHWUVD-phmnjNJ823cer0c4CMIbEs08AhsuEZmDc
+    short-id: a696de84963656de
+  servername: amd.com
+  client-fingerprint: ''
+- name: 🇵🇱 波兰 (Poland) 05 11926K 🇨🇳 - NEKO
   server: 70.34.252.255
   port: 443
   udp: true
@@ -54,18 +67,20 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇵🇱 波兰 (Poland) 01 9715K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 02 428K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 03 8911K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 04 9818K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 01 2309K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 02 11288K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 03 9076K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 04 3162K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 05 11926K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇵🇱 波兰 (Poland) 01 9715K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 02 428K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 03 8911K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 04 9818K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 01 2309K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 02 11288K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 03 9076K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 04 3162K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 05 11926K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

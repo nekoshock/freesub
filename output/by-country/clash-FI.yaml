@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇫🇮 芬兰 (Finland) 01 8349K 🇨🇳 - NEKO
+- name: 🇫🇮 芬兰 (Finland) 01 10735K 🇨🇳 - NEKO
   server: 95.216.27.15
   port: 2053
   udp: true
@@ -15,28 +15,48 @@ proxies:
     public-key: aiHdxKOzcFZDILKj3MIPrMsyT0XxMy_O6xoxnz6MIWs
     short-id: 10351b07c712d2a2
   servername: www.cloudflare.com
-  client-fingerprint: ''
-- name: 🇫🇮 芬兰 (Finland) 02 5966K ⚠P⚠U - NEKO
-  server: finland.biznes.lol
-  port: 8443
+  client-fingerprint: chrome
+- name: 🇫🇮 芬兰 (Finland) 02 10701K ⚠P⚠U - NEKO
+  server: dlwww.mymuic.ir
+  port: 19883
   udp: true
   type: hysteria2
-  password: 7d43670b-6b08-45b9-8a24-8f3971abc132
-  sni: finland.biznes.lol
+  password: 0zy7kb86chk9ktbn
+  sni: dlwww.mymuic.ir
   skip-cert-verify: false
+  obfs: salamander
+  obfs-password: otwmdcyqh98idcxv
+- name: 🇫🇮 芬兰 (Finland) 03 16830K ⚠P - NEKO
+  server: dns22.m3hrzd.ir
+  port: 1346
+  udp: true
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: v1c-i5SSFXP8n4g1Wbc0L9gX82x5O2Qa
+- name: 🇫🇮 芬兰 (Finland) 04 5357K ⚠P - NEKO
+  server: 6.bmi.ir.asopardaz.ir
+  port: 35176
+  udp: true
+  type: ss
+  cipher: 2022-blake3-aes-256-gcm
+  password: NjcyNmVjMTU1ZWU5NDA5ZDk0ODg1NWM1MzJjZTE3NDk=:OWQ2MjI1YzRmNDFmNDcxMjkxYWZiYmMzZTFiOWMwYWU=
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇫🇮 芬兰 (Finland) 01 8349K 🇨🇳 - NEKO
-  - 🇫🇮 芬兰 (Finland) 02 5966K ⚠P⚠U - NEKO
+  - 🇫🇮 芬兰 (Finland) 01 10735K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 02 10701K ⚠P⚠U - NEKO
+  - 🇫🇮 芬兰 (Finland) 03 16830K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 04 5357K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇫🇮 芬兰 (Finland) 01 8349K 🇨🇳 - NEKO
-  - 🇫🇮 芬兰 (Finland) 02 5966K ⚠P⚠U - NEKO
+  - 🇫🇮 芬兰 (Finland) 01 10735K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 02 10701K ⚠P⚠U - NEKO
+  - 🇫🇮 芬兰 (Finland) 03 16830K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 04 5357K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

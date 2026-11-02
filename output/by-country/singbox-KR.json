@@ -5,7 +5,7 @@
   "outbounds": [
     {
       "type": "trojan",
-      "tag": "🇰🇷 韩国 (South Korea) 01 399K ⚠P - NEKO",
+      "tag": "🇰🇷 韩国 (South Korea) 01 10761K ⚠P - NEKO",
       "server": "158.247.255.150",
       "server_port": 48851,
       "password": "5t6i121em5lkmsmk",
@@ -20,8 +20,24 @@
       }
     },
     {
+      "type": "trojan",
+      "tag": "🇰🇷 韩国 (South Korea) 02 6553K ⚠P - NEKO",
+      "server": "3.34.91.121",
+      "server_port": 12308,
+      "password": "3637190e-4ce3-41cd-9425-f5676345b38c",
+      "tls": {
+        "enabled": true,
+        "server_name": "kr02.ulifeai.com",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
       "type": "vless",
-      "tag": "🇰🇷 韩国 (South Korea) 02 9573K ⚠P - NEKO",
+      "tag": "🇰🇷 韩国 (South Korea) 03 2836K ⚠P - NEKO",
       "server": "152.69.226.63",
       "server_port": 25555,
       "uuid": "27c5483f-17f4-48ae-9a04-def53d88440d",
@@ -31,20 +47,32 @@
       }
     },
     {
+      "type": "shadowsocks",
+      "tag": "🇰🇷 韩国 (South Korea) 04 2520K ⚠P - NEKO",
+      "server": "141.164.45.187",
+      "server_port": 8888,
+      "method": "aes-256-gcm",
+      "password": "Y6R9pAtvxxzmGC"
+    },
+    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇰🇷 韩国 (South Korea) 01 399K ⚠P - NEKO",
-        "🇰🇷 韩国 (South Korea) 02 9573K ⚠P - NEKO"
+        "🇰🇷 韩国 (South Korea) 01 10761K ⚠P - NEKO",
+        "🇰🇷 韩国 (South Korea) 02 6553K ⚠P - NEKO",
+        "🇰🇷 韩国 (South Korea) 03 2836K ⚠P - NEKO",
+        "🇰🇷 韩国 (South Korea) 04 2520K ⚠P - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇰🇷 韩国 (South Korea) 01 399K ⚠P - NEKO",
-        "🇰🇷 韩国 (South Korea) 02 9573K ⚠P - NEKO"
+        "🇰🇷 韩国 (South Korea) 01 10761K ⚠P - NEKO",
+        "🇰🇷 韩国 (South Korea) 02 6553K ⚠P - NEKO",
+        "🇰🇷 韩国 (South Korea) 03 2836K ⚠P - NEKO",
+        "🇰🇷 韩国 (South Korea) 04 2520K ⚠P - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

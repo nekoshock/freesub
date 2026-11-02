@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇷🇺 俄罗斯 (Russia) 01 7490K 🇨🇳 - NEKO
+- name: 🇷🇺 俄罗斯 (Russia) 01 13829K 🇨🇳 - NEKO
   server: 193.233.253.180
   port: 8444
   udp: true
@@ -14,21 +14,62 @@ proxies:
   reality-opts:
     public-key: FWitre1jinQR7qz5HQ0q2Q4Gg9xA9B0SyizCziN7Ch0
   servername: github.com
-  client-fingerprint: ''
+  client-fingerprint: chrome
   network: grpc
   grpc-opts:
     grpc-service-name: GunService
+- name: 🇷🇺 俄罗斯 (Russia) 02 ⚠S5140K 🇨🇳 - NEKO
+  server: app-tw-113.statsmarket-wb.com
+  port: 443
+  udp: true
+  type: vless
+  uuid: 07680ffb-0666-4836-b6ad-ec0de62bc38f
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: D_-aOnqEEAyi1i95e9mBjGpbT3kbTuQsWYBGW2s-iTg
+    short-id: 8998b032d5c33de9
+  servername: assets-tw-113.statsmarket-wb.com
+  client-fingerprint: randomized
+- name: 🇷🇺 俄罗斯 (Russia) 03 9251K 🇨🇳 - NEKO
+  server: 185.229.9.135
+  port: 443
+  udp: true
+  type: vless
+  uuid: 4df3e06b-85e9-4b69-b38a-be37bad2fe9d
+  tls: true
+  servername: business.lesotorg-kirov.ru
+  skip-cert-verify: false
+  client-fingerprint: safari
+  network: ws
+  ws-opts:
+    path: /chws
+    headers:
+      Host: business.lesotorg-kirov.ru
+- name: 🇷🇺 俄罗斯 (Russia) 04 15997K ⚠P - NEKO
+  server: dns27.m3hrzd.ir
+  port: 1355
+  udp: true
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: v1c-i5SSFXP8n4g1Wbc0L9gX82x5O2Qa
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇷🇺 俄罗斯 (Russia) 01 7490K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 01 13829K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 02 ⚠S5140K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 03 9251K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 04 15997K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇷🇺 俄罗斯 (Russia) 01 7490K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 01 13829K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 02 ⚠S5140K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 03 9251K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 04 15997K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

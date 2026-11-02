@@ -4,19 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇭 瑞士 (Switzerland) 01 11933K 🇨🇳 - NEKO
-  server: 178.17.49.87
-  port: 443
-  udp: true
-  type: vless
-  uuid: 5254c281-3bc1-40ee-ba89-1aaf8c251402
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: node0aB_7yyVADkeieiBBpxqIlxNLQcvgotRClh0QXQ
-  servername: nl-modx-prime.storagedirectguide.com
-  client-fingerprint: firefox
-- name: 🇨🇭 瑞士 (Switzerland) 02 12493K 🇨🇳 - NEKO
+- name: 🇨🇭 瑞士 (Switzerland) 01 9385K 🇨🇳 - NEKO
   server: 208.69.78.217
   port: 2053
   udp: true
@@ -27,52 +15,18 @@ proxies:
     public-key: A49ue7zXSusJZdErPAewg3jqGdUFIO1a9xOunEKJfC0
     short-id: ad86e2d52ff40ebd
   servername: www.apple.com
-  client-fingerprint: chrome
-- name: 🇨🇭 瑞士 (Switzerland) 03 24874K 🇨🇳 - NEKO
-  server: 45.90.57.119
-  port: 8443
-  udp: true
-  type: vless
-  uuid: f5e70ce3-cfb4-4df1-b25c-d19bfae627c0
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: L6DeK_a25_ZjPKFOrQLoCPWuXi5KCIH_EcRpARmCwkI
-    short-id: 16036bbef04d0509
-  servername: twitch.tv
-  client-fingerprint: safari
-- name: 🇨🇭 瑞士 (Switzerland) 04 11447K ⚠P - NEKO
-  server: 154.31.112.237
-  port: 26418
-  udp: true
-  type: vless
-  uuid: 4a98013d-7ccb-477b-b613-39a3cff12144
-  tls: true
-  servername: o-85ley6knn8ut.6nvkygqh144t7xtdyvh0y3o4gzo3ujhnk8n.workers.dev
-  skip-cert-verify: false
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /@Marisa_kristi
-    headers:
-      Host: o-85ley6knn8ut.6nvkygqh144t7xtdyvh0y3o4gzo3ujhnk8n.workers.dev
+  client-fingerprint: firefox
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇨🇭 瑞士 (Switzerland) 01 11933K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 02 12493K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 03 24874K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 04 11447K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 01 9385K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇭 瑞士 (Switzerland) 01 11933K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 02 12493K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 03 24874K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 04 11447K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 01 9385K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

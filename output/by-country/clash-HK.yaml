@@ -4,20 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇭🇰 中国香港 (Hong Kong) 01 8407K 🇨🇳 - NEKO
-  server: 46b61821-tki800-tlwmty-1gevg.pccw3.hyhuawei.com
-  port: 443
-  udp: true
-  type: tuic
-  uuid: f02ee2b4-d760-11ec-bd7c-f23c913c8d2b
-  password: f02ee2b4-d760-11ec-bd7c-f23c913c8d2b
-  sni: 46b61821-tki800-tlwmty-1gevg.pccw3.hyhuawei.com
-  skip-cert-verify: false
-  congestion-controller: bbr
-  udp-relay-mode: native
-  alpn:
-  - h3
-- name: 🇭🇰 中国香港 (Hong Kong) 02 5406K 🇨🇳 - NEKO
+- name: 🇭🇰 中国香港 (Hong Kong) 01 8349K 🇨🇳 - NEKO
   server: a91af2af-tmm5c0-twnp5a-ahsb.hk3.hyhuawei.com
   port: 443
   udp: true
@@ -25,30 +12,103 @@ proxies:
   password: 2e42c1ee-aaaa-11ec-bb74-f23c9164ca5d
   sni: a91af2af-tmm5c0-twnp5a-ahsb.hk3.hyhuawei.com
   skip-cert-verify: false
-- name: 🇭🇰 中国香港 (Hong Kong) 03 443K ⚠P - NEKO
-  server: 38.76.180.144
-  port: 1443
+- name: 🇭🇰 中国香港 (Hong Kong) 02 19553K 🇨🇳 - NEKO
+  server: 8.217.186.60
+  port: 443
   udp: true
-  type: vless
-  uuid: d98b67d4-024a-4bba-91e2-e6ebece6df11
+  type: vmess
+  uuid: d237ab38-1974-4b36-94a3-0665ce8587b9
+  alterId: 0
+  cipher: auto
+  tls: true
+  servername: euu1yalfmcqvljex.v.3dns.vip
+  skip-cert-verify: false
   network: ws
   ws-opts:
-    path: /vless-ws
+    path: /ws-vmess
+    headers:
+      Host: euu1yalfmcqvljex.v.3dns.vip
+- name: 🇭🇰 中国香港 (Hong Kong) 03 10775K 🇨🇳 - NEKO
+  server: ex1ogt73nzpqkac2.v.3dns.vip
+  port: 443
+  udp: true
+  type: vmess
+  uuid: f23bb427-c1f9-4373-876c-2f43e9f790f3
+  alterId: 0
+  cipher: auto
+  tls: true
+  servername: ex1ogt73nzpqkac2.v.3dns.vip
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /ws-vmess
+    headers:
+      Host: ex1ogt73nzpqkac2.v.3dns.vip
+- name: 🇭🇰 中国香港 (Hong Kong) 04 9681K 🇨🇳 - NEKO
+  server: qtkdr8jxe3wefxjm.v.3dns.vip
+  port: 443
+  udp: true
+  type: vmess
+  uuid: f23bb427c1f94373876c2f43e9f790f3
+  alterId: 0
+  cipher: auto
+  tls: true
+  servername: qtkdr8jxe3wefxjm.v.3dns.vip
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /ws-vmess
+- name: 🇭🇰 中国香港 (Hong Kong) 05 10966K 🇨🇳 - NEKO
+  server: 2b9hwy8ocx7q74nm.v.3dns.vip
+  port: 443
+  udp: true
+  type: vmess
+  uuid: f23bb427c1f94373876c2f43e9f790f3
+  alterId: 0
+  cipher: auto
+  tls: true
+  servername: 2b9hwy8ocx7q74nm.v.3dns.vip
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /ws-vmess
+- name: 🇭🇰 中国香港 (Hong Kong) 06 13604K 🇨🇳 - NEKO
+  server: lcv8v9l7oyamxxfz.v.3dns.vip
+  port: 443
+  udp: true
+  type: vmess
+  uuid: f23bb427c1f94373876c2f43e9f790f3
+  alterId: 0
+  cipher: auto
+  tls: true
+  servername: lcv8v9l7OyamxxfZ.v.3dns.vip
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /ws-vmess
+    headers:
+      Host: lcv8v9l7OyamxxfZ.v.3dns.vip
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇭🇰 中国香港 (Hong Kong) 01 8407K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 5406K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 03 443K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 8349K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 19553K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 03 10775K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 04 9681K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 05 10966K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 06 13604K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇭🇰 中国香港 (Hong Kong) 01 8407K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 5406K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 03 443K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 8349K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 19553K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 03 10775K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 04 9681K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 05 10966K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 06 13604K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

@@ -4,51 +4,60 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇱🇹 立陶宛 (Lithuania) 01 10342K ⚠P - NEKO
-  server: 195.238.126.20
-  port: 9068
-  udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: mwgRg9hRq3b4Qnwb
-- name: 🇱🇹 立陶宛 (Lithuania) 02 9425K ⚠P - NEKO
-  server: 195.238.126.20
-  port: 9012
-  udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: xaupMUvhptwxdDUg
-- name: 🇱🇹 立陶宛 (Lithuania) 03 10338K ⚠P - NEKO
-  server: 195.238.126.20
-  port: 9001
-  udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: UkXRsXvR6buDMG2Y
-- name: 🇱🇹 立陶宛 (Lithuania) 04 9571K ⚠P - NEKO
+- name: 🇱🇹 立陶宛 (Lithuania) 01 7458K ⚠P - NEKO
   server: 195.238.126.20
   port: 9078
   udp: true
   type: ss
   cipher: aes-256-cfb
   password: JCJpbRbQZNw9XFZG
+- name: 🇱🇹 立陶宛 (Lithuania) 02 7757K ⚠P - NEKO
+  server: 195.238.126.20
+  port: 9086
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: 37Z4TFCYhfxcpc9Q
+- name: 🇱🇹 立陶宛 (Lithuania) 03 7619K ⚠P - NEKO
+  server: 195.238.126.20
+  port: 9001
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: UkXRsXvR6buDMG2Y
+- name: 🇱🇹 立陶宛 (Lithuania) 04 7773K ⚠P - NEKO
+  server: 195.238.126.20
+  port: 9012
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: xaupMUvhptwxdDUg
+- name: 🇱🇹 立陶宛 (Lithuania) 05 7772K ⚠P - NEKO
+  server: 195.238.126.20
+  port: 9068
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: mwgRg9hRq3b4Qnwb
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇱🇹 立陶宛 (Lithuania) 01 10342K ⚠P - NEKO
-  - 🇱🇹 立陶宛 (Lithuania) 02 9425K ⚠P - NEKO
-  - 🇱🇹 立陶宛 (Lithuania) 03 10338K ⚠P - NEKO
-  - 🇱🇹 立陶宛 (Lithuania) 04 9571K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 01 7458K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 02 7757K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 03 7619K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 04 7773K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 05 7772K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇱🇹 立陶宛 (Lithuania) 01 10342K ⚠P - NEKO
-  - 🇱🇹 立陶宛 (Lithuania) 02 9425K ⚠P - NEKO
-  - 🇱🇹 立陶宛 (Lithuania) 03 10338K ⚠P - NEKO
-  - 🇱🇹 立陶宛 (Lithuania) 04 9571K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 01 7458K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 02 7757K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 03 7619K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 04 7773K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 05 7772K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

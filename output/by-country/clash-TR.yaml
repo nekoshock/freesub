@@ -4,7 +4,16 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇹🇷 土耳其 (Turkey) 01 6257K 🇨🇳 - NEKO
+- name: 🇹🇷 土耳其 (Turkey) 01 8417K ⚠P - NEKO
+  server: 93.190.9.2
+  port: 3090
+  udp: true
+  type: vless
+  uuid: 9992be65-f201-44ca-a177-2ca95aaa7ad4
+  network: grpc
+  grpc-opts:
+    grpc-service-name: vless
+- name: 🇹🇷 土耳其 (Turkey) 02 12676K 🇨🇳 - NEKO
   server: 62.133.63.45
   port: 8444
   udp: true
@@ -18,7 +27,7 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: GunService
-- name: 🇹🇷 土耳其 (Turkey) 02 8231K 🇨🇳 - NEKO
+- name: 🇹🇷 土耳其 (Turkey) 03 13642K 🇨🇳 - NEKO
   server: 153.56.210.61
   port: 443
   udp: true
@@ -30,21 +39,8 @@ proxies:
     public-key: WWeAHWUVD-phmnjNJ823cer0c4CMIbEs08AhsuEZmDc
     short-id: a696de84963656de
   servername: amd.com
-  client-fingerprint: firefox
-- name: 🇹🇷 土耳其 (Turkey) 03 ⚠S5659K 🇨🇳 - NEKO
-  server: 78.135.73.47
-  port: 443
-  udp: true
-  type: vless
-  uuid: 25e16692-d097-4e69-9e2d-8415609c1968
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: sZAJkAu23wp1WKY-qeaeiwR38izP5OyfhumoE9xhbB8
-    short-id: f46cd3ea3d1eb72d
-  servername: www.datadoghq.com
-  client-fingerprint: firefox
-- name: 🇹🇷 土耳其 (Turkey) 04 7648K ⚠P - NEKO
+  client-fingerprint: chrome
+- name: 🇹🇷 土耳其 (Turkey) 04 12873K 🇨🇳 - NEKO
   server: 151.241.226.201
   port: 2053
   udp: true
@@ -61,18 +57,18 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇹🇷 土耳其 (Turkey) 01 6257K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 02 8231K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 03 ⚠S5659K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 04 7648K ⚠P - NEKO
+  - 🇹🇷 土耳其 (Turkey) 01 8417K ⚠P - NEKO
+  - 🇹🇷 土耳其 (Turkey) 02 12676K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 03 13642K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 04 12873K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇹🇷 土耳其 (Turkey) 01 6257K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 02 8231K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 03 ⚠S5659K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 04 7648K ⚠P - NEKO
+  - 🇹🇷 土耳其 (Turkey) 01 8417K ⚠P - NEKO
+  - 🇹🇷 土耳其 (Turkey) 02 12676K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 03 13642K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 04 12873K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

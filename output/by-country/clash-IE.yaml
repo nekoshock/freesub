@@ -4,8 +4,8 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇮🇪 爱尔兰 (Ireland) 01 1028K 🇨🇳 - NEKO
-  server: 195.123.189.214
+- name: 🇮🇪 爱尔兰 (Ireland) 01 3478K 🇨🇳 - NEKO
+  server: 195.123.189.221
   port: 443
   udp: true
   type: vless
@@ -15,7 +15,7 @@ proxies:
     public-key: 9X-tgXeFaqxURY0nGxFNdz9bpNIo7DTXHoWXpBqiOj0
     short-id: cbc638acc8ac87
   servername: max.ru
-  client-fingerprint: firefox
+  client-fingerprint: chrome
   network: grpc
   grpc-opts:
     grpc-service-name: grpc-90
@@ -24,12 +24,12 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇮🇪 爱尔兰 (Ireland) 01 1028K 🇨🇳 - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 01 3478K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇮🇪 爱尔兰 (Ireland) 01 1028K 🇨🇳 - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 01 3478K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

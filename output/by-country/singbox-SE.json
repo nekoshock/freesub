@@ -4,20 +4,8 @@
   },
   "outbounds": [
     {
-      "type": "trojan",
-      "tag": "🇸🇪 瑞典 (Sweden) 01 23840K 🇨🇳 - NEKO",
-      "server": "70.34.207.14",
-      "server_port": 443,
-      "password": "0ab6c98dae3b48e8b9c4a776b6c9c19a",
-      "tls": {
-        "enabled": true,
-        "server_name": "searchhealthcarejobsandbuildmedicalcareerpathway.com",
-        "insecure": false
-      }
-    },
-    {
       "type": "vless",
-      "tag": "🇸🇪 瑞典 (Sweden) 02 3677K 🇨🇳 - NEKO",
+      "tag": "🇸🇪 瑞典 (Sweden) 01 10220K 🇨🇳 - NEKO",
       "server": "201.58.187.248",
       "server_port": 443,
       "uuid": "50a87e21-f0e2-4b53-a787-91adfe748f63",
@@ -27,7 +15,7 @@
         "server_name": "swidenafterlanzerotte.space",
         "utls": {
           "enabled": true,
-          "fingerprint": "firefox"
+          "fingerprint": "chrome"
         },
         "reality": {
           "enabled": true,
@@ -38,7 +26,7 @@
     },
     {
       "type": "vless",
-      "tag": "🇸🇪 瑞典 (Sweden) 03 23154K 🇨🇳 - NEKO",
+      "tag": "🇸🇪 瑞典 (Sweden) 02 13190K 🇨🇳 - NEKO",
       "server": "193.25.216.31",
       "server_port": 443,
       "uuid": "f8d52ece-fad4-478d-875d-df6eed3befa7",
@@ -58,14 +46,22 @@
       }
     },
     {
-      "type": "vless",
-      "tag": "🇸🇪 瑞典 (Sweden) 04 16206K 🇨🇳 - NEKO",
-      "server": "se3.shtil.io",
+      "type": "shadowsocks",
+      "tag": "🇸🇪 瑞典 (Sweden) 03 12891K ⚠P - NEKO",
+      "server": "138.199.55.243",
+      "server_port": 19999,
+      "method": "aes-256-gcm",
+      "password": "ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
+    },
+    {
+      "type": "trojan",
+      "tag": "🇸🇪 瑞典 (Sweden) 04 13266K 🇨🇳 - NEKO",
+      "server": "connect-se.mimowhat.online",
       "server_port": 443,
-      "uuid": "6ba4ed2e-b42b-4880-8b3b-c7e2df2d02f6",
+      "password": "FkQH0Q5EFneySv20Qj3yoArD2GSb2XZF",
       "tls": {
         "enabled": true,
-        "server_name": "se3.shtil.io",
+        "server_name": "connect-se.mimowhat.online",
         "insecure": false,
         "alpn": [
           "h2",
@@ -73,13 +69,29 @@
         ],
         "utls": {
           "enabled": true,
-          "fingerprint": "firefox"
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇸🇪 瑞典 (Sweden) 05 14450K 🇨🇳 - NEKO",
+      "server": "70.34.207.14",
+      "server_port": 443,
+      "password": "0ab6c98dae3b48e8b9c4a776b6c9c19a",
+      "tls": {
+        "enabled": true,
+        "server_name": "searchhealthcarejobsandbuildmedicalcareerpathway.com",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
         }
       }
     },
     {
       "type": "vmess",
-      "tag": "🇸🇪 瑞典 (Sweden) 05 23601K ⚠P - NEKO",
+      "tag": "🇸🇪 瑞典 (Sweden) 06 14147K ⚠P - NEKO",
       "server": "138.199.55.230",
       "server_port": 1270,
       "uuid": "5c040f1d-45db-43bd-8d46-e4950e433735",
@@ -91,40 +103,28 @@
       }
     },
     {
-      "type": "hysteria2",
-      "tag": "🇸🇪 瑞典 (Sweden) 06 1161K 🇨🇳 - NEKO",
-      "server": "se.mimowhat.online",
-      "server_port": 443,
-      "password": "769f34f0-1500-488f-b414-03bc90666502",
-      "tls": {
-        "enabled": true,
-        "server_name": "se.mimowhat.online",
-        "insecure": false
-      }
-    },
-    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇸🇪 瑞典 (Sweden) 01 23840K 🇨🇳 - NEKO",
-        "🇸🇪 瑞典 (Sweden) 02 3677K 🇨🇳 - NEKO",
-        "🇸🇪 瑞典 (Sweden) 03 23154K 🇨🇳 - NEKO",
-        "🇸🇪 瑞典 (Sweden) 04 16206K 🇨🇳 - NEKO",
-        "🇸🇪 瑞典 (Sweden) 05 23601K ⚠P - NEKO",
-        "🇸🇪 瑞典 (Sweden) 06 1161K 🇨🇳 - NEKO"
+        "🇸🇪 瑞典 (Sweden) 01 10220K 🇨🇳 - NEKO",
+        "🇸🇪 瑞典 (Sweden) 02 13190K 🇨🇳 - NEKO",
+        "🇸🇪 瑞典 (Sweden) 03 12891K ⚠P - NEKO",
+        "🇸🇪 瑞典 (Sweden) 04 13266K 🇨🇳 - NEKO",
+        "🇸🇪 瑞典 (Sweden) 05 14450K 🇨🇳 - NEKO",
+        "🇸🇪 瑞典 (Sweden) 06 14147K ⚠P - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇸🇪 瑞典 (Sweden) 01 23840K 🇨🇳 - NEKO",
-        "🇸🇪 瑞典 (Sweden) 02 3677K 🇨🇳 - NEKO",
-        "🇸🇪 瑞典 (Sweden) 03 23154K 🇨🇳 - NEKO",
-        "🇸🇪 瑞典 (Sweden) 04 16206K 🇨🇳 - NEKO",
-        "🇸🇪 瑞典 (Sweden) 05 23601K ⚠P - NEKO",
-        "🇸🇪 瑞典 (Sweden) 06 1161K 🇨🇳 - NEKO"
+        "🇸🇪 瑞典 (Sweden) 01 10220K 🇨🇳 - NEKO",
+        "🇸🇪 瑞典 (Sweden) 02 13190K 🇨🇳 - NEKO",
+        "🇸🇪 瑞典 (Sweden) 03 12891K ⚠P - NEKO",
+        "🇸🇪 瑞典 (Sweden) 04 13266K 🇨🇳 - NEKO",
+        "🇸🇪 瑞典 (Sweden) 05 14450K 🇨🇳 - NEKO",
+        "🇸🇪 瑞典 (Sweden) 06 14147K ⚠P - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇦🇪 阿联酋 (UAE) 01 ⚠S8456K 🇨🇳 - NEKO
+- name: 🇦🇪 阿联酋 (UAE) 01 5917K 🇨🇳 - NEKO
   server: 130.49.161.70
   port: 443
   udp: true
@@ -14,17 +14,63 @@ proxies:
   skip-cert-verify: false
   obfs: salamander
   obfs-password: rG07s3COMIEvdnQipRyWzx_H_2xygNC3
+- name: 🇦🇪 阿联酋 (UAE) 02 17553K ⚠P - NEKO
+  server: 151.241.19.36
+  port: 19999
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇦🇪 阿联酋 (UAE) 03 19266K ⚠P - NEKO
+  server: 151.241.19.29
+  port: 19999
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇦🇪 阿联酋 (UAE) 04 14903K 🇨🇳 - NEKO
+  server: etpl3.servertest.cc
+  port: 443
+  udp: true
+  type: vless
+  uuid: 5cccbd26-d910-4312-9c3d-8564821fbc53
+  tls: true
+  servername: etpl3.servertest.cc
+  skip-cert-verify: false
+  client-fingerprint: firefox
+  network: ws
+  ws-opts:
+    path: /gateway/v1/ws/f7f0ea91ad60cfc1d3cec81a7d1482d3
+- name: 🇦🇪 阿联酋 (UAE) 05 7807K ⚠P - NEKO
+  server: 84.235.244.108
+  port: 22573
+  udp: true
+  type: vless
+  uuid: 39947382-3212-41c9-bc3a-589574ac8b23
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: uae.unixzone.us
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇦🇪 阿联酋 (UAE) 01 ⚠S8456K 🇨🇳 - NEKO
+  - 🇦🇪 阿联酋 (UAE) 01 5917K 🇨🇳 - NEKO
+  - 🇦🇪 阿联酋 (UAE) 02 17553K ⚠P - NEKO
+  - 🇦🇪 阿联酋 (UAE) 03 19266K ⚠P - NEKO
+  - 🇦🇪 阿联酋 (UAE) 04 14903K 🇨🇳 - NEKO
+  - 🇦🇪 阿联酋 (UAE) 05 7807K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇦🇪 阿联酋 (UAE) 01 ⚠S8456K 🇨🇳 - NEKO
+  - 🇦🇪 阿联酋 (UAE) 01 5917K 🇨🇳 - NEKO
+  - 🇦🇪 阿联酋 (UAE) 02 17553K ⚠P - NEKO
+  - 🇦🇪 阿联酋 (UAE) 03 19266K ⚠P - NEKO
+  - 🇦🇪 阿联酋 (UAE) 04 14903K 🇨🇳 - NEKO
+  - 🇦🇪 阿联酋 (UAE) 05 7807K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

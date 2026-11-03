@@ -1,0 +1,44 @@
+{
+  "log": {
+    "level": "warn"
+  },
+  "outbounds": [
+    {
+      "type": "vless",
+      "tag": "🇦🇲 亚美尼亚 (Armenia) 01 1303K 🇨🇳 - NEKO",
+      "server": "slovarik.xyz",
+      "server_port": 443,
+      "uuid": "613b64fe-b88d-42db-9d4f-26b8654d4060",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.slovarik.xyz",
+        "insecure": false
+      }
+    },
+    {
+      "type": "selector",
+      "tag": "select",
+      "outbounds": [
+        "auto",
+        "🇦🇲 亚美尼亚 (Armenia) 01 1303K 🇨🇳 - NEKO"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "auto",
+      "outbounds": [
+        "🇦🇲 亚美尼亚 (Armenia) 01 1303K 🇨🇳 - NEKO"
+      ],
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+    {
+      "type": "block",
+      "tag": "block"
+    }
+  ]
+}

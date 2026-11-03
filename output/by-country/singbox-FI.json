@@ -5,7 +5,57 @@
   "outbounds": [
     {
       "type": "vless",
-      "tag": "🇫🇮 芬兰 (Finland) 01 8220K 🇨🇳 - NEKO",
+      "tag": "🇫🇮 芬兰 (Finland) 01 3209K 🇨🇳 - NEKO",
+      "server": "201.58.177.35",
+      "server_port": 443,
+      "uuid": "5adb25b6-b41a-46ac-a481-71651deb60c5",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "xb1.huinaduok.fans",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "DA1kJXSsIsN8H-kZ51jEYHafTx50X-2RGG8KNZuCISg",
+          "short_id": "da4d87fa"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇫🇮 芬兰 (Finland) 02 11781K ⚠P - NEKO",
+      "server": "89.144.53.4",
+      "server_port": 8445,
+      "uuid": "5c32201a-6c0e-451b-8f0a-24b4bd40df59",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "videos.porsche.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "kBTMVLCNE0jjwuJF6H5-65l5Pe0QToS0Hg-9Tmaa7Sk",
+          "short_id": "1a2b3c4d"
+        }
+      }
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇫🇮 芬兰 (Finland) 03 946K ⚠P - NEKO",
+      "server": "dns22.m3hrzd.ir",
+      "server_port": 1346,
+      "method": "chacha20-ietf-poly1305",
+      "password": "v1c-i5SSFXP8n4g1Wbc0L9gX82x5O2Qa"
+    },
+    {
+      "type": "vless",
+      "tag": "🇫🇮 芬兰 (Finland) 04 10636K 🇨🇳 - NEKO",
       "server": "95.216.27.15",
       "server_port": 2053,
       "uuid": "b79d736d-0f10-4169-b626-362059d18204",
@@ -14,7 +64,7 @@
         "server_name": "www.cloudflare.com",
         "utls": {
           "enabled": true,
-          "fingerprint": ""
+          "fingerprint": "chrome"
         },
         "reality": {
           "enabled": true,
@@ -24,18 +74,69 @@
       }
     },
     {
+      "type": "vless",
+      "tag": "🇫🇮 芬兰 (Finland) 05 9599K ⚠P - NEKO",
+      "server": "static.44.128.217.95.clients.your-server.de",
+      "server_port": 8443,
+      "uuid": "9f97688c-9d0a-4df7-b113-ce0ce7863c3a",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "static.216.7.245.188.clients.your-server.de",
+        "insecure": false,
+        "alpn": [
+          "h2",
+          "http/1.1"
+        ],
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇫🇮 芬兰 (Finland) 06 4609K 🇨🇳 - NEKO",
+      "server": "areal1.greewebservices.ir",
+      "server_port": 2425,
+      "uuid": "dfb070bf-0b53-43eb-be2b-4b34f7e1644d",
+      "tls": {
+        "enabled": true,
+        "server_name": "play.googleapis.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "ios"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "MnPGY1Vo4ZbYdpLRTYHoolv5s_pwO41karyJfnQ0F3o",
+          "short_id": "9b60d3"
+        }
+      }
+    },
+    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇫🇮 芬兰 (Finland) 01 8220K 🇨🇳 - NEKO"
+        "🇫🇮 芬兰 (Finland) 01 3209K 🇨🇳 - NEKO",
+        "🇫🇮 芬兰 (Finland) 02 11781K ⚠P - NEKO",
+        "🇫🇮 芬兰 (Finland) 03 946K ⚠P - NEKO",
+        "🇫🇮 芬兰 (Finland) 04 10636K 🇨🇳 - NEKO",
+        "🇫🇮 芬兰 (Finland) 05 9599K ⚠P - NEKO",
+        "🇫🇮 芬兰 (Finland) 06 4609K 🇨🇳 - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇫🇮 芬兰 (Finland) 01 8220K 🇨🇳 - NEKO"
+        "🇫🇮 芬兰 (Finland) 01 3209K 🇨🇳 - NEKO",
+        "🇫🇮 芬兰 (Finland) 02 11781K ⚠P - NEKO",
+        "🇫🇮 芬兰 (Finland) 03 946K ⚠P - NEKO",
+        "🇫🇮 芬兰 (Finland) 04 10636K 🇨🇳 - NEKO",
+        "🇫🇮 芬兰 (Finland) 05 9599K ⚠P - NEKO",
+        "🇫🇮 芬兰 (Finland) 06 4609K 🇨🇳 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

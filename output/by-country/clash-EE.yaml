@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇪🇪 爱沙尼亚 (Estonia) 01 1106K 🇨🇳 - NEKO
+- name: 🇪🇪 爱沙尼亚 (Estonia) 01 4804K 🇨🇳 - NEKO
   server: 185.225.205.53
   port: 443
   udp: true
@@ -16,18 +16,48 @@ proxies:
     public-key: 2XyUS3_ONl5REQ7NiwikdJphAe7oJ61-21zuqnN67y8
     short-id: 2e82d7ac
   servername: addons.mozilla.org
-  client-fingerprint: qq
+  client-fingerprint: chrome
+- name: 🇪🇪 爱沙尼亚 (Estonia) 02 14221K 🇨🇳 - NEKO
+  server: cdn.izzzyvpn.space
+  port: 443
+  udp: true
+  type: vless
+  uuid: e7ee38d7-f8ad-4d14-a491-2d9e18011845
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: v--0dXOWcnzpJvl_6qkbWTCRLg-eWdJ6WxJsYtj9WQY
+    short-id: f7fdf037537b8c38
+  servername: cdn.izzzyvpn.space
+  client-fingerprint: firefox
+- name: 🇪🇪 爱沙尼亚 (Estonia) 03 5347K 🇨🇳 - NEKO
+  server: 109.71.247.200
+  port: 443
+  udp: true
+  type: vless
+  uuid: 7ad63b26-bf70-4872-8fab-ebaf73a1e19d
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: LEziyH-E4k9hehGRJkVi1FadVObB_NZJy8U7oUCVWXU
+    short-id: b9120cd53ffd7bba
+  servername: static-47.topp-con.xyz
+  client-fingerprint: ios
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇪🇪 爱沙尼亚 (Estonia) 01 1106K 🇨🇳 - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 01 4804K 🇨🇳 - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 02 14221K 🇨🇳 - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 03 5347K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇪🇪 爱沙尼亚 (Estonia) 01 1106K 🇨🇳 - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 01 4804K 🇨🇳 - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 02 14221K 🇨🇳 - NEKO
+  - 🇪🇪 爱沙尼亚 (Estonia) 03 5347K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

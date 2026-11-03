@@ -4,35 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇱🇻 拉脱维亚 (Latvia) 01 9691K ⚠P - NEKO
-  server: 212.43.152.62
-  port: 8444
-  udp: true
-  type: vless
-  uuid: a8321cfe-39a2-48a0-a918-f01f7d9006ed
-  tls: true
-  servername: us1.meshbeat.online
-  skip-cert-verify: false
-  client-fingerprint: firefox
-  network: ws
-  ws-opts:
-    path: /api/v1/devices/3ec9e2ef7b/telemetry
-    headers:
-      Host: us1.meshbeat.online
-- name: 🇱🇻 拉脱维亚 (Latvia) 02 7219K 🇨🇳 - NEKO
-  server: 195.123.213.28
-  port: 443
-  udp: true
-  type: vless
-  uuid: 02fcc1a4-ee90-4970-8bbb-4ffaa8109d24
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: NMgy1XgCSXExOg6Tg8xG9lCWttMF6sjdpB41lZy6FWo
-    short-id: 5c256336e3b673fa
-  servername: www.cloudflare.com
-  client-fingerprint: ''
-- name: 🇱🇻 拉脱维亚 (Latvia) 03 7780K 🇨🇳 - NEKO
+- name: 🇱🇻 拉脱维亚 (Latvia) 01 11555K 🇨🇳 - NEKO
   server: 138.124.180.137
   port: 443
   udp: true
@@ -50,16 +22,12 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇱🇻 拉脱维亚 (Latvia) 01 9691K ⚠P - NEKO
-  - 🇱🇻 拉脱维亚 (Latvia) 02 7219K 🇨🇳 - NEKO
-  - 🇱🇻 拉脱维亚 (Latvia) 03 7780K 🇨🇳 - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 01 11555K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇱🇻 拉脱维亚 (Latvia) 01 9691K ⚠P - NEKO
-  - 🇱🇻 拉脱维亚 (Latvia) 02 7219K 🇨🇳 - NEKO
-  - 🇱🇻 拉脱维亚 (Latvia) 03 7780K 🇨🇳 - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 01 11555K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

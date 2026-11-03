@@ -4,28 +4,50 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇮🇹 意大利 (Italy) 01 8616K ⚠P - NEKO
+- name: 🇮🇹 意大利 (Italy) 01 10805K ⚠P - NEKO
+  server: 202.50.253.99
+  port: 19999
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇮🇹 意大利 (Italy) 02 10937K ⚠P - NEKO
+  server: 202.50.253.45
+  port: 19999
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇮🇹 意大利 (Italy) 03 11019K ⚠P - NEKO
+  server: 202.50.253.81
+  port: 19999
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇮🇹 意大利 (Italy) 04 10921K ⚠P - NEKO
+  server: 202.50.253.36
+  port: 19999
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇮🇹 意大利 (Italy) 05 11201K ⚠P - NEKO
+  server: 202.50.253.18
+  port: 19999
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇮🇹 意大利 (Italy) 06 9382K ⚠P - NEKO
   server: 185.164.175.81
   port: 19999
   udp: true
   type: ss
   cipher: aes-256-gcm
   password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇮🇹 意大利 (Italy) 02 233K 🇨🇳 - NEKO
-  server: 82.118.16.189
-  port: 443
-  udp: true
-  type: vless
-  uuid: d5e5f5a1-0f23-4c49-af9f-4be445bf9d8e
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: SjGkzJQ9I6ZZjC3V73atcPMczhMm0oiTrB8mUQXz1HY
-    short-id: 37fbf155c7a9f3ff
-  servername: www.cloudflare.com
-  client-fingerprint: random
-- name: 🇮🇹 意大利 (Italy) 03 8489K ⚠P - NEKO
-  server: 202.50.253.45
+- name: 🇮🇹 意大利 (Italy) 07 9469K ⚠P - NEKO
+  server: 202.50.253.54
   port: 19999
   udp: true
   type: ss
@@ -36,16 +58,24 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇮🇹 意大利 (Italy) 01 8616K ⚠P - NEKO
-  - 🇮🇹 意大利 (Italy) 02 233K 🇨🇳 - NEKO
-  - 🇮🇹 意大利 (Italy) 03 8489K ⚠P - NEKO
+  - 🇮🇹 意大利 (Italy) 01 10805K ⚠P - NEKO
+  - 🇮🇹 意大利 (Italy) 02 10937K ⚠P - NEKO
+  - 🇮🇹 意大利 (Italy) 03 11019K ⚠P - NEKO
+  - 🇮🇹 意大利 (Italy) 04 10921K ⚠P - NEKO
+  - 🇮🇹 意大利 (Italy) 05 11201K ⚠P - NEKO
+  - 🇮🇹 意大利 (Italy) 06 9382K ⚠P - NEKO
+  - 🇮🇹 意大利 (Italy) 07 9469K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇮🇹 意大利 (Italy) 01 8616K ⚠P - NEKO
-  - 🇮🇹 意大利 (Italy) 02 233K 🇨🇳 - NEKO
-  - 🇮🇹 意大利 (Italy) 03 8489K ⚠P - NEKO
+  - 🇮🇹 意大利 (Italy) 01 10805K ⚠P - NEKO
+  - 🇮🇹 意大利 (Italy) 02 10937K ⚠P - NEKO
+  - 🇮🇹 意大利 (Italy) 03 11019K ⚠P - NEKO
+  - 🇮🇹 意大利 (Italy) 04 10921K ⚠P - NEKO
+  - 🇮🇹 意大利 (Italy) 05 11201K ⚠P - NEKO
+  - 🇮🇹 意大利 (Italy) 06 9382K ⚠P - NEKO
+  - 🇮🇹 意大利 (Italy) 07 9469K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

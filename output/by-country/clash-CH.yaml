@@ -4,14 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇭 瑞士 (Switzerland) 01 13543K ⚠P - NEKO
-  server: 79.127.184.104
-  port: 19999
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇨🇭 瑞士 (Switzerland) 02 13144K 🇨🇳 - NEKO
+- name: 🇨🇭 瑞士 (Switzerland) 01 15163K 🇨🇳 - NEKO
   server: 208.69.78.222
   port: 443
   udp: true
@@ -19,21 +12,36 @@ proxies:
   password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
   sni: yourultimateprofessionalcareerhub.com
   skip-cert-verify: false
-- name: 🇨🇭 瑞士 (Switzerland) 03 16225K ⚠P - NEKO
+- name: 🇨🇭 瑞士 (Switzerland) 02 15235K ⚠P - NEKO
+  server: 79.127.184.104
+  port: 19999
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇨🇭 瑞士 (Switzerland) 03 11175K ⚠P - NEKO
   server: 23.166.88.127
   port: 19999
   udp: true
   type: ss
   cipher: aes-256-gcm
   password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇨🇭 瑞士 (Switzerland) 04 12164K ⚠P - NEKO
+- name: 🇨🇭 瑞士 (Switzerland) 04 11529K ⚠P⚠U - NEKO
+  server: 104.165.205.42
+  port: 8443
+  udp: true
+  type: hysteria2
+  password: 54d2f622-fd71-4f5f-8813-832b68f4ca3b
+  sni: speedtestmark.com
+  skip-cert-verify: false
+- name: 🇨🇭 瑞士 (Switzerland) 05 11231K ⚠P - NEKO
   server: 186.190.215.251
   port: 19999
   udp: true
   type: ss
   cipher: aes-256-gcm
   password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇨🇭 瑞士 (Switzerland) 05 12412K 🇨🇳 - NEKO
+- name: 🇨🇭 瑞士 (Switzerland) 06 12256K ⚠P - NEKO
   server: 208.69.78.217
   port: 2053
   udp: true
@@ -45,48 +53,36 @@ proxies:
     short-id: ad86e2d52ff40ebd
   servername: www.apple.com
   client-fingerprint: firefox
-- name: 🇨🇭 瑞士 (Switzerland) 06 11438K ⚠P - NEKO
+- name: 🇨🇭 瑞士 (Switzerland) 07 9576K ⚠P - NEKO
   server: 23.166.88.189
   port: 19999
   udp: true
   type: ss
   cipher: aes-256-gcm
   password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇨🇭 瑞士 (Switzerland) 07 6414K 🇨🇳 - NEKO
-  server: p2real5.greewebservices.ir
-  port: 1350
-  udp: true
-  type: vless
-  uuid: fb1d2d8a-d9bd-496f-9d5f-f179cbd00123
-  tls: true
-  reality-opts:
-    public-key: xQnXh5EfPDhcEBB7rRiLca33GYrMEeUa35domLL_yA8
-    short-id: 9b60d3
-  servername: play.googleapis.com
-  client-fingerprint: ios
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇨🇭 瑞士 (Switzerland) 01 13543K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 02 13144K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 03 16225K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 04 12164K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 05 12412K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 06 11438K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 07 6414K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 01 15163K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 02 15235K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 03 11175K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 04 11529K ⚠P⚠U - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 05 11231K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 06 12256K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 07 9576K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇭 瑞士 (Switzerland) 01 13543K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 02 13144K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 03 16225K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 04 12164K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 05 12412K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 06 11438K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 07 6414K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 01 15163K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 02 15235K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 03 11175K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 04 11529K ⚠P⚠U - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 05 11231K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 06 12256K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 07 9576K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

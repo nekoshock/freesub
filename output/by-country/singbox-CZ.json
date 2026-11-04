@@ -5,7 +5,7 @@
   "outbounds": [
     {
       "type": "vless",
-      "tag": "🇨🇿 捷克 (Czech) 01 14999K 🇨🇳 - NEKO",
+      "tag": "🇨🇿 捷克 (Czech) 01 14619K 🇨🇳 - NEKO",
       "server": "195.123.245.241",
       "server_port": 443,
       "uuid": "7c053ca8-38cc-45e2-930c-eda1fd66f903",
@@ -26,7 +26,7 @@
     },
     {
       "type": "vless",
-      "tag": "🇨🇿 捷克 (Czech) 02 14373K 🇨🇳 - NEKO",
+      "tag": "🇨🇿 捷克 (Czech) 02 64646K 🇨🇳 - NEKO",
       "server": "212.102.38.25",
       "server_port": 443,
       "uuid": "b34a52cb-cd52-49a8-9362-b8e97c151d49",
@@ -46,20 +46,64 @@
       }
     },
     {
+      "type": "vless",
+      "tag": "🇨🇿 捷克 (Czech) 03 12269K 🇨🇳 - NEKO",
+      "server": "178.208.89.21",
+      "server_port": 443,
+      "uuid": "689a62e4-37e7-41de-9e6a-f2a56368c9e2",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "prod-eu-east-cz6.api-gateway.service-mesh.ingress-observability.speedtestinternet.link",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇨🇿 捷克 (Czech) 04 15730K 🇨🇳 - NEKO",
+      "server": "91.199.147.41",
+      "server_port": 443,
+      "uuid": "4d945644-69ab-47e0-98b3-d43a6313135d",
+      "tls": {
+        "enabled": true,
+        "server_name": "mhoX6Xz96zGe3qv5HISuFj9B.paGeS.DEV",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/vl/SaXqikbSPA3ImtmZKAFin?ed=2560",
+        "headers": {
+          "Host": "mhoX6Xz96zGe3qv5HISuFj9B.paGeS.DEV"
+        }
+      }
+    },
+    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇨🇿 捷克 (Czech) 01 14999K 🇨🇳 - NEKO",
-        "🇨🇿 捷克 (Czech) 02 14373K 🇨🇳 - NEKO"
+        "🇨🇿 捷克 (Czech) 01 14619K 🇨🇳 - NEKO",
+        "🇨🇿 捷克 (Czech) 02 64646K 🇨🇳 - NEKO",
+        "🇨🇿 捷克 (Czech) 03 12269K 🇨🇳 - NEKO",
+        "🇨🇿 捷克 (Czech) 04 15730K 🇨🇳 - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇨🇿 捷克 (Czech) 01 14999K 🇨🇳 - NEKO",
-        "🇨🇿 捷克 (Czech) 02 14373K 🇨🇳 - NEKO"
+        "🇨🇿 捷克 (Czech) 01 14619K 🇨🇳 - NEKO",
+        "🇨🇿 捷克 (Czech) 02 64646K 🇨🇳 - NEKO",
+        "🇨🇿 捷克 (Czech) 03 12269K 🇨🇳 - NEKO",
+        "🇨🇿 捷克 (Czech) 04 15730K 🇨🇳 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

@@ -4,36 +4,39 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇭🇰 中国香港 (Hong Kong) 01 6427K 🇨🇳 - NEKO
-  server: 9969bb96-tmm5c0-twuk0i-1hzyr.hk3.hyhuawei.com
+- name: 🇭🇰 中国香港 (Hong Kong) 01 7971K 🇨🇳 - NEKO
+  server: 46b61821-tki800-tlwmty-1gevg.pccw3.hyhuawei.com
+  port: 443
+  udp: true
+  type: tuic
+  uuid: f02ee2b4-d760-11ec-bd7c-f23c913c8d2b
+  password: f02ee2b4-d760-11ec-bd7c-f23c913c8d2b
+  sni: 46b61821-tki800-tlwmty-1gevg.pccw3.hyhuawei.com
+  skip-cert-verify: false
+  congestion-controller: bbr
+  udp-relay-mode: native
+  alpn:
+  - h3
+- name: 🇭🇰 中国香港 (Hong Kong) 02 6740K 🇨🇳 - NEKO
+  server: aac08668-tmm5c0-tw661e-1isea.hk3.hyhuawei.com
   port: 443
   udp: true
   type: hysteria2
-  password: 3be8cba8-b721-11ec-8b04-f23c91cfbbc9
-  sni: 9969bb96-tmm5c0-twuk0i-1hzyr.hk3.hyhuawei.com
+  password: d6abdbda-fe9d-11ec-bb74-f23c9164ca5d
+  sni: aac08668-tmm5c0-tw661e-1isea.hk3.hyhuawei.com
   skip-cert-verify: false
-- name: 🇭🇰 中国香港 (Hong Kong) 02 7225K 🇨🇳 - NEKO
-  server: 112.120.123.140
-  port: 443
-  udp: true
-  type: hysteria2
-  password: f93486ce-cc84-11ed-9e98-f23c913c8d2b
-  sni: cb5bf3d8-tmeqo0-0-1jcwu.nw4.hyhuawei.com
-  skip-cert-verify: false
-- name: 🇭🇰 中国香港 (Hong Kong) 03 412K 🇨🇳 - NEKO
-  server: 165.154.63.139
+- name: 🇭🇰 中国香港 (Hong Kong) 03 5643K 🇨🇳 - NEKO
+  server: 210.0.244.157
   port: 443
   udp: true
   type: vless
-  uuid: 91ad30e9-ab06-4b4c-9fb9-1c2aa97d8b3a
-  flow: xtls-rprx-vision
+  uuid: f3ff9bac-2904-4f38-bae1-54ab1a72891b
   tls: true
   reality-opts:
-    public-key: AE81BrwMc8-kwGEIA1LhzaL03er0Qwt2V-fFy76F5jQ
-    short-id: ca4aedd4
-  servername: www.amazon.com
-  client-fingerprint: chrome
-- name: 🇭🇰 中国香港 (Hong Kong) 04 8822K ⚠P - NEKO
+    public-key: T239VP3HbJ2KJCur7hDHJtrs6eKmKQfU_X1Xg6NmPgI
+  servername: cloudflare.com
+  client-fingerprint: firefox
+- name: 🇭🇰 中国香港 (Hong Kong) 04 10490K ⚠P - NEKO
   server: 154.83.87.6
   port: 8443
   udp: true
@@ -45,23 +48,32 @@ proxies:
     short-id: 4ad2e4e660550e43
   servername: github.githubassets.com
   client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 05 4873K ⚠P - NEKO
+  server: 45.144.174.183
+  port: 8388
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: I0pPH99n18r05VWm
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇭🇰 中国香港 (Hong Kong) 01 6427K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 7225K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 03 412K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 04 8822K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 7971K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 6740K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 03 5643K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 04 10490K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 05 4873K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇭🇰 中国香港 (Hong Kong) 01 6427K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 7225K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 03 412K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 04 8822K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 7971K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 6740K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 03 5643K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 04 10490K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 05 4873K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

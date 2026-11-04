@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇰🇷 韩国 (South Korea) 01 9471K ⚠P - NEKO
+- name: 🇰🇷 韩国 (South Korea) 01 7497K ⚠P - NEKO
   server: 158.247.255.150
   port: 48851
   udp: true
@@ -12,28 +12,17 @@ proxies:
   password: 5t6i121em5lkmsmk
   sni: kr002.zestapp778.com
   skip-cert-verify: false
-- name: 🇰🇷 韩国 (South Korea) 02 5880K ⚠P - NEKO
-  server: 152.69.226.63
-  port: 25555
-  udp: true
-  type: vless
-  uuid: 27c5483f-17f4-48ae-9a04-def53d88440d
-  network: ws
-  ws-opts:
-    path: /
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇰🇷 韩国 (South Korea) 01 9471K ⚠P - NEKO
-  - 🇰🇷 韩国 (South Korea) 02 5880K ⚠P - NEKO
+  - 🇰🇷 韩国 (South Korea) 01 7497K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇰🇷 韩国 (South Korea) 01 9471K ⚠P - NEKO
-  - 🇰🇷 韩国 (South Korea) 02 5880K ⚠P - NEKO
+  - 🇰🇷 韩国 (South Korea) 01 7497K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

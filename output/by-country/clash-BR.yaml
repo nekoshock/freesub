@@ -4,18 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇧🇷 巴西 (Brazil) 01 12981K 🇨🇳 - NEKO
-  server: 177.3.193.43
-  port: 443
-  udp: true
-  type: vless
-  uuid: 5fb552a8-9c41-4031-86f5-ca10fc802da5
-  flow: xtls-rprx-vision
-  tls: true
-  servername: debik1.vethilis.ru
-  skip-cert-verify: false
-  client-fingerprint: chrome
-- name: 🇧🇷 巴西 (Brazil) 02 7623K 🇨🇳 - NEKO
+- name: 🇧🇷 巴西 (Brazil) 01 16282K 🇨🇳 - NEKO
   server: 216.238.104.154
   port: 443
   udp: true
@@ -23,32 +12,17 @@ proxies:
   password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
   sni: findtemporaryworkandfreelancerprojectsonlineplatform.com
   skip-cert-verify: false
-- name: 🇧🇷 巴西 (Brazil) 03 2360K 🇨🇳 - NEKO
-  server: 177.3.193.191
-  port: 443
-  udp: true
-  type: vless
-  uuid: 5fb552a8-9c41-4031-86f5-ca10fc802da5
-  flow: xtls-rprx-vision
-  tls: true
-  servername: debik2.vethilis.ru
-  skip-cert-verify: false
-  client-fingerprint: firefox
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇧🇷 巴西 (Brazil) 01 12981K 🇨🇳 - NEKO
-  - 🇧🇷 巴西 (Brazil) 02 7623K 🇨🇳 - NEKO
-  - 🇧🇷 巴西 (Brazil) 03 2360K 🇨🇳 - NEKO
+  - 🇧🇷 巴西 (Brazil) 01 16282K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇧🇷 巴西 (Brazil) 01 12981K 🇨🇳 - NEKO
-  - 🇧🇷 巴西 (Brazil) 02 7623K 🇨🇳 - NEKO
-  - 🇧🇷 巴西 (Brazil) 03 2360K 🇨🇳 - NEKO
+  - 🇧🇷 巴西 (Brazil) 01 16282K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

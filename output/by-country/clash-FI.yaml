@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇫🇮 芬兰 (Finland) 01 17321K ⚠P - NEKO
+- name: 🇫🇮 芬兰 (Finland) 01 7759K 🇨🇳 - NEKO
   server: 95.216.27.15
   port: 2053
   udp: true
@@ -16,7 +16,15 @@ proxies:
     short-id: 10351b07c712d2a2
   servername: www.cloudflare.com
   client-fingerprint: chrome
-- name: 🇫🇮 芬兰 (Finland) 02 5330K 🇨🇳 - NEKO
+- name: 🇫🇮 芬兰 (Finland) 02 6714K ⚠P⚠U - NEKO
+  server: 92.242.165.40
+  port: 8443
+  udp: true
+  type: hysteria2
+  password: 2f0fccb6-4a86-4d9f-9e03-a2dfee6ed7f5
+  sni: speedtestmark.com
+  skip-cert-verify: false
+- name: 🇫🇮 芬兰 (Finland) 03 6134K 🇨🇳 - NEKO
   server: 217.144.188.185
   port: 443
   udp: true
@@ -28,45 +36,21 @@ proxies:
     public-key: _ZRqqX7UVPTq--m8Lk8YHhrfElad2dIIpTh3D59f8zk
   servername: www.nordea.fi
   client-fingerprint: chrome
-- name: 🇫🇮 芬兰 (Finland) 03 5503K ⚠P - NEKO
-  server: dns22.m3hrzd.ir
-  port: 1346
-  udp: true
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: v1c-i5SSFXP8n4g1Wbc0L9gX82x5O2Qa
-- name: 🇫🇮 芬兰 (Finland) 04 21746K 🇨🇳 - NEKO
-  server: 146.103.118.189
-  port: 443
-  udp: true
-  type: vless
-  uuid: ce698f0c-a8ec-474a-b5d8-3be8032deeb8
-  tls: true
-  servername: nl2.574ck.xyz
-  skip-cert-verify: false
-  client-fingerprint: firefox
-  network: ws
-  ws-opts:
-    path: /574ck-finland
-    headers:
-      Host: nl2.574ck.xyz
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇫🇮 芬兰 (Finland) 01 17321K ⚠P - NEKO
-  - 🇫🇮 芬兰 (Finland) 02 5330K 🇨🇳 - NEKO
-  - 🇫🇮 芬兰 (Finland) 03 5503K ⚠P - NEKO
-  - 🇫🇮 芬兰 (Finland) 04 21746K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 01 7759K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 02 6714K ⚠P⚠U - NEKO
+  - 🇫🇮 芬兰 (Finland) 03 6134K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇫🇮 芬兰 (Finland) 01 17321K ⚠P - NEKO
-  - 🇫🇮 芬兰 (Finland) 02 5330K 🇨🇳 - NEKO
-  - 🇫🇮 芬兰 (Finland) 03 5503K ⚠P - NEKO
-  - 🇫🇮 芬兰 (Finland) 04 21746K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 01 7759K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 02 6714K ⚠P⚠U - NEKO
+  - 🇫🇮 芬兰 (Finland) 03 6134K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

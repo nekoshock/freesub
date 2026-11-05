@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇫🇮 芬兰 (Finland) 01 8423K ⚠P - NEKO
+- name: 🇫🇮 芬兰 (Finland) 01 13556K 🇨🇳 - NEKO
   server: 95.216.27.15
   port: 2053
   udp: true
@@ -16,17 +16,31 @@ proxies:
     short-id: 10351b07c712d2a2
   servername: www.cloudflare.com
   client-fingerprint: chrome
+- name: 🇫🇮 芬兰 (Finland) 02 11479K 🇨🇳 - NEKO
+  server: 217.144.188.185
+  port: 443
+  udp: true
+  type: vless
+  uuid: 8d954cbe-7ca9-402d-bfaf-aca6c92c04c3
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: _ZRqqX7UVPTq--m8Lk8YHhrfElad2dIIpTh3D59f8zk
+  servername: www.nordea.fi
+  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇫🇮 芬兰 (Finland) 01 8423K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 01 13556K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 02 11479K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇫🇮 芬兰 (Finland) 01 8423K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 01 13556K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 02 11479K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

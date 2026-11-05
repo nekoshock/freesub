@@ -4,17 +4,20 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇷🇴 罗马尼亚 (Romania) 01 6513K 🇨🇳 - NEKO
-  server: hy2-new.aspidnet.xyz
+- name: 🇷🇴 罗马尼亚 (Romania) 01 7673K 🇨🇳 - NEKO
+  server: 46.28.67.55
   port: 443
   udp: true
-  type: hysteria2
-  password: QCgqi_I4EkV8UR-OgQ_tG4EnVTEVvIyR2GgRBzrIn2s
-  sni: hy2-new.aspidnet.xyz
-  skip-cert-verify: false
-  obfs: salamander
-  obfs-password: c1b4086fea89914496c7e10967a419216566
-- name: 🇷🇴 罗马尼亚 (Romania) 02 7364K 🇨🇳 - NEKO
+  type: vless
+  uuid: d1a6a033-fdbd-46a6-a177-3370ba042b9f
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: i2dJ1_XGDpp50qpEclh6SWSWkxt4B0t2hi2qOVQbeSU
+    short-id: d06d78e974491b6e
+  servername: www.cloudflare.com
+  client-fingerprint: chrome
+- name: 🇷🇴 罗马尼亚 (Romania) 02 10509K 🇨🇳 - NEKO
   server: 162.249.125.133
   port: 443
   udp: true
@@ -24,27 +27,19 @@ proxies:
   skip-cert-verify: false
   obfs: salamander
   obfs-password: c1b4086fea89914496c7e10967a419216566
-- name: 🇷🇴 罗马尼亚 (Romania) 03 5654K ⚠P - NEKO
-  server: bot.vudfaro.ir
-  port: 5061
-  udp: true
-  type: vless
-  uuid: 7df4f23f-b361-412a-883a-54dfdb5b8c8f
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇷🇴 罗马尼亚 (Romania) 01 6513K 🇨🇳 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 02 7364K 🇨🇳 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 03 5654K ⚠P - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 01 7673K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 02 10509K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇷🇴 罗马尼亚 (Romania) 01 6513K 🇨🇳 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 02 7364K 🇨🇳 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 03 5654K ⚠P - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 01 7673K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 02 10509K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

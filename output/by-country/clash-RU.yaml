@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇷🇺 俄罗斯 (Russia) 01 7470K 🇨🇳 - NEKO
+- name: 🇷🇺 俄罗斯 (Russia) 01 14124K 🇨🇳 - NEKO
   server: 193.233.253.180
   port: 8444
   udp: true
@@ -14,36 +14,43 @@ proxies:
   reality-opts:
     public-key: FWitre1jinQR7qz5HQ0q2Q4Gg9xA9B0SyizCziN7Ch0
   servername: github.com
-  client-fingerprint: firefox
+  client-fingerprint: chrome
   network: grpc
   grpc-opts:
     grpc-service-name: GunService
-- name: 🇷🇺 俄罗斯 (Russia) 02 8177K 🇨🇳 - NEKO
-  server: 130.49.177.193
-  port: 443
+- name: 🇷🇺 俄罗斯 (Russia) 02 8876K ⚠P - NEKO
+  server: 130.49.189.158
+  port: 43558
+  udp: true
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: yZiPrr484OdSYcivDUv+UIygwvyW+HQYytKsIgTw9tU=
+- name: 🇷🇺 俄罗斯 (Russia) 03 11229K ⚠P - NEKO
+  server: rus.noooo.win
+  port: 8443
   udp: true
   type: vless
-  uuid: 727a9178-d7f0-4142-8205-b0d19959ded0
+  uuid: 53de05e9-8de3-48ae-9036-dcb203d4925c
   flow: xtls-rprx-vision
   tls: true
-  reality-opts:
-    public-key: DCpi9-1rSXxBnEIAQ9U3mTqHivk7vHJRV_T2pWw5vCc
-    short-id: 681fc2dd643bc2f3
-  servername: de-2.ffpn.pro
+  servername: id-6aeb73b7.adhil.uk
+  skip-cert-verify: false
   client-fingerprint: edge
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇷🇺 俄罗斯 (Russia) 01 7470K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 02 8177K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 01 14124K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 02 8876K ⚠P - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 03 11229K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇷🇺 俄罗斯 (Russia) 01 7470K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 02 8177K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 01 14124K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 02 8876K ⚠P - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 03 11229K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

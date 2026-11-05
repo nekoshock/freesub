@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇫🇮 芬兰 (Finland) 01 7759K 🇨🇳 - NEKO
+- name: 🇫🇮 芬兰 (Finland) 01 11895K 🇨🇳 - NEKO
   server: 95.216.27.15
   port: 2053
   udp: true
@@ -15,16 +15,8 @@ proxies:
     public-key: aiHdxKOzcFZDILKj3MIPrMsyT0XxMy_O6xoxnz6MIWs
     short-id: 10351b07c712d2a2
   servername: www.cloudflare.com
-  client-fingerprint: chrome
-- name: 🇫🇮 芬兰 (Finland) 02 6714K ⚠P⚠U - NEKO
-  server: 92.242.165.40
-  port: 8443
-  udp: true
-  type: hysteria2
-  password: 2f0fccb6-4a86-4d9f-9e03-a2dfee6ed7f5
-  sni: speedtestmark.com
-  skip-cert-verify: false
-- name: 🇫🇮 芬兰 (Finland) 03 6134K 🇨🇳 - NEKO
+  client-fingerprint: ''
+- name: 🇫🇮 芬兰 (Finland) 02 11791K 🇨🇳 - NEKO
   server: 217.144.188.185
   port: 443
   udp: true
@@ -41,16 +33,14 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇫🇮 芬兰 (Finland) 01 7759K 🇨🇳 - NEKO
-  - 🇫🇮 芬兰 (Finland) 02 6714K ⚠P⚠U - NEKO
-  - 🇫🇮 芬兰 (Finland) 03 6134K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 01 11895K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 02 11791K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇫🇮 芬兰 (Finland) 01 7759K 🇨🇳 - NEKO
-  - 🇫🇮 芬兰 (Finland) 02 6714K ⚠P⚠U - NEKO
-  - 🇫🇮 芬兰 (Finland) 03 6134K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 01 11895K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 02 11791K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

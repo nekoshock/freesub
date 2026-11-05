@@ -1,0 +1,26 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: info
+proxies:
+- name: 🇭🇷 克罗地亚 (Croatia) 01 ⚠S1959K ⚠L20% ⚠P - NEKO
+  server: bot.vudfaro.ir
+  port: 5051
+  udp: true
+  type: vless
+  uuid: 7df4f23f-b361-412a-883a-54dfdb5b8c8f
+proxy-groups:
+- name: PROXIES
+  type: select
+  proxies:
+  - AUTO
+  - 🇭🇷 克罗地亚 (Croatia) 01 ⚠S1959K ⚠L20% ⚠P - NEKO
+- name: AUTO
+  type: url-test
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  proxies:
+  - 🇭🇷 克罗地亚 (Croatia) 01 ⚠S1959K ⚠L20% ⚠P - NEKO
+rules:
+- MATCH,PROXIES

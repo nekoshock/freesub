@@ -4,47 +4,54 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇦 加拿大 (Canada) 01 23832K 🇨🇳 - NEKO
-  server: 216.152.147.85
+- name: 🇨🇦 加拿大 (Canada) 01 21132K 🇨🇳 - NEKO
+  server: 149.22.95.183
   port: 443
   udp: true
-  type: trojan
-  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  sni: cdn.connectingpeoplewithgreatjobs.com
-  skip-cert-verify: false
-- name: 🇨🇦 加拿大 (Canada) 02 36151K 🇨🇳 - NEKO
-  server: 216.152.147.152
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇨🇦 加拿大 (Canada) 02 4696K 🇨🇳 - NEKO
+  server: ca1.japancase.site
   port: 443
   udp: true
-  type: trojan
-  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  sni: learn.connectingpeoplewithgreatjobs.com
-  skip-cert-verify: false
-- name: 🇨🇦 加拿大 (Canada) 03 ⚠S3474K 🇨🇳 - NEKO
-  server: 216.152.147.93
-  port: 443
+  type: vless
+  uuid: db80088c-32a1-4cb8-a907-0f3cb7844152
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: zN5buqMK95hn0mv3vKlfoOAi99ehuvP73cUuyNbZNWc
+    short-id: dbd6b473c7038dd5
+  servername: ca1.japancase.site
+  client-fingerprint: edge
+- name: 🇨🇦 加拿大 (Canada) 03 12836K ⚠P - NEKO
+  server: 134.195.196.154
+  port: 1270
   udp: true
-  type: trojan
-  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  sni: connectingpeoplewithgreatjobs.com
+  type: vmess
+  uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
+  alterId: 0
+  cipher: auto
+  tls: true
+  servername: xmfhlpy.com
   skip-cert-verify: false
-- name: 🇨🇦 加拿大 (Canada) 04 8412K 🇨🇳 - NEKO
-  server: 216.152.147.79
-  port: 443
+- name: 🇨🇦 加拿大 (Canada) 04 5098K ⚠P - NEKO
+  server: 23.162.200.198
+  port: 18000
   udp: true
-  type: trojan
-  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  sni: blog.connectingpeoplewithgreatjobs.com
-  skip-cert-verify: false
-- name: 🇨🇦 加拿大 (Canada) 05 32983K 🇨🇳 - NEKO
-  server: 216.152.147.85
-  port: 443
+  type: vmess
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+- name: 🇨🇦 加拿大 (Canada) 05 5251K ⚠P - NEKO
+  server: 134.195.196.211
+  port: 18000
   udp: true
-  type: trojan
-  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  sni: cdn.connectingpeoplewithgreatjobs.com
-  skip-cert-verify: false
-- name: 🇨🇦 加拿大 (Canada) 06 20739K 🇨🇳 - NEKO
+  type: vmess
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+- name: 🇨🇦 加拿大 (Canada) 06 8850K 🇨🇳 - NEKO
   server: 66.70.179.198
   port: 2053
   udp: true
@@ -56,110 +63,82 @@ proxies:
     short-id: 83f8317a948bb769
   servername: www.cloudflare.com
   client-fingerprint: random
-- name: 🇨🇦 加拿大 (Canada) 07 14180K 🇨🇳 - NEKO
-  server: 149.22.95.183
-  port: 443
-  udp: true
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-- name: 🇨🇦 加拿大 (Canada) 08 28715K 🇨🇳 - NEKO
-  server: 172.67.153.127
-  port: 443
+- name: 🇨🇦 加拿大 (Canada) 07 11569K ⚠P - NEKO
+  server: 158.51.121.246
+  port: 1270
   udp: true
   type: vmess
-  uuid: 80be2deb-3b27-4775-9bd1-7f2a2b9c261b
+  uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
   alterId: 0
   cipher: auto
   tls: true
-  servername: www.windowsmsidownloads.com
+  servername: xmfhlpy.com
   skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /truth
-    headers:
-      Host: www.windowsmsidownloads.com
-- name: 🇨🇦 加拿大 (Canada) 09 23981K ⚠P - NEKO
-  server: 138.197.141.58
-  port: 8080
-  udp: true
-  type: ss
-  cipher: rc4-md5
-  password: 14fFPrbezE3HDZzsMOr6
-- name: 🇨🇦 加拿大 (Canada) 10 29588K ⚠P - NEKO
-  server: 137.184.174.93
-  port: 8080
-  udp: true
-  type: ss
-  cipher: rc4-md5
-  password: 14fFPrbezE3HDZzsMOr6
-- name: 🇨🇦 加拿大 (Canada) 11 7601K ⚠P - NEKO
-  server: 23.162.200.198
-  port: 18000
-  udp: true
-  type: vmess
-  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-  alterId: 0
-  cipher: auto
-- name: 🇨🇦 加拿大 (Canada) 12 18207K ⚠P - NEKO
+- name: 🇨🇦 加拿大 (Canada) 08 9788K ⚠P - NEKO
   server: 158.51.121.221
   port: 19999
   udp: true
   type: ss
   cipher: aes-256-gcm
   password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇨🇦 加拿大 (Canada) 13 ⚠S4036K ⚠P - NEKO
-  server: 51.222.136.236
-  port: 8882
+- name: 🇨🇦 加拿大 (Canada) 09 2772K ⚠P - NEKO
+  server: 138.197.141.58
+  port: 8080
   udp: true
   type: ss
-  cipher: aes-256-gcm
-  password: kDWvXYZoTBcGkC4
-- name: 🇨🇦 加拿大 (Canada) 14 12620K ⚠P - NEKO
-  server: 134.195.196.211
-  port: 18000
+  cipher: rc4-md5
+  password: 14fFPrbezE3HDZzsMOr6
+- name: 🇨🇦 加拿大 (Canada) 10 ⚠S13601K ⚠P - NEKO
+  server: 137.184.174.93
+  port: 8080
   udp: true
-  type: vmess
-  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-  alterId: 0
-  cipher: auto
+  type: ss
+  cipher: rc4-md5
+  password: 14fFPrbezE3HDZzsMOr6
+- name: 🇨🇦 加拿大 (Canada) 11 9379K 🇨🇳 - NEKO
+  server: 104.245.102.26
+  port: 443
+  udp: true
+  type: vless
+  uuid: 0a3432cd-74b8-413a-896d-f51492b030bc
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: BlSccfT5tvDIOS7v9VaPd0ulUNhUdvlMjGiNzDNDUHE
+    short-id: 051f20c2344a2dfd
+  servername: portal.citygrainla.com
+  client-fingerprint: edge
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇨🇦 加拿大 (Canada) 01 23832K 🇨🇳 - NEKO
-  - 🇨🇦 加拿大 (Canada) 02 36151K 🇨🇳 - NEKO
-  - 🇨🇦 加拿大 (Canada) 03 ⚠S3474K 🇨🇳 - NEKO
-  - 🇨🇦 加拿大 (Canada) 04 8412K 🇨🇳 - NEKO
-  - 🇨🇦 加拿大 (Canada) 05 32983K 🇨🇳 - NEKO
-  - 🇨🇦 加拿大 (Canada) 06 20739K 🇨🇳 - NEKO
-  - 🇨🇦 加拿大 (Canada) 07 14180K 🇨🇳 - NEKO
-  - 🇨🇦 加拿大 (Canada) 08 28715K 🇨🇳 - NEKO
-  - 🇨🇦 加拿大 (Canada) 09 23981K ⚠P - NEKO
-  - 🇨🇦 加拿大 (Canada) 10 29588K ⚠P - NEKO
-  - 🇨🇦 加拿大 (Canada) 11 7601K ⚠P - NEKO
-  - 🇨🇦 加拿大 (Canada) 12 18207K ⚠P - NEKO
-  - 🇨🇦 加拿大 (Canada) 13 ⚠S4036K ⚠P - NEKO
-  - 🇨🇦 加拿大 (Canada) 14 12620K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 01 21132K 🇨🇳 - NEKO
+  - 🇨🇦 加拿大 (Canada) 02 4696K 🇨🇳 - NEKO
+  - 🇨🇦 加拿大 (Canada) 03 12836K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 04 5098K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 05 5251K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 06 8850K 🇨🇳 - NEKO
+  - 🇨🇦 加拿大 (Canada) 07 11569K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 08 9788K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 09 2772K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 10 ⚠S13601K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 11 9379K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇦 加拿大 (Canada) 01 23832K 🇨🇳 - NEKO
-  - 🇨🇦 加拿大 (Canada) 02 36151K 🇨🇳 - NEKO
-  - 🇨🇦 加拿大 (Canada) 03 ⚠S3474K 🇨🇳 - NEKO
-  - 🇨🇦 加拿大 (Canada) 04 8412K 🇨🇳 - NEKO
-  - 🇨🇦 加拿大 (Canada) 05 32983K 🇨🇳 - NEKO
-  - 🇨🇦 加拿大 (Canada) 06 20739K 🇨🇳 - NEKO
-  - 🇨🇦 加拿大 (Canada) 07 14180K 🇨🇳 - NEKO
-  - 🇨🇦 加拿大 (Canada) 08 28715K 🇨🇳 - NEKO
-  - 🇨🇦 加拿大 (Canada) 09 23981K ⚠P - NEKO
-  - 🇨🇦 加拿大 (Canada) 10 29588K ⚠P - NEKO
-  - 🇨🇦 加拿大 (Canada) 11 7601K ⚠P - NEKO
-  - 🇨🇦 加拿大 (Canada) 12 18207K ⚠P - NEKO
-  - 🇨🇦 加拿大 (Canada) 13 ⚠S4036K ⚠P - NEKO
-  - 🇨🇦 加拿大 (Canada) 14 12620K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 01 21132K 🇨🇳 - NEKO
+  - 🇨🇦 加拿大 (Canada) 02 4696K 🇨🇳 - NEKO
+  - 🇨🇦 加拿大 (Canada) 03 12836K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 04 5098K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 05 5251K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 06 8850K 🇨🇳 - NEKO
+  - 🇨🇦 加拿大 (Canada) 07 11569K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 08 9788K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 09 2772K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 10 ⚠S13601K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 11 9379K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

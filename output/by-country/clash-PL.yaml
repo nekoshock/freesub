@@ -4,20 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇵🇱 波兰 (Poland) 01 16876K 🇨🇳 - NEKO
-  server: 217.30.10.72
-  port: 443
-  udp: true
-  type: vless
-  uuid: 5c32201a-6c0e-451b-8f0a-24b4bd40df59
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: kBTMVLCNE0jjwuJF6H5-65l5Pe0QToS0Hg-9Tmaa7Sk
-    short-id: 1a2b3c4d
-  servername: images.porsche.com
-  client-fingerprint: firefox
-- name: 🇵🇱 波兰 (Poland) 02 12783K 🇨🇳 - NEKO
+- name: 🇵🇱 波兰 (Poland) 01 12788K 🇨🇳 - NEKO
   server: 94.249.180.86
   port: 443
   udp: true
@@ -30,7 +17,7 @@ proxies:
     short-id: a696de84963656de
   servername: amd.com
   client-fingerprint: firefox
-- name: 🇵🇱 波兰 (Poland) 03 19689K 🇨🇳 - NEKO
+- name: 🇵🇱 波兰 (Poland) 02 24138K 🇨🇳 - NEKO
   server: 2.26.255.215
   port: 443
   udp: true
@@ -43,7 +30,7 @@ proxies:
     short-id: '50'
   servername: cloudflare.com
   client-fingerprint: chrome
-- name: 🇵🇱 波兰 (Poland) 04 17146K 🇨🇳 - NEKO
+- name: 🇵🇱 波兰 (Poland) 03 17163K 🇨🇳 - NEKO
   server: 70.34.252.255
   port: 443
   udp: true
@@ -51,7 +38,20 @@ proxies:
   password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
   sni: browseexecutivejobopeningsandenhanceleadershipcareer.com
   skip-cert-verify: false
-- name: 🇵🇱 波兰 (Poland) 05 14470K ⚠P - NEKO
+- name: 🇵🇱 波兰 (Poland) 04 17486K 🇨🇳 - NEKO
+  server: 217.30.10.72
+  port: 443
+  udp: true
+  type: vless
+  uuid: 5c32201a-6c0e-451b-8f0a-24b4bd40df59
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: kBTMVLCNE0jjwuJF6H5-65l5Pe0QToS0Hg-9Tmaa7Sk
+    short-id: 1a2b3c4d
+  servername: images.porsche.com
+  client-fingerprint: firefox
+- name: 🇵🇱 波兰 (Poland) 05 9968K ⚠P - NEKO
   server: 145.63.143.205
   port: 8444
   udp: true
@@ -66,25 +66,40 @@ proxies:
     path: /api/v1/devices/10be32b380/telemetry
     headers:
       Host: pl1.meshbeat.online
+- name: 🇵🇱 波兰 (Poland) 06 9868K ⚠P - NEKO
+  server: lte-v2-ws.gacvpn.site
+  port: 8443
+  udp: true
+  type: vless
+  uuid: 981c7ccc-2b17-473c-8358-7fd1d6eec1b4
+  tls: true
+  servername: lte-v2-ws.gacvpn.site
+  skip-cert-verify: false
+  client-fingerprint: firefox
+  network: ws
+  ws-opts:
+    path: /static/js/runtime.9d03c7.js
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇵🇱 波兰 (Poland) 01 16876K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 02 12783K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 03 19689K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 04 17146K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 05 14470K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 01 12788K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 02 24138K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 03 17163K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 04 17486K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 05 9968K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 06 9868K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇵🇱 波兰 (Poland) 01 16876K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 02 12783K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 03 19689K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 04 17146K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 05 14470K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 01 12788K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 02 24138K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 03 17163K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 04 17486K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 05 9968K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 06 9868K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

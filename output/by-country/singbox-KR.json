@@ -4,16 +4,29 @@
   },
   "outbounds": [
     {
-      "type": "shadowsocks",
-      "tag": "🇰🇷 韩国 (South Korea) 01 4634K ⚠P - NEKO",
-      "server": "141.164.45.187",
-      "server_port": 8888,
-      "method": "aes-256-gcm",
-      "password": "Y6R9pAtvxxzmGC"
+      "type": "vless",
+      "tag": "🇰🇷 韩国 (South Korea) 01 8796K 🇨🇳 - NEKO",
+      "server": "3.39.4.109",
+      "server_port": 18967,
+      "uuid": "814bd064-544d-4255-a070-5705c03f6da9",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.apple.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "random"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0",
+          "short_id": "48050fab"
+        }
+      }
     },
     {
       "type": "trojan",
-      "tag": "🇰🇷 韩国 (South Korea) 02 7642K ⚠P - NEKO",
+      "tag": "🇰🇷 韩国 (South Korea) 02 10168K ⚠P - NEKO",
       "server": "158.247.255.150",
       "server_port": 48851,
       "password": "5t6i121em5lkmsmk",
@@ -24,20 +37,30 @@
       }
     },
     {
+      "type": "shadowsocks",
+      "tag": "🇰🇷 韩国 (South Korea) 03 288K ⚠P⚠C - NEKO",
+      "server": "141.164.45.187",
+      "server_port": 8888,
+      "method": "aes-256-gcm",
+      "password": "Y6R9pAtvxxzmGC"
+    },
+    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇰🇷 韩国 (South Korea) 01 4634K ⚠P - NEKO",
-        "🇰🇷 韩国 (South Korea) 02 7642K ⚠P - NEKO"
+        "🇰🇷 韩国 (South Korea) 01 8796K 🇨🇳 - NEKO",
+        "🇰🇷 韩国 (South Korea) 02 10168K ⚠P - NEKO",
+        "🇰🇷 韩国 (South Korea) 03 288K ⚠P⚠C - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇰🇷 韩国 (South Korea) 01 4634K ⚠P - NEKO",
-        "🇰🇷 韩国 (South Korea) 02 7642K ⚠P - NEKO"
+        "🇰🇷 韩国 (South Korea) 01 8796K 🇨🇳 - NEKO",
+        "🇰🇷 韩国 (South Korea) 02 10168K ⚠P - NEKO",
+        "🇰🇷 韩国 (South Korea) 03 288K ⚠P⚠C - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

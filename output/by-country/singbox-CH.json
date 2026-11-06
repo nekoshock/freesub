@@ -5,60 +5,28 @@
   "outbounds": [
     {
       "type": "vless",
-      "tag": "🇨🇭 瑞士 (Switzerland) 01 321K 🇨🇳 - NEKO",
-      "server": "176.65.144.221",
-      "server_port": 8445,
-      "uuid": "89564b16-7ced-465d-a8f3-61389547e96e",
-      "tls": {
-        "enabled": true,
-        "server_name": "sw.cloudvienta.com",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "firefox"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "KcFNW-Yq9YucHEGiEe2ZEnIbxEuCmyO3S6yTglZR7ws",
-          "short_id": "7ea8737c31629437"
-        }
-      },
-      "transport": {
-        "type": "grpc",
-        "service_name": "grpc-reality"
-      }
-    },
-    {
-      "type": "vless",
-      "tag": "🇨🇭 瑞士 (Switzerland) 02 284K 🇨🇳 - NEKO",
-      "server": "176.65.144.221",
-      "server_port": 8443,
-      "uuid": "89564b16-7ced-465d-a8f3-61389547e96e",
+      "tag": "🇨🇭 瑞士 (Switzerland) 01 16118K 🇨🇳 - NEKO",
+      "server": "pl3.japancase.site",
+      "server_port": 443,
+      "uuid": "db80088c-32a1-4cb8-a907-0f3cb7844152",
       "flow": "xtls-rprx-vision",
       "tls": {
         "enabled": true,
-        "server_name": "sw.cloudvienta.com",
+        "server_name": "pl3.japancase.site",
         "utls": {
           "enabled": true,
-          "fingerprint": "firefox"
+          "fingerprint": "edge"
         },
         "reality": {
           "enabled": true,
-          "public_key": "KcFNW-Yq9YucHEGiEe2ZEnIbxEuCmyO3S6yTglZR7ws",
-          "short_id": "7ea8737c31629437"
+          "public_key": "COvqGpB7lUdZshmbn5zdqiVi81n8Iyha8RbEHtK93xc",
+          "short_id": "5037f0423dc4e4ff"
         }
       }
     },
     {
       "type": "shadowsocks",
-      "tag": "🇨🇭 瑞士 (Switzerland) 03 25530K ⚠P - NEKO",
-      "server": "23.166.88.127",
-      "server_port": 19999,
-      "method": "aes-256-gcm",
-      "password": "ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
-    },
-    {
-      "type": "shadowsocks",
-      "tag": "🇨🇭 瑞士 (Switzerland) 04 28673K ⚠P - NEKO",
+      "tag": "🇨🇭 瑞士 (Switzerland) 02 13511K ⚠P - NEKO",
       "server": "79.127.184.104",
       "server_port": 19999,
       "method": "aes-256-gcm",
@@ -66,7 +34,23 @@
     },
     {
       "type": "shadowsocks",
-      "tag": "🇨🇭 瑞士 (Switzerland) 05 21682K ⚠P - NEKO",
+      "tag": "🇨🇭 瑞士 (Switzerland) 03 14871K ⚠P - NEKO",
+      "server": "23.166.88.127",
+      "server_port": 19999,
+      "method": "aes-256-gcm",
+      "password": "ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇨🇭 瑞士 (Switzerland) 04 13007K ⚠P - NEKO",
+      "server": "186.190.215.251",
+      "server_port": 19999,
+      "method": "aes-256-gcm",
+      "password": "ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇨🇭 瑞士 (Switzerland) 05 11119K ⚠P - NEKO",
       "server": "23.166.88.189",
       "server_port": 19999,
       "method": "aes-256-gcm",
@@ -74,7 +58,7 @@
     },
     {
       "type": "hysteria2",
-      "tag": "🇨🇭 瑞士 (Switzerland) 06 1517K ⚠P⚠U - NEKO",
+      "tag": "🇨🇭 瑞士 (Switzerland) 06 11083K ⚠P⚠U - NEKO",
       "server": "104.165.205.42",
       "server_port": 8443,
       "password": "54d2f622-fd71-4f5f-8813-832b68f4ca3b",
@@ -85,38 +69,28 @@
       }
     },
     {
-      "type": "shadowsocks",
-      "tag": "🇨🇭 瑞士 (Switzerland) 07 ⚠S11032K ⚠P - NEKO",
-      "server": "186.190.215.251",
-      "server_port": 19999,
-      "method": "aes-256-gcm",
-      "password": "ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
-    },
-    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇨🇭 瑞士 (Switzerland) 01 321K 🇨🇳 - NEKO",
-        "🇨🇭 瑞士 (Switzerland) 02 284K 🇨🇳 - NEKO",
-        "🇨🇭 瑞士 (Switzerland) 03 25530K ⚠P - NEKO",
-        "🇨🇭 瑞士 (Switzerland) 04 28673K ⚠P - NEKO",
-        "🇨🇭 瑞士 (Switzerland) 05 21682K ⚠P - NEKO",
-        "🇨🇭 瑞士 (Switzerland) 06 1517K ⚠P⚠U - NEKO",
-        "🇨🇭 瑞士 (Switzerland) 07 ⚠S11032K ⚠P - NEKO"
+        "🇨🇭 瑞士 (Switzerland) 01 16118K 🇨🇳 - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 02 13511K ⚠P - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 03 14871K ⚠P - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 04 13007K ⚠P - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 05 11119K ⚠P - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 06 11083K ⚠P⚠U - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇨🇭 瑞士 (Switzerland) 01 321K 🇨🇳 - NEKO",
-        "🇨🇭 瑞士 (Switzerland) 02 284K 🇨🇳 - NEKO",
-        "🇨🇭 瑞士 (Switzerland) 03 25530K ⚠P - NEKO",
-        "🇨🇭 瑞士 (Switzerland) 04 28673K ⚠P - NEKO",
-        "🇨🇭 瑞士 (Switzerland) 05 21682K ⚠P - NEKO",
-        "🇨🇭 瑞士 (Switzerland) 06 1517K ⚠P⚠U - NEKO",
-        "🇨🇭 瑞士 (Switzerland) 07 ⚠S11032K ⚠P - NEKO"
+        "🇨🇭 瑞士 (Switzerland) 01 16118K 🇨🇳 - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 02 13511K ⚠P - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 03 14871K ⚠P - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 04 13007K ⚠P - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 05 11119K ⚠P - NEKO",
+        "🇨🇭 瑞士 (Switzerland) 06 11083K ⚠P⚠U - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

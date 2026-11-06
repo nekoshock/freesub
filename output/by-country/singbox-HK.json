@@ -5,31 +5,58 @@
   "outbounds": [
     {
       "type": "hysteria2",
-      "tag": "🇭🇰 中国香港 (Hong Kong) 01 8670K 🇨🇳 - NEKO",
-      "server": "633b0024-tmm5c0-ttx5yr-1j0y6.hk3.hyhuawei.com",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 01 11586K 🇨🇳 - NEKO",
+      "server": "24f1571a-tmm5c0-tug19l-1go3q.hk3.hyhuawei.com",
       "server_port": 443,
-      "password": "1cce7df2-251c-11ee-9409-f23c9164ca5d",
+      "password": "19dd9c70-e4a5-11ed-8347-f23c9164ca5d",
       "tls": {
         "enabled": true,
-        "server_name": "633b0024-tmm5c0-ttx5yr-1j0y6.hk3.hyhuawei.com",
+        "server_name": "24f1571a-tmm5c0-tug19l-1go3q.hk3.hyhuawei.com",
         "insecure": false
       }
     },
     {
-      "type": "hysteria2",
-      "tag": "🇭🇰 中国香港 (Hong Kong) 02 21438K 🇨🇳 - NEKO",
-      "server": "e4e8e68f-tmm5c0-tny186-4lg6.nw4.hyhuawei.com",
+      "type": "tuic",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 02 7995K ⚠U⚠C - NEKO",
+      "server": "54fb07dd-tk7400-toh6wi-jx5r.pccw3.hyhuawei.com",
       "server_port": 443,
-      "password": "a4c9b7cc-a816-11ed-9f65-f23c9164ca5d",
+      "uuid": "73bfcc1c-5814-5f2a-b43a-3ef6af011db8",
+      "password": "73bfcc1c-5814-5f2a-b43a-3ef6af011db8",
+      "congestion_control": "bbr",
+      "udp_relay_mode": "native",
       "tls": {
         "enabled": true,
-        "server_name": "e4e8e68f-tmm5c0-tny186-4lg6.nw4.hyhuawei.com",
-        "insecure": false
+        "server_name": "54fb07dd-tk7400-toh6wi-jx5r.pccw3.hyhuawei.com",
+        "insecure": false,
+        "alpn": [
+          "h3"
+        ]
       }
     },
     {
       "type": "vless",
-      "tag": "🇭🇰 中国香港 (Hong Kong) 03 6034K ⚠P - NEKO",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 03 6818K 🇨🇳 - NEKO",
+      "server": "85.155.149.190",
+      "server_port": 443,
+      "uuid": "db80088c-32a1-4cb8-a907-0f3cb7844152",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "hk1.japancase.site",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "pGCqNljaUIUVC7xpHa9nFnu6vsQ0OX3QyfvYMhLZuWY",
+          "short_id": "bee10b047804c637"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 04 7724K ⚠P - NEKO",
       "server": "209.33.160.122",
       "server_port": 39098,
       "uuid": "7852e4df-db54-4f75-a35e-3b8fbe89e56d",
@@ -53,18 +80,20 @@
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇭🇰 中国香港 (Hong Kong) 01 8670K 🇨🇳 - NEKO",
-        "🇭🇰 中国香港 (Hong Kong) 02 21438K 🇨🇳 - NEKO",
-        "🇭🇰 中国香港 (Hong Kong) 03 6034K ⚠P - NEKO"
+        "🇭🇰 中国香港 (Hong Kong) 01 11586K 🇨🇳 - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 02 7995K ⚠U⚠C - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 03 6818K 🇨🇳 - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 04 7724K ⚠P - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇭🇰 中国香港 (Hong Kong) 01 8670K 🇨🇳 - NEKO",
-        "🇭🇰 中国香港 (Hong Kong) 02 21438K 🇨🇳 - NEKO",
-        "🇭🇰 中国香港 (Hong Kong) 03 6034K ⚠P - NEKO"
+        "🇭🇰 中国香港 (Hong Kong) 01 11586K 🇨🇳 - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 02 7995K ⚠U⚠C - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 03 6818K 🇨🇳 - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 04 7724K ⚠P - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

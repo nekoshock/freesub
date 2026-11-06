@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇱🇻 拉脱维亚 (Latvia) 01 13726K 🇨🇳 - NEKO
+- name: 🇱🇻 拉脱维亚 (Latvia) 01 18633K 🇨🇳 - NEKO
   server: 195.123.213.28
   port: 443
   udp: true
@@ -17,20 +17,7 @@ proxies:
     short-id: 5c256336e3b673fa
   servername: www.cloudflare.com
   client-fingerprint: ''
-- name: 🇱🇻 拉脱维亚 (Latvia) 02 11298K 🇨🇳 - NEKO
-  server: live.flicker.work
-  port: 443
-  udp: true
-  type: vless
-  uuid: 255a8044-3337-473e-af26-46a37208adcc
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: PZwky05a2NPTC1x7YolaKV7IGDuJDJD47fUEk8nVqFw
-    short-id: 1995a38bfed15b2a
-  servername: live.flicker.work
-  client-fingerprint: firefox
-- name: 🇱🇻 拉脱维亚 (Latvia) 03 10407K 🇨🇳 - NEKO
+- name: 🇱🇻 拉脱维亚 (Latvia) 02 17319K 🇨🇳 - NEKO
   server: 138.124.180.137
   port: 443
   udp: true
@@ -42,22 +29,20 @@ proxies:
     public-key: GBdkyDLfr0LIZo_94Xv8ycAKOmkjArYzwJAEMhuXX2c
     short-id: 33acba1b
   servername: www.apple.com
-  client-fingerprint: ''
+  client-fingerprint: random
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇱🇻 拉脱维亚 (Latvia) 01 13726K 🇨🇳 - NEKO
-  - 🇱🇻 拉脱维亚 (Latvia) 02 11298K 🇨🇳 - NEKO
-  - 🇱🇻 拉脱维亚 (Latvia) 03 10407K 🇨🇳 - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 01 18633K 🇨🇳 - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 02 17319K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇱🇻 拉脱维亚 (Latvia) 01 13726K 🇨🇳 - NEKO
-  - 🇱🇻 拉脱维亚 (Latvia) 02 11298K 🇨🇳 - NEKO
-  - 🇱🇻 拉脱维亚 (Latvia) 03 10407K 🇨🇳 - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 01 18633K 🇨🇳 - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 02 17319K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

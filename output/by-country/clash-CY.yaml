@@ -4,8 +4,8 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇾 塞浦路斯 (Cyprus) 01 8111K 🇨🇳 - NEKO
-  server: 45.86.60.190
+- name: 🇨🇾 塞浦路斯 (Cyprus) 01 13546K 🇨🇳 - NEKO
+  server: ee2.japancase.site
   port: 443
   udp: true
   type: vless
@@ -16,18 +16,18 @@ proxies:
     public-key: zEntiD6D81wY__YHPvIw78e09CBIgYkyQ5meIo7c_hg
     short-id: 41ae8e266bc3346f
   servername: ee2.japancase.site
-  client-fingerprint: ''
+  client-fingerprint: ios
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇨🇾 塞浦路斯 (Cyprus) 01 8111K 🇨🇳 - NEKO
+  - 🇨🇾 塞浦路斯 (Cyprus) 01 13546K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇾 塞浦路斯 (Cyprus) 01 8111K 🇨🇳 - NEKO
+  - 🇨🇾 塞浦路斯 (Cyprus) 01 13546K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

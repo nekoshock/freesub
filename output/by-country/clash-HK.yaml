@@ -4,40 +4,49 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇭🇰 中国香港 (Hong Kong) 01 8947K 🇨🇳 - NEKO
-  server: e49952e3-tmm5c0-tv7zgh-1ijh5.hk3.hyhuawei.com
+- name: 🇭🇰 中国香港 (Hong Kong) 01 8670K 🇨🇳 - NEKO
+  server: 633b0024-tmm5c0-ttx5yr-1j0y6.hk3.hyhuawei.com
   port: 443
   udp: true
   type: hysteria2
-  password: f7d95364-607b-11ee-93af-f23c91369f2d
-  sni: e49952e3-tmm5c0-tv7zgh-1ijh5.hk3.hyhuawei.com
+  password: 1cce7df2-251c-11ee-9409-f23c9164ca5d
+  sni: 633b0024-tmm5c0-ttx5yr-1j0y6.hk3.hyhuawei.com
   skip-cert-verify: false
-- name: 🇭🇰 中国香港 (Hong Kong) 02 6988K 🇨🇳 - NEKO
-  server: 85.155.149.190
+- name: 🇭🇰 中国香港 (Hong Kong) 02 21438K 🇨🇳 - NEKO
+  server: e4e8e68f-tmm5c0-tny186-4lg6.nw4.hyhuawei.com
   port: 443
   udp: true
+  type: hysteria2
+  password: a4c9b7cc-a816-11ed-9f65-f23c9164ca5d
+  sni: e4e8e68f-tmm5c0-tny186-4lg6.nw4.hyhuawei.com
+  skip-cert-verify: false
+- name: 🇭🇰 中国香港 (Hong Kong) 03 6034K ⚠P - NEKO
+  server: 209.33.160.122
+  port: 39098
+  udp: true
   type: vless
-  uuid: db80088c-32a1-4cb8-a907-0f3cb7844152
+  uuid: 7852e4df-db54-4f75-a35e-3b8fbe89e56d
   flow: xtls-rprx-vision
   tls: true
   reality-opts:
-    public-key: pGCqNljaUIUVC7xpHa9nFnu6vsQ0OX3QyfvYMhLZuWY
-    short-id: bee10b047804c637
-  servername: hk1.japancase.site
+    public-key: DtOZ39u6MyQMG96tl13-M7-HeaqQzW2RLBVPk9py-Vg
+  servername: dash.cloudflare.com
   client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇭🇰 中国香港 (Hong Kong) 01 8947K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 6988K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 8670K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 21438K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 03 6034K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇭🇰 中国香港 (Hong Kong) 01 8947K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 6988K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 8670K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 21438K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 03 6034K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

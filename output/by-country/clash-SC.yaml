@@ -4,28 +4,29 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇸🇨 塞舌尔 (Seychelles) 01 15650K 🇨🇳 - NEKO
-  server: 188.114.96.3
-  port: 2096
+- name: 🇸🇨 塞舌尔 (Seychelles) 01 5442K ⚠P - NEKO
+  server: 46.29.255.123
+  port: 59539
   udp: true
-  type: trojan
-  password: vP!XvZBNdw.e*ddSgmH!
-  sni: n0q4XPrJ2D4X4PRCQ29L8JKCZd0.pAGES.dev
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /tr/ZFttmjSqvda5ohOQ?ed=2560
+  type: vless
+  uuid: 30572b57-f5ab-4eb8-82d4-a24d399b99f6
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: R6mPqCsjZMWauci4LHw7Qp1LGKmBd-sxMXplyOn9bSQ
+  servername: cloudflare-dns.com
+  client-fingerprint: firefox
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇸🇨 塞舌尔 (Seychelles) 01 15650K 🇨🇳 - NEKO
+  - 🇸🇨 塞舌尔 (Seychelles) 01 5442K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇸🇨 塞舌尔 (Seychelles) 01 15650K 🇨🇳 - NEKO
+  - 🇸🇨 塞舌尔 (Seychelles) 01 5442K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

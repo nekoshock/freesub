@@ -5,12 +5,12 @@
   "outbounds": [
     {
       "type": "tuic",
-      "tag": "🇭🇰 中国香港 (Hong Kong) 01 (家宽) 7658K 🇨🇳 - NEKO",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 01 (家宽) 16547K 🇨🇳 - NEKO",
       "server": "58.152.81.104",
       "server_port": 443,
       "uuid": "73bfcc1c-5814-5f2a-b43a-3ef6af011db8",
       "password": "73bfcc1c-5814-5f2a-b43a-3ef6af011db8",
-      "congestion_control": "bbr",
+      "congestion_control": "cubic",
       "udp_relay_mode": "native",
       "tls": {
         "enabled": true,
@@ -22,18 +22,32 @@
       }
     },
     {
+      "type": "hysteria2",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 02 (家宽) 15851K 🇨🇳 - NEKO",
+      "server": "112.120.123.140",
+      "server_port": 443,
+      "password": "3f514ea2-4662-11ed-a8bf-f23c91cfbbc9",
+      "tls": {
+        "enabled": true,
+        "server_name": "9fc34650-tmm5c0-tmj4pk-1kcpe.nw4.hyhuawei.com",
+        "insecure": false
+      }
+    },
+    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇭🇰 中国香港 (Hong Kong) 01 (家宽) 7658K 🇨🇳 - NEKO"
+        "🇭🇰 中国香港 (Hong Kong) 01 (家宽) 16547K 🇨🇳 - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 02 (家宽) 15851K 🇨🇳 - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇭🇰 中国香港 (Hong Kong) 01 (家宽) 7658K 🇨🇳 - NEKO"
+        "🇭🇰 中国香港 (Hong Kong) 01 (家宽) 16547K 🇨🇳 - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 02 (家宽) 15851K 🇨🇳 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

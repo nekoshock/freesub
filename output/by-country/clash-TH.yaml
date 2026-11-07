@@ -1,0 +1,36 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: info
+proxies:
+- name: 🇹🇭 泰国 (Thailand) 01 10308K ⚠P - NEKO
+  server: catnet-other.kunlun04dns.com
+  port: 28041
+  udp: true
+  type: ss
+  cipher: aes-128-gcm
+  password: b61ca706-e2e9-4f6b-bd1e-0f0534a2fc41
+- name: 🇹🇭 泰国 (Thailand) 02 ⚠S6206K ⚠P - NEKO
+  server: catnet-other.kunlun04dns.com
+  port: 28042
+  udp: true
+  type: ss
+  cipher: aes-128-gcm
+  password: b61ca706-e2e9-4f6b-bd1e-0f0534a2fc41
+proxy-groups:
+- name: PROXIES
+  type: select
+  proxies:
+  - AUTO
+  - 🇹🇭 泰国 (Thailand) 01 10308K ⚠P - NEKO
+  - 🇹🇭 泰国 (Thailand) 02 ⚠S6206K ⚠P - NEKO
+- name: AUTO
+  type: url-test
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  proxies:
+  - 🇹🇭 泰国 (Thailand) 01 10308K ⚠P - NEKO
+  - 🇹🇭 泰国 (Thailand) 02 ⚠S6206K ⚠P - NEKO
+rules:
+- MATCH,PROXIES

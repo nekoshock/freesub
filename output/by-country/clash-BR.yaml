@@ -4,18 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇧🇷 巴西 (Brazil) 01 11267K ⚠P - NEKO
-  server: 103.88.232.55
-  port: 1270
-  udp: true
-  type: vmess
-  uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
-  alterId: 0
-  cipher: auto
-  tls: true
-  servername: xmfhlpy.com
-  skip-cert-verify: false
-- name: 🇧🇷 巴西 (Brazil) 02 9558K 🇨🇳 - NEKO
+- name: 🇧🇷 巴西 (Brazil) 01 8739K 🇨🇳 - NEKO
   server: 216.238.104.154
   port: 443
   udp: true
@@ -28,14 +17,12 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇧🇷 巴西 (Brazil) 01 11267K ⚠P - NEKO
-  - 🇧🇷 巴西 (Brazil) 02 9558K 🇨🇳 - NEKO
+  - 🇧🇷 巴西 (Brazil) 01 8739K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇧🇷 巴西 (Brazil) 01 11267K ⚠P - NEKO
-  - 🇧🇷 巴西 (Brazil) 02 9558K 🇨🇳 - NEKO
+  - 🇧🇷 巴西 (Brazil) 01 8739K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

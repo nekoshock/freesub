@@ -4,49 +4,115 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇭🇰 中国香港 (Hong Kong) 01 9127K 🇨🇳 - NEKO
-  server: a91af2af-tmm5c0-twnp5a-ahsb.hk3.hyhuawei.com
+- name: 🇭🇰 中国香港 (Hong Kong) 01 11892K 🇨🇳 - NEKO
+  server: 50dc16b5-tmm5c0-tmj4pk-1kcpe.hk3.hyhuawei.com
   port: 443
   udp: true
   type: hysteria2
-  password: 2e42c1ee-aaaa-11ec-bb74-f23c9164ca5d
-  sni: a91af2af-tmm5c0-twnp5a-ahsb.hk3.hyhuawei.com
+  password: 3f514ea2-4662-11ed-a8bf-f23c91cfbbc9
+  sni: 50dc16b5-tmm5c0-tmj4pk-1kcpe.hk3.hyhuawei.com
   skip-cert-verify: false
-- name: 🇭🇰 中国香港 (Hong Kong) 02 5133K 🇨🇳 - NEKO
-  server: aecfea9b-tmm5c0-tpw4i4-1pckg.nw4.hyhuawei.com
-  port: 443
+- name: 🇭🇰 中国香港 (Hong Kong) 02 5250K ⚠P - NEKO
+  server: catnet-hk.kunlun04dns.com
+  port: 28009
   udp: true
-  type: hysteria2
-  password: 526a1128-7487-11ee-9bca-f23c913c8d2b
-  sni: aecfea9b-tmm5c0-tpw4i4-1pckg.nw4.hyhuawei.com
-  skip-cert-verify: false
-- name: 🇭🇰 中国香港 (Hong Kong) 03 388K ⚠P - NEKO
-  server: 209.33.160.122
-  port: 39098
+  type: ss
+  cipher: aes-128-gcm
+  password: b61ca706-e2e9-4f6b-bd1e-0f0534a2fc41
+- name: 🇭🇰 中国香港 (Hong Kong) 03 9804K ⚠P - NEKO
+  server: catnet-hk.kunlun04dns.com
+  port: 28007
   udp: true
-  type: vless
-  uuid: 7852e4df-db54-4f75-a35e-3b8fbe89e56d
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: DtOZ39u6MyQMG96tl13-M7-HeaqQzW2RLBVPk9py-Vg
-  servername: dash.cloudflare.com
-  client-fingerprint: chrome
+  type: ss
+  cipher: aes-128-gcm
+  password: b61ca706-e2e9-4f6b-bd1e-0f0534a2fc41
+- name: 🇭🇰 中国香港 (Hong Kong) 04 5420K ⚠P - NEKO
+  server: catnet-hk.kunlun04dns.com
+  port: 28010
+  udp: true
+  type: ss
+  cipher: aes-128-gcm
+  password: b61ca706-e2e9-4f6b-bd1e-0f0534a2fc41
+- name: 🇭🇰 中国香港 (Hong Kong) 05 9817K ⚠P - NEKO
+  server: catnet-hk.kunlun04dns.com
+  port: 28003
+  udp: true
+  type: ss
+  cipher: aes-128-gcm
+  password: b61ca706-e2e9-4f6b-bd1e-0f0534a2fc41
+- name: 🇭🇰 中国香港 (Hong Kong) 06 9157K ⚠P - NEKO
+  server: catnet-hk.kunlun04dns.com
+  port: 28005
+  udp: true
+  type: ss
+  cipher: aes-128-gcm
+  password: b61ca706-e2e9-4f6b-bd1e-0f0534a2fc41
+- name: 🇭🇰 中国香港 (Hong Kong) 07 9841K ⚠P - NEKO
+  server: catnet-hk.kunlun04dns.com
+  port: 28006
+  udp: true
+  type: ss
+  cipher: aes-128-gcm
+  password: b61ca706-e2e9-4f6b-bd1e-0f0534a2fc41
+- name: 🇭🇰 中国香港 (Hong Kong) 08 9978K ⚠P - NEKO
+  server: catnet-hk.kunlun04dns.com
+  port: 28004
+  udp: true
+  type: ss
+  cipher: aes-128-gcm
+  password: b61ca706-e2e9-4f6b-bd1e-0f0534a2fc41
+- name: 🇭🇰 中国香港 (Hong Kong) 09 8223K ⚠P - NEKO
+  server: catnet-hk.kunlun04dns.com
+  port: 28008
+  udp: true
+  type: ss
+  cipher: aes-128-gcm
+  password: b61ca706-e2e9-4f6b-bd1e-0f0534a2fc41
+- name: 🇭🇰 中国香港 (Hong Kong) 10 10297K ⚠P - NEKO
+  server: catnet-hk.kunlun04dns.com
+  port: 28002
+  udp: true
+  type: ss
+  cipher: aes-128-gcm
+  password: b61ca706-e2e9-4f6b-bd1e-0f0534a2fc41
+- name: 🇭🇰 中国香港 (Hong Kong) 11 9890K ⚠P - NEKO
+  server: catnet-hk.kunlun04dns.com
+  port: 28001
+  udp: true
+  type: ss
+  cipher: aes-128-gcm
+  password: b61ca706-e2e9-4f6b-bd1e-0f0534a2fc41
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇭🇰 中国香港 (Hong Kong) 01 9127K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 5133K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 03 388K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 11892K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 5250K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 03 9804K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 04 5420K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 05 9817K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 06 9157K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 07 9841K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 08 9978K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 09 8223K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 10 10297K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 11 9890K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇭🇰 中国香港 (Hong Kong) 01 9127K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 5133K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 03 388K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 11892K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 5250K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 03 9804K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 04 5420K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 05 9817K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 06 9157K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 07 9841K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 08 9978K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 09 8223K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 10 10297K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 11 9890K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

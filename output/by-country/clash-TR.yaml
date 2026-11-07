@@ -4,20 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇹🇷 土耳其 (Turkey) 01 3712K 🇨🇳 - NEKO
-  server: 198.105.123.224
-  port: 443
-  udp: true
-  type: vless
-  uuid: db80088c-32a1-4cb8-a907-0f3cb7844152
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: zEntiD6D81wY__YHPvIw78e09CBIgYkyQ5meIo7c_hg
-    short-id: 41ae8e266bc3346f
-  servername: tr1.japancase.site
-  client-fingerprint: ''
-- name: 🇹🇷 土耳其 (Turkey) 02 9250K 🇨🇳 - NEKO
+- name: 🇹🇷 土耳其 (Turkey) 01 13451K 🇨🇳 - NEKO
   server: 153.56.210.61
   port: 443
   udp: true
@@ -30,7 +17,33 @@ proxies:
     short-id: a696de84963656de
   servername: amd.com
   client-fingerprint: chrome
-- name: 🇹🇷 土耳其 (Turkey) 03 9765K 🇨🇳 - NEKO
+- name: 🇹🇷 土耳其 (Turkey) 02 14561K 🇨🇳 - NEKO
+  server: tr1.japancase.site
+  port: 443
+  udp: true
+  type: vless
+  uuid: db80088c-32a1-4cb8-a907-0f3cb7844152
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: zEntiD6D81wY__YHPvIw78e09CBIgYkyQ5meIo7c_hg
+    short-id: 41ae8e266bc3346f
+  servername: tr1.japancase.site
+  client-fingerprint: ''
+- name: 🇹🇷 土耳其 (Turkey) 03 4293K 🇨🇳 - NEKO
+  server: 129.101.100.4
+  port: 443
+  udp: true
+  type: vless
+  uuid: 8fb19a9e-ca2b-433a-8469-e4c7796033b2
+  tls: true
+  servername: falmero.store
+  skip-cert-verify: false
+  client-fingerprint: chrome
+  network: grpc
+  grpc-opts:
+    grpc-service-name: glush.de1.v1
+- name: 🇹🇷 土耳其 (Turkey) 04 1637K 🇨🇳 - NEKO
   server: 62.133.63.45
   port: 8444
   udp: true
@@ -44,7 +57,16 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: GunService
-- name: 🇹🇷 土耳其 (Turkey) 04 7378K ⚠P - NEKO
+- name: 🇹🇷 土耳其 (Turkey) 05 40209K ⚠P - NEKO
+  server: 93.190.9.194
+  port: 3090
+  udp: true
+  type: vless
+  uuid: 1589e19a-4ff8-4064-b58a-97f8bfd91b3f
+  network: grpc
+  grpc-opts:
+    grpc-service-name: vless
+- name: 🇹🇷 土耳其 (Turkey) 06 ⚠S4793K ⚠P - NEKO
   server: 151.241.226.201
   port: 2053
   udp: true
@@ -56,51 +78,27 @@ proxies:
     short-id: 9e419c0759b54d6f
   servername: www.apple.com
   client-fingerprint: firefox
-- name: 🇹🇷 土耳其 (Turkey) 05 5639K ⚠P - NEKO
-  server: game.celvixo.ir
-  port: 2087
-  udp: true
-  type: vless
-  uuid: 2f1d0b85-e17a-4b05-6393-7b68e1bb5fc1
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: cp.xelzano.ir
-- name: 🇹🇷 土耳其 (Turkey) 06 5767K 🇨🇳 - NEKO
-  server: 78.135.73.47
-  port: 443
-  udp: true
-  type: vless
-  uuid: 25e16692-d097-4e69-9e2d-8415609c1968
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: sZAJkAu23wp1WKY-qeaeiwR38izP5OyfhumoE9xhbB8
-    short-id: f46cd3ea3d1eb72d
-  servername: www.datadoghq.com
-  client-fingerprint: firefox
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇹🇷 土耳其 (Turkey) 01 3712K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 02 9250K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 03 9765K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 04 7378K ⚠P - NEKO
-  - 🇹🇷 土耳其 (Turkey) 05 5639K ⚠P - NEKO
-  - 🇹🇷 土耳其 (Turkey) 06 5767K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 01 13451K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 02 14561K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 03 4293K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 04 1637K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 05 40209K ⚠P - NEKO
+  - 🇹🇷 土耳其 (Turkey) 06 ⚠S4793K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇹🇷 土耳其 (Turkey) 01 3712K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 02 9250K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 03 9765K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 04 7378K ⚠P - NEKO
-  - 🇹🇷 土耳其 (Turkey) 05 5639K ⚠P - NEKO
-  - 🇹🇷 土耳其 (Turkey) 06 5767K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 01 13451K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 02 14561K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 03 4293K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 04 1637K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 05 40209K ⚠P - NEKO
+  - 🇹🇷 土耳其 (Turkey) 06 ⚠S4793K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

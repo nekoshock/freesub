@@ -4,8 +4,8 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇱🇰 斯里兰卡 (Sri Lanka) 01 ⚠S968K ⚠P - NEKO
-  server: news.zoom.us
+- name: 🇱🇰 斯里兰卡 (Sri Lanka) 01 856K ⚠P - NEKO
+  server: 141.193.213.20
   port: 2087
   udp: true
   type: vless
@@ -13,7 +13,7 @@ proxies:
   tls: true
   servername: free.vkehi.store
   skip-cert-verify: false
-  client-fingerprint: chrome
+  client-fingerprint: android
   network: ws
   ws-opts:
     path: /
@@ -24,12 +24,12 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇱🇰 斯里兰卡 (Sri Lanka) 01 ⚠S968K ⚠P - NEKO
+  - 🇱🇰 斯里兰卡 (Sri Lanka) 01 856K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇱🇰 斯里兰卡 (Sri Lanka) 01 ⚠S968K ⚠P - NEKO
+  - 🇱🇰 斯里兰卡 (Sri Lanka) 01 856K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

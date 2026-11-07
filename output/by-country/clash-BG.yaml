@@ -4,47 +4,55 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇧🇬 保加利亚 (Bulgaria) 01 ⚠S2568K ⚠P - NEKO
+- name: 🇧🇬 保加利亚 (Bulgaria) 01 164984K ⚠P - NEKO
+  server: radar.cloudflare.com
+  port: 8080
+  udp: true
+  type: vless
+  uuid: cfa71937-73d5-4eb8-9b25-eadecd944803
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: sh-harand.shcharand00.workers.dev
+- name: 🇧🇬 保加利亚 (Bulgaria) 02 5814K ⚠P - NEKO
   server: 213.183.63.60
   port: 9028
   udp: true
   type: ss
   cipher: aes-256-cfb
   password: 9eeJ2fwnZA5Fxgz8
-- name: 🇧🇬 保加利亚 (Bulgaria) 02 4070K ⚠P - NEKO
+- name: 🇧🇬 保加利亚 (Bulgaria) 03 6187K ⚠P - NEKO
   server: 213.183.63.60
   port: 9085
   udp: true
   type: ss
   cipher: aes-256-cfb
   password: 9ej82EKe2gq7gLAM
-- name: 🇧🇬 保加利亚 (Bulgaria) 03 5754K 🇨🇳 - NEKO
-  server: p2real4.greewebservices.ir
-  port: 1340
+- name: 🇧🇬 保加利亚 (Bulgaria) 04 8149K ⚠P - NEKO
+  server: 213.183.63.60
+  port: 9064
   udp: true
-  type: vless
-  uuid: fb1d2d8a-d9bd-496f-9d5f-f179cbd00123
-  tls: true
-  reality-opts:
-    public-key: xQnXh5EfPDhcEBB7rRiLca33GYrMEeUa35domLL_yA8
-    short-id: 9b60d3
-  servername: play.googleapis.com
-  client-fingerprint: ios
+  type: ss
+  cipher: aes-256-cfb
+  password: cp8pRSUAyLhTfVWH
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇧🇬 保加利亚 (Bulgaria) 01 ⚠S2568K ⚠P - NEKO
-  - 🇧🇬 保加利亚 (Bulgaria) 02 4070K ⚠P - NEKO
-  - 🇧🇬 保加利亚 (Bulgaria) 03 5754K 🇨🇳 - NEKO
+  - 🇧🇬 保加利亚 (Bulgaria) 01 164984K ⚠P - NEKO
+  - 🇧🇬 保加利亚 (Bulgaria) 02 5814K ⚠P - NEKO
+  - 🇧🇬 保加利亚 (Bulgaria) 03 6187K ⚠P - NEKO
+  - 🇧🇬 保加利亚 (Bulgaria) 04 8149K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇧🇬 保加利亚 (Bulgaria) 01 ⚠S2568K ⚠P - NEKO
-  - 🇧🇬 保加利亚 (Bulgaria) 02 4070K ⚠P - NEKO
-  - 🇧🇬 保加利亚 (Bulgaria) 03 5754K 🇨🇳 - NEKO
+  - 🇧🇬 保加利亚 (Bulgaria) 01 164984K ⚠P - NEKO
+  - 🇧🇬 保加利亚 (Bulgaria) 02 5814K ⚠P - NEKO
+  - 🇧🇬 保加利亚 (Bulgaria) 03 6187K ⚠P - NEKO
+  - 🇧🇬 保加利亚 (Bulgaria) 04 8149K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

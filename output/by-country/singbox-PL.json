@@ -5,7 +5,28 @@
   "outbounds": [
     {
       "type": "vless",
-      "tag": "🇵🇱 波兰 (Poland) 01 17675K 🇨🇳 - NEKO",
+      "tag": "🇵🇱 波兰 (Poland) 01 4838K 🇨🇳 - NEKO",
+      "server": "94.249.180.86",
+      "server_port": 443,
+      "uuid": "0de1d303-d7de-0001-8679-c4cb67e2e2cc",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "amd.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "WWeAHWUVD-phmnjNJ823cer0c4CMIbEs08AhsuEZmDc",
+          "short_id": "a696de84963656de"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇵🇱 波兰 (Poland) 02 ⚠S131168K 🇨🇳 - NEKO",
       "server": "2.26.255.215",
       "server_port": 443,
       "uuid": "69e41e64-a832-471a-b740-94577ca85520",
@@ -25,29 +46,24 @@
       }
     },
     {
-      "type": "vless",
-      "tag": "🇵🇱 波兰 (Poland) 02 ⚠S13556K 🇨🇳 - NEKO",
-      "server": "94.249.180.86",
-      "server_port": 443,
-      "uuid": "0de1d303-d7de-0001-8679-c4cb67e2e2cc",
-      "flow": "xtls-rprx-vision",
-      "tls": {
-        "enabled": true,
-        "server_name": "amd.com",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "firefox"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "WWeAHWUVD-phmnjNJ823cer0c4CMIbEs08AhsuEZmDc",
-          "short_id": "a696de84963656de"
-        }
-      }
+      "type": "shadowsocks",
+      "tag": "🇵🇱 波兰 (Poland) 03 13699K ⚠P - NEKO",
+      "server": "54.37.235.208",
+      "server_port": 11169,
+      "method": "aes-128-gcm",
+      "password": "122e6f90890e2691f3da63eddf951495"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇵🇱 波兰 (Poland) 04 14456K ⚠P - NEKO",
+      "server": "217.30.10.44",
+      "server_port": 9062,
+      "method": "aes-256-cfb",
+      "password": "tkhHVxxfM2QErBWe"
     },
     {
       "type": "trojan",
-      "tag": "🇵🇱 波兰 (Poland) 03 ⚠S9687K 🇨🇳 - NEKO",
+      "tag": "🇵🇱 波兰 (Poland) 05 16037K 🇨🇳 - NEKO",
       "server": "70.34.252.255",
       "server_port": 443,
       "password": "0ab6c98dae3b48e8b9c4a776b6c9c19a",
@@ -58,32 +74,49 @@
       }
     },
     {
-      "type": "shadowsocks",
-      "tag": "🇵🇱 波兰 (Poland) 04 25239K ⚠P - NEKO",
-      "server": "217.30.10.44",
-      "server_port": 9062,
-      "method": "aes-256-cfb",
-      "password": "tkhHVxxfM2QErBWe"
+      "type": "vless",
+      "tag": "🇵🇱 波兰 (Poland) 06 4074K 🇨🇳 - NEKO",
+      "server": "pl3.japancase.site",
+      "server_port": 443,
+      "uuid": "db80088c-32a1-4cb8-a907-0f3cb7844152",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "pl3.japancase.site",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "edge"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "COvqGpB7lUdZshmbn5zdqiVi81n8Iyha8RbEHtK93xc",
+          "short_id": "5037f0423dc4e4ff"
+        }
+      }
     },
     {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇵🇱 波兰 (Poland) 01 17675K 🇨🇳 - NEKO",
-        "🇵🇱 波兰 (Poland) 02 ⚠S13556K 🇨🇳 - NEKO",
-        "🇵🇱 波兰 (Poland) 03 ⚠S9687K 🇨🇳 - NEKO",
-        "🇵🇱 波兰 (Poland) 04 25239K ⚠P - NEKO"
+        "🇵🇱 波兰 (Poland) 01 4838K 🇨🇳 - NEKO",
+        "🇵🇱 波兰 (Poland) 02 ⚠S131168K 🇨🇳 - NEKO",
+        "🇵🇱 波兰 (Poland) 03 13699K ⚠P - NEKO",
+        "🇵🇱 波兰 (Poland) 04 14456K ⚠P - NEKO",
+        "🇵🇱 波兰 (Poland) 05 16037K 🇨🇳 - NEKO",
+        "🇵🇱 波兰 (Poland) 06 4074K 🇨🇳 - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇵🇱 波兰 (Poland) 01 17675K 🇨🇳 - NEKO",
-        "🇵🇱 波兰 (Poland) 02 ⚠S13556K 🇨🇳 - NEKO",
-        "🇵🇱 波兰 (Poland) 03 ⚠S9687K 🇨🇳 - NEKO",
-        "🇵🇱 波兰 (Poland) 04 25239K ⚠P - NEKO"
+        "🇵🇱 波兰 (Poland) 01 4838K 🇨🇳 - NEKO",
+        "🇵🇱 波兰 (Poland) 02 ⚠S131168K 🇨🇳 - NEKO",
+        "🇵🇱 波兰 (Poland) 03 13699K ⚠P - NEKO",
+        "🇵🇱 波兰 (Poland) 04 14456K ⚠P - NEKO",
+        "🇵🇱 波兰 (Poland) 05 16037K 🇨🇳 - NEKO",
+        "🇵🇱 波兰 (Poland) 06 4074K 🇨🇳 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

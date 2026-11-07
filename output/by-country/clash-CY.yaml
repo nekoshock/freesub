@@ -4,30 +4,30 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇬🇷 希腊 (Greece) 01 16316K 🇨🇳 - NEKO
-  server: 85.90.197.220
+- name: 🇨🇾 塞浦路斯 (Cyprus) 01 11528K 🇨🇳 - NEKO
+  server: ee2.japancase.site
   port: 443
   udp: true
   type: vless
-  uuid: 8f704ed6-9a1a-4d04-94dd-1bff501716de
+  uuid: db80088c-32a1-4cb8-a907-0f3cb7844152
   flow: xtls-rprx-vision
   tls: true
   reality-opts:
-    public-key: biNcdU5mywtNw-KyPpLHindBxdEyAolT1WJ26N0b7y4
-    short-id: 94acb54627612d43
-  servername: www.cloudflare.com
+    public-key: zEntiD6D81wY__YHPvIw78e09CBIgYkyQ5meIo7c_hg
+    short-id: 41ae8e266bc3346f
+  servername: ee2.japancase.site
   client-fingerprint: ios
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇬🇷 希腊 (Greece) 01 16316K 🇨🇳 - NEKO
+  - 🇨🇾 塞浦路斯 (Cyprus) 01 11528K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇬🇷 希腊 (Greece) 01 16316K 🇨🇳 - NEKO
+  - 🇨🇾 塞浦路斯 (Cyprus) 01 11528K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

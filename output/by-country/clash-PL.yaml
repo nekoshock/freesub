@@ -4,7 +4,20 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇵🇱 波兰 (Poland) 01 17675K 🇨🇳 - NEKO
+- name: 🇵🇱 波兰 (Poland) 01 4838K 🇨🇳 - NEKO
+  server: 94.249.180.86
+  port: 443
+  udp: true
+  type: vless
+  uuid: 0de1d303-d7de-0001-8679-c4cb67e2e2cc
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: WWeAHWUVD-phmnjNJ823cer0c4CMIbEs08AhsuEZmDc
+    short-id: a696de84963656de
+  servername: amd.com
+  client-fingerprint: chrome
+- name: 🇵🇱 波兰 (Poland) 02 ⚠S131168K 🇨🇳 - NEKO
   server: 2.26.255.215
   port: 443
   udp: true
@@ -17,20 +30,21 @@ proxies:
     short-id: '50'
   servername: cloudflare.com
   client-fingerprint: chrome
-- name: 🇵🇱 波兰 (Poland) 02 ⚠S13556K 🇨🇳 - NEKO
-  server: 94.249.180.86
-  port: 443
+- name: 🇵🇱 波兰 (Poland) 03 13699K ⚠P - NEKO
+  server: 54.37.235.208
+  port: 11169
   udp: true
-  type: vless
-  uuid: 0de1d303-d7de-0001-8679-c4cb67e2e2cc
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: WWeAHWUVD-phmnjNJ823cer0c4CMIbEs08AhsuEZmDc
-    short-id: a696de84963656de
-  servername: amd.com
-  client-fingerprint: firefox
-- name: 🇵🇱 波兰 (Poland) 03 ⚠S9687K 🇨🇳 - NEKO
+  type: ss
+  cipher: aes-128-gcm
+  password: 122e6f90890e2691f3da63eddf951495
+- name: 🇵🇱 波兰 (Poland) 04 14456K ⚠P - NEKO
+  server: 217.30.10.44
+  port: 9062
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: tkhHVxxfM2QErBWe
+- name: 🇵🇱 波兰 (Poland) 05 16037K 🇨🇳 - NEKO
   server: 70.34.252.255
   port: 443
   udp: true
@@ -38,30 +52,40 @@ proxies:
   password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
   sni: browseexecutivejobopeningsandenhanceleadershipcareer.com
   skip-cert-verify: false
-- name: 🇵🇱 波兰 (Poland) 04 25239K ⚠P - NEKO
-  server: 217.30.10.44
-  port: 9062
+- name: 🇵🇱 波兰 (Poland) 06 4074K 🇨🇳 - NEKO
+  server: pl3.japancase.site
+  port: 443
   udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: tkhHVxxfM2QErBWe
+  type: vless
+  uuid: db80088c-32a1-4cb8-a907-0f3cb7844152
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: COvqGpB7lUdZshmbn5zdqiVi81n8Iyha8RbEHtK93xc
+    short-id: 5037f0423dc4e4ff
+  servername: pl3.japancase.site
+  client-fingerprint: edge
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇵🇱 波兰 (Poland) 01 17675K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 02 ⚠S13556K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 03 ⚠S9687K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 04 25239K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 01 4838K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 02 ⚠S131168K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 03 13699K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 04 14456K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 05 16037K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 06 4074K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇵🇱 波兰 (Poland) 01 17675K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 02 ⚠S13556K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 03 ⚠S9687K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 04 25239K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 01 4838K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 02 ⚠S131168K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 03 13699K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 04 14456K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 05 16037K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 06 4074K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

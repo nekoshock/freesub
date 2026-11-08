@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇹🇷 土耳其 (Turkey) 01 13947K 🇨🇳 - NEKO
+- name: 🇹🇷 土耳其 (Turkey) 01 10672K 🇨🇳 - NEKO
   server: 62.133.63.45
   port: 8444
   udp: true
@@ -19,7 +19,7 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: GunService
-- name: 🇹🇷 土耳其 (Turkey) 02 5864K 🇨🇳 - NEKO
+- name: 🇹🇷 土耳其 (Turkey) 02 7255K ⚠P - NEKO
   server: 151.241.226.201
   port: 2053
   udp: true
@@ -36,14 +36,14 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇹🇷 土耳其 (Turkey) 01 13947K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 02 5864K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 01 10672K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 02 7255K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇹🇷 土耳其 (Turkey) 01 13947K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 02 5864K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 01 10672K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 02 7255K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

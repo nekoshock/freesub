@@ -4,15 +4,41 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇭 瑞士 (Switzerland) 01 22131K 🇨🇳 - NEKO
-  server: 208.69.78.222
+- name: 🇨🇭 瑞士 (Switzerland) 01 24946K 🇨🇳 - NEKO
+  server: 179.43.166.190
   port: 443
   udp: true
-  type: trojan
-  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  sni: yourultimateprofessionalcareerhub.com
-  skip-cert-verify: false
-- name: 🇨🇭 瑞士 (Switzerland) 02 15575K ⚠P⚠U - NEKO
+  type: vless
+  uuid: 90157e25-cee1-4217-921e-91f300bc1a24
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: 1vSZjvhZO01oAEH3b7eebR1qF5dLU1Dq2E7xu8pwGSs
+    short-id: 428ef87fd47a3a32
+  servername: perevodchiki.su
+  client-fingerprint: firefox
+- name: 🇨🇭 瑞士 (Switzerland) 02 19132K ⚠P - NEKO
+  server: 23.166.88.127
+  port: 19999
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇨🇭 瑞士 (Switzerland) 03 26725K ⚠P - NEKO
+  server: 79.127.184.104
+  port: 19999
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇨🇭 瑞士 (Switzerland) 04 23083K ⚠P - NEKO
+  server: 23.166.88.189
+  port: 19999
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇨🇭 瑞士 (Switzerland) 05 1739K ⚠P⚠U - NEKO
   server: 104.165.205.42
   port: 8443
   udp: true
@@ -20,70 +46,34 @@ proxies:
   password: 54d2f622-fd71-4f5f-8813-832b68f4ca3b
   sni: speedtestmark.com
   skip-cert-verify: false
-- name: 🇨🇭 瑞士 (Switzerland) 03 16877K ⚠P - NEKO
-  server: 79.127.184.104
-  port: 19999
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇨🇭 瑞士 (Switzerland) 04 25017K ⚠P - NEKO
+- name: 🇨🇭 瑞士 (Switzerland) 06 18269K ⚠P - NEKO
   server: 186.190.215.251
   port: 19999
   udp: true
   type: ss
   cipher: aes-256-gcm
   password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇨🇭 瑞士 (Switzerland) 05 10532K ⚠P - NEKO
-  server: 23.166.88.127
-  port: 19999
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇨🇭 瑞士 (Switzerland) 06 19272K ⚠P - NEKO
-  server: 23.166.88.189
-  port: 19999
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇨🇭 瑞士 (Switzerland) 07 13112K 🇨🇳 - NEKO
-  server: 62.109.1.5
-  port: 2058
-  udp: true
-  type: vless
-  uuid: 4ad9f982-b56a-444a-9684-35ce51307a36
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: lJBsn9ndieTIUBzXkJUhf6O0OE8pm29_z1fUtARwL0s
-    short-id: 937255313d6ce673
-  servername: www.cloudflare.com
-  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇨🇭 瑞士 (Switzerland) 01 22131K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 02 15575K ⚠P⚠U - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 03 16877K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 04 25017K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 05 10532K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 06 19272K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 07 13112K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 01 24946K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 02 19132K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 03 26725K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 04 23083K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 05 1739K ⚠P⚠U - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 06 18269K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇭 瑞士 (Switzerland) 01 22131K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 02 15575K ⚠P⚠U - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 03 16877K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 04 25017K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 05 10532K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 06 19272K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 07 13112K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 01 24946K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 02 19132K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 03 26725K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 04 23083K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 05 1739K ⚠P⚠U - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 06 18269K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

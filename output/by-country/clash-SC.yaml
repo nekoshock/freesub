@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇸🇨 塞舌尔 (Seychelles) 01 20169K 🇨🇳 - NEKO
+- name: 🇸🇨 塞舌尔 (Seychelles) 01 13585K 🇨🇳 - NEKO
   server: 46.29.255.123
   port: 59539
   udp: true
@@ -16,34 +16,17 @@ proxies:
     public-key: R6mPqCsjZMWauci4LHw7Qp1LGKmBd-sxMXplyOn9bSQ
   servername: cloudflare-dns.com
   client-fingerprint: firefox
-- name: 🇸🇨 塞舌尔 (Seychelles) 02 389K 🇨🇳 - NEKO
-  server: 45.86.67.114
-  port: 8443
-  udp: true
-  type: vless
-  uuid: 6eaf5e8f-e4fe-4dc7-a1cd-f24343536abe
-  tls: true
-  reality-opts:
-    public-key: vzxQR7aijDhEEV2Dq6P6eFJckkgOLTq86bySpqVGsQo
-    short-id: de9061cbed448be3
-  servername: us1.kittieslabs.tech
-  client-fingerprint: firefox
-  network: grpc
-  grpc-opts:
-    grpc-service-name: us-tor
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇸🇨 塞舌尔 (Seychelles) 01 20169K 🇨🇳 - NEKO
-  - 🇸🇨 塞舌尔 (Seychelles) 02 389K 🇨🇳 - NEKO
+  - 🇸🇨 塞舌尔 (Seychelles) 01 13585K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇸🇨 塞舌尔 (Seychelles) 01 20169K 🇨🇳 - NEKO
-  - 🇸🇨 塞舌尔 (Seychelles) 02 389K 🇨🇳 - NEKO
+  - 🇸🇨 塞舌尔 (Seychelles) 01 13585K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

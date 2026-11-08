@@ -4,14 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇵🇱 波兰 (Poland) 01 ⚠S11455K ⚠P - NEKO
-  server: 217.30.10.44
-  port: 9062
-  udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: tkhHVxxfM2QErBWe
-- name: 🇵🇱 波兰 (Poland) 02 19448K 🇨🇳 - NEKO
+- name: 🇵🇱 波兰 (Poland) 01 25644K 🇨🇳 - NEKO
   server: 70.34.252.255
   port: 443
   udp: true
@@ -19,19 +12,31 @@ proxies:
   password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
   sni: browseexecutivejobopeningsandenhanceleadershipcareer.com
   skip-cert-verify: false
+- name: 🇵🇱 波兰 (Poland) 02 25401K 🇨🇳 - NEKO
+  server: 57.128.214.26
+  port: 443
+  udp: true
+  type: vless
+  uuid: 3cd559a7-b896-4852-ab8b-81a192dc8460
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: 5vNAgd2gzZUUJAU-njR7Sz542IJHdLdea9TtgwBttl4
+  servername: yahoo.com
+  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇵🇱 波兰 (Poland) 01 ⚠S11455K ⚠P - NEKO
-  - 🇵🇱 波兰 (Poland) 02 19448K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 01 25644K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 02 25401K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇵🇱 波兰 (Poland) 01 ⚠S11455K ⚠P - NEKO
-  - 🇵🇱 波兰 (Poland) 02 19448K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 01 25644K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 02 25401K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

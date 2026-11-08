@@ -4,23 +4,40 @@
   },
   "outbounds": [
     {
-      "type": "shadowsocks",
-      "tag": "🇵🇱 波兰 (Poland) 01 ⚠S11455K ⚠P - NEKO",
-      "server": "217.30.10.44",
-      "server_port": 9062,
-      "method": "aes-256-cfb",
-      "password": "tkhHVxxfM2QErBWe"
-    },
-    {
       "type": "trojan",
-      "tag": "🇵🇱 波兰 (Poland) 02 19448K 🇨🇳 - NEKO",
+      "tag": "🇵🇱 波兰 (Poland) 01 25644K 🇨🇳 - NEKO",
       "server": "70.34.252.255",
       "server_port": 443,
       "password": "0ab6c98dae3b48e8b9c4a776b6c9c19a",
       "tls": {
         "enabled": true,
         "server_name": "browseexecutivejobopeningsandenhanceleadershipcareer.com",
-        "insecure": false
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇵🇱 波兰 (Poland) 02 25401K 🇨🇳 - NEKO",
+      "server": "57.128.214.26",
+      "server_port": 443,
+      "uuid": "3cd559a7-b896-4852-ab8b-81a192dc8460",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "yahoo.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "5vNAgd2gzZUUJAU-njR7Sz542IJHdLdea9TtgwBttl4",
+          "short_id": ""
+        }
       }
     },
     {
@@ -28,16 +45,16 @@
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇵🇱 波兰 (Poland) 01 ⚠S11455K ⚠P - NEKO",
-        "🇵🇱 波兰 (Poland) 02 19448K 🇨🇳 - NEKO"
+        "🇵🇱 波兰 (Poland) 01 25644K 🇨🇳 - NEKO",
+        "🇵🇱 波兰 (Poland) 02 25401K 🇨🇳 - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇵🇱 波兰 (Poland) 01 ⚠S11455K ⚠P - NEKO",
-        "🇵🇱 波兰 (Poland) 02 19448K 🇨🇳 - NEKO"
+        "🇵🇱 波兰 (Poland) 01 25644K 🇨🇳 - NEKO",
+        "🇵🇱 波兰 (Poland) 02 25401K 🇨🇳 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

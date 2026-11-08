@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇹🇷 土耳其 (Turkey) 01 10272K 🇨🇳 - NEKO
+- name: 🇹🇷 土耳其 (Turkey) 01 14349K 🇨🇳 - NEKO
   server: 62.133.63.45
   port: 8444
   udp: true
@@ -18,12 +18,24 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: GunService
-- name: 🇹🇷 土耳其 (Turkey) 02 4687K ⚠P - NEKO
+- name: 🇹🇷 土耳其 (Turkey) 02 11381K 🇨🇳 - NEKO
+  server: 151.241.226.201
+  port: 2053
+  udp: true
+  type: vless
+  uuid: 0eed6293-8cf1-4e77-ac10-9c3d50d0b2f8
+  tls: true
+  reality-opts:
+    public-key: bYW_MmB_CUHrsyoCAUKviI2LZdHf63yY2yOPXbih104
+    short-id: 9e419c0759b54d6f
+  servername: www.apple.com
+  client-fingerprint: firefox
+- name: 🇹🇷 土耳其 (Turkey) 03 11549K ⚠P - NEKO
   server: game.celvixo.ir
   port: 2087
   udp: true
   type: vless
-  uuid: 09ffe66d-ecaa-447d-937d-ff657ec8ce60
+  uuid: 36ef68cf-7d81-458b-0c20-7a9b4ac32845
   network: ws
   ws-opts:
     path: /
@@ -34,14 +46,16 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇹🇷 土耳其 (Turkey) 01 10272K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 02 4687K ⚠P - NEKO
+  - 🇹🇷 土耳其 (Turkey) 01 14349K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 02 11381K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 03 11549K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇹🇷 土耳其 (Turkey) 01 10272K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 02 4687K ⚠P - NEKO
+  - 🇹🇷 土耳其 (Turkey) 01 14349K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 02 11381K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 03 11549K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

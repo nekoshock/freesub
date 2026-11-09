@@ -4,35 +4,45 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇭🇰 中国香港 (Hong Kong) 01 13288K 🇨🇳 - NEKO
-  server: e49952e3-tmm5c0-tv7zgh-1ijh5.hk3.hyhuawei.com
+- name: 🇭🇰 中国香港 (Hong Kong) 01 6417K 🇨🇳 - NEKO
+  server: f7f87486-tmm5c0-ts3rye-mrtr.nw4.hyhuawei.com
   port: 443
   udp: true
   type: hysteria2
-  password: f7d95364-607b-11ee-93af-f23c91369f2d
-  sni: e49952e3-tmm5c0-tv7zgh-1ijh5.hk3.hyhuawei.com
+  password: 28a8a4d0-3e02-11eb-a8bf-f23c91cfbbc9
+  sni: f7f87486-tmm5c0-ts3rye-mrtr.nw4.hyhuawei.com
   skip-cert-verify: false
-- name: 🇭🇰 中国香港 (Hong Kong) 02 11540K 🇨🇳 - NEKO
-  server: 0d6ed79d-tlsio0-u4ai7k-z7a1.nw4.hyhuawei.com
+- name: 🇭🇰 中国香港 (Hong Kong) 02 26239K 🇨🇳 - NEKO
+  server: a91af2af-tmm5c0-twnp5a-ahsb.hk3.hyhuawei.com
   port: 443
   udp: true
   type: hysteria2
-  password: 3bd247a8-993e-11ec-a8bf-f23c91cfbbc9
-  sni: 0d6ed79d-tlsio0-u4ai7k-z7a1.nw4.hyhuawei.com
+  password: 2e42c1ee-aaaa-11ec-bb74-f23c9164ca5d
+  sni: a91af2af-tmm5c0-twnp5a-ahsb.hk3.hyhuawei.com
   skip-cert-verify: false
+- name: 🇭🇰 中国香港 (Hong Kong) 03 216K ⚠P⚠B - NEKO
+  server: 101.32.187.182
+  port: 10898
+  udp: true
+  type: vmess
+  uuid: b6b14ef7-a769-406f-9df7-31790ff7a920
+  alterId: 0
+  cipher: auto
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇭🇰 中国香港 (Hong Kong) 01 13288K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 11540K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 6417K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 26239K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 03 216K ⚠P⚠B - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇭🇰 中国香港 (Hong Kong) 01 13288K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 11540K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 6417K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 26239K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 03 216K ⚠P⚠B - NEKO
 rules:
 - MATCH,PROXIES

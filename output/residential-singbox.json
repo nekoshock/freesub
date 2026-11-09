@@ -4,8 +4,31 @@
   },
   "outbounds": [
     {
+      "type": "vless",
+      "tag": "🇩🇪 德国 (Germany) 01 (移动家宽) 14911K 🇨🇳 - NEKO",
+      "server": "172.66.47.45",
+      "server_port": 443,
+      "uuid": "e56059f1-5a1a-4d0a-a2d0-58ecb4eb2f3f",
+      "tls": {
+        "enabled": true,
+        "server_name": "ezaccess-project-f62c30.pages.dev",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/eyJqdW5rIjoiZWlPODVjTnhnaSIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0",
+        "headers": {
+          "Host": "ezaccess-project-f62c30.pages.dev"
+        }
+      }
+    },
+    {
       "type": "tuic",
-      "tag": "🇭🇰 中国香港 (Hong Kong) 01 (家宽) 9919K 🇨🇳 - NEKO",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 02 (家宽) 9146K 🇨🇳 - NEKO",
       "server": "58.152.81.104",
       "server_port": 443,
       "uuid": "73bfcc1c-5814-5f2a-b43a-3ef6af011db8",
@@ -22,18 +45,30 @@
       }
     },
     {
+      "type": "vmess",
+      "tag": "🇸🇬 新加坡 (Singapore) 03 (家宽) 4653K ⚠P - NEKO",
+      "server": "195.133.135.238",
+      "server_port": 10086,
+      "uuid": "b831381d-6324-4d53-ad4f-8cda48b30811",
+      "security": "auto"
+    },
+    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇭🇰 中国香港 (Hong Kong) 01 (家宽) 9919K 🇨🇳 - NEKO"
+        "🇩🇪 德国 (Germany) 01 (移动家宽) 14911K 🇨🇳 - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 02 (家宽) 9146K 🇨🇳 - NEKO",
+        "🇸🇬 新加坡 (Singapore) 03 (家宽) 4653K ⚠P - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇭🇰 中国香港 (Hong Kong) 01 (家宽) 9919K 🇨🇳 - NEKO"
+        "🇩🇪 德国 (Germany) 01 (移动家宽) 14911K 🇨🇳 - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 02 (家宽) 9146K 🇨🇳 - NEKO",
+        "🇸🇬 新加坡 (Singapore) 03 (家宽) 4653K ⚠P - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

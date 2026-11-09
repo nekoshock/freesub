@@ -4,71 +4,30 @@
   },
   "outbounds": [
     {
-      "type": "vless",
-      "tag": "🇩🇪 德国 (Germany) 01 (移动家宽) 14911K 🇨🇳 - NEKO",
-      "server": "172.66.47.45",
+      "type": "hysteria2",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 01 (家宽) 8171K 🇨🇳 - NEKO",
+      "server": "112.120.123.140",
       "server_port": 443,
-      "uuid": "e56059f1-5a1a-4d0a-a2d0-58ecb4eb2f3f",
+      "password": "5acc7a7c-d7ea-11eb-8673-f23c9164ca5d",
       "tls": {
         "enabled": true,
-        "server_name": "ezaccess-project-f62c30.pages.dev",
-        "insecure": false,
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/eyJqdW5rIjoiZWlPODVjTnhnaSIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0",
-        "headers": {
-          "Host": "ezaccess-project-f62c30.pages.dev"
-        }
+        "server_name": "7017cade-tmm5c0-u1dz9j-12hj8.nw4.hyhuawei.com",
+        "insecure": false
       }
-    },
-    {
-      "type": "tuic",
-      "tag": "🇭🇰 中国香港 (Hong Kong) 02 (家宽) 9146K 🇨🇳 - NEKO",
-      "server": "58.152.81.104",
-      "server_port": 443,
-      "uuid": "73bfcc1c-5814-5f2a-b43a-3ef6af011db8",
-      "password": "73bfcc1c-5814-5f2a-b43a-3ef6af011db8",
-      "congestion_control": "bbr",
-      "udp_relay_mode": "native",
-      "tls": {
-        "enabled": true,
-        "server_name": "54fb07dd-tk7400-toh6wi-jx5r.pccw3.hyhuawei.com",
-        "insecure": false,
-        "alpn": [
-          "h3"
-        ]
-      }
-    },
-    {
-      "type": "vmess",
-      "tag": "🇸🇬 新加坡 (Singapore) 03 (家宽) 4653K ⚠P - NEKO",
-      "server": "195.133.135.238",
-      "server_port": 10086,
-      "uuid": "b831381d-6324-4d53-ad4f-8cda48b30811",
-      "security": "auto"
     },
     {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇩🇪 德国 (Germany) 01 (移动家宽) 14911K 🇨🇳 - NEKO",
-        "🇭🇰 中国香港 (Hong Kong) 02 (家宽) 9146K 🇨🇳 - NEKO",
-        "🇸🇬 新加坡 (Singapore) 03 (家宽) 4653K ⚠P - NEKO"
+        "🇭🇰 中国香港 (Hong Kong) 01 (家宽) 8171K 🇨🇳 - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇩🇪 德国 (Germany) 01 (移动家宽) 14911K 🇨🇳 - NEKO",
-        "🇭🇰 中国香港 (Hong Kong) 02 (家宽) 9146K 🇨🇳 - NEKO",
-        "🇸🇬 新加坡 (Singapore) 03 (家宽) 4653K ⚠P - NEKO"
+        "🇭🇰 中国香港 (Hong Kong) 01 (家宽) 8171K 🇨🇳 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

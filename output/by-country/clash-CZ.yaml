@@ -4,20 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇿 捷克 (Czech) 01 16620K 🇨🇳 - NEKO
-  server: 212.102.38.25
-  port: 443
-  udp: true
-  type: vless
-  uuid: b34a52cb-cd52-49a8-9362-b8e97c151d49
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: 23cb4W9THzBKsrECsLh-A_FcKZfkAtUONoDze8-GnQE
-    short-id: e90360ec7cc61b20
-  servername: udemy.com
-  client-fingerprint: ''
-- name: 🇨🇿 捷克 (Czech) 02 16023K 🇨🇳 - NEKO
+- name: 🇨🇿 捷克 (Czech) 01 13886K 🇨🇳 - NEKO
   server: 195.123.245.241
   port: 443
   udp: true
@@ -30,34 +17,47 @@ proxies:
     short-id: 23d0950d60bc0d5b
   servername: gateway.icloud.com
   client-fingerprint: random
-- name: 🇨🇿 捷克 (Czech) 03 9367K 🇨🇳 - NEKO
-  server: 129.101.103.211
+- name: 🇨🇿 捷克 (Czech) 02 15463K 🇨🇳 - NEKO
+  server: 212.102.38.25
   port: 443
   udp: true
   type: vless
-  uuid: 3f5e89d5-591f-4ac9-b071-b05680b573c3
+  uuid: b34a52cb-cd52-49a8-9362-b8e97c151d49
   flow: xtls-rprx-vision
   tls: true
   reality-opts:
-    public-key: 8fSwTqCwJ2HWGxcTQsZs8Sx0hRk2Ru7HFdu-iLnesGg
-    short-id: 53d0d0611a
-  servername: de2.gacvpn.site
-  client-fingerprint: firefox
+    public-key: 23cb4W9THzBKsrECsLh-A_FcKZfkAtUONoDze8-GnQE
+    short-id: e90360ec7cc61b20
+  servername: udemy.com
+  client-fingerprint: ''
+- name: 🇨🇿 捷克 (Czech) 03 ⚠S5699K 🇨🇳 - NEKO
+  server: 216.106.191.201
+  port: 10303
+  udp: true
+  type: vless
+  uuid: dbf3f074-3b18-43f3-b82a-debd8c879c69
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: suK-MYTtZhJ9IJgsxPLTHLQadNotDqYslQcd5BNV_EQ
+    short-id: 6aa50b0cc8d23464
+  servername: www.apple.com
+  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇨🇿 捷克 (Czech) 01 16620K 🇨🇳 - NEKO
-  - 🇨🇿 捷克 (Czech) 02 16023K 🇨🇳 - NEKO
-  - 🇨🇿 捷克 (Czech) 03 9367K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 01 13886K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 02 15463K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 03 ⚠S5699K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇿 捷克 (Czech) 01 16620K 🇨🇳 - NEKO
-  - 🇨🇿 捷克 (Czech) 02 16023K 🇨🇳 - NEKO
-  - 🇨🇿 捷克 (Czech) 03 9367K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 01 13886K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 02 15463K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 03 ⚠S5699K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

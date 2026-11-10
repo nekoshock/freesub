@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇭🇰 中国香港 (Hong Kong) 01 23704K 🇨🇳 - NEKO
+- name: 🇭🇰 中国香港 (Hong Kong) 01 8997K 🇨🇳 - NEKO
   server: 58.152.81.104
   port: 443
   udp: true
@@ -17,7 +17,7 @@ proxies:
   udp-relay-mode: native
   alpn:
   - h3
-- name: 🇭🇰 中国香港 (Hong Kong) 02 11530K 🇨🇳 - NEKO
+- name: 🇭🇰 中国香港 (Hong Kong) 02 6411K 🇨🇳 - NEKO
   server: fc6ffc71-tmm5c0-ts3rye-mrtr.hk3.hyhuawei.com
   port: 443
   udp: true
@@ -25,49 +25,49 @@ proxies:
   password: 28a8a4d0-3e02-11eb-a8bf-f23c91cfbbc9
   sni: fc6ffc71-tmm5c0-ts3rye-mrtr.hk3.hyhuawei.com
   skip-cert-verify: false
-- name: 🇭🇰 中国香港 (Hong Kong) 03 3530K 🇨🇳 - NEKO
-  server: doghkzf.zalolink.com
-  port: 28675
+- name: 🇭🇰 中国香港 (Hong Kong) 03 ⚠S4816K ⚠P - NEKO
+  server: 23.95.72.244
+  port: 6697
   udp: true
   type: vless
-  uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
+  uuid: 9a5e7b1c-bf39-4b1f-891f-ac87824ee38f
   flow: xtls-rprx-vision
   tls: true
   reality-opts:
-    public-key: jgtiLXdCnQ9WRWMuu2gsuGQOQTCRZQpspnn228kjTSA
-    short-id: 9a79807253c040
-  servername: www.lamer.com.hk
-  client-fingerprint: ios
-- name: 🇭🇰 中国香港 (Hong Kong) 04 3394K ⚠P - NEKO
-  server: 39.109.111.23
-  port: 39675
-  udp: true
-  type: vless
-  uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: VW9b1Lj_TPfa52PVrmLypSxQjRiV06sgG96uEd6oBRM
-    short-id: 551a216445
-  servername: www.lamer.com.hk
+    public-key: qeuzgTUkTLMVZZ3AclsA1_Qn_xX9NFDzuNzJnotcMWY
+    short-id: e718c0495c85dab2
+  servername: www.aboutamazon.sg
   client-fingerprint: firefox
+- name: 🇭🇰 中国香港 (Hong Kong) 04 8504K ⚠P - NEKO
+  server: 23.95.72.244
+  port: 2087
+  udp: true
+  type: vless
+  uuid: 9a5e7b1c-bf39-4b1f-891f-ac87824ee38f
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: ALHje8E3d2TkkY2XnWRsZyw5nCptpdjHj1Yzs7_i_E8
+    short-id: 7b1602ae8a72ed0a
+  servername: repost.aws
+  client-fingerprint: qq
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇭🇰 中国香港 (Hong Kong) 01 23704K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 11530K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 03 3530K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 04 3394K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 8997K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 6411K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 03 ⚠S4816K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 04 8504K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇭🇰 中国香港 (Hong Kong) 01 23704K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 11530K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 03 3530K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 04 3394K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 8997K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 6411K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 03 ⚠S4816K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 04 8504K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

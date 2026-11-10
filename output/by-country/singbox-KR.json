@@ -5,7 +5,7 @@
   "outbounds": [
     {
       "type": "vless",
-      "tag": "🇰🇷 韩国 (South Korea) 01 801K 🇨🇳 - NEKO",
+      "tag": "🇰🇷 韩国 (South Korea) 01 6736K ⚠P - NEKO",
       "server": "3.39.4.109",
       "server_port": 18967,
       "uuid": "814bd064-544d-4255-a070-5705c03f6da9",
@@ -25,18 +25,41 @@
       }
     },
     {
+      "type": "vless",
+      "tag": "🇰🇷 韩国 (South Korea) 02 6610K ⚠P - NEKO",
+      "server": "23.95.72.244",
+      "server_port": 8883,
+      "uuid": "9a5e7b1c-bf39-4b1f-891f-ac87824ee38f",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "calculator.aws",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "vDVvkf5fv8QywL2zrBWYLhkBdrQCDW7dq8fh-YeBnBY",
+          "short_id": "ebdd94f3e17a4620"
+        }
+      }
+    },
+    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇰🇷 韩国 (South Korea) 01 801K 🇨🇳 - NEKO"
+        "🇰🇷 韩国 (South Korea) 01 6736K ⚠P - NEKO",
+        "🇰🇷 韩国 (South Korea) 02 6610K ⚠P - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇰🇷 韩国 (South Korea) 01 801K 🇨🇳 - NEKO"
+        "🇰🇷 韩国 (South Korea) 01 6736K ⚠P - NEKO",
+        "🇰🇷 韩国 (South Korea) 02 6610K ⚠P - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

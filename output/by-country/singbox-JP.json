@@ -4,33 +4,33 @@
   },
   "outbounds": [
     {
-      "type": "shadowsocks",
-      "tag": "🇯🇵 日本 (Japan) 01 3697K - NEKO",
-      "server": "149.22.87.240",
-      "server_port": 443,
-      "method": "aes-128-gcm",
-      "password": "shadowsocks"
-    },
-    {
-      "type": "shadowsocks",
-      "tag": "🇯🇵 日本 (Japan) 02 8928K - NEKO",
-      "server": "149.22.87.241",
-      "server_port": 443,
-      "method": "aes-128-gcm",
-      "password": "shadowsocks"
-    },
-    {
-      "type": "shadowsocks",
-      "tag": "🇯🇵 日本 (Japan) 03 7411K - NEKO",
-      "server": "149.22.87.204",
-      "server_port": 443,
-      "method": "aes-128-gcm",
-      "password": "shadowsocks"
+      "type": "vless",
+      "tag": "🇯🇵 日本 (Japan) 01 1257K 🇨🇳 - NEKO",
+      "server": "jp004.421421.xyz",
+      "server_port": 20230,
+      "uuid": "0400697c-b581-4575-9d2f-0bbd4659312d",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.nvidia.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "lbOfuIKCBPcQH4AEnwnPw1LNxWrl-Bul6KU99H240Fc",
+          "short_id": "abae4722"
+        }
+      },
+      "transport": {
+        "type": "grpc",
+        "service_name": "tj"
+      }
     },
     {
       "type": "hysteria2",
-      "tag": "🇯🇵 日本 (Japan) 04 8763K ⚠P⚠U - NEKO",
-      "server": "freedom.chenlan.top",
+      "tag": "🇯🇵 日本 (Japan) 02 25306K ⚠P⚠U - NEKO",
+      "server": "85.121.123.197",
       "server_port": 12765,
       "password": "STYyftThFn",
       "tls": {
@@ -41,30 +41,9 @@
     },
     {
       "type": "vless",
-      "tag": "🇯🇵 日本 (Japan) 05 292K 🇨🇳 - NEKO",
-      "server": "3.114.220.22",
-      "server_port": 19645,
-      "uuid": "814bd064-544d-4255-a070-5705c03f6da9",
-      "flow": "xtls-rprx-vision",
-      "tls": {
-        "enabled": true,
-        "server_name": "www.apple.com",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "ios"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0",
-          "short_id": "48050fab"
-        }
-      }
-    },
-    {
-      "type": "vless",
-      "tag": "🇯🇵 日本 (Japan) 06 303K 🇨🇳 - NEKO",
-      "server": "3.114.220.22",
-      "server_port": 10583,
+      "tag": "🇯🇵 日本 (Japan) 03 16358K 🇨🇳 - NEKO",
+      "server": "103.75.118.228",
+      "server_port": 11452,
       "uuid": "814bd064-544d-4255-a070-5705c03f6da9",
       "flow": "xtls-rprx-vision",
       "tls": {
@@ -86,24 +65,18 @@
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇯🇵 日本 (Japan) 01 3697K - NEKO",
-        "🇯🇵 日本 (Japan) 02 8928K - NEKO",
-        "🇯🇵 日本 (Japan) 03 7411K - NEKO",
-        "🇯🇵 日本 (Japan) 04 8763K ⚠P⚠U - NEKO",
-        "🇯🇵 日本 (Japan) 05 292K 🇨🇳 - NEKO",
-        "🇯🇵 日本 (Japan) 06 303K 🇨🇳 - NEKO"
+        "🇯🇵 日本 (Japan) 01 1257K 🇨🇳 - NEKO",
+        "🇯🇵 日本 (Japan) 02 25306K ⚠P⚠U - NEKO",
+        "🇯🇵 日本 (Japan) 03 16358K 🇨🇳 - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇯🇵 日本 (Japan) 01 3697K - NEKO",
-        "🇯🇵 日本 (Japan) 02 8928K - NEKO",
-        "🇯🇵 日本 (Japan) 03 7411K - NEKO",
-        "🇯🇵 日本 (Japan) 04 8763K ⚠P⚠U - NEKO",
-        "🇯🇵 日本 (Japan) 05 292K 🇨🇳 - NEKO",
-        "🇯🇵 日本 (Japan) 06 303K 🇨🇳 - NEKO"
+        "🇯🇵 日本 (Japan) 01 1257K 🇨🇳 - NEKO",
+        "🇯🇵 日本 (Japan) 02 25306K ⚠P⚠U - NEKO",
+        "🇯🇵 日本 (Japan) 03 16358K 🇨🇳 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

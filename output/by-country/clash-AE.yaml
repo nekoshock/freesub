@@ -4,21 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇦🇪 阿联酋 (UAE) 01 8667K ⚠P - NEKO
-  server: 151.241.19.29
-  port: 19999
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇦🇪 阿联酋 (UAE) 02 8372K ⚠P - NEKO
-  server: 151.241.19.36
-  port: 19999
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇦🇪 阿联酋 (UAE) 03 ⚠S9019K 🇨🇳 - NEKO
+- name: 🇦🇪 阿联酋 (UAE) 01 6900K 🇨🇳 - NEKO
   server: 130.49.161.70
   port: 443
   udp: true
@@ -28,49 +14,46 @@ proxies:
   skip-cert-verify: false
   obfs: salamander
   obfs-password: rG07s3COMIEvdnQipRyWzx_H_2xygNC3
-- name: 🇦🇪 阿联酋 (UAE) 04 13636K 🇨🇳 - NEKO
-  server: lp.astralweb.tech
-  port: 443
+- name: 🇦🇪 阿联酋 (UAE) 02 11382K ⚠P - NEKO
+  server: 104.143.223.236
+  port: 2085
   udp: true
   type: vless
-  uuid: ec1c883a-19e5-0004-8567-a7de5c7ebeb0
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: AcJiiNBWvqUC5QBWFNWNc6ksAnd3K9s5nb55kvLsPBE
-    short-id: 496ee75c2f91f51d
-  servername: lp.astralweb.tech
-  client-fingerprint: chrome
-- name: 🇦🇪 阿联酋 (UAE) 05 7773K ⚠P - NEKO
-  server: 84.235.244.108
-  port: 22573
+  uuid: 6538f5c3-5b01-4956-a8e6-47688c01c42e
+  network: grpc
+  grpc-opts:
+    grpc-service-name: vless
+- name: 🇦🇪 阿联酋 (UAE) 03 10981K ⚠P - NEKO
+  server: 151.241.19.36
+  port: 19999
   udp: true
-  type: vless
-  uuid: 39947382-3212-41c9-bc3a-589574ac8b23
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: uae.unixzone.us
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇦🇪 阿联酋 (UAE) 04 11570K ⚠P - NEKO
+  server: 151.241.19.29
+  port: 19999
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇦🇪 阿联酋 (UAE) 01 8667K ⚠P - NEKO
-  - 🇦🇪 阿联酋 (UAE) 02 8372K ⚠P - NEKO
-  - 🇦🇪 阿联酋 (UAE) 03 ⚠S9019K 🇨🇳 - NEKO
-  - 🇦🇪 阿联酋 (UAE) 04 13636K 🇨🇳 - NEKO
-  - 🇦🇪 阿联酋 (UAE) 05 7773K ⚠P - NEKO
+  - 🇦🇪 阿联酋 (UAE) 01 6900K 🇨🇳 - NEKO
+  - 🇦🇪 阿联酋 (UAE) 02 11382K ⚠P - NEKO
+  - 🇦🇪 阿联酋 (UAE) 03 10981K ⚠P - NEKO
+  - 🇦🇪 阿联酋 (UAE) 04 11570K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇦🇪 阿联酋 (UAE) 01 8667K ⚠P - NEKO
-  - 🇦🇪 阿联酋 (UAE) 02 8372K ⚠P - NEKO
-  - 🇦🇪 阿联酋 (UAE) 03 ⚠S9019K 🇨🇳 - NEKO
-  - 🇦🇪 阿联酋 (UAE) 04 13636K 🇨🇳 - NEKO
-  - 🇦🇪 阿联酋 (UAE) 05 7773K ⚠P - NEKO
+  - 🇦🇪 阿联酋 (UAE) 01 6900K 🇨🇳 - NEKO
+  - 🇦🇪 阿联酋 (UAE) 02 11382K ⚠P - NEKO
+  - 🇦🇪 阿联酋 (UAE) 03 10981K ⚠P - NEKO
+  - 🇦🇪 阿联酋 (UAE) 04 11570K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

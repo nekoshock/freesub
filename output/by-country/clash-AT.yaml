@@ -4,27 +4,14 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇦🇹 奥地利 (Austria) 01 21969K ⚠P - NEKO
+- name: 🇦🇹 奥地利 (Austria) 01 6277K ⚠P - NEKO
   server: 82.110.60.9
   port: 19999
   udp: true
   type: ss
   cipher: aes-256-gcm
   password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇦🇹 奥地利 (Austria) 02 ⚠S13112K 🇨🇳 - NEKO
-  server: vena.xvanta.online
-  port: 443
-  udp: true
-  type: vless
-  uuid: b3e8320f-dbf6-423f-8f86-c3c5d663467f
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: 4vN6lpdXLv0wGwYmcrC58O0updFdEBGtrsat0XVRSiY
-    short-id: 7330f22a41fb280a
-  servername: vena.xvanta.online
-  client-fingerprint: chrome
-- name: 🇦🇹 奥地利 (Austria) 03 25214K ⚠P - NEKO
+- name: 🇦🇹 奥地利 (Austria) 02 7379K ⚠P - NEKO
   server: 154.47.19.225
   port: 1270
   udp: true
@@ -40,16 +27,14 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇦🇹 奥地利 (Austria) 01 21969K ⚠P - NEKO
-  - 🇦🇹 奥地利 (Austria) 02 ⚠S13112K 🇨🇳 - NEKO
-  - 🇦🇹 奥地利 (Austria) 03 25214K ⚠P - NEKO
+  - 🇦🇹 奥地利 (Austria) 01 6277K ⚠P - NEKO
+  - 🇦🇹 奥地利 (Austria) 02 7379K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇦🇹 奥地利 (Austria) 01 21969K ⚠P - NEKO
-  - 🇦🇹 奥地利 (Austria) 02 ⚠S13112K 🇨🇳 - NEKO
-  - 🇦🇹 奥地利 (Austria) 03 25214K ⚠P - NEKO
+  - 🇦🇹 奥地利 (Austria) 01 6277K ⚠P - NEKO
+  - 🇦🇹 奥地利 (Austria) 02 7379K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

@@ -4,17 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇷🇴 罗马尼亚 (Romania) 01 ⚠S7566K 🇨🇳 - NEKO
-  server: hy2-new.aspidnet.xyz
-  port: 443
-  udp: true
-  type: hysteria2
-  password: QCgqi_I4EkV8UR-OgQ_tG4EnVTEVvIyR2GgRBzrIn2s
-  sni: hy2-new.aspidnet.xyz
-  skip-cert-verify: false
-  obfs: salamander
-  obfs-password: c1b4086fea89914496c7e10967a419216566
-- name: 🇷🇴 罗马尼亚 (Romania) 02 15261K 🇨🇳 - NEKO
+- name: 🇷🇴 罗马尼亚 (Romania) 01 7006K 🇨🇳 - NEKO
   server: 162.249.125.133
   port: 443
   udp: true
@@ -24,20 +14,17 @@ proxies:
   skip-cert-verify: false
   obfs: salamander
   obfs-password: c1b4086fea89914496c7e10967a419216566
-- name: 🇷🇴 罗马尼亚 (Romania) 03 12393K 🇨🇳 - NEKO
-  server: 103.102.229.75
+- name: 🇷🇴 罗马尼亚 (Romania) 02 6248K 🇨🇳 - NEKO
+  server: hy2-new.aspidnet.xyz
   port: 443
   udp: true
-  type: vless
-  uuid: dc95c1dd-2cd3-414c-8cf1-71ae86dad666
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: Cw04nkURk7InPCPZl-0PovP44rh5o74dMHBUFOsjFig
-    short-id: a1b2c3d4e5f60718
-  servername: cdn-rum-keno-prsv.keno.su
-  client-fingerprint: firefox
-- name: 🇷🇴 罗马尼亚 (Romania) 04 19198K 🇨🇳 - NEKO
+  type: hysteria2
+  password: QCgqi_I4EkV8UR-OgQ_tG4EnVTEVvIyR2GgRBzrIn2s
+  sni: hy2-new.aspidnet.xyz
+  skip-cert-verify: false
+  obfs: salamander
+  obfs-password: c1b4086fea89914496c7e10967a419216566
+- name: 🇷🇴 罗马尼亚 (Romania) 03 7966K 🇨🇳 - NEKO
   server: 46.28.67.55
   port: 443
   udp: true
@@ -55,18 +42,16 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇷🇴 罗马尼亚 (Romania) 01 ⚠S7566K 🇨🇳 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 02 15261K 🇨🇳 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 03 12393K 🇨🇳 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 04 19198K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 01 7006K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 02 6248K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 03 7966K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇷🇴 罗马尼亚 (Romania) 01 ⚠S7566K 🇨🇳 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 02 15261K 🇨🇳 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 03 12393K 🇨🇳 - NEKO
-  - 🇷🇴 罗马尼亚 (Romania) 04 19198K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 01 7006K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 02 6248K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 03 7966K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

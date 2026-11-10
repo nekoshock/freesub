@@ -4,15 +4,42 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇱🇹 立陶宛 (Lithuania) 01 10976K ⚠P - NEKO
+- name: 🇱🇹 立陶宛 (Lithuania) 01 19450K 🇨🇳 - NEKO
+  server: 84.32.209.103
+  port: 443
+  udp: true
+  type: vless
+  uuid: 3f25b15b-1777-4c08-9ade-60336ac92a82
+  tls: true
+  servername: edge-lt.lindenpixel.com
+  skip-cert-verify: false
+  client-fingerprint: edge
+  network: grpc
+  grpc-opts:
+    grpc-service-name: grpc
+- name: 🇱🇹 立陶宛 (Lithuania) 02 7293K ⚠P - NEKO
+  server: 195.238.126.20
+  port: 9012
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: xaupMUvhptwxdDUg
+- name: 🇱🇹 立陶宛 (Lithuania) 03 8764K ⚠P - NEKO
+  server: 195.238.126.20
+  port: 9001
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: UkXRsXvR6buDMG2Y
+- name: 🇱🇹 立陶宛 (Lithuania) 04 4711K ⚠P - NEKO
   server: 195.238.126.20
   port: 9068
   udp: true
   type: ss
   cipher: aes-256-cfb
   password: mwgRg9hRq3b4Qnwb
-- name: 🇱🇹 立陶宛 (Lithuania) 02 12008K ⚠P - NEKO
-  server: 45.81.252.143
+- name: 🇱🇹 立陶宛 (Lithuania) 05 26651K 🇨🇳 - NEKO
+  server: germany3.banovano.space
   port: 2053
   udp: true
   type: vless
@@ -20,32 +47,28 @@ proxies:
   tls: true
   servername: germany3.banovano.space
   skip-cert-verify: false
-  client-fingerprint: edge
   network: grpc
   grpc-opts:
     grpc-service-name: ''
-- name: 🇱🇹 立陶宛 (Lithuania) 03 9185K ⚠P - NEKO
-  server: 195.238.126.20
-  port: 9001
-  udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: UkXRsXvR6buDMG2Y
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇱🇹 立陶宛 (Lithuania) 01 10976K ⚠P - NEKO
-  - 🇱🇹 立陶宛 (Lithuania) 02 12008K ⚠P - NEKO
-  - 🇱🇹 立陶宛 (Lithuania) 03 9185K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 01 19450K 🇨🇳 - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 02 7293K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 03 8764K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 04 4711K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 05 26651K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇱🇹 立陶宛 (Lithuania) 01 10976K ⚠P - NEKO
-  - 🇱🇹 立陶宛 (Lithuania) 02 12008K ⚠P - NEKO
-  - 🇱🇹 立陶宛 (Lithuania) 03 9185K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 01 19450K 🇨🇳 - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 02 7293K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 03 8764K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 04 4711K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 05 26651K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

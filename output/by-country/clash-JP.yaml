@@ -4,70 +4,28 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇯🇵 日本 (Japan) 01 15758K 🇨🇳 - NEKO
-  server: 149.22.87.241
-  port: 443
-  udp: true
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-- name: 🇯🇵 日本 (Japan) 02 15183K - NEKO
+- name: 🇯🇵 日本 (Japan) 01 3697K - NEKO
   server: 149.22.87.240
   port: 443
   udp: true
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
-- name: 🇯🇵 日本 (Japan) 03 22842K 🇨🇳 - NEKO
+- name: 🇯🇵 日本 (Japan) 02 8928K - NEKO
+  server: 149.22.87.241
+  port: 443
+  udp: true
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: 🇯🇵 日本 (Japan) 03 7411K - NEKO
   server: 149.22.87.204
   port: 443
   udp: true
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
-- name: 🇯🇵 日本 (Japan) 04 13338K 🇨🇳 - NEKO
-  server: 167.179.108.225
-  port: 443
-  udp: true
-  type: trojan
-  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  sni: discoverparttimepositionsandsupplementyourincomeguide.com
-  skip-cert-verify: false
-- name: 🇯🇵 日本 (Japan) 05 10442K 🇨🇳 - NEKO
-  server: 45.32.10.7
-  port: 443
-  udp: true
-  type: hysteria2
-  password: 96ab5cd282733fd4c312a61f972f330a
-  sni: vp3.yysyy.online
-  skip-cert-verify: false
-- name: 🇯🇵 日本 (Japan) 06 12270K 🇨🇳 - NEKO
-  server: 103.75.118.228
-  port: 11452
-  udp: true
-  type: vless
-  uuid: 814bd064-544d-4255-a070-5705c03f6da9
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
-    short-id: 48050fab
-  servername: www.apple.com
-  client-fingerprint: chrome
-- name: 🇯🇵 日本 (Japan) 07 224K 🇨🇳 - NEKO
-  server: 3.114.220.22
-  port: 10583
-  udp: true
-  type: vless
-  uuid: 814bd064-544d-4255-a070-5705c03f6da9
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
-    short-id: 48050fab
-  servername: www.apple.com
-  client-fingerprint: chrome
-- name: 🇯🇵 日本 (Japan) 08 11398K ⚠P⚠U - NEKO
+- name: 🇯🇵 日本 (Japan) 04 8763K ⚠P⚠U - NEKO
   server: freedom.chenlan.top
   port: 12765
   udp: true
@@ -75,7 +33,7 @@ proxies:
   password: STYyftThFn
   sni: freedom.chenlan.top
   skip-cert-verify: false
-- name: 🇯🇵 日本 (Japan) 09 234K ⚠P - NEKO
+- name: 🇯🇵 日本 (Japan) 05 292K 🇨🇳 - NEKO
   server: 3.114.220.22
   port: 19645
   udp: true
@@ -88,33 +46,40 @@ proxies:
     short-id: 48050fab
   servername: www.apple.com
   client-fingerprint: ios
+- name: 🇯🇵 日本 (Japan) 06 303K 🇨🇳 - NEKO
+  server: 3.114.220.22
+  port: 10583
+  udp: true
+  type: vless
+  uuid: 814bd064-544d-4255-a070-5705c03f6da9
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
+    short-id: 48050fab
+  servername: www.apple.com
+  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇯🇵 日本 (Japan) 01 15758K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 02 15183K - NEKO
-  - 🇯🇵 日本 (Japan) 03 22842K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 04 13338K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 05 10442K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 06 12270K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 07 224K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 08 11398K ⚠P⚠U - NEKO
-  - 🇯🇵 日本 (Japan) 09 234K ⚠P - NEKO
+  - 🇯🇵 日本 (Japan) 01 3697K - NEKO
+  - 🇯🇵 日本 (Japan) 02 8928K - NEKO
+  - 🇯🇵 日本 (Japan) 03 7411K - NEKO
+  - 🇯🇵 日本 (Japan) 04 8763K ⚠P⚠U - NEKO
+  - 🇯🇵 日本 (Japan) 05 292K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 06 303K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇯🇵 日本 (Japan) 01 15758K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 02 15183K - NEKO
-  - 🇯🇵 日本 (Japan) 03 22842K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 04 13338K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 05 10442K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 06 12270K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 07 224K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 08 11398K ⚠P⚠U - NEKO
-  - 🇯🇵 日本 (Japan) 09 234K ⚠P - NEKO
+  - 🇯🇵 日本 (Japan) 01 3697K - NEKO
+  - 🇯🇵 日本 (Japan) 02 8928K - NEKO
+  - 🇯🇵 日本 (Japan) 03 7411K - NEKO
+  - 🇯🇵 日本 (Japan) 04 8763K ⚠P⚠U - NEKO
+  - 🇯🇵 日本 (Japan) 05 292K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 06 303K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

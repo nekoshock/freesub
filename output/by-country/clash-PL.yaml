@@ -4,22 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇵🇱 波兰 (Poland) 01 6448K ⚠P - NEKO
-  server: 217.30.10.44
-  port: 9062
-  udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: tkhHVxxfM2QErBWe
-- name: 🇵🇱 波兰 (Poland) 02 11215K 🇨🇳 - NEKO
-  server: 70.34.252.255
-  port: 443
-  udp: true
-  type: trojan
-  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  sni: browseexecutivejobopeningsandenhanceleadershipcareer.com
-  skip-cert-verify: false
-- name: 🇵🇱 波兰 (Poland) 03 11848K 🇨🇳 - NEKO
+- name: 🇵🇱 波兰 (Poland) 01 25447K 🇨🇳 - NEKO
   server: 177.202.68.217
   port: 443
   udp: true
@@ -32,19 +17,22 @@ proxies:
     short-id: 986ede37bf6925ae
   servername: pl-b1.golangwikito.cfd
   client-fingerprint: firefox
-- name: 🇵🇱 波兰 (Poland) 04 12684K 🇨🇳 - NEKO
-  server: 80.47.13.182
+- name: 🇵🇱 波兰 (Poland) 02 25299K 🇨🇳 - NEKO
+  server: 70.34.252.255
   port: 443
   udp: true
-  type: vless
-  uuid: 95f85937-7b95-45c4-8d69-95da6a978569
-  tls: true
-  servername: dl.megadrishto.com
+  type: trojan
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: browseexecutivejobopeningsandenhanceleadershipcareer.com
   skip-cert-verify: false
-  network: grpc
-  grpc-opts:
-    grpc-service-name: stats.v2.StreamService
-- name: 🇵🇱 波兰 (Poland) 05 1869K 🇨🇳 - NEKO
+- name: 🇵🇱 波兰 (Poland) 03 7071K ⚠P - NEKO
+  server: 217.30.10.44
+  port: 9062
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: tkhHVxxfM2QErBWe
+- name: 🇵🇱 波兰 (Poland) 04 5467K 🇨🇳 - NEKO
   server: 217.60.33.101
   port: 443
   udp: true
@@ -62,20 +50,18 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇵🇱 波兰 (Poland) 01 6448K ⚠P - NEKO
-  - 🇵🇱 波兰 (Poland) 02 11215K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 03 11848K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 04 12684K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 05 1869K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 01 25447K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 02 25299K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 03 7071K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 04 5467K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇵🇱 波兰 (Poland) 01 6448K ⚠P - NEKO
-  - 🇵🇱 波兰 (Poland) 02 11215K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 03 11848K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 04 12684K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 05 1869K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 01 25447K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 02 25299K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 03 7071K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 04 5467K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

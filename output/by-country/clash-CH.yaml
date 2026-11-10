@@ -4,35 +4,14 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇭 瑞士 (Switzerland) 01 11104K ⚠P - NEKO
-  server: 23.166.88.189
-  port: 19999
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇨🇭 瑞士 (Switzerland) 02 3208K ⚠P - NEKO
+- name: 🇨🇭 瑞士 (Switzerland) 01 22444K ⚠P - NEKO
   server: 79.127.184.104
   port: 19999
   udp: true
   type: ss
   cipher: aes-256-gcm
   password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇨🇭 瑞士 (Switzerland) 03 13058K ⚠P - NEKO
-  server: 186.190.215.251
-  port: 19999
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇨🇭 瑞士 (Switzerland) 04 ⚠S4094K ⚠P - NEKO
-  server: 23.166.88.127
-  port: 19999
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇨🇭 瑞士 (Switzerland) 05 277K ⚠P - NEKO
+- name: 🇨🇭 瑞士 (Switzerland) 02 894K 🇨🇳 - NEKO
   server: 208.69.78.217
   port: 2053
   udp: true
@@ -44,25 +23,66 @@ proxies:
     short-id: ad86e2d52ff40ebd
   servername: www.apple.com
   client-fingerprint: chrome
+- name: 🇨🇭 瑞士 (Switzerland) 03 ⚠S6483K ⚠P - NEKO
+  server: 23.166.88.189
+  port: 19999
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇨🇭 瑞士 (Switzerland) 04 22415K ⚠P - NEKO
+  server: 186.190.215.251
+  port: 19999
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇨🇭 瑞士 (Switzerland) 05 ⚠S6992K 🇨🇳 - NEKO
+  server: 208.69.78.222
+  port: 443
+  udp: true
+  type: trojan
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: yourultimateprofessionalcareerhub.com
+  skip-cert-verify: false
+- name: 🇨🇭 瑞士 (Switzerland) 06 6367K 🇨🇳 - NEKO
+  server: 208.69.78.222
+  port: 443
+  udp: true
+  type: trojan
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: yourultimateprofessionalcareerhub.com
+  skip-cert-verify: false
+- name: 🇨🇭 瑞士 (Switzerland) 07 35295K ⚠P - NEKO
+  server: 23.166.88.127
+  port: 19999
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇨🇭 瑞士 (Switzerland) 01 11104K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 02 3208K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 03 13058K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 04 ⚠S4094K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 05 277K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 01 22444K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 02 894K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 03 ⚠S6483K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 04 22415K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 05 ⚠S6992K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 06 6367K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 07 35295K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇭 瑞士 (Switzerland) 01 11104K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 02 3208K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 03 13058K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 04 ⚠S4094K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 05 277K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 01 22444K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 02 894K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 03 ⚠S6483K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 04 22415K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 05 ⚠S6992K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 06 6367K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 07 35295K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

@@ -4,45 +4,25 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇰🇷 韩国 (South Korea) 01 6736K ⚠P - NEKO
-  server: 3.39.4.109
-  port: 18967
+- name: 🇰🇷 韩国 (South Korea) 01 7929K 🇨🇳 - NEKO
+  server: 158.247.253.243
+  port: 443
   udp: true
-  type: vless
-  uuid: 814bd064-544d-4255-a070-5705c03f6da9
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
-    short-id: 48050fab
-  servername: www.apple.com
-  client-fingerprint: random
-- name: 🇰🇷 韩国 (South Korea) 02 6610K ⚠P - NEKO
-  server: 23.95.72.244
-  port: 8883
-  udp: true
-  type: vless
-  uuid: 9a5e7b1c-bf39-4b1f-891f-ac87824ee38f
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: vDVvkf5fv8QywL2zrBWYLhkBdrQCDW7dq8fh-YeBnBY
-    short-id: ebdd94f3e17a4620
-  servername: calculator.aws
-  client-fingerprint: firefox
+  type: trojan
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: connectgraduateswithjobopeningsandgrowprofessionally.com
+  skip-cert-verify: false
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇰🇷 韩国 (South Korea) 01 6736K ⚠P - NEKO
-  - 🇰🇷 韩国 (South Korea) 02 6610K ⚠P - NEKO
+  - 🇰🇷 韩国 (South Korea) 01 7929K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇰🇷 韩国 (South Korea) 01 6736K ⚠P - NEKO
-  - 🇰🇷 韩国 (South Korea) 02 6610K ⚠P - NEKO
+  - 🇰🇷 韩国 (South Korea) 01 7929K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

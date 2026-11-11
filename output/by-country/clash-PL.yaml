@@ -4,14 +4,26 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇵🇱 波兰 (Poland) 01 15579K ⚠P - NEKO
-  server: 217.30.10.70
-  port: 9044
+- name: 🇵🇱 波兰 (Poland) 01 ⚠S509K 🇨🇳 - NEKO
+  server: 201.58.139.66
+  port: 443
+  udp: true
+  type: vless
+  uuid: 056405e8-de9f-4d0d-8145-956f13cc34da
+  tls: true
+  reality-opts:
+    public-key: LY0H47MWx87_L_JBzxFAuTzKZB53U7MrZQK8-dNnMxM
+    short-id: 6c5c7900406a1ae7
+  servername: 57aac2t.pl7.h1clayd.click
+  client-fingerprint: chrome
+- name: 🇵🇱 波兰 (Poland) 02 8910K ⚠P - NEKO
+  server: 217.30.10.44
+  port: 9062
   udp: true
   type: ss
   cipher: aes-256-cfb
-  password: KBGjZYcy4SyRShmA
-- name: 🇵🇱 波兰 (Poland) 02 14704K 🇨🇳 - NEKO
+  password: tkhHVxxfM2QErBWe
+- name: 🇵🇱 波兰 (Poland) 03 28795K 🇨🇳 - NEKO
   server: 201.58.189.105
   port: 2083
   udp: true
@@ -26,42 +38,51 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: google.storage.v2.Storage
-- name: 🇵🇱 波兰 (Poland) 03 7619K ⚠P - NEKO
-  server: 217.30.10.44
-  port: 9062
+- name: 🇵🇱 波兰 (Poland) 04 7414K - NEKO
+  server: 54.37.131.126
+  port: 80
   udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: tkhHVxxfM2QErBWe
-- name: 🇵🇱 波兰 (Poland) 04 ⚠S469K 🇨🇳 - NEKO
-  server: 201.58.139.66
-  port: 443
+  type: vmess
+  uuid: 1e55beca-3c69-4fa7-fb1f-15c1b767435f
+  alterId: 0
+  cipher: auto
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: google.whatsapp.snapp.torob.basalam.hesanid8.ir.
+- name: 🇵🇱 波兰 (Poland) 05 1932K 🇨🇳 - NEKO
+  server: 2.26.224.174
+  port: 8443
   udp: true
   type: vless
-  uuid: 056405e8-de9f-4d0d-8145-956f13cc34da
+  uuid: a4e5f910-23f4-470f-82a7-ed9d7be71dec
+  flow: xtls-rprx-vision
   tls: true
   reality-opts:
-    public-key: LY0H47MWx87_L_JBzxFAuTzKZB53U7MrZQK8-dNnMxM
-    short-id: 6c5c7900406a1ae7
-  servername: 57aac2t.pl7.h1clayd.click
-  client-fingerprint: firefox
+    public-key: d6qmF8ibk_PxtDJPzSa7LKw9VUI_mZ59DrTvmW3RaFc
+    short-id: 10983e6c816181c2
+  servername: teamdocs.su
+  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇵🇱 波兰 (Poland) 01 15579K ⚠P - NEKO
-  - 🇵🇱 波兰 (Poland) 02 14704K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 03 7619K ⚠P - NEKO
-  - 🇵🇱 波兰 (Poland) 04 ⚠S469K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 01 ⚠S509K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 02 8910K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 03 28795K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 04 7414K - NEKO
+  - 🇵🇱 波兰 (Poland) 05 1932K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇵🇱 波兰 (Poland) 01 15579K ⚠P - NEKO
-  - 🇵🇱 波兰 (Poland) 02 14704K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 03 7619K ⚠P - NEKO
-  - 🇵🇱 波兰 (Poland) 04 ⚠S469K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 01 ⚠S509K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 02 8910K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 03 28795K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 04 7414K - NEKO
+  - 🇵🇱 波兰 (Poland) 05 1932K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

@@ -4,44 +4,24 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇹🇼 中国台湾 (Taiwan) 01 15204K 🇨🇳 - NEKO
-  server: 23.95.72.244
-  port: 4443
+- name: 🇹🇼 中国台湾 (Taiwan) 01 5946K ⚠P - NEKO
+  server: amasoid.ddns.net
+  port: 14514
   udp: true
-  type: vless
-  uuid: 9a5e7b1c-bf39-4b1f-891f-ac87824ee38f
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: E6XD__G0KCmX1LibW4qwafvYXID5zci_bcwKueuhEA8
-    short-id: 807c3fa325465508
-  servername: business.amazon.co.uk
-  client-fingerprint: edge
-- name: 🇹🇼 中国台湾 (Taiwan) 02 8571K ⚠P - NEKO
-  server: 83.147.13.74
-  port: 8443
-  udp: true
-  type: vless
-  uuid: eb8c97f7-a154-4442-91b0-54c0d055ad0b
-  tls: true
-  reality-opts:
-    public-key: 4g6gX0ueJap7pY_iTDx23h6bzo3KIOTcFzP1Uacn0QA
-    short-id: 4ad2e4e660550e43
-  servername: github.githubassets.com
-  client-fingerprint: chrome
+  type: ss
+  cipher: 2022-blake3-aes-128-gcm
+  password: b7I6g7l7fJhBaMInJ+zkzw==
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇹🇼 中国台湾 (Taiwan) 01 15204K 🇨🇳 - NEKO
-  - 🇹🇼 中国台湾 (Taiwan) 02 8571K ⚠P - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 01 5946K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇹🇼 中国台湾 (Taiwan) 01 15204K 🇨🇳 - NEKO
-  - 🇹🇼 中国台湾 (Taiwan) 02 8571K ⚠P - NEKO
+  - 🇹🇼 中国台湾 (Taiwan) 01 5946K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

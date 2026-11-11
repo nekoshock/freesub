@@ -4,8 +4,29 @@
   },
   "outbounds": [
     {
+      "type": "vless",
+      "tag": "🇧🇬 保加利亚 (Bulgaria) 01 18847K 🇨🇳 - NEKO",
+      "server": "131.123.43.103",
+      "server_port": 443,
+      "uuid": "3f5e89d5-591f-4ac9-b071-b05680b573c3",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "bg2.gacvpn.site",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "SgFQg7srP1xgjWhnSU9lpUMDRlsoLIXlw6nX-mfOdlg",
+          "short_id": "1f8bab7ad81089f2"
+        }
+      }
+    },
+    {
       "type": "shadowsocks",
-      "tag": "🇧🇬 保加利亚 (Bulgaria) 01 1203K ⚠P - NEKO",
+      "tag": "🇧🇬 保加利亚 (Bulgaria) 02 4987K ⚠P - NEKO",
       "server": "213.183.63.60",
       "server_port": 9064,
       "method": "aes-256-cfb",
@@ -13,37 +34,52 @@
     },
     {
       "type": "shadowsocks",
-      "tag": "🇧🇬 保加利亚 (Bulgaria) 02 951K ⚠P - NEKO",
+      "tag": "🇧🇬 保加利亚 (Bulgaria) 03 4472K ⚠P - NEKO",
       "server": "213.183.63.60",
       "server_port": 9085,
       "method": "aes-256-cfb",
       "password": "9ej82EKe2gq7gLAM"
     },
     {
-      "type": "shadowsocks",
-      "tag": "🇧🇬 保加利亚 (Bulgaria) 03 965K ⚠P - NEKO",
-      "server": "213.183.63.60",
-      "server_port": 9028,
-      "method": "aes-256-cfb",
-      "password": "9eeJ2fwnZA5Fxgz8"
+      "type": "vless",
+      "tag": "🇧🇬 保加利亚 (Bulgaria) 04 8688K ⚠P - NEKO",
+      "server": "23.95.72.244",
+      "server_port": 50126,
+      "uuid": "9a5e7b1c-bf39-4b1f-891f-ac87824ee38f",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "api.adidas.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "edge"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "XgRdRRJhfjkRmBiRu2PWEmn4kch0lS0hXWM4AzRDx2I",
+          "short_id": "2cc6a03dcf980530"
+        }
+      }
     },
     {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇧🇬 保加利亚 (Bulgaria) 01 1203K ⚠P - NEKO",
-        "🇧🇬 保加利亚 (Bulgaria) 02 951K ⚠P - NEKO",
-        "🇧🇬 保加利亚 (Bulgaria) 03 965K ⚠P - NEKO"
+        "🇧🇬 保加利亚 (Bulgaria) 01 18847K 🇨🇳 - NEKO",
+        "🇧🇬 保加利亚 (Bulgaria) 02 4987K ⚠P - NEKO",
+        "🇧🇬 保加利亚 (Bulgaria) 03 4472K ⚠P - NEKO",
+        "🇧🇬 保加利亚 (Bulgaria) 04 8688K ⚠P - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇧🇬 保加利亚 (Bulgaria) 01 1203K ⚠P - NEKO",
-        "🇧🇬 保加利亚 (Bulgaria) 02 951K ⚠P - NEKO",
-        "🇧🇬 保加利亚 (Bulgaria) 03 965K ⚠P - NEKO"
+        "🇧🇬 保加利亚 (Bulgaria) 01 18847K 🇨🇳 - NEKO",
+        "🇧🇬 保加利亚 (Bulgaria) 02 4987K ⚠P - NEKO",
+        "🇧🇬 保加利亚 (Bulgaria) 03 4472K ⚠P - NEKO",
+        "🇧🇬 保加利亚 (Bulgaria) 04 8688K ⚠P - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

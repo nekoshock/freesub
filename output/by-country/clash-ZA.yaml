@@ -4,32 +4,32 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇰🇿 哈萨克斯坦 (Kazakhstan) 01 9582K 🇨🇳 - NEKO
+- name: 🇿🇦 南非 (South Africa) 01 16228K 🇨🇳 - NEKO
   server: 212.41.9.190
-  port: 2093
+  port: 8443
   udp: true
   type: vless
   uuid: db57c865-2318-4fd2-8aea-e8ba58ec696d
   tls: true
   reality-opts:
-    public-key: QbKQ1yte4_2YD425jzcAy4Ibvj0BYfqKJ54k9WMSRFs
-    short-id: 5284fea4
+    public-key: _h_4Tmkb2bq5yNs_TkzHm4g_dJTZLeKiNGAN9tuP22Y
+    short-id: c42a4d4d
   servername: s3.storage.selcloud.ru
-  client-fingerprint: ios
+  client-fingerprint: chrome
   network: grpc
   grpc-opts:
-    grpc-service-name: cas-kz
+    grpc-service-name: cas-za
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇰🇿 哈萨克斯坦 (Kazakhstan) 01 9582K 🇨🇳 - NEKO
+  - 🇿🇦 南非 (South Africa) 01 16228K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇰🇿 哈萨克斯坦 (Kazakhstan) 01 9582K 🇨🇳 - NEKO
+  - 🇿🇦 南非 (South Africa) 01 16228K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

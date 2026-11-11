@@ -4,42 +4,91 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇭 瑞士 (Switzerland) 01 16647K ⚠P - NEKO
-  server: 23.166.88.189
-  port: 19999
+- name: 🇨🇭 瑞士 (Switzerland) 01 8333K 🇨🇳 - NEKO
+  server: 95.85.231.3
+  port: 443
   udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇨🇭 瑞士 (Switzerland) 02 1436K ⚠P - NEKO
-  server: 79.127.184.104
-  port: 19999
+  type: hysteria2
+  password: 549766c3-fa5f-471e-8031-ffc1f8d5064f
+  sni: guide.blog-forme.ru
+  skip-cert-verify: false
+- name: 🇨🇭 瑞士 (Switzerland) 02 16083K 🇨🇳 - NEKO
+  server: 208.69.78.222
+  port: 443
   udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇨🇭 瑞士 (Switzerland) 03 15518K ⚠P - NEKO
+  type: trojan
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: yourultimateprofessionalcareerhub.com
+  skip-cert-verify: false
+- name: 🇨🇭 瑞士 (Switzerland) 03 11711K ⚠P - NEKO
   server: 23.166.88.127
   port: 19999
   udp: true
   type: ss
   cipher: aes-256-gcm
   password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇨🇭 瑞士 (Switzerland) 04 12734K ⚠P - NEKO
+  server: 23.166.88.189
+  port: 19999
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇨🇭 瑞士 (Switzerland) 05 11739K ⚠P - NEKO
+  server: 186.190.215.251
+  port: 19999
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇨🇭 瑞士 (Switzerland) 06 970K 🇨🇳 - NEKO
+  server: 208.69.78.217
+  port: 2053
+  udp: true
+  type: vless
+  uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
+  tls: true
+  reality-opts:
+    public-key: A49ue7zXSusJZdErPAewg3jqGdUFIO1a9xOunEKJfC0
+    short-id: ad86e2d52ff40ebd
+  servername: www.apple.com
+  client-fingerprint: chrome
+- name: 🇨🇭 瑞士 (Switzerland) 07 15026K 🇨🇳 - NEKO
+  server: 74.161.152.237
+  port: 2083
+  udp: true
+  type: vless
+  uuid: 52a5a29f-c162-411a-8a37-a3f11b0dc537
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: WbgtxLlo2gmTzB4Wzxgh_U7G97d4ENTS10fYIoujET4
+    short-id: 0123456789abcdef
+  servername: www.apple.com
+  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇨🇭 瑞士 (Switzerland) 01 16647K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 02 1436K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 03 15518K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 01 8333K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 02 16083K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 03 11711K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 04 12734K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 05 11739K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 06 970K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 07 15026K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇭 瑞士 (Switzerland) 01 16647K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 02 1436K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 03 15518K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 01 8333K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 02 16083K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 03 11711K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 04 12734K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 05 11739K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 06 970K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 07 15026K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

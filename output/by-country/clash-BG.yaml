@@ -4,21 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇧🇬 保加利亚 (Bulgaria) 01 894K ⚠P - NEKO
-  server: 213.183.63.60
-  port: 9085
-  udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: 9ej82EKe2gq7gLAM
-- name: 🇧🇬 保加利亚 (Bulgaria) 02 1395K ⚠P - NEKO
-  server: 213.183.63.60
-  port: 9064
-  udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: cp8pRSUAyLhTfVWH
-- name: 🇧🇬 保加利亚 (Bulgaria) 03 3756K 🇨🇳 - NEKO
+- name: 🇧🇬 保加利亚 (Bulgaria) 01 6789K 🇨🇳 - NEKO
   server: 131.123.43.103
   port: 443
   udp: true
@@ -30,22 +16,64 @@ proxies:
     public-key: SgFQg7srP1xgjWhnSU9lpUMDRlsoLIXlw6nX-mfOdlg
     short-id: 1f8bab7ad81089f2
   servername: bg2.gacvpn.site
-  client-fingerprint: firefox
+  client-fingerprint: ''
+- name: 🇧🇬 保加利亚 (Bulgaria) 02 10977K 🇨🇳 - NEKO
+  server: p1real5.greewebservices.ir
+  port: 1270
+  udp: true
+  type: vless
+  uuid: ade238d6-637e-4f6c-b1fc-268579b262f5
+  tls: true
+  reality-opts:
+    public-key: xQnXh5EfPDhcEBB7rRiLca33GYrMEeUa35domLL_yA8
+    short-id: 9b60d3
+  servername: play.googleapis.com
+  client-fingerprint: chrome
+- name: 🇧🇬 保加利亚 (Bulgaria) 03 1359K ⚠P - NEKO
+  server: 213.183.63.60
+  port: 9085
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: 9ej82EKe2gq7gLAM
+- name: 🇧🇬 保加利亚 (Bulgaria) 04 2128K ⚠P - NEKO
+  server: 213.183.63.60
+  port: 9064
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: cp8pRSUAyLhTfVWH
+- name: 🇧🇬 保加利亚 (Bulgaria) 05 1795K 🇨🇳 - NEKO
+  server: p1real4.greewebservices.ir
+  port: 1260
+  udp: true
+  type: vless
+  uuid: ade238d6-637e-4f6c-b1fc-268579b262f5
+  tls: true
+  reality-opts:
+    public-key: xQnXh5EfPDhcEBB7rRiLca33GYrMEeUa35domLL_yA8
+    short-id: 9b60d3
+  servername: play.googleapis.com
+  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇧🇬 保加利亚 (Bulgaria) 01 894K ⚠P - NEKO
-  - 🇧🇬 保加利亚 (Bulgaria) 02 1395K ⚠P - NEKO
-  - 🇧🇬 保加利亚 (Bulgaria) 03 3756K 🇨🇳 - NEKO
+  - 🇧🇬 保加利亚 (Bulgaria) 01 6789K 🇨🇳 - NEKO
+  - 🇧🇬 保加利亚 (Bulgaria) 02 10977K 🇨🇳 - NEKO
+  - 🇧🇬 保加利亚 (Bulgaria) 03 1359K ⚠P - NEKO
+  - 🇧🇬 保加利亚 (Bulgaria) 04 2128K ⚠P - NEKO
+  - 🇧🇬 保加利亚 (Bulgaria) 05 1795K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇧🇬 保加利亚 (Bulgaria) 01 894K ⚠P - NEKO
-  - 🇧🇬 保加利亚 (Bulgaria) 02 1395K ⚠P - NEKO
-  - 🇧🇬 保加利亚 (Bulgaria) 03 3756K 🇨🇳 - NEKO
+  - 🇧🇬 保加利亚 (Bulgaria) 01 6789K 🇨🇳 - NEKO
+  - 🇧🇬 保加利亚 (Bulgaria) 02 10977K 🇨🇳 - NEKO
+  - 🇧🇬 保加利亚 (Bulgaria) 03 1359K ⚠P - NEKO
+  - 🇧🇬 保加利亚 (Bulgaria) 04 2128K ⚠P - NEKO
+  - 🇧🇬 保加利亚 (Bulgaria) 05 1795K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

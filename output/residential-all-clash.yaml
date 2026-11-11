@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇺🇸 美国 (United States) 01 (移动家宽) 8316K ⚠P - NEKO
+- name: 🇺🇸 美国 (United States) 01 (移动家宽) 2501K ⚠P - NEKO
   server: 130.94.19.95
   port: 57277
   udp: true
@@ -12,62 +12,62 @@ proxies:
   password: 5t6i121em5lkmsmk
   sni: us001.zestapp778.com
   skip-cert-verify: false
-- name: 🇺🇸 美国 (United States) 02 (家宽) 13858K ⚠P - NEKO
+- name: 🇺🇸 美国 (United States) 02 (移动家宽) 346K ⚠P - NEKO
   server: 23.95.72.244
-  port: 5461
+  port: 5465
   udp: true
   type: vless
   uuid: 9a5e7b1c-bf39-4b1f-891f-ac87824ee38f
   flow: xtls-rprx-vision
   tls: true
   reality-opts:
-    public-key: tm0HMw__h6gfIxujioVLds50pGoQAhaIryqJsapBGXU
-    short-id: 9847a4468a
+    public-key: GaZo6ZlyOUxhems08m3fhEc-0j3IYppLUpjNmMqNjlk
+    short-id: 7024258fb07f5eb5
   servername: api.adidas.com
   client-fingerprint: edge
-- name: 🇺🇸 美国 (United States) 03 (移动家宽) 8201K ⚠P - NEKO
+- name: 🇺🇸 美国 (United States) 03 (移动家宽) 299K ⚠P - NEKO
   server: 23.95.72.244
-  port: 5467
+  port: 5464
   udp: true
   type: vless
   uuid: 9a5e7b1c-bf39-4b1f-891f-ac87824ee38f
   flow: xtls-rprx-vision
   tls: true
   reality-opts:
-    public-key: wMLrAweVXsOzwV-Uc_7t7OZBycbjVrgPp0ukPjuXA2U
-    short-id: 6e47891d
+    public-key: Dv_9FO1focQJCvcUOspkZ5AGoZ4CxbTUp7dVKzt9LVA
+    short-id: d07e9dcda8
   servername: api.adidas.com
-  client-fingerprint: chrome
-- name: 🇭🇰 中国香港 (Hong Kong) 04 (家宽) 7467K ⚠P - NEKO
+  client-fingerprint: firefox
+- name: 🇺🇸 美国 (United States) 04 (移动家宽) 323K ⚠P - NEKO
   server: 23.95.72.244
-  port: 10000
+  port: 5466
   udp: true
   type: vless
   uuid: 9a5e7b1c-bf39-4b1f-891f-ac87824ee38f
   flow: xtls-rprx-vision
   tls: true
   reality-opts:
-    public-key: zbxwe24LRKKKjXccD1t_yJ3WDFXXY_y9j7SqbkPMIRw
-    short-id: 99aa2eb4f2c77af5
-  servername: sellercentral.amazon.com
-  client-fingerprint: safari
+    public-key: vr-C-6JEfZhnEVO2NDzUIlRhr0LCXFx9BoOBb31AsSg
+    short-id: fb16a20a0815
+  servername: api.adidas.com
+  client-fingerprint: ios
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇺🇸 美国 (United States) 01 (移动家宽) 8316K ⚠P - NEKO
-  - 🇺🇸 美国 (United States) 02 (家宽) 13858K ⚠P - NEKO
-  - 🇺🇸 美国 (United States) 03 (移动家宽) 8201K ⚠P - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 04 (家宽) 7467K ⚠P - NEKO
+  - 🇺🇸 美国 (United States) 01 (移动家宽) 2501K ⚠P - NEKO
+  - 🇺🇸 美国 (United States) 02 (移动家宽) 346K ⚠P - NEKO
+  - 🇺🇸 美国 (United States) 03 (移动家宽) 299K ⚠P - NEKO
+  - 🇺🇸 美国 (United States) 04 (移动家宽) 323K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇺🇸 美国 (United States) 01 (移动家宽) 8316K ⚠P - NEKO
-  - 🇺🇸 美国 (United States) 02 (家宽) 13858K ⚠P - NEKO
-  - 🇺🇸 美国 (United States) 03 (移动家宽) 8201K ⚠P - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 04 (家宽) 7467K ⚠P - NEKO
+  - 🇺🇸 美国 (United States) 01 (移动家宽) 2501K ⚠P - NEKO
+  - 🇺🇸 美国 (United States) 02 (移动家宽) 346K ⚠P - NEKO
+  - 🇺🇸 美国 (United States) 03 (移动家宽) 299K ⚠P - NEKO
+  - 🇺🇸 美国 (United States) 04 (移动家宽) 323K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

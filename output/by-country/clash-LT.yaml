@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇱🇹 立陶宛 (Lithuania) 01 18060K 🇨🇳 - NEKO
+- name: 🇱🇹 立陶宛 (Lithuania) 01 16254K 🇨🇳 - NEKO
   server: 84.32.209.103
   port: 443
   udp: true
@@ -17,21 +17,21 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: grpc
-- name: 🇱🇹 立陶宛 (Lithuania) 02 ⚠S426K ⚠P - NEKO
-  server: 195.238.126.20
-  port: 9001
-  udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: UkXRsXvR6buDMG2Y
-- name: 🇱🇹 立陶宛 (Lithuania) 03 ⚠S1119K ⚠P - NEKO
+- name: 🇱🇹 立陶宛 (Lithuania) 02 4027K ⚠P - NEKO
   server: 195.238.126.20
   port: 9068
   udp: true
   type: ss
   cipher: aes-256-cfb
   password: mwgRg9hRq3b4Qnwb
-- name: 🇱🇹 立陶宛 (Lithuania) 04 7453K ⚠P - NEKO
+- name: 🇱🇹 立陶宛 (Lithuania) 03 2850K ⚠P - NEKO
+  server: 195.238.126.20
+  port: 9001
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: UkXRsXvR6buDMG2Y
+- name: 🇱🇹 立陶宛 (Lithuania) 04 2522K ⚠P - NEKO
   server: 195.238.126.20
   port: 9012
   udp: true
@@ -43,18 +43,18 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇱🇹 立陶宛 (Lithuania) 01 18060K 🇨🇳 - NEKO
-  - 🇱🇹 立陶宛 (Lithuania) 02 ⚠S426K ⚠P - NEKO
-  - 🇱🇹 立陶宛 (Lithuania) 03 ⚠S1119K ⚠P - NEKO
-  - 🇱🇹 立陶宛 (Lithuania) 04 7453K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 01 16254K 🇨🇳 - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 02 4027K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 03 2850K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 04 2522K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇱🇹 立陶宛 (Lithuania) 01 18060K 🇨🇳 - NEKO
-  - 🇱🇹 立陶宛 (Lithuania) 02 ⚠S426K ⚠P - NEKO
-  - 🇱🇹 立陶宛 (Lithuania) 03 ⚠S1119K ⚠P - NEKO
-  - 🇱🇹 立陶宛 (Lithuania) 04 7453K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 01 16254K 🇨🇳 - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 02 4027K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 03 2850K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 04 2522K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

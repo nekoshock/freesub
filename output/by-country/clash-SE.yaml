@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇸🇪 瑞典 (Sweden) 01 11937K ⚠P - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 01 22157K ⚠P - NEKO
   server: 138.124.86.230
   port: 48115
   udp: true
@@ -17,22 +17,22 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: 138-124-86-230-sslip-io
-- name: 🇸🇪 瑞典 (Sweden) 02 6469K ⚠P - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 02 12035K ⚠P - NEKO
   server: 138.199.55.243
   port: 19999
   udp: true
   type: ss
   cipher: aes-256-gcm
   password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇸🇪 瑞典 (Sweden) 03 2477K 🇨🇳 - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 03 13539K 🇨🇳 - NEKO
   server: 95.143.196.97
   port: 443
   udp: true
-  type: hysteria2
-  password: 769f34f0-1500-488f-b414-03bc90666502
-  sni: se.mimowhat.online
+  type: trojan
+  password: FkQH0Q5EFneySv20Qj3yoArD2GSb2XZF
+  sni: connect-se.mimowhat.online
   skip-cert-verify: false
-- name: 🇸🇪 瑞典 (Sweden) 04 14615K ⚠P - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 04 13217K ⚠P - NEKO
   server: 138.199.55.230
   port: 1270
   udp: true
@@ -43,7 +43,7 @@ proxies:
   tls: true
   servername: xmfhlpy.com
   skip-cert-verify: false
-- name: 🇸🇪 瑞典 (Sweden) 05 14745K ⚠P - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 05 13928K ⚠P - NEKO
   server: 62.93.166.184
   port: 1270
   udp: true
@@ -59,20 +59,20 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇸🇪 瑞典 (Sweden) 01 11937K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 6469K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 03 2477K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 04 14615K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 05 14745K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 22157K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 12035K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 03 13539K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 04 13217K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 05 13928K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇸🇪 瑞典 (Sweden) 01 11937K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 6469K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 03 2477K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 04 14615K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 05 14745K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 22157K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 12035K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 03 13539K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 04 13217K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 05 13928K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

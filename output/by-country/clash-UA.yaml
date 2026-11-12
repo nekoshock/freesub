@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇺🇦 乌克兰 (Ukraine) 01 1846K 🇨🇳 - NEKO
+- name: 🇺🇦 乌克兰 (Ukraine) 01 4660K 🇨🇳 - NEKO
   server: 83.147.18.75
   port: 443
   udp: true
@@ -17,17 +17,32 @@ proxies:
     short-id: 7f1e29593aa94ad1
   servername: www.bing.com
   client-fingerprint: qq
+- name: 🇺🇦 乌克兰 (Ukraine) 02 11155K 🇨🇳 - NEKO
+  server: 95.135.228.4
+  port: 443
+  udp: true
+  type: vless
+  uuid: e9e44c8f-44e1-450f-806d-f0dca6d7dc95
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: s0mjVjM1NTDiLYzVWHrdcSEsbJGikDXGzfLezRuJyT4
+    short-id: 0170fd1d861899a2
+  servername: ua-iev.probe.geomyip.com
+  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇺🇦 乌克兰 (Ukraine) 01 1846K 🇨🇳 - NEKO
+  - 🇺🇦 乌克兰 (Ukraine) 01 4660K 🇨🇳 - NEKO
+  - 🇺🇦 乌克兰 (Ukraine) 02 11155K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇺🇦 乌克兰 (Ukraine) 01 1846K 🇨🇳 - NEKO
+  - 🇺🇦 乌克兰 (Ukraine) 01 4660K 🇨🇳 - NEKO
+  - 🇺🇦 乌克兰 (Ukraine) 02 11155K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

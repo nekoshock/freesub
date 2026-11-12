@@ -4,7 +4,20 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇦🇪 阿联酋 (UAE) 01 18805K 🇨🇳 - NEKO
+- name: 🇦🇪 阿联酋 (UAE) 01 7973K 🇨🇳 - NEKO
+  server: 151.245.163.246
+  port: 443
+  udp: true
+  type: vless
+  uuid: e9e44c8f-44e1-450f-806d-f0dca6d7dc95
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: yXdCcOXX-Q4ygs18Wa9AYXi69RwZvAvrTaS5zq9CKzY
+    short-id: 8f24b4b6d3d46fa2
+  servername: us-mia2.probe.geomyip.com
+  client-fingerprint: chrome
+- name: 🇦🇪 阿联酋 (UAE) 02 17776K 🇨🇳 - NEKO
   server: 130.49.161.70
   port: 443
   udp: true
@@ -14,15 +27,15 @@ proxies:
   skip-cert-verify: false
   obfs: salamander
   obfs-password: rG07s3COMIEvdnQipRyWzx_H_2xygNC3
-- name: 🇦🇪 阿联酋 (UAE) 02 20179K ⚠P - NEKO
-  server: 151.241.19.36
+- name: 🇦🇪 阿联酋 (UAE) 03 20309K ⚠P - NEKO
+  server: 151.241.19.29
   port: 19999
   udp: true
   type: ss
   cipher: aes-256-gcm
   password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇦🇪 阿联酋 (UAE) 03 21910K ⚠P - NEKO
-  server: 151.241.19.29
+- name: 🇦🇪 阿联酋 (UAE) 04 19598K ⚠P - NEKO
+  server: 151.241.19.36
   port: 19999
   udp: true
   type: ss
@@ -33,16 +46,18 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇦🇪 阿联酋 (UAE) 01 18805K 🇨🇳 - NEKO
-  - 🇦🇪 阿联酋 (UAE) 02 20179K ⚠P - NEKO
-  - 🇦🇪 阿联酋 (UAE) 03 21910K ⚠P - NEKO
+  - 🇦🇪 阿联酋 (UAE) 01 7973K 🇨🇳 - NEKO
+  - 🇦🇪 阿联酋 (UAE) 02 17776K 🇨🇳 - NEKO
+  - 🇦🇪 阿联酋 (UAE) 03 20309K ⚠P - NEKO
+  - 🇦🇪 阿联酋 (UAE) 04 19598K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇦🇪 阿联酋 (UAE) 01 18805K 🇨🇳 - NEKO
-  - 🇦🇪 阿联酋 (UAE) 02 20179K ⚠P - NEKO
-  - 🇦🇪 阿联酋 (UAE) 03 21910K ⚠P - NEKO
+  - 🇦🇪 阿联酋 (UAE) 01 7973K 🇨🇳 - NEKO
+  - 🇦🇪 阿联酋 (UAE) 02 17776K 🇨🇳 - NEKO
+  - 🇦🇪 阿联酋 (UAE) 03 20309K ⚠P - NEKO
+  - 🇦🇪 阿联酋 (UAE) 04 19598K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

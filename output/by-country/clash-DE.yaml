@@ -4,14 +4,35 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇩🇪 德国 (Germany) 01 37987K 🇨🇳 - NEKO
-  server: 8.220.81.25
+- name: 🇩🇪 德国 (Germany) 01 46830K 🇨🇳 - NEKO
+  server: 48.103.120.1
   port: 443
   udp: true
-  type: ss
-  cipher: 2022-blake3-chacha20-poly1305
-  password: 8yO3ANWefuuGs1lRKXECQA1FEhxlWFV2ppQMcBaZo5Y=
-- name: 🇩🇪 德国 (Germany) 02 27753K 🇨🇳 - NEKO
+  type: vless
+  uuid: fa081e9f-7574-4e18-8928-31aa5ac923c7
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: drl7nndYdfzZY1aQ0eUAWmNV0nsHig2uDnu9siy9biQ
+    short-id: 868419504747f6de
+  servername: de1-b.sbcweb.net
+  client-fingerprint: firefox
+- name: 🇩🇪 德国 (Germany) 02 ⚠S14544K 🇨🇳 - NEKO
+  server: 109.122.196.166
+  port: 443
+  udp: true
+  type: vless
+  uuid: f8cb3c89-32af-4255-bebc-d90aad175069
+  tls: true
+  reality-opts:
+    public-key: pR39Vv5qhk8r6akOicoy6mMs4-ppSWUez8MyAXG7wwQ
+    short-id: 27350908de933e09
+  servername: dea.kosmosapp.net
+  client-fingerprint: firefox
+  network: grpc
+  grpc-opts:
+    grpc-service-name: neurex
+- name: 🇩🇪 德国 (Germany) 03 19354K 🇨🇳 - NEKO
   server: 201.8.71.59
   port: 443
   udp: true
@@ -19,47 +40,54 @@ proxies:
   password: 23c82941-70f4-4381-90db-bd28e9a902e9
   sni: steel7.hadsvpn.com
   skip-cert-verify: false
-- name: 🇩🇪 德国 (Germany) 03 12425K 🇨🇳 - NEKO
-  server: 31.22.10.239
-  port: 443
-  udp: true
-  type: vless
-  uuid: dbf3f074-3b18-43f3-b82a-debd8c879c69
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: 5rF9gThFLwVXRoVF8CQXcZbNXACv3SR4ob0TVyfbCWI
-    short-id: 09af1b0c92e6fed4
-  servername: www.apple.com
-  client-fingerprint: chrome
-- name: 🇩🇪 德国 (Germany) 04 ⚠S148158K 🇨🇳 - NEKO
-  server: 188.114.96.0
-  port: 2096
-  udp: true
-  type: trojan
-  password: vP!XvZBNdw.e*ddSgmH!
-  sni: N0Q4xprJ2d4X4pRCQ29l8JkcZd0.paGES.DeV
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /tr/lqCTAonDgcErIZylZuNyy?ed=2560
-- name: 🇩🇪 德国 (Germany) 05 42540K 🇨🇳 - NEKO
-  server: 193.108.119.78
+- name: 🇩🇪 德国 (Germany) 04 46278K 🇨🇳 - NEKO
+  server: 193.108.119.29
   port: 443
   udp: true
   type: trojan
   password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  sni: www.iloverussia2026.com
+  sni: blog.iloverussia2026.com
   skip-cert-verify: false
-- name: 🇩🇪 德国 (Germany) 06 38388K 🇨🇳 - NEKO
-  server: steel7.hadsvpn.com
+- name: 🇩🇪 德国 (Germany) 05 47338K 🇨🇳 - NEKO
+  server: 193.108.119.15
   port: 443
   udp: true
-  type: hysteria2
-  password: 23c82941-70f4-4381-90db-bd28e9a902e9
-  sni: steel7.hadsvpn.com
+  type: trojan
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: courses.iloverussia2026.com
   skip-cert-verify: false
-- name: 🇩🇪 德国 (Germany) 07 60385K 🇨🇳 - NEKO
+- name: 🇩🇪 德国 (Germany) 06 73696K 🇨🇳 - NEKO
+  server: 193.108.119.34
+  port: 443
+  udp: true
+  type: trojan
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: cdn.iloverussia2026.com
+  skip-cert-verify: false
+- name: 🇩🇪 德国 (Germany) 07 30838K 🇨🇳 - NEKO
+  server: 193.108.119.34
+  port: 443
+  udp: true
+  type: trojan
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: cdn.iloverussia2026.com
+  skip-cert-verify: false
+- name: 🇩🇪 德国 (Germany) 08 14031K 🇨🇳 - NEKO
+  server: 77.90.0.22
+  port: 2087
+  udp: true
+  type: vless
+  uuid: ead4a562-edf2-40cf-ad33-13ae98546226
+  tls: true
+  reality-opts:
+    public-key: lN4gxtu1uZUH0d-RFC35FHoAwKZ6bNGV7I68JCAbGF4
+    short-id: c0e1f54d
+  servername: dl.google.com
+  client-fingerprint: ''
+  network: grpc
+  grpc-opts:
+    grpc-service-name: grpc
+- name: 🇩🇪 德国 (Germany) 09 50812K 🇨🇳 - NEKO
   server: 193.108.119.193
   port: 443
   udp: true
@@ -67,8 +95,73 @@ proxies:
   password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
   sni: resources.iloverussia2026.com
   skip-cert-verify: false
-- name: 🇩🇪 德国 (Germany) 08 35698K 🇨🇳 - NEKO
-  server: base.hosamobenl.co.uk
+- name: 🇩🇪 德国 (Germany) 10 8297K 🇨🇳 - NEKO
+  server: 193.108.119.96
+  port: 443
+  udp: true
+  type: trojan
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: learn.iloverussia2026.com
+  skip-cert-verify: false
+- name: 🇩🇪 德国 (Germany) 11 67381K ⚠P - NEKO
+  server: 193.108.117.84
+  port: 19999
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇩🇪 德国 (Germany) 12 43392K ⚠P - NEKO
+  server: 193.108.117.111
+  port: 19999
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇩🇪 德国 (Germany) 13 40627K ⚠P - NEKO
+  server: 193.108.119.3
+  port: 19999
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇩🇪 德国 (Germany) 14 31747K ⚠P⚠U - NEKO
+  server: 151.243.169.164
+  port: 12824
+  udp: true
+  type: hysteria2
+  password: d62s7ghfehm742us
+  sni: derfderf.ru
+  skip-cert-verify: false
+- name: 🇩🇪 德国 (Germany) 15 41529K ⚠P - NEKO
+  server: 23.157.88.43
+  port: 19999
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇩🇪 德国 (Germany) 16 47666K ⚠P - NEKO
+  server: 193.108.116.98
+  port: 19999
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇩🇪 德国 (Germany) 17 31086K ⚠P - NEKO
+  server: 193.108.118.247
+  port: 19999
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇩🇪 德国 (Germany) 18 26136K ⚠P - NEKO
+  server: 193.108.119.2
+  port: 19999
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇩🇪 德国 (Germany) 19 561K 🇨🇳 - NEKO
+  server: 87.248.149.50
   port: 443
   udp: true
   type: vless
@@ -77,43 +170,14 @@ proxies:
   servername: base.hosamobenl.co.uk
   skip-cert-verify: false
   client-fingerprint: chrome
-- name: 🇩🇪 德国 (Germany) 09 8198K 🇨🇳 - NEKO
-  server: 193.108.119.134
-  port: 443
+- name: 🇩🇪 德国 (Germany) 20 45559K ⚠P - NEKO
+  server: 185.176.204.18
+  port: 19999
   udp: true
-  type: trojan
-  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  sni: api.iloverussia2026.com
-  skip-cert-verify: false
-- name: 🇩🇪 德国 (Germany) 10 ⚠S93353K 🇨🇳 - NEKO
-  server: 193.108.119.29
-  port: 443
-  udp: true
-  type: trojan
-  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  sni: blog.iloverussia2026.com
-  skip-cert-verify: false
-- name: 🇩🇪 德国 (Germany) 11 16266K 🇨🇳 - NEKO
-  server: music.3apes.online
-  port: 443
-  udp: true
-  type: vless
-  uuid: 12776e55-6230-48b9-b069-1bb8a04b4237
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: q4_o7NvD6vQg4hYsyO29Q6PVufjTJHDUbQTqstre9EQ
-  servername: music.3apes.online
-  client-fingerprint: chrome
-- name: 🇩🇪 德国 (Germany) 12 35317K ⚠P⚠U - NEKO
-  server: 151.243.169.164
-  port: 12824
-  udp: true
-  type: hysteria2
-  password: d62s7ghfehm742us
-  sni: derfderf.ru
-  skip-cert-verify: false
-- name: 🇩🇪 德国 (Germany) 13 23858K 🇨🇳 - NEKO
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇩🇪 德国 (Germany) 21 31288K 🇨🇳 - NEKO
   server: 144.31.140.125
   port: 8443
   udp: true
@@ -125,70 +189,22 @@ proxies:
     public-key: wgyw3OxZw4HEzedNdY_eHdcVkrtT7GEeZSHfzcZ8iDo
     short-id: 168c15efac9df5fd
   servername: twitch.tv
-  client-fingerprint: ''
-- name: 🇩🇪 德国 (Germany) 14 45026K ⚠P - NEKO
-  server: 23.157.88.43
-  port: 19999
+  client-fingerprint: chrome
+- name: 🇩🇪 德国 (Germany) 22 14595K ⚠P⚠U - NEKO
+  server: 77.90.0.22
+  port: 8443
   udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇩🇪 德国 (Germany) 15 37243K ⚠P - NEKO
-  server: 193.108.116.98
-  port: 19999
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇩🇪 德国 (Germany) 16 36684K ⚠P - NEKO
-  server: 94.237.97.200
-  port: 8080
-  udp: true
-  type: ss
-  cipher: 2022-blake3-aes-256-gcm
-  password: YZa1hYrK/xilZEfMJbGFPAdN1Oh/YIVIoDpyDZwHW5E=:zN4Jk+n+Va0MxBrTunjmyb+VZ/GjPs2xB4V0wLVM+xw=
-- name: 🇩🇪 德国 (Germany) 17 42686K ⚠P - NEKO
-  server: 193.108.119.83
-  port: 19999
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇩🇪 德国 (Germany) 18 42092K ⚠P - NEKO
-  server: 185.176.204.18
-  port: 19999
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇩🇪 德国 (Germany) 19 27092K ⚠P - NEKO
-  server: 193.108.117.84
-  port: 19999
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇩🇪 德国 (Germany) 20 42018K ⚠P - NEKO
-  server: 193.108.117.111
-  port: 19999
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇩🇪 德国 (Germany) 21 44019K ⚠P - NEKO
-  server: 193.108.119.2
-  port: 19999
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇩🇪 德国 (Germany) 22 ⚠S111937K ⚠P - NEKO
+  type: hysteria2
+  password: 1794613669:ead4a562-edf2-40cf-ad33-13ae98546226:GodL9--mNBsO-qbuKpMGiGi71Rm3awxqQ6WYTf3r974
+  sni: de3.lumacache.com
+  skip-cert-verify: false
+- name: 🇩🇪 德国 (Germany) 23 ⚠S119132K ⚠P - NEKO
   server: 2.31.100.78
   port: 13060
   udp: true
   type: vless
   uuid: 679d0fcc-4c72-4073-8f1d-311b69ef72b5
-- name: 🇩🇪 德国 (Germany) 23 8440K ⚠P - NEKO
+- name: 🇩🇪 德国 (Germany) 24 8254K ⚠P - NEKO
   server: 193.108.119.87
   port: 1270
   udp: true
@@ -199,72 +215,7 @@ proxies:
   tls: true
   servername: xmfhlpy.com
   skip-cert-verify: false
-- name: 🇩🇪 德国 (Germany) 24 38465K ⚠P - NEKO
-  server: 193.108.119.3
-  port: 19999
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇩🇪 德国 (Germany) 25 26091K ⚠P - NEKO
-  server: 159.195.207.238
-  port: 49313
-  udp: true
-  type: vless
-  uuid: 855c7aaa-e7d6-463e-971e-d36032744428
-- name: 🇩🇪 德国 (Germany) 26 27824K ⚠P - NEKO
-  server: 193.108.118.247
-  port: 19999
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇩🇪 德国 (Germany) 27 744K 🇨🇳 - NEKO
-  server: 4935e4t.de25.h1clayd.click
-  port: 443
-  udp: true
-  type: vless
-  uuid: 4201786b-d99b-4147-a5f0-20d47acddb81
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: MzgB17ZFbKqs8pbC3EscTzHid_ENc-k_Cp6nXl-2knw
-    short-id: 6976d670818644cc
-  servername: 4935e4t.de25.h1clayd.click
-  client-fingerprint: edge
-- name: 🇩🇪 德国 (Germany) 28 ⚠S10828K ⚠P - NEKO
-  server: 146.70.20.147
-  port: 8080
-  udp: true
-  type: ss
-  cipher: rc4-md5
-  password: 14fFPrbezE3HDZzsMOr6
-- name: 🇩🇪 德国 (Germany) 29 16312K ⚠P - NEKO
-  server: 57.129.113.16
-  port: 8388
-  udp: true
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: NcAXc0UZI6yQJE1p8QmOv8
-- name: 🇩🇪 德国 (Germany) 30 6590K ⚠P - NEKO
-  server: 185.226.172.8
-  port: 8008
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: XKFKl2rULjIp74
-- name: 🇩🇪 德国 (Germany) 31 8284K ⚠P - NEKO
-  server: 193.108.117.61
-  port: 1270
-  udp: true
-  type: vmess
-  uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
-  alterId: 0
-  cipher: auto
-  tls: true
-  servername: xmfhlpy.com
-  skip-cert-verify: false
-- name: 🇩🇪 德国 (Germany) 32 8253K ⚠P - NEKO
+- name: 🇩🇪 德国 (Germany) 25 8276K ⚠P - NEKO
   server: 185.177.229.95
   port: 1270
   udp: true
@@ -275,22 +226,31 @@ proxies:
   tls: true
   servername: xmfhlpy.com
   skip-cert-verify: false
-- name: 🇩🇪 德国 (Germany) 33 ⚠S21573K 🇨🇳 - NEKO
-  server: 95.140.152.173
-  port: 2083
+- name: 🇩🇪 德国 (Germany) 26 ⚠S10800K ⚠P - NEKO
+  server: 146.70.20.147
+  port: 8080
+  udp: true
+  type: ss
+  cipher: rc4-md5
+  password: 14fFPrbezE3HDZzsMOr6
+- name: 🇩🇪 德国 (Germany) 27 50812K ⚠P - NEKO
+  server: 193.108.117.61
+  port: 1270
+  udp: true
+  type: vmess
+  uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
+  alterId: 0
+  cipher: auto
+  tls: true
+  servername: xmfhlpy.com
+  skip-cert-verify: false
+- name: 🇩🇪 德国 (Germany) 28 28548K ⚠P - NEKO
+  server: 159.195.207.238
+  port: 49313
   udp: true
   type: vless
-  uuid: 3e40a4ab-efc5-4023-8e0e-9a10324ad44a
-  tls: true
-  reality-opts:
-    public-key: B7x5bYp-YhtLeH31zYcilpKFCkGTMe3jtSECSw-bMC4
-    short-id: bc306875
-  servername: dl.google.com
-  client-fingerprint: chrome
-  network: grpc
-  grpc-opts:
-    grpc-service-name: google.storage.v2.Storage
-- name: 🇩🇪 德国 (Germany) 34 31057K ⚠P - NEKO
+  uuid: 855c7aaa-e7d6-463e-971e-d36032744428
+- name: 🇩🇪 德国 (Germany) 29 18298K ⚠P - NEKO
   server: 91.107.255.63
   port: 39653
   udp: true
@@ -300,49 +260,41 @@ proxies:
   servername: online.shop.ir.eeso.cc
   skip-cert-verify: false
   client-fingerprint: chrome
-- name: 🇩🇪 德国 (Germany) 35 26740K ⚠P - NEKO
-  server: 51.38.127.93
-  port: 8080
+- name: 🇩🇪 德国 (Germany) 30 8188K ⚠P - NEKO
+  server: 193.108.119.83
+  port: 19999
   udp: true
   type: ss
-  cipher: chacha20-ietf-poly1305
-  password: 03y5gbnyl4o1hc2n
-- name: 🇩🇪 德国 (Germany) 36 9067K 🇨🇳 - NEKO
-  server: 188.225.73.41
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇩🇪 德国 (Germany) 31 16293K 🇨🇳 - NEKO
+  server: 143.14.59.36
   port: 443
   udp: true
   type: vless
-  uuid: 4cabcd59-a405-4c00-96f5-03507e1e28fa
+  uuid: 84be02cf-c5c5-4b33-ba26-31b5f8320033
   tls: true
-  servername: cadrin.wtf
+  servername: cdn2.zovip2.ir
   skip-cert-verify: false
-  client-fingerprint: chrome
-  network: grpc
-  grpc-opts:
-    grpc-service-name: cache.sync.v1
-- name: 🇩🇪 德国 (Germany) 37 122502K - NEKO
-  server: 91.107.169.224
-  port: 80
-  udp: true
-  type: vmess
-  uuid: 014f8bf6-9221-4f99-838f-4c16ca90334f
-  alterId: 0
-  cipher: auto
-  network: httpupgrade
-- name: 🇩🇪 德国 (Germany) 38 ⚠S20066K ⚠P - NEKO
-  server: 91.107.247.173
-  port: 2083
-  udp: true
-  type: vless
-  uuid: 0386df1b-7abd-4676-f3c6-d65d691023b9
-  tls: true
-  servername: sino.bestsellers1.site
-  skip-cert-verify: false
-  client-fingerprint: chrome
+  client-fingerprint: firefox
   network: ws
   ws-opts:
-    path: /
-- name: 🇩🇪 德国 (Germany) 39 ⚠S21468K ⚠P - NEKO
+    path: /api/v3/pulse
+    headers:
+      Host: cdn2.zovip2.ir
+- name: 🇩🇪 德国 (Germany) 32 4483K 🇨🇳 - NEKO
+  server: p1real1.greewebservices.ir
+  port: 1230
+  udp: true
+  type: vless
+  uuid: b0511969-f769-460b-963b-70c6b84b6967
+  tls: true
+  reality-opts:
+    public-key: xQnXh5EfPDhcEBB7rRiLca33GYrMEeUa35domLL_yA8
+    short-id: 9b60d3
+  servername: play.googleapis.com
+  client-fingerprint: chrome
+- name: 🇩🇪 德国 (Germany) 33 30417K ⚠P - NEKO
   server: 91.107.247.173
   port: 2083
   udp: true
@@ -354,31 +306,21 @@ proxies:
   network: ws
   ws-opts:
     path: /
-- name: 🇩🇪 德国 (Germany) 40 16562K 🇨🇳 - NEKO
-  server: astravellion.xyz
-  port: 443
+    headers:
+      Host: sino.bestsellers1.site
+- name: 🇩🇪 德国 (Germany) 34 26246K ⚠P - NEKO
+  server: 91.107.247.173
+  port: 2083
   udp: true
   type: vless
-  uuid: 4b50270b-5caf-4c34-b3da-17b4525604a6
+  uuid: 0386df1b-7abd-4676-f3c6-d65d691023b9
   tls: true
-  servername: astravellion.xyz
+  servername: sino.bestsellers1.site
   skip-cert-verify: false
-  client-fingerprint: chrome
-  network: grpc
-  grpc-opts:
-    grpc-service-name: glush.de1.v1
-- name: 🇩🇪 德国 (Germany) 41 30191K ⚠P - NEKO
-  server: tuns.rupfem.ir
-  port: 9443
-  udp: true
-  type: vless
-  uuid: 65e7fa8d-180a-4819-8f77-28e93f58f0ce
-  flow: xtls-rprx-vision
-  tls: true
-  servername: tuns.rupfem.ir
-  skip-cert-verify: false
-  client-fingerprint: chrome
-- name: 🇩🇪 德国 (Germany) 42 ⚠S17514K 🇨🇳 - NEKO
+  network: ws
+  ws-opts:
+    path: /
+- name: 🇩🇪 德国 (Germany) 35 8141K 🇨🇳 - NEKO
   server: 82.39.171.12
   port: 443
   udp: true
@@ -391,99 +333,209 @@ proxies:
     short-id: c39cc7310a
   servername: yahoo.com
   client-fingerprint: ios
+- name: 🇩🇪 德国 (Germany) 36 ⚠S9247K 🇨🇳 - NEKO
+  server: 188.225.56.133
+  port: 443
+  udp: true
+  type: vless
+  uuid: 820fa845-a1eb-4a83-b613-e6714cea8a1a
+  tls: true
+  servername: astronovalis.wtf
+  skip-cert-verify: false
+  client-fingerprint: chrome
+  network: grpc
+  grpc-opts:
+    grpc-service-name: glush.de2.v1
+- name: 🇩🇪 德国 (Germany) 37 10438K ⚠P - NEKO
+  server: 185.226.172.8
+  port: 8008
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: XKFKl2rULjIp74
+- name: 🇩🇪 德国 (Germany) 38 11058K - NEKO
+  server: 91.107.169.224
+  port: 80
+  udp: true
+  type: vmess
+  uuid: 014f8bf6-9221-4f99-838f-4c16ca90334f
+  alterId: 0
+  cipher: auto
+  network: httpupgrade
+- name: 🇩🇪 德国 (Germany) 39 3709K ⚠P - NEKO
+  server: 51.38.127.93
+  port: 8080
+  udp: true
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: 03y5gbnyl4o1hc2n
+- name: 🇩🇪 德国 (Germany) 40 13598K 🇨🇳 - NEKO
+  server: p11real2.greewebservices.ir
+  port: 1030
+  udp: true
+  type: vless
+  uuid: b0511969-f769-460b-963b-70c6b84b6967
+  tls: true
+  reality-opts:
+    public-key: xQnXh5EfPDhcEBB7rRiLca33GYrMEeUa35domLL_yA8
+    short-id: 9b60d3
+  servername: play.googleapis.com
+  client-fingerprint: chrome
+- name: 🇩🇪 德国 (Germany) 41 13413K 🇨🇳 - NEKO
+  server: p1real3.greewebservices.ir
+  port: 1250
+  udp: true
+  type: vless
+  uuid: b0511969-f769-460b-963b-70c6b84b6967
+  tls: true
+  reality-opts:
+    public-key: xQnXh5EfPDhcEBB7rRiLca33GYrMEeUa35domLL_yA8
+    short-id: 9b60d3
+  servername: play.googleapis.com
+  client-fingerprint: chrome
+- name: 🇩🇪 德国 (Germany) 42 11433K 🇨🇳 - NEKO
+  server: p1real2.greewebservices.ir
+  port: 1240
+  udp: true
+  type: vless
+  uuid: b0511969-f769-460b-963b-70c6b84b6967
+  tls: true
+  reality-opts:
+    public-key: xQnXh5EfPDhcEBB7rRiLca33GYrMEeUa35domLL_yA8
+    short-id: 9b60d3
+  servername: play.googleapis.com
+  client-fingerprint: chrome
+- name: 🇩🇪 德国 (Germany) 43 17286K 🇨🇳 - NEKO
+  server: p11real1.greewebservices.ir
+  port: 1020
+  udp: true
+  type: vless
+  uuid: b0511969-f769-460b-963b-70c6b84b6967
+  tls: true
+  reality-opts:
+    public-key: xwbp4EcOtus1W5Au4XCJJbCl9jCb4DwGgYQYEwUDqTY
+    short-id: 354e34396eaa89ab
+  servername: play.googleapis.com
+  client-fingerprint: chrome
+- name: 🇩🇪 德国 (Germany) 44 6441K ⚠P - NEKO
+  server: 185.42.214.39
+  port: 23243
+  udp: true
+  type: vless
+  uuid: 55bf2ea7-4d16-42c2-a40e-51be2526e77a
+- name: 🇩🇪 德国 (Germany) 45 ⚠S15260K ⚠L20% 🇨🇳 - NEKO
+  server: 188.225.37.175
+  port: 443
+  udp: true
+  type: vless
+  uuid: 4b50270b-5caf-4c34-b3da-17b4525604a6
+  tls: true
+  servername: cryptoventura.online
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /api/de3/live
+    headers:
+      Host: cryptoventura.online
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇩🇪 德国 (Germany) 01 37987K 🇨🇳 - NEKO
-  - 🇩🇪 德国 (Germany) 02 27753K 🇨🇳 - NEKO
-  - 🇩🇪 德国 (Germany) 03 12425K 🇨🇳 - NEKO
-  - 🇩🇪 德国 (Germany) 04 ⚠S148158K 🇨🇳 - NEKO
-  - 🇩🇪 德国 (Germany) 05 42540K 🇨🇳 - NEKO
-  - 🇩🇪 德国 (Germany) 06 38388K 🇨🇳 - NEKO
-  - 🇩🇪 德国 (Germany) 07 60385K 🇨🇳 - NEKO
-  - 🇩🇪 德国 (Germany) 08 35698K 🇨🇳 - NEKO
-  - 🇩🇪 德国 (Germany) 09 8198K 🇨🇳 - NEKO
-  - 🇩🇪 德国 (Germany) 10 ⚠S93353K 🇨🇳 - NEKO
-  - 🇩🇪 德国 (Germany) 11 16266K 🇨🇳 - NEKO
-  - 🇩🇪 德国 (Germany) 12 35317K ⚠P⚠U - NEKO
-  - 🇩🇪 德国 (Germany) 13 23858K 🇨🇳 - NEKO
-  - 🇩🇪 德国 (Germany) 14 45026K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 15 37243K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 16 36684K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 17 42686K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 18 42092K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 19 27092K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 20 42018K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 21 44019K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 22 ⚠S111937K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 23 8440K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 24 38465K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 25 26091K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 26 27824K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 27 744K 🇨🇳 - NEKO
-  - 🇩🇪 德国 (Germany) 28 ⚠S10828K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 29 16312K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 30 6590K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 31 8284K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 32 8253K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 33 ⚠S21573K 🇨🇳 - NEKO
-  - 🇩🇪 德国 (Germany) 34 31057K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 35 26740K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 36 9067K 🇨🇳 - NEKO
-  - 🇩🇪 德国 (Germany) 37 122502K - NEKO
-  - 🇩🇪 德国 (Germany) 38 ⚠S20066K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 39 ⚠S21468K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 40 16562K 🇨🇳 - NEKO
-  - 🇩🇪 德国 (Germany) 41 30191K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 42 ⚠S17514K 🇨🇳 - NEKO
+  - 🇩🇪 德国 (Germany) 01 46830K 🇨🇳 - NEKO
+  - 🇩🇪 德国 (Germany) 02 ⚠S14544K 🇨🇳 - NEKO
+  - 🇩🇪 德国 (Germany) 03 19354K 🇨🇳 - NEKO
+  - 🇩🇪 德国 (Germany) 04 46278K 🇨🇳 - NEKO
+  - 🇩🇪 德国 (Germany) 05 47338K 🇨🇳 - NEKO
+  - 🇩🇪 德国 (Germany) 06 73696K 🇨🇳 - NEKO
+  - 🇩🇪 德国 (Germany) 07 30838K 🇨🇳 - NEKO
+  - 🇩🇪 德国 (Germany) 08 14031K 🇨🇳 - NEKO
+  - 🇩🇪 德国 (Germany) 09 50812K 🇨🇳 - NEKO
+  - 🇩🇪 德国 (Germany) 10 8297K 🇨🇳 - NEKO
+  - 🇩🇪 德国 (Germany) 11 67381K ⚠P - NEKO
+  - 🇩🇪 德国 (Germany) 12 43392K ⚠P - NEKO
+  - 🇩🇪 德国 (Germany) 13 40627K ⚠P - NEKO
+  - 🇩🇪 德国 (Germany) 14 31747K ⚠P⚠U - NEKO
+  - 🇩🇪 德国 (Germany) 15 41529K ⚠P - NEKO
+  - 🇩🇪 德国 (Germany) 16 47666K ⚠P - NEKO
+  - 🇩🇪 德国 (Germany) 17 31086K ⚠P - NEKO
+  - 🇩🇪 德国 (Germany) 18 26136K ⚠P - NEKO
+  - 🇩🇪 德国 (Germany) 19 561K 🇨🇳 - NEKO
+  - 🇩🇪 德国 (Germany) 20 45559K ⚠P - NEKO
+  - 🇩🇪 德国 (Germany) 21 31288K 🇨🇳 - NEKO
+  - 🇩🇪 德国 (Germany) 22 14595K ⚠P⚠U - NEKO
+  - 🇩🇪 德国 (Germany) 23 ⚠S119132K ⚠P - NEKO
+  - 🇩🇪 德国 (Germany) 24 8254K ⚠P - NEKO
+  - 🇩🇪 德国 (Germany) 25 8276K ⚠P - NEKO
+  - 🇩🇪 德国 (Germany) 26 ⚠S10800K ⚠P - NEKO
+  - 🇩🇪 德国 (Germany) 27 50812K ⚠P - NEKO
+  - 🇩🇪 德国 (Germany) 28 28548K ⚠P - NEKO
+  - 🇩🇪 德国 (Germany) 29 18298K ⚠P - NEKO
+  - 🇩🇪 德国 (Germany) 30 8188K ⚠P - NEKO
+  - 🇩🇪 德国 (Germany) 31 16293K 🇨🇳 - NEKO
+  - 🇩🇪 德国 (Germany) 32 4483K 🇨🇳 - NEKO
+  - 🇩🇪 德国 (Germany) 33 30417K ⚠P - NEKO
+  - 🇩🇪 德国 (Germany) 34 26246K ⚠P - NEKO
+  - 🇩🇪 德国 (Germany) 35 8141K 🇨🇳 - NEKO
+  - 🇩🇪 德国 (Germany) 36 ⚠S9247K 🇨🇳 - NEKO
+  - 🇩🇪 德国 (Germany) 37 10438K ⚠P - NEKO
+  - 🇩🇪 德国 (Germany) 38 11058K - NEKO
+  - 🇩🇪 德国 (Germany) 39 3709K ⚠P - NEKO
+  - 🇩🇪 德国 (Germany) 40 13598K 🇨🇳 - NEKO
+  - 🇩🇪 德国 (Germany) 41 13413K 🇨🇳 - NEKO
+  - 🇩🇪 德国 (Germany) 42 11433K 🇨🇳 - NEKO
+  - 🇩🇪 德国 (Germany) 43 17286K 🇨🇳 - NEKO
+  - 🇩🇪 德国 (Germany) 44 6441K ⚠P - NEKO
+  - 🇩🇪 德国 (Germany) 45 ⚠S15260K ⚠L20% 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇩🇪 德国 (Germany) 01 37987K 🇨🇳 - NEKO
-  - 🇩🇪 德国 (Germany) 02 27753K 🇨🇳 - NEKO
-  - 🇩🇪 德国 (Germany) 03 12425K 🇨🇳 - NEKO
-  - 🇩🇪 德国 (Germany) 04 ⚠S148158K 🇨🇳 - NEKO
-  - 🇩🇪 德国 (Germany) 05 42540K 🇨🇳 - NEKO
-  - 🇩🇪 德国 (Germany) 06 38388K 🇨🇳 - NEKO
-  - 🇩🇪 德国 (Germany) 07 60385K 🇨🇳 - NEKO
-  - 🇩🇪 德国 (Germany) 08 35698K 🇨🇳 - NEKO
-  - 🇩🇪 德国 (Germany) 09 8198K 🇨🇳 - NEKO
-  - 🇩🇪 德国 (Germany) 10 ⚠S93353K 🇨🇳 - NEKO
-  - 🇩🇪 德国 (Germany) 11 16266K 🇨🇳 - NEKO
-  - 🇩🇪 德国 (Germany) 12 35317K ⚠P⚠U - NEKO
-  - 🇩🇪 德国 (Germany) 13 23858K 🇨🇳 - NEKO
-  - 🇩🇪 德国 (Germany) 14 45026K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 15 37243K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 16 36684K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 17 42686K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 18 42092K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 19 27092K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 20 42018K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 21 44019K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 22 ⚠S111937K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 23 8440K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 24 38465K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 25 26091K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 26 27824K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 27 744K 🇨🇳 - NEKO
-  - 🇩🇪 德国 (Germany) 28 ⚠S10828K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 29 16312K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 30 6590K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 31 8284K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 32 8253K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 33 ⚠S21573K 🇨🇳 - NEKO
-  - 🇩🇪 德国 (Germany) 34 31057K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 35 26740K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 36 9067K 🇨🇳 - NEKO
-  - 🇩🇪 德国 (Germany) 37 122502K - NEKO
-  - 🇩🇪 德国 (Germany) 38 ⚠S20066K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 39 ⚠S21468K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 40 16562K 🇨🇳 - NEKO
-  - 🇩🇪 德国 (Germany) 41 30191K ⚠P - NEKO
-  - 🇩🇪 德国 (Germany) 42 ⚠S17514K 🇨🇳 - NEKO
+  - 🇩🇪 德国 (Germany) 01 46830K 🇨🇳 - NEKO
+  - 🇩🇪 德国 (Germany) 02 ⚠S14544K 🇨🇳 - NEKO
+  - 🇩🇪 德国 (Germany) 03 19354K 🇨🇳 - NEKO
+  - 🇩🇪 德国 (Germany) 04 46278K 🇨🇳 - NEKO
+  - 🇩🇪 德国 (Germany) 05 47338K 🇨🇳 - NEKO
+  - 🇩🇪 德国 (Germany) 06 73696K 🇨🇳 - NEKO
+  - 🇩🇪 德国 (Germany) 07 30838K 🇨🇳 - NEKO
+  - 🇩🇪 德国 (Germany) 08 14031K 🇨🇳 - NEKO
+  - 🇩🇪 德国 (Germany) 09 50812K 🇨🇳 - NEKO
+  - 🇩🇪 德国 (Germany) 10 8297K 🇨🇳 - NEKO
+  - 🇩🇪 德国 (Germany) 11 67381K ⚠P - NEKO
+  - 🇩🇪 德国 (Germany) 12 43392K ⚠P - NEKO
+  - 🇩🇪 德国 (Germany) 13 40627K ⚠P - NEKO
+  - 🇩🇪 德国 (Germany) 14 31747K ⚠P⚠U - NEKO
+  - 🇩🇪 德国 (Germany) 15 41529K ⚠P - NEKO
+  - 🇩🇪 德国 (Germany) 16 47666K ⚠P - NEKO
+  - 🇩🇪 德国 (Germany) 17 31086K ⚠P - NEKO
+  - 🇩🇪 德国 (Germany) 18 26136K ⚠P - NEKO
+  - 🇩🇪 德国 (Germany) 19 561K 🇨🇳 - NEKO
+  - 🇩🇪 德国 (Germany) 20 45559K ⚠P - NEKO
+  - 🇩🇪 德国 (Germany) 21 31288K 🇨🇳 - NEKO
+  - 🇩🇪 德国 (Germany) 22 14595K ⚠P⚠U - NEKO
+  - 🇩🇪 德国 (Germany) 23 ⚠S119132K ⚠P - NEKO
+  - 🇩🇪 德国 (Germany) 24 8254K ⚠P - NEKO
+  - 🇩🇪 德国 (Germany) 25 8276K ⚠P - NEKO
+  - 🇩🇪 德国 (Germany) 26 ⚠S10800K ⚠P - NEKO
+  - 🇩🇪 德国 (Germany) 27 50812K ⚠P - NEKO
+  - 🇩🇪 德国 (Germany) 28 28548K ⚠P - NEKO
+  - 🇩🇪 德国 (Germany) 29 18298K ⚠P - NEKO
+  - 🇩🇪 德国 (Germany) 30 8188K ⚠P - NEKO
+  - 🇩🇪 德国 (Germany) 31 16293K 🇨🇳 - NEKO
+  - 🇩🇪 德国 (Germany) 32 4483K 🇨🇳 - NEKO
+  - 🇩🇪 德国 (Germany) 33 30417K ⚠P - NEKO
+  - 🇩🇪 德国 (Germany) 34 26246K ⚠P - NEKO
+  - 🇩🇪 德国 (Germany) 35 8141K 🇨🇳 - NEKO
+  - 🇩🇪 德国 (Germany) 36 ⚠S9247K 🇨🇳 - NEKO
+  - 🇩🇪 德国 (Germany) 37 10438K ⚠P - NEKO
+  - 🇩🇪 德国 (Germany) 38 11058K - NEKO
+  - 🇩🇪 德国 (Germany) 39 3709K ⚠P - NEKO
+  - 🇩🇪 德国 (Germany) 40 13598K 🇨🇳 - NEKO
+  - 🇩🇪 德国 (Germany) 41 13413K 🇨🇳 - NEKO
+  - 🇩🇪 德国 (Germany) 42 11433K 🇨🇳 - NEKO
+  - 🇩🇪 德国 (Germany) 43 17286K 🇨🇳 - NEKO
+  - 🇩🇪 德国 (Germany) 44 6441K ⚠P - NEKO
+  - 🇩🇪 德国 (Germany) 45 ⚠S15260K ⚠L20% 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

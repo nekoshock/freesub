@@ -4,21 +4,34 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇱🇹 立陶宛 (Lithuania) 01 10407K ⚠P - NEKO
-  server: 195.238.126.20
-  port: 9012
+- name: 🇱🇹 立陶宛 (Lithuania) 01 25261K 🇨🇳 - NEKO
+  server: lt.t1n2.com
+  port: 443
   udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: xaupMUvhptwxdDUg
-- name: 🇱🇹 立陶宛 (Lithuania) 02 7966K ⚠P - NEKO
+  type: vless
+  uuid: a94d8907-6bbb-4570-80d3-dfdc314c1e7a
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: awc2TGvraH8xMqfsAnNQ7JMQ_uUF8gW5auvU2gQfjR0
+    short-id: b31de5bead2ebf3c
+  servername: lt.t1n2.com
+  client-fingerprint: edge
+- name: 🇱🇹 立陶宛 (Lithuania) 02 8670K ⚠P - NEKO
   server: 195.238.126.20
   port: 9068
   udp: true
   type: ss
   cipher: aes-256-cfb
   password: mwgRg9hRq3b4Qnwb
-- name: 🇱🇹 立陶宛 (Lithuania) 03 7685K ⚠P - NEKO
+- name: 🇱🇹 立陶宛 (Lithuania) 03 8642K ⚠P - NEKO
+  server: 195.238.126.20
+  port: 9012
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: xaupMUvhptwxdDUg
+- name: 🇱🇹 立陶宛 (Lithuania) 04 8720K ⚠P - NEKO
   server: 195.238.126.20
   port: 9001
   udp: true
@@ -30,16 +43,18 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇱🇹 立陶宛 (Lithuania) 01 10407K ⚠P - NEKO
-  - 🇱🇹 立陶宛 (Lithuania) 02 7966K ⚠P - NEKO
-  - 🇱🇹 立陶宛 (Lithuania) 03 7685K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 01 25261K 🇨🇳 - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 02 8670K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 03 8642K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 04 8720K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇱🇹 立陶宛 (Lithuania) 01 10407K ⚠P - NEKO
-  - 🇱🇹 立陶宛 (Lithuania) 02 7966K ⚠P - NEKO
-  - 🇱🇹 立陶宛 (Lithuania) 03 7685K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 01 25261K 🇨🇳 - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 02 8670K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 03 8642K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 04 8720K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

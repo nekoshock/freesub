@@ -4,14 +4,27 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇧🇬 保加利亚 (Bulgaria) 01 530K ⚠P - NEKO
+- name: 🇧🇬 保加利亚 (Bulgaria) 01 17443K 🇨🇳 - NEKO
+  server: 88.80.150.15
+  port: 443
+  udp: true
+  type: vless
+  uuid: 1d46250c-f015-439d-a7fd-c4d9e2a4c63d
+  tls: true
+  servername: bg2.oncloudvpn.com
+  skip-cert-verify: false
+  client-fingerprint: chrome
+  network: grpc
+  grpc-opts:
+    grpc-service-name: grpc
+- name: 🇧🇬 保加利亚 (Bulgaria) 02 7828K ⚠P - NEKO
   server: 213.183.63.60
   port: 9085
   udp: true
   type: ss
   cipher: aes-256-cfb
   password: 9ej82EKe2gq7gLAM
-- name: 🇧🇬 保加利亚 (Bulgaria) 02 532K ⚠P - NEKO
+- name: 🇧🇬 保加利亚 (Bulgaria) 03 8255K ⚠P - NEKO
   server: 213.183.63.60
   port: 9064
   udp: true
@@ -23,14 +36,16 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇧🇬 保加利亚 (Bulgaria) 01 530K ⚠P - NEKO
-  - 🇧🇬 保加利亚 (Bulgaria) 02 532K ⚠P - NEKO
+  - 🇧🇬 保加利亚 (Bulgaria) 01 17443K 🇨🇳 - NEKO
+  - 🇧🇬 保加利亚 (Bulgaria) 02 7828K ⚠P - NEKO
+  - 🇧🇬 保加利亚 (Bulgaria) 03 8255K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇧🇬 保加利亚 (Bulgaria) 01 530K ⚠P - NEKO
-  - 🇧🇬 保加利亚 (Bulgaria) 02 532K ⚠P - NEKO
+  - 🇧🇬 保加利亚 (Bulgaria) 01 17443K 🇨🇳 - NEKO
+  - 🇧🇬 保加利亚 (Bulgaria) 02 7828K ⚠P - NEKO
+  - 🇧🇬 保加利亚 (Bulgaria) 03 8255K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

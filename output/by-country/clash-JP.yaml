@@ -4,7 +4,14 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇯🇵 日本 (Japan) 01 11896K 🇨🇳 - NEKO
+- name: 🇯🇵 日本 (Japan) 01 8611K ⚠P - NEKO
+  server: 168.138.205.100
+  port: 53758
+  udp: true
+  type: ss
+  cipher: aes-128-gcm
+  password: Bwlqh7GcFB
+- name: 🇯🇵 日本 (Japan) 02 8786K 🇨🇳 - NEKO
   server: 103.75.118.228
   port: 11452
   udp: true
@@ -17,14 +24,19 @@ proxies:
     short-id: 48050fab
   servername: www.apple.com
   client-fingerprint: chrome
-- name: 🇯🇵 日本 (Japan) 02 2049K ⚠P - NEKO
-  server: 168.138.205.100
-  port: 53758
+- name: 🇯🇵 日本 (Japan) 03 8210K ⚠P - NEKO
+  server: 168.110.48.252
+  port: 10018
   udp: true
-  type: ss
-  cipher: aes-128-gcm
-  password: Bwlqh7GcFB
-- name: 🇯🇵 日本 (Japan) 03 6023K ⚠P - NEKO
+  type: vless
+  uuid: d8fc873b-860d-4490-b2f0-300d6ae3c2d3
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: YxoFVB0NhCx4BJCgq5Ey5jdteRU2H2toGa-ZKW5XV3c
+  servername: www.ebay.com
+  client-fingerprint: firefox
+- name: 🇯🇵 日本 (Japan) 04 3808K 🇨🇳 - NEKO
   server: 168.110.45.41
   port: 23444
   udp: true
@@ -37,33 +49,7 @@ proxies:
     short-id: 119c9e68498f5900
   servername: www.microsoft.com
   client-fingerprint: chrome
-- name: 🇯🇵 日本 (Japan) 04 222K 🇨🇳 - NEKO
-  server: 3.114.220.22
-  port: 19645
-  udp: true
-  type: vless
-  uuid: 814bd064-544d-4255-a070-5705c03f6da9
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
-    short-id: 48050fab
-  servername: www.apple.com
-  client-fingerprint: ios
-- name: 🇯🇵 日本 (Japan) 05 7157K 🇨🇳 - NEKO
-  server: jp.yi-yi.xyz
-  port: 8443
-  udp: true
-  type: vless
-  uuid: 36c06e11-028b-40a1-a91f-c8f38f03e829
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: g3T4dVyrbNixv7HvSMlh91cYBa5kEsZCEInB7Xc_AEY
-    short-id: 956d8072a694ff37
-  servername: www.cloudflare.com
-  client-fingerprint: chrome
-- name: 🇯🇵 日本 (Japan) 06 248K 🇨🇳 - NEKO
+- name: 🇯🇵 日本 (Japan) 05 298K ⚠P - NEKO
   server: 3.114.220.22
   port: 10583
   udp: true
@@ -81,22 +67,20 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇯🇵 日本 (Japan) 01 11896K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 02 2049K ⚠P - NEKO
-  - 🇯🇵 日本 (Japan) 03 6023K ⚠P - NEKO
-  - 🇯🇵 日本 (Japan) 04 222K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 05 7157K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 06 248K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 01 8611K ⚠P - NEKO
+  - 🇯🇵 日本 (Japan) 02 8786K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 03 8210K ⚠P - NEKO
+  - 🇯🇵 日本 (Japan) 04 3808K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 05 298K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇯🇵 日本 (Japan) 01 11896K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 02 2049K ⚠P - NEKO
-  - 🇯🇵 日本 (Japan) 03 6023K ⚠P - NEKO
-  - 🇯🇵 日本 (Japan) 04 222K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 05 7157K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 06 248K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 01 8611K ⚠P - NEKO
+  - 🇯🇵 日本 (Japan) 02 8786K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 03 8210K ⚠P - NEKO
+  - 🇯🇵 日本 (Japan) 04 3808K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 05 298K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

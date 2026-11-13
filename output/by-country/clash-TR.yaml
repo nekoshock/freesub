@@ -4,7 +4,19 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇹🇷 土耳其 (Turkey) 01 12204K 🇨🇳 - NEKO
+- name: 🇹🇷 土耳其 (Turkey) 01 9640K 🇨🇳 - NEKO
+  server: 45.92.219.47
+  port: 443
+  udp: true
+  type: vless
+  uuid: ecc0e60a-f2cc-4266-8353-b228df89730a
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: GBO_paFyK9FihgPMH8r_vHa4IKMkSGfvAQ2fhPK_1H4
+  servername: ty.galactichub.online
+  client-fingerprint: ios
+- name: 🇹🇷 土耳其 (Turkey) 02 12336K 🇨🇳 - NEKO
   server: 62.133.63.45
   port: 8444
   udp: true
@@ -13,12 +25,13 @@ proxies:
   tls: true
   reality-opts:
     public-key: FWitre1jinQR7qz5HQ0q2Q4Gg9xA9B0SyizCziN7Ch0
+    short-id: 457fab2ac885dbe0
   servername: github.com
-  client-fingerprint: firefox
+  client-fingerprint: ios
   network: grpc
   grpc-opts:
     grpc-service-name: GunService
-- name: 🇹🇷 土耳其 (Turkey) 02 21546K 🇨🇳 - NEKO
+- name: 🇹🇷 土耳其 (Turkey) 03 ⚠S18218K 🇨🇳 - NEKO
   server: 185.246.155.91
   port: 10103
   udp: true
@@ -31,7 +44,7 @@ proxies:
     short-id: 6859f5b59e55aa30
   servername: www.apple.com
   client-fingerprint: chrome
-- name: 🇹🇷 土耳其 (Turkey) 03 8613K ⚠P - NEKO
+- name: 🇹🇷 土耳其 (Turkey) 04 8832K 🇨🇳 - NEKO
   server: 151.241.226.201
   port: 2053
   udp: true
@@ -43,34 +56,40 @@ proxies:
     short-id: 9e419c0759b54d6f
   servername: www.apple.com
   client-fingerprint: firefox
-- name: 🇹🇷 土耳其 (Turkey) 04 3840K ⚠P - NEKO
-  server: game.celvixo.ir
-  port: 2087
+- name: 🇹🇷 土耳其 (Turkey) 05 16518K 🇨🇳 - NEKO
+  server: torvani.cyou
+  port: 443
   udp: true
   type: vless
-  uuid: 2b2581ed-99ac-4ec2-f807-0d4f203c8919
+  uuid: 820fa845-a1eb-4a83-b613-e6714cea8a1a
+  tls: true
+  servername: torvani.cyou
+  skip-cert-verify: false
+  client-fingerprint: firefox
   network: ws
   ws-opts:
-    path: /
+    path: /api/boards/live
     headers:
-      Host: cp.xelzano.ir
+      Host: torvani.cyou
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇹🇷 土耳其 (Turkey) 01 12204K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 02 21546K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 03 8613K ⚠P - NEKO
-  - 🇹🇷 土耳其 (Turkey) 04 3840K ⚠P - NEKO
+  - 🇹🇷 土耳其 (Turkey) 01 9640K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 02 12336K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 03 ⚠S18218K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 04 8832K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 05 16518K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇹🇷 土耳其 (Turkey) 01 12204K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 02 21546K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 03 8613K ⚠P - NEKO
-  - 🇹🇷 土耳其 (Turkey) 04 3840K ⚠P - NEKO
+  - 🇹🇷 土耳其 (Turkey) 01 9640K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 02 12336K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 03 ⚠S18218K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 04 8832K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 05 16518K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

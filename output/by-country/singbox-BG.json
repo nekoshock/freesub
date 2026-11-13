@@ -4,8 +4,31 @@
   },
   "outbounds": [
     {
+      "type": "vless",
+      "tag": "🇧🇬 保加利亚 (Bulgaria) 01 17443K 🇨🇳 - NEKO",
+      "server": "88.80.150.15",
+      "server_port": 443,
+      "uuid": "1d46250c-f015-439d-a7fd-c4d9e2a4c63d",
+      "tls": {
+        "enabled": true,
+        "server_name": "bg2.oncloudvpn.com",
+        "insecure": false,
+        "alpn": [
+          "h2"
+        ],
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "grpc",
+        "service_name": "grpc"
+      }
+    },
+    {
       "type": "shadowsocks",
-      "tag": "🇧🇬 保加利亚 (Bulgaria) 01 530K ⚠P - NEKO",
+      "tag": "🇧🇬 保加利亚 (Bulgaria) 02 7828K ⚠P - NEKO",
       "server": "213.183.63.60",
       "server_port": 9085,
       "method": "aes-256-cfb",
@@ -13,7 +36,7 @@
     },
     {
       "type": "shadowsocks",
-      "tag": "🇧🇬 保加利亚 (Bulgaria) 02 532K ⚠P - NEKO",
+      "tag": "🇧🇬 保加利亚 (Bulgaria) 03 8255K ⚠P - NEKO",
       "server": "213.183.63.60",
       "server_port": 9064,
       "method": "aes-256-cfb",
@@ -24,16 +47,18 @@
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇧🇬 保加利亚 (Bulgaria) 01 530K ⚠P - NEKO",
-        "🇧🇬 保加利亚 (Bulgaria) 02 532K ⚠P - NEKO"
+        "🇧🇬 保加利亚 (Bulgaria) 01 17443K 🇨🇳 - NEKO",
+        "🇧🇬 保加利亚 (Bulgaria) 02 7828K ⚠P - NEKO",
+        "🇧🇬 保加利亚 (Bulgaria) 03 8255K ⚠P - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇧🇬 保加利亚 (Bulgaria) 01 530K ⚠P - NEKO",
-        "🇧🇬 保加利亚 (Bulgaria) 02 532K ⚠P - NEKO"
+        "🇧🇬 保加利亚 (Bulgaria) 01 17443K 🇨🇳 - NEKO",
+        "🇧🇬 保加利亚 (Bulgaria) 02 7828K ⚠P - NEKO",
+        "🇧🇬 保加利亚 (Bulgaria) 03 8255K ⚠P - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

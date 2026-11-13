@@ -4,7 +4,33 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇷🇺 俄罗斯 (Russia) 01 26473K 🇨🇳 - NEKO
+- name: 🇷🇺 俄罗斯 (Russia) 01 28775K 🇨🇳 - NEKO
+  server: 200.102.183.50
+  port: 443
+  udp: true
+  type: vless
+  uuid: 664f65f4-33b3-43a3-b9e5-68192d1d428e
+  tls: true
+  servername: f2hbck5x3c0g8pl7.cdn.cachefleet.com
+  skip-cert-verify: false
+  client-fingerprint: chrome
+  network: grpc
+  grpc-opts:
+    grpc-service-name: qi8ws15c7jv5q2fa
+- name: 🇷🇺 俄罗斯 (Russia) 02 18899K 🇨🇳 - NEKO
+  server: 200.102.183.57
+  port: 80
+  udp: true
+  type: vless
+  uuid: 664f65f4-33b3-43a3-b9e5-68192d1d428e
+  tls: true
+  servername: 68r2nrw6avta71yq.cdn.cachefleet.com
+  skip-cert-verify: false
+  client-fingerprint: firefox
+  network: grpc
+  grpc-opts:
+    grpc-service-name: qi8ws15c7jv5q2fa
+- name: 🇷🇺 俄罗斯 (Russia) 03 13666K 🇨🇳 - NEKO
   server: 193.228.128.230
   port: 443
   udp: true
@@ -19,77 +45,36 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: ''
-- name: 🇷🇺 俄罗斯 (Russia) 02 38193K 🇨🇳 - NEKO
-  server: 200.102.183.50
-  port: 443
+- name: 🇷🇺 俄罗斯 (Russia) 04 ⚠S4959K ⚠P - NEKO
+  server: 185.39.204.117
+  port: 10002
   udp: true
   type: vless
-  uuid: 664f65f4-33b3-43a3-b9e5-68192d1d428e
+  uuid: facb802c-de2e-11f1-9a22-a3404e852f3b
   tls: true
-  servername: f2hbck5x3c0g8pl7.cdn.cachefleet.com
-  skip-cert-verify: false
-  client-fingerprint: chrome
-  network: grpc
-  grpc-opts:
-    grpc-service-name: qi8ws15c7jv5q2fa
-- name: 🇷🇺 俄罗斯 (Russia) 03 9212K 🇨🇳 - NEKO
-  server: 200.102.183.57
-  port: 80
-  udp: true
-  type: vless
-  uuid: 664f65f4-33b3-43a3-b9e5-68192d1d428e
-  tls: true
-  servername: 68r2nrw6avta71yq.cdn.cachefleet.com
+  servername: tr2.vpnjantit.com
   skip-cert-verify: false
   client-fingerprint: firefox
-  network: grpc
-  grpc-opts:
-    grpc-service-name: qi8ws15c7jv5q2fa
-- name: 🇷🇺 俄罗斯 (Russia) 04 2595K 🇨🇳 - NEKO
-  server: 81.17.18.109
-  port: 443
-  udp: true
-  type: vless
-  uuid: 90157e25-cee1-4217-921e-91f300bc1a24
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: 1vSZjvhZO01oAEH3b7eebR1qF5dLU1Dq2E7xu8pwGSs
-    short-id: 428ef87fd47a3a32
-  servername: perevodchiki.su
-  client-fingerprint: firefox
-- name: 🇷🇺 俄罗斯 (Russia) 05 24557K 🇨🇳 - NEKO
-  server: fdat.titun.su
-  port: 443
-  udp: true
-  type: vless
-  uuid: 90157e25-cee1-4217-921e-91f300bc1a24
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: 1vSZjvhZO01oAEH3b7eebR1qF5dLU1Dq2E7xu8pwGSs
-    short-id: 428ef87fd47a3a32
-  servername: banket-restoran.su
-  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /vpnjantit
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇷🇺 俄罗斯 (Russia) 01 26473K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 02 38193K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 03 9212K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 04 2595K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 05 24557K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 01 28775K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 02 18899K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 03 13666K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 04 ⚠S4959K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇷🇺 俄罗斯 (Russia) 01 26473K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 02 38193K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 03 9212K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 04 2595K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 05 24557K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 01 28775K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 02 18899K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 03 13666K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 04 ⚠S4959K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

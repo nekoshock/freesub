@@ -4,7 +4,20 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇧🇾 白俄罗斯 (Belarus) 01 3849K ⚠L20% ⚠P - NEKO
+- name: 🇧🇾 白俄罗斯 (Belarus) 01 ⚠S4574K 🇨🇳 - NEKO
+  server: 78.140.253.25
+  port: 445
+  udp: true
+  type: vless
+  uuid: cdf4bc13-31e6-4bff-962c-05fe9151c593
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: Vi1Rr8Qf0-OeeXyHCt8Hsz1yRzVRkniPweoKl3Y6ohY
+    short-id: 15aa18f121da1f81
+  servername: bel.vrsvpn.com
+  client-fingerprint: firefox
+- name: 🇧🇾 白俄罗斯 (Belarus) 02 1900K ⚠P - NEKO
   server: 95.128.71.79
   port: 14430
   udp: true
@@ -18,12 +31,14 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇧🇾 白俄罗斯 (Belarus) 01 3849K ⚠L20% ⚠P - NEKO
+  - 🇧🇾 白俄罗斯 (Belarus) 01 ⚠S4574K 🇨🇳 - NEKO
+  - 🇧🇾 白俄罗斯 (Belarus) 02 1900K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇧🇾 白俄罗斯 (Belarus) 01 3849K ⚠L20% ⚠P - NEKO
+  - 🇧🇾 白俄罗斯 (Belarus) 01 ⚠S4574K 🇨🇳 - NEKO
+  - 🇧🇾 白俄罗斯 (Belarus) 02 1900K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

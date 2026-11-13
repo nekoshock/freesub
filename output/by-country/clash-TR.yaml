@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇹🇷 土耳其 (Turkey) 01 19459K 🇨🇳 - NEKO
+- name: 🇹🇷 土耳其 (Turkey) 01 16630K 🇨🇳 - NEKO
   server: 62.133.63.45
   port: 8444
   udp: true
@@ -15,11 +15,23 @@ proxies:
     public-key: FWitre1jinQR7qz5HQ0q2Q4Gg9xA9B0SyizCziN7Ch0
     short-id: 457fab2ac885dbe0
   servername: github.com
-  client-fingerprint: ios
+  client-fingerprint: firefox
   network: grpc
   grpc-opts:
     grpc-service-name: GunService
-- name: 🇹🇷 土耳其 (Turkey) 02 8536K 🇨🇳 - NEKO
+- name: 🇹🇷 土耳其 (Turkey) 02 4964K 🇨🇳 - NEKO
+  server: 45.92.219.47
+  port: 443
+  udp: true
+  type: vless
+  uuid: ecc0e60a-f2cc-4266-8353-b228df89730a
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: GBO_paFyK9FihgPMH8r_vHa4IKMkSGfvAQ2fhPK_1H4
+  servername: ty.galactichub.online
+  client-fingerprint: ios
+- name: 🇹🇷 土耳其 (Turkey) 03 22405K 🇨🇳 - NEKO
   server: 185.246.155.91
   port: 10103
   udp: true
@@ -32,7 +44,7 @@ proxies:
     short-id: 6859f5b59e55aa30
   servername: www.apple.com
   client-fingerprint: chrome
-- name: 🇹🇷 土耳其 (Turkey) 03 11723K 🇨🇳 - NEKO
+- name: 🇹🇷 土耳其 (Turkey) 04 9183K ⚠P - NEKO
   server: 151.241.226.201
   port: 2053
   udp: true
@@ -44,34 +56,23 @@ proxies:
     short-id: 9e419c0759b54d6f
   servername: www.apple.com
   client-fingerprint: firefox
-- name: 🇹🇷 土耳其 (Turkey) 04 13852K ⚠P - NEKO
-  server: game.celvixo.ir
-  port: 2087
-  udp: true
-  type: vless
-  uuid: 06590410-10cf-4352-1221-97f286886e4f
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: cp.xelzano.ir
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇹🇷 土耳其 (Turkey) 01 19459K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 02 8536K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 03 11723K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 04 13852K ⚠P - NEKO
+  - 🇹🇷 土耳其 (Turkey) 01 16630K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 02 4964K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 03 22405K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 04 9183K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇹🇷 土耳其 (Turkey) 01 19459K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 02 8536K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 03 11723K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 04 13852K ⚠P - NEKO
+  - 🇹🇷 土耳其 (Turkey) 01 16630K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 02 4964K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 03 22405K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 04 9183K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

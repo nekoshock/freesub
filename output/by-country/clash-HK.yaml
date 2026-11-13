@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇭🇰 中国香港 (Hong Kong) 01 ⚠S11915K ⚠P - NEKO
+- name: 🇭🇰 中国香港 (Hong Kong) 01 8325K ⚠P - NEKO
   server: 206.237.11.17
   port: 50376
   udp: true
@@ -12,27 +12,32 @@ proxies:
   uuid: 9091fd64-7e8e-4b7a-8ae7-84474f234926
   alterId: 0
   cipher: auto
-- name: 🇭🇰 中国香港 (Hong Kong) 02 6646K 🇨🇳 - NEKO
-  server: 112.120.123.140
-  port: 443
+- name: 🇭🇰 中国香港 (Hong Kong) 02 7730K 🇨🇳 - NEKO
+  server: 8.217.1.203
+  port: 8443
   udp: true
-  type: hysteria2
-  password: c11ff50c-f582-11ee-94df-f23c9164ca5d
-  sni: 11158b9a-tmm5c0-u3xqxa-1q91p.nw4.hyhuawei.com
-  skip-cert-verify: false
+  type: vless
+  uuid: 8b17beac-b143-447d-aa68-14cbb121a602
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: 74P0QFvaK6B13rHsxR_t0lqRlg4YLuORD4VaHr5Jd38
+    short-id: 0bf55f64
+  servername: www.apple.com
+  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇭🇰 中国香港 (Hong Kong) 01 ⚠S11915K ⚠P - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 6646K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 8325K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 7730K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇭🇰 中国香港 (Hong Kong) 01 ⚠S11915K ⚠P - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 6646K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 8325K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 7730K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

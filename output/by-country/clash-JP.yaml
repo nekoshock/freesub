@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇯🇵 日本 (Japan) 01 10814K 🇨🇳 - NEKO
+- name: 🇯🇵 日本 (Japan) 01 11257K 🇨🇳 - NEKO
   server: 103.75.118.228
   port: 11452
   udp: true
@@ -17,14 +17,7 @@ proxies:
     short-id: 48050fab
   servername: www.apple.com
   client-fingerprint: chrome
-- name: 🇯🇵 日本 (Japan) 02 ⚠S3377K ⚠P - NEKO
-  server: 168.138.205.100
-  port: 53758
-  udp: true
-  type: ss
-  cipher: aes-128-gcm
-  password: Bwlqh7GcFB
-- name: 🇯🇵 日本 (Japan) 03 3948K ⚠P - NEKO
+- name: 🇯🇵 日本 (Japan) 02 4127K 🇨🇳 - NEKO
   server: 168.110.45.41
   port: 23444
   udp: true
@@ -37,21 +30,28 @@ proxies:
     short-id: 119c9e68498f5900
   servername: www.microsoft.com
   client-fingerprint: firefox
+- name: 🇯🇵 日本 (Japan) 03 2287K ⚠P - NEKO
+  server: 168.138.205.100
+  port: 53758
+  udp: true
+  type: ss
+  cipher: aes-128-gcm
+  password: Bwlqh7GcFB
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇯🇵 日本 (Japan) 01 10814K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 02 ⚠S3377K ⚠P - NEKO
-  - 🇯🇵 日本 (Japan) 03 3948K ⚠P - NEKO
+  - 🇯🇵 日本 (Japan) 01 11257K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 02 4127K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 03 2287K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇯🇵 日本 (Japan) 01 10814K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 02 ⚠S3377K ⚠P - NEKO
-  - 🇯🇵 日本 (Japan) 03 3948K ⚠P - NEKO
+  - 🇯🇵 日本 (Japan) 01 11257K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 02 4127K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 03 2287K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

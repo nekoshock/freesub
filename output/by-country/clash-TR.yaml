@@ -4,19 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇹🇷 土耳其 (Turkey) 01 5733K 🇨🇳 - NEKO
-  server: 45.92.219.47
-  port: 443
-  udp: true
-  type: vless
-  uuid: ecc0e60a-f2cc-4266-8353-b228df89730a
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: GBO_paFyK9FihgPMH8r_vHa4IKMkSGfvAQ2fhPK_1H4
-  servername: ty.galactichub.online
-  client-fingerprint: ios
-- name: 🇹🇷 土耳其 (Turkey) 02 17024K 🇨🇳 - NEKO
+- name: 🇹🇷 土耳其 (Turkey) 01 8905K 🇨🇳 - NEKO
   server: 62.133.63.45
   port: 8444
   udp: true
@@ -27,11 +15,11 @@ proxies:
     public-key: FWitre1jinQR7qz5HQ0q2Q4Gg9xA9B0SyizCziN7Ch0
     short-id: 457fab2ac885dbe0
   servername: github.com
-  client-fingerprint: chrome
+  client-fingerprint: ios
   network: grpc
   grpc-opts:
     grpc-service-name: GunService
-- name: 🇹🇷 土耳其 (Turkey) 03 ⚠S11735K 🇨🇳 - NEKO
+- name: 🇹🇷 土耳其 (Turkey) 02 21475K 🇨🇳 - NEKO
   server: 185.246.155.91
   port: 10103
   udp: true
@@ -44,7 +32,14 @@ proxies:
     short-id: 6859f5b59e55aa30
   servername: www.apple.com
   client-fingerprint: chrome
-- name: 🇹🇷 土耳其 (Turkey) 04 8788K ⚠P - NEKO
+- name: 🇹🇷 土耳其 (Turkey) 03 6024K ⚠P - NEKO
+  server: 204.10.192.116
+  port: 38087
+  udp: true
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: H4t_jXTS75A45Y36m8snsCt2vFtPTr41
+- name: 🇹🇷 土耳其 (Turkey) 04 6770K ⚠P - NEKO
   server: 151.241.226.201
   port: 2053
   udp: true
@@ -61,18 +56,18 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇹🇷 土耳其 (Turkey) 01 5733K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 02 17024K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 03 ⚠S11735K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 04 8788K ⚠P - NEKO
+  - 🇹🇷 土耳其 (Turkey) 01 8905K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 02 21475K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 03 6024K ⚠P - NEKO
+  - 🇹🇷 土耳其 (Turkey) 04 6770K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇹🇷 土耳其 (Turkey) 01 5733K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 02 17024K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 03 ⚠S11735K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 04 8788K ⚠P - NEKO
+  - 🇹🇷 土耳其 (Turkey) 01 8905K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 02 21475K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 03 6024K ⚠P - NEKO
+  - 🇹🇷 土耳其 (Turkey) 04 6770K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

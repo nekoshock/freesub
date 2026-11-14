@@ -4,7 +4,22 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇷🇺 俄罗斯 (Russia) 01 35068K 🇨🇳 - NEKO
+- name: 🇷🇺 俄罗斯 (Russia) 01 15834K 🇨🇳 - NEKO
+  server: 193.228.128.230
+  port: 443
+  udp: true
+  type: vless
+  uuid: de404269-a97c-4f49-9efb-43509c2afa09
+  tls: true
+  reality-opts:
+    public-key: rS6r3PZQHZp31tnOmJAuCme4xJgsak_JsZ5hTPwpuiY
+    short-id: 8b8dd8a1c0c468d3
+  servername: ch.primarymaster.online
+  client-fingerprint: firefox
+  network: grpc
+  grpc-opts:
+    grpc-service-name: ''
+- name: 🇷🇺 俄罗斯 (Russia) 02 18437K 🇨🇳 - NEKO
   server: 200.102.183.57
   port: 80
   udp: true
@@ -13,11 +28,11 @@ proxies:
   tls: true
   servername: 68r2nrw6avta71yq.cdn.cachefleet.com
   skip-cert-verify: false
-  client-fingerprint: chrome
+  client-fingerprint: firefox
   network: grpc
   grpc-opts:
     grpc-service-name: qi8ws15c7jv5q2fa
-- name: 🇷🇺 俄罗斯 (Russia) 02 21247K 🇨🇳 - NEKO
+- name: 🇷🇺 俄罗斯 (Russia) 03 17607K 🇨🇳 - NEKO
   server: 200.102.183.50
   port: 443
   udp: true
@@ -30,34 +45,21 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: qi8ws15c7jv5q2fa
-- name: 🇷🇺 俄罗斯 (Russia) 03 14036K ⚠P - NEKO
-  server: 185.39.204.117
-  port: 10002
-  udp: true
-  type: vless
-  uuid: facb802c-de2e-11f1-9a22-a3404e852f3b
-  tls: true
-  servername: tr2.vpnjantit.com
-  skip-cert-verify: false
-  client-fingerprint: firefox
-  network: ws
-  ws-opts:
-    path: /vpnjantit
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇷🇺 俄罗斯 (Russia) 01 35068K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 02 21247K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 03 14036K ⚠P - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 01 15834K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 02 18437K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 03 17607K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇷🇺 俄罗斯 (Russia) 01 35068K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 02 21247K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 03 14036K ⚠P - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 01 15834K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 02 18437K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 03 17607K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

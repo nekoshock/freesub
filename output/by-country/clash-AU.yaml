@@ -4,20 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇦🇺 澳大利亚 (Australia) 01 333K 🇨🇳 - NEKO
-  server: 176.97.68.100
-  port: 443
-  udp: true
-  type: vless
-  uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: 7GvJVbR6BRhtrc8-rcZvB8qTFUF1LPeM_MmoZ04mBxo
-    short-id: 54cca3c1c1c7
-  servername: www.apple.com
-  client-fingerprint: ios
-- name: 🇦🇺 澳大利亚 (Australia) 02 7519K 🇨🇳 - NEKO
+- name: 🇦🇺 澳大利亚 (Australia) 01 7750K 🇨🇳 - NEKO
   server: 45.63.30.142
   port: 443
   udp: true
@@ -30,14 +17,12 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇦🇺 澳大利亚 (Australia) 01 333K 🇨🇳 - NEKO
-  - 🇦🇺 澳大利亚 (Australia) 02 7519K 🇨🇳 - NEKO
+  - 🇦🇺 澳大利亚 (Australia) 01 7750K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇦🇺 澳大利亚 (Australia) 01 333K 🇨🇳 - NEKO
-  - 🇦🇺 澳大利亚 (Australia) 02 7519K 🇨🇳 - NEKO
+  - 🇦🇺 澳大利亚 (Australia) 01 7750K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

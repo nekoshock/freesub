@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇫🇮 芬兰 (Finland) 01 12909K ⚠P⚠U - NEKO
+- name: 🇫🇮 芬兰 (Finland) 01 7721K ⚠P⚠U - NEKO
   server: 94.183.164.119
   port: 24433
   udp: true
@@ -12,35 +12,22 @@ proxies:
   password: 549766c3-fa5f-471e-8031-ffc1f8d5064f
   sni: lakes.blog-forme.ru
   skip-cert-verify: false
-- name: 🇫🇮 芬兰 (Finland) 02 13749K 🇨🇳 - NEKO
-  server: s19161.h1cloud.net
-  port: 25749
-  udp: true
-  type: vless
-  uuid: e460e79d-5dd9-451d-8d1a-a84c8b70c9a7
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: nmjOhfpVZtk9W-3GZk5JY0B-OvCFkjP2RvTVBNZO7lE
-    short-id: f6b3841eabafff9a
-  servername: 80aa2br.fi4.h1clayd.click
-  client-fingerprint: ''
-- name: 🇫🇮 芬兰 (Finland) 03 ⚠S46657K 🇨🇳 - NEKO
-  server: 5674-4.seenode.app
+- name: 🇫🇮 芬兰 (Finland) 02 1766K 🇨🇳 - NEKO
+  server: f0f0bet.fi2.h1clayd.click
   port: 443
   udp: true
   type: vless
-  uuid: 510e8bc2-020c-412a-9caa-b036031268e8
+  uuid: e569a7c2-d5ba-4b19-a04e-ab2e619c069a
   tls: true
-  servername: 5674-4.seenode.app
-  skip-cert-verify: false
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /api/v1/live
-    headers:
-      Host: 5674-4.seenode.app
-- name: 🇫🇮 芬兰 (Finland) 04 15077K ⚠P - NEKO
+  reality-opts:
+    public-key: _oCg5rCW6XTxriBPzbd_AX0os6QhenVYO9cbrsDSyRY
+    short-id: cf2a731a5f2dc451
+  servername: f0f0bet.fi2.h1clayd.click
+  client-fingerprint: edge
+  network: grpc
+  grpc-opts:
+    grpc-service-name: ''
+- name: 🇫🇮 芬兰 (Finland) 03 12129K ⚠P - NEKO
   server: 95.216.27.15
   port: 2053
   udp: true
@@ -57,18 +44,16 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇫🇮 芬兰 (Finland) 01 12909K ⚠P⚠U - NEKO
-  - 🇫🇮 芬兰 (Finland) 02 13749K 🇨🇳 - NEKO
-  - 🇫🇮 芬兰 (Finland) 03 ⚠S46657K 🇨🇳 - NEKO
-  - 🇫🇮 芬兰 (Finland) 04 15077K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 01 7721K ⚠P⚠U - NEKO
+  - 🇫🇮 芬兰 (Finland) 02 1766K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 03 12129K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇫🇮 芬兰 (Finland) 01 12909K ⚠P⚠U - NEKO
-  - 🇫🇮 芬兰 (Finland) 02 13749K 🇨🇳 - NEKO
-  - 🇫🇮 芬兰 (Finland) 03 ⚠S46657K 🇨🇳 - NEKO
-  - 🇫🇮 芬兰 (Finland) 04 15077K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 01 7721K ⚠P⚠U - NEKO
+  - 🇫🇮 芬兰 (Finland) 02 1766K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 03 12129K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

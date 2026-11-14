@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇿 捷克 (Czech) 01 14993K 🇨🇳 - NEKO
+- name: 🇨🇿 捷克 (Czech) 01 7113K 🇨🇳 - NEKO
   server: 212.102.38.25
   port: 443
   udp: true
@@ -16,8 +16,8 @@ proxies:
     public-key: 23cb4W9THzBKsrECsLh-A_FcKZfkAtUONoDze8-GnQE
     short-id: e90360ec7cc61b20
   servername: udemy.com
-  client-fingerprint: chrome
-- name: 🇨🇿 捷克 (Czech) 02 2426K 🇨🇳 - NEKO
+  client-fingerprint: ''
+- name: 🇨🇿 捷克 (Czech) 02 1486K 🇨🇳 - NEKO
   server: 153.52.69.249
   port: 443
   udp: true
@@ -29,20 +29,20 @@ proxies:
     public-key: WVfpQqoeOrTtCq052_IOxvMv7RCWfLlAOxEfsH1aa2U
     short-id: d5492c7a39515c65
   servername: cache-78.topp-con.xyz
-  client-fingerprint: chrome
+  client-fingerprint: firefox
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇨🇿 捷克 (Czech) 01 14993K 🇨🇳 - NEKO
-  - 🇨🇿 捷克 (Czech) 02 2426K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 01 7113K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 02 1486K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇿 捷克 (Czech) 01 14993K 🇨🇳 - NEKO
-  - 🇨🇿 捷克 (Czech) 02 2426K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 01 7113K 🇨🇳 - NEKO
+  - 🇨🇿 捷克 (Czech) 02 1486K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

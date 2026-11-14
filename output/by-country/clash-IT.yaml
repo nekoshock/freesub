@@ -4,14 +4,41 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇮🇹 意大利 (Italy) 01 15370K ⚠P - NEKO
+- name: 🇮🇹 意大利 (Italy) 01 7643K 🇨🇳 - NEKO
+  server: 82.118.16.189
+  port: 443
+  udp: true
+  type: vless
+  uuid: 29f178f7-f96f-46ba-8fc0-bbcd690ba788
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: zmo2VkZkfjh2kWjaRghXUs39ImQo87LmPhjvzbX3yB4
+    short-id: 1e9a49dd374c1191
+  servername: www.cloudflare.com
+  client-fingerprint: firefox
+- name: 🇮🇹 意大利 (Italy) 02 217K ⚠P - NEKO
   server: 202.50.253.45
   port: 19999
   udp: true
   type: ss
   cipher: aes-256-gcm
   password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇮🇹 意大利 (Italy) 02 ⚠S5891K 🇨🇳 - NEKO
+- name: 🇮🇹 意大利 (Italy) 03 737K ⚠P - NEKO
+  server: 202.50.253.54
+  port: 19999
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇮🇹 意大利 (Italy) 04 5665K ⚠P - NEKO
+  server: 185.164.175.81
+  port: 19999
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇮🇹 意大利 (Italy) 05 8675K ⚠P - NEKO
   server: 172.213.24.16
   port: 2083
   udp: true
@@ -24,35 +51,14 @@ proxies:
     short-id: 0123456789abcdef
   servername: www.apple.com
   client-fingerprint: chrome
-- name: 🇮🇹 意大利 (Italy) 03 490K ⚠P - NEKO
-  server: 202.50.253.54
-  port: 19999
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇮🇹 意大利 (Italy) 04 10789K ⚠P - NEKO
+- name: 🇮🇹 意大利 (Italy) 06 5602K ⚠P - NEKO
   server: 202.50.253.18
   port: 19999
   udp: true
   type: ss
   cipher: aes-256-gcm
   password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇮🇹 意大利 (Italy) 05 14153K ⚠P - NEKO
-  server: 202.50.253.36
-  port: 19999
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇮🇹 意大利 (Italy) 06 14090K ⚠P - NEKO
-  server: 185.164.175.81
-  port: 19999
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇮🇹 意大利 (Italy) 07 14422K ⚠P - NEKO
+- name: 🇮🇹 意大利 (Italy) 07 3326K ⚠P - NEKO
   server: 202.50.253.81
   port: 19999
   udp: true
@@ -64,24 +70,24 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇮🇹 意大利 (Italy) 01 15370K ⚠P - NEKO
-  - 🇮🇹 意大利 (Italy) 02 ⚠S5891K 🇨🇳 - NEKO
-  - 🇮🇹 意大利 (Italy) 03 490K ⚠P - NEKO
-  - 🇮🇹 意大利 (Italy) 04 10789K ⚠P - NEKO
-  - 🇮🇹 意大利 (Italy) 05 14153K ⚠P - NEKO
-  - 🇮🇹 意大利 (Italy) 06 14090K ⚠P - NEKO
-  - 🇮🇹 意大利 (Italy) 07 14422K ⚠P - NEKO
+  - 🇮🇹 意大利 (Italy) 01 7643K 🇨🇳 - NEKO
+  - 🇮🇹 意大利 (Italy) 02 217K ⚠P - NEKO
+  - 🇮🇹 意大利 (Italy) 03 737K ⚠P - NEKO
+  - 🇮🇹 意大利 (Italy) 04 5665K ⚠P - NEKO
+  - 🇮🇹 意大利 (Italy) 05 8675K ⚠P - NEKO
+  - 🇮🇹 意大利 (Italy) 06 5602K ⚠P - NEKO
+  - 🇮🇹 意大利 (Italy) 07 3326K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇮🇹 意大利 (Italy) 01 15370K ⚠P - NEKO
-  - 🇮🇹 意大利 (Italy) 02 ⚠S5891K 🇨🇳 - NEKO
-  - 🇮🇹 意大利 (Italy) 03 490K ⚠P - NEKO
-  - 🇮🇹 意大利 (Italy) 04 10789K ⚠P - NEKO
-  - 🇮🇹 意大利 (Italy) 05 14153K ⚠P - NEKO
-  - 🇮🇹 意大利 (Italy) 06 14090K ⚠P - NEKO
-  - 🇮🇹 意大利 (Italy) 07 14422K ⚠P - NEKO
+  - 🇮🇹 意大利 (Italy) 01 7643K 🇨🇳 - NEKO
+  - 🇮🇹 意大利 (Italy) 02 217K ⚠P - NEKO
+  - 🇮🇹 意大利 (Italy) 03 737K ⚠P - NEKO
+  - 🇮🇹 意大利 (Italy) 04 5665K ⚠P - NEKO
+  - 🇮🇹 意大利 (Italy) 05 8675K ⚠P - NEKO
+  - 🇮🇹 意大利 (Italy) 06 5602K ⚠P - NEKO
+  - 🇮🇹 意大利 (Italy) 07 3326K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

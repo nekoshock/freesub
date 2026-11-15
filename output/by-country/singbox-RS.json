@@ -5,7 +5,7 @@
   "outbounds": [
     {
       "type": "hysteria2",
-      "tag": "🇷🇸 塞尔维亚 (Serbia) 01 16360K 🇨🇳 - NEKO",
+      "tag": "🇷🇸 塞尔维亚 (Serbia) 01 6682K 🇨🇳 - NEKO",
       "server": "130.49.163.188",
       "server_port": 443,
       "password": "307ee0e53ea04dfd86a7f2f9fcd53844",
@@ -17,14 +17,22 @@
     },
     {
       "type": "trojan",
-      "tag": "🇷🇸 塞尔维亚 (Serbia) 02 23568K ⚠P - NEKO",
+      "tag": "🇷🇸 塞尔维亚 (Serbia) 02 9154K ⚠P - NEKO",
       "server": "38.180.101.235",
       "server_port": 5443,
       "password": "X00HagvwL8gQXNDAnsxsN8dv1_VdneEo",
       "tls": {
         "enabled": true,
         "server_name": "rs.nebulaguard.org",
-        "insecure": false
+        "insecure": false,
+        "alpn": [
+          "h2",
+          "http/1.1"
+        ],
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
       }
     },
     {
@@ -32,16 +40,16 @@
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇷🇸 塞尔维亚 (Serbia) 01 16360K 🇨🇳 - NEKO",
-        "🇷🇸 塞尔维亚 (Serbia) 02 23568K ⚠P - NEKO"
+        "🇷🇸 塞尔维亚 (Serbia) 01 6682K 🇨🇳 - NEKO",
+        "🇷🇸 塞尔维亚 (Serbia) 02 9154K ⚠P - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇷🇸 塞尔维亚 (Serbia) 01 16360K 🇨🇳 - NEKO",
-        "🇷🇸 塞尔维亚 (Serbia) 02 23568K ⚠P - NEKO"
+        "🇷🇸 塞尔维亚 (Serbia) 01 6682K 🇨🇳 - NEKO",
+        "🇷🇸 塞尔维亚 (Serbia) 02 9154K ⚠P - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

@@ -4,16 +4,8 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇧🇷 巴西 (Brazil) 01 18795K 🇨🇳 - NEKO
-  server: 216.238.104.154
-  port: 443
-  udp: true
-  type: trojan
-  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  sni: findtemporaryworkandfreelancerprojectsonlineplatform.com
-  skip-cert-verify: false
-- name: 🇧🇷 巴西 (Brazil) 02 13509K ⚠P - NEKO
-  server: 103.88.232.55
+- name: 🇧🇷 巴西 (Brazil) 01 7120K ⚠P - NEKO
+  server: 103.14.27.207
   port: 1270
   udp: true
   type: vmess
@@ -23,8 +15,8 @@ proxies:
   tls: true
   servername: xmfhlpy.com
   skip-cert-verify: false
-- name: 🇧🇷 巴西 (Brazil) 03 18977K ⚠P - NEKO
-  server: 103.14.27.207
+- name: 🇧🇷 巴西 (Brazil) 02 7548K ⚠P - NEKO
+  server: 103.88.232.55
   port: 1270
   udp: true
   type: vmess
@@ -39,16 +31,14 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇧🇷 巴西 (Brazil) 01 18795K 🇨🇳 - NEKO
-  - 🇧🇷 巴西 (Brazil) 02 13509K ⚠P - NEKO
-  - 🇧🇷 巴西 (Brazil) 03 18977K ⚠P - NEKO
+  - 🇧🇷 巴西 (Brazil) 01 7120K ⚠P - NEKO
+  - 🇧🇷 巴西 (Brazil) 02 7548K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇧🇷 巴西 (Brazil) 01 18795K 🇨🇳 - NEKO
-  - 🇧🇷 巴西 (Brazil) 02 13509K ⚠P - NEKO
-  - 🇧🇷 巴西 (Brazil) 03 18977K ⚠P - NEKO
+  - 🇧🇷 巴西 (Brazil) 01 7120K ⚠P - NEKO
+  - 🇧🇷 巴西 (Brazil) 02 7548K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

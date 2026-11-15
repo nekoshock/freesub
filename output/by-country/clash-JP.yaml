@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇯🇵 日本 (Japan) 01 10084K 🇨🇳 - NEKO
+- name: 🇯🇵 日本 (Japan) 01 10965K 🇨🇳 - NEKO
   server: 31.76.91.98
   port: 443
   udp: true
@@ -17,22 +17,23 @@ proxies:
     short-id: bd6f67b6b2152b45
   servername: fuji.etherhub.cc
   client-fingerprint: chrome
-- name: 🇯🇵 日本 (Japan) 02 1671K ⚠P - NEKO
-  server: 168.138.205.100
-  port: 53758
+- name: 🇯🇵 日本 (Japan) 02 2355K 🇨🇳 - NEKO
+  server: JP032010.ssgreen.org
+  port: 443
   udp: true
-  type: ss
-  cipher: aes-128-gcm
-  password: Bwlqh7GcFB
-- name: 🇯🇵 日本 (Japan) 03 ⚠S475K ⚠P⚠U⚠B - NEKO
-  server: 43.130.234.128
-  port: 8443
-  udp: true
-  type: hysteria2
-  password: Yuike2026cat
-  sni: 43-130-234-128.sslip.io
+  type: vmess
+  uuid: 02992bef-5d91-4175-9d2e-233f5c17151f
+  alterId: 0
+  cipher: auto
+  tls: true
+  servername: JP032010.ssgreen.org
   skip-cert-verify: false
-- name: 🇯🇵 日本 (Japan) 04 9228K 🇨🇳 - NEKO
+  network: ws
+  ws-opts:
+    path: /wes
+    headers:
+      Host: JP032010.ssgreen.org
+- name: 🇯🇵 日本 (Japan) 03 17919K 🇨🇳 - NEKO
   server: 103.75.118.228
   port: 11452
   udp: true
@@ -45,7 +46,72 @@ proxies:
     short-id: 48050fab
   servername: www.apple.com
   client-fingerprint: chrome
-- name: 🇯🇵 日本 (Japan) 05 9000K ⚠P - NEKO
+- name: 🇯🇵 日本 (Japan) 04 ⚠S1006K ⚠P - NEKO
+  server: 168.138.205.100
+  port: 53758
+  udp: true
+  type: ss
+  cipher: aes-128-gcm
+  password: Bwlqh7GcFB
+- name: 🇯🇵 日本 (Japan) 05 2909K 🇨🇳 - NEKO
+  server: JP032006.ssgreen.org
+  port: 443
+  udp: true
+  type: vmess
+  uuid: 62523ee3-f3a4-4cf3-8e86-31ba2f114fc5
+  alterId: 0
+  cipher: auto
+  tls: true
+  servername: JP032006.ssgreen.org
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /wes
+    headers:
+      Host: JP032006.ssgreen.org
+- name: 🇯🇵 日本 (Japan) 06 ⚠S7275K 🇨🇳 - NEKO
+  server: JP032011.ssgreen.org
+  port: 443
+  udp: true
+  type: vmess
+  uuid: c6489f2c-a0cc-40d7-9328-469c943ba360
+  alterId: 0
+  cipher: auto
+  tls: true
+  servername: JP032011.ssgreen.org
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /wes
+    headers:
+      Host: JP032011.ssgreen.org
+- name: 🇯🇵 日本 (Japan) 07 21600K ⚠P - NEKO
+  server: 168.110.63.247
+  port: 8081
+  udp: true
+  type: vmess
+  uuid: c3bde296-8e44-4b8c-a325-577d5b3cc7c8
+  alterId: 0
+  cipher: auto
+  network: ws
+  ws-opts:
+    path: /vless
+- name: 🇯🇵 日本 (Japan) 08 20043K ⚠P - NEKO
+  server: 154.31.112.237
+  port: 26418
+  udp: true
+  type: vless
+  uuid: 4a98013d-7ccb-477b-b613-39a3cff12144
+  tls: true
+  servername: o-85ley6knn8ut.6nvkygqh144t7xtdyvh0y3o4gzo3ujhnk8n.workers.dev
+  skip-cert-verify: false
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /@Marisa_kristi
+    headers:
+      Host: o-85ley6knn8ut.6nvkygqh144t7xtdyvh0y3o4gzo3ujhnk8n.workers.dev
+- name: 🇯🇵 日本 (Japan) 09 9002K ⚠P - NEKO
   server: 155.248.175.201
   port: 23169
   udp: true
@@ -56,76 +122,33 @@ proxies:
   servername: djj.zjlo.top
   skip-cert-verify: false
   client-fingerprint: firefox
-- name: 🇯🇵 日本 (Japan) 06 9316K ⚠P - NEKO
-  server: 107.191.53.86
-  port: 4798
-  udp: true
-  type: vless
-  uuid: d179de72-acc9-4a72-836e-d0632a78fde7
-  tls: true
-  servername: 5iv93opy8jus9z.bjo5si35c9i9ud4242fado49188obkoiermjuxj7zgxu.workers.dev
-  skip-cert-verify: false
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /@Marisa_kristi
-    headers:
-      Host: 5iv93opy8jus9z.bjo5si35c9i9ud4242fado49188obkoiermjuxj7zgxu.workers.dev
-- name: 🇯🇵 日本 (Japan) 07 6505K ⚠P - NEKO
-  server: 107.191.53.86
-  port: 4798
-  udp: true
-  type: vless
-  uuid: 07a5f594-cd6c-4e96-abed-a0a39cbbfa9f
-  tls: true
-  servername: bapj1qapjk4.0sds0li1bwcz0i76it0gjxv1.workers.dev
-  skip-cert-verify: false
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /@Marisa_kristi
-    headers:
-      Host: bapj1qapjk4.0sds0li1bwcz0i76it0gjxv1.workers.dev
-- name: 🇯🇵 日本 (Japan) 08 8814K ⚠P - NEKO
-  server: 154.31.112.237
-  port: 26418
-  udp: true
-  type: vless
-  uuid: 6e2d24ab-a0c7-4913-88f3-34d4ef83adc2
-  tls: true
-  servername: bapj1qapjk4.0sds0li1bwcz0i76it0gjxv1.workers.dev
-  skip-cert-verify: false
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /@Marisa_kristi
-    headers:
-      Host: bapj1qapjk4.0sds0li1bwcz0i76it0gjxv1.workers.dev
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇯🇵 日本 (Japan) 01 10084K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 02 1671K ⚠P - NEKO
-  - 🇯🇵 日本 (Japan) 03 ⚠S475K ⚠P⚠U⚠B - NEKO
-  - 🇯🇵 日本 (Japan) 04 9228K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 05 9000K ⚠P - NEKO
-  - 🇯🇵 日本 (Japan) 06 9316K ⚠P - NEKO
-  - 🇯🇵 日本 (Japan) 07 6505K ⚠P - NEKO
-  - 🇯🇵 日本 (Japan) 08 8814K ⚠P - NEKO
+  - 🇯🇵 日本 (Japan) 01 10965K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 02 2355K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 03 17919K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 04 ⚠S1006K ⚠P - NEKO
+  - 🇯🇵 日本 (Japan) 05 2909K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 06 ⚠S7275K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 07 21600K ⚠P - NEKO
+  - 🇯🇵 日本 (Japan) 08 20043K ⚠P - NEKO
+  - 🇯🇵 日本 (Japan) 09 9002K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇯🇵 日本 (Japan) 01 10084K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 02 1671K ⚠P - NEKO
-  - 🇯🇵 日本 (Japan) 03 ⚠S475K ⚠P⚠U⚠B - NEKO
-  - 🇯🇵 日本 (Japan) 04 9228K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 05 9000K ⚠P - NEKO
-  - 🇯🇵 日本 (Japan) 06 9316K ⚠P - NEKO
-  - 🇯🇵 日本 (Japan) 07 6505K ⚠P - NEKO
-  - 🇯🇵 日本 (Japan) 08 8814K ⚠P - NEKO
+  - 🇯🇵 日本 (Japan) 01 10965K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 02 2355K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 03 17919K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 04 ⚠S1006K ⚠P - NEKO
+  - 🇯🇵 日本 (Japan) 05 2909K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 06 ⚠S7275K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 07 21600K ⚠P - NEKO
+  - 🇯🇵 日本 (Japan) 08 20043K ⚠P - NEKO
+  - 🇯🇵 日本 (Japan) 09 9002K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

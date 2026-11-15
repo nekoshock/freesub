@@ -4,7 +4,17 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇷🇴 罗马尼亚 (Romania) 01 6538K 🇨🇳 - NEKO
+- name: 🇷🇴 罗马尼亚 (Romania) 01 14684K 🇨🇳 - NEKO
+  server: hy2-new.aspidnet.xyz
+  port: 443
+  udp: true
+  type: hysteria2
+  password: QCgqi_I4EkV8UR-OgQ_tG4EnVTEVvIyR2GgRBzrIn2s
+  sni: hy2-new.aspidnet.xyz
+  skip-cert-verify: false
+  obfs: salamander
+  obfs-password: c1b4086fea89914496c7e10967a419216566
+- name: 🇷🇴 罗马尼亚 (Romania) 02 ⚠S8501K 🇨🇳 - NEKO
   server: 162.249.125.133
   port: 443
   udp: true
@@ -19,12 +29,14 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇷🇴 罗马尼亚 (Romania) 01 6538K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 01 14684K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 02 ⚠S8501K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇷🇴 罗马尼亚 (Romania) 01 6538K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 01 14684K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 02 ⚠S8501K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

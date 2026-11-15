@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇷🇸 塞尔维亚 (Serbia) 01 6629K 🇨🇳 - NEKO
+- name: 🇷🇸 塞尔维亚 (Serbia) 01 16360K 🇨🇳 - NEKO
   server: 130.49.163.188
   port: 443
   udp: true
@@ -12,17 +12,27 @@ proxies:
   password: 307ee0e53ea04dfd86a7f2f9fcd53844
   sni: s5.libertyrunet.store
   skip-cert-verify: false
+- name: 🇷🇸 塞尔维亚 (Serbia) 02 23568K ⚠P - NEKO
+  server: 38.180.101.235
+  port: 5443
+  udp: true
+  type: trojan
+  password: X00HagvwL8gQXNDAnsxsN8dv1_VdneEo
+  sni: rs.nebulaguard.org
+  skip-cert-verify: false
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇷🇸 塞尔维亚 (Serbia) 01 6629K 🇨🇳 - NEKO
+  - 🇷🇸 塞尔维亚 (Serbia) 01 16360K 🇨🇳 - NEKO
+  - 🇷🇸 塞尔维亚 (Serbia) 02 23568K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇷🇸 塞尔维亚 (Serbia) 01 6629K 🇨🇳 - NEKO
+  - 🇷🇸 塞尔维亚 (Serbia) 01 16360K 🇨🇳 - NEKO
+  - 🇷🇸 塞尔维亚 (Serbia) 02 23568K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

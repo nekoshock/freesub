@@ -4,14 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇵🇱 波兰 (Poland) 01 7977K ⚠P - NEKO
-  server: 217.30.10.70
-  port: 9008
-  udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: y9VURyNzJWNRYEGQ
-- name: 🇵🇱 波兰 (Poland) 02 10039K 🇨🇳 - NEKO
+- name: 🇵🇱 波兰 (Poland) 01 27653K 🇨🇳 - NEKO
   server: 201.58.189.105
   port: 2083
   udp: true
@@ -26,28 +19,44 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: google.storage.v2.Storage
-- name: 🇵🇱 波兰 (Poland) 03 8867K ⚠P - NEKO
+- name: 🇵🇱 波兰 (Poland) 02 5881K ⚠P - NEKO
+  server: 217.30.10.70
+  port: 9020
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: BNmAXXxAHYpTRdzu
+- name: 🇵🇱 波兰 (Poland) 03 8654K ⚠P - NEKO
   server: 217.30.10.44
   port: 9062
   udp: true
   type: ss
   cipher: aes-256-cfb
   password: tkhHVxxfM2QErBWe
+- name: 🇵🇱 波兰 (Poland) 04 4702K ⚠P - NEKO
+  server: 217.30.10.70
+  port: 9008
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: y9VURyNzJWNRYEGQ
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇵🇱 波兰 (Poland) 01 7977K ⚠P - NEKO
-  - 🇵🇱 波兰 (Poland) 02 10039K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 03 8867K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 01 27653K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 02 5881K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 03 8654K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 04 4702K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇵🇱 波兰 (Poland) 01 7977K ⚠P - NEKO
-  - 🇵🇱 波兰 (Poland) 02 10039K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 03 8867K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 01 27653K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 02 5881K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 03 8654K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 04 4702K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

@@ -4,7 +4,22 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇭🇺 匈牙利 (Hungary) 01 7130K 🇨🇳 - NEKO
+- name: 🇭🇺 匈牙利 (Hungary) 01 ⚠S8021K 🇨🇳 - NEKO
+  server: 212.41.8.76
+  port: 11443
+  udp: true
+  type: vless
+  uuid: a628c583-24a8-4ce5-98ad-c6458abf1cc4
+  tls: true
+  reality-opts:
+    public-key: LR_FEXsJiKJUtXcmO1UR4Oi2IMmRcaS04D05oooqn28
+    short-id: 9edc24fc
+  servername: s3.storage.selcloud.ru
+  client-fingerprint: safari
+  network: grpc
+  grpc-opts:
+    grpc-service-name: cas-hu
+- name: 🇭🇺 匈牙利 (Hungary) 02 ⚠S1324K 🇨🇳 - NEKO
   server: 212.41.8.76
   port: 11443
   udp: true
@@ -24,12 +39,14 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇭🇺 匈牙利 (Hungary) 01 7130K 🇨🇳 - NEKO
+  - 🇭🇺 匈牙利 (Hungary) 01 ⚠S8021K 🇨🇳 - NEKO
+  - 🇭🇺 匈牙利 (Hungary) 02 ⚠S1324K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇭🇺 匈牙利 (Hungary) 01 7130K 🇨🇳 - NEKO
+  - 🇭🇺 匈牙利 (Hungary) 01 ⚠S8021K 🇨🇳 - NEKO
+  - 🇭🇺 匈牙利 (Hungary) 02 ⚠S1324K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

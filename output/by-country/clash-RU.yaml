@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇷🇺 俄罗斯 (Russia) 01 11076K 🇨🇳 - NEKO
+- name: 🇷🇺 俄罗斯 (Russia) 01 8737K 🇨🇳 - NEKO
   server: 147.45.47.101
   port: 8443
   udp: true
@@ -17,20 +17,7 @@ proxies:
     short-id: 6ba85179e30d4fc2
   servername: apple.com
   client-fingerprint: firefox
-- name: 🇷🇺 俄罗斯 (Russia) 02 5572K 🇨🇳 - NEKO
-  server: vps3.nemnogogo.com
-  port: 443
-  udp: true
-  type: vless
-  uuid: 38308ff1-5aa9-494f-a25a-0f2870d56b3e
-  tls: true
-  servername: vps3.nemnogogo.com
-  skip-cert-verify: false
-  client-fingerprint: edge
-  network: grpc
-  grpc-opts:
-    grpc-service-name: mobile.api.Event
-- name: 🇷🇺 俄罗斯 (Russia) 03 7656K ⚠L20% 🇨🇳 - NEKO
+- name: 🇷🇺 俄罗斯 (Russia) 02 15705K 🇨🇳 - NEKO
   server: 212.41.8.76
   port: 13443
   udp: true
@@ -50,16 +37,14 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇷🇺 俄罗斯 (Russia) 01 11076K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 02 5572K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 03 7656K ⚠L20% 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 01 8737K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 02 15705K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇷🇺 俄罗斯 (Russia) 01 11076K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 02 5572K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 03 7656K ⚠L20% 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 01 8737K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 02 15705K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

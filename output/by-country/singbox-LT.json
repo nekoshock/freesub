@@ -4,36 +4,62 @@
   },
   "outbounds": [
     {
-      "type": "shadowsocks",
-      "tag": "🇱🇹 立陶宛 (Lithuania) 01 7855K ⚠P - NEKO",
-      "server": "195.238.126.20",
-      "server_port": 9001,
-      "method": "aes-256-cfb",
-      "password": "UkXRsXvR6buDMG2Y"
+      "type": "vless",
+      "tag": "🇱🇹 立陶宛 (Lithuania) 01 9208K 🇨🇳 - NEKO",
+      "server": "84.32.149.222",
+      "server_port": 443,
+      "uuid": "49db4ce7-ad48-41a3-9b6f-4c6dabd94504",
+      "tls": {
+        "enabled": true,
+        "server_name": "folio.willowfen.top",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "kZZd7-Pzutoww6ZOnQQwvanbxDbixSAVH5FvEfAXBls",
+          "short_id": "2c25ffa1927ebf0f"
+        }
+      },
+      "transport": {
+        "type": "grpc",
+        "service_name": "grpc"
+      }
     },
     {
       "type": "shadowsocks",
-      "tag": "🇱🇹 立陶宛 (Lithuania) 02 5830K ⚠P - NEKO",
+      "tag": "🇱🇹 立陶宛 (Lithuania) 02 7717K ⚠P - NEKO",
       "server": "195.238.126.20",
       "server_port": 9012,
       "method": "aes-256-cfb",
       "password": "xaupMUvhptwxdDUg"
     },
     {
+      "type": "shadowsocks",
+      "tag": "🇱🇹 立陶宛 (Lithuania) 03 7521K ⚠P - NEKO",
+      "server": "195.238.126.20",
+      "server_port": 9001,
+      "method": "aes-256-cfb",
+      "password": "UkXRsXvR6buDMG2Y"
+    },
+    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇱🇹 立陶宛 (Lithuania) 01 7855K ⚠P - NEKO",
-        "🇱🇹 立陶宛 (Lithuania) 02 5830K ⚠P - NEKO"
+        "🇱🇹 立陶宛 (Lithuania) 01 9208K 🇨🇳 - NEKO",
+        "🇱🇹 立陶宛 (Lithuania) 02 7717K ⚠P - NEKO",
+        "🇱🇹 立陶宛 (Lithuania) 03 7521K ⚠P - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇱🇹 立陶宛 (Lithuania) 01 7855K ⚠P - NEKO",
-        "🇱🇹 立陶宛 (Lithuania) 02 5830K ⚠P - NEKO"
+        "🇱🇹 立陶宛 (Lithuania) 01 9208K 🇨🇳 - NEKO",
+        "🇱🇹 立陶宛 (Lithuania) 02 7717K ⚠P - NEKO",
+        "🇱🇹 立陶宛 (Lithuania) 03 7521K ⚠P - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇭🇺 匈牙利 (Hungary) 01 8963K 🇨🇳 - NEKO
+- name: 🇭🇺 匈牙利 (Hungary) 01 742K 🇨🇳 - NEKO
   server: 212.41.8.76
   port: 11443
   udp: true
@@ -19,7 +19,7 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: cas-hu
-- name: 🇭🇺 匈牙利 (Hungary) 02 8877K 🇨🇳 - NEKO
+- name: 🇭🇺 匈牙利 (Hungary) 02 7561K 🇨🇳 - NEKO
   server: 212.41.8.76
   port: 11443
   udp: true
@@ -39,14 +39,14 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇭🇺 匈牙利 (Hungary) 01 8963K 🇨🇳 - NEKO
-  - 🇭🇺 匈牙利 (Hungary) 02 8877K 🇨🇳 - NEKO
+  - 🇭🇺 匈牙利 (Hungary) 01 742K 🇨🇳 - NEKO
+  - 🇭🇺 匈牙利 (Hungary) 02 7561K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇭🇺 匈牙利 (Hungary) 01 8963K 🇨🇳 - NEKO
-  - 🇭🇺 匈牙利 (Hungary) 02 8877K 🇨🇳 - NEKO
+  - 🇭🇺 匈牙利 (Hungary) 01 742K 🇨🇳 - NEKO
+  - 🇭🇺 匈牙利 (Hungary) 02 7561K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

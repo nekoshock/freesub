@@ -4,7 +4,20 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇭🇰 中国香港 (Hong Kong) 01 11065K 🇨🇳 - NEKO
+- name: 🇭🇰 中国香港 (Hong Kong) 01 11172K 🇨🇳 - NEKO
+  server: 140.235.36.221
+  port: 443
+  udp: true
+  type: vless
+  uuid: 8197b9b9-8945-460f-99c9-325ef8a8a7c3
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: 9hl6jLaUS7QJtOnrsN_9I43CNV08Fr1mcHN8uTteeHQ
+    short-id: 2a2d17fb
+  servername: hk1.gofizz.in
+  client-fingerprint: edge
+- name: 🇭🇰 中国香港 (Hong Kong) 02 12582K 🇨🇳 - NEKO
   server: 2.26.204.46
   port: 31001
   udp: true
@@ -17,7 +30,7 @@ proxies:
     short-id: 39793bc4708abbbb
   servername: mensura.cdn-apple.com
   client-fingerprint: chrome
-- name: 🇭🇰 中国香港 (Hong Kong) 02 805K 🇨🇳 - NEKO
+- name: 🇭🇰 中国香港 (Hong Kong) 03 798K ⚠P - NEKO
   server: 91.213.186.45
   port: 46986
   udp: true
@@ -28,20 +41,22 @@ proxies:
   reality-opts:
     public-key: 5Uk63lFOn1Z3gmImXWrXbvQ0b9gXTOiY_VWuI898Vmk
   servername: www.paypal.com
-  client-fingerprint: chrome
+  client-fingerprint: firefox
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇭🇰 中国香港 (Hong Kong) 01 11065K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 805K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 11172K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 12582K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 03 798K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇭🇰 中国香港 (Hong Kong) 01 11065K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 805K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 11172K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 12582K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 03 798K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

@@ -4,41 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇵🇱 波兰 (Poland) 01 450K 🇨🇳 - NEKO
-  server: d4a338t.pl8.h1clayd.click
-  port: 443
-  udp: true
-  type: vless
-  uuid: 2208b003-78b1-453c-b5ca-ce847ff0efd6
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: 0dAUffCns_r-xP3QP1V8qy2P29vBN5ROOoX96TxpvXA
-    short-id: b545243c33282b73
-  servername: d4a338t.pl8.h1clayd.click
-  client-fingerprint: firefox
-- name: 🇵🇱 波兰 (Poland) 02 9993K ⚠P - NEKO
-  server: 217.30.10.44
-  port: 9062
-  udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: tkhHVxxfM2QErBWe
-- name: 🇵🇱 波兰 (Poland) 03 8864K ⚠P - NEKO
-  server: 217.30.10.70
-  port: 9020
-  udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: BNmAXXxAHYpTRdzu
-- name: 🇵🇱 波兰 (Poland) 04 9938K ⚠P - NEKO
-  server: 217.30.10.70
-  port: 9093
-  udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: wfLC2y7rzZyCmuyt
-- name: 🇵🇱 波兰 (Poland) 05 10676K 🇨🇳 - NEKO
+- name: 🇵🇱 波兰 (Poland) 01 8811K 🇨🇳 - NEKO
   server: 201.58.189.105
   port: 2083
   udp: true
@@ -53,39 +19,74 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: google.storage.v2.Storage
-- name: 🇵🇱 波兰 (Poland) 06 8052K 🇨🇳 - NEKO
-  server: d58daft.plp1.h1cloud.net
+- name: 🇵🇱 波兰 (Poland) 02 5193K ⚠P - NEKO
+  server: 217.30.10.44
+  port: 9062
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: tkhHVxxfM2QErBWe
+- name: 🇵🇱 波兰 (Poland) 03 537K ⚠P - NEKO
+  server: 217.30.10.70
+  port: 9084
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: c3NtHJ5ujV2tGDfj
+- name: 🇵🇱 波兰 (Poland) 04 531K ⚠P - NEKO
+  server: 217.30.10.70
+  port: 9014
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: KnJGad3FqTvjqbaX
+- name: 🇵🇱 波兰 (Poland) 05 9485K 🇨🇳 - NEKO
+  server: 45.194.66.177
   port: 443
   udp: true
   type: vless
-  uuid: bda6e235-c778-4e57-bfcd-5a9026fec8c9
+  uuid: 352a250d-080b-47b5-b7db-f9f8fa31c551
+  flow: xtls-rprx-vision
+  tls: true
+  servername: 31tawwo0.virtual-network.lol
+  skip-cert-verify: false
+  client-fingerprint: firefox
+- name: 🇵🇱 波兰 (Poland) 06 ⚠S440K 🇨🇳 - NEKO
+  server: 13.143.232.205
+  port: 443
+  udp: true
+  type: vless
+  uuid: 2208b003-78b1-453c-b5ca-ce847ff0efd6
   tls: true
   reality-opts:
-    public-key: ixnCbdlT5sAVd-ilp2nG11CvnNsBCf9xPD56TlXxlR4
-    short-id: a91531ad58c8611c
-  servername: d58daft.plp1.h1cloud.net
-  client-fingerprint: chrome
+    public-key: ms5yeTlBCbAEEeWIbn_bV72Q9SQfpcJz6_VqNgF7ABY
+    short-id: 43a5ba8f49a5e91a
+  servername: 557e58g.pl8.h1clayd.click
+  client-fingerprint: firefox
+  network: grpc
+  grpc-opts:
+    grpc-service-name: ''
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇵🇱 波兰 (Poland) 01 450K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 02 9993K ⚠P - NEKO
-  - 🇵🇱 波兰 (Poland) 03 8864K ⚠P - NEKO
-  - 🇵🇱 波兰 (Poland) 04 9938K ⚠P - NEKO
-  - 🇵🇱 波兰 (Poland) 05 10676K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 06 8052K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 01 8811K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 02 5193K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 03 537K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 04 531K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 05 9485K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 06 ⚠S440K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇵🇱 波兰 (Poland) 01 450K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 02 9993K ⚠P - NEKO
-  - 🇵🇱 波兰 (Poland) 03 8864K ⚠P - NEKO
-  - 🇵🇱 波兰 (Poland) 04 9938K ⚠P - NEKO
-  - 🇵🇱 波兰 (Poland) 05 10676K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 06 8052K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 01 8811K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 02 5193K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 03 537K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 04 531K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 05 9485K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 06 ⚠S440K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

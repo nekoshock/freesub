@@ -4,28 +4,30 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇸🇨 塞舌尔 (Seychelles) 01 9464K ⚠L20% 🇨🇳 - NEKO
-  server: 188.225.24.62
+- name: 🇩🇰 丹麦 (Denmark) 01 445K 🇨🇳 - NEKO
+  server: 193.181.210.205
   port: 443
   udp: true
   type: vless
-  uuid: c0c949fc-2ed6-4597-b680-a1a3276ebf87
+  uuid: 8197b9b9-8945-460f-99c9-325ef8a8a7c3
   flow: xtls-rprx-vision
   tls: true
-  servername: img.bokovskay.app
-  skip-cert-verify: false
+  reality-opts:
+    public-key: arZrNPbhlxNAGMzO_g2Dx3AAV_FEMnFyydbBsyZUCiY
+    short-id: 54005328cd
+  servername: dk1.gofizz.in
   client-fingerprint: firefox
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇸🇨 塞舌尔 (Seychelles) 01 9464K ⚠L20% 🇨🇳 - NEKO
+  - 🇩🇰 丹麦 (Denmark) 01 445K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇸🇨 塞舌尔 (Seychelles) 01 9464K ⚠L20% 🇨🇳 - NEKO
+  - 🇩🇰 丹麦 (Denmark) 01 445K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

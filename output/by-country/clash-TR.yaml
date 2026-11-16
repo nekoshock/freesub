@@ -4,7 +4,20 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇹🇷 土耳其 (Turkey) 01 436K 🇨🇳 - NEKO
+- name: 🇹🇷 土耳其 (Turkey) 01 8223K 🇨🇳 - NEKO
+  server: 188.132.176.153
+  port: 443
+  udp: true
+  type: vless
+  uuid: 8197b9b9-8945-460f-99c9-325ef8a8a7c3
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: 0dZQFilWbZVW8qj2DqVgiXZndL20ZuxmSuS4KyGRbQc
+    short-id: fa273564
+  servername: tr2.gofizzin.com
+  client-fingerprint: firefox
+- name: 🇹🇷 土耳其 (Turkey) 02 9950K 🇨🇳 - NEKO
   server: 62.133.63.45
   port: 8444
   udp: true
@@ -19,19 +32,20 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: GunService
-- name: 🇹🇷 土耳其 (Turkey) 02 7295K 🇨🇳 - NEKO
-  server: 45.92.219.47
+- name: 🇹🇷 土耳其 (Turkey) 03 6423K 🇨🇳 - NEKO
+  server: 212.98.224.35
   port: 443
   udp: true
   type: vless
-  uuid: ecc0e60a-f2cc-4266-8353-b228df89730a
+  uuid: 8197b9b9-8945-460f-99c9-325ef8a8a7c3
   flow: xtls-rprx-vision
   tls: true
   reality-opts:
-    public-key: GBO_paFyK9FihgPMH8r_vHa4IKMkSGfvAQ2fhPK_1H4
-  servername: ty.galactichub.online
-  client-fingerprint: ios
-- name: 🇹🇷 土耳其 (Turkey) 03 ⚠S4138K 🇨🇳 - NEKO
+    public-key: 9_UhwEt_9pf8WahM1K9O6-_0vAK6q0uiNGFoHBO7s3A
+    short-id: 0e3e4d96
+  servername: tr1.gofizzin.com
+  client-fingerprint: firefox
+- name: 🇹🇷 土耳其 (Turkey) 04 6505K 🇨🇳 - NEKO
   server: 185.246.155.91
   port: 10103
   udp: true
@@ -44,21 +58,51 @@ proxies:
     short-id: 6859f5b59e55aa30
   servername: www.apple.com
   client-fingerprint: chrome
+- name: 🇹🇷 土耳其 (Turkey) 05 6803K ⚠P - NEKO
+  server: 151.241.226.201
+  port: 2053
+  udp: true
+  type: vless
+  uuid: 0eed6293-8cf1-4e77-ac10-9c3d50d0b2f8
+  tls: true
+  reality-opts:
+    public-key: bYW_MmB_CUHrsyoCAUKviI2LZdHf63yY2yOPXbih104
+    short-id: 9e419c0759b54d6f
+  servername: www.apple.com
+  client-fingerprint: firefox
+- name: 🇹🇷 土耳其 (Turkey) 06 5230K 🇨🇳 - NEKO
+  server: 45.92.219.47
+  port: 443
+  udp: true
+  type: vless
+  uuid: ecc0e60a-f2cc-4266-8353-b228df89730a
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: GBO_paFyK9FihgPMH8r_vHa4IKMkSGfvAQ2fhPK_1H4
+  servername: ty.galactichub.online
+  client-fingerprint: ios
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇹🇷 土耳其 (Turkey) 01 436K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 02 7295K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 03 ⚠S4138K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 01 8223K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 02 9950K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 03 6423K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 04 6505K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 05 6803K ⚠P - NEKO
+  - 🇹🇷 土耳其 (Turkey) 06 5230K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇹🇷 土耳其 (Turkey) 01 436K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 02 7295K 🇨🇳 - NEKO
-  - 🇹🇷 土耳其 (Turkey) 03 ⚠S4138K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 01 8223K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 02 9950K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 03 6423K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 04 6505K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 05 6803K ⚠P - NEKO
+  - 🇹🇷 土耳其 (Turkey) 06 5230K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

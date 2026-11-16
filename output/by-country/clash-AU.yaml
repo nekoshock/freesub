@@ -4,7 +4,15 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇦🇺 澳大利亚 (Australia) 01 5971K 🇨🇳 - NEKO
+- name: 🇦🇺 澳大利亚 (Australia) 01 27002K 🇨🇳 - NEKO
+  server: 45.63.30.142
+  port: 443
+  udp: true
+  type: trojan
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: connectwithemployerstohireyouridealteam.com
+  skip-cert-verify: false
+- name: 🇦🇺 澳大利亚 (Australia) 02 8226K 🇨🇳 - NEKO
   server: 176.97.68.100
   port: 443
   udp: true
@@ -17,17 +25,35 @@ proxies:
     short-id: 54cca3c1c1c7
   servername: www.apple.com
   client-fingerprint: chrome
+- name: 🇦🇺 澳大利亚 (Australia) 03 6640K 🇨🇳 - NEKO
+  server: ujp.xn--ghqu5fm27b67w.com
+  port: 443
+  udp: true
+  type: vless
+  uuid: debafe5b-6760-4b00-b0b2-ee30cbf769f0
+  tls: true
+  servername: portland-wins-robbie-skirt.trycloudflare.com
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /e0843c8ad581
+    headers:
+      Host: portland-wins-robbie-skirt.trycloudflare.com
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇦🇺 澳大利亚 (Australia) 01 5971K 🇨🇳 - NEKO
+  - 🇦🇺 澳大利亚 (Australia) 01 27002K 🇨🇳 - NEKO
+  - 🇦🇺 澳大利亚 (Australia) 02 8226K 🇨🇳 - NEKO
+  - 🇦🇺 澳大利亚 (Australia) 03 6640K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇦🇺 澳大利亚 (Australia) 01 5971K 🇨🇳 - NEKO
+  - 🇦🇺 澳大利亚 (Australia) 01 27002K 🇨🇳 - NEKO
+  - 🇦🇺 澳大利亚 (Australia) 02 8226K 🇨🇳 - NEKO
+  - 🇦🇺 澳大利亚 (Australia) 03 6640K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

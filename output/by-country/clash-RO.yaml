@@ -4,8 +4,23 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇷🇴 罗马尼亚 (Romania) 01 16671K 🇨🇳 - NEKO
-  server: hy2-new.aspidnet.xyz
+- name: 🇷🇴 罗马尼亚 (Romania) 01 7871K 🇨🇳 - NEKO
+  server: 76.164.202.166
+  port: 443
+  udp: true
+  type: vless
+  uuid: 0ed9418b-e687-4c2d-8869-7e368c44887e
+  tls: true
+  reality-opts:
+    public-key: -ABl1aWUmg19BGoOGs8DwhPCTj4uUGgdyXZ1xaWh0W4
+    short-id: 376ec5abd2a1b80c
+  servername: de7-166.homelab-cdn.cloud
+  client-fingerprint: firefox
+  network: grpc
+  grpc-opts:
+    grpc-service-name: grpc
+- name: 🇷🇴 罗马尼亚 (Romania) 02 6470K 🇨🇳 - NEKO
+  server: 162.249.125.133
   port: 443
   udp: true
   type: hysteria2
@@ -19,12 +34,14 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇷🇴 罗马尼亚 (Romania) 01 16671K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 01 7871K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 02 6470K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇷🇴 罗马尼亚 (Romania) 01 16671K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 01 7871K 🇨🇳 - NEKO
+  - 🇷🇴 罗马尼亚 (Romania) 02 6470K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

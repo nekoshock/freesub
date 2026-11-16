@@ -4,32 +4,28 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇸🇨 塞舌尔 (Seychelles) 01 ⚠S5101K 🇨🇳 - NEKO
-  server: 179.254.115.201
+- name: 🇸🇨 塞舌尔 (Seychelles) 01 9464K ⚠L20% 🇨🇳 - NEKO
+  server: 188.225.24.62
   port: 443
   udp: true
   type: vless
-  uuid: 88edfb30-a34b-41e1-a08f-985a93e3bc36
+  uuid: c0c949fc-2ed6-4597-b680-a1a3276ebf87
+  flow: xtls-rprx-vision
   tls: true
-  reality-opts:
-    public-key: AK4PrvaK2WV1v1NEegq2rE53gVnlXUw_jo3XwA1aIEI
-    short-id: 7d0aaf84998bfe61
-  servername: 02104dg.es7.h1clayd.click
+  servername: img.bokovskay.app
+  skip-cert-verify: false
   client-fingerprint: firefox
-  network: grpc
-  grpc-opts:
-    grpc-service-name: af7e99c1e3f1
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇸🇨 塞舌尔 (Seychelles) 01 ⚠S5101K 🇨🇳 - NEKO
+  - 🇸🇨 塞舌尔 (Seychelles) 01 9464K ⚠L20% 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇸🇨 塞舌尔 (Seychelles) 01 ⚠S5101K 🇨🇳 - NEKO
+  - 🇸🇨 塞舌尔 (Seychelles) 01 9464K ⚠L20% 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

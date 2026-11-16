@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇷🇸 塞尔维亚 (Serbia) 01 13961K 🇨🇳 - NEKO
+- name: 🇷🇸 塞尔维亚 (Serbia) 01 7711K 🇨🇳 - NEKO
   server: 130.49.163.188
   port: 443
   udp: true
@@ -12,7 +12,20 @@ proxies:
   password: 307ee0e53ea04dfd86a7f2f9fcd53844
   sni: s5.libertyrunet.store
   skip-cert-verify: false
-- name: 🇷🇸 塞尔维亚 (Serbia) 02 2229K ⚠L20% ⚠P - NEKO
+- name: 🇷🇸 塞尔维亚 (Serbia) 02 9694K 🇨🇳 - NEKO
+  server: bg.spirako.com
+  port: 8443
+  udp: true
+  type: vless
+  uuid: 081cd1d2-4a06-440b-b68a-1472a6aa69f1
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: 0hH6R90pSxwm7nZPGtJJcJFhwCXU3Rvf-wcEHE7hczo
+    short-id: 9ce04f63
+  servername: apple.com
+  client-fingerprint: chrome
+- name: 🇷🇸 塞尔维亚 (Serbia) 03 10242K ⚠P - NEKO
   server: 38.180.101.235
   port: 5443
   udp: true
@@ -25,14 +38,16 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇷🇸 塞尔维亚 (Serbia) 01 13961K 🇨🇳 - NEKO
-  - 🇷🇸 塞尔维亚 (Serbia) 02 2229K ⚠L20% ⚠P - NEKO
+  - 🇷🇸 塞尔维亚 (Serbia) 01 7711K 🇨🇳 - NEKO
+  - 🇷🇸 塞尔维亚 (Serbia) 02 9694K 🇨🇳 - NEKO
+  - 🇷🇸 塞尔维亚 (Serbia) 03 10242K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇷🇸 塞尔维亚 (Serbia) 01 13961K 🇨🇳 - NEKO
-  - 🇷🇸 塞尔维亚 (Serbia) 02 2229K ⚠L20% ⚠P - NEKO
+  - 🇷🇸 塞尔维亚 (Serbia) 01 7711K 🇨🇳 - NEKO
+  - 🇷🇸 塞尔维亚 (Serbia) 02 9694K 🇨🇳 - NEKO
+  - 🇷🇸 塞尔维亚 (Serbia) 03 10242K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

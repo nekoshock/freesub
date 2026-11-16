@@ -4,57 +4,14 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇯🇵 日本 (Japan) 01 9929K 🇨🇳 - NEKO
-  server: 31.76.91.98
-  port: 443
-  udp: true
-  type: vless
-  uuid: 7072eeba-94fd-4fb3-92f2-a4506dd84cd8
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: ejx56dFtS4LK_Th6HSLFFdm7v7zqRpv8KfjrWAw4Sjg
-    short-id: bd6f67b6b2152b45
-  servername: fuji.etherhub.cc
-  client-fingerprint: chrome
-- name: 🇯🇵 日本 (Japan) 02 1950K ⚠P - NEKO
-  server: jpa.123069.xyz
+- name: 🇯🇵 日本 (Japan) 01 3400K ⚠P - NEKO
+  server: 168.138.205.100
   port: 53758
   udp: true
   type: ss
   cipher: aes-128-gcm
   password: Bwlqh7GcFB
-- name: 🇯🇵 日本 (Japan) 03 9119K 🇨🇳 - NEKO
-  server: 103.75.118.228
-  port: 11452
-  udp: true
-  type: vless
-  uuid: 814bd064-544d-4255-a070-5705c03f6da9
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
-    short-id: 48050fab
-  servername: www.apple.com
-  client-fingerprint: chrome
-- name: 🇯🇵 日本 (Japan) 04 12786K 🇨🇳 - NEKO
-  server: 139.162.91.239
-  port: 443
-  udp: true
-  type: vless
-  uuid: b0dc852a-97ec-4d4e-9179-f0e5c2ef1489
-  tls: true
-  reality-opts:
-    public-key: 7PBmAR6CGAh2naIi09rlP_PtmLmqhlXF_toZEdAHmRo
-    short-id: 7c6d6833
-  servername: itunes.apple.com
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /ws
-    headers:
-      Host: itunes.apple.com
-- name: 🇯🇵 日本 (Japan) 05 12851K 🇨🇳 - NEKO
+- name: 🇯🇵 日本 (Japan) 02 ⚠S67604K 🇨🇳 - NEKO
   server: 172.105.216.21
   port: 443
   udp: true
@@ -71,25 +28,73 @@ proxies:
     path: /ws
     headers:
       Host: itunes.apple.com
+- name: 🇯🇵 日本 (Japan) 03 21736K 🇨🇳 - NEKO
+  server: 103.75.118.228
+  port: 11452
+  udp: true
+  type: vless
+  uuid: 814bd064-544d-4255-a070-5705c03f6da9
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
+    short-id: 48050fab
+  servername: www.apple.com
+  client-fingerprint: chrome
+- name: 🇯🇵 日本 (Japan) 04 ⚠S212184K 🇨🇳 - NEKO
+  server: 139.162.91.239
+  port: 443
+  udp: true
+  type: vless
+  uuid: b0dc852a-97ec-4d4e-9179-f0e5c2ef1489
+  tls: true
+  reality-opts:
+    public-key: 7PBmAR6CGAh2naIi09rlP_PtmLmqhlXF_toZEdAHmRo
+    short-id: 7c6d6833
+  servername: itunes.apple.com
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /ws
+    headers:
+      Host: itunes.apple.com
+- name: 🇯🇵 日本 (Japan) 05 4004K 🇨🇳 - NEKO
+  server: 167.17.179.175
+  port: 443
+  udp: true
+  type: hysteria2
+  password: SW_COSMOS:sYcUMf7G9g67Zuho
+  sni: spacearea.onthewifi.com
+  skip-cert-verify: false
+- name: 🇯🇵 日本 (Japan) 06 261K ⚠P⚠U⚠B - NEKO
+  server: 43.130.234.128
+  port: 8443
+  udp: true
+  type: hysteria2
+  password: Yuike2026cat
+  sni: 43-130-234-128.sslip.io
+  skip-cert-verify: false
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇯🇵 日本 (Japan) 01 9929K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 02 1950K ⚠P - NEKO
-  - 🇯🇵 日本 (Japan) 03 9119K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 04 12786K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 05 12851K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 01 3400K ⚠P - NEKO
+  - 🇯🇵 日本 (Japan) 02 ⚠S67604K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 03 21736K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 04 ⚠S212184K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 05 4004K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 06 261K ⚠P⚠U⚠B - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇯🇵 日本 (Japan) 01 9929K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 02 1950K ⚠P - NEKO
-  - 🇯🇵 日本 (Japan) 03 9119K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 04 12786K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 05 12851K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 01 3400K ⚠P - NEKO
+  - 🇯🇵 日本 (Japan) 02 ⚠S67604K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 03 21736K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 04 ⚠S212184K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 05 4004K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 06 261K ⚠P⚠U⚠B - NEKO
 rules:
 - MATCH,PROXIES

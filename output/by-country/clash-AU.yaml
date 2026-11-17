@@ -4,20 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇦🇺 澳大利亚 (Australia) 01 8631K 🇨🇳 - NEKO
-  server: 195.114.14.91
-  port: 443
-  udp: true
-  type: vless
-  uuid: 8197b9b9-8945-460f-99c9-325ef8a8a7c3
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: CcxdRFcNF4OLIFqS999iAHZSa6dsFB6wuhyKlBr45DI
-    short-id: 7d9e4e85e6f9
-  servername: au1.gofizz.in
-  client-fingerprint: chrome
-- name: 🇦🇺 澳大利亚 (Australia) 02 8791K 🇨🇳 - NEKO
+- name: 🇦🇺 澳大利亚 (Australia) 01 7569K 🇨🇳 - NEKO
   server: 45.63.30.142
   port: 443
   udp: true
@@ -30,14 +17,12 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇦🇺 澳大利亚 (Australia) 01 8631K 🇨🇳 - NEKO
-  - 🇦🇺 澳大利亚 (Australia) 02 8791K 🇨🇳 - NEKO
+  - 🇦🇺 澳大利亚 (Australia) 01 7569K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇦🇺 澳大利亚 (Australia) 01 8631K 🇨🇳 - NEKO
-  - 🇦🇺 澳大利亚 (Australia) 02 8791K 🇨🇳 - NEKO
+  - 🇦🇺 澳大利亚 (Australia) 01 7569K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

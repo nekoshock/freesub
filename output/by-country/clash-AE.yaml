@@ -4,14 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇦🇪 阿联酋 (UAE) 01 11646K ⚠P - NEKO
-  server: 151.241.19.29
-  port: 19999
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇦🇪 阿联酋 (UAE) 02 6171K 🇨🇳 - NEKO
+- name: 🇦🇪 阿联酋 (UAE) 01 9111K 🇨🇳 - NEKO
   server: 130.49.161.70
   port: 443
   udp: true
@@ -21,43 +14,35 @@ proxies:
   skip-cert-verify: false
   obfs: salamander
   obfs-password: rG07s3COMIEvdnQipRyWzx_H_2xygNC3
-- name: 🇦🇪 阿联酋 (UAE) 03 11283K ⚠P - NEKO
+- name: 🇦🇪 阿联酋 (UAE) 02 7082K ⚠P - NEKO
   server: 151.241.19.36
   port: 19999
   udp: true
   type: ss
   cipher: aes-256-gcm
   password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇦🇪 阿联酋 (UAE) 04 3673K 🇨🇳 - NEKO
-  server: 45.86.228.39
-  port: 443
+- name: 🇦🇪 阿联酋 (UAE) 03 6984K ⚠P - NEKO
+  server: 151.241.19.29
+  port: 19999
   udp: true
-  type: vless
-  uuid: 8197b9b9-8945-460f-99c9-325ef8a8a7c3
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: 6_gm-7Bn-4wN79POTNyDJrJvPh1I5SSiO85zMKpKRUI
-    short-id: 29967a52
-  servername: ae1.gofizzin.com
-  client-fingerprint: edge
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇦🇪 阿联酋 (UAE) 01 11646K ⚠P - NEKO
-  - 🇦🇪 阿联酋 (UAE) 02 6171K 🇨🇳 - NEKO
-  - 🇦🇪 阿联酋 (UAE) 03 11283K ⚠P - NEKO
-  - 🇦🇪 阿联酋 (UAE) 04 3673K 🇨🇳 - NEKO
+  - 🇦🇪 阿联酋 (UAE) 01 9111K 🇨🇳 - NEKO
+  - 🇦🇪 阿联酋 (UAE) 02 7082K ⚠P - NEKO
+  - 🇦🇪 阿联酋 (UAE) 03 6984K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇦🇪 阿联酋 (UAE) 01 11646K ⚠P - NEKO
-  - 🇦🇪 阿联酋 (UAE) 02 6171K 🇨🇳 - NEKO
-  - 🇦🇪 阿联酋 (UAE) 03 11283K ⚠P - NEKO
-  - 🇦🇪 阿联酋 (UAE) 04 3673K 🇨🇳 - NEKO
+  - 🇦🇪 阿联酋 (UAE) 01 9111K 🇨🇳 - NEKO
+  - 🇦🇪 阿联酋 (UAE) 02 7082K ⚠P - NEKO
+  - 🇦🇪 阿联酋 (UAE) 03 6984K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇱🇹 立陶宛 (Lithuania) 01 8097K 🇨🇳 - NEKO
+- name: 🇱🇹 立陶宛 (Lithuania) 01 14490K 🇨🇳 - NEKO
   server: 84.32.83.197
   port: 443
   udp: true
@@ -15,8 +15,8 @@ proxies:
     public-key: drl7nndYdfzZY1aQ0eUAWmNV0nsHig2uDnu9siy9biQ
     short-id: a7d309e4c16b825f
   servername: api-dns-gw.galioncc.com
-  client-fingerprint: firefox
-- name: 🇱🇹 立陶宛 (Lithuania) 02 6709K 🇨🇳 - NEKO
+  client-fingerprint: chrome
+- name: 🇱🇹 立陶宛 (Lithuania) 02 25641K 🇨🇳 - NEKO
   server: 84.32.248.124
   port: 443
   udp: true
@@ -27,38 +27,47 @@ proxies:
     public-key: drl7nndYdfzZY1aQ0eUAWmNV0nsHig2uDnu9siy9biQ
     short-id: a7d309e4c16b825f
   servername: net-io-api.galioncc.com
-  client-fingerprint: firefox
-- name: 🇱🇹 立陶宛 (Lithuania) 03 4941K ⚠P - NEKO
-  server: 195.238.126.20
-  port: 9001
-  udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: UkXRsXvR6buDMG2Y
-- name: 🇱🇹 立陶宛 (Lithuania) 04 8399K ⚠P - NEKO
+  client-fingerprint: chrome
+- name: 🇱🇹 立陶宛 (Lithuania) 03 8743K ⚠P - NEKO
   server: 195.238.126.20
   port: 9068
   udp: true
   type: ss
   cipher: aes-256-cfb
   password: mwgRg9hRq3b4Qnwb
+- name: 🇱🇹 立陶宛 (Lithuania) 04 8142K ⚠P - NEKO
+  server: 195.238.126.20
+  port: 9001
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: UkXRsXvR6buDMG2Y
+- name: 🇱🇹 立陶宛 (Lithuania) 05 ⚠S11232K ⚠P - NEKO
+  server: 195.238.126.20
+  port: 9012
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: xaupMUvhptwxdDUg
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇱🇹 立陶宛 (Lithuania) 01 8097K 🇨🇳 - NEKO
-  - 🇱🇹 立陶宛 (Lithuania) 02 6709K 🇨🇳 - NEKO
-  - 🇱🇹 立陶宛 (Lithuania) 03 4941K ⚠P - NEKO
-  - 🇱🇹 立陶宛 (Lithuania) 04 8399K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 01 14490K 🇨🇳 - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 02 25641K 🇨🇳 - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 03 8743K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 04 8142K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 05 ⚠S11232K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇱🇹 立陶宛 (Lithuania) 01 8097K 🇨🇳 - NEKO
-  - 🇱🇹 立陶宛 (Lithuania) 02 6709K 🇨🇳 - NEKO
-  - 🇱🇹 立陶宛 (Lithuania) 03 4941K ⚠P - NEKO
-  - 🇱🇹 立陶宛 (Lithuania) 04 8399K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 01 14490K 🇨🇳 - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 02 25641K 🇨🇳 - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 03 8743K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 04 8142K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 05 ⚠S11232K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

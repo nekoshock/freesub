@@ -5,16 +5,16 @@
   "outbounds": [
     {
       "type": "vless",
-      "tag": "🇵🇱 波兰 (Poland) 01 8669K 🇨🇳 - NEKO",
-      "server": "195.3.223.125",
+      "tag": "🇵🇱 波兰 (Poland) 01 27327K 🇨🇳 - NEKO",
+      "server": "80.47.10.106",
       "server_port": 443,
       "uuid": "a30903dc-1bf0-4be5-8b1b-603a3a56211c",
       "tls": {
         "enabled": true,
-        "server_name": "api-net-ctl.galioncc.com",
+        "server_name": "pl8.galioncc.com",
         "utls": {
           "enabled": true,
-          "fingerprint": "firefox"
+          "fingerprint": "chrome"
         },
         "reality": {
           "enabled": true,
@@ -25,47 +25,7 @@
     },
     {
       "type": "vless",
-      "tag": "🇵🇱 波兰 (Poland) 02 7415K 🇨🇳 - NEKO",
-      "server": "201.58.189.105",
-      "server_port": 2083,
-      "uuid": "d7ddade6-b7a0-4cab-a910-d5d5c378d98a",
-      "tls": {
-        "enabled": true,
-        "server_name": "dl.google.com",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "B7x5bYp-YhtLeH31zYcilpKFCkGTMe3jtSECSw-bMC4",
-          "short_id": "8bd80253"
-        }
-      },
-      "transport": {
-        "type": "grpc",
-        "service_name": "google.storage.v2.Storage"
-      }
-    },
-    {
-      "type": "shadowsocks",
-      "tag": "🇵🇱 波兰 (Poland) 03 7131K ⚠P - NEKO",
-      "server": "217.30.10.44",
-      "server_port": 9062,
-      "method": "aes-256-cfb",
-      "password": "tkhHVxxfM2QErBWe"
-    },
-    {
-      "type": "shadowsocks",
-      "tag": "🇵🇱 波兰 (Poland) 04 517K ⚠P - NEKO",
-      "server": "217.30.10.70",
-      "server_port": 9059,
-      "method": "aes-256-cfb",
-      "password": "9XwYyZsK8SNzQDtY"
-    },
-    {
-      "type": "vless",
-      "tag": "🇵🇱 波兰 (Poland) 05 6468K 🇨🇳 - NEKO",
+      "tag": "🇵🇱 波兰 (Poland) 02 22825K 🇨🇳 - NEKO",
       "server": "45.194.66.177",
       "server_port": 443,
       "uuid": "352a250d-080b-47b5-b7db-f9f8fa31c551",
@@ -81,48 +41,59 @@
       }
     },
     {
+      "type": "shadowsocks",
+      "tag": "🇵🇱 波兰 (Poland) 03 3569K ⚠P - NEKO",
+      "server": "217.30.10.44",
+      "server_port": 9062,
+      "method": "aes-256-cfb",
+      "password": "tkhHVxxfM2QErBWe"
+    },
+    {
       "type": "vless",
-      "tag": "🇵🇱 波兰 (Poland) 06 951K 🇨🇳 - NEKO",
-      "server": "80.47.10.106",
+      "tag": "🇵🇱 波兰 (Poland) 04 484K 🇨🇳 - NEKO",
+      "server": "179.253.101.162",
       "server_port": 443,
-      "uuid": "a30903dc-1bf0-4be5-8b1b-603a3a56211c",
+      "uuid": "fd90e601-a56c-42b8-aab7-aa02d26fcb04",
+      "flow": "xtls-rprx-vision",
       "tls": {
         "enabled": true,
-        "server_name": "pl8.galioncc.com",
+        "server_name": "app.streamru17.net",
+        "insecure": false,
         "utls": {
           "enabled": true,
-          "fingerprint": "firefox"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "drl7nndYdfzZY1aQ0eUAWmNV0nsHig2uDnu9siy9biQ",
-          "short_id": "a7c92e4b10d6f835"
+          "fingerprint": "chrome"
         }
       }
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇵🇱 波兰 (Poland) 05 7436K ⚠P - NEKO",
+      "server": "217.30.10.70",
+      "server_port": 9018,
+      "method": "aes-256-cfb",
+      "password": "fG2artUmHfNT2cX7"
     },
     {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇵🇱 波兰 (Poland) 01 8669K 🇨🇳 - NEKO",
-        "🇵🇱 波兰 (Poland) 02 7415K 🇨🇳 - NEKO",
-        "🇵🇱 波兰 (Poland) 03 7131K ⚠P - NEKO",
-        "🇵🇱 波兰 (Poland) 04 517K ⚠P - NEKO",
-        "🇵🇱 波兰 (Poland) 05 6468K 🇨🇳 - NEKO",
-        "🇵🇱 波兰 (Poland) 06 951K 🇨🇳 - NEKO"
+        "🇵🇱 波兰 (Poland) 01 27327K 🇨🇳 - NEKO",
+        "🇵🇱 波兰 (Poland) 02 22825K 🇨🇳 - NEKO",
+        "🇵🇱 波兰 (Poland) 03 3569K ⚠P - NEKO",
+        "🇵🇱 波兰 (Poland) 04 484K 🇨🇳 - NEKO",
+        "🇵🇱 波兰 (Poland) 05 7436K ⚠P - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇵🇱 波兰 (Poland) 01 8669K 🇨🇳 - NEKO",
-        "🇵🇱 波兰 (Poland) 02 7415K 🇨🇳 - NEKO",
-        "🇵🇱 波兰 (Poland) 03 7131K ⚠P - NEKO",
-        "🇵🇱 波兰 (Poland) 04 517K ⚠P - NEKO",
-        "🇵🇱 波兰 (Poland) 05 6468K 🇨🇳 - NEKO",
-        "🇵🇱 波兰 (Poland) 06 951K 🇨🇳 - NEKO"
+        "🇵🇱 波兰 (Poland) 01 27327K 🇨🇳 - NEKO",
+        "🇵🇱 波兰 (Poland) 02 22825K 🇨🇳 - NEKO",
+        "🇵🇱 波兰 (Poland) 03 3569K ⚠P - NEKO",
+        "🇵🇱 波兰 (Poland) 04 484K 🇨🇳 - NEKO",
+        "🇵🇱 波兰 (Poland) 05 7436K ⚠P - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

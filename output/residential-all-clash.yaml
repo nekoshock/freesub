@@ -4,28 +4,29 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇭🇰 中国香港 (Hong Kong) 01 (家宽) 6617K 🇨🇳 - NEKO
-  server: 3ae7b69c-toq2o0-tpolhi-1rgxu.hk2.hyhuawei.com
+- name: 🇹🇷 土耳其 (Turkey) 01 (移动家宽) ⚠S7903K 🇨🇳 - NEKO
+  server: 206.1.100.98
   port: 443
   udp: true
-  type: vless
-  uuid: ea93064c-176c-11f0-885d-f23c91cfbbc9
+  type: vmess
+  uuid: 70b40ff3-f71a-4975-bef3-bce5e71ee37b
+  alterId: 0
+  cipher: auto
   tls: true
-  reality-opts:
-    public-key: c9DdggKaJGSH7FN3JgGbi9ZvsUqOGGpIr7BhzTWeTCo
-  servername: download.windowsupdate.com
-  client-fingerprint: chrome
+  servername: cf1.blogboy.ir
+  skip-cert-verify: false
+  network: httpupgrade
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇭🇰 中国香港 (Hong Kong) 01 (家宽) 6617K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 01 (移动家宽) ⚠S7903K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇭🇰 中国香港 (Hong Kong) 01 (家宽) 6617K 🇨🇳 - NEKO
+  - 🇹🇷 土耳其 (Turkey) 01 (移动家宽) ⚠S7903K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

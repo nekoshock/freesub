@@ -4,8 +4,39 @@
   },
   "outbounds": [
     {
+      "type": "vmess",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 01 4891K ⚠P - NEKO",
+      "server": "zfd-hkv1.kunlun01dns.com",
+      "server_port": 16114,
+      "uuid": "0802ac03-7973-39ef-a019-ba02de6c01e1",
+      "security": "auto"
+    },
+    {
       "type": "vless",
-      "tag": "🇭🇰 中国香港 (Hong Kong) 01 6399K ⚠P - NEKO",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 02 755K 🇨🇳 - NEKO",
+      "server": "172.66.140.62",
+      "server_port": 443,
+      "uuid": "a25a71d1-10ed-4383-855a-f269a34ca691",
+      "tls": {
+        "enabled": true,
+        "server_name": "ave-qualifications-choices-populations.trycloudflare.com",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/a8b8606819ef",
+        "headers": {
+          "Host": "ave-qualifications-choices-populations.trycloudflare.com"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 03 5679K ⚠P - NEKO",
       "server": "2.26.204.46",
       "server_port": 31001,
       "uuid": "12a4f736-2238-49ee-831f-5516f15cc951",
@@ -29,14 +60,18 @@
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇭🇰 中国香港 (Hong Kong) 01 6399K ⚠P - NEKO"
+        "🇭🇰 中国香港 (Hong Kong) 01 4891K ⚠P - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 02 755K 🇨🇳 - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 03 5679K ⚠P - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇭🇰 中国香港 (Hong Kong) 01 6399K ⚠P - NEKO"
+        "🇭🇰 中国香港 (Hong Kong) 01 4891K ⚠P - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 02 755K 🇨🇳 - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 03 5679K ⚠P - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

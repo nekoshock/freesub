@@ -4,14 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇧🇬 保加利亚 (Bulgaria) 01 668K ⚠P - NEKO
-  server: 213.183.63.60
-  port: 9064
-  udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: cp8pRSUAyLhTfVWH
-- name: 🇧🇬 保加利亚 (Bulgaria) 02 16387K 🇨🇳 - NEKO
+- name: 🇧🇬 保加利亚 (Bulgaria) 01 13641K 🇨🇳 - NEKO
   server: 195.123.226.21
   port: 443
   udp: true
@@ -24,19 +17,26 @@ proxies:
     short-id: 77bb0d07bddbc832
   servername: gateway.icloud.com
   client-fingerprint: firefox
+- name: 🇧🇬 保加利亚 (Bulgaria) 02 1203K ⚠P - NEKO
+  server: 213.183.63.60
+  port: 9064
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: cp8pRSUAyLhTfVWH
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇧🇬 保加利亚 (Bulgaria) 01 668K ⚠P - NEKO
-  - 🇧🇬 保加利亚 (Bulgaria) 02 16387K 🇨🇳 - NEKO
+  - 🇧🇬 保加利亚 (Bulgaria) 01 13641K 🇨🇳 - NEKO
+  - 🇧🇬 保加利亚 (Bulgaria) 02 1203K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇧🇬 保加利亚 (Bulgaria) 01 668K ⚠P - NEKO
-  - 🇧🇬 保加利亚 (Bulgaria) 02 16387K 🇨🇳 - NEKO
+  - 🇧🇬 保加利亚 (Bulgaria) 01 13641K 🇨🇳 - NEKO
+  - 🇧🇬 保加利亚 (Bulgaria) 02 1203K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

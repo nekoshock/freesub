@@ -4,8 +4,8 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇱🇹 立陶宛 (Lithuania) 01 14490K 🇨🇳 - NEKO
-  server: 84.32.83.197
+- name: 🇱🇹 立陶宛 (Lithuania) 01 16731K 🇨🇳 - NEKO
+  server: 84.32.209.118
   port: 443
   udp: true
   type: vless
@@ -15,9 +15,9 @@ proxies:
     public-key: drl7nndYdfzZY1aQ0eUAWmNV0nsHig2uDnu9siy9biQ
     short-id: a7d309e4c16b825f
   servername: api-dns-gw.galioncc.com
-  client-fingerprint: chrome
-- name: 🇱🇹 立陶宛 (Lithuania) 02 25641K 🇨🇳 - NEKO
-  server: 84.32.248.124
+  client-fingerprint: firefox
+- name: 🇱🇹 立陶宛 (Lithuania) 02 15911K 🇨🇳 - NEKO
+  server: 84.32.51.135
   port: 443
   udp: true
   type: vless
@@ -26,48 +26,48 @@ proxies:
   reality-opts:
     public-key: drl7nndYdfzZY1aQ0eUAWmNV0nsHig2uDnu9siy9biQ
     short-id: a7d309e4c16b825f
-  servername: net-io-api.galioncc.com
-  client-fingerprint: chrome
-- name: 🇱🇹 立陶宛 (Lithuania) 03 8743K ⚠P - NEKO
-  server: 195.238.126.20
-  port: 9068
-  udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: mwgRg9hRq3b4Qnwb
-- name: 🇱🇹 立陶宛 (Lithuania) 04 8142K ⚠P - NEKO
-  server: 195.238.126.20
-  port: 9001
-  udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: UkXRsXvR6buDMG2Y
-- name: 🇱🇹 立陶宛 (Lithuania) 05 ⚠S11232K ⚠P - NEKO
+  servername: svc-io-mgr.galioncc.com
+  client-fingerprint: firefox
+- name: 🇱🇹 立陶宛 (Lithuania) 03 6141K ⚠P - NEKO
   server: 195.238.126.20
   port: 9012
   udp: true
   type: ss
   cipher: aes-256-cfb
   password: xaupMUvhptwxdDUg
+- name: 🇱🇹 立陶宛 (Lithuania) 04 5060K ⚠P - NEKO
+  server: 195.238.126.20
+  port: 9068
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: mwgRg9hRq3b4Qnwb
+- name: 🇱🇹 立陶宛 (Lithuania) 05 8601K ⚠P - NEKO
+  server: 195.238.126.20
+  port: 9001
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: UkXRsXvR6buDMG2Y
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇱🇹 立陶宛 (Lithuania) 01 14490K 🇨🇳 - NEKO
-  - 🇱🇹 立陶宛 (Lithuania) 02 25641K 🇨🇳 - NEKO
-  - 🇱🇹 立陶宛 (Lithuania) 03 8743K ⚠P - NEKO
-  - 🇱🇹 立陶宛 (Lithuania) 04 8142K ⚠P - NEKO
-  - 🇱🇹 立陶宛 (Lithuania) 05 ⚠S11232K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 01 16731K 🇨🇳 - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 02 15911K 🇨🇳 - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 03 6141K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 04 5060K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 05 8601K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇱🇹 立陶宛 (Lithuania) 01 14490K 🇨🇳 - NEKO
-  - 🇱🇹 立陶宛 (Lithuania) 02 25641K 🇨🇳 - NEKO
-  - 🇱🇹 立陶宛 (Lithuania) 03 8743K ⚠P - NEKO
-  - 🇱🇹 立陶宛 (Lithuania) 04 8142K ⚠P - NEKO
-  - 🇱🇹 立陶宛 (Lithuania) 05 ⚠S11232K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 01 16731K 🇨🇳 - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 02 15911K 🇨🇳 - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 03 6141K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 04 5060K ⚠P - NEKO
+  - 🇱🇹 立陶宛 (Lithuania) 05 8601K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

@@ -4,29 +4,24 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇹🇷 土耳其 (Turkey) 01 (移动家宽) ⚠S7903K 🇨🇳 - NEKO
-  server: 206.1.100.98
+- name: 🇩🇪 德国 (Germany) 01 (移动家宽) 11510K 🇨🇳 - NEKO
+  server: 47.85.162.44
   port: 443
   udp: true
-  type: vmess
-  uuid: 70b40ff3-f71a-4975-bef3-bce5e71ee37b
-  alterId: 0
-  cipher: auto
-  tls: true
-  servername: cf1.blogboy.ir
-  skip-cert-verify: false
-  network: httpupgrade
+  type: ss
+  cipher: 2022-blake3-chacha20-poly1305
+  password: 3NBsnBLanPfG6i3S2GTHineswr6EeSJPb0PCeMQoGoA=
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇹🇷 土耳其 (Turkey) 01 (移动家宽) ⚠S7903K 🇨🇳 - NEKO
+  - 🇩🇪 德国 (Germany) 01 (移动家宽) 11510K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇹🇷 土耳其 (Turkey) 01 (移动家宽) ⚠S7903K 🇨🇳 - NEKO
+  - 🇩🇪 德国 (Germany) 01 (移动家宽) 11510K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

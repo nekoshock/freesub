@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇦 加拿大 (Canada) 01 25259K ⚠P - NEKO
+- name: 🇨🇦 加拿大 (Canada) 01 33631K ⚠P - NEKO
   server: 134.195.196.154
   port: 1270
   udp: true
@@ -15,7 +15,35 @@ proxies:
   tls: true
   servername: xmfhlpy.com
   skip-cert-verify: false
-- name: 🇨🇦 加拿大 (Canada) 02 21863K ⚠P - NEKO
+- name: 🇨🇦 加拿大 (Canada) 02 26496K ⚠P - NEKO
+  server: 158.51.121.221
+  port: 19999
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇨🇦 加拿大 (Canada) 03 ⚠S10085K ⚠P - NEKO
+  server: 15.235.57.6
+  port: 8080
+  udp: true
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: kxhnt5jtykd328cg
+- name: 🇨🇦 加拿大 (Canada) 04 29685K ⚠P - NEKO
+  server: 137.184.174.93
+  port: 8080
+  udp: true
+  type: ss
+  cipher: rc4-md5
+  password: 14fFPrbezE3HDZzsMOr6
+- name: 🇨🇦 加拿大 (Canada) 05 29737K ⚠P - NEKO
+  server: 138.197.141.58
+  port: 8080
+  udp: true
+  type: ss
+  cipher: rc4-md5
+  password: 14fFPrbezE3HDZzsMOr6
+- name: 🇨🇦 加拿大 (Canada) 06 11047K ⚠P - NEKO
   server: 158.51.121.246
   port: 1270
   udp: true
@@ -26,28 +54,29 @@ proxies:
   tls: true
   servername: xmfhlpy.com
   skip-cert-verify: false
-- name: 🇨🇦 加拿大 (Canada) 03 45622K ⚠P - NEKO
-  server: 15.235.57.6
+- name: 🇨🇦 加拿大 (Canada) 07 10574K ⚠P - NEKO
+  server: 23.162.200.198
+  port: 18000
+  udp: true
+  type: vmess
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+- name: 🇨🇦 加拿大 (Canada) 08 1043K ⚠P - NEKO
+  server: 15.235.121.109
   port: 8080
   udp: true
   type: ss
   cipher: chacha20-ietf-poly1305
-  password: kxhnt5jtykd328cg
-- name: 🇨🇦 加拿大 (Canada) 04 33900K ⚠P - NEKO
+  password: 575hiopq2h28yao6
+- name: 🇨🇦 加拿大 (Canada) 09 ⚠S3773K ⚠P⚠C - NEKO
   server: 184.107.106.77
   port: 8388
   udp: true
   type: ss
   cipher: aes-256-gcm
   password: itzvpn@321
-- name: 🇨🇦 加拿大 (Canada) 05 28025K ⚠P - NEKO
-  server: 158.51.121.221
-  port: 19999
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇨🇦 加拿大 (Canada) 06 12878K ⚠P - NEKO
+- name: 🇨🇦 加拿大 (Canada) 10 11063K ⚠L20% ⚠P - NEKO
   server: 134.195.196.211
   port: 18000
   udp: true
@@ -55,63 +84,44 @@ proxies:
   uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
   alterId: 0
   cipher: auto
-- name: 🇨🇦 加拿大 (Canada) 07 46586K ⚠P - NEKO
-  server: 192.99.151.230
+- name: 🇨🇦 加拿大 (Canada) 11 42408K ⚠L20% ⚠P⚠C - NEKO
+  server: 184.107.106.78
   port: 8388
   udp: true
   type: ss
   cipher: aes-256-gcm
   password: itzvpn@321
-- name: 🇨🇦 加拿大 (Canada) 08 15699K ⚠P - NEKO
-  server: 137.184.174.93
-  port: 8080
-  udp: true
-  type: ss
-  cipher: rc4-md5
-  password: 14fFPrbezE3HDZzsMOr6
-- name: 🇨🇦 加拿大 (Canada) 09 9141K ⚠P - NEKO
-  server: 138.197.141.58
-  port: 8080
-  udp: true
-  type: ss
-  cipher: rc4-md5
-  password: 14fFPrbezE3HDZzsMOr6
-- name: 🇨🇦 加拿大 (Canada) 10 716K ⚠P - NEKO
-  server: 54.39.96.233
-  port: 8080
-  udp: true
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: 2cvhpvdg4x7mvbps
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇨🇦 加拿大 (Canada) 01 25259K ⚠P - NEKO
-  - 🇨🇦 加拿大 (Canada) 02 21863K ⚠P - NEKO
-  - 🇨🇦 加拿大 (Canada) 03 45622K ⚠P - NEKO
-  - 🇨🇦 加拿大 (Canada) 04 33900K ⚠P - NEKO
-  - 🇨🇦 加拿大 (Canada) 05 28025K ⚠P - NEKO
-  - 🇨🇦 加拿大 (Canada) 06 12878K ⚠P - NEKO
-  - 🇨🇦 加拿大 (Canada) 07 46586K ⚠P - NEKO
-  - 🇨🇦 加拿大 (Canada) 08 15699K ⚠P - NEKO
-  - 🇨🇦 加拿大 (Canada) 09 9141K ⚠P - NEKO
-  - 🇨🇦 加拿大 (Canada) 10 716K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 01 33631K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 02 26496K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 03 ⚠S10085K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 04 29685K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 05 29737K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 06 11047K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 07 10574K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 08 1043K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 09 ⚠S3773K ⚠P⚠C - NEKO
+  - 🇨🇦 加拿大 (Canada) 10 11063K ⚠L20% ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 11 42408K ⚠L20% ⚠P⚠C - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇦 加拿大 (Canada) 01 25259K ⚠P - NEKO
-  - 🇨🇦 加拿大 (Canada) 02 21863K ⚠P - NEKO
-  - 🇨🇦 加拿大 (Canada) 03 45622K ⚠P - NEKO
-  - 🇨🇦 加拿大 (Canada) 04 33900K ⚠P - NEKO
-  - 🇨🇦 加拿大 (Canada) 05 28025K ⚠P - NEKO
-  - 🇨🇦 加拿大 (Canada) 06 12878K ⚠P - NEKO
-  - 🇨🇦 加拿大 (Canada) 07 46586K ⚠P - NEKO
-  - 🇨🇦 加拿大 (Canada) 08 15699K ⚠P - NEKO
-  - 🇨🇦 加拿大 (Canada) 09 9141K ⚠P - NEKO
-  - 🇨🇦 加拿大 (Canada) 10 716K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 01 33631K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 02 26496K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 03 ⚠S10085K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 04 29685K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 05 29737K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 06 11047K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 07 10574K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 08 1043K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 09 ⚠S3773K ⚠P⚠C - NEKO
+  - 🇨🇦 加拿大 (Canada) 10 11063K ⚠L20% ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 11 42408K ⚠L20% ⚠P⚠C - NEKO
 rules:
 - MATCH,PROXIES

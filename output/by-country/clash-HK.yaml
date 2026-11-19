@@ -4,30 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇭🇰 中国香港 (Hong Kong) 01 4891K ⚠P - NEKO
-  server: zfd-hkv1.kunlun01dns.com
-  port: 16114
-  udp: true
-  type: vmess
-  uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
-  alterId: 0
-  cipher: auto
-- name: 🇭🇰 中国香港 (Hong Kong) 02 755K 🇨🇳 - NEKO
-  server: 172.66.140.62
-  port: 443
-  udp: true
-  type: vless
-  uuid: a25a71d1-10ed-4383-855a-f269a34ca691
-  tls: true
-  servername: ave-qualifications-choices-populations.trycloudflare.com
-  skip-cert-verify: false
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /a8b8606819ef
-    headers:
-      Host: ave-qualifications-choices-populations.trycloudflare.com
-- name: 🇭🇰 中国香港 (Hong Kong) 03 5679K ⚠P - NEKO
+- name: 🇭🇰 中国香港 (Hong Kong) 01 10988K 🇨🇳 - NEKO
   server: 2.26.204.46
   port: 31001
   udp: true
@@ -39,22 +16,18 @@ proxies:
     public-key: lzpIiMqHXas_qayw-HvrySb78FNkVroBOqniwqPXPzY
     short-id: 39793bc4708abbbb
   servername: mensura.cdn-apple.com
-  client-fingerprint: firefox
+  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇭🇰 中国香港 (Hong Kong) 01 4891K ⚠P - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 755K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 03 5679K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 10988K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇭🇰 中国香港 (Hong Kong) 01 4891K ⚠P - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 755K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 03 5679K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 10988K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

@@ -4,29 +4,8 @@
   },
   "outbounds": [
     {
-      "type": "vless",
-      "tag": "🇦🇹 奥地利 (Austria) 01 659K 🇨🇳 - NEKO",
-      "server": "67.159.17.252",
-      "server_port": 443,
-      "uuid": "955d8dc7-5e3b-40ac-b2bb-bd8aa20fc7e6",
-      "flow": "xtls-rprx-vision",
-      "tls": {
-        "enabled": true,
-        "server_name": "sdfsdfsf.wey-land.net",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "firefox"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "ZSxFQHVt_avgBDW1Rbbn0SBDidOEftqHgAF9NH565kM",
-          "short_id": ""
-        }
-      }
-    },
-    {
       "type": "shadowsocks",
-      "tag": "🇦🇹 奥地利 (Austria) 02 6402K ⚠P - NEKO",
+      "tag": "🇦🇹 奥地利 (Austria) 01 6758K ⚠P - NEKO",
       "server": "82.110.60.9",
       "server_port": 19999,
       "method": "aes-256-gcm",
@@ -34,7 +13,7 @@
     },
     {
       "type": "vmess",
-      "tag": "🇦🇹 奥地利 (Austria) 03 589K ⚠P - NEKO",
+      "tag": "🇦🇹 奥地利 (Austria) 02 7103K ⚠P - NEKO",
       "server": "154.47.19.225",
       "server_port": 1270,
       "uuid": "5c040f1d-45db-43bd-8d46-e4950e433735",
@@ -46,22 +25,46 @@
       }
     },
     {
+      "type": "vless",
+      "tag": "🇦🇹 奥地利 (Austria) 03 5539K 🇨🇳 - NEKO",
+      "server": "167.104.111.23",
+      "server_port": 14304,
+      "uuid": "32ea050a-1981-4ed2-b63f-77e0f53c4b65",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.apple.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "edge"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "JXTa4KFDYIaOu9zwHosqTFvERbnxRW6qpo4dUJRIQkA",
+          "short_id": "503b0853f3b2460d"
+        }
+      },
+      "transport": {
+        "type": "grpc",
+        "service_name": "api"
+      }
+    },
+    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇦🇹 奥地利 (Austria) 01 659K 🇨🇳 - NEKO",
-        "🇦🇹 奥地利 (Austria) 02 6402K ⚠P - NEKO",
-        "🇦🇹 奥地利 (Austria) 03 589K ⚠P - NEKO"
+        "🇦🇹 奥地利 (Austria) 01 6758K ⚠P - NEKO",
+        "🇦🇹 奥地利 (Austria) 02 7103K ⚠P - NEKO",
+        "🇦🇹 奥地利 (Austria) 03 5539K 🇨🇳 - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇦🇹 奥地利 (Austria) 01 659K 🇨🇳 - NEKO",
-        "🇦🇹 奥地利 (Austria) 02 6402K ⚠P - NEKO",
-        "🇦🇹 奥地利 (Austria) 03 589K ⚠P - NEKO"
+        "🇦🇹 奥地利 (Austria) 01 6758K ⚠P - NEKO",
+        "🇦🇹 奥地利 (Austria) 02 7103K ⚠P - NEKO",
+        "🇦🇹 奥地利 (Austria) 03 5539K 🇨🇳 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

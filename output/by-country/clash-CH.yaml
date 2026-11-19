@@ -4,73 +4,22 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇭 瑞士 (Switzerland) 01 7629K 🇨🇳 - NEKO
-  server: 138.124.40.154
-  port: 443
-  udp: true
-  type: vless
-  uuid: 955d8dc7-5e3b-40ac-b2bb-bd8aa20fc7e6
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: 3BwG9raHQuU1TPn6nBMWvSlwNNdvXM4GEoLOKjfA3wk
-  servername: pay.recrent-sell.com
-  client-fingerprint: qq
-- name: 🇨🇭 瑞士 (Switzerland) 02 7617K 🇨🇳 - NEKO
-  server: 138.124.40.156
-  port: 443
-  udp: true
-  type: vless
-  uuid: 955d8dc7-5e3b-40ac-b2bb-bd8aa20fc7e6
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: 4aNs-_ZCtwuGi-xWp4Ce7SKVqKxdZaXG2SmrHGAgVCQ
-  servername: csgo.recrent-sell.com
-  client-fingerprint: qq
-- name: 🇨🇭 瑞士 (Switzerland) 03 7495K 🇨🇳 - NEKO
-  server: 138.124.40.157
-  port: 443
-  udp: true
-  type: vless
-  uuid: 955d8dc7-5e3b-40ac-b2bb-bd8aa20fc7e6
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: mPa9kajf-i6Rng1q5Wp8VgewBbnlRhol9m1ZYk8Jjy8
-  servername: gta6.recrent-sell.com
-  client-fingerprint: qq
-- name: 🇨🇭 瑞士 (Switzerland) 04 6831K 🇨🇳 - NEKO
-  server: 208.69.78.222
-  port: 443
-  udp: true
-  type: trojan
-  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  sni: yourultimateprofessionalcareerhub.com
-  skip-cert-verify: false
-- name: 🇨🇭 瑞士 (Switzerland) 05 6352K ⚠P - NEKO
-  server: 79.127.184.104
+- name: 🇨🇭 瑞士 (Switzerland) 01 ⚠S53999K ⚠P - NEKO
+  server: 23.166.88.127
   port: 19999
   udp: true
   type: ss
   cipher: aes-256-gcm
   password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇨🇭 瑞士 (Switzerland) 06 7036K ⚠P - NEKO
+- name: 🇨🇭 瑞士 (Switzerland) 02 23662K ⚠P - NEKO
   server: 23.166.88.189
   port: 19999
   udp: true
   type: ss
   cipher: aes-256-gcm
   password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇨🇭 瑞士 (Switzerland) 07 6115K ⚠P - NEKO
-  server: 186.190.215.251
-  port: 19999
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇨🇭 瑞士 (Switzerland) 08 6267K ⚠P - NEKO
-  server: 23.166.88.127
+- name: 🇨🇭 瑞士 (Switzerland) 03 230K ⚠P - NEKO
+  server: 79.127.184.104
   port: 19999
   udp: true
   type: ss
@@ -81,26 +30,16 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇨🇭 瑞士 (Switzerland) 01 7629K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 02 7617K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 03 7495K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 04 6831K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 05 6352K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 06 7036K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 07 6115K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 08 6267K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 01 ⚠S53999K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 02 23662K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 03 230K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇭 瑞士 (Switzerland) 01 7629K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 02 7617K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 03 7495K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 04 6831K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 05 6352K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 06 7036K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 07 6115K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 08 6267K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 01 ⚠S53999K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 02 23662K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 03 230K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

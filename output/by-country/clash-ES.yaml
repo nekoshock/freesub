@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇪🇸 西班牙 (Spain) 01 7284K 🇨🇳 - NEKO
+- name: 🇪🇸 西班牙 (Spain) 01 8595K 🇨🇳 - NEKO
   server: 185.176.9.26
   port: 443
   udp: true
@@ -17,7 +17,21 @@ proxies:
     short-id: 85750bd7
   servername: es1.gofizz.in
   client-fingerprint: firefox
-- name: 🇪🇸 西班牙 (Spain) 02 6697K 🇨🇳 - NEKO
+- name: 🇪🇸 西班牙 (Spain) 02 ⚠S3809K ⚠P - NEKO
+  server: 5.188.181.201
+  port: 9031
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: BwcAUZk8hUFAkDGN
+- name: 🇪🇸 西班牙 (Spain) 03 7877K ⚠P - NEKO
+  server: 5.188.181.201
+  port: 9019
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: GA9KzeEgvfxNrgmM
+- name: 🇪🇸 西班牙 (Spain) 04 26557K 🇨🇳 - NEKO
   server: 66.163.118.113
   port: 443
   udp: true
@@ -30,74 +44,41 @@ proxies:
     short-id: 32209e627ee109c7
   servername: www.apple.com
   client-fingerprint: chrome
-- name: 🇪🇸 西班牙 (Spain) 03 6699K 🇨🇳 - NEKO
-  server: 66.163.118.115
-  port: 443
-  udp: true
-  type: trojan
-  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  sni: discovergreatjobsandadvanceyourcareer.com
-  skip-cert-verify: false
-- name: 🇪🇸 西班牙 (Spain) 04 6884K ⚠P - NEKO
-  server: 62.93.179.97
-  port: 19999
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇪🇸 西班牙 (Spain) 05 8369K ⚠P - NEKO
-  server: 66.163.118.103
-  port: 19999
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇪🇸 西班牙 (Spain) 06 7231K ⚠P - NEKO
+- name: 🇪🇸 西班牙 (Spain) 05 20533K ⚠P - NEKO
   server: 79.127.139.242
   port: 19999
   udp: true
   type: ss
   cipher: aes-256-gcm
   password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇪🇸 西班牙 (Spain) 07 734K ⚠P - NEKO
-  server: 5.188.181.201
-  port: 9019
+- name: 🇪🇸 西班牙 (Spain) 06 27675K ⚠P - NEKO
+  server: 66.163.118.103
+  port: 19999
   udp: true
   type: ss
-  cipher: aes-256-cfb
-  password: GA9KzeEgvfxNrgmM
-- name: 🇪🇸 西班牙 (Spain) 08 397K ⚠P - NEKO
-  server: 5.188.181.201
-  port: 9030
-  udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: GeregetR8cvQHzYr
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇪🇸 西班牙 (Spain) 01 7284K 🇨🇳 - NEKO
-  - 🇪🇸 西班牙 (Spain) 02 6697K 🇨🇳 - NEKO
-  - 🇪🇸 西班牙 (Spain) 03 6699K 🇨🇳 - NEKO
-  - 🇪🇸 西班牙 (Spain) 04 6884K ⚠P - NEKO
-  - 🇪🇸 西班牙 (Spain) 05 8369K ⚠P - NEKO
-  - 🇪🇸 西班牙 (Spain) 06 7231K ⚠P - NEKO
-  - 🇪🇸 西班牙 (Spain) 07 734K ⚠P - NEKO
-  - 🇪🇸 西班牙 (Spain) 08 397K ⚠P - NEKO
+  - 🇪🇸 西班牙 (Spain) 01 8595K 🇨🇳 - NEKO
+  - 🇪🇸 西班牙 (Spain) 02 ⚠S3809K ⚠P - NEKO
+  - 🇪🇸 西班牙 (Spain) 03 7877K ⚠P - NEKO
+  - 🇪🇸 西班牙 (Spain) 04 26557K 🇨🇳 - NEKO
+  - 🇪🇸 西班牙 (Spain) 05 20533K ⚠P - NEKO
+  - 🇪🇸 西班牙 (Spain) 06 27675K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇪🇸 西班牙 (Spain) 01 7284K 🇨🇳 - NEKO
-  - 🇪🇸 西班牙 (Spain) 02 6697K 🇨🇳 - NEKO
-  - 🇪🇸 西班牙 (Spain) 03 6699K 🇨🇳 - NEKO
-  - 🇪🇸 西班牙 (Spain) 04 6884K ⚠P - NEKO
-  - 🇪🇸 西班牙 (Spain) 05 8369K ⚠P - NEKO
-  - 🇪🇸 西班牙 (Spain) 06 7231K ⚠P - NEKO
-  - 🇪🇸 西班牙 (Spain) 07 734K ⚠P - NEKO
-  - 🇪🇸 西班牙 (Spain) 08 397K ⚠P - NEKO
+  - 🇪🇸 西班牙 (Spain) 01 8595K 🇨🇳 - NEKO
+  - 🇪🇸 西班牙 (Spain) 02 ⚠S3809K ⚠P - NEKO
+  - 🇪🇸 西班牙 (Spain) 03 7877K ⚠P - NEKO
+  - 🇪🇸 西班牙 (Spain) 04 26557K 🇨🇳 - NEKO
+  - 🇪🇸 西班牙 (Spain) 05 20533K ⚠P - NEKO
+  - 🇪🇸 西班牙 (Spain) 06 27675K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

@@ -1,0 +1,33 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: info
+proxies:
+- name: 🇪🇪 爱沙尼亚 (Estonia) 01 6831K 🇨🇳 - NEKO
+  server: 217.60.100.223
+  port: 443
+  udp: true
+  type: vless
+  uuid: a6142d9d-3f9f-47b7-b7e9-1245dd6a15d6
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: tF62l_MUqYMOj-yHo1rHXQKhZK9hi9rLSyMhZjF5ZVA
+    short-id: 7a15402edc83d157
+  servername: est1s.dendi.best
+  client-fingerprint: firefox
+proxy-groups:
+- name: PROXIES
+  type: select
+  proxies:
+  - AUTO
+  - 🇪🇪 爱沙尼亚 (Estonia) 01 6831K 🇨🇳 - NEKO
+- name: AUTO
+  type: url-test
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  proxies:
+  - 🇪🇪 爱沙尼亚 (Estonia) 01 6831K 🇨🇳 - NEKO
+rules:
+- MATCH,PROXIES

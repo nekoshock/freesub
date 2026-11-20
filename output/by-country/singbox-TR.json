@@ -5,38 +5,71 @@
   "outbounds": [
     {
       "type": "vless",
-      "tag": "🇹🇷 土耳其 (Turkey) 01 690K 🇨🇳 - NEKO",
-      "server": "185.246.155.91",
-      "server_port": 10103,
-      "uuid": "dbf3f074-3b18-43f3-b82a-debd8c879c69",
+      "tag": "🇹🇷 土耳其 (Turkey) 01 5761K 🇨🇳 - NEKO",
+      "server": "178.210.168.254",
+      "server_port": 443,
+      "uuid": "a6142d9d-3f9f-47b7-b7e9-1245dd6a15d6",
       "flow": "xtls-rprx-vision",
       "tls": {
         "enabled": true,
-        "server_name": "www.apple.com",
+        "server_name": "urk35.dendi.best",
         "utls": {
           "enabled": true,
-          "fingerprint": "chrome"
+          "fingerprint": "firefox"
         },
         "reality": {
           "enabled": true,
-          "public_key": "obQkp5VlQpnlt1hRLQ3VfHISYiiISZJyJZAMaIdjCko",
-          "short_id": "6859f5b59e55aa30"
+          "public_key": "dN1aRcsFNHiFHw9E6YVSOF1SR2H-ahW4gEuXdLvZeFw",
+          "short_id": "e01f"
         }
       }
+    },
+    {
+      "type": "vless",
+      "tag": "🇹🇷 土耳其 (Turkey) 02 4312K 🇨🇳 - NEKO",
+      "server": "77.83.245.79",
+      "server_port": 443,
+      "uuid": "a346c521-7a7f-452b-9356-a4893feb5982",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "tr1-r.bankai.party",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "qq"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "FWitre1jinQR7qz5HQ0q2Q4Gg9xA9B0SyizCziN7Ch0",
+          "short_id": "457fab2ac885dbe0"
+        }
+      }
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇹🇷 土耳其 (Turkey) 03 5997K ⚠P - NEKO",
+      "server": "64.49.13.12",
+      "server_port": 2089,
+      "method": "chacha20-ietf-poly1305",
+      "password": "lZZzfo1mqH7PqnloAogdi2XBhlgiofMy"
     },
     {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇹🇷 土耳其 (Turkey) 01 690K 🇨🇳 - NEKO"
+        "🇹🇷 土耳其 (Turkey) 01 5761K 🇨🇳 - NEKO",
+        "🇹🇷 土耳其 (Turkey) 02 4312K 🇨🇳 - NEKO",
+        "🇹🇷 土耳其 (Turkey) 03 5997K ⚠P - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇹🇷 土耳其 (Turkey) 01 690K 🇨🇳 - NEKO"
+        "🇹🇷 土耳其 (Turkey) 01 5761K 🇨🇳 - NEKO",
+        "🇹🇷 土耳其 (Turkey) 02 4312K 🇨🇳 - NEKO",
+        "🇹🇷 土耳其 (Turkey) 03 5997K ⚠P - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

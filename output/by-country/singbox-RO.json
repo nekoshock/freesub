@@ -1,0 +1,75 @@
+{
+  "log": {
+    "level": "warn"
+  },
+  "outbounds": [
+    {
+      "type": "vless",
+      "tag": "🇷🇴 罗马尼亚 (Romania) 01 7220K 🇨🇳 - NEKO",
+      "server": "162.249.127.165",
+      "server_port": 443,
+      "uuid": "b384d216-9efa-4fd0-a5ef-bd3c37475e4d",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "de.anonch.org",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "S7EpPu01uO-3Qy23GdgQ9n-V907k2lQ9rf-68pDCrUY",
+          "short_id": "b4825c99e49f7d1e"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇷🇴 罗马尼亚 (Romania) 02 7339K 🇨🇳 - NEKO",
+      "server": "205.237.111.245",
+      "server_port": 443,
+      "uuid": "b384d216-9efa-4fd0-a5ef-bd3c37475e4d",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "de.prutube.online",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "r-e8TQbBkEf-dE1ZSauRo8FlNCZBPJLmbaaq-uMk6ic",
+          "short_id": "9c0edbf3dabbe437"
+        }
+      }
+    },
+    {
+      "type": "selector",
+      "tag": "select",
+      "outbounds": [
+        "auto",
+        "🇷🇴 罗马尼亚 (Romania) 01 7220K 🇨🇳 - NEKO",
+        "🇷🇴 罗马尼亚 (Romania) 02 7339K 🇨🇳 - NEKO"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "auto",
+      "outbounds": [
+        "🇷🇴 罗马尼亚 (Romania) 01 7220K 🇨🇳 - NEKO",
+        "🇷🇴 罗马尼亚 (Romania) 02 7339K 🇨🇳 - NEKO"
+      ],
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+    {
+      "type": "block",
+      "tag": "block"
+    }
+  ]
+}

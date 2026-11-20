@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇫🇮 芬兰 (Finland) 01 387K 🇨🇳 - NEKO
+- name: 🇫🇮 芬兰 (Finland) 01 6752K 🇨🇳 - NEKO
   server: 138.124.80.29
   port: 443
   udp: true
@@ -17,7 +17,37 @@ proxies:
     short-id: 457fab2ac885dbe0
   servername: fin1-r.bankai.party
   client-fingerprint: firefox
-- name: 🇫🇮 芬兰 (Finland) 02 15539K 🇨🇳 - NEKO
+- name: 🇫🇮 芬兰 (Finland) 02 5226K 🇨🇳 - NEKO
+  server: 185.232.204.116
+  port: 443
+  udp: true
+  type: vless
+  uuid: ab5e91ee-f600-4825-a2bc-d6471d5cee03
+  tls: true
+  reality-opts:
+    public-key: Au1rmQdDRjlEJk17IfLQv5PBUEEosMWNhAlrWZj6mnY
+    short-id: '12345678'
+  servername: food-from-finlda-here-we-go.keno.su
+  client-fingerprint: firefox
+  network: grpc
+  grpc-opts:
+    grpc-service-name: grpc
+- name: 🇫🇮 芬兰 (Finland) 03 9904K 🇨🇳 - NEKO
+  server: 77.232.140.7
+  port: 443
+  udp: true
+  type: vless
+  uuid: 50414e45-4c5f-5a45-5553-5a447647929f
+  tls: true
+  servername: bbz1x6eau6gs.88bahpu62r.workers.dev
+  skip-cert-verify: false
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /stream/PANEL_ZEUS/5a447647929f
+    headers:
+      Host: bbz1x6eau6gs.88bahpu62r.workers.dev
+- name: 🇫🇮 芬兰 (Finland) 04 6721K 🇨🇳 - NEKO
   server: 157.180.98.124
   port: 49659
   udp: true
@@ -30,15 +60,20 @@ proxies:
     short-id: 81959fce
   servername: apple.com
   client-fingerprint: chrome
-- name: 🇫🇮 芬兰 (Finland) 03 11260K ⚠P⚠U - NEKO
-  server: 94.183.164.119
-  port: 24433
+- name: 🇫🇮 芬兰 (Finland) 05 8531K 🇨🇳 - NEKO
+  server: 157.180.98.124
+  port: 49659
   udp: true
-  type: hysteria2
-  password: 549766c3-fa5f-471e-8031-ffc1f8d5064f
-  sni: lakes.blog-forme.ru
-  skip-cert-verify: false
-- name: 🇫🇮 芬兰 (Finland) 04 16493K ⚠P - NEKO
+  type: vless
+  uuid: 88a558b1-9645-42f3-89e5-341570d8486d
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: bBVqro8tG6swTNoAkjwUzcu4Ew4N4VcyDHzADcGviCs
+    short-id: 81959fce
+  servername: apple.com
+  client-fingerprint: ''
+- name: 🇫🇮 芬兰 (Finland) 06 6688K ⚠P - NEKO
   server: fn1s.sublinkplas.ir
   port: 53731
   udp: true
@@ -50,18 +85,22 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇫🇮 芬兰 (Finland) 01 387K 🇨🇳 - NEKO
-  - 🇫🇮 芬兰 (Finland) 02 15539K 🇨🇳 - NEKO
-  - 🇫🇮 芬兰 (Finland) 03 11260K ⚠P⚠U - NEKO
-  - 🇫🇮 芬兰 (Finland) 04 16493K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 01 6752K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 02 5226K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 03 9904K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 04 6721K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 05 8531K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 06 6688K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇫🇮 芬兰 (Finland) 01 387K 🇨🇳 - NEKO
-  - 🇫🇮 芬兰 (Finland) 02 15539K 🇨🇳 - NEKO
-  - 🇫🇮 芬兰 (Finland) 03 11260K ⚠P⚠U - NEKO
-  - 🇫🇮 芬兰 (Finland) 04 16493K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 01 6752K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 02 5226K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 03 9904K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 04 6721K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 05 8531K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 06 6688K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

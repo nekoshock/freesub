@@ -4,23 +4,29 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇯🇵 日本 (Japan) 01 8732K ⚠P - NEKO
-  server: 64.176.57.251
-  port: 8388
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: YKwDz3mFpT9vGcL8nBs5dHrA2sxM
-- name: 🇯🇵 日本 (Japan) 02 9655K 🇨🇳 - NEKO
-  server: 172.105.197.24
+- name: 🇯🇵 日本 (Japan) 01 29713K 🇨🇳 - NEKO
+  server: 31.76.91.248
   port: 443
   udp: true
   type: vless
-  uuid: 81f4e114-5a60-41b5-9038-8d742380c84f
+  uuid: b384d216-9efa-4fd0-a5ef-bd3c37475e4d
+  flow: xtls-rprx-vision
   tls: true
   reality-opts:
-    public-key: EfNOl6-YAuW-WSg7Op-1YOqKZV9emIuLwH8YPhzc7ms
-    short-id: 772bef67
+    public-key: zxe-j-XWD2Hu7DZa-xtfaGiKMqKpqX5g21Reyiu99ic
+    short-id: b2410b7bd2ad8f2a
+  servername: jp.anonch.net
+  client-fingerprint: firefox
+- name: 🇯🇵 日本 (Japan) 02 31172K 🇨🇳 - NEKO
+  server: 172.237.14.205
+  port: 443
+  udp: true
+  type: vless
+  uuid: 4796e022-f377-4a97-bc03-fbf525d7913c
+  tls: true
+  reality-opts:
+    public-key: dllB1KTn7oiEqa6OlmZl-j2kF5GN9bAQeoBinYV2cUQ
+    short-id: da26e5a2
   servername: itunes.apple.com
   client-fingerprint: chrome
   network: ws
@@ -28,211 +34,7 @@ proxies:
     path: /ws
     headers:
       Host: itunes.apple.com
-- name: 🇯🇵 日本 (Japan) 03 9884K 🇨🇳 - NEKO
-  server: 172.105.216.21
-  port: 443
-  udp: true
-  type: vless
-  uuid: 76f1ce49-bcea-4680-b9ef-16592269445b
-  tls: true
-  reality-opts:
-    public-key: Mjv5qe_CrvfHdVwgtyqYbqPesZ-1oko2XYg3dguzvxg
-    short-id: c29f9af4
-  servername: itunes.apple.com
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /ws
-    headers:
-      Host: itunes.apple.com
-- name: 🇯🇵 日本 (Japan) 04 9897K 🇨🇳 - NEKO
-  server: 172.104.105.212
-  port: 443
-  udp: true
-  type: vless
-  uuid: e8212bb6-b962-4c68-83e6-c2dbc81829a0
-  tls: true
-  reality-opts:
-    public-key: kiBL725AePA3-FPNDKwUgMrolmGl_P8YBRAwFj-_yzM
-    short-id: cdfc4883
-  servername: itunes.apple.com
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /ws
-    headers:
-      Host: itunes.apple.com
-- name: 🇯🇵 日本 (Japan) 05 9643K 🇨🇳 - NEKO
-  server: 139.162.91.200
-  port: 443
-  udp: true
-  type: vless
-  uuid: 847bdd83-9e2f-4708-81ed-729a2ca6eeec
-  tls: true
-  reality-opts:
-    public-key: -g20lzrrmgQb5wbq0vJ2OkZo_-j4KcFq_JDGVp5n_TQ
-    short-id: 7bae4b22
-  servername: itunes.apple.com
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /ws
-    headers:
-      Host: itunes.apple.com
-- name: 🇯🇵 日本 (Japan) 06 9707K 🇨🇳 - NEKO
-  server: 139.162.91.250
-  port: 443
-  udp: true
-  type: vless
-  uuid: 48921d5f-cbbb-481f-b0a3-365deafd746f
-  tls: true
-  reality-opts:
-    public-key: 7_aY3baCmhZd-71BjylzAHIy6glYGEP_Aj6D2xZMTD0
-    short-id: cf23e817
-  servername: itunes.apple.com
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /ws
-    headers:
-      Host: itunes.apple.com
-- name: 🇯🇵 日本 (Japan) 07 9846K 🇨🇳 - NEKO
-  server: 172.104.86.181
-  port: 443
-  udp: true
-  type: vless
-  uuid: 010431f3-04f6-4404-a801-b93bf2e3c2b2
-  tls: true
-  reality-opts:
-    public-key: ujYDprigWFLxcj4BtitDNa-hoPjIbpSzrnEcqp3cgjk
-    short-id: c8559ca1
-  servername: itunes.apple.com
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /ws
-    headers:
-      Host: itunes.apple.com
-- name: 🇯🇵 日本 (Japan) 08 9960K 🇨🇳 - NEKO
-  server: 45.76.222.108
-  port: 443
-  udp: true
-  type: vless
-  uuid: bd95a04e-e3e1-460e-b89d-e9a693d393e0
-  tls: true
-  reality-opts:
-    public-key: -_YzpVlKrn08il_kQdHxHTvJyWYAdetWN_IFRtvPgmE
-    short-id: b5c85d2d
-  servername: itunes.apple.com
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /ws
-    headers:
-      Host: itunes.apple.com
-- name: 🇯🇵 日本 (Japan) 09 9866K 🇨🇳 - NEKO
-  server: 172.105.203.15
-  port: 443
-  udp: true
-  type: vless
-  uuid: c8c9b995-b4b9-4915-9c7d-dee94aa733ba
-  tls: true
-  reality-opts:
-    public-key: HyAx05nhCz5mXxVxWXU1TrWRKdpYE0MHF4-V-LtyhTA
-    short-id: 0784b134
-  servername: itunes.apple.com
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /ws
-    headers:
-      Host: itunes.apple.com
-- name: 🇯🇵 日本 (Japan) 10 9986K 🇨🇳 - NEKO
-  server: 198.13.53.39
-  port: 443
-  udp: true
-  type: vless
-  uuid: 8f21c635-ef0a-4b05-8356-f44d463b6e34
-  tls: true
-  reality-opts:
-    public-key: xxPVgbxguyYuVIml6Eh6ZGcDLO1z0OWKZXfDdUGFv1k
-    short-id: 7a7cc838
-  servername: itunes.apple.com
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /ws
-    headers:
-      Host: itunes.apple.com
-- name: 🇯🇵 日本 (Japan) 11 9821K 🇨🇳 - NEKO
-  server: 45.76.106.69
-  port: 443
-  udp: true
-  type: vless
-  uuid: db102c51-5f7f-4283-b9c1-942c5c6e2616
-  tls: true
-  reality-opts:
-    public-key: nZzY--8K_-mm8x4JDzkUFt1be1SQzriGIOmYkbpq1C8
-    short-id: 034f5d5a
-  servername: itunes.apple.com
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /ws
-    headers:
-      Host: itunes.apple.com
-- name: 🇯🇵 日本 (Japan) 12 10822K 🇨🇳 - NEKO
-  server: 139.162.91.224
-  port: 443
-  udp: true
-  type: vless
-  uuid: ff3038b1-a2f5-428f-89cd-5d5e4efba8e7
-  tls: true
-  reality-opts:
-    public-key: wmbc3kcjbG9-A9Fi7zaHuRVPH7A7UQkKNNvqyqJtMEk
-    short-id: e5b03494
-  servername: itunes.apple.com
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /ws
-    headers:
-      Host: itunes.apple.com
-- name: 🇯🇵 日本 (Japan) 13 10291K 🇨🇳 - NEKO
-  server: 45.77.8.233
-  port: 443
-  udp: true
-  type: vless
-  uuid: 242212a6-200b-4c09-b2e5-86a8dd490331
-  tls: true
-  reality-opts:
-    public-key: JSC_NT5_PEEbNCQIJjSSlpwkWWF94o0XAP3iboF6nlY
-    short-id: de193635
-  servername: itunes.apple.com
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /ws
-    headers:
-      Host: itunes.apple.com
-- name: 🇯🇵 日本 (Japan) 14 9198K 🇨🇳 - NEKO
-  server: 139.162.91.247
-  port: 443
-  udp: true
-  type: vless
-  uuid: 8cfdacf8-e781-42f0-9872-8d1d22469de5
-  tls: true
-  reality-opts:
-    public-key: _gFFckW3h8hFfllawgec9U2PDBeLJeCK_Jgk1S5tgC8
-    short-id: 536d7739
-  servername: itunes.apple.com
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /ws
-    headers:
-      Host: itunes.apple.com
-- name: 🇯🇵 日本 (Japan) 15 13262K 🇨🇳 - NEKO
+- name: 🇯🇵 日本 (Japan) 03 ⚠S63988K 🇨🇳 - NEKO
   server: 172.238.18.103
   port: 443
   udp: true
@@ -249,16 +51,26 @@ proxies:
     path: /ws
     headers:
       Host: itunes.apple.com
-- name: 🇯🇵 日本 (Japan) 16 13011K 🇨🇳 - NEKO
-  server: 139.162.125.126
+- name: 🇯🇵 日本 (Japan) 04 6172K 🇨🇳 - NEKO
+  server: kuruish.org
   port: 443
   udp: true
   type: vless
-  uuid: eb6cf336-03bd-4dac-9f2a-3e456389279e
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  tls: true
+  servername: kuruish.org
+  skip-cert-verify: false
+  client-fingerprint: chrome
+- name: 🇯🇵 日本 (Japan) 05 19082K 🇨🇳 - NEKO
+  server: 198.13.53.39
+  port: 443
+  udp: true
+  type: vless
+  uuid: 8f21c635-ef0a-4b05-8356-f44d463b6e34
   tls: true
   reality-opts:
-    public-key: mMLchVbQzhQ2bGV6wkg1LP5Q7eqL2hCVHHMT0B03dwg
-    short-id: bd6e3e70
+    public-key: xxPVgbxguyYuVIml6Eh6ZGcDLO1z0OWKZXfDdUGFv1k
+    short-id: 7a7cc838
   servername: itunes.apple.com
   client-fingerprint: chrome
   network: ws
@@ -266,16 +78,16 @@ proxies:
     path: /ws
     headers:
       Host: itunes.apple.com
-- name: 🇯🇵 日本 (Japan) 17 13250K 🇨🇳 - NEKO
-  server: 139.162.91.249
+- name: 🇯🇵 日本 (Japan) 06 17462K 🇨🇳 - NEKO
+  server: 45.76.222.108
   port: 443
   udp: true
   type: vless
-  uuid: 2528315f-1eab-4eaa-8bba-608ce3176a4f
+  uuid: bd95a04e-e3e1-460e-b89d-e9a693d393e0
   tls: true
   reality-opts:
-    public-key: cSxkR0fZz1l31vU65UDHVkK7vB4pfcgU4Hxff5rLFH8
-    short-id: ee000e5e
+    public-key: -_YzpVlKrn08il_kQdHxHTvJyWYAdetWN_IFRtvPgmE
+    short-id: b5c85d2d
   servername: itunes.apple.com
   client-fingerprint: chrome
   network: ws
@@ -283,16 +95,16 @@ proxies:
     path: /ws
     headers:
       Host: itunes.apple.com
-- name: 🇯🇵 日本 (Japan) 18 13078K 🇨🇳 - NEKO
-  server: 103.29.68.232
+- name: 🇯🇵 日本 (Japan) 07 17143K 🇨🇳 - NEKO
+  server: 45.77.8.233
   port: 443
   udp: true
   type: vless
-  uuid: 3a280a05-7fd1-40d3-83f8-21d68ad55c48
+  uuid: 242212a6-200b-4c09-b2e5-86a8dd490331
   tls: true
   reality-opts:
-    public-key: N08LwXU5wRTp7VftvXcS3lS7pnNg1fXPvjZ66iJB3nk
-    short-id: e3c05fa9
+    public-key: JSC_NT5_PEEbNCQIJjSSlpwkWWF94o0XAP3iboF6nlY
+    short-id: de193635
   servername: itunes.apple.com
   client-fingerprint: chrome
   network: ws
@@ -300,58 +112,7 @@ proxies:
     path: /ws
     headers:
       Host: itunes.apple.com
-- name: 🇯🇵 日本 (Japan) 19 13290K 🇨🇳 - NEKO
-  server: 139.162.91.232
-  port: 443
-  udp: true
-  type: vless
-  uuid: ea2e7ce8-60c3-4fab-945c-6ae3e0066c3b
-  tls: true
-  reality-opts:
-    public-key: bApi9lB94L-fIb5WoLVR_0WPknU6tICCFoiiWgD_73c
-    short-id: dee2fdee
-  servername: itunes.apple.com
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /ws
-    headers:
-      Host: itunes.apple.com
-- name: 🇯🇵 日本 (Japan) 20 13150K 🇨🇳 - NEKO
-  server: 139.162.91.202
-  port: 443
-  udp: true
-  type: vless
-  uuid: ff39640f-5582-47da-b856-56b2d973dc0e
-  tls: true
-  reality-opts:
-    public-key: hbGeMcrzhsdvnc7jW0id4SeUt0kzDBASOYInT7oDHyA
-    short-id: 7d5f0c7c
-  servername: itunes.apple.com
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /ws
-    headers:
-      Host: itunes.apple.com
-- name: 🇯🇵 日本 (Japan) 21 5599K 🇨🇳 - NEKO
-  server: 149.28.29.156
-  port: 443
-  udp: true
-  type: vless
-  uuid: aa1a9052-720f-4bb0-92be-21b6baf9f386
-  tls: true
-  reality-opts:
-    public-key: qgCGmxD1lyAEIGZVEk4buAMGcvGvHLl9wGxPQlHCYX0
-    short-id: e535df57
-  servername: itunes.apple.com
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /ws
-    headers:
-      Host: itunes.apple.com
-- name: 🇯🇵 日本 (Japan) 22 13579K 🇨🇳 - NEKO
+- name: 🇯🇵 日本 (Japan) 08 32054K 🇨🇳 - NEKO
   server: 139.162.91.239
   port: 443
   udp: true
@@ -368,16 +129,16 @@ proxies:
     path: /ws
     headers:
       Host: itunes.apple.com
-- name: 🇯🇵 日本 (Japan) 23 13158K 🇨🇳 - NEKO
-  server: 139.162.101.74
+- name: 🇯🇵 日本 (Japan) 09 29005K 🇨🇳 - NEKO
+  server: 139.162.91.247
   port: 443
   udp: true
   type: vless
-  uuid: 1e709d98-d4c3-45c1-bdcc-4268cf83eff8
+  uuid: 8cfdacf8-e781-42f0-9872-8d1d22469de5
   tls: true
   reality-opts:
-    public-key: jd8UNLpim43LVV-iEzIXlUgTVuvi9Pf7E0kgQb3o0CI
-    short-id: 7e1e09f4
+    public-key: _gFFckW3h8hFfllawgec9U2PDBeLJeCK_Jgk1S5tgC8
+    short-id: 536d7739
   servername: itunes.apple.com
   client-fingerprint: chrome
   network: ws
@@ -385,7 +146,58 @@ proxies:
     path: /ws
     headers:
       Host: itunes.apple.com
-- name: 🇯🇵 日本 (Japan) 24 10804K 🇨🇳 - NEKO
+- name: 🇯🇵 日本 (Japan) 10 23786K 🇨🇳 - NEKO
+  server: 172.105.203.15
+  port: 443
+  udp: true
+  type: vless
+  uuid: c8c9b995-b4b9-4915-9c7d-dee94aa733ba
+  tls: true
+  reality-opts:
+    public-key: HyAx05nhCz5mXxVxWXU1TrWRKdpYE0MHF4-V-LtyhTA
+    short-id: 0784b134
+  servername: itunes.apple.com
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /ws
+    headers:
+      Host: itunes.apple.com
+- name: 🇯🇵 日本 (Japan) 11 17614K 🇨🇳 - NEKO
+  server: 139.162.91.232
+  port: 443
+  udp: true
+  type: vless
+  uuid: ea2e7ce8-60c3-4fab-945c-6ae3e0066c3b
+  tls: true
+  reality-opts:
+    public-key: bApi9lB94L-fIb5WoLVR_0WPknU6tICCFoiiWgD_73c
+    short-id: dee2fdee
+  servername: itunes.apple.com
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /ws
+    headers:
+      Host: itunes.apple.com
+- name: 🇯🇵 日本 (Japan) 12 17980K 🇨🇳 - NEKO
+  server: 139.162.91.202
+  port: 443
+  udp: true
+  type: vless
+  uuid: ff39640f-5582-47da-b856-56b2d973dc0e
+  tls: true
+  reality-opts:
+    public-key: hbGeMcrzhsdvnc7jW0id4SeUt0kzDBASOYInT7oDHyA
+    short-id: 7d5f0c7c
+  servername: itunes.apple.com
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /ws
+    headers:
+      Host: itunes.apple.com
+- name: 🇯🇵 日本 (Japan) 13 17374K 🇨🇳 - NEKO
   server: 139.162.91.137
   port: 443
   udp: true
@@ -402,7 +214,211 @@ proxies:
     path: /ws
     headers:
       Host: itunes.apple.com
-- name: 🇯🇵 日本 (Japan) 25 12267K 🇨🇳 - NEKO
+- name: 🇯🇵 日本 (Japan) 14 26908K 🇨🇳 - NEKO
+  server: 139.162.91.249
+  port: 443
+  udp: true
+  type: vless
+  uuid: 2528315f-1eab-4eaa-8bba-608ce3176a4f
+  tls: true
+  reality-opts:
+    public-key: cSxkR0fZz1l31vU65UDHVkK7vB4pfcgU4Hxff5rLFH8
+    short-id: ee000e5e
+  servername: itunes.apple.com
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /ws
+    headers:
+      Host: itunes.apple.com
+- name: 🇯🇵 日本 (Japan) 15 15558K 🇨🇳 - NEKO
+  server: 45.76.106.69
+  port: 443
+  udp: true
+  type: vless
+  uuid: db102c51-5f7f-4283-b9c1-942c5c6e2616
+  tls: true
+  reality-opts:
+    public-key: nZzY--8K_-mm8x4JDzkUFt1be1SQzriGIOmYkbpq1C8
+    short-id: 034f5d5a
+  servername: itunes.apple.com
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /ws
+    headers:
+      Host: itunes.apple.com
+- name: 🇯🇵 日本 (Japan) 16 27031K 🇨🇳 - NEKO
+  server: 139.162.91.250
+  port: 443
+  udp: true
+  type: vless
+  uuid: 48921d5f-cbbb-481f-b0a3-365deafd746f
+  tls: true
+  reality-opts:
+    public-key: 7_aY3baCmhZd-71BjylzAHIy6glYGEP_Aj6D2xZMTD0
+    short-id: cf23e817
+  servername: itunes.apple.com
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /ws
+    headers:
+      Host: itunes.apple.com
+- name: 🇯🇵 日本 (Japan) 17 23969K 🇨🇳 - NEKO
+  server: 139.162.101.74
+  port: 443
+  udp: true
+  type: vless
+  uuid: 1e709d98-d4c3-45c1-bdcc-4268cf83eff8
+  tls: true
+  reality-opts:
+    public-key: jd8UNLpim43LVV-iEzIXlUgTVuvi9Pf7E0kgQb3o0CI
+    short-id: 7e1e09f4
+  servername: itunes.apple.com
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /ws
+    headers:
+      Host: itunes.apple.com
+- name: 🇯🇵 日本 (Japan) 18 13650K 🇨🇳 - NEKO
+  server: 172.105.197.24
+  port: 443
+  udp: true
+  type: vless
+  uuid: 81f4e114-5a60-41b5-9038-8d742380c84f
+  tls: true
+  reality-opts:
+    public-key: EfNOl6-YAuW-WSg7Op-1YOqKZV9emIuLwH8YPhzc7ms
+    short-id: 772bef67
+  servername: itunes.apple.com
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /ws
+    headers:
+      Host: itunes.apple.com
+- name: 🇯🇵 日本 (Japan) 19 25603K 🇨🇳 - NEKO
+  server: 139.162.91.200
+  port: 443
+  udp: true
+  type: vless
+  uuid: 847bdd83-9e2f-4708-81ed-729a2ca6eeec
+  tls: true
+  reality-opts:
+    public-key: -g20lzrrmgQb5wbq0vJ2OkZo_-j4KcFq_JDGVp5n_TQ
+    short-id: 7bae4b22
+  servername: itunes.apple.com
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /ws
+    headers:
+      Host: itunes.apple.com
+- name: 🇯🇵 日本 (Japan) 20 28407K 🇨🇳 - NEKO
+  server: 172.104.86.181
+  port: 443
+  udp: true
+  type: vless
+  uuid: 010431f3-04f6-4404-a801-b93bf2e3c2b2
+  tls: true
+  reality-opts:
+    public-key: ujYDprigWFLxcj4BtitDNa-hoPjIbpSzrnEcqp3cgjk
+    short-id: c8559ca1
+  servername: itunes.apple.com
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /ws
+    headers:
+      Host: itunes.apple.com
+- name: 🇯🇵 日本 (Japan) 21 23925K 🇨🇳 - NEKO
+  server: 103.29.68.232
+  port: 443
+  udp: true
+  type: vless
+  uuid: 3a280a05-7fd1-40d3-83f8-21d68ad55c48
+  tls: true
+  reality-opts:
+    public-key: N08LwXU5wRTp7VftvXcS3lS7pnNg1fXPvjZ66iJB3nk
+    short-id: e3c05fa9
+  servername: itunes.apple.com
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /ws
+    headers:
+      Host: itunes.apple.com
+- name: 🇯🇵 日本 (Japan) 22 20373K 🇨🇳 - NEKO
+  server: 149.28.29.156
+  port: 443
+  udp: true
+  type: vless
+  uuid: aa1a9052-720f-4bb0-92be-21b6baf9f386
+  tls: true
+  reality-opts:
+    public-key: qgCGmxD1lyAEIGZVEk4buAMGcvGvHLl9wGxPQlHCYX0
+    short-id: e535df57
+  servername: itunes.apple.com
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /ws
+    headers:
+      Host: itunes.apple.com
+- name: 🇯🇵 日本 (Japan) 23 31419K 🇨🇳 - NEKO
+  server: 139.162.91.224
+  port: 443
+  udp: true
+  type: vless
+  uuid: ff3038b1-a2f5-428f-89cd-5d5e4efba8e7
+  tls: true
+  reality-opts:
+    public-key: wmbc3kcjbG9-A9Fi7zaHuRVPH7A7UQkKNNvqyqJtMEk
+    short-id: e5b03494
+  servername: itunes.apple.com
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /ws
+    headers:
+      Host: itunes.apple.com
+- name: 🇯🇵 日本 (Japan) 24 11283K 🇨🇳 - NEKO
+  server: 172.105.216.21
+  port: 443
+  udp: true
+  type: vless
+  uuid: 76f1ce49-bcea-4680-b9ef-16592269445b
+  tls: true
+  reality-opts:
+    public-key: Mjv5qe_CrvfHdVwgtyqYbqPesZ-1oko2XYg3dguzvxg
+    short-id: c29f9af4
+  servername: itunes.apple.com
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /ws
+    headers:
+      Host: itunes.apple.com
+- name: 🇯🇵 日本 (Japan) 25 28636K 🇨🇳 - NEKO
+  server: 139.162.91.205
+  port: 443
+  udp: true
+  type: vless
+  uuid: 0abae9af-0c58-425e-b61f-e3a5e6ede334
+  tls: true
+  reality-opts:
+    public-key: EeTzKB_vgD-Zsfeofz7nUwbsdT4A0Ox5UtAEbAdb-24
+    short-id: 91c8b3c1
+  servername: itunes.apple.com
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /ws
+    headers:
+      Host: itunes.apple.com
+- name: 🇯🇵 日本 (Japan) 26 15517K 🇨🇳 - NEKO
   server: 172.105.212.91
   port: 443
   udp: true
@@ -419,65 +435,124 @@ proxies:
     path: /ws
     headers:
       Host: itunes.apple.com
+- name: 🇯🇵 日本 (Japan) 27 13634K 🇨🇳 - NEKO
+  server: 139.162.125.126
+  port: 443
+  udp: true
+  type: vless
+  uuid: eb6cf336-03bd-4dac-9f2a-3e456389279e
+  tls: true
+  reality-opts:
+    public-key: mMLchVbQzhQ2bGV6wkg1LP5Q7eqL2hCVHHMT0B03dwg
+    short-id: bd6e3e70
+  servername: itunes.apple.com
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /ws
+    headers:
+      Host: itunes.apple.com
+- name: 🇯🇵 日本 (Japan) 28 13777K ⚠P - NEKO
+  server: 64.176.57.251
+  port: 8388
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: YKwDz3mFpT9vGcL8nBs5dHrA2sxM
+- name: 🇯🇵 日本 (Japan) 29 14446K 🇨🇳 - NEKO
+  server: 172.104.105.212
+  port: 443
+  udp: true
+  type: vless
+  uuid: e8212bb6-b962-4c68-83e6-c2dbc81829a0
+  tls: true
+  reality-opts:
+    public-key: kiBL725AePA3-FPNDKwUgMrolmGl_P8YBRAwFj-_yzM
+    short-id: cdfc4883
+  servername: itunes.apple.com
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /ws
+    headers:
+      Host: itunes.apple.com
+- name: 🇯🇵 日本 (Japan) 30 16354K 🇨🇳 - NEKO
+  server: 167.17.179.207
+  port: 443
+  udp: true
+  type: hysteria2
+  password: SW_COSMOS:sYcUMf7G9g67Zuho
+  sni: spacearea.onthewifi.com
+  skip-cert-verify: false
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇯🇵 日本 (Japan) 01 8732K ⚠P - NEKO
-  - 🇯🇵 日本 (Japan) 02 9655K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 03 9884K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 04 9897K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 05 9643K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 06 9707K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 07 9846K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 08 9960K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 09 9866K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 10 9986K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 11 9821K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 12 10822K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 13 10291K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 14 9198K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 15 13262K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 16 13011K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 17 13250K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 18 13078K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 19 13290K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 20 13150K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 21 5599K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 22 13579K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 23 13158K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 24 10804K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 25 12267K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 01 29713K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 02 31172K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 03 ⚠S63988K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 04 6172K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 05 19082K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 06 17462K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 07 17143K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 08 32054K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 09 29005K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 10 23786K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 11 17614K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 12 17980K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 13 17374K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 14 26908K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 15 15558K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 16 27031K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 17 23969K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 18 13650K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 19 25603K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 20 28407K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 21 23925K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 22 20373K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 23 31419K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 24 11283K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 25 28636K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 26 15517K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 27 13634K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 28 13777K ⚠P - NEKO
+  - 🇯🇵 日本 (Japan) 29 14446K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 30 16354K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇯🇵 日本 (Japan) 01 8732K ⚠P - NEKO
-  - 🇯🇵 日本 (Japan) 02 9655K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 03 9884K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 04 9897K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 05 9643K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 06 9707K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 07 9846K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 08 9960K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 09 9866K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 10 9986K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 11 9821K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 12 10822K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 13 10291K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 14 9198K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 15 13262K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 16 13011K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 17 13250K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 18 13078K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 19 13290K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 20 13150K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 21 5599K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 22 13579K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 23 13158K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 24 10804K 🇨🇳 - NEKO
-  - 🇯🇵 日本 (Japan) 25 12267K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 01 29713K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 02 31172K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 03 ⚠S63988K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 04 6172K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 05 19082K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 06 17462K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 07 17143K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 08 32054K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 09 29005K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 10 23786K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 11 17614K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 12 17980K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 13 17374K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 14 26908K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 15 15558K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 16 27031K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 17 23969K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 18 13650K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 19 25603K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 20 28407K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 21 23925K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 22 20373K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 23 31419K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 24 11283K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 25 28636K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 26 15517K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 27 13634K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 28 13777K ⚠P - NEKO
+  - 🇯🇵 日本 (Japan) 29 14446K 🇨🇳 - NEKO
+  - 🇯🇵 日本 (Japan) 30 16354K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

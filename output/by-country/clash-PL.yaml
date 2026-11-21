@@ -4,38 +4,66 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇵🇱 波兰 (Poland) 01 750K ⚠P - NEKO
+- name: 🇵🇱 波兰 (Poland) 01 16117K ⚠P - NEKO
+  server: 217.30.10.70
+  port: 9027
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: EXN3S3eQpjE7EJu8
+- name: 🇵🇱 波兰 (Poland) 02 26071K 🇨🇳 - NEKO
+  server: 144.31.3.89
+  port: 443
+  udp: true
+  type: vless
+  uuid: 58e22afd-bf74-4736-984d-63a8ca03d7f0
+  tls: true
+  servername: clearingmatch.melodramaonline.net
+  skip-cert-verify: false
+  client-fingerprint: firefox
+  network: ws
+  ws-opts:
+    path: /media/ws/
+- name: 🇵🇱 波兰 (Poland) 03 11163K ⚠P - NEKO
+  server: 217.30.10.70
+  port: 9031
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: BwcAUZk8hUFAkDGN
+- name: 🇵🇱 波兰 (Poland) 04 5639K ⚠P - NEKO
   server: 217.30.10.70
   port: 9045
   udp: true
   type: ss
   cipher: aes-256-cfb
   password: Lp27rqyJq72bZsqX
-- name: 🇵🇱 波兰 (Poland) 02 1552K 🇨🇳 - NEKO
-  server: 144.31.5.137
-  port: 443
+- name: 🇵🇱 波兰 (Poland) 05 3958K ⚠P - NEKO
+  server: 217.30.10.70
+  port: 9015
   udp: true
-  type: vless
-  uuid: 78a2cdf1-22e5-4ad7-bf89-91aa13d8b76c
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: Jg9VG2d5YKA_b6b2oVT8_QaIEHyww04U050ahEPhZlU
-  servername: se.dataroute.biz
-  client-fingerprint: firefox
+  type: ss
+  cipher: aes-256-cfb
+  password: ZpNDDKRu9MagNvaf
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇵🇱 波兰 (Poland) 01 750K ⚠P - NEKO
-  - 🇵🇱 波兰 (Poland) 02 1552K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 01 16117K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 02 26071K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 03 11163K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 04 5639K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 05 3958K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇵🇱 波兰 (Poland) 01 750K ⚠P - NEKO
-  - 🇵🇱 波兰 (Poland) 02 1552K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 01 16117K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 02 26071K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 03 11163K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 04 5639K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 05 3958K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

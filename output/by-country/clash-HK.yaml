@@ -4,15 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇭🇰 中国香港 (Hong Kong) 01 5793K ⚠P - NEKO
-  server: dog-hk.kunlun01dns.com
-  port: 21019
-  udp: true
-  type: vmess
-  uuid: 9464ca40-dd75-3742-a628-d931a9f413b2
-  alterId: 0
-  cipher: auto
-- name: 🇭🇰 中国香港 (Hong Kong) 02 6257K ⚠P - NEKO
+- name: 🇭🇰 中国香港 (Hong Kong) 01 ⚠S2149K ⚠P - NEKO
   server: 2.26.204.46
   port: 31001
   udp: true
@@ -24,40 +16,18 @@ proxies:
     public-key: lzpIiMqHXas_qayw-HvrySb78FNkVroBOqniwqPXPzY
     short-id: 39793bc4708abbbb
   servername: mensura.cdn-apple.com
-  client-fingerprint: ''
-- name: 🇭🇰 中国香港 (Hong Kong) 03 5745K ⚠P - NEKO
-  server: zfd-hkv2.kunlun01dns.com
-  port: 16113
-  udp: true
-  type: vmess
-  uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
-  alterId: 0
-  cipher: auto
-- name: 🇭🇰 中国香港 (Hong Kong) 04 5673K ⚠P - NEKO
-  server: dog-hk.kunlun01dns.com
-  port: 21041
-  udp: true
-  type: vmess
-  uuid: 9464ca40-dd75-3742-a628-d931a9f413b2
-  alterId: 0
-  cipher: auto
+  client-fingerprint: firefox
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇭🇰 中国香港 (Hong Kong) 01 5793K ⚠P - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 6257K ⚠P - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 03 5745K ⚠P - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 04 5673K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 ⚠S2149K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇭🇰 中国香港 (Hong Kong) 01 5793K ⚠P - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 6257K ⚠P - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 03 5745K ⚠P - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 04 5673K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 ⚠S2149K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

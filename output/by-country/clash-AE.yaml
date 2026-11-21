@@ -4,14 +4,14 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇦🇪 阿联酋 (UAE) 01 80147K ⚠P - NEKO
-  server: 151.241.19.29
+- name: 🇦🇪 阿联酋 (UAE) 01 29162K ⚠P - NEKO
+  server: 151.241.19.36
   port: 19999
   udp: true
   type: ss
   cipher: aes-256-gcm
   password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇦🇪 阿联酋 (UAE) 02 32159K 🇨🇳 - NEKO
+- name: 🇦🇪 阿联酋 (UAE) 02 25596K 🇨🇳 - NEKO
   server: 31.59.154.82
   port: 8459
   udp: true
@@ -23,9 +23,9 @@ proxies:
     public-key: mTSn98b4yZG3im3ITn-kNLPbT8ljc9ILvAqiT4jyKXk
     short-id: 0f0e381ec0c4690d
   servername: nl-edge.airlinesvpn.com
-  client-fingerprint: firefox
-- name: 🇦🇪 阿联酋 (UAE) 03 31031K ⚠P - NEKO
-  server: 151.241.19.36
+  client-fingerprint: edge
+- name: 🇦🇪 阿联酋 (UAE) 03 30788K ⚠P - NEKO
+  server: 151.241.19.29
   port: 19999
   udp: true
   type: ss
@@ -36,16 +36,16 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇦🇪 阿联酋 (UAE) 01 80147K ⚠P - NEKO
-  - 🇦🇪 阿联酋 (UAE) 02 32159K 🇨🇳 - NEKO
-  - 🇦🇪 阿联酋 (UAE) 03 31031K ⚠P - NEKO
+  - 🇦🇪 阿联酋 (UAE) 01 29162K ⚠P - NEKO
+  - 🇦🇪 阿联酋 (UAE) 02 25596K 🇨🇳 - NEKO
+  - 🇦🇪 阿联酋 (UAE) 03 30788K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇦🇪 阿联酋 (UAE) 01 80147K ⚠P - NEKO
-  - 🇦🇪 阿联酋 (UAE) 02 32159K 🇨🇳 - NEKO
-  - 🇦🇪 阿联酋 (UAE) 03 31031K ⚠P - NEKO
+  - 🇦🇪 阿联酋 (UAE) 01 29162K ⚠P - NEKO
+  - 🇦🇪 阿联酋 (UAE) 02 25596K 🇨🇳 - NEKO
+  - 🇦🇪 阿联酋 (UAE) 03 30788K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

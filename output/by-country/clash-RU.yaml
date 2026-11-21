@@ -4,8 +4,8 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇷🇺 俄罗斯 (Russia) 01 8781K 🇨🇳 - NEKO
-  server: 147.45.47.101
+- name: 🇷🇺 俄罗斯 (Russia) 01 27982K 🇨🇳 - NEKO
+  server: leviko-fr9155.shopingggg.ir
   port: 8443
   udp: true
   type: vless
@@ -16,8 +16,8 @@ proxies:
     public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
     short-id: 6ba85179e30d4fc2
   servername: apple.com
-  client-fingerprint: chrome
-- name: 🇷🇺 俄罗斯 (Russia) 02 24286K 🇨🇳 - NEKO
+  client-fingerprint: firefox
+- name: 🇷🇺 俄罗斯 (Russia) 02 22963K 🇨🇳 - NEKO
   server: 37.235.247.81
   port: 8443
   udp: true
@@ -29,8 +29,8 @@ proxies:
     public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
     short-id: 6ba85179e30d4fc2
   servername: apple.com
-  client-fingerprint: ''
-- name: 🇷🇺 俄罗斯 (Russia) 03 42949K 🇨🇳 - NEKO
+  client-fingerprint: chrome
+- name: 🇷🇺 俄罗斯 (Russia) 03 25218K 🇨🇳 - NEKO
   server: 48.103.133.47
   port: 8443
   udp: true
@@ -43,20 +43,7 @@ proxies:
     short-id: 6ba85179e30d4fc2
   servername: apple.com
   client-fingerprint: ''
-- name: 🇷🇺 俄罗斯 (Russia) 04 15406K 🇨🇳 - NEKO
-  server: 200.169.179.233
-  port: 443
-  udp: true
-  type: vless
-  uuid: 38308ff1-5aa9-494f-a25a-0f2870d56b3e
-  tls: true
-  servername: vps3.nemnogogo.com
-  skip-cert-verify: false
-  client-fingerprint: firefox
-  network: grpc
-  grpc-opts:
-    grpc-service-name: mobile.api.Event
-- name: 🇷🇺 俄罗斯 (Russia) 05 13491K 🇨🇳 - NEKO
+- name: 🇷🇺 俄罗斯 (Russia) 04 9832K 🇨🇳 - NEKO
   server: vps3.nemnogogo.com
   port: 443
   udp: true
@@ -65,38 +52,55 @@ proxies:
   tls: true
   servername: vps3.nemnogogo.com
   skip-cert-verify: false
-  client-fingerprint: chrome
+  client-fingerprint: safari
   network: grpc
   grpc-opts:
     grpc-service-name: mobile.api.Event
-- name: 🇷🇺 俄罗斯 (Russia) 06 2955K ⚠P - NEKO
-  server: 195.133.5.196
-  port: 18443
+- name: 🇷🇺 俄罗斯 (Russia) 05 13226K 🇨🇳 - NEKO
+  server: 78.159.245.147
+  port: 445
   udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: NTiHBg64fsY8u8DbGrtypD9gPGSL386p
+  type: vless
+  uuid: 37af0181-5598-4aad-a040-d926bcb65757
+  tls: true
+  reality-opts:
+    public-key: VHWmCkZwC5XE-ctv0p8BinjoIx4SWgJUIsZPrhNf6TA
+  servername: passport.yandex.ru
+  client-fingerprint: chrome
+  network: grpc
+  grpc-opts:
+    grpc-service-name: grpc
+- name: 🇷🇺 俄罗斯 (Russia) 06 8505K ⚠C - NEKO
+  server: 176.108.244.162
+  port: 443
+  udp: true
+  type: vless
+  uuid: 6f1afd5d-9613-0001-b884-b52389da00c2
+  tls: true
+  servername: ohyjf-ru-65sb.my-fade.cloud
+  skip-cert-verify: false
+  client-fingerprint: firefox
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇷🇺 俄罗斯 (Russia) 01 8781K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 02 24286K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 03 42949K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 04 15406K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 05 13491K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 06 2955K ⚠P - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 01 27982K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 02 22963K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 03 25218K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 04 9832K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 05 13226K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 06 8505K ⚠C - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇷🇺 俄罗斯 (Russia) 01 8781K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 02 24286K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 03 42949K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 04 15406K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 05 13491K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 06 2955K ⚠P - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 01 27982K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 02 22963K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 03 25218K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 04 9832K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 05 13226K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 06 8505K ⚠C - NEKO
 rules:
 - MATCH,PROXIES

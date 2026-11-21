@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇮🇱 以色列 (Israel) 01 57134K 🇨🇳 - NEKO
+- name: 🇮🇱 以色列 (Israel) 01 87834K 🇨🇳 - NEKO
   server: 185.95.231.156
   port: 443
   udp: true
@@ -16,49 +16,18 @@ proxies:
     public-key: 8eXftARun6KH38UZhuqIfPR1VF2DLS9RMBZEnF5k6To
     short-id: a3a578ab
   servername: www.apple.com
-  client-fingerprint: random
-- name: 🇮🇱 以色列 (Israel) 02 8201K 🇨🇳 - NEKO
-  server: 178.20.28.5
-  port: 8443
-  udp: true
-  type: vless
-  uuid: 4fabeed0-790e-9724-8f12-138ed31ac60e
-  tls: true
-  reality-opts:
-    public-key: 4g8R0-Acc1LjppgvUopldH0Wg3JA2tPXvYB96aJnigo
-  servername: res.cdn.office.net
-  client-fingerprint: ''
-  network: grpc
-  grpc-opts:
-    grpc-service-name: TunService
-- name: 🇮🇱 以色列 (Israel) 03 28565K 🇨🇳 - NEKO
-  server: 45.140.204.17
-  port: 22444
-  udp: true
-  type: vless
-  uuid: a9ff24d3-f308-4e72-acb9-a76062583837
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: T1BWBw3lq9G1LiQ7eQSPfdNQic7bUMEbdFNJBewAwB8
-    short-id: 6ad3c0f1e9b2478a
-  servername: fontanka.ru
   client-fingerprint: firefox
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇮🇱 以色列 (Israel) 01 57134K 🇨🇳 - NEKO
-  - 🇮🇱 以色列 (Israel) 02 8201K 🇨🇳 - NEKO
-  - 🇮🇱 以色列 (Israel) 03 28565K 🇨🇳 - NEKO
+  - 🇮🇱 以色列 (Israel) 01 87834K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇮🇱 以色列 (Israel) 01 57134K 🇨🇳 - NEKO
-  - 🇮🇱 以色列 (Israel) 02 8201K 🇨🇳 - NEKO
-  - 🇮🇱 以色列 (Israel) 03 28565K 🇨🇳 - NEKO
+  - 🇮🇱 以色列 (Israel) 01 87834K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

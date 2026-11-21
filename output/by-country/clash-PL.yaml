@@ -4,30 +4,29 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇵🇱 波兰 (Poland) 01 17911K 🇨🇳 - NEKO
-  server: 82.40.63.138
+- name: 🇵🇱 波兰 (Poland) 01 8842K 🇨🇳 - NEKO
+  server: 48.102.174.174
   port: 443
   udp: true
   type: hysteria2
-  password: ca60984f-b1f0-4073-bd33-4c75168f749a
-  sni: kraw-pl-4.fantoff.online
+  password: 9a9f167d-b461-466f-be50-f0ffd598a6f8
+  sni: polandchuzhoi.site
   skip-cert-verify: false
-- name: 🇵🇱 波兰 (Poland) 02 8577K 🇨🇳 - NEKO
-  server: 31.58.117.133
-  port: 443
-  udp: true
-  type: hysteria2
-  password: ca60984f-b1f0-4073-bd33-4c75168f749a
-  sni: kraw-pl-5.fantoff.online
-  skip-cert-verify: false
-- name: 🇵🇱 波兰 (Poland) 03 762K ⚠P - NEKO
-  server: 217.30.10.70
-  port: 9003
+- name: 🇵🇱 波兰 (Poland) 02 3921K ⚠P - NEKO
+  server: 217.30.10.44
+  port: 9062
   udp: true
   type: ss
   cipher: aes-256-cfb
-  password: JdmRK9gMEqFgs8nP
-- name: 🇵🇱 波兰 (Poland) 04 4124K 🇨🇳 - NEKO
+  password: tkhHVxxfM2QErBWe
+- name: 🇵🇱 波兰 (Poland) 03 6247K ⚠P - NEKO
+  server: 217.30.10.70
+  port: 9038
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: gYCYXfkUQEs2TaJQ
+- name: 🇵🇱 波兰 (Poland) 04 264K 🇨🇳 - NEKO
   server: 143.246.41.214
   port: 443
   udp: true
@@ -38,24 +37,24 @@ proxies:
     public-key: 8OI8rEgAiWxH-cG03xgzuz7XTFHrbA1MY9HnPHcgSUA
     short-id: 1d5ac21e988c571f
   servername: 702e56t.pl5.h1clayd.click
-  client-fingerprint: edge
+  client-fingerprint: ''
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇵🇱 波兰 (Poland) 01 17911K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 02 8577K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 03 762K ⚠P - NEKO
-  - 🇵🇱 波兰 (Poland) 04 4124K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 01 8842K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 02 3921K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 03 6247K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 04 264K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇵🇱 波兰 (Poland) 01 17911K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 02 8577K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 03 762K ⚠P - NEKO
-  - 🇵🇱 波兰 (Poland) 04 4124K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 01 8842K 🇨🇳 - NEKO
+  - 🇵🇱 波兰 (Poland) 02 3921K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 03 6247K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 04 264K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

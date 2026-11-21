@@ -4,15 +4,33 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇫🇮 芬兰 (Finland) 01 13360K ⚠P⚠U - NEKO
-  server: 94.183.164.119
-  port: 24433
+- name: 🇫🇮 芬兰 (Finland) 01 6145K 🇨🇳 - NEKO
+  server: 169.40.34.53
+  port: 443
   udp: true
-  type: hysteria2
-  password: 549766c3-fa5f-471e-8031-ffc1f8d5064f
-  sni: lakes.blog-forme.ru
-  skip-cert-verify: false
-- name: 🇫🇮 芬兰 (Finland) 02 19259K 🇨🇳 - NEKO
+  type: vless
+  uuid: bc93a03d-13b5-000b-8ee7-d50c11459dab
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: 6VMgXXhZdJCiOG05EyK_zTHh00kpFGrZJeZIEPgqhjY
+    short-id: 1c3e8241a8743df9
+  servername: brointelengence.com
+  client-fingerprint: chrome
+- name: 🇫🇮 芬兰 (Finland) 02 6279K 🇨🇳 - NEKO
+  server: 169.40.34.53
+  port: 443
+  udp: true
+  type: vless
+  uuid: bc93a03d-13b5-000b-8ee7-d50c11459dab
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: 6VMgXXhZdJCiOG05EyK_zTHh00kpFGrZJeZIEPgqhjY
+    short-id: 1c3e8241a8743df9
+  servername: brointelengence.com
+  client-fingerprint: firefox
+- name: 🇫🇮 芬兰 (Finland) 03 6688K 🇨🇳 - NEKO
   server: 157.180.98.124
   port: 49659
   udp: true
@@ -25,43 +43,50 @@ proxies:
     short-id: 81959fce
   servername: apple.com
   client-fingerprint: chrome
-- name: 🇫🇮 芬兰 (Finland) 03 23225K ⚠P - NEKO
+- name: 🇫🇮 芬兰 (Finland) 04 3893K ⚠P - NEKO
   server: static.28.210.29.2.clients.your-server.de
   port: 25565
   udp: true
   type: ss
   cipher: chacha20-ietf-poly1305
   password: C8ZJ7R4p_HHJ32cst7ilT-0Zi2F22hAc
-- name: 🇫🇮 芬兰 (Finland) 04 2100K 🇨🇳 - NEKO
-  server: 4c980ft.fi15.h1clayd.click
-  port: 443
+- name: 🇫🇮 芬兰 (Finland) 05 613K ⚠P⚠U - NEKO
+  server: n1.content-treasure-via.online
+  port: 19302
   udp: true
-  type: vless
-  uuid: d3863595-3afe-4a74-8305-612ab69cd21c
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: -ZN1kT3JlPFxu1E906JRqLAGoQQucSmL6xPiuAyasTk
-    short-id: 597e1c279d224774
-  servername: 4c980ft.fi15.h1clayd.click
-  client-fingerprint: firefox
+  type: hysteria2
+  password: dd36b601-5bf4-40b7-8252-fc41d1b29517
+  sni: n1.content-treasure-via.online
+  skip-cert-verify: false
+- name: 🇫🇮 芬兰 (Finland) 06 6192K ⚠P⚠U - NEKO
+  server: 94.183.164.119
+  port: 24433
+  udp: true
+  type: hysteria2
+  password: 549766c3-fa5f-471e-8031-ffc1f8d5064f
+  sni: lakes.blog-forme.ru
+  skip-cert-verify: false
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇫🇮 芬兰 (Finland) 01 13360K ⚠P⚠U - NEKO
-  - 🇫🇮 芬兰 (Finland) 02 19259K 🇨🇳 - NEKO
-  - 🇫🇮 芬兰 (Finland) 03 23225K ⚠P - NEKO
-  - 🇫🇮 芬兰 (Finland) 04 2100K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 01 6145K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 02 6279K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 03 6688K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 04 3893K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 05 613K ⚠P⚠U - NEKO
+  - 🇫🇮 芬兰 (Finland) 06 6192K ⚠P⚠U - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇫🇮 芬兰 (Finland) 01 13360K ⚠P⚠U - NEKO
-  - 🇫🇮 芬兰 (Finland) 02 19259K 🇨🇳 - NEKO
-  - 🇫🇮 芬兰 (Finland) 03 23225K ⚠P - NEKO
-  - 🇫🇮 芬兰 (Finland) 04 2100K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 01 6145K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 02 6279K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 03 6688K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 04 3893K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 05 613K ⚠P⚠U - NEKO
+  - 🇫🇮 芬兰 (Finland) 06 6192K ⚠P⚠U - NEKO
 rules:
 - MATCH,PROXIES

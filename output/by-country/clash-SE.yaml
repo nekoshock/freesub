@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇸🇪 瑞典 (Sweden) 01 8251K 🇨🇳 - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 01 9406K 🇨🇳 - NEKO
   server: 88.216.214.159
   port: 443
   udp: true
@@ -15,8 +15,8 @@ proxies:
     public-key: drl7nndYdfzZY1aQ0eUAWmNV0nsHig2uDnu9siy9biQ
     short-id: a7c92e4b10d6f835
   servername: api-svc-mgr.galioncc.com
-  client-fingerprint: chrome
-- name: 🇸🇪 瑞典 (Sweden) 02 91214K ⚠P - NEKO
+  client-fingerprint: firefox
+- name: 🇸🇪 瑞典 (Sweden) 02 7701K ⚠P - NEKO
   server: 138.124.86.230
   port: 48115
   udp: true
@@ -28,33 +28,22 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: 138-124-86-230-sslip-io
-- name: 🇸🇪 瑞典 (Sweden) 03 2700K 🇨🇳 - NEKO
-  server: 95.143.196.97
-  port: 443
-  udp: true
-  type: hysteria2
-  password: 769f34f0-1500-488f-b414-03bc90666502
-  sni: se.mimowhat.online
-  skip-cert-verify: false
-- name: 🇸🇪 瑞典 (Sweden) 04 21106K ⚠P - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 03 6012K ⚠P - NEKO
   server: 138.199.55.243
   port: 19999
   udp: true
   type: ss
   cipher: aes-256-gcm
   password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇸🇪 瑞典 (Sweden) 05 21972K ⚠P - NEKO
-  server: 138.199.55.230
-  port: 1270
+- name: 🇸🇪 瑞典 (Sweden) 04 6189K 🇨🇳 - NEKO
+  server: leviko-se6097.shopingggg.ir
+  port: 443
   udp: true
-  type: vmess
-  uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
-  alterId: 0
-  cipher: auto
-  tls: true
-  servername: xmfhlpy.com
+  type: trojan
+  password: FkQH0Q5EFneySv20Qj3yoArD2GSb2XZF
+  sni: connect-se.mimowhat.online
   skip-cert-verify: false
-- name: 🇸🇪 瑞典 (Sweden) 06 22915K ⚠P - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 05 6905K ⚠P - NEKO
   server: 62.93.166.184
   port: 1270
   udp: true
@@ -65,7 +54,29 @@ proxies:
   tls: true
   servername: xmfhlpy.com
   skip-cert-verify: false
-- name: 🇸🇪 瑞典 (Sweden) 07 28340K ⚠P - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 06 6379K ⚠P - NEKO
+  server: 138.199.55.230
+  port: 1270
+  udp: true
+  type: vmess
+  uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
+  alterId: 0
+  cipher: auto
+  tls: true
+  servername: xmfhlpy.com
+  skip-cert-verify: false
+- name: 🇸🇪 瑞典 (Sweden) 07 4882K ⚠P - NEKO
+  server: 81.90.21.163
+  port: 2053
+  udp: true
+  type: vless
+  uuid: fbe22815-0718-4eae-816f-e91c67d15b54
+  flow: xtls-rprx-vision
+  tls: true
+  servername: 81.90.21.163
+  skip-cert-verify: false
+  client-fingerprint: firefox
+- name: 🇸🇪 瑞典 (Sweden) 08 5803K ⚠P - NEKO
   server: 2.27.14.247
   port: 2096
   udp: true
@@ -85,24 +96,26 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇸🇪 瑞典 (Sweden) 01 8251K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 91214K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 03 2700K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 04 21106K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 05 21972K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 06 22915K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 07 28340K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 9406K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 7701K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 03 6012K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 04 6189K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 05 6905K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 06 6379K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 07 4882K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 08 5803K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇸🇪 瑞典 (Sweden) 01 8251K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 91214K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 03 2700K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 04 21106K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 05 21972K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 06 22915K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 07 28340K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 9406K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 7701K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 03 6012K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 04 6189K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 05 6905K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 06 6379K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 07 4882K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 08 5803K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

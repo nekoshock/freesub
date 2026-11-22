@@ -1,0 +1,52 @@
+{
+  "log": {
+    "level": "warn"
+  },
+  "outbounds": [
+    {
+      "type": "vless",
+      "tag": "🇿🇦 南非 (South Africa) 01 15837K 🇨🇳 - NEKO",
+      "server": "102.134.35.197",
+      "server_port": 443,
+      "uuid": "122e2b61-6b68-4872-a1c8-3db9a0d554e0",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.ebay.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "qOGwfAG_taSX01wGv1eq8cLkPHDSa-RNvp9iAw-8SDs",
+          "short_id": "4402f260a449cce9"
+        }
+      }
+    },
+    {
+      "type": "selector",
+      "tag": "select",
+      "outbounds": [
+        "auto",
+        "🇿🇦 南非 (South Africa) 01 15837K 🇨🇳 - NEKO"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "auto",
+      "outbounds": [
+        "🇿🇦 南非 (South Africa) 01 15837K 🇨🇳 - NEKO"
+      ],
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+    {
+      "type": "block",
+      "tag": "block"
+    }
+  ]
+}

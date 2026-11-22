@@ -4,20 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇸🇪 瑞典 (Sweden) 01 602K 🇨🇳 - NEKO
-  server: 158.179.203.218
-  port: 64346
-  udp: true
-  type: vless
-  uuid: ce4bcb13-0fff-4c50-a05e-3e75e59ac9b1
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: U7t4RFE9MSMtC-o1DoJ8pYzKMfgVpTg6ZhTTknBrVkU
-    short-id: 1f2519bb96e5589c
-  servername: www.cloudflare.com
-  client-fingerprint: chrome
-- name: 🇸🇪 瑞典 (Sweden) 02 38176K ⚠P - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 01 19299K ⚠P - NEKO
   server: 138.124.86.230
   port: 48115
   udp: true
@@ -26,41 +13,17 @@ proxies:
   tls: true
   servername: 138-124-86-230.sslip.io
   skip-cert-verify: false
-  client-fingerprint: firefox
   network: grpc
   grpc-opts:
     grpc-service-name: 138-124-86-230-sslip-io
-- name: 🇸🇪 瑞典 (Sweden) 03 19535K ⚠P - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 02 11279K ⚠P - NEKO
   server: 138.199.55.243
   port: 19999
   udp: true
   type: ss
   cipher: aes-256-gcm
   password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇸🇪 瑞典 (Sweden) 04 20877K ⚠P - NEKO
-  server: 138.199.55.230
-  port: 1270
-  udp: true
-  type: vmess
-  uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
-  alterId: 0
-  cipher: auto
-  tls: true
-  servername: xmfhlpy.com
-  skip-cert-verify: false
-- name: 🇸🇪 瑞典 (Sweden) 05 770K 🇨🇳 - NEKO
-  server: 77.232.143.142
-  port: 443
-  udp: true
-  type: vless
-  uuid: 58e22afd-bf74-4736-984d-63a8ca03d7f0
-  tls: true
-  servername: volumestyle.komediyatorg.net
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /media/ws/
-- name: 🇸🇪 瑞典 (Sweden) 06 20218K ⚠P - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 03 11770K ⚠P - NEKO
   server: 62.93.166.184
   port: 1270
   udp: true
@@ -71,42 +34,34 @@ proxies:
   tls: true
   servername: xmfhlpy.com
   skip-cert-verify: false
-- name: 🇸🇪 瑞典 (Sweden) 07 1521K ⚠P - NEKO
-  server: 185.117.88.9
-  port: 8443
+- name: 🇸🇪 瑞典 (Sweden) 04 11060K ⚠P - NEKO
+  server: 138.199.55.230
+  port: 1270
   udp: true
-  type: vless
-  uuid: 9a597d68-6688-4046-bf24-a5a541e115e0
-  flow: xtls-rprx-vision
+  type: vmess
+  uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
+  alterId: 0
+  cipher: auto
   tls: true
-  reality-opts:
-    public-key: 6FI4VM9WlQEGVjyCvLDQLz1jOkrzzhtfGl9eQTBn6HU
-    short-id: f8d0271b4b5f9efc
-  servername: www.apple.com
-  client-fingerprint: chrome
+  servername: xmfhlpy.com
+  skip-cert-verify: false
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇸🇪 瑞典 (Sweden) 01 602K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 38176K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 03 19535K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 04 20877K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 05 770K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 06 20218K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 07 1521K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 19299K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 11279K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 03 11770K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 04 11060K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇸🇪 瑞典 (Sweden) 01 602K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 38176K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 03 19535K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 04 20877K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 05 770K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 06 20218K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 07 1521K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 19299K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 11279K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 03 11770K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 04 11060K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

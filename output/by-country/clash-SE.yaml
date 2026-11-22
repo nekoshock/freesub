@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇸🇪 瑞典 (Sweden) 01 19299K ⚠P - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 01 26043K ⚠P - NEKO
   server: 138.124.86.230
   port: 48115
   udp: true
@@ -13,18 +13,28 @@ proxies:
   tls: true
   servername: 138-124-86-230.sslip.io
   skip-cert-verify: false
+  client-fingerprint: firefox
   network: grpc
   grpc-opts:
     grpc-service-name: 138-124-86-230-sslip-io
-- name: 🇸🇪 瑞典 (Sweden) 02 11279K ⚠P - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 02 13291K ⚠P - NEKO
   server: 138.199.55.243
   port: 19999
   udp: true
   type: ss
   cipher: aes-256-gcm
   password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇸🇪 瑞典 (Sweden) 03 11770K ⚠P - NEKO
-  server: 62.93.166.184
+- name: 🇸🇪 瑞典 (Sweden) 03 15758K 🇨🇳 - NEKO
+  server: sajed.kdns.fr
+  port: 443
+  udp: true
+  type: vless
+  uuid: cffa0e31-7cce-4541-8a2e-4e115873090b
+  network: ws
+  ws-opts:
+    path: /@Ghiinvdikhfe@Ghiinvdikhfe@Ghiinvdikhfe@Ghiinvdikhfe@Ghiinvdikhfe
+- name: 🇸🇪 瑞典 (Sweden) 04 14780K ⚠P - NEKO
+  server: 138.199.55.230
   port: 1270
   udp: true
   type: vmess
@@ -34,8 +44,21 @@ proxies:
   tls: true
   servername: xmfhlpy.com
   skip-cert-verify: false
-- name: 🇸🇪 瑞典 (Sweden) 04 11060K ⚠P - NEKO
-  server: 138.199.55.230
+- name: 🇸🇪 瑞典 (Sweden) 05 13854K 🇨🇳 - NEKO
+  server: volumestyle.komediyatorg.net
+  port: 443
+  udp: true
+  type: vless
+  uuid: 58e22afd-bf74-4736-984d-63a8ca03d7f0
+  tls: true
+  servername: volumestyle.komediyatorg.net
+  skip-cert-verify: false
+  client-fingerprint: firefox
+  network: ws
+  ws-opts:
+    path: /media/ws/
+- name: 🇸🇪 瑞典 (Sweden) 06 14611K ⚠P - NEKO
+  server: 62.93.166.184
   port: 1270
   udp: true
   type: vmess
@@ -50,18 +73,22 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇸🇪 瑞典 (Sweden) 01 19299K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 11279K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 03 11770K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 04 11060K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 26043K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 13291K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 03 15758K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 04 14780K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 05 13854K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 06 14611K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇸🇪 瑞典 (Sweden) 01 19299K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 11279K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 03 11770K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 04 11060K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 26043K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 13291K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 03 15758K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 04 14780K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 05 13854K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 06 14611K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

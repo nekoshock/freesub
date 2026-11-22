@@ -4,8 +4,8 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇷🇺 俄罗斯 (Russia) 01 9675K 🇨🇳 - NEKO
-  server: 201.51.12.98
+- name: 🇷🇺 俄罗斯 (Russia) 01 10032K 🇨🇳 - NEKO
+  server: 200.169.179.233
   port: 443
   udp: true
   type: vless
@@ -17,7 +17,7 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: mobile.api.Event
-- name: 🇷🇺 俄罗斯 (Russia) 02 8938K 🇨🇳 - NEKO
+- name: 🇷🇺 俄罗斯 (Russia) 02 ⚠S27268K 🇨🇳 - NEKO
   server: 48.103.133.47
   port: 8443
   udp: true
@@ -30,31 +30,19 @@ proxies:
     short-id: 6ba85179e30d4fc2
   servername: apple.com
   client-fingerprint: chrome
-- name: 🇷🇺 俄罗斯 (Russia) 03 ⚠S566K ⚠C - NEKO
-  server: 136.148.83.69
-  port: 443
-  udp: true
-  type: vless
-  uuid: 666821a2-5c3d-0001-a56f-5a3a562d7324
-  tls: true
-  servername: szqbx-ru-77dc.my-fade.cloud
-  skip-cert-verify: false
-  client-fingerprint: qq
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇷🇺 俄罗斯 (Russia) 01 9675K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 02 8938K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 03 ⚠S566K ⚠C - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 01 10032K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 02 ⚠S27268K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇷🇺 俄罗斯 (Russia) 01 9675K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 02 8938K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 03 ⚠S566K ⚠C - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 01 10032K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 02 ⚠S27268K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

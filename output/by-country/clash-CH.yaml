@@ -4,43 +4,46 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇭 瑞士 (Switzerland) 01 14656K ⚠P - NEKO
-  server: 79.127.184.104
-  port: 19999
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇨🇭 瑞士 (Switzerland) 02 12528K ⚠P - NEKO
+- name: 🇨🇭 瑞士 (Switzerland) 01 6287K ⚠P - NEKO
   server: 23.166.88.189
   port: 19999
   udp: true
   type: ss
   cipher: aes-256-gcm
   password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇨🇭 瑞士 (Switzerland) 03 11163K ⚠P - NEKO
-  server: 23.166.88.127
-  port: 19999
+- name: 🇨🇭 瑞士 (Switzerland) 02 9497K ⚠P - NEKO
+  server: 186.190.215.4
+  port: 1270
   udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇨🇭 瑞士 (Switzerland) 04 11751K 🇨🇳 - NEKO
-  server: 208.69.78.222
-  port: 443
-  udp: true
-  type: trojan
-  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  sni: yourultimateprofessionalcareerhub.com
+  type: vmess
+  uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
+  alterId: 0
+  cipher: auto
+  tls: true
+  servername: xmfhlpy.com
   skip-cert-verify: false
-- name: 🇨🇭 瑞士 (Switzerland) 05 13865K ⚠P - NEKO
+- name: 🇨🇭 瑞士 (Switzerland) 03 5694K ⚠P - NEKO
   server: 186.190.215.251
   port: 19999
   udp: true
   type: ss
   cipher: aes-256-gcm
   password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇨🇭 瑞士 (Switzerland) 06 9828K 🇨🇳 - NEKO
+- name: 🇨🇭 瑞士 (Switzerland) 04 8303K ⚠P - NEKO
+  server: 23.166.88.127
+  port: 19999
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇨🇭 瑞士 (Switzerland) 05 202K ⚠P - NEKO
+  server: 79.127.184.104
+  port: 19999
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇨🇭 瑞士 (Switzerland) 06 9634K 🇨🇳 - NEKO
   server: 193.233.89.130
   port: 8443
   udp: true
@@ -50,46 +53,31 @@ proxies:
   reality-opts:
     public-key: xx8KWdR4HbVmvqPb0wRPAstBHGN2Uk99m7AF794_E3c
   servername: g.play2go.gay
-  client-fingerprint: chrome
+  client-fingerprint: firefox
   network: grpc
   grpc-opts:
     grpc-service-name: grpc
-- name: 🇨🇭 瑞士 (Switzerland) 07 4579K 🇨🇳 - NEKO
-  server: 135.136.183.53
-  port: 443
-  udp: true
-  type: vless
-  uuid: 0259e5aa-c188-4334-b204-32cd5ea859f6
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: 56r4YuaW-BUEapWGlOvv-QX75OgLNP8KuE_Z1bBxO1g
-    short-id: 47912f9d36a0a52b
-  servername: dubai-cdn-keno.keno.su
-  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇨🇭 瑞士 (Switzerland) 01 14656K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 02 12528K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 03 11163K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 04 11751K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 05 13865K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 06 9828K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 07 4579K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 01 6287K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 02 9497K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 03 5694K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 04 8303K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 05 202K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 06 9634K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇭 瑞士 (Switzerland) 01 14656K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 02 12528K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 03 11163K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 04 11751K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 05 13865K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 06 9828K 🇨🇳 - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 07 4579K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 01 6287K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 02 9497K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 03 5694K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 04 8303K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 05 202K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 06 9634K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

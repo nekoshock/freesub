@@ -4,15 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇰🇷 韩国 (South Korea) 01 9665K 🇨🇳 - NEKO
-  server: 158.247.253.243
-  port: 443
-  udp: true
-  type: trojan
-  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  sni: connectgraduateswithjobopeningsandgrowprofessionally.com
-  skip-cert-verify: false
-- name: 🇰🇷 韩国 (South Korea) 02 3598K ⚠P - NEKO
+- name: 🇰🇷 韩国 (South Korea) 01 3796K ⚠P - NEKO
   server: 168.107.51.32
   port: 20045
   udp: true
@@ -25,14 +17,12 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇰🇷 韩国 (South Korea) 01 9665K 🇨🇳 - NEKO
-  - 🇰🇷 韩国 (South Korea) 02 3598K ⚠P - NEKO
+  - 🇰🇷 韩国 (South Korea) 01 3796K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇰🇷 韩国 (South Korea) 01 9665K 🇨🇳 - NEKO
-  - 🇰🇷 韩国 (South Korea) 02 3598K ⚠P - NEKO
+  - 🇰🇷 韩国 (South Korea) 01 3796K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

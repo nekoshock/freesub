@@ -4,23 +4,24 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇮🇷 IR 01 13921K ⚠P - NEKO
-  server: 87.82.59.60
-  port: 837
+- name: 🇮🇪 爱尔兰 (Ireland) 01 18561K - NEKO
+  server: 3.248.201.197
+  port: 443
   udp: true
-  type: vless
-  uuid: d8b42cd5-b149-4356-9e61-444444444444
+  type: ss
+  cipher: aes-256-cfb
+  password: amazonskr05
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇮🇷 IR 01 13921K ⚠P - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 01 18561K - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇮🇷 IR 01 13921K ⚠P - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 01 18561K - NEKO
 rules:
 - MATCH,PROXIES

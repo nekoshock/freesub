@@ -4,18 +4,20 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇫🇮 芬兰 (Finland) 01 8677K 🇨🇳 - NEKO
-  server: 65.21.247.47
+- name: 🇫🇮 芬兰 (Finland) 01 10533K 🇨🇳 - NEKO
+  server: 196.196.208.22
   port: 443
   udp: true
   type: vless
-  uuid: fd419342-f50f-49b7-9074-d694b7d09508
+  uuid: cae99415-10a6-4317-81bd-19a4586b5d76
   flow: xtls-rprx-vision
   tls: true
-  servername: static.47.247.21.65.clients.your-server.de
-  skip-cert-verify: false
-  client-fingerprint: chrome
-- name: 🇫🇮 芬兰 (Finland) 02 4842K ⚠P⚠U - NEKO
+  reality-opts:
+    public-key: 3Ya7Erk_G6wlvuy6ekUzCW7zxnaDivdUzkkJXTFXcWs
+    short-id: 96f94f6200195aae
+  servername: 8a0f3at.fi-p1b.h1clayd.click
+  client-fingerprint: firefox
+- name: 🇫🇮 芬兰 (Finland) 02 8981K ⚠P⚠U - NEKO
   server: 94.183.164.119
   port: 24433
   udp: true
@@ -23,34 +25,19 @@ proxies:
   password: 549766c3-fa5f-471e-8031-ffc1f8d5064f
   sni: lakes.blog-forme.ru
   skip-cert-verify: false
-- name: 🇫🇮 芬兰 (Finland) 03 8318K ⚠P - NEKO
-  server: 157.180.98.124
-  port: 49659
-  udp: true
-  type: vless
-  uuid: 88a558b1-9645-42f3-89e5-341570d8486d
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: bBVqro8tG6swTNoAkjwUzcu4Ew4N4VcyDHzADcGviCs
-    short-id: 81959fce
-  servername: apple.com
-  client-fingerprint: ''
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇫🇮 芬兰 (Finland) 01 8677K 🇨🇳 - NEKO
-  - 🇫🇮 芬兰 (Finland) 02 4842K ⚠P⚠U - NEKO
-  - 🇫🇮 芬兰 (Finland) 03 8318K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 01 10533K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 02 8981K ⚠P⚠U - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇫🇮 芬兰 (Finland) 01 8677K 🇨🇳 - NEKO
-  - 🇫🇮 芬兰 (Finland) 02 4842K ⚠P⚠U - NEKO
-  - 🇫🇮 芬兰 (Finland) 03 8318K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 01 10533K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 02 8981K ⚠P⚠U - NEKO
 rules:
 - MATCH,PROXIES

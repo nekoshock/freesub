@@ -4,20 +4,19 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇭🇰 中国香港 (Hong Kong) 01 10629K 🇨🇳 - NEKO
-  server: 8.210.92.38
-  port: 443
+- name: 🇭🇰 中国香港 (Hong Kong) 01 10165K 🇨🇳 - NEKO
+  server: 202.144.192.76
+  port: 13779
   udp: true
   type: vless
-  uuid: 4fc9dc3d-0d57-49e7-9bc0-e323165241bf
-  flow: xtls-rprx-vision
+  uuid: 928e6cce-8ced-4243-9a48-a6642edd09b0
   tls: true
   reality-opts:
-    public-key: vhu6gifBQ8-hRzW1gqKFkEXDlQbf6Ex8kKj1FcxhmzA
-    short-id: d78318845237d9a9
-  servername: www.ebay.com
+    public-key: llTyp52oRXnJmQ3I9UUrmlwbMA79B-wLCRHCu-8dLGg
+    short-id: af1bdd293097b664
+  servername: tesla.com
   client-fingerprint: chrome
-- name: 🇭🇰 中国香港 (Hong Kong) 02 10751K 🇨🇳 - NEKO
+- name: 🇭🇰 中国香港 (Hong Kong) 02 7330K ⚠P - NEKO
   server: 2.26.204.46
   port: 31001
   udp: true
@@ -30,37 +29,19 @@ proxies:
     short-id: 39793bc4708abbbb
   servername: mensura.cdn-apple.com
   client-fingerprint: chrome
-- name: 🇭🇰 中国香港 (Hong Kong) 03 14046K 🇨🇳 - NEKO
-  server: bYWXdhIRqKJj8XAZ.v.3dns.vip
-  port: 443
-  udp: true
-  type: vmess
-  uuid: 234a80412b4d44a3a8d8523cbfd58dc4
-  alterId: 0
-  cipher: auto
-  tls: true
-  servername: bYWXdhIRqKJj8XAZ.v.3dns.vip
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /ws-vmess
-    headers:
-      Host: bYWXdhIRqKJj8XAZ.v.3dns.vip
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇭🇰 中国香港 (Hong Kong) 01 10629K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 10751K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 03 14046K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 10165K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 7330K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇭🇰 中国香港 (Hong Kong) 01 10629K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 10751K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 03 14046K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 10165K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 7330K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

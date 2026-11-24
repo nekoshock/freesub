@@ -4,7 +4,26 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇸🇪 瑞典 (Sweden) 01 11816K ⚠P - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 01 ⚠S77776K 🇨🇳 - NEKO
+  server: 88.216.60.73
+  port: 443
+  udp: true
+  type: vless
+  uuid: a30903dc-1bf0-4be5-8b1b-603a3a56211c
+  tls: true
+  reality-opts:
+    public-key: drl7nndYdfzZY1aQ0eUAWmNV0nsHig2uDnu9siy9biQ
+    short-id: a7c92e4b10d6f835
+  servername: ns-api-gw.galioncc.com
+  client-fingerprint: ios
+- name: 🇸🇪 瑞典 (Sweden) 02 14682K ⚠P - NEKO
+  server: 138.199.55.243
+  port: 19999
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇸🇪 瑞典 (Sweden) 03 70930K ⚠P - NEKO
   server: 138.124.86.230
   port: 48115
   udp: true
@@ -16,23 +35,7 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: 138-124-86-230-sslip-io
-- name: 🇸🇪 瑞典 (Sweden) 02 7813K ⚠P - NEKO
-  server: 138.199.55.243
-  port: 19999
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇸🇪 瑞典 (Sweden) 03 9221K 🇨🇳 - NEKO
-  server: sajed.kdns.fr
-  port: 443
-  udp: true
-  type: vless
-  uuid: cffa0e31-7cce-4541-8a2e-4e115873090b
-  network: ws
-  ws-opts:
-    path: /@Ghiinvdikhfe@Ghiinvdikhfe@Ghiinvdikhfe@Ghiinvdikhfe@Ghiinvdikhfe
-- name: 🇸🇪 瑞典 (Sweden) 04 8750K ⚠P - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 04 17292K ⚠P - NEKO
   server: 138.199.55.230
   port: 1270
   udp: true
@@ -43,7 +46,7 @@ proxies:
   tls: true
   servername: xmfhlpy.com
   skip-cert-verify: false
-- name: 🇸🇪 瑞典 (Sweden) 05 8946K ⚠P - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 05 17358K ⚠P - NEKO
   server: 62.93.166.184
   port: 1270
   udp: true
@@ -54,25 +57,51 @@ proxies:
   tls: true
   servername: xmfhlpy.com
   skip-cert-verify: false
+- name: 🇸🇪 瑞典 (Sweden) 06 7808K 🇨🇳 - NEKO
+  server: depotchannel.lucheeebezlimitnoekino.stream
+  port: 443
+  udp: true
+  type: vless
+  uuid: 58e22afd-bf74-4736-984d-63a8ca03d7f0
+  tls: true
+  servername: depotchannel.lucheeebezlimitnoekino.stream
+  skip-cert-verify: false
+  client-fingerprint: edge
+  network: ws
+  ws-opts:
+    path: /media/ws/
+- name: 🇸🇪 瑞典 (Sweden) 07 15674K ⚠L20% 🇨🇳 - NEKO
+  server: sajed.kdns.fr
+  port: 443
+  udp: true
+  type: vless
+  uuid: cffa0e31-7cce-4541-8a2e-4e115873090b
+  network: ws
+  ws-opts:
+    path: /@Ghiinvdikhfe@Ghiinvdikhfe@Ghiinvdikhfe@Ghiinvdikhfe@Ghiinvdikhfe
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇸🇪 瑞典 (Sweden) 01 11816K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 7813K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 03 9221K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 04 8750K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 05 8946K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 ⚠S77776K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 14682K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 03 70930K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 04 17292K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 05 17358K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 06 7808K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 07 15674K ⚠L20% 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇸🇪 瑞典 (Sweden) 01 11816K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 7813K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 03 9221K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 04 8750K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 05 8946K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 ⚠S77776K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 14682K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 03 70930K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 04 17292K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 05 17358K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 06 7808K 🇨🇳 - NEKO
+  - 🇸🇪 瑞典 (Sweden) 07 15674K ⚠L20% 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

@@ -4,20 +4,8 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇭🇰 中国香港 (Hong Kong) 01 10165K 🇨🇳 - NEKO
-  server: 202.144.192.76
-  port: 13779
-  udp: true
-  type: vless
-  uuid: 928e6cce-8ced-4243-9a48-a6642edd09b0
-  tls: true
-  reality-opts:
-    public-key: llTyp52oRXnJmQ3I9UUrmlwbMA79B-wLCRHCu-8dLGg
-    short-id: af1bdd293097b664
-  servername: tesla.com
-  client-fingerprint: chrome
-- name: 🇭🇰 中国香港 (Hong Kong) 02 7330K ⚠P - NEKO
-  server: 2.26.204.46
+- name: 🇭🇰 中国香港 (Hong Kong) 01 9929K 🇨🇳 - NEKO
+  server: leviko-hk4530.shopingggg.ir
   port: 31001
   udp: true
   type: vless
@@ -34,14 +22,12 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇭🇰 中国香港 (Hong Kong) 01 10165K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 7330K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 9929K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇭🇰 中国香港 (Hong Kong) 01 10165K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 7330K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 9929K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

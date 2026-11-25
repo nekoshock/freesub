@@ -4,33 +4,24 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇱🇻 拉脱维亚 (Latvia) 01 3451K ⚠P - NEKO
+- name: 🇱🇻 拉脱维亚 (Latvia) 01 6827K ⚠P - NEKO
   server: 185.135.86.175
-  port: 9094
+  port: 9086
   udp: true
   type: ss
   cipher: aes-256-cfb
-  password: rpgbNnU9rDDU4aWZ
-- name: 🇱🇻 拉脱维亚 (Latvia) 02 3928K ⚠P - NEKO
-  server: 185.135.86.175
-  port: 9036
-  udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: hbtvgUz5uNYyB3Rf
+  password: 37Z4TFCYhfxcpc9Q
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇱🇻 拉脱维亚 (Latvia) 01 3451K ⚠P - NEKO
-  - 🇱🇻 拉脱维亚 (Latvia) 02 3928K ⚠P - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 01 6827K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇱🇻 拉脱维亚 (Latvia) 01 3451K ⚠P - NEKO
-  - 🇱🇻 拉脱维亚 (Latvia) 02 3928K ⚠P - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 01 6827K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

@@ -4,24 +4,30 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇧🇬 保加利亚 (Bulgaria) 01 4468K ⚠P - NEKO
-  server: 213.183.63.60
-  port: 9064
+- name: 🇧🇬 保加利亚 (Bulgaria) 01 2217K 🇨🇳 - NEKO
+  server: 195.123.226.21
+  port: 443
   udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: cp8pRSUAyLhTfVWH
+  type: vless
+  uuid: 6589c320-db68-43cd-a273-b46299bab355
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: rabtI-ymNXBUvYYRwAw8DiR-1pdP7U0WPIaCBHEkgzo
+    short-id: 77bb0d07bddbc832
+  servername: gateway.icloud.com
+  client-fingerprint: firefox
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇧🇬 保加利亚 (Bulgaria) 01 4468K ⚠P - NEKO
+  - 🇧🇬 保加利亚 (Bulgaria) 01 2217K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇧🇬 保加利亚 (Bulgaria) 01 4468K ⚠P - NEKO
+  - 🇧🇬 保加利亚 (Bulgaria) 01 2217K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

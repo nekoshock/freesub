@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇦 加拿大 (Canada) 01 3841K 🇨🇳 - NEKO
+- name: 🇨🇦 加拿大 (Canada) 01 8721K 🇨🇳 - NEKO
   server: 66.163.113.9
   port: 443
   udp: true
@@ -13,22 +13,14 @@ proxies:
   tls: true
   servername: kuruish.org
   skip-cert-verify: false
-- name: 🇨🇦 加拿大 (Canada) 02 10632K ⚠P - NEKO
-  server: 23.162.200.198
-  port: 18000
-  udp: true
-  type: vmess
-  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-  alterId: 0
-  cipher: auto
-- name: 🇨🇦 加拿大 (Canada) 03 18453K 🇨🇳 - NEKO
+- name: 🇨🇦 加拿大 (Canada) 02 10901K 🇨🇳 - NEKO
   server: 134.195.198.163
   port: 443
   udp: true
   type: ss
   cipher: chacha20-ietf-poly1305
   password: PmCqK98WqhSC
-- name: 🇨🇦 加拿大 (Canada) 04 5557K ⚠P - NEKO
+- name: 🇨🇦 加拿大 (Canada) 03 11603K ⚠P - NEKO
   server: 134.195.196.211
   port: 18000
   udp: true
@@ -36,41 +28,72 @@ proxies:
   uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
   alterId: 0
   cipher: auto
-- name: 🇨🇦 加拿大 (Canada) 05 ⚠S12800K ⚠L20% ⚠P⚠C - NEKO
-  server: 192.99.151.230
-  port: 8388
+- name: 🇨🇦 加拿大 (Canada) 04 11404K ⚠P - NEKO
+  server: 23.162.200.198
+  port: 18000
   udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: itzvpn@321
-- name: 🇨🇦 加拿大 (Canada) 06 2017K ⚠P⚠C - NEKO
+  type: vmess
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+- name: 🇨🇦 加拿大 (Canada) 05 1040K ⚠P⚠C - NEKO
   server: 184.107.106.77
   port: 8388
   udp: true
   type: ss
   cipher: aes-256-gcm
   password: itzvpn@321
+- name: 🇨🇦 加拿大 (Canada) 06 3055K ⚠P - NEKO
+  server: 51.79.64.198
+  port: 8119
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: cdBIDV42DCwnfIN
+- name: 🇨🇦 加拿大 (Canada) 07 8384K ⚠L20% ⚠P⚠C - NEKO
+  server: 192.99.151.230
+  port: 8388
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: itzvpn@321
+- name: 🇨🇦 加拿大 (Canada) 08 3582K ⚠L20% ⚠P⚠C - NEKO
+  server: 103.106.229.37
+  port: 21003
+  udp: true
+  type: vless
+  uuid: 41b1c169-5905-4d98-b6a6-56896c25737c
+  tls: true
+  reality-opts:
+    public-key: HZwHZBP3x4Yo4UQiHcypRJIU_UdZY5OAapQM8RUqVAU
+    short-id: bab49aa4c2a88d27
+  servername: www.cloudflare.com
+  client-fingerprint: random
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇨🇦 加拿大 (Canada) 01 3841K 🇨🇳 - NEKO
-  - 🇨🇦 加拿大 (Canada) 02 10632K ⚠P - NEKO
-  - 🇨🇦 加拿大 (Canada) 03 18453K 🇨🇳 - NEKO
-  - 🇨🇦 加拿大 (Canada) 04 5557K ⚠P - NEKO
-  - 🇨🇦 加拿大 (Canada) 05 ⚠S12800K ⚠L20% ⚠P⚠C - NEKO
-  - 🇨🇦 加拿大 (Canada) 06 2017K ⚠P⚠C - NEKO
+  - 🇨🇦 加拿大 (Canada) 01 8721K 🇨🇳 - NEKO
+  - 🇨🇦 加拿大 (Canada) 02 10901K 🇨🇳 - NEKO
+  - 🇨🇦 加拿大 (Canada) 03 11603K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 04 11404K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 05 1040K ⚠P⚠C - NEKO
+  - 🇨🇦 加拿大 (Canada) 06 3055K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 07 8384K ⚠L20% ⚠P⚠C - NEKO
+  - 🇨🇦 加拿大 (Canada) 08 3582K ⚠L20% ⚠P⚠C - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇦 加拿大 (Canada) 01 3841K 🇨🇳 - NEKO
-  - 🇨🇦 加拿大 (Canada) 02 10632K ⚠P - NEKO
-  - 🇨🇦 加拿大 (Canada) 03 18453K 🇨🇳 - NEKO
-  - 🇨🇦 加拿大 (Canada) 04 5557K ⚠P - NEKO
-  - 🇨🇦 加拿大 (Canada) 05 ⚠S12800K ⚠L20% ⚠P⚠C - NEKO
-  - 🇨🇦 加拿大 (Canada) 06 2017K ⚠P⚠C - NEKO
+  - 🇨🇦 加拿大 (Canada) 01 8721K 🇨🇳 - NEKO
+  - 🇨🇦 加拿大 (Canada) 02 10901K 🇨🇳 - NEKO
+  - 🇨🇦 加拿大 (Canada) 03 11603K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 04 11404K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 05 1040K ⚠P⚠C - NEKO
+  - 🇨🇦 加拿大 (Canada) 06 3055K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 07 8384K ⚠L20% ⚠P⚠C - NEKO
+  - 🇨🇦 加拿大 (Canada) 08 3582K ⚠L20% ⚠P⚠C - NEKO
 rules:
 - MATCH,PROXIES

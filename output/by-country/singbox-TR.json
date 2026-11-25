@@ -1,0 +1,55 @@
+{
+  "log": {
+    "level": "warn"
+  },
+  "outbounds": [
+    {
+      "type": "shadowsocks",
+      "tag": "🇹🇷 土耳其 (Turkey) 01 5657K ⚠P - NEKO",
+      "server": "38.180.104.37",
+      "server_port": 19084,
+      "method": "aes-128-gcm",
+      "password": "ff4d354078394558933d699be149ad69"
+    },
+    {
+      "type": "vless",
+      "tag": "🇹🇷 土耳其 (Turkey) 02 9408K ⚠P - NEKO",
+      "server": "game.celvixo.ir",
+      "server_port": 2087,
+      "uuid": "ae143336-d5d7-4ffa-62fb-f3bbbdcbee28",
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "cp.xelzano.ir"
+        }
+      }
+    },
+    {
+      "type": "selector",
+      "tag": "select",
+      "outbounds": [
+        "auto",
+        "🇹🇷 土耳其 (Turkey) 01 5657K ⚠P - NEKO",
+        "🇹🇷 土耳其 (Turkey) 02 9408K ⚠P - NEKO"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "auto",
+      "outbounds": [
+        "🇹🇷 土耳其 (Turkey) 01 5657K ⚠P - NEKO",
+        "🇹🇷 土耳其 (Turkey) 02 9408K ⚠P - NEKO"
+      ],
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+    {
+      "type": "block",
+      "tag": "block"
+    }
+  ]
+}

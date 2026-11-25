@@ -4,28 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇫🇮 芬兰 (Finland) 01 8474K 🇨🇳 - NEKO
-  server: 31.76.77.231
-  port: 443
-  udp: true
-  type: vless
-  uuid: e894c08a-fecc-46f5-bf03-c95d0274c79d
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: PMtmgfkxpREXi51S_EUUi3KbYauQLjGD6c_llKRk8H4
-    short-id: cc85fc7134024405
-  servername: www.google.com
-  client-fingerprint: chrome
-- name: 🇫🇮 芬兰 (Finland) 02 7353K ⚠P⚠U - NEKO
-  server: 94.183.164.119
-  port: 24433
-  udp: true
-  type: hysteria2
-  password: 549766c3-fa5f-471e-8031-ffc1f8d5064f
-  sni: lakes.blog-forme.ru
-  skip-cert-verify: false
-- name: 🇫🇮 芬兰 (Finland) 03 8410K ⚠P - NEKO
+- name: 🇫🇮 芬兰 (Finland) 01 13821K 🇨🇳 - NEKO
   server: 157.180.98.124
   port: 49659
   udp: true
@@ -38,55 +17,59 @@ proxies:
     short-id: 81959fce
   servername: apple.com
   client-fingerprint: chrome
-- name: 🇫🇮 芬兰 (Finland) 04 8085K ⚠P - NEKO
-  server: ip4.ipspanel.ir
-  port: 2053
+- name: 🇫🇮 芬兰 (Finland) 02 866K 🇨🇳 - NEKO
+  server: 31.76.77.231
+  port: 443
   udp: true
   type: vless
-  uuid: 37df2d23-a4d0-40ca-9dd0-c791d1ff94be
+  uuid: e894c08a-fecc-46f5-bf03-c95d0274c79d
+  flow: xtls-rprx-vision
   tls: true
-  servername: T.panel001.ir
-  skip-cert-verify: false
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /@TurboVpn10
-    headers:
-      Host: T.panel001.ir
-- name: 🇫🇮 芬兰 (Finland) 05 7964K ⚠P - NEKO
-  server: Ip3.ipspanel.ir
-  port: 8443
+  reality-opts:
+    public-key: PMtmgfkxpREXi51S_EUUi3KbYauQLjGD6c_llKRk8H4
+    short-id: cc85fc7134024405
+  servername: www.google.com
+  client-fingerprint: firefox
+- name: 🇫🇮 芬兰 (Finland) 03 12758K 🇨🇳 - NEKO
+  server: origin5.pd-service.shop
+  port: 2298
   udp: true
   type: vless
-  uuid: 37df2d23-a4d0-40ca-9dd0-c791d1ff94be
+  uuid: cdfc923e-8d34-4b44-ac72-ab41ec560ba8
   tls: true
-  servername: T.panel001.ir
+  reality-opts:
+    public-key: YVW5HyhXOqVIDLzngOhCHWXdSkVNrRBS029UK3Fl3mM
+    short-id: 729bef613f43e925
+  servername: vimeo.com
+  client-fingerprint: random
+  network: grpc
+  grpc-opts:
+    grpc-service-name: ads.x5.ru
+- name: 🇫🇮 芬兰 (Finland) 04 10070K ⚠P⚠U - NEKO
+  server: 94.183.164.119
+  port: 24433
+  udp: true
+  type: hysteria2
+  password: 549766c3-fa5f-471e-8031-ffc1f8d5064f
+  sni: lakes.blog-forme.ru
   skip-cert-verify: false
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /@TurboVpn10
-    headers:
-      Host: T.panel001.ir
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇫🇮 芬兰 (Finland) 01 8474K 🇨🇳 - NEKO
-  - 🇫🇮 芬兰 (Finland) 02 7353K ⚠P⚠U - NEKO
-  - 🇫🇮 芬兰 (Finland) 03 8410K ⚠P - NEKO
-  - 🇫🇮 芬兰 (Finland) 04 8085K ⚠P - NEKO
-  - 🇫🇮 芬兰 (Finland) 05 7964K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 01 13821K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 02 866K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 03 12758K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 04 10070K ⚠P⚠U - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇫🇮 芬兰 (Finland) 01 8474K 🇨🇳 - NEKO
-  - 🇫🇮 芬兰 (Finland) 02 7353K ⚠P⚠U - NEKO
-  - 🇫🇮 芬兰 (Finland) 03 8410K ⚠P - NEKO
-  - 🇫🇮 芬兰 (Finland) 04 8085K ⚠P - NEKO
-  - 🇫🇮 芬兰 (Finland) 05 7964K ⚠P - NEKO
+  - 🇫🇮 芬兰 (Finland) 01 13821K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 02 866K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 03 12758K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 04 10070K ⚠P⚠U - NEKO
 rules:
 - MATCH,PROXIES

@@ -4,28 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇫🇮 芬兰 (Finland) 01 7132K 🇨🇳 - NEKO
-  server: 153.56.231.124
-  port: 443
-  udp: true
-  type: vless
-  uuid: e894c08a-fecc-46f5-bf03-c95d0274c79d
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: tZoiwNSZeaVBoLJJcXe9A-GzCtbvU95fKkAJLc0vrgU
-    short-id: 6fddab1e1e358290
-  servername: f309e0t.fi4.h1clayd.click
-  client-fingerprint: firefox
-- name: 🇫🇮 芬兰 (Finland) 02 6700K ⚠P⚠U - NEKO
-  server: 94.183.164.119
-  port: 24433
-  udp: true
-  type: hysteria2
-  password: 549766c3-fa5f-471e-8031-ffc1f8d5064f
-  sni: lakes.blog-forme.ru
-  skip-cert-verify: false
-- name: 🇫🇮 芬兰 (Finland) 03 7695K 🇨🇳 - NEKO
+- name: 🇫🇮 芬兰 (Finland) 01 9640K 🇨🇳 - NEKO
   server: 31.76.77.231
   port: 443
   udp: true
@@ -38,21 +17,47 @@ proxies:
     short-id: cc85fc7134024405
   servername: www.google.com
   client-fingerprint: firefox
+- name: 🇫🇮 芬兰 (Finland) 02 7039K 🇨🇳 - NEKO
+  server: 2.27.203.38
+  port: 443
+  udp: true
+  type: vless
+  uuid: e894c08a-fecc-46f5-bf03-c95d0274c79d
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: Xuy5y3WGJjkxyUtkhiY87dwndv4fuD45gO64TWnlThI
+    short-id: fd0cc2b3ac52deb8
+  servername: www.google.com
+  client-fingerprint: firefox
+- name: 🇫🇮 芬兰 (Finland) 03 5401K 🇨🇳 - NEKO
+  server: 31.76.80.24
+  port: 443
+  udp: true
+  type: vless
+  uuid: e894c08a-fecc-46f5-bf03-c95d0274c79d
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: XoMobTnf_CODRJ6rz0eoPsy1TC37jrJJpE8mwDUKRBg
+    short-id: 4e006700e13e56cd
+  servername: www.google.com
+  client-fingerprint: firefox
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇫🇮 芬兰 (Finland) 01 7132K 🇨🇳 - NEKO
-  - 🇫🇮 芬兰 (Finland) 02 6700K ⚠P⚠U - NEKO
-  - 🇫🇮 芬兰 (Finland) 03 7695K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 01 9640K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 02 7039K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 03 5401K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇫🇮 芬兰 (Finland) 01 7132K 🇨🇳 - NEKO
-  - 🇫🇮 芬兰 (Finland) 02 6700K ⚠P⚠U - NEKO
-  - 🇫🇮 芬兰 (Finland) 03 7695K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 01 9640K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 02 7039K 🇨🇳 - NEKO
+  - 🇫🇮 芬兰 (Finland) 03 5401K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

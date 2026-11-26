@@ -5,23 +5,42 @@
   "outbounds": [
     {
       "type": "trojan",
-      "tag": "🇰🇷 韩国 (South Korea) 01 4087K ⚠P - NEKO",
+      "tag": "🇰🇷 韩国 (South Korea) 01 8959K ⚠P - NEKO",
       "server": "168.107.51.32",
       "server_port": 20045,
       "password": "463f7453753f4d47",
       "tls": {
         "enabled": true,
         "server_name": "ikr200.zxom.eu.org",
+        "insecure": false
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇰🇷 韩国 (South Korea) 02 1675K 🇨🇳 - NEKO",
+      "server": "krd.80782636.xyz",
+      "server_port": 443,
+      "uuid": "db906786-8c49-4b17-9182-cea680ef954d",
+      "tls": {
+        "enabled": true,
+        "server_name": "krd.80782636.xyz",
         "insecure": false,
         "utls": {
           "enabled": true,
           "fingerprint": "chrome"
         }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/kw7x2mq9",
+        "headers": {
+          "Host": "krd.80782636.xyz"
+        }
       }
     },
     {
       "type": "vless",
-      "tag": "🇰🇷 韩国 (South Korea) 02 6069K 🇨🇳 - NEKO",
+      "tag": "🇰🇷 韩国 (South Korea) 03 ⚠S5634K ⚠P - NEKO",
       "server": "dddz-4-z.473221.xyz",
       "server_port": 43118,
       "uuid": "5807f1c4-b50e-4ec0-8d01-274045da0da5",
@@ -45,16 +64,18 @@
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇰🇷 韩国 (South Korea) 01 4087K ⚠P - NEKO",
-        "🇰🇷 韩国 (South Korea) 02 6069K 🇨🇳 - NEKO"
+        "🇰🇷 韩国 (South Korea) 01 8959K ⚠P - NEKO",
+        "🇰🇷 韩国 (South Korea) 02 1675K 🇨🇳 - NEKO",
+        "🇰🇷 韩国 (South Korea) 03 ⚠S5634K ⚠P - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇰🇷 韩国 (South Korea) 01 4087K ⚠P - NEKO",
-        "🇰🇷 韩国 (South Korea) 02 6069K 🇨🇳 - NEKO"
+        "🇰🇷 韩国 (South Korea) 01 8959K ⚠P - NEKO",
+        "🇰🇷 韩国 (South Korea) 02 1675K 🇨🇳 - NEKO",
+        "🇰🇷 韩国 (South Korea) 03 ⚠S5634K ⚠P - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

@@ -4,60 +4,51 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇱🇻 拉脱维亚 (Latvia) 01 8229K ⚠P - NEKO
-  server: 109.248.148.138
-  port: 11468
-  udp: true
-  type: ss
-  cipher: aes-128-gcm
-  password: 263bc9e3c41ea70e1d4d2e89c8fa837a
-- name: 🇱🇻 拉脱维亚 (Latvia) 02 5821K ⚠P - NEKO
-  server: 185.135.86.175
-  port: 9094
-  udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: rpgbNnU9rDDU4aWZ
-- name: 🇱🇻 拉脱维亚 (Latvia) 03 6833K ⚠P - NEKO
-  server: 185.135.86.175
-  port: 9007
-  udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: kSPmvwdFzGMMW5pY
-- name: 🇱🇻 拉脱维亚 (Latvia) 04 7473K ⚠P - NEKO
-  server: 185.135.86.175
-  port: 9036
-  udp: true
-  type: ss
-  cipher: aes-256-cfb
-  password: hbtvgUz5uNYyB3Rf
-- name: 🇱🇻 拉脱维亚 (Latvia) 05 ⚠S570K ⚠P - NEKO
+- name: 🇱🇻 拉脱维亚 (Latvia) 01 9187K ⚠P - NEKO
   server: 185.135.86.175
   port: 9086
   udp: true
   type: ss
   cipher: aes-256-cfb
   password: 37Z4TFCYhfxcpc9Q
+- name: 🇱🇻 拉脱维亚 (Latvia) 02 3864K ⚠P - NEKO
+  server: 185.135.86.175
+  port: 9036
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: hbtvgUz5uNYyB3Rf
+- name: 🇱🇻 拉脱维亚 (Latvia) 03 4427K ⚠P - NEKO
+  server: 185.135.86.175
+  port: 9007
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: kSPmvwdFzGMMW5pY
+- name: 🇱🇻 拉脱维亚 (Latvia) 04 3873K ⚠P - NEKO
+  server: 185.135.86.175
+  port: 9094
+  udp: true
+  type: ss
+  cipher: aes-256-cfb
+  password: rpgbNnU9rDDU4aWZ
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇱🇻 拉脱维亚 (Latvia) 01 8229K ⚠P - NEKO
-  - 🇱🇻 拉脱维亚 (Latvia) 02 5821K ⚠P - NEKO
-  - 🇱🇻 拉脱维亚 (Latvia) 03 6833K ⚠P - NEKO
-  - 🇱🇻 拉脱维亚 (Latvia) 04 7473K ⚠P - NEKO
-  - 🇱🇻 拉脱维亚 (Latvia) 05 ⚠S570K ⚠P - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 01 9187K ⚠P - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 02 3864K ⚠P - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 03 4427K ⚠P - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 04 3873K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇱🇻 拉脱维亚 (Latvia) 01 8229K ⚠P - NEKO
-  - 🇱🇻 拉脱维亚 (Latvia) 02 5821K ⚠P - NEKO
-  - 🇱🇻 拉脱维亚 (Latvia) 03 6833K ⚠P - NEKO
-  - 🇱🇻 拉脱维亚 (Latvia) 04 7473K ⚠P - NEKO
-  - 🇱🇻 拉脱维亚 (Latvia) 05 ⚠S570K ⚠P - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 01 9187K ⚠P - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 02 3864K ⚠P - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 03 4427K ⚠P - NEKO
+  - 🇱🇻 拉脱维亚 (Latvia) 04 3873K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

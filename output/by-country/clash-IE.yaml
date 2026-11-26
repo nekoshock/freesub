@@ -4,23 +4,24 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇻🇳 越南 (Vietnam) 01 332K ⚠P - NEKO
-  server: 150.95.109.109
-  port: 2086
+- name: 🇮🇪 爱尔兰 (Ireland) 01 23876K 🇨🇳 - NEKO
+  server: 3.248.201.197
+  port: 443
   udp: true
-  type: vless
-  uuid: b83faafc-cbb7-4655-99d4-2c4c39a49d1b
+  type: ss
+  cipher: aes-256-cfb
+  password: amazonskr05
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇻🇳 越南 (Vietnam) 01 332K ⚠P - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 01 23876K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇻🇳 越南 (Vietnam) 01 332K ⚠P - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 01 23876K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

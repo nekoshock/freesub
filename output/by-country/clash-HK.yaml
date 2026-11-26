@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇭🇰 中国香港 (Hong Kong) 01 9144K 🇨🇳 - NEKO
+- name: 🇭🇰 中国香港 (Hong Kong) 01 5225K ⚠P - NEKO
   server: 2.26.204.46
   port: 31001
   udp: true
@@ -17,32 +17,17 @@ proxies:
     short-id: 39793bc4708abbbb
   servername: mensura.cdn-apple.com
   client-fingerprint: firefox
-- name: 🇭🇰 中国香港 (Hong Kong) 02 7914K 🇨🇳 - NEKO
-  server: vl-x2.qz10086.top
-  port: 38101
-  udp: true
-  type: vless
-  uuid: d235ad20-8f30-441e-871e-ee2695e4c430
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: j7lihAdLvNKWg67WMGQsRSM8WFbaUK5dAi7D2R7iXHM
-    short-id: d5a01375
-  servername: www.apple.com
-  client-fingerprint: firefox
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇭🇰 中国香港 (Hong Kong) 01 9144K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 7914K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 5225K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇭🇰 中国香港 (Hong Kong) 01 9144K 🇨🇳 - NEKO
-  - 🇭🇰 中国香港 (Hong Kong) 02 7914K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 5225K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇮🇱 以色列 (Israel) 01 24277K 🇨🇳 - NEKO
+- name: 🇮🇱 以色列 (Israel) 01 11345K 🇨🇳 - NEKO
   server: 185.95.231.156
   port: 443
   udp: true
@@ -16,9 +16,9 @@ proxies:
     public-key: 8eXftARun6KH38UZhuqIfPR1VF2DLS9RMBZEnF5k6To
     short-id: a3a578ab
   servername: www.apple.com
-  client-fingerprint: random
-- name: 🇮🇱 以色列 (Israel) 02 1672K 🇨🇳 - NEKO
-  server: 77.221.157.45
+  client-fingerprint: firefox
+- name: 🇮🇱 以色列 (Israel) 02 6821K 🇨🇳 - NEKO
+  server: 196.245.153.156
   port: 443
   udp: true
   type: vless
@@ -27,24 +27,38 @@ proxies:
   reality-opts:
     public-key: xn7KVKS5MOnsFrYrEeRS04JssBCOxh12rxegaDFyGkA
     short-id: 6d289ff0f47c0aac
-  servername: 961ec0g.nl13.h1clayd.click
-  client-fingerprint: firefox
+  servername: 961ec0g.nl17.h1clayd.click
+  client-fingerprint: ''
   network: grpc
   grpc-opts:
     grpc-service-name: 7d5abcd7d8a1
+- name: 🇮🇱 以色列 (Israel) 03 1670K 🇨🇳 - NEKO
+  server: 195.206.235.72
+  port: 443
+  udp: true
+  type: vless
+  uuid: 26843758-24de-4f76-b5d0-624038e353c4
+  tls: true
+  reality-opts:
+    public-key: 3wFF83gtIA0sXj-6GGCAa--oQbSr0MVUj0FBc-0QmiE
+    short-id: e572b6579ea525d4
+  servername: 71b840t.de7.h1clayd.click
+  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇮🇱 以色列 (Israel) 01 24277K 🇨🇳 - NEKO
-  - 🇮🇱 以色列 (Israel) 02 1672K 🇨🇳 - NEKO
+  - 🇮🇱 以色列 (Israel) 01 11345K 🇨🇳 - NEKO
+  - 🇮🇱 以色列 (Israel) 02 6821K 🇨🇳 - NEKO
+  - 🇮🇱 以色列 (Israel) 03 1670K 🇨🇳 - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇮🇱 以色列 (Israel) 01 24277K 🇨🇳 - NEKO
-  - 🇮🇱 以色列 (Israel) 02 1672K 🇨🇳 - NEKO
+  - 🇮🇱 以色列 (Israel) 01 11345K 🇨🇳 - NEKO
+  - 🇮🇱 以色列 (Israel) 02 6821K 🇨🇳 - NEKO
+  - 🇮🇱 以色列 (Israel) 03 1670K 🇨🇳 - NEKO
 rules:
 - MATCH,PROXIES

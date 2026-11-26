@@ -4,37 +4,35 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇹🇷 土耳其 (Turkey) 01 5657K ⚠P - NEKO
+- name: 🇹🇷 土耳其 (Turkey) 01 6817K ⚠P - NEKO
   server: 38.180.104.37
   port: 19084
   udp: true
   type: ss
   cipher: aes-128-gcm
   password: ff4d354078394558933d699be149ad69
-- name: 🇹🇷 土耳其 (Turkey) 02 9408K ⚠P - NEKO
-  server: game.celvixo.ir
-  port: 2087
+- name: 🇹🇷 土耳其 (Turkey) 02 3804K ⚠P - NEKO
+  server: turkey-ip1.mmdaqaorg.xyz
+  port: 50738
   udp: true
   type: vless
-  uuid: ae143336-d5d7-4ffa-62fb-f3bbbdcbee28
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: cp.xelzano.ir
+  uuid: 56665684-5ac0-4ba9-9d49-8b258fb57974
+  tls: true
+  servername: turkey-ip1.mmdaqaorg.xyz
+  skip-cert-verify: false
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇹🇷 土耳其 (Turkey) 01 5657K ⚠P - NEKO
-  - 🇹🇷 土耳其 (Turkey) 02 9408K ⚠P - NEKO
+  - 🇹🇷 土耳其 (Turkey) 01 6817K ⚠P - NEKO
+  - 🇹🇷 土耳其 (Turkey) 02 3804K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇹🇷 土耳其 (Turkey) 01 5657K ⚠P - NEKO
-  - 🇹🇷 土耳其 (Turkey) 02 9408K ⚠P - NEKO
+  - 🇹🇷 土耳其 (Turkey) 01 6817K ⚠P - NEKO
+  - 🇹🇷 土耳其 (Turkey) 02 3804K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

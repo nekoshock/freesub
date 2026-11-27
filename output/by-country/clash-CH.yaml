@@ -4,21 +4,28 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇭 瑞士 (Switzerland) 01 8819K ⚠P - NEKO
+- name: 🇨🇭 瑞士 (Switzerland) 01 15672K ⚠P - NEKO
   server: 23.166.88.127
   port: 19999
   udp: true
   type: ss
   cipher: aes-256-gcm
   password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇨🇭 瑞士 (Switzerland) 02 8647K ⚠P - NEKO
+- name: 🇨🇭 瑞士 (Switzerland) 02 39440K ⚠P - NEKO
   server: 186.190.215.251
   port: 19999
   udp: true
   type: ss
   cipher: aes-256-gcm
   password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇨🇭 瑞士 (Switzerland) 03 8929K ⚠P - NEKO
+- name: 🇨🇭 瑞士 (Switzerland) 03 17867K ⚠P - NEKO
+  server: 23.166.88.189
+  port: 19999
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: 🇨🇭 瑞士 (Switzerland) 04 23835K ⚠P - NEKO
   server: 186.190.215.4
   port: 1270
   udp: true
@@ -29,49 +36,23 @@ proxies:
   tls: true
   servername: xmfhlpy.com
   skip-cert-verify: false
-- name: 🇨🇭 瑞士 (Switzerland) 04 4449K ⚠P - NEKO
-  server: leviko-ch0322.shopingggg.ir
-  port: 19999
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇨🇭 瑞士 (Switzerland) 05 894K ⚠P - NEKO
-  server: leviko-ch5965.shopingggg.ir
-  port: 19999
-  udp: true
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇨🇭 瑞士 (Switzerland) 06 9182K 🇨🇳 - NEKO
-  server: 208.69.78.222
-  port: 443
-  udp: true
-  type: trojan
-  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  sni: yourultimateprofessionalcareerhub.com
-  skip-cert-verify: false
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇨🇭 瑞士 (Switzerland) 01 8819K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 02 8647K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 03 8929K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 04 4449K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 05 894K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 06 9182K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 01 15672K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 02 39440K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 03 17867K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 04 23835K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇭 瑞士 (Switzerland) 01 8819K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 02 8647K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 03 8929K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 04 4449K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 05 894K ⚠P - NEKO
-  - 🇨🇭 瑞士 (Switzerland) 06 9182K 🇨🇳 - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 01 15672K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 02 39440K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 03 17867K ⚠P - NEKO
+  - 🇨🇭 瑞士 (Switzerland) 04 23835K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

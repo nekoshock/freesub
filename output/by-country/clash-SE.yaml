@@ -4,8 +4,8 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇸🇪 瑞典 (Sweden) 01 12050K 🇨🇳 - NEKO
-  server: leviko-se4581.shopingggg.ir
+- name: 🇸🇪 瑞典 (Sweden) 01 30258K ⚠P - NEKO
+  server: 138.124.86.230
   port: 48115
   udp: true
   type: vless
@@ -13,17 +13,18 @@ proxies:
   tls: true
   servername: 138-124-86-230.sslip.io
   skip-cert-verify: false
+  client-fingerprint: firefox
   network: grpc
   grpc-opts:
     grpc-service-name: 138-124-86-230-sslip-io
-- name: 🇸🇪 瑞典 (Sweden) 02 8268K ⚠P - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 02 18176K ⚠P - NEKO
   server: 138.199.55.243
   port: 19999
   udp: true
   type: ss
   cipher: aes-256-gcm
   password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: 🇸🇪 瑞典 (Sweden) 03 8419K ⚠P - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 03 8223K ⚠P - NEKO
   server: 138.199.55.230
   port: 1270
   udp: true
@@ -34,7 +35,7 @@ proxies:
   tls: true
   servername: xmfhlpy.com
   skip-cert-verify: false
-- name: 🇸🇪 瑞典 (Sweden) 04 8981K ⚠P - NEKO
+- name: 🇸🇪 瑞典 (Sweden) 04 19993K ⚠P - NEKO
   server: 62.93.166.184
   port: 1270
   udp: true
@@ -45,23 +46,40 @@ proxies:
   tls: true
   servername: xmfhlpy.com
   skip-cert-verify: false
+- name: 🇸🇪 瑞典 (Sweden) 05 960K ⚠P - NEKO
+  server: ws.dhafhdtjdti.site
+  port: 2053
+  udp: true
+  type: vless
+  uuid: 9f749472-c636-4c5a-af51-7f8feefaac81
+  tls: true
+  servername: ws.dhafhdtjdti.site
+  skip-cert-verify: false
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: ws.dhafhdtjdti.site
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇸🇪 瑞典 (Sweden) 01 12050K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 8268K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 03 8419K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 04 8981K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 30258K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 18176K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 03 8223K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 04 19993K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 05 960K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇸🇪 瑞典 (Sweden) 01 12050K 🇨🇳 - NEKO
-  - 🇸🇪 瑞典 (Sweden) 02 8268K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 03 8419K ⚠P - NEKO
-  - 🇸🇪 瑞典 (Sweden) 04 8981K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 01 30258K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 02 18176K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 03 8223K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 04 19993K ⚠P - NEKO
+  - 🇸🇪 瑞典 (Sweden) 05 960K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

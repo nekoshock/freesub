@@ -4,20 +4,14 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇵🇱 波兰 (Poland) 01 11616K 🇨🇳 - NEKO
-  server: 48.102.207.169
-  port: 443
+- name: 🇵🇱 波兰 (Poland) 01 8834K ⚠P - NEKO
+  server: 217.30.10.44
+  port: 9062
   udp: true
-  type: vless
-  uuid: e894c08a-fecc-46f5-bf03-c95d0274c79d
-  flow: xtls-rprx-vision
-  tls: true
-  reality-opts:
-    public-key: h7PkRRDOuhS9DQtU9TX0lQWiUW_u_803F7nVimuhln8
-    short-id: 0d059b684c11c739
-  servername: www.google.com
-  client-fingerprint: firefox
-- name: 🇵🇱 波兰 (Poland) 02 5243K ⚠P⚠U - NEKO
+  type: ss
+  cipher: aes-256-cfb
+  password: tkhHVxxfM2QErBWe
+- name: 🇵🇱 波兰 (Poland) 02 5404K ⚠P⚠U - NEKO
   server: 194.87.224.137
   port: 9443
   udp: true
@@ -30,14 +24,14 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇵🇱 波兰 (Poland) 01 11616K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 02 5243K ⚠P⚠U - NEKO
+  - 🇵🇱 波兰 (Poland) 01 8834K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 02 5404K ⚠P⚠U - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇵🇱 波兰 (Poland) 01 11616K 🇨🇳 - NEKO
-  - 🇵🇱 波兰 (Poland) 02 5243K ⚠P⚠U - NEKO
+  - 🇵🇱 波兰 (Poland) 01 8834K ⚠P - NEKO
+  - 🇵🇱 波兰 (Poland) 02 5404K ⚠P⚠U - NEKO
 rules:
 - MATCH,PROXIES

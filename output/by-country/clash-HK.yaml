@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇭🇰 中国香港 (Hong Kong) 01 5225K ⚠P - NEKO
+- name: 🇭🇰 中国香港 (Hong Kong) 01 11169K 🇨🇳 - NEKO
   server: 2.26.204.46
   port: 31001
   udp: true
@@ -17,17 +17,26 @@ proxies:
     short-id: 39793bc4708abbbb
   servername: mensura.cdn-apple.com
   client-fingerprint: firefox
+- name: 🇭🇰 中国香港 (Hong Kong) 02 8786K ⚠P - NEKO
+  server: uk.fusetea.ir
+  port: 154
+  udp: true
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: eCUs1n3b2Fh9b6WATvkNILLBzYbruQ_X
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇭🇰 中国香港 (Hong Kong) 01 5225K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 11169K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 8786K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇭🇰 中国香港 (Hong Kong) 01 5225K ⚠P - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 01 11169K 🇨🇳 - NEKO
+  - 🇭🇰 中国香港 (Hong Kong) 02 8786K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

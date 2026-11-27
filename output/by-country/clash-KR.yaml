@@ -4,31 +4,8 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇰🇷 韩国 (South Korea) 01 8959K ⚠P - NEKO
-  server: 168.107.51.32
-  port: 20045
-  udp: true
-  type: trojan
-  password: 463f7453753f4d47
-  sni: ikr200.zxom.eu.org
-  skip-cert-verify: false
-- name: 🇰🇷 韩国 (South Korea) 02 1675K 🇨🇳 - NEKO
-  server: krd.80782636.xyz
-  port: 443
-  udp: true
-  type: vless
-  uuid: db906786-8c49-4b17-9182-cea680ef954d
-  tls: true
-  servername: krd.80782636.xyz
-  skip-cert-verify: false
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /kw7x2mq9
-    headers:
-      Host: krd.80782636.xyz
-- name: 🇰🇷 韩国 (South Korea) 03 ⚠S5634K ⚠P - NEKO
-  server: dddz-4-z.473221.xyz
+- name: 🇰🇷 韩国 (South Korea) 01 ⚠S5706K ⚠P - NEKO
+  server: 34.84.103.229
   port: 43118
   udp: true
   type: vless
@@ -39,22 +16,35 @@ proxies:
     public-key: p0crO-ZNRjb07T_GGy9JdkXTjei3-D9f6s2ZzCo2gx8
     short-id: 1a70fe8d4b05
   servername: v1-dy.ixigua.com
+  client-fingerprint: firefox
+- name: 🇰🇷 韩国 (South Korea) 02 17489K ⚠P - NEKO
+  server: 131.186.22.95
+  port: 8443
+  udp: true
+  type: vless
+  uuid: b69cf773-da16-486e-afce-a45b94f998b3
+  tls: true
+  servername: senflarelink-node-il65vh.pages.dev
+  skip-cert-verify: false
   client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /flow=
+    headers:
+      Host: senflarelink-node-il65vh.pages.dev
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇰🇷 韩国 (South Korea) 01 8959K ⚠P - NEKO
-  - 🇰🇷 韩国 (South Korea) 02 1675K 🇨🇳 - NEKO
-  - 🇰🇷 韩国 (South Korea) 03 ⚠S5634K ⚠P - NEKO
+  - 🇰🇷 韩国 (South Korea) 01 ⚠S5706K ⚠P - NEKO
+  - 🇰🇷 韩国 (South Korea) 02 17489K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇰🇷 韩国 (South Korea) 01 8959K ⚠P - NEKO
-  - 🇰🇷 韩国 (South Korea) 02 1675K 🇨🇳 - NEKO
-  - 🇰🇷 韩国 (South Korea) 03 ⚠S5634K ⚠P - NEKO
+  - 🇰🇷 韩国 (South Korea) 01 ⚠S5706K ⚠P - NEKO
+  - 🇰🇷 韩国 (South Korea) 02 17489K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

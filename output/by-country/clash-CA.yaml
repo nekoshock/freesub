@@ -4,8 +4,8 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇦 加拿大 (Canada) 01 3706K 🇨🇳 - NEKO
-  server: kuruish.org
+- name: 🇨🇦 加拿大 (Canada) 01 6795K 🇨🇳 - NEKO
+  server: 66.163.113.9
   port: 443
   udp: true
   type: vless
@@ -13,21 +13,53 @@ proxies:
   tls: true
   servername: kuruish.org
   skip-cert-verify: false
-- name: 🇨🇦 加拿大 (Canada) 02 17905K 🇨🇳 - NEKO
+- name: 🇨🇦 加拿大 (Canada) 02 12881K 🇨🇳 - NEKO
   server: 134.195.198.163
   port: 443
   udp: true
   type: ss
   cipher: chacha20-ietf-poly1305
   password: PmCqK98WqhSC
-- name: 🇨🇦 加拿大 (Canada) 03 24672K ⚠P - NEKO
+- name: 🇨🇦 加拿大 (Canada) 03 9247K ⚠P - NEKO
+  server: 134.195.196.211
+  port: 18000
+  udp: true
+  type: vmess
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+- name: 🇨🇦 加拿大 (Canada) 04 12610K 🇨🇳 - NEKO
+  server: leviko-ca4436.shopingggg.ir
+  port: 443
+  udp: true
+  type: trojan
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: blog.connectingpeoplewithgreatjobs.com
+  skip-cert-verify: false
+- name: 🇨🇦 加拿大 (Canada) 05 5394K ⚠P - NEKO
+  server: 23.162.200.198
+  port: 18000
+  udp: true
+  type: vmess
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+- name: 🇨🇦 加拿大 (Canada) 06 13052K 🇨🇳 - NEKO
+  server: leviko-ca4436.shopingggg.ir
+  port: 443
+  udp: true
+  type: trojan
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: blog.connectingpeoplewithgreatjobs.com
+  skip-cert-verify: false
+- name: 🇨🇦 加拿大 (Canada) 07 10567K ⚠P - NEKO
   server: 184.107.106.77
   port: 8388
   udp: true
   type: ss
   cipher: aes-256-gcm
   password: itzvpn@321
-- name: 🇨🇦 加拿大 (Canada) 04 17733K ⚠L20% ⚠P⚠C - NEKO
+- name: 🇨🇦 加拿大 (Canada) 08 9277K ⚠L20% ⚠P⚠C - NEKO
   server: 192.99.151.230
   port: 8388
   udp: true
@@ -39,18 +71,26 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇨🇦 加拿大 (Canada) 01 3706K 🇨🇳 - NEKO
-  - 🇨🇦 加拿大 (Canada) 02 17905K 🇨🇳 - NEKO
-  - 🇨🇦 加拿大 (Canada) 03 24672K ⚠P - NEKO
-  - 🇨🇦 加拿大 (Canada) 04 17733K ⚠L20% ⚠P⚠C - NEKO
+  - 🇨🇦 加拿大 (Canada) 01 6795K 🇨🇳 - NEKO
+  - 🇨🇦 加拿大 (Canada) 02 12881K 🇨🇳 - NEKO
+  - 🇨🇦 加拿大 (Canada) 03 9247K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 04 12610K 🇨🇳 - NEKO
+  - 🇨🇦 加拿大 (Canada) 05 5394K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 06 13052K 🇨🇳 - NEKO
+  - 🇨🇦 加拿大 (Canada) 07 10567K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 08 9277K ⚠L20% ⚠P⚠C - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇦 加拿大 (Canada) 01 3706K 🇨🇳 - NEKO
-  - 🇨🇦 加拿大 (Canada) 02 17905K 🇨🇳 - NEKO
-  - 🇨🇦 加拿大 (Canada) 03 24672K ⚠P - NEKO
-  - 🇨🇦 加拿大 (Canada) 04 17733K ⚠L20% ⚠P⚠C - NEKO
+  - 🇨🇦 加拿大 (Canada) 01 6795K 🇨🇳 - NEKO
+  - 🇨🇦 加拿大 (Canada) 02 12881K 🇨🇳 - NEKO
+  - 🇨🇦 加拿大 (Canada) 03 9247K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 04 12610K 🇨🇳 - NEKO
+  - 🇨🇦 加拿大 (Canada) 05 5394K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 06 13052K 🇨🇳 - NEKO
+  - 🇨🇦 加拿大 (Canada) 07 10567K ⚠P - NEKO
+  - 🇨🇦 加拿大 (Canada) 08 9277K ⚠L20% ⚠P⚠C - NEKO
 rules:
 - MATCH,PROXIES

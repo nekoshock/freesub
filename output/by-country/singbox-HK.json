@@ -5,7 +5,7 @@
   "outbounds": [
     {
       "type": "vless",
-      "tag": "🇭🇰 中国香港 (Hong Kong) 01 5225K ⚠P - NEKO",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 01 11169K 🇨🇳 - NEKO",
       "server": "2.26.204.46",
       "server_port": 31001,
       "uuid": "12a4f736-2238-49ee-831f-5516f15cc951",
@@ -25,18 +25,28 @@
       }
     },
     {
+      "type": "shadowsocks",
+      "tag": "🇭🇰 中国香港 (Hong Kong) 02 8786K ⚠P - NEKO",
+      "server": "uk.fusetea.ir",
+      "server_port": 154,
+      "method": "chacha20-ietf-poly1305",
+      "password": "eCUs1n3b2Fh9b6WATvkNILLBzYbruQ_X"
+    },
+    {
       "type": "selector",
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇭🇰 中国香港 (Hong Kong) 01 5225K ⚠P - NEKO"
+        "🇭🇰 中国香港 (Hong Kong) 01 11169K 🇨🇳 - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 02 8786K ⚠P - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇭🇰 中国香港 (Hong Kong) 01 5225K ⚠P - NEKO"
+        "🇭🇰 中国香港 (Hong Kong) 01 11169K 🇨🇳 - NEKO",
+        "🇭🇰 中国香港 (Hong Kong) 02 8786K ⚠P - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

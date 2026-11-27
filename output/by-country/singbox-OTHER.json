@@ -4,24 +4,25 @@
   },
   "outbounds": [
     {
-      "type": "trojan",
-      "tag": "🇺🇦 乌克兰 (Ukraine) 01 13069K 🇨🇳 - NEKO",
-      "server": "172.67.199.12",
+      "type": "vless",
+      "tag": "🌐 其他地区 (Other) 01 21480K 🇨🇳 - NEKO",
+      "server": "a2c.ir",
       "server_port": 443,
-      "password": "963A4918-A630-29DA-A873-093CDF8AD784",
+      "uuid": "bc591bd5-3fc9-9f3e-b194-939100000004",
       "tls": {
         "enabled": true,
-        "server_name": "bitter-math-4364.vpnetwork3567.workers.dev",
+        "server_name": "flow-turbo-727.deloy10120.workers.dev",
         "insecure": false,
-        "alpn": [
-          "http/1.1"
-        ]
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
       },
       "transport": {
         "type": "ws",
         "path": "/",
         "headers": {
-          "Host": "bitter-math-4364.vpnetwork3567.workers.dev"
+          "Host": "flow-turbo-727.deloy10120.workers.dev"
         }
       }
     },
@@ -30,14 +31,14 @@
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇺🇦 乌克兰 (Ukraine) 01 13069K 🇨🇳 - NEKO"
+        "🌐 其他地区 (Other) 01 21480K 🇨🇳 - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇺🇦 乌克兰 (Ukraine) 01 13069K 🇨🇳 - NEKO"
+        "🌐 其他地区 (Other) 01 21480K 🇨🇳 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

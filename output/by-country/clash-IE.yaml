@@ -4,7 +4,14 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇮🇪 爱尔兰 (Ireland) 01 9546K ⚠P - NEKO
+- name: 🇮🇪 爱尔兰 (Ireland) 01 10673K ⚠P - NEKO
+  server: 146.70.90.197
+  port: 17455
+  udp: true
+  type: ss
+  cipher: aes-128-gcm
+  password: cVCf+5/dBI353UY4YcN3nS05znsJYtLF
+- name: 🇮🇪 爱尔兰 (Ireland) 02 10553K ⚠P - NEKO
   server: 146.70.90.195
   port: 17453
   udp: true
@@ -16,12 +23,14 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇮🇪 爱尔兰 (Ireland) 01 9546K ⚠P - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 01 10673K ⚠P - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 02 10553K ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇮🇪 爱尔兰 (Ireland) 01 9546K ⚠P - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 01 10673K ⚠P - NEKO
+  - 🇮🇪 爱尔兰 (Ireland) 02 10553K ⚠P - NEKO
 rules:
 - MATCH,PROXIES

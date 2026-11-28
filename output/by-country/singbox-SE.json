@@ -5,18 +5,35 @@
   "outbounds": [
     {
       "type": "vless",
-      "tag": "🇸🇪 瑞典 (Sweden) 01 30258K ⚠P - NEKO",
+      "tag": "🇸🇪 瑞典 (Sweden) 01 20848K 🇨🇳 - NEKO",
+      "server": "2.26.124.209",
+      "server_port": 443,
+      "uuid": "848951d4-c5a5-484c-897d-d777929bcdc2",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "gateway.icloud.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "aykMwW19tGa685HLa9yI8FDTH567ovT4KipCSUHEySk",
+          "short_id": "54325343"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇸🇪 瑞典 (Sweden) 02 158464K ⚠P - NEKO",
       "server": "138.124.86.230",
       "server_port": 48115,
       "uuid": "b2fe1fa4-6a79-4938-a3f4-63b54ae7f16b",
       "tls": {
         "enabled": true,
         "server_name": "138-124-86-230.sslip.io",
-        "insecure": false,
-        "utls": {
-          "enabled": true,
-          "fingerprint": "firefox"
-        }
+        "insecure": false
       },
       "transport": {
         "type": "grpc",
@@ -25,7 +42,7 @@
     },
     {
       "type": "shadowsocks",
-      "tag": "🇸🇪 瑞典 (Sweden) 02 18176K ⚠P - NEKO",
+      "tag": "🇸🇪 瑞典 (Sweden) 03 20779K ⚠P - NEKO",
       "server": "138.199.55.243",
       "server_port": 19999,
       "method": "aes-256-gcm",
@@ -33,7 +50,7 @@
     },
     {
       "type": "vmess",
-      "tag": "🇸🇪 瑞典 (Sweden) 03 8223K ⚠P - NEKO",
+      "tag": "🇸🇪 瑞典 (Sweden) 04 23079K ⚠P - NEKO",
       "server": "138.199.55.230",
       "server_port": 1270,
       "uuid": "5c040f1d-45db-43bd-8d46-e4950e433735",
@@ -46,7 +63,7 @@
     },
     {
       "type": "vmess",
-      "tag": "🇸🇪 瑞典 (Sweden) 04 19993K ⚠P - NEKO",
+      "tag": "🇸🇪 瑞典 (Sweden) 05 23302K ⚠P - NEKO",
       "server": "62.93.166.184",
       "server_port": 1270,
       "uuid": "5c040f1d-45db-43bd-8d46-e4950e433735",
@@ -59,25 +76,73 @@
     },
     {
       "type": "vless",
-      "tag": "🇸🇪 瑞典 (Sweden) 05 960K ⚠P - NEKO",
+      "tag": "🇸🇪 瑞典 (Sweden) 06 23079K ⚠P - NEKO",
       "server": "ws.dhafhdtjdti.site",
       "server_port": 2053,
       "uuid": "9f749472-c636-4c5a-af51-7f8feefaac81",
       "tls": {
         "enabled": true,
         "server_name": "ws.dhafhdtjdti.site",
+        "insecure": false
+      },
+      "transport": {
+        "type": "ws"
+      }
+    },
+    {
+      "type": "hysteria2",
+      "tag": "🇸🇪 瑞典 (Sweden) 07 406K 🇨🇳 - NEKO",
+      "server": "147.45.73.182",
+      "server_port": 443,
+      "password": "b1490307-d693-4392-8f32-a3f7cc139202",
+      "tls": {
+        "enabled": true,
+        "server_name": "accountentry.comparecarprices.org",
+        "insecure": false,
+        "alpn": [
+          "h3"
+        ]
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇸🇪 瑞典 (Sweden) 08 10173K 🇨🇳 - NEKO",
+      "server": "188.225.77.71",
+      "server_port": 443,
+      "uuid": "faf6b8af-e741-4ef5-b1e2-25a3f413cc8e",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "spb2.b2ai.top",
         "insecure": false,
         "utls": {
           "enabled": true,
-          "fingerprint": "chrome"
+          "fingerprint": "firefox"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇸🇪 瑞典 (Sweden) 09 448K 🇨🇳 - NEKO",
+      "server": "79.141.174.144",
+      "server_port": 443,
+      "uuid": "ba373a70-295f-482d-a471-8bc17b54e23b",
+      "tls": {
+        "enabled": true,
+        "server_name": "seb.899themes.pro",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "pR39Vv5qhk8r6akOicoy6mMs4-ppSWUez8MyAXG7wwQ",
+          "short_id": "27350908de933e09"
         }
       },
       "transport": {
-        "type": "ws",
-        "path": "/",
-        "headers": {
-          "Host": "ws.dhafhdtjdti.site"
-        }
+        "type": "grpc",
+        "service_name": "neurex"
       }
     },
     {
@@ -85,22 +150,30 @@
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇸🇪 瑞典 (Sweden) 01 30258K ⚠P - NEKO",
-        "🇸🇪 瑞典 (Sweden) 02 18176K ⚠P - NEKO",
-        "🇸🇪 瑞典 (Sweden) 03 8223K ⚠P - NEKO",
-        "🇸🇪 瑞典 (Sweden) 04 19993K ⚠P - NEKO",
-        "🇸🇪 瑞典 (Sweden) 05 960K ⚠P - NEKO"
+        "🇸🇪 瑞典 (Sweden) 01 20848K 🇨🇳 - NEKO",
+        "🇸🇪 瑞典 (Sweden) 02 158464K ⚠P - NEKO",
+        "🇸🇪 瑞典 (Sweden) 03 20779K ⚠P - NEKO",
+        "🇸🇪 瑞典 (Sweden) 04 23079K ⚠P - NEKO",
+        "🇸🇪 瑞典 (Sweden) 05 23302K ⚠P - NEKO",
+        "🇸🇪 瑞典 (Sweden) 06 23079K ⚠P - NEKO",
+        "🇸🇪 瑞典 (Sweden) 07 406K 🇨🇳 - NEKO",
+        "🇸🇪 瑞典 (Sweden) 08 10173K 🇨🇳 - NEKO",
+        "🇸🇪 瑞典 (Sweden) 09 448K 🇨🇳 - NEKO"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇸🇪 瑞典 (Sweden) 01 30258K ⚠P - NEKO",
-        "🇸🇪 瑞典 (Sweden) 02 18176K ⚠P - NEKO",
-        "🇸🇪 瑞典 (Sweden) 03 8223K ⚠P - NEKO",
-        "🇸🇪 瑞典 (Sweden) 04 19993K ⚠P - NEKO",
-        "🇸🇪 瑞典 (Sweden) 05 960K ⚠P - NEKO"
+        "🇸🇪 瑞典 (Sweden) 01 20848K 🇨🇳 - NEKO",
+        "🇸🇪 瑞典 (Sweden) 02 158464K ⚠P - NEKO",
+        "🇸🇪 瑞典 (Sweden) 03 20779K ⚠P - NEKO",
+        "🇸🇪 瑞典 (Sweden) 04 23079K ⚠P - NEKO",
+        "🇸🇪 瑞典 (Sweden) 05 23302K ⚠P - NEKO",
+        "🇸🇪 瑞典 (Sweden) 06 23079K ⚠P - NEKO",
+        "🇸🇪 瑞典 (Sweden) 07 406K 🇨🇳 - NEKO",
+        "🇸🇪 瑞典 (Sweden) 08 10173K 🇨🇳 - NEKO",
+        "🇸🇪 瑞典 (Sweden) 09 448K 🇨🇳 - NEKO"
       ],
       "url": "https://www.gstatic.com/generate_204"
     },

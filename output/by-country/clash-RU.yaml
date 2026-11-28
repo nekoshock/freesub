@@ -4,20 +4,31 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇷🇺 俄罗斯 (Russia) 01 12644K 🇨🇳 - NEKO
-  server: 201.24.116.192
+- name: 🇷🇺 俄罗斯 (Russia) 01 10540K 🇨🇳 - NEKO
+  server: trendslate.nem-osh-rkp.net
   port: 443
   udp: true
-  type: vless
-  uuid: 38308ff1-5aa9-494f-a25a-0f2870d56b3e
-  tls: true
-  servername: vps3.nemnogogo.com
+  type: hysteria2
+  password: b1490307-d693-4392-8f32-a3f7cc139202
+  sni: trendslate.nem-osh-rkp.net
   skip-cert-verify: false
-  client-fingerprint: chrome
-  network: grpc
-  grpc-opts:
-    grpc-service-name: mobile.api.Event
-- name: 🇷🇺 俄罗斯 (Russia) 02 11189K 🇨🇳 - NEKO
+- name: 🇷🇺 俄罗斯 (Russia) 02 5432K 🇨🇳 - NEKO
+  server: 91.196.32.60
+  port: 443
+  udp: true
+  type: hysteria2
+  password: b1490307-d693-4392-8f32-a3f7cc139202
+  sni: goldenlogin.newbuzideas.org
+  skip-cert-verify: false
+- name: 🇷🇺 俄罗斯 (Russia) 03 1265K 🇨🇳 - NEKO
+  server: 193.233.74.21
+  port: 443
+  udp: true
+  type: hysteria2
+  password: b1490307-d693-4392-8f32-a3f7cc139202
+  sni: circuitinsight.obshock.net
+  skip-cert-verify: false
+- name: 🇷🇺 俄罗斯 (Russia) 04 16389K 🇨🇳 - NEKO
   server: vps3.nemnogogo.com
   port: 443
   udp: true
@@ -26,10 +37,11 @@ proxies:
   tls: true
   servername: vps3.nemnogogo.com
   skip-cert-verify: false
+  client-fingerprint: safari
   network: grpc
   grpc-opts:
     grpc-service-name: mobile.api.Event
-- name: 🇷🇺 俄罗斯 (Russia) 03 3437K ⚠C - NEKO
+- name: 🇷🇺 俄罗斯 (Russia) 05 3114K ⚠C - NEKO
   server: 136.148.83.69
   port: 443
   udp: true
@@ -39,21 +51,49 @@ proxies:
   servername: szqbx-ru-77dc.my-fade.cloud
   skip-cert-verify: false
   client-fingerprint: qq
+- name: 🇷🇺 俄罗斯 (Russia) 06 9366K 🇨🇳 - NEKO
+  server: 136.234.179.168
+  port: 443
+  udp: true
+  type: vless
+  uuid: ba373a70-295f-482d-a471-8bc17b54e23b
+  flow: xtls-rprx-vision
+  tls: true
+  reality-opts:
+    public-key: pR39Vv5qhk8r6akOicoy6mMs4-ppSWUez8MyAXG7wwQ
+    short-id: 27350908de933e09
+  servername: glenharbor.xyz
+  client-fingerprint: firefox
+- name: 🇷🇺 俄罗斯 (Russia) 07 7559K ⚠L20% ⚠P - NEKO
+  server: 194.87.69.12
+  port: 18443
+  udp: true
+  type: ss
+  cipher: aes-256-gcm
+  password: 5mKjXAGrliIAlYwWDeFzkCEMIgQdFQLe
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇷🇺 俄罗斯 (Russia) 01 12644K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 02 11189K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 03 3437K ⚠C - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 01 10540K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 02 5432K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 03 1265K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 04 16389K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 05 3114K ⚠C - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 06 9366K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 07 7559K ⚠L20% ⚠P - NEKO
 - name: AUTO
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   proxies:
-  - 🇷🇺 俄罗斯 (Russia) 01 12644K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 02 11189K 🇨🇳 - NEKO
-  - 🇷🇺 俄罗斯 (Russia) 03 3437K ⚠C - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 01 10540K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 02 5432K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 03 1265K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 04 16389K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 05 3114K ⚠C - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 06 9366K 🇨🇳 - NEKO
+  - 🇷🇺 俄罗斯 (Russia) 07 7559K ⚠L20% ⚠P - NEKO
 rules:
 - MATCH,PROXIES
